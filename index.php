@@ -34,54 +34,43 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <!-- Hero Dashboard Mockup -->
+                    <!-- Hero Banner Carousel -->
                     <div class="hero-mockup-wrapper mt-5 mt-lg-0 gsap-hero-dashboard">
-                        <div class="tilt-wrapper">
-                            <div class="glass-dashboard-card inner-tilt">
-                                <div class="dashboard-header d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <span class="dot-indicator green"></span>
-                                    <span class="dashboard-title ms-2">Digify AI Analytics</span>
+                        <div class="hero-banner-slider-wrapper">
+                            <div id="heroBannersCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+                                <!-- Carousel Indicators -->
+                                <div class="carousel-indicators hero-carousel-indicators">
+                                    <button type="button" data-bs-target="#heroBannersCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Banner 1"></button>
+                                    <button type="button" data-bs-target="#heroBannersCarousel" data-bs-slide-to="1" aria-label="Banner 2"></button>
+                                    <button type="button" data-bs-target="#heroBannersCarousel" data-bs-slide-to="2" aria-label="Banner 3"></button>
+                                    <button type="button" data-bs-target="#heroBannersCarousel" data-bs-slide-to="3" aria-label="Banner 4"></button>
                                 </div>
-                                <span class="live-badge">LIVE</span>
-                            </div>
-                            <div class="dashboard-body mt-4">
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <div class="metric-card">
-                                            <span class="lbl"><i class="fas fa-arrow-trend-up text-success me-1"></i> Sales Today</span>
-                                            <span class="val">₹48,250</span>
-                                            <span class="metric-change text-success">+18.4%</span>
-                                        </div>
+
+                                <!-- Carousel Slides -->
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="5000">
+                                        <img src="assets/images/hero_banner_1.jpg" class="hero-banner-img" alt="Why Businesses Choose Digify Soft Solutions">
                                     </div>
-                                    <div class="col-6">
-                                        <div class="metric-card">
-                                            <span class="lbl"><i class="fas fa-receipt text-primary me-1"></i> Invoices</span>
-                                            <span class="val">182 Bills</span>
-                                            <span class="metric-change text-primary">Active</span>
-                                        </div>
+                                    <div class="carousel-item" data-bs-interval="5000">
+                                        <img src="assets/images/hero_banner_2.jpg" class="hero-banner-img" alt="OCR and AI Powered Retail ERP">
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="5000">
+                                        <img src="assets/images/hero_banner_3.jpg" class="hero-banner-img" alt="Garment Boutique ERP Solutions">
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="5000">
+                                        <img src="assets/images/hero_banner_4.jpg" class="hero-banner-img" alt="Restaurant Management Software">
                                     </div>
                                 </div>
-                                
-                                <!-- Glowing Mini SVG Analytics Line Chart (With mathematically smooth Cubic Bezier Curve) -->
-                                <div class="dashboard-chart mt-4">
-                                    <svg viewBox="0 0 300 80" class="chart-svg">
-                                        <defs>
-                                            <linearGradient id="chart-glow" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="0%" stop-color="#e06930" stop-opacity="0.35"/>
-                                                <stop offset="100%" stop-color="#e06930" stop-opacity="0"/>
-                                            </linearGradient>
-                                            <linearGradient id="stroke-gradient" x1="0" y1="0" x2="1" y2="0">
-                                                <stop offset="0%" stop-color="#e06930"/>
-                                                <stop offset="100%" stop-color="#fbc145"/>
-                                            </linearGradient>
-                                        </defs>
-                                        <path d="M 0 55 C 30 55, 50 65, 80 50 C 110 35, 130 48, 160 35 C 190 22, 210 52, 240 40 C 270 28, 285 12, 300 10 L 300 80 L 0 80 Z" fill="url(#chart-glow)"></path>
-                                        <path d="M 0 55 C 30 55, 50 65, 80 50 C 110 35, 130 48, 160 35 C 190 22, 210 52, 240 40 C 270 28, 285 12, 300 10" fill="none" stroke="url(#stroke-gradient)" stroke-width="4" stroke-linecap="round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                                </div>
+
+                                <!-- Controls -->
+                                <button class="carousel-control-prev hero-carousel-control hero-carousel-control-prev" type="button" data-bs-target="#heroBannersCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon hero-carousel-control-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next hero-carousel-control hero-carousel-control-next" type="button" data-bs-target="#heroBannersCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon hero-carousel-control-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
                         </div>
                     </div>
