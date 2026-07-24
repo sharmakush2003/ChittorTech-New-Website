@@ -13,7 +13,7 @@
 /* --- 2. HERO BANNER --- */
 .premium-hero {
     position: relative;
-    padding: 80px 0 60px;
+    padding: 40px 0 35px;
     background: radial-gradient(circle at 90% 10%, rgba(224, 105, 48, 0.07), transparent 45%),
                 radial-gradient(circle at 10% 90%, rgba(251, 193, 69, 0.05), transparent 45%),
                 #ffffff;
@@ -158,28 +158,37 @@
     object-fit: cover;
 }
 
-.hero-carousel-indicators {
-    bottom: 16px;
-    margin-bottom: 0;
-    gap: 8px;
+/* --- Smooth Horizontal Slide & Motion Blur Transition --- */
+#heroBannersCarousel .carousel-inner {
+    overflow: hidden;
+    border-radius: 14px;
 }
 
-.hero-carousel-indicators [data-bs-target] {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    opacity: 0.7;
-    transition: all 0.3s ease;
-}
-
-.hero-carousel-indicators .active {
-    width: 28px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #e06930, #fbc145);
-    border: none;
+#heroBannersCarousel .carousel-item {
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                filter 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    filter: blur(0px);
     opacity: 1;
+    will-change: transform, filter, opacity;
+}
+
+/* Outgoing slide gets motion blurred as it slides out */
+#heroBannersCarousel .carousel-item-start.active,
+#heroBannersCarousel .carousel-item-end.active {
+    filter: blur(6px) brightness(0.92);
+    opacity: 0.6;
+}
+
+/* Incoming slide enters blurred from side and unblurs smoothly */
+#heroBannersCarousel .carousel-item-next:not(.carousel-item-start),
+#heroBannersCarousel .carousel-item-prev:not(.carousel-item-end) {
+    filter: blur(6px) brightness(0.92);
+    opacity: 0.6;
+}
+
+.hero-carousel-indicators {
+    display: none !important;
 }
 
 .hero-carousel-control {
@@ -1002,17 +1011,28 @@ header {
 /* --- 12. DESKTOP MEDIA QUERIES (OVER-992PX BREAKPOINTS) --- */
 @media (min-width: 992px) {
     .premium-hero {
-        padding: 100px 0 120px;
+        padding: 35px 0 35px;
     }
     
     .hero-title {
-        font-size: 54px;
-        line-height: 1.1;
+        font-size: 44px;
+        line-height: 1.15;
     }
     
     .hero-subtitle {
-        font-size: 16px;
-        line-height: 1.8;
+        font-size: 15px;
+        line-height: 1.65;
+    }
+    
+    .hero-banner-slider-wrapper {
+        max-width: 490px;
+        margin: 0 auto;
+    }
+
+    .hero-banner-img {
+        max-height: 410px;
+        object-fit: cover;
+        object-position: top center;
     }
     
     /* Automations stationary row */

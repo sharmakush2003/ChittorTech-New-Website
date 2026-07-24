@@ -37,15 +37,7 @@
                     <!-- Hero Banner Carousel -->
                     <div class="hero-mockup-wrapper mt-5 mt-lg-0 gsap-hero-dashboard">
                         <div class="hero-banner-slider-wrapper">
-                            <div id="heroBannersCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-                                <!-- Carousel Indicators -->
-                                <div class="carousel-indicators hero-carousel-indicators">
-                                    <button type="button" data-bs-target="#heroBannersCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Banner 1"></button>
-                                    <button type="button" data-bs-target="#heroBannersCarousel" data-bs-slide-to="1" aria-label="Banner 2"></button>
-                                    <button type="button" data-bs-target="#heroBannersCarousel" data-bs-slide-to="2" aria-label="Banner 3"></button>
-                                    <button type="button" data-bs-target="#heroBannersCarousel" data-bs-slide-to="3" aria-label="Banner 4"></button>
-                                </div>
-
+                            <div id="heroBannersCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
                                 <!-- Carousel Slides -->
                                 <div class="carousel-inner">
                                     <div class="carousel-item active" data-bs-interval="5000">
