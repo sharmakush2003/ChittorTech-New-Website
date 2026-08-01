@@ -151,15 +151,15 @@ export default function Header() {
           transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
         }
         .ct-header-bar {
-          background: rgba(7, 9, 15, 0.94);
+          background: rgba(255,255,255,0.97);
           backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-          border-bottom: 1px solid rgba(255,255,255,0.07);
+          border-bottom: 1px solid rgba(226,232,240,0.9);
           transition: all 0.35s ease;
         }
         .ct-header.scrolled .ct-header-bar {
-          background: rgba(7, 9, 15, 0.98);
-          box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 1px 0 rgba(6,182,212,0.1);
-          border-bottom-color: rgba(6,182,212,0.12);
+          background: rgba(255,255,255,0.99);
+          box-shadow: 0 4px 32px rgba(41,31,188,0.12), 0 1px 0 rgba(41,31,188,0.06);
+          border-bottom-color: rgba(41,31,188,0.1);
         }
         .ct-header-inner {
           display: flex; align-items: center; justify-content: space-between;
@@ -175,9 +175,13 @@ export default function Header() {
         .ct-logo img {
           height: 42px; width: auto; object-fit: contain;
           transition: filter 0.25s ease;
-          filter: brightness(1.1);
+          /* White logo → make it show on white bg using invert + brand color */
+          filter: invert(1) sepia(1) saturate(8) hue-rotate(200deg) brightness(0.75);
         }
-        .ct-logo:hover img { filter: brightness(1.2) drop-shadow(0 0 12px rgba(6,182,212,0.5)); }
+        .ct-logo:hover img {
+          filter: invert(1) sepia(1) saturate(10) hue-rotate(200deg) brightness(0.65);
+          transform: scale(1.02);
+        }
 
         /* ─── Desktop Nav ─── */
         .ct-nav {
@@ -189,7 +193,7 @@ export default function Header() {
         .ct-nav-btn {
           display: flex; align-items: center; gap: 5px;
           padding: 8px 13px; border-radius: 9px;
-          font-size: 0.855rem; font-weight: 600; color: rgba(255,255,255,0.82);
+          font-size: 0.855rem; font-weight: 600; color: #1e293b;
           background: transparent; border: none; cursor: pointer;
           font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
           transition: all 0.2s ease; white-space: nowrap;
@@ -200,21 +204,21 @@ export default function Header() {
           content: '';
           position: absolute; bottom: 4px; left: 50%; right: 50%;
           height: 2px; border-radius: 2px;
-          background: linear-gradient(135deg, #06b6d4, #291fbc);
+          background: linear-gradient(135deg, #291fbc, #06b6d4);
           transition: all 0.25s ease;
         }
         .ct-nav-btn:hover::after, .ct-nav-btn.open::after {
           left: 10px; right: 10px;
         }
         .ct-nav-btn:hover, .ct-nav-btn.open {
-          color: #06b6d4; background: rgba(6,182,212,0.08);
+          color: #291fbc; background: rgba(41,31,188,0.05);
         }
         .ct-nav-chevron {
-          font-size: 0.58rem; color: rgba(255,255,255,0.35);
+          font-size: 0.58rem; color: #94a3b8;
           transition: transform 0.25s ease, color 0.2s;
         }
         .ct-nav-btn.open .ct-nav-chevron {
-          transform: rotate(180deg); color: #06b6d4;
+          transform: rotate(180deg); color: #291fbc;
         }
 
         /* ─── Dropdown Base ─── */
@@ -363,16 +367,16 @@ export default function Header() {
         .ct-phone-btn {
           display: flex; align-items: center; gap: 6px;
           padding: 8px 14px; border-radius: 9px;
-          border: 1.5px solid rgba(255,255,255,0.15);
-          color: rgba(255,255,255,0.8); font-size: 0.82rem; font-weight: 600;
+          border: 1.5px solid #e2e8f0;
+          color: #374151; font-size: 0.82rem; font-weight: 600;
           text-decoration: none; white-space: nowrap;
-          transition: all 0.2s ease; background: rgba(255,255,255,0.05);
+          transition: all 0.2s ease; background: transparent;
         }
-        .ct-phone-btn i { color: #06b6d4; font-size: 0.78rem; }
+        .ct-phone-btn i { color: #291fbc; font-size: 0.78rem; }
         .ct-phone-btn:hover {
-          border-color: #06b6d4; color: #06b6d4;
-          background: rgba(6,182,212,0.08);
-          box-shadow: 0 0 0 3px rgba(6,182,212,0.1);
+          border-color: #291fbc; color: #291fbc;
+          background: rgba(41,31,188,0.04);
+          box-shadow: 0 0 0 3px rgba(41,31,188,0.06);
         }
         .ct-cta-btn {
           display: inline-flex; align-items: center; gap: 7px;
@@ -402,10 +406,10 @@ export default function Header() {
           align-items: center; justify-content: center;
           transition: background 0.2s;
         }
-        .ct-hamburger:hover { background: rgba(255,255,255,0.08); }
+        .ct-hamburger:hover { background: rgba(41,31,188,0.06); }
         .ct-hamburger span {
           width: 20px; height: 2px; border-radius: 2px;
-          background: rgba(255,255,255,0.85); transition: all 0.3s ease;
+          background: #1e293b; transition: all 0.3s ease;
           display: block;
         }
         .ct-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
