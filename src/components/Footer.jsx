@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 
@@ -145,14 +145,14 @@ export default function Footer() {
             <div>
               <div className="ct-footer-col-title">AI Solutions</div>
               {[
-                { href: "/crm",                      label: "AI Chatbots & Support" },
-                { href: "/erp",                      label: "Enterprise AI Workflows" },
-                { href: "/crm",                      label: "RAG Knowledge Base" },
-                { href: "/erp",                      label: "Custom LLM Fine-Tuning" },
-                { href: "/erp",                      label: "AI Predictive Analytics" },
-                { href: "/erp",                      label: "OCR & Document AI" },
+                { href: "/crm", label: "AI Chatbots & Support" },
+                { href: "/erp", label: "Enterprise AI Workflows" },
+                { href: "/crm", label: "RAG Knowledge Base" },
+                { href: "/erp", label: "Custom LLM Fine-Tuning" },
+                { href: "/erp", label: "AI Predictive Analytics" },
+                { href: "/erp", label: "OCR & Document AI" },
                 { href: "/web-development-services", label: "Custom SaaS Development" },
-                { href: "/ai-manufacturing",         label: "Computer Vision AI" },
+                { href: "/ai-manufacturing", label: "Computer Vision AI" },
               ].map((l) => (
                 <Link key={l.label} href={l.href} className="ct-footer-nav-link">{l.label}</Link>
               ))}
@@ -162,14 +162,14 @@ export default function Footer() {
             <div>
               <div className="ct-footer-col-title">IT & Growth Services</div>
               {[
-                { href: "/web-development-services",       label: "Web Development" },
+                { href: "/web-development-services", label: "Web Development" },
                 { href: "/e-commerce-website-development", label: "E-Commerce Solutions" },
-                { href: "/android-application",            label: "Android Mobile Apps" },
-                { href: "/ios-application",                label: "iOS Mobile Apps" },
-                { href: "/search-engine-optimization",     label: "SEO Services" },
-                { href: "/digital-marketing-services",     label: "Digital Marketing" },
-                { href: "/social-media-optimization",      label: "Social Media (SMO)" },
-                { href: "/web-development-services",       label: "Custom Portals" },
+                { href: "/android-application", label: "Android Mobile Apps" },
+                { href: "/ios-application", label: "iOS Mobile Apps" },
+                { href: "/search-engine-optimization", label: "SEO Services" },
+                { href: "/digital-marketing-services", label: "Digital Marketing" },
+                { href: "/social-media-optimization", label: "Social Media (SMO)" },
+                { href: "/web-development-services", label: "Custom Portals" },
               ].map((l) => (
                 <Link key={l.label} href={l.href} className="ct-footer-nav-link">{l.label}</Link>
               ))}

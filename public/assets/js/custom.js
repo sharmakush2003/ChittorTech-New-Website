@@ -1,6 +1,6 @@
 window.initChittorTechServices = function() {
-  // Check if jQuery exists
-  if (typeof $ !== 'undefined') {
+  // Check if jQuery and owlCarousel plugin exist
+  if (typeof $ !== 'undefined' && $.fn && typeof $.fn.owlCarousel === 'function') {
     // Destroy existing carousels first to prevent duplicates
     try {
       $('.owl-carousel').trigger('destroy.owl.carousel');

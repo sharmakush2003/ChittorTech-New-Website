@@ -370,11 +370,11 @@ export default function Page() {
                        <div className="clothing-stores-text software-wrap specialized-box">
                            <h4>Why Choose ChittorTech?</h4>
                            <ul>
-                              <li><strong>Specialized for Textile Industry –</strong> Unlike generic ERPs, ours is tailored to textile workflows</li>
+                              <li><strong>Specialized for Textile Industry –</strong> Unlike generic software, ours is tailored to textile workflows</li>
                               <li><strong>Local Presence – </strong>Support teams in India for faster onboarding.</li>
                               <li><strong>Advanced Features –</strong> From greige-to-glamour tracking to forecasting.</li>
                               <li><strong>Proven ROI –</strong> Businesses report 20–40% improvements in efficiency.</li>
-                              <li><strong>Competitive Edge –</strong> Outperforms general ERPs like Tally or Oracle for textile use cases.</li>
+                              <li><strong>Competitive Edge –</strong> Outperforms general software like Tally or Oracle for textile use cases.</li>
                            </ul>
                        </div>
                    </div>

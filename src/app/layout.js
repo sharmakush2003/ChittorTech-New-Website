@@ -7,6 +7,7 @@ import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
+import TrialModal from "@/components/TrialModal";
 import SliderInitializer from "@/components/SliderInitializer";
 
 export const metadata = {
@@ -55,6 +56,7 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
         <Footer />
         <Chatbot />
+        <TrialModal />
 
         {/* Legacy jQuery/Bootstrap/plugins — required by inner pages */}
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" strategy="beforeInteractive" />

@@ -204,148 +204,231 @@ export default function TrialModal() {
         }
         .modal-backdrop {
           z-index: 9999998 !important;
+          background-color: rgba(15, 23, 42, 0.75) !important;
+          backdrop-filter: blur(6px);
         }
         #trialModal .modal-dialog {
-          max-width: 800px;
+          max-width: 820px;
           width: 95%;
         }
         #trialModal .modal-content {
-          border-radius: 15px;
+          border-radius: 20px;
           overflow: hidden;
-          border: none;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-          max-height: 85vh;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.45);
+          max-height: 90vh;
+          background: #ffffff;
         }
         #trialModal .modal-body {
           padding: 0;
           overflow-y: auto;
-          max-height: 85vh;
+          max-height: 90vh;
         }
         .trial-flex {
           display: flex;
           flex-direction: row;
-          min-height: 400px;
+          min-height: 440px;
         }
         .trial-banner {
-          flex: 0 0 35%;
-          background: url('/assets/images/free_trial_banner_1778579466613.png');
-          background-size: cover;
-          background-position: center;
+          flex: 0 0 38%;
+          background: #f8fafc;
+          border-right: 1px solid #e2e8f0;
           position: relative;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          text-align: center;
-          padding: 20px;
+          flex-direction: column;
+          justify-content: space-between;
+          color: #0f172a;
+          padding: 32px 24px;
+          overflow: hidden;
         }
         .trial-banner::before {
           content: '';
           position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, rgba(13, 110, 253, 0.85) 0%, rgba(10, 88, 202, 0.6) 100%);
+          top: -50%;
+          right: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
+          pointer-events: none;
         }
         .trial-banner-content {
           position: relative;
-          z-index: 1;
+          z-index: 2;
+        }
+        .trial-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          border-radius: 20px;
+          background: #eef2ff;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: #4f46e5;
+          letter-spacing: 0.5px;
+          margin-bottom: 16px;
+          border: 1px solid #c7d2fe;
         }
         .trial-banner-content h2 {
-          font-size: 1.4rem;
+          font-size: 1.55rem;
           font-weight: 800;
+          line-height: 1.3;
+          margin-bottom: 12px;
+          color: #0f172a;
         }
         .trial-banner-content p {
+          font-size: 0.82rem;
+          color: #475569;
+          line-height: 1.5;
+        }
+        .trial-features {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 20px;
+        }
+        .trial-feature-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
           font-size: 0.8rem;
+          color: #334155;
+        }
+        .trial-feature-icon {
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          background: #e0e7ff;
+          color: #4f46e5;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.75rem;
+          flex-shrink: 0;
         }
         .trial-form-side {
           flex: 1;
-          padding: 25px 30px;
+          padding: 32px 36px;
           background: #ffffff;
           display: flex;
           flex-direction: column;
           justify-content: center;
+          position: relative;
         }
         .trial-title {
           font-weight: 800;
-          color: #333;
-          margin-bottom: 5px;
-          font-size: 1.3rem;
+          color: #0f172a;
+          margin-bottom: 4px;
+          font-size: 1.35rem;
+          letter-spacing: -0.3px;
         }
         .trial-subtitle {
-          color: #666;
-          margin-bottom: 15px;
+          color: #64748b;
+          margin-bottom: 20px;
           font-size: 0.85rem;
         }
         .trial-form-side .input-group {
-          margin-bottom: 10px;
-          border-radius: 8px;
+          margin-bottom: 12px;
+          border-radius: 10px;
           overflow: hidden;
-          border: 1px solid #ddd;
+          border: 1px solid #e2e8f0;
+          transition: all 0.2s ease;
+          background: #f8fafc;
+        }
+        .trial-form-side .input-group:focus-within {
+          border-color: #6366f1;
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+          background: #ffffff;
         }
         .trial-form-side .input-group-text {
-          background: #f8f9fa;
+          background: transparent;
           border: none;
-          color: #0d6efd;
-          width: 40px;
+          color: #6366f1;
+          width: 42px;
           justify-content: center;
+          font-size: 0.85rem;
         }
         .trial-form-side .form-control, .trial-form-side .form-select {
           border: none;
-          padding: 8px 12px;
+          padding: 10px 14px;
           font-size: 0.85rem;
+          background: transparent;
+          color: #1e293b;
         }
-        .trial-form-side .form-control:focus {
+        .trial-form-side .form-control::placeholder {
+          color: #94a3b8;
+        }
+        .trial-form-side .form-control:focus, .trial-form-side .form-select:focus {
           box-shadow: none;
-          background: #fff;
+          background: transparent;
+        }
+        .trial-textarea {
+          border: 1px solid #e2e8f0 !important;
+          border-radius: 10px !important;
+          padding: 10px 14px !important;
+          font-size: 0.85rem !important;
+          background: #f8fafc !important;
+          transition: all 0.2s ease;
+        }
+        .trial-textarea:focus {
+          border-color: #6366f1 !important;
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+          background: #ffffff !important;
         }
         .trial-btn {
           width: 100%;
-          padding: 10px;
-          border-radius: 8px;
+          padding: 12px;
+          border-radius: 10px;
           font-weight: 700;
-          text-transform: uppercase;
           font-size: 0.9rem;
-          background: #0d6efd;
+          background: linear-gradient(135deg, #4f46e5 0%, #0284c7 100%);
           border: none;
           color: white;
           transition: all 0.3s ease;
-          margin-top: 5px;
+          margin-top: 8px;
+          box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+          letter-spacing: 0.3px;
         }
         .trial-btn:hover {
-          background: #0a58ca;
-          box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+          background: linear-gradient(135deg, #4338ca 0%, #0369a1 100%);
+          box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+          transform: translateY(-1px);
         }
         .close-modal-custom {
           position: absolute;
-          top: 15px;
-          right: 15px;
+          top: 16px;
+          right: 16px;
           z-index: 1001;
-          background: #eee;
+          background: #f1f5f9;
           border-radius: 50%;
-          width: 25px;
-          height: 25px;
+          width: 30px;
+          height: 30px;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          opacity: 0.7;
+          color: #64748b;
+          transition: all 0.2s ease;
         }
         .close-modal-custom:hover {
-          opacity: 1;
-          background: #ddd;
+          background: #e2e8f0;
+          color: #0f172a;
         }
         .dont-show-box {
-          margin-top: 10px;
-          font-size: 0.75rem;
-          color: #888;
+          margin-top: 14px;
+          font-size: 0.78rem;
+          color: #64748b;
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 8px;
         }
         .dont-show-box input {
           cursor: pointer;
+          accent-color: #4f46e5;
+          width: 15px;
+          height: 15px;
         }
 
         @media (max-width: 767px) {
@@ -356,7 +439,7 @@ export default function TrialModal() {
             display: none;
           }
           .trial-form-side {
-            padding: 20px;
+            padding: 24px 20px;
           }
         }
       `}</style>
@@ -365,27 +448,52 @@ export default function TrialModal() {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content border-0">
             <div className="close-modal-custom" data-bs-dismiss="modal">
-              <i className="bi bi-x"></i>
+              <i className="bi bi-x-lg"></i>
             </div>
             <div className="modal-body">
               <div className="trial-flex">
-                {/* Left Side: Banner (Visible on Desktop) */}
+                {/* Left Side: ChittorTech Modern AI Banner */}
                 <div className="trial-banner">
                   <div className="trial-banner-content">
-                    <h2 className="mb-2">Scale Your Success</h2>
-                    <p className="mb-0 small">Join the future of retail with Chittortech.</p>
+                    <div className="trial-badge">
+                      <i className="fas fa-sparkles"></i> ChittorTech Exclusive
+                    </div>
+                    <h2>Transform Your Business With AI</h2>
+                    <p className="mb-2">Request a personalized demo and discover custom AI chatbots, workflows, and automation built for your growth.</p>
+                    <div className="my-3">
+                      <img
+                        src="/assets/images/ct-logo.png"
+                        alt="ChittorTech Logo"
+                        style={{ height: "80px", width: "auto", objectFit: "contain" }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="trial-features">
+                    <div className="trial-feature-item">
+                      <div className="trial-feature-icon"><i className="fas fa-bolt"></i></div>
+                      <span>24/7 Intelligent Automation</span>
+                    </div>
+                    <div className="trial-feature-item">
+                      <div className="trial-feature-icon"><i className="fas fa-shield-alt"></i></div>
+                      <span>Enterprise Security & Privacy</span>
+                    </div>
+                    <div className="trial-feature-item">
+                      <div className="trial-feature-icon"><i className="fas fa-chart-line"></i></div>
+                      <span>High ROI Custom Solutions</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Right Side: Form */}
+                {/* Right Side: Sleek Modern Form */}
                 <div className="trial-form-side">
-                  <div className="text-center text-md-start">
-                    <h3 className="trial-title">Special Offer - Free Trial</h3>
-                    <p className="trial-subtitle">Experience AI-driven AI & IT Solutions today.</p>
+                  <div>
+                    <h3 className="trial-title">Get Free Consultation & Trial</h3>
+                    <p className="trial-subtitle">Tell us about your project and receive a tailored demo.</p>
                   </div>
 
                   {statusMsg && (
-                    <div className={`alert alert-${statusType} mt-3`}>
+                    <div className={`alert alert-${statusType} py-2 px-3 mb-3 small`}>
                       {statusMsg}
                     </div>
                   )}
@@ -394,49 +502,49 @@ export default function TrialModal() {
                     <div className="row g-2">
                       <div className="col-md-6">
                         <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-user small"></i></span>
+                          <span className="input-group-text"><i className="fas fa-user"></i></span>
                           <input
                             type="text"
                             className="form-control"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            placeholder="Name*"
+                            placeholder="Full Name*"
                             required
                           />
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-envelope small"></i></span>
+                          <span className="input-group-text"><i className="fas fa-envelope"></i></span>
                           <input
                             type="email"
                             className="form-control"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="Email*"
+                            placeholder="Work Email*"
                             required
                           />
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-building small"></i></span>
+                          <span className="input-group-text"><i className="fas fa-building"></i></span>
                           <input
                             type="text"
                             className="form-control"
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            placeholder="Company*"
+                            placeholder="Company Name*"
                             required
                           />
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-industry small"></i></span>
+                          <span className="input-group-text"><i className="fas fa-industry"></i></span>
                           <select
                             name="industry"
                             className="form-select"
@@ -444,46 +552,47 @@ export default function TrialModal() {
                             onChange={handleChange}
                             required
                           >
-                            <option value="">Industry*</option>
+                            <option value="">Select Industry*</option>
                             <option value="Manufacturing">Manufacturing</option>
-                            <option value="Trading">Trading</option>
-                            <option value="Retail">Retail</option>
-                            <option value="Services">Services</option>
-                            <option value="Any other">Any other</option>
+                            <option value="Trading & Retail">Trading & Retail</option>
+                            <option value="Hospitality & Hotel">Hospitality & Hotel</option>
+                            <option value="IT & Tech Services">IT & Tech Services</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Other">Other</option>
                           </select>
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-concierge-bell small"></i></span>
+                          <span className="input-group-text"><i className="fas fa-briefcase"></i></span>
                           <input
                             type="text"
                             className="form-control"
                             name="firm"
                             value={formData.firm}
                             onChange={handleChange}
-                            placeholder="Business*"
+                            placeholder="Business Type*"
                             required
                           />
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-phone small"></i></span>
+                          <span className="input-group-text"><i className="fas fa-phone-alt"></i></span>
                           <input
                             type="text"
                             className="form-control"
                             name="contact"
                             value={formData.contact}
                             onChange={handleChange}
-                            placeholder="Contact*"
+                            placeholder="Phone / WhatsApp*"
                             required
                           />
                         </div>
                       </div>
                       <div className="col-12">
                         <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-map-marker-alt small"></i></span>
+                          <span className="input-group-text"><i className="fas fa-map-marker-alt"></i></span>
                           <input
                             type="text"
                             className="form-control"
@@ -499,18 +608,17 @@ export default function TrialModal() {
                     </div>
                     <div className="mb-2">
                       <textarea
-                        className="form-control"
+                        className="form-control trial-textarea"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
                         rows="2"
-                        placeholder="Brief requirements..."
-                        style={{ border: "1px solid #ddd", borderRadius: "8px", fontSize: "0.8rem" }}
+                        placeholder="Brief project details or requirements..."
                       ></textarea>
                     </div>
 
                     <button type="submit" className="trial-btn" disabled={submitting}>
-                      {submitting ? "Submitting..." : "Get Free Trial Now"}
+                      {submitting ? "Submitting Request..." : "Request Free Trial & Demo"}
                     </button>
 
                     <div className="dont-show-box">
@@ -520,7 +628,7 @@ export default function TrialModal() {
                         checked={dontShow}
                         onChange={handleCheckboxChange}
                       />
-                      <label htmlFor="dontShowTrial">Don't show this for 7 days</label>
+                      <label htmlFor="dontShowTrial">Don't show this popup for 7 days</label>
                     </div>
                   </form>
                 </div>
@@ -532,3 +640,4 @@ export default function TrialModal() {
     </>
   );
 }
+

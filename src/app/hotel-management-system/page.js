@@ -30,7 +30,7 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span className="htl-pill">
-                <i className="fa-solid fa-hotel"></i> Enterprise Hotel PMS &amp; ERP
+                <i className="fa-solid fa-hotel"></i> Enterprise Hotel PMS &amp; Software
               </span>
               <h1 style={{ fontSize: "clamp(2.1rem, 4.2vw, 3.3rem)", fontWeight: 900, lineHeight: 1.15, marginBottom: "18px" }}>
                 Next-Gen Hotel Management System
@@ -43,7 +43,7 @@ export default function Page() {
                   <i className="fa-solid fa-calendar-check"></i> Try Live Booking Engine
                 </a>
                 <button className="ct-btn ct-btn-ghost" data-bs-toggle="modal" data-bs-target="#trialModal">
-                  <i className="fa-solid fa-desktop"></i> Request Full Hotel ERP Demo
+                  <i className="fa-solid fa-desktop"></i> Request Full Hotel Software Demo
                 </button>
               </div>
             </div>
@@ -228,7 +228,7 @@ export default function Page() {
           <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #291fbc 100%)", borderRadius: "24px", padding: "60px 40px", textAlign: "center", color: "#fff" }}>
             <h2 style={{ fontWeight: 900, fontSize: "2.2rem", marginBottom: "14px" }}>Transform Your Hotel Operations &amp; Direct Bookings</h2>
             <p style={{ color: "rgba(255,255,255,0.85)", maxWidth: "600px", margin: "0 auto 28px" }}>
-              Automate your hotel front desk, restaurant POS, and real-time manager approval notifications with ChittorTech Hotel ERP.
+              Automate your hotel front desk, restaurant POS, and real-time manager approval notifications with ChittorTech Hotel Management Software.
             </p>
             <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
               <button className="ct-btn ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal" style={{ background: "#fff", color: "#291fbc", fontWeight: 800 }}>

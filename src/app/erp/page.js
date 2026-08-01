@@ -183,7 +183,7 @@ export default function Page() {
               { icon: 'fa-robot', title: 'Autonomous AI Agents', desc: 'Deploy multi-step AI agents that browse the web, query databases, call APIs, write emails, and make decisions — completely hands-free.' },
               { icon: 'fa-network-wired', title: 'Business Process Automation', desc: 'Map and automate complex workflows spanning multiple departments, systems, and approval chains with no-code to code-level flexibility.' },
               { icon: 'fa-chart-line', title: 'AI Predictive Analytics', desc: 'Forecast demand, detect anomalies, score leads, and surface hidden business insights using custom ML models trained on your data.' },
-              { icon: 'fa-code-branch', title: 'API & System Integration', desc: 'Connect your CRM, ERP, databases, and third-party tools into unified AI pipelines — eliminating data silos and manual data entry.' },
+              { icon: 'fa-code-branch', title: 'API & System Integration', desc: 'Connect your databases, business systems, and third-party tools into unified AI pipelines — eliminating data silos and manual data entry.' },
               { icon: 'fa-bell', title: 'Intelligent Alerting & Monitoring', desc: 'Real-time AI monitoring systems that detect issues, trigger alerts, and initiate automated recovery workflows without human intervention.' },
             ].map((c) => (
               <div key={c.title} className="ai-wf-card">
