@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
@@ -8,7 +8,7 @@ export async function POST(req) {
       return NextResponse.json({ status: "error", msg: "Missing required fields." }, { status: 400 });
     }
 
-    // Log the lead details locally (No call to external Digify Wa20 broadcast server)
+    // Log the lead details locally (No call to external ChittorTech WhatsApp broadcast server)
     console.log("ChittorTech WhatsApp Lead Received (Stored Locally):", {
       timestamp: new Date().toISOString(),
       lead_name,

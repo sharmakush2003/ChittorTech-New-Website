@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import "../../../public/assets/css/premium-products.css";
 
@@ -874,7 +874,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                   </div>
                   <div className="col-md-6">
                       <div className="heading-wrap text-start mobile-a pro-list">
-                          <h2>Real-Time Insights with Chittortech  <span>Soft Solutions AI Assistant Software</span> </h2>
+                          <h2>Real-Time Insights with Chittortech  <span> AI Assistant Software</span> </h2>
                           <p>ChittorTech POS lets you monitor sales, inventory, and product performance instantly from a centralized dashboard. Receive timely alerts and detailed reports across all your stores and branches, helping you scale your retail business faster and smarter.</p>
                        </div>
                        <div className="expertise-wrap pro-list">

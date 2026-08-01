@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import "../../../public/assets/css/premium-products.css";
 
@@ -125,7 +125,7 @@ export default function Page() {
     <div className="heading-wrap text-start mobile-a pro-list">
         <h2>No. 1 AI-Powered Inventory Management for <span>SMEs, MSMEs & Retailers</span></h2>
         <p>
-            CHITTORTECH Soft Solutions is India’s leading AI-driven, cloud-based inventory management system,
+            ChittorTech is India’s leading AI-driven, cloud-based inventory management system,
             built for retailers, wholesalers, distributors, and fast-growing businesses.
         </p>
     </div>
@@ -149,7 +149,7 @@ export default function Page() {
 
         <p>
             <strong>With AI-powered automation, real-time tracking, and smart forecasting,</strong>
-            CHITTORTECH Soft Solutions gives you complete inventory control — anytime, anywhere.
+            ChittorTech gives you complete inventory control — anytime, anywhere.
         </p>
 
         <a href="/contact-us" className="schedule-btn">Choose Your Plan</a>

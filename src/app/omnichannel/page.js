@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import "../../../public/assets/css/premium-products.css";
 
@@ -687,7 +687,7 @@ export default function Page() {
               <div className="row">
                   <div className="col-md-12">
                       <div className="heading-wrap text-center">
-                          <h2> Join Thousands Merchants Who Trust Chittortech <span>Soft Solutions</span> </h2>
+                          <h2> Join Thousands Merchants Who Trust Chittortech <span></span> </h2>
                        </div>
                        <div className="why-choose-wrap">
                           <ul>

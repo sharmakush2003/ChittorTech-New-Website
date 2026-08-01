@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+﻿import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
@@ -33,7 +33,7 @@ export async function POST(req) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error("Groq API Error Status:", response.status, "Error:", errorText);
-      return NextResponse.json({ response: "Sorry, I am facing some network issues right now. Please call us at +91 7425016636 for assistance." });
+      return NextResponse.json({ response: "Sorry, I am facing some network issues right now. Please call us at +91 7597451057 for assistance." });
     }
 
     const data = await response.json();
@@ -44,6 +44,6 @@ export async function POST(req) {
     return NextResponse.json({ response: "Sorry, I didn't quite catch that. Could you please rephrase?" });
   } catch (error) {
     console.error("Chat API error:", error);
-    return NextResponse.json({ response: "Sorry, I am facing some network issues right now. Please call us at +91 7425016636 for assistance." }, { status: 500 });
+    return NextResponse.json({ response: "Sorry, I am facing some network issues right now. Please call us at +91 7597451057 for assistance." }, { status: 500 });
   }
 }

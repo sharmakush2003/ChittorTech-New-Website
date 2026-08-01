@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import "../../../public/assets/css/premium-products.css";
 
@@ -474,7 +474,7 @@ export default function Page() {
                   </div>
                   <div className="col-md-6">
                       <div className="heading-wrap text-start mobile-a">
-                          <h2> Why Hire Chittortech   <span>  Soft Solutions?</span> </h2>
+                          <h2> Why Hire Chittortech   <span>  ?</span> </h2>
                        </div>
                        <div className="expertise-wrap ">
                            <ul className="benefit-list">

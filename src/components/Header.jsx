@@ -5,54 +5,54 @@ import Link from "next/link";
 
 const NAV_ITEMS = {
   aiProducts: [
-    { href: "/pos",         icon: "fa-robot",             label: "AI Support Chatbots" },
-    { href: "/ai-solutions",         icon: "fa-diagram-project",   label: "AI Workflow Automation" },
-    { href: "/ai-knowledge",         icon: "fa-brain",             label: "RAG Knowledge Base" },
-    { href: "/inventory",   icon: "fa-microchip",         label: "Custom LLM Training" },
-    { href: "/accounting",  icon: "fa-chart-line",        label: "AI Predictive Analytics" },
-    { href: "/invoicing",   icon: "fa-file-code",         label: "OCR & Document AI" },
-    { href: "/omnichannel", icon: "fa-laptop-code",       label: "Custom SaaS Apps" },
-    { href: "/smart-retail",icon: "fa-eye",               label: "Computer Vision AI" },
+    { href: "/crm",                      icon: "fa-robot",           label: "🤖 AI Support Chatbots" },
+    { href: "/erp",                      icon: "fa-diagram-project", label: "⚡ AI Workflow Automation" },
+    { href: "/crm",                      icon: "fa-brain",           label: "🧠 RAG Knowledge Base" },
+    { href: "/erp",                      icon: "fa-microchip",       label: "🔬 Custom LLM Training" },
+    { href: "/erp",                      icon: "fa-chart-line",      label: "📊 AI Predictive Analytics" },
+    { href: "/erp",                      icon: "fa-file-code",       label: "📑 OCR & Document AI" },
+    { href: "/web-development-services", icon: "fa-laptop-code",     label: "💻 Custom SaaS Apps" },
+    { href: "/ai-manufacturing",         icon: "fa-eye",             label: "👁️ Computer Vision AI" },
   ],
   industries: {
     retail: [
-      { href: "/supermarket",           label: "Supermarkets & Retail Chains" },
-      { href: "/kirana-store",          label: "Kirana & General Stores" },
-      { href: "/grocery-store",         label: "Grocery & FMCG Merchants" },
-      { href: "/convenience-store",     label: "Convenience Stores" },
-      { href: "/fruits-vegetable-shop", label: "Fresh Food & Agri Tech" },
+      { href: "/supermarket",           label: "🛒 Supermarkets & Retail Chains" },
+      { href: "/kirana-store",          label: "🏪 Kirana & General Stores" },
+      { href: "/grocery-store",         label: "🍏 Grocery & FMCG Merchants" },
+      { href: "/convenience-store",     label: "🏪 Convenience Stores" },
+      { href: "/fruits-vegetable-shop", label: "🥦 Fresh Food & Agri Tech" },
     ],
     fashion: [
-      { href: "/garments",              label: "Apparel & Garment Brands" },
-      { href: "/boutique-store",        label: "Fashion Boutiques & Labels" },
-      { href: "/footwear-store",        label: "Footwear & Shoe Chains" },
-      { href: "/bridal-store",          label: "Bridal & Luxury Stores" },
-      { href: "/textile",               label: "Textile Mills & Fabrics" },
+      { href: "/garments",              label: "👔 Apparel & Garment Brands" },
+      { href: "/boutique-store",        label: "👗 Fashion Boutiques & Labels" },
+      { href: "/footwear-store",        label: "👟 Footwear & Shoe Chains" },
+      { href: "/bridal-store",          label: "💍 Bridal & Luxury Stores" },
+      { href: "/textile",               label: "🧵 Textile Mills & Fabrics" },
     ],
-    specialty: [
-      { href: "/electronics-smartphones", label: "Electronics & Mobile Retailers" },
-      { href: "/pharma",                  label: "Pharma & Healthcare Providers" },
-      { href: "/hardware-store",          label: "Hardware & Tools Merchants" },
-      { href: "/pet-shop",                label: "Pet Care & Veterinary" },
-      { href: "/book-store",              label: "Publishers & Bookstores" },
+    hospitality: [
+      { href: "/dharamshala-billing-system", label: "🏛️ Dharamshala Management System" },
+      { href: "/hotel-management-system",     label: "🏨 Hotel Management System" },
+      { href: "/hotel-room-booking-system",   label: "🛏️ Hotel Room Booking System" },
+      { href: "/resort-guest-house-software", label: "🏞️ Resort & Guest House Software" },
+      { href: "/online-booking-admin-portal", label: "🔔 Online Booking & Admin Approval Portal" },
     ],
     enterprise: [
-      { href: "/hospitals",                         label: "Hospitals & Medical Centers" },
-      { href: "/schools-educational-institutions",  label: "Schools & EdTech Institutions" },
-      { href: "/ai-manufacturing",                  label: "Smart Manufacturing Plants" },
-      { href: "/industrial-products",               label: "Industrial B2B Suppliers" },
-      { href: "/after-sale-service",                label: "Warranty & Service Networks" },
+      { href: "/hospitals",                         label: "🏥 Hospitals & Medical Centers" },
+      { href: "/schools-educational-institutions",  label: "🎓 Schools & EdTech Institutions" },
+      { href: "/ai-manufacturing",                  label: "🏭 Smart Manufacturing Plants" },
+      { href: "/industrial-products",               label: "🏢 Industrial B2B Suppliers" },
+      { href: "/after-sale-service",                label: "🔧 Warranty & Service Networks" },
     ]
   },
   services: [
-    { href: "/web-development-services",      icon: "fa-code",              label: "Web Development" },
-    { href: "/e-commerce-website-development",icon: "fa-cart-shopping",     label: "E-Commerce Solutions" },
-    { href: "/android-application",           icon: "fa-android",           label: "Android Mobile Apps" },
-    { href: "/ios-application",               icon: "fa-apple",             label: "iOS Mobile Apps" },
-    { href: "/search-engine-optimization",    icon: "fa-magnifying-glass",  label: "SEO Growth Services" },
-    { href: "/digital-marketing-services",    icon: "fa-bullhorn",          label: "Digital Marketing" },
-    { href: "/social-media-optimization",     icon: "fa-thumbs-up",         label: "Social Media (SMO)" },
-    { href: "/custom-ai-knowledge-solutions",          icon: "fa-database",          label: "Custom Enterprise Portals" },
+    { href: "/web-development-services",       icon: "fa-code",             label: "💻 Web Development" },
+    { href: "/e-commerce-website-development", icon: "fa-cart-shopping",    label: "🛒 E-Commerce Solutions" },
+    { href: "/android-application",            icon: "fa-android",          label: "🤖 Android Mobile Apps" },
+    { href: "/ios-application",                icon: "fa-apple",            label: "🍎 iOS Mobile Apps" },
+    { href: "/search-engine-optimization",     icon: "fa-magnifying-glass", label: "🚀 SEO Growth Services" },
+    { href: "/digital-marketing-services",     icon: "fa-bullhorn",         label: "📢 Digital Marketing" },
+    { href: "/social-media-optimization",      icon: "fa-thumbs-up",        label: "👍 Social Media (SMO)" },
+    { href: "/web-development-services",       icon: "fa-database",         label: "🌐 Custom Enterprise Portals" },
   ],
 };
 
@@ -69,7 +69,7 @@ export default function Header() {
 
   const handleWhatsApp = (e) => {
     e.preventDefault();
-    const phone = "917425016636";
+    const phone = "917597451057";
     window.open(`https://wa.me/${phone}`, "_blank");
   };
 
@@ -266,7 +266,7 @@ export default function Header() {
                 <div className={`ct-dropdown ${activeDropdown === "aiProducts" ? "open" : ""}`} style={{ minWidth: "500px" }}>
                   <div className="ct-dropdown-grid" style={{ gridTemplateColumns: "repeat(2,1fr)" }}>
                     {NAV_ITEMS.aiProducts.map((item) => (
-                      <Link key={item.href} href={item.href} className="ct-dropdown-link" onClick={() => setActiveDropdown(null)}>
+                      <Link key={item.label} href={item.href} className="ct-dropdown-link" onClick={() => setActiveDropdown(null)}>
                         <i className={`fa-solid ${item.icon}`}></i>
                         {item.label}
                       </Link>
@@ -298,8 +298,8 @@ export default function Header() {
                       ))}
                     </div>
                     <div className="ct-mega-col">
-                      <h6>Specialty Retail</h6>
-                      {NAV_ITEMS.industries.specialty.map((l) => (
+                      <h6>Hospitality & Lodging</h6>
+                      {NAV_ITEMS.industries.hospitality.map((l) => (
                         <Link key={l.href} href={l.href} className="ct-mega-link" onClick={() => setActiveDropdown(null)}>{l.label}</Link>
                       ))}
                     </div>
@@ -324,7 +324,7 @@ export default function Header() {
                 <div className={`ct-dropdown ${activeDropdown === "services" ? "open" : ""}`} style={{ minWidth: "500px" }}>
                   <div className="ct-dropdown-grid" style={{ gridTemplateColumns: "repeat(2,1fr)" }}>
                     {NAV_ITEMS.services.map((item) => (
-                      <Link key={item.href} href={item.href} className="ct-dropdown-link" onClick={() => setActiveDropdown(null)}>
+                      <Link key={item.label} href={item.href} className="ct-dropdown-link" onClick={() => setActiveDropdown(null)}>
                         <i className={`fa-solid ${item.icon}`}></i>
                         {item.label}
                       </Link>
@@ -346,8 +346,8 @@ export default function Header() {
 
           {/* Right CTAs */}
           <div className="ct-nav-right">
-            <a href="tel:+917425016636" className="ct-phone-link">
-              <i className="fa-solid fa-phone"></i> +91 7425016636
+            <a href="tel:+917597451057" className="ct-phone-link">
+              <i className="fa-solid fa-phone"></i> +91 7597451057
             </a>
             <Link href="/contact-us" className="ct-book-demo-btn">
               Get Started <i className="fa-solid fa-arrow-right"></i>

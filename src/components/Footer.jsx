@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 
@@ -145,16 +145,16 @@ export default function Footer() {
             <div>
               <div className="ct-footer-col-title">AI Solutions</div>
               {[
-                { href: "/pos",           label: "AI Chatbots & Support" },
-                { href: "/ai-solutions",           label: "Enterprise AI Workflows" },
-                { href: "/ai-knowledge",           label: "RAG Knowledge Base" },
-                { href: "/inventory",     label: "Custom LLM Fine-Tuning" },
-                { href: "/accounting",    label: "AI Predictive Analytics" },
-                { href: "/invoicing",     label: "OCR & Document AI" },
-                { href: "/omnichannel",   label: "Custom SaaS Development" },
-                { href: "/smart-retail",  label: "Computer Vision AI" },
+                { href: "/crm",                      label: "AI Chatbots & Support" },
+                { href: "/erp",                      label: "Enterprise AI Workflows" },
+                { href: "/crm",                      label: "RAG Knowledge Base" },
+                { href: "/erp",                      label: "Custom LLM Fine-Tuning" },
+                { href: "/erp",                      label: "AI Predictive Analytics" },
+                { href: "/erp",                      label: "OCR & Document AI" },
+                { href: "/web-development-services", label: "Custom SaaS Development" },
+                { href: "/ai-manufacturing",         label: "Computer Vision AI" },
               ].map((l) => (
-                <Link key={l.href} href={l.href} className="ct-footer-nav-link">{l.label}</Link>
+                <Link key={l.label} href={l.href} className="ct-footer-nav-link">{l.label}</Link>
               ))}
             </div>
 
@@ -162,16 +162,16 @@ export default function Footer() {
             <div>
               <div className="ct-footer-col-title">IT & Growth Services</div>
               {[
-                { href: "/web-development-services",      label: "Web Development" },
-                { href: "/e-commerce-website-development",label: "E-Commerce Solutions" },
-                { href: "/android-application",           label: "Android Mobile Apps" },
-                { href: "/ios-application",               label: "iOS Mobile Apps" },
-                { href: "/search-engine-optimization",    label: "SEO Services" },
-                { href: "/digital-marketing-services",    label: "Digital Marketing" },
-                { href: "/social-media-optimization",     label: "Social Media (SMO)" },
-                { href: "/custom-ai-knowledge-solutions",          label: "Custom Portals" },
+                { href: "/web-development-services",       label: "Web Development" },
+                { href: "/e-commerce-website-development", label: "E-Commerce Solutions" },
+                { href: "/android-application",            label: "Android Mobile Apps" },
+                { href: "/ios-application",                label: "iOS Mobile Apps" },
+                { href: "/search-engine-optimization",     label: "SEO Services" },
+                { href: "/digital-marketing-services",     label: "Digital Marketing" },
+                { href: "/social-media-optimization",      label: "Social Media (SMO)" },
+                { href: "/web-development-services",       label: "Custom Portals" },
               ].map((l) => (
-                <Link key={l.href} href={l.href} className="ct-footer-nav-link">{l.label}</Link>
+                <Link key={l.label} href={l.href} className="ct-footer-nav-link">{l.label}</Link>
               ))}
             </div>
 
@@ -189,20 +189,20 @@ export default function Footer() {
               <div className="ct-footer-contact-row">
                 <div className="ct-footer-contact-icon"><i className="fa-solid fa-phone"></i></div>
                 <div className="ct-footer-contact-text">
-                  <a href="tel:+917425016636">+91 7425016636</a><br />
-                  <a href="tel:+919829109078">+91 9829109078</a>
+                  <a href="tel:+917597451057">+91 7597451057</a><br />
+                  <a href="tel:+917597451057">+91 7597451057</a>
                 </div>
               </div>
               <div className="ct-footer-contact-row">
                 <div className="ct-footer-contact-icon"><i className="fa-solid fa-envelope"></i></div>
                 <div className="ct-footer-contact-text">
-                  <a href="mailto:info@chittortech.com">info@chittortech.com</a>
+                  <a href="mailto:chittortech@gmail.com">chittortech@gmail.com</a>
                 </div>
               </div>
               <div className="ct-footer-contact-row">
                 <div className="ct-footer-contact-icon"><i className="fa-brands fa-whatsapp"></i></div>
                 <div className="ct-footer-contact-text">
-                  <a href="https://wa.me/917425016636" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+                  <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
                 </div>
               </div>
             </div>
@@ -215,7 +215,7 @@ export default function Footer() {
         <div className="container">
           <div className="ct-footer-bottom">
             <div className="ct-footer-copy">
-              © 2026 <a href="/">ChittorTech</a>. All rights reserved. &nbsp;·&nbsp;
+              © {new Date().getFullYear()} <a href="/">ChittorTech</a>. All rights reserved. &nbsp;·&nbsp;
               <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp;
               <a href="/terms">Terms of Service</a>
             </div>

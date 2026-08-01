@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import "../../../public/assets/css/premium-products.css";
 
@@ -549,7 +549,7 @@ Powerful tools to <span> improve efficiency, control inventory, and drive data-b
          </div>
          <div className="col-md-7">
             <div className="heading-wrap text-start">
-               <h2> Why Choose Chittortech  <span>Soft Solutions?</span> </h2>
+               <h2> Why Choose Chittortech  <span>?</span> </h2>
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>

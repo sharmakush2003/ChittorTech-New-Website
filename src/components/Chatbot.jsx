@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 
@@ -149,7 +149,7 @@ export default function Chatbot() {
         ...prev,
         {
           role: "ai",
-          content: "Sorry, I am facing some network issues right now. Please call us at +91 7425016636 for assistance.",
+          content: "Sorry, I am facing some network issues right now. Please call us at +91 7597451057 for assistance.",
           timestamp: new Date().toISOString(),
         },
       ]);

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import "../../../public/assets/css/premium-products.css";
 
@@ -524,7 +524,7 @@ export default function Page() {
 <section className="manufacturing-key section-bg">
 <div className="container">
       <div className="heading-wrap">
-          <h2>Why Choose Chittortech  <span>Soft Solutions?</span> </h2>
+          <h2>Why Choose Chittortech  <span>?</span> </h2>
       </div>
    <div className="row justify-content-center gy-4">
        {/* Simplified GST Compliance */}

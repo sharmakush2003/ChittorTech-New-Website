@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import React from "react";
 import "../../../public/assets/css/premium-products.css";
 
@@ -362,7 +362,7 @@ export default function Page() {
       <section className="why-choose-sec tools-use-sec"> 
           <div className="container">
            <div className="heading-wrap text-center">
-              <h2> Why Choose Chittortech   <span>Soft Solutions for SEO </span> </h2>
+              <h2> Why Choose Chittortech   <span> for SEO </span> </h2>
            </div>
             <div className="row">
                   <div className="col-md-3 col-lg-3 mb-4">

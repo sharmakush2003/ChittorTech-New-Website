@@ -111,171 +111,188 @@ export default function Page() {
           </div>
         </div>
       </section>
-      {/* header */}
-     
-{/* header */}
-<section className="about-section">
-   <div className="container">
-      <div className="row align-items-center">
-         <div className="col-md-6">
-            <div className="heading-wrap text-start">
-               <h1>About Chittortech <span>Soft Solutions</span> </h1>
-               <h5>Revolutionizing Retail & It Services Across India</h5>
-               <p>
-                  At ChittorTech, our mission is to transform the retail industry and empower businesses with advanced technology solutions. We provide cloud-based AI & IT Solutions, POS, and IT services designed to streamline operations, enhance productivity, and accelerate growth.
-               </p>
-               <br />
-               <p>
-                  From small boutiques to large supermarkets, we help businesses unlock their full potential with Smart Retail solutions, Omni-Channel Management, Hybrid-POS systems, and comprehensive IT services. Our solutions are tailored to meet the unique challenges of Small and Medium Enterprises (SMEs) while also supporting large-scale retail operations.
-               </p>
-               <br />
-               <p>
-                  We understand the hurdles businesses face when trying to access affordable, efficient, and scalable AI & IT Solutions and IT solutions. Many SMEs are priced out of advanced systems, which limits growth and efficiency. ChittorTech bridges this gap by offering accessible, innovative, and user-friendly solutions that empower businesses to scale without compromise.
-               </p>
-            </div>
-         </div>
-         <div className="col-md-6">
-            <img src="/assets/images/about-img.png" alt="ChittorTech" className="about-img" />
-         </div>
-      </div>
-   </div>
-</section>
-{/* Mission Section */}
-<section className="mission-section">
-   <div className="container">
-      <div className="row align-items-center">
-         <div className="col-md-6">
-            <div className="mission-img">
-               <img src="/assets/images/mission.png" alt="Mission Vector Image" className="mission-img" />
-            </div>
-         </div>
-         <div className="col-md-6">
-            <div className="mission-wrap">
-               <h3>Vision</h3>
-               <p> To shape the future of retail and IT services in India by providing innovative, cloud-based solutions that are both intuitive and powerful, helping businesses thrive in a competitive market.</p>
-               <br />
-               <h3>Mission</h3>
-               <p> To accelerate success for retailers and enterprises by delivering data-driven, technology-backed solutions that optimize operations, improve decision-making, enhance customer experiences, and strengthen IT infrastructure.</p>
-               <div className="mission-wrap">
-                  <h4>Our Commitment To Innovation</h4>
-                  <p>At ChittorTech, innovation is at the heart of everything we do. Our AI-driven features, advanced analytics, and cloud-based platforms enable businesses to:</p>
-                  <ul>
-                     <li>Manage inventory, billing, and customer relationships efficiently</li>
-                     <li>Integrate online and offline sales channels seamlessly</li>
-                     <li>Optimize business operations through real-time data insights</li>
-                     <li>Improve IT infrastructure and software management</li>
-                     <li>Deliver exceptional customer experiences</li>
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
-{/* Services Section */}
-<section className="mission-section">
-   <div className="container">
-      <div className="row align-items-center">
-         <div className="col-md-7">
-            <div className="mission-wrap">
-               <div className="heading-wrap">
-                  <h2>Why Choose <span>chittortech Soft Solutions</span>?</h2>
-               </div>
-               <ul>
-                  <li>Thousands satisfied customers across India</li>
-                  <li> Customized solutions for retail and IT services</li>
-                  <li>Serving All cities Nationwide</li>
-                  <li>4.8+ Google reviews, reflecting trust and client satisfaction</li>
-                  <li>Affordable, scalable solutions designed for SMEs and large enterprises</li>
-                  <li>Comprehensive IT support, including cloud services, network management, software integration, and cybersecurity</li>
-               </ul>
-            </div>
-         </div>
-         <div className="col-md-5">
-            <div className="soft-solutions-img">
-               <img src="/assets/images/img1.png" alt="Mission Vector Image" className="mission-img" />
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
-<section className="mission-section">
-   <div className="container">
-      <div className="row align-items-center">
-         <div className="col-md-12">
-            <div className="mission-wrap">
-               <div className="heading-wrap text-center">
-                  <h2>The Meaning Behind Chittortech</h2>
-                  <p>The name <strong>“Chittortech”</strong> comes from <strong>“Digital” + “Simplify”,</strong> reflecting our goal to <strong>simplify complex business and IT operations digitally. </strong> By providing <strong> efficient AI & IT Solutions, POS, and IT services,</strong> we help businesses validate, optimize, and maximize their potential.</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
-<section className="mission-section">
-   <div className="container">
-      <div className="row align-items-center">
-         <div className="col-md-7 order-md-2">
-            <div className="mission-wrap">
-   <div className="heading-wrap">
-      <h2>Who <span>We Serve</span></h2>
-   </div>
-   <ul>
-      <li><strong>Retail & Supermarkets:</strong> Supermarkets, Kirana stores, Grocery stores, Minimarts</li>
-      <li><strong>Fashion & Apparel:</strong> Ready-Made Garments, Boutiques, Footwear, Kids Fashion & Toys</li>
-      <li><strong>Food & Confectionery:</strong> Pet stores, Fruits & Vegetable Shops, Bakery Shops, Sweet Shops, Ice Cream Shops, Coffee Shops</li>
-      <li><strong>Specialized Retail:</strong> Departmental Stores, Hypermarkets, Shopping Malls, Liquor Stores, Gifts & Hampers, Auto Spare Parts Shops</li>
-      <li><strong>Lifestyle & Home:</strong> Home Decor & Furniture, Cosmetic Stores, Imitation Jewellery, Temples</li>
-      <li><strong>Accessories & Electronics:</strong> Mobile Accessories, Watches, Camera & Optical Accessories, Kitchen & Household Products, Fashion & Luggage Accessories</li>
-      <li><strong>IT Services:</strong> Cloud solutions, software integration, IT consulting, network management, cybersecurity, and technical support</li>
-      <li><strong>Manufacturing Industries:</strong> Industrial Equipment Manufacturers, Component Makers, Production Units, and Assembly Plants</li>
-      <li><strong>Service Industries:</strong> Repair Centers, Maintenance Providers, Cleaning Services, and Facility Management Companies</li>
-      <li><strong>After-Sales Service & Warranty Fulfilment :</strong> Organizations handling product servicing, returns, replacements, and warranty tracking</li>
-      <li><strong>Lead Generation :</strong> Businesses focusing on customer acquisition, telemarketing, and AI Knowledge Base-based lead management</li>
-      <li><strong>Companies Scaling Through Digital Marketing:</strong> Enterprises leveraging SEO, social media, and paid campaigns to grow their digital presence</li>
-      <li>Our solutions are flexible and scalable, ensuring that businesses of all sizes benefit from cutting-edge technology and operational excellence.</li>
-   </ul>
-</div>
 
-         </div>
-         <div className="col-md-5 order-md-1">
-            <div className="soft-solutions-img">
-               <img src="/assets/images/img1.png" alt="Mission Vector Image" className="mission-img" />
+      {/* ── About Section ── */}
+      <section className="about-section">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-6">
+              <div className="heading-wrap text-start">
+                <h2>About <span>ChittorTech</span></h2>
+                <h5>Empowering Businesses with Cutting-Edge AI &amp; Next-Gen IT Solutions</h5>
+                <p>
+                  At ChittorTech, we are a team of passionate engineers, AI researchers, and product builders dedicated to
+                  transforming how businesses operate with technology. We build custom RAG pipelines, fine-tuned LLMs,
+                  intelligent AI chatbots, and enterprise-grade software that delivers real, measurable impact.
+                </p>
+                <br />
+                <p>
+                  From deploying autonomous AI agents that handle customer support 24/7, to architecting private knowledge
+                  search systems across thousands of enterprise documents, and engineering high-performance web and mobile
+                  applications — ChittorTech is your end-to-end technology partner.
+                </p>
+                <br />
+                <p>
+                  We believe cutting-edge AI and software should be accessible to every business — not just large
+                  enterprises. ChittorTech bridges this gap by delivering production-ready, scalable, and secure AI
+                  solutions tailored to the specific needs of SMEs and enterprise clients alike.
+                </p>
+              </div>
             </div>
-         </div>
-      </div>
-   </div>
-</section>
-{/*  our values section start  */}
-<section className="values-section">
-   <div className="container">
-      <div className="row align-items-center">
-         <div className="col-md-6">
-            <div className="values-text">
-               <h2>our Commitment To <span>your Success</span></h2>
-               <p>At ChittorTech, we empower businesses to focus on their core operations while we enhance efficiency, IT infrastructure, and customer experience. Our solutions help retailers and businesses:</p>
-               <ul>
-                  <li>Automate operations and reduce manual errors</li>
-                  <li>Analyze data for better decision-making</li>
-                  <li>Integrate digital platforms for seamless omnichannel management</li>
-                  <li>Optimize IT systems for security, speed, and reliability</li>
-                  <li>Drive growth and profitability</li>
-               </ul>
-               <p>thousands merchants and businesses trust ChittorTech, making us India’s most reliable all-in-one AI & IT Solutions, POS, and IT service provider.</p>
-               <p><strong>Schedule a Free Demo Today</strong> and experience how ChittorTech can transform your retail and business operations.</p>
+            <div className="col-md-6">
+              <img src="/assets/images/about-img.png" alt="ChittorTech AI Solutions" className="about-img" />
             </div>
-         </div>
-         <div className="col-md-6">
-            <div className="values-image">
-               <img src="/assets/images/value.png" alt="Team Collaboration Image" width="500" height="auto" />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Vision & Mission Section ── */}
+      <section className="mission-section">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-6">
+              <div className="mission-img">
+                <img src="/assets/images/mission.png" alt="ChittorTech Vision" className="mission-img" />
+              </div>
             </div>
-         </div>
-      </div>
-   </div>
-</section>
-{/*  our values section end  */}
-{/*  cta sction end here */}
+            <div className="col-md-6">
+              <div className="mission-wrap">
+                <h3>Vision</h3>
+                <p>To be India's most trusted AI engineering company — making intelligent automation, custom LLMs, and
+                  next-generation software accessible to every business, from ambitious startups to global enterprises.</p>
+                <br />
+                <h3>Mission</h3>
+                <p>To accelerate digital transformation for businesses by delivering custom AI solutions, RAG-powered
+                  knowledge systems, intelligent chatbots, and full-stack software that unlock new levels of efficiency,
+                  intelligence, and growth.</p>
+                <div className="mission-wrap">
+                  <h4>Our Commitment To Innovation</h4>
+                  <p>At ChittorTech, innovation is at the heart of everything we do. Our AI-driven services enable businesses to:</p>
+                  <ul>
+                    <li>Deploy custom AI chatbots and voice assistants that resolve queries instantly</li>
+                    <li>Build RAG-powered search systems across internal documents and knowledge bases</li>
+                    <li>Fine-tune open-source LLMs on proprietary data for maximum accuracy and security</li>
+                    <li>Automate complex workflows with multi-step autonomous AI agents</li>
+                    <li>Develop high-performance web, mobile, and SaaS applications</li>
+                    <li>Scale with cloud-native infrastructure on AWS, GCP, and Azure</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Why Choose ChittorTech Section ── */}
+      <section className="mission-section">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-7">
+              <div className="mission-wrap">
+                <div className="heading-wrap">
+                  <h2>Why Choose <span>ChittorTech</span>?</h2>
+                </div>
+                <ul>
+                  <li>250+ AI &amp; technology projects delivered across India</li>
+                  <li>Specialized in RAG, LLM fine-tuning, and agentic AI workflows</li>
+                  <li>End-to-end delivery — from discovery to production deployment</li>
+                  <li>4.8+ Google reviews reflecting consistent client satisfaction</li>
+                  <li>Affordable, scalable solutions for SMEs and enterprise clients</li>
+                  <li>100% data privacy options including local and private cloud deployments</li>
+                  <li>Dedicated post-launch technical support and monitoring</li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-md-5">
+              <div className="soft-solutions-img">
+                <img src="/assets/images/img1.png" alt="Why ChittorTech" className="mission-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Brand Origin Section ── */}
+      <section className="mission-section">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-12">
+              <div className="mission-wrap">
+                <div className="heading-wrap text-center">
+                  <h2>The Meaning Behind <span>ChittorTech</span></h2>
+                  <p>The name <strong>"ChittorTech"</strong> is inspired by <strong>Chittorgarh</strong> — a city of valor,
+                    resilience, and excellence in Rajasthan. Combined with <strong>"Tech"</strong>, it reflects our core
+                    philosophy: <strong>building technology that stands strong, serves with precision, and empowers
+                    businesses to rise above challenges.</strong> We bring the same spirit of excellence to every AI
+                    system, software product, and digital solution we build.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Who We Serve Section ── */}
+      <section className="mission-section">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-7 order-md-2">
+              <div className="mission-wrap">
+                <div className="heading-wrap">
+                  <h2>Who <span>We Serve</span></h2>
+                </div>
+                <ul>
+                  <li><strong>E-Commerce &amp; Retail:</strong> AI-powered product search, recommendation engines, automated customer support, and fraud detection</li>
+                  <li><strong>Healthcare &amp; Pharma:</strong> Medical document AI, patient data extraction, clinical decision support, and compliance automation</li>
+                  <li><strong>Manufacturing &amp; Logistics:</strong> Computer vision quality control, predictive maintenance, supply chain AI, and real-time tracking</li>
+                  <li><strong>BFSI &amp; Fintech:</strong> AI underwriting, document OCR, risk analytics, and regulatory compliance automation</li>
+                  <li><strong>Education &amp; EdTech:</strong> AI tutoring systems, intelligent content search, student analytics, and personalized learning paths</li>
+                  <li><strong>Legal &amp; Consulting:</strong> Contract AI, knowledge management, automated research tools, and document summarization</li>
+                  <li><strong>Startups &amp; SMEs:</strong> Full-stack web &amp; mobile apps, SaaS development, SEO, and digital marketing services</li>
+                  <li><strong>Enterprise IT:</strong> Cloud migrations, custom software integrations, API development, and cybersecurity solutions</li>
+                  <li>Our solutions are flexible and scalable — built for businesses of all sizes seeking to compete with AI-powered technology.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-md-5 order-md-1">
+              <div className="soft-solutions-img">
+                <img src="/assets/images/img1.png" alt="Who We Serve" className="mission-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Commitment Section ── */}
+      <section className="values-section">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-md-6">
+              <div className="values-text">
+                <h2>Our Commitment To <span>Your Success</span></h2>
+                <p>At ChittorTech, we partner with businesses to engineer technology that creates a measurable competitive
+                  advantage. Our AI solutions and software products help enterprises:</p>
+                <ul>
+                  <li>Automate repetitive workflows and eliminate manual inefficiencies</li>
+                  <li>Make faster, smarter decisions with AI-driven analytics and insights</li>
+                  <li>Deploy private, secure AI systems with zero compromise on data confidentiality</li>
+                  <li>Scale from prototype to production with cloud-native, enterprise-grade infrastructure</li>
+                  <li>Drive measurable ROI through automation, lead generation, and customer retention</li>
+                </ul>
+                <p>Hundreds of businesses and professionals trust ChittorTech — making us one of India's most reliable
+                  AI engineering and software development partners.</p>
+                <p><strong>Schedule a Free Consultation Today</strong> and discover how ChittorTech can accelerate your
+                  digital transformation.</p>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="values-image">
+                <img src="/assets/images/value.png" alt="ChittorTech Team Collaboration" width="500" height="auto" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
