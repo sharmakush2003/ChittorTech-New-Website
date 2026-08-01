@@ -214,26 +214,22 @@ export default function TrialModal() {
         }
       }
     }, 2000);
-
-    // 5. Send the API request in the background (asynchronously) without delaying the UI transition
-    try {
-      fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(submissionPayload),
-      }).then(async (response) => {
-        const resData = await response.json();
-        if (!response.ok || resData.status !== "success") {
-          console.warn("Background lead submission returned non-success status:", resData);
-        }
-      }).catch((err) => {
-        console.error("Background lead submission fetch failed:", err);
-      });
-    } catch (err) {
-      console.error("Background lead submission error:", err);
-    } finally {
-      setSubmitting(false);
+    // 5. Send the API request in the background (asynchronously) directly to Google Apps Script
+    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+    if (scriptUrl) {
+      try {
+        fetch(scriptUrl, {
+          method: "POST",
+          body: JSON.stringify(submissionPayload),
+        }).catch((err) => {
+          console.error("Background lead submission fetch failed:", err);
+        });
+      } catch (err) {
+        console.error("Background lead submission error:", err);
+      }
     }
+
+    setSubmitting(false);
   };
 
   return (
