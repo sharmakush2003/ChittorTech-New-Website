@@ -8,10 +8,11 @@ export default function Footer() {
       <style>{`
         /* ─── Footer Wrapper ─── */
         .ct-footer-wrap {
-          background: #07090f;
-          color: rgba(255,255,255,0.65);
+          background: #f8fafc;
+          color: #475569;
           position: relative;
           overflow: hidden;
+          border-top: 1px solid #e2e8f0;
         }
         .ct-footer-wrap::before {
           content: '';
@@ -31,16 +32,17 @@ export default function Footer() {
           position: absolute;
           top: 0; left: -10%; right: -10%; bottom: 0;
           background:
-            radial-gradient(ellipse 60% 40% at 20% 0%, rgba(41,31,188,0.12) 0%, transparent 70%),
-            radial-gradient(ellipse 50% 35% at 80% 0%, rgba(6,182,212,0.08) 0%, transparent 70%);
+            radial-gradient(ellipse 50% 30% at 10% 0%, rgba(41,31,188,0.04) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 25% at 90% 0%, rgba(6,182,212,0.04) 0%, transparent 70%);
           pointer-events: none;
         }
 
         /* ─── CTA Strip ─── */
         .ct-footer-cta {
           position: relative; z-index: 1;
-          border-bottom: 1px solid rgba(255,255,255,0.07);
+          border-bottom: 1px solid #e2e8f0;
           padding: 48px 0;
+          background: linear-gradient(135deg, #eff6ff 0%, #f0fdfe 100%);
         }
         .ct-footer-cta-inner {
           display: flex; align-items: center; justify-content: space-between;
@@ -48,13 +50,11 @@ export default function Footer() {
         }
         .ct-footer-cta-text h3 {
           font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 1.5rem; font-weight: 800; color: #fff;
+          font-size: 1.5rem; font-weight: 800; color: #0f172a;
           margin: 0 0 6px;
-          background: linear-gradient(135deg, #fff 40%, #06b6d4);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .ct-footer-cta-text p {
-          font-size: 0.9rem; color: rgba(255,255,255,0.5); margin: 0;
+          font-size: 0.9rem; color: #64748b; margin: 0;
         }
         .ct-footer-cta-btns {
           display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0;
@@ -65,25 +65,26 @@ export default function Footer() {
           background: linear-gradient(135deg, #291fbc, #06b6d4);
           color: #fff !important; font-weight: 700; font-size: 0.875rem;
           text-decoration: none; border: none; cursor: pointer;
-          box-shadow: 0 8px 24px rgba(41,31,188,0.3);
+          box-shadow: 0 8px 24px rgba(41,31,188,0.25);
           transition: all 0.25s ease;
         }
         .ct-footer-cta-btn-primary:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 32px rgba(41,31,188,0.45);
+          box-shadow: 0 12px 32px rgba(41,31,188,0.38);
           color: #fff !important;
         }
         .ct-footer-cta-btn-ghost {
           display: inline-flex; align-items: center; gap: 8px;
           padding: 11px 24px; border-radius: 50px;
-          background: transparent; color: rgba(255,255,255,0.8) !important;
+          background: transparent; color: #374151 !important;
           font-weight: 600; font-size: 0.875rem; text-decoration: none;
-          border: 1px solid rgba(255,255,255,0.18);
+          border: 1.5px solid #d1d5db;
           transition: all 0.25s ease;
         }
+        .ct-footer-cta-btn-ghost i { color: #25d366; }
         .ct-footer-cta-btn-ghost:hover {
-          border-color: #06b6d4; color: #06b6d4 !important;
-          background: rgba(6,182,212,0.06);
+          border-color: #25d366; color: #16a34a !important;
+          background: rgba(37,211,102,0.05);
         }
 
         /* ─── Main Grid ─── */
@@ -101,11 +102,16 @@ export default function Footer() {
         .ct-footer-brand-logo {
           height: 44px; width: auto; object-fit: contain;
           display: block; margin-bottom: 20px;
-          filter: brightness(1.15) drop-shadow(0 0 12px rgba(6,182,212,0.25));
+          /* White logo → dark on white bg using invert filter */
+          filter: invert(1) sepia(1) saturate(8) hue-rotate(200deg) brightness(0.75);
+          transition: filter 0.25s ease;
+        }
+        .ct-footer-brand-logo:hover {
+          filter: invert(1) sepia(1) saturate(10) hue-rotate(200deg) brightness(0.6);
         }
         .ct-footer-tagline {
           font-size: 0.88rem; line-height: 1.85;
-          color: rgba(255,255,255,0.5);
+          color: #64748b;
           margin-bottom: 28px; max-width: 300px;
         }
         .ct-footer-trust-row {
@@ -114,26 +120,27 @@ export default function Footer() {
         .ct-footer-trust-chip {
           display: inline-flex; align-items: center; gap: 5px;
           padding: 4px 10px; border-radius: 50px;
-          background: rgba(41,31,188,0.12);
-          border: 1px solid rgba(41,31,188,0.25);
+          background: rgba(41,31,188,0.06);
+          border: 1px solid rgba(41,31,188,0.12);
           font-size: 0.72rem; font-weight: 600;
-          color: rgba(255,255,255,0.55); letter-spacing: 0.3px;
+          color: #475569; letter-spacing: 0.3px;
         }
         .ct-footer-trust-chip i { color: #f59e0b; font-size: 0.7rem; }
         .ct-footer-socials { display: flex; gap: 8px; flex-wrap: wrap; }
         .ct-footer-social-btn {
           width: 36px; height: 36px; border-radius: 10px;
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.10);
+          background: #fff;
+          border: 1px solid #e2e8f0;
           display: flex; align-items: center; justify-content: center;
-          color: rgba(255,255,255,0.5); text-decoration: none;
+          color: #64748b; text-decoration: none;
           font-size: 0.82rem; transition: all 0.25s ease;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
         .ct-footer-social-btn:hover {
           background: linear-gradient(135deg, #291fbc, #06b6d4);
           border-color: transparent; color: #fff;
           transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(41,31,188,0.35);
+          box-shadow: 0 8px 20px rgba(41,31,188,0.25);
         }
 
         /* ─── Nav Columns ─── */
@@ -141,36 +148,33 @@ export default function Footer() {
           font-family: 'Plus Jakarta Sans', sans-serif;
           font-size: 0.72rem; font-weight: 800;
           text-transform: uppercase; letter-spacing: 2px;
-          color: rgba(255,255,255,0.4);
+          color: #94a3b8;
           margin-bottom: 20px;
           display: flex; align-items: center; gap: 8px;
         }
         .ct-footer-col-head::after {
           content: '';
           flex: 1; height: 1px;
-          background: rgba(255,255,255,0.07);
+          background: #e2e8f0;
         }
         .ct-footer-nav-link {
           display: flex; align-items: center; gap: 0;
           padding: 6px 0; text-decoration: none;
           font-size: 0.865rem; font-weight: 400;
-          color: rgba(255,255,255,0.48);
+          color: #64748b;
           transition: all 0.2s ease;
-          border-bottom: 1px solid transparent;
         }
         .ct-footer-nav-link span {
           display: inline-block;
           transition: transform 0.2s ease;
         }
         .ct-footer-nav-link i {
-          font-size: 0.6rem; color: #06b6d4;
+          font-size: 0.6rem; color: #291fbc;
           opacity: 0; margin-right: 0;
           transform: translateX(-6px);
           transition: all 0.2s ease;
         }
-        .ct-footer-nav-link:hover {
-          color: #fff;
-        }
+        .ct-footer-nav-link:hover { color: #291fbc; }
         .ct-footer-nav-link:hover i {
           opacity: 1; margin-right: 6px; transform: translateX(0);
         }
@@ -183,29 +187,29 @@ export default function Footer() {
         }
         .ct-footer-contact-icon {
           width: 34px; height: 34px; border-radius: 9px;
-          background: rgba(6,182,212,0.1);
-          border: 1px solid rgba(6,182,212,0.2);
+          background: rgba(41,31,188,0.07);
+          border: 1px solid rgba(41,31,188,0.12);
           display: flex; align-items: center; justify-content: center;
-          color: #06b6d4; font-size: 0.78rem; flex-shrink: 0;
+          color: #291fbc; font-size: 0.78rem; flex-shrink: 0;
         }
         .ct-footer-contact-text {
           font-size: 0.84rem; line-height: 1.65;
-          color: rgba(255,255,255,0.55);
+          color: #64748b;
         }
         .ct-footer-contact-text a {
-          color: rgba(255,255,255,0.75); text-decoration: none;
+          color: #374151; text-decoration: none;
           transition: color 0.2s;
         }
-        .ct-footer-contact-text a:hover { color: #06b6d4; }
+        .ct-footer-contact-text a:hover { color: #291fbc; }
         .ct-footer-contact-label {
           font-size: 0.68rem; font-weight: 700; letter-spacing: 1px;
-          text-transform: uppercase; color: rgba(255,255,255,0.25);
+          text-transform: uppercase; color: #94a3b8;
           margin-bottom: 2px;
         }
 
         /* ─── Divider ─── */
         .ct-footer-divider {
-          border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0;
+          border: none; border-top: 1px solid #e2e8f0; margin: 0;
           position: relative; z-index: 1;
         }
 
@@ -217,34 +221,30 @@ export default function Footer() {
           flex-wrap: wrap; gap: 12px;
         }
         .ct-footer-copy {
-          font-size: 0.8rem; color: rgba(255,255,255,0.3);
+          font-size: 0.8rem; color: #94a3b8;
         }
         .ct-footer-copy a {
-          color: rgba(255,255,255,0.45); text-decoration: none;
+          color: #64748b; text-decoration: none;
           transition: color 0.2s;
         }
-        .ct-footer-copy a:hover { color: #06b6d4; }
-        .ct-footer-copy .sep { margin: 0 8px; opacity: 0.3; }
+        .ct-footer-copy a:hover { color: #291fbc; }
+        .ct-footer-copy .sep { margin: 0 8px; opacity: 0.4; }
         .ct-footer-bottom-right {
           display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
         }
         .ct-footer-badge-pill {
           display: inline-flex; align-items: center; gap: 5px;
           padding: 4px 10px; border-radius: 50px;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
+          background: #fff;
+          border: 1px solid #e2e8f0;
           font-size: 0.7rem; font-weight: 600;
-          color: rgba(255,255,255,0.35); letter-spacing: 0.3px;
+          color: #64748b; letter-spacing: 0.3px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
         .ct-footer-badge-pill i { font-size: 0.68rem; }
         .ct-footer-badge-pill.ssl i { color: #10b981; }
         .ct-footer-badge-pill.ai i { color: #f59e0b; }
         .ct-footer-badge-pill.india i { color: #ef4444; }
-        .ct-footer-made {
-          font-size: 0.75rem; color: rgba(255,255,255,0.2);
-          display: flex; align-items: center; gap: 4px;
-        }
-        .ct-footer-made span { color: #ef4444; }
 
         /* ─── Responsive ─── */
         @media (max-width: 1100px) {
@@ -301,7 +301,7 @@ export default function Footer() {
               <div>
                 <img src="/assets/images/ct-logo.png" alt="ChittorTech" className="ct-footer-brand-logo" />
                 <p className="ct-footer-tagline">
-                  Empowering Indian businesses with cutting-edge AI Solutions, Custom LLMs, Enterprise Automation, POS & ERP Systems, and Digital Growth Services.
+                  Empowering Indian businesses with cutting-edge AI Solutions, Custom LLMs, Enterprise Automation, POS &amp; ERP Systems, and Digital Growth Services.
                 </p>
                 <div className="ct-footer-trust-row">
                   <span className="ct-footer-trust-chip"><i className="fa-solid fa-shield-halved"></i> SSL Secured</span>
@@ -388,7 +388,9 @@ export default function Footer() {
                 </div>
 
                 <div className="ct-footer-contact-item">
-                  <div className="ct-footer-contact-icon" style={{background:'rgba(37,211,102,0.1)',borderColor:'rgba(37,211,102,0.2)',color:'#25d366'}}><i className="fa-brands fa-whatsapp"></i></div>
+                  <div className="ct-footer-contact-icon" style={{background:'rgba(37,211,102,0.08)',borderColor:'rgba(37,211,102,0.18)',color:'#16a34a'}}>
+                    <i className="fa-brands fa-whatsapp"></i>
+                  </div>
                   <div className="ct-footer-contact-text">
                     <div className="ct-footer-contact-label">WhatsApp</div>
                     <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer">Chat with us now</a>
