@@ -242,7 +242,7 @@ CHITTORTECH KNOWLEDGE BASE:
           aria-label="Open AI Assistant" 
           title="Talk to AI"
         >
-          <i className="fa-solid fa-robot"></i>
+          <i className="fa-solid fa-comments"></i>
           <div className="pulse-ring"></div>
         </button>
 

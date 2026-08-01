@@ -210,7 +210,7 @@ export default function Header() {
         .ct-announce-strip .strip-btn:hover { transform: scale(1.05); }
 
         .ct-float-wa {
-          position: fixed; bottom: 88px; left: 20px; z-index: 9000;
+          position: fixed; bottom: 30px; left: 30px; z-index: 9000;
           width: 52px; height: 52px; border-radius: 50%;
           background: #25d366; color: #fff; font-size: 1.35rem;
           display: flex; align-items: center; justify-content: center;
@@ -219,7 +219,7 @@ export default function Header() {
         }
         .ct-float-wa:hover { transform: scale(1.12); color: #fff; }
         .ct-float-contact {
-          position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+          position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
           z-index: 9001; display: inline-flex; align-items: center; gap: 8px;
           padding: 12px 24px; border-radius: 50px;
           background: linear-gradient(135deg, #291fbc, #06b6d4);
