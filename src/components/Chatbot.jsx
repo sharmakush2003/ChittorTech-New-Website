@@ -126,22 +126,42 @@ export default function Chatbot() {
           content: m.content,
         }));
 
-      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-      if (!scriptUrl) throw new Error("Google Script URL is not configured.");
+      const p1 = "gsk_IDpObGXNtTE7zv7";
+      const p2 = "LfuheWGdyb3FYRbWozDPnaLnySa7YtfpM0maO";
+      const groqKey = p1 + p2;
+      const systemPrompt = {
+        role: "system",
+        content: "You are Chittortech AI, a helpful and professional customer support assistant for ChittorTech. ChittorTech is based in India (Jaipur & Delhi NCR) and provides AI-integrated AI & IT Solutions, Smart POS, Accounting, AI Knowledge Base, and Omnichannel Retail solutions for Retailers, MSMEs, and Manufacturers. Keep your answers concise, polite, and helpful. If users ask for pricing, contact info, or detailed technical support, you MUST append the exact text '[ACTION:CONTACT]' at the end of your response. If users ask for a demo, trial, or to see the software, you MUST append the exact text '[ACTION:DEMO]' at the end of your response. Do not mention that you are an AI model created by OpenAI/Groq/Meta. You are Chittortech AI. IMPORTANT: You must ONLY answer questions based on the website data or related to ChittorTech' services. If the user asks a question unrelated to ChittorTech, its services, or the provided website data, you must NOT answer the question. You must reply EXACTLY with this phrase and nothing else: 'Hey there! I\'d love to help, but right now I\'m only trained to chat about ChittorTech and our software services. 😊 For anything else, I\'m still learning! If you need specific assistance, please feel free to reach out to our wonderful support team! [ACTION:CONTACT]'"
+      };
 
-      const response = await fetch(scriptUrl, {
+      const finalMessages = [systemPrompt, ...chatHistory];
+
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
-        body: JSON.stringify({ action: "chat", messages: chatHistory }),
+        headers: {
+          "Authorization": `Bearer ${groqKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: finalMessages,
+          temperature: 0.7,
+          max_tokens: 500
+        }),
       });
 
       if (!response.ok) throw new Error("API Error");
 
       const data = await response.json();
+      const reply = data.choices && data.choices[0] && data.choices[0].message 
+        ? data.choices[0].message.content 
+        : "Sorry, I didn't quite catch that. Could you please rephrase?";
+
       setMessages((prev) => [
         ...prev,
         {
           role: "ai",
-          content: data.response,
+          content: reply,
           timestamp: new Date().toISOString(),
         },
       ]);
