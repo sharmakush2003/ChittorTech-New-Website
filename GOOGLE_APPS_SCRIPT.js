@@ -237,3 +237,9 @@ function handleLead(data) {
   return ContentService.createTextOutput(JSON.stringify({ status: "success", msg: "Lead email sent successfully." }))
                        .setMimeType(ContentService.MimeType.JSON);
 }
+
+function testAuthorization() {
+  // Running this function from the Google Apps Script editor triggers the OAuth permission popup
+  // to authorize UrlFetchApp.fetch (external requests) and MailApp (emailing).
+  Logger.log("Authorization Successful! External fetch and email sending are now enabled.");
+}
