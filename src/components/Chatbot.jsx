@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 
@@ -126,10 +126,12 @@ export default function Chatbot() {
           content: m.content,
         }));
 
-      const response = await fetch("/api/chat", {
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+      if (!scriptUrl) throw new Error("Google Script URL is not configured.");
+
+      const response = await fetch(scriptUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: chatHistory }),
+        body: JSON.stringify({ action: "chat", messages: chatHistory }),
       });
 
       if (!response.ok) throw new Error("API Error");
