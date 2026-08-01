@@ -18,19 +18,27 @@ export default function TrialModal() {
   const [statusType, setStatusType] = useState(""); // "success" or "danger"
   const [submitting, setSubmitting] = useState(false);
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   useEffect(() => {
     // Only run on the client side
     const trialModalEl = document.getElementById("trialModal");
     if (!trialModalEl) return;
 
+    // Check if submitted in this session
+    const wasSubmitted = sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted;
+    if (wasSubmitted) {
+      return; // Do absolutely nothing if already submitted
+    }
+
     let popupCount = parseInt(sessionStorage.getItem("trial_popup_count")) || 0;
-    const maxPopups = 2;
-    let isPermanentlyDismissed = false;
+    const maxPopups = 3;
     let timerId = null;
     let startTime = null;
     let remainingTime = 0;
 
     function shouldShowModal() {
+      if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) return false;
       const lastDismissed = localStorage.getItem("trial_modal_dismissed_v2_at");
       if (!lastDismissed) return true;
       const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
@@ -38,7 +46,7 @@ export default function TrialModal() {
     }
 
     function showModal() {
-      // Bootstrap's modal integration via window
+      if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) return;
       if (window.bootstrap && window.bootstrap.Modal) {
         const modalInstance = window.bootstrap.Modal.getOrCreateInstance(trialModalEl);
         modalInstance.show();
@@ -52,7 +60,7 @@ export default function TrialModal() {
 
       timerId = setTimeout(() => {
         const isAnyModalShow = document.querySelector(".modal.show");
-        if (!isAnyModalShow && !isPermanentlyDismissed) {
+        if (!isAnyModalShow && shouldShowModal()) {
           showModal();
           popupCount++;
           sessionStorage.setItem("trial_popup_count", popupCount.toString());
@@ -75,7 +83,7 @@ export default function TrialModal() {
         startTime = Date.now();
         timerId = setTimeout(() => {
           const isAnyModalShow = document.querySelector(".modal.show");
-          if (!isAnyModalShow && !isPermanentlyDismissed) {
+          if (!isAnyModalShow && shouldShowModal()) {
             showModal();
             popupCount++;
             sessionStorage.setItem("trial_popup_count", popupCount.toString());
@@ -94,8 +102,19 @@ export default function TrialModal() {
     }
 
     function scheduleNext() {
-      if (popupCount >= maxPopups || isPermanentlyDismissed || !shouldShowModal()) return;
-      const delay = popupCount === 0 ? 3000 : 6000;
+      if (popupCount >= maxPopups || sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted || !shouldShowModal()) return;
+      
+      // Delay intervals:
+      // Show 1: 3 seconds after page load (popupCount === 0)
+      // Show 2: 6 seconds after first close (popupCount === 1)
+      // Show 3: 15 seconds after second close (popupCount === 2)
+      let delay = 3000;
+      if (popupCount === 1) {
+        delay = 6000;
+      } else if (popupCount === 2) {
+        delay = 15000;
+      }
+
       startTimer(delay);
     }
 
@@ -117,15 +136,16 @@ export default function TrialModal() {
       const isChecked = document.getElementById("dontShowTrial")?.checked;
       if (isChecked) {
         localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
-        isPermanentlyDismissed = true;
         clearTimer();
       }
     };
 
     const onHiddenModal = () => {
-      if (!isPermanentlyDismissed) {
-        scheduleNext();
+      if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) {
+        clearTimer();
+        return;
       }
+      scheduleNext();
     };
 
     trialModalEl.addEventListener("hide.bs.modal", onHideModal);
@@ -137,7 +157,7 @@ export default function TrialModal() {
       trialModalEl.removeEventListener("hidden.bs.modal", onHiddenModal);
       clearTimer();
     };
-  }, []);
+  }, [isSubmitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -175,6 +195,19 @@ export default function TrialModal() {
           message: "",
         });
         localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
+        sessionStorage.setItem("trial_modal_submitted", "true");
+        setIsSubmitted(true);
+
+        // Hide the modal dynamically after submission success
+        setTimeout(() => {
+          const trialModalEl = document.getElementById("trialModal");
+          if (trialModalEl && window.bootstrap && window.bootstrap.Modal) {
+            const modalInstance = window.bootstrap.Modal.getInstance(trialModalEl);
+            if (modalInstance) {
+              modalInstance.hide();
+            }
+          }
+        }, 2000);
       } else {
         setStatusType("danger");
         setStatusMsg(data.msg || "There was a problem submitting the form.");
