@@ -239,7 +239,14 @@ function handleLead(data) {
 }
 
 function testAuthorization() {
-  // Running this function from the Google Apps Script editor triggers the OAuth permission popup
-  // to authorize UrlFetchApp.fetch (external requests) and MailApp (emailing).
+  // Call UrlFetchApp.fetch to force Google to request external request scope authorization
+  try {
+    UrlFetchApp.fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "post",
+      muteHttpExceptions: true
+    });
+  } catch (e) {
+    // Ignore error, we only want the trigger
+  }
   Logger.log("Authorization Successful! External fetch and email sending are now enabled.");
 }
