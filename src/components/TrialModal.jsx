@@ -167,55 +167,70 @@ export default function TrialModal() {
   const handleCheckboxChange = (e) => {
     setDontShow(e.target.checked);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setStatusMsg("");
 
+    // Validate required fields client-side to ensure complete data
+    if (!formData.name || !formData.email || !formData.company || !formData.contact || !formData.location) {
+      setStatusType("danger");
+      setStatusMsg("Please fill in all required fields.");
+      setSubmitting(false);
+      return;
+    }
+
+    // Capture the submission data before resetting the form
+    const submissionPayload = { ...formData };
+
+    // 1. Show instant success to the user so they do not have to wait 5-10 seconds
+    setStatusType("success");
+    setStatusMsg("Thank you! We will contact you soon.");
+    
+    // 2. Clear the form fields immediately
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      industry: "",
+      firm: "",
+      contact: "",
+      location: "",
+      message: "",
+    });
+
+    // 3. Mark as permanently dismissed in session/local state so the modal doesn't show again
+    localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
+    sessionStorage.setItem("trial_modal_submitted", "true");
+    setIsSubmitted(true);
+
+    // 4. Hide the modal dynamically after 2 seconds
+    setTimeout(() => {
+      const trialModalEl = document.getElementById("trialModal");
+      if (trialModalEl && window.bootstrap && window.bootstrap.Modal) {
+        const modalInstance = window.bootstrap.Modal.getInstance(trialModalEl);
+        if (modalInstance) {
+          modalInstance.hide();
+        }
+      }
+    }, 2000);
+
+    // 5. Send the API request in the background (asynchronously) without delaying the UI transition
     try {
-      const response = await fetch("/api/contact", {
+      fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionPayload),
+      }).then(async (response) => {
+        const resData = await response.json();
+        if (!response.ok || resData.status !== "success") {
+          console.warn("Background lead submission returned non-success status:", resData);
+        }
+      }).catch((err) => {
+        console.error("Background lead submission fetch failed:", err);
       });
-
-      const data = await response.json();
-      if (response.ok && data.status === "success") {
-        setStatusType("success");
-        setStatusMsg("Thank you! We will contact you soon.");
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          industry: "",
-          firm: "",
-          contact: "",
-          location: "",
-          message: "",
-        });
-        localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
-        sessionStorage.setItem("trial_modal_submitted", "true");
-        setIsSubmitted(true);
-
-        // Hide the modal dynamically after submission success
-        setTimeout(() => {
-          const trialModalEl = document.getElementById("trialModal");
-          if (trialModalEl && window.bootstrap && window.bootstrap.Modal) {
-            const modalInstance = window.bootstrap.Modal.getInstance(trialModalEl);
-            if (modalInstance) {
-              modalInstance.hide();
-            }
-          }
-        }, 2000);
-      } else {
-        setStatusType("danger");
-        setStatusMsg(data.msg || "There was a problem submitting the form.");
-      }
     } catch (err) {
-      console.error(err);
-      setStatusType("danger");
-      setStatusMsg("An error occurred. Please try again.");
+      console.error("Background lead submission error:", err);
     } finally {
       setSubmitting(false);
     }
