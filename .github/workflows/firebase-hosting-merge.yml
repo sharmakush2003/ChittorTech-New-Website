@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build
         env:
-          NEXT_PUBLIC_GOOGLE_SCRIPT_URL: https://script.google.com/macros/s/AKfycbzl4K1pRNEhCWM_mEUzyR9ssyJsoFumYgkrFG8egCynw0FnvQIBWevEYXLFJ84DKvp4fQ/exec
+          NEXT_PUBLIC_GOOGLE_SCRIPT_URL: https://script.google.com/macros/s/AKfycbwAbYh5e8QSjDkF0ABri8D1Rtr89xG24vNM0LnK7AsBm7n-w-nwHOUFbYvWxgn2EFyx5Q/exec
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
