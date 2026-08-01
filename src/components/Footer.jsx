@@ -6,223 +6,419 @@ export default function Footer() {
   return (
     <>
       <style>{`
+        /* ─── Footer Wrapper ─── */
         .ct-footer-wrap {
-          background: #0f172a;
-          color: rgba(255,255,255,0.7);
-          padding-top: 80px;
+          background: #07090f;
+          color: rgba(255,255,255,0.65);
+          position: relative;
+          overflow: hidden;
+        }
+        .ct-footer-wrap::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #291fbc, #06b6d4, #291fbc);
+          background-size: 200% 100%;
+          animation: ct-footer-shimmer 4s linear infinite;
+        }
+        @keyframes ct-footer-shimmer {
+          0% { background-position: 0% 0%; }
+          100% { background-position: 200% 0%; }
+        }
+        .ct-footer-wrap::after {
+          content: '';
+          position: absolute;
+          top: 0; left: -10%; right: -10%; bottom: 0;
+          background:
+            radial-gradient(ellipse 60% 40% at 20% 0%, rgba(41,31,188,0.12) 0%, transparent 70%),
+            radial-gradient(ellipse 50% 35% at 80% 0%, rgba(6,182,212,0.08) 0%, transparent 70%);
+          pointer-events: none;
+        }
+
+        /* ─── CTA Strip ─── */
+        .ct-footer-cta {
+          position: relative; z-index: 1;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+          padding: 48px 0;
+        }
+        .ct-footer-cta-inner {
+          display: flex; align-items: center; justify-content: space-between;
+          gap: 24px; flex-wrap: wrap;
+        }
+        .ct-footer-cta-text h3 {
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 1.5rem; font-weight: 800; color: #fff;
+          margin: 0 0 6px;
+          background: linear-gradient(135deg, #fff 40%, #06b6d4);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .ct-footer-cta-text p {
+          font-size: 0.9rem; color: rgba(255,255,255,0.5); margin: 0;
+        }
+        .ct-footer-cta-btns {
+          display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0;
+        }
+        .ct-footer-cta-btn-primary {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 12px 24px; border-radius: 50px;
+          background: linear-gradient(135deg, #291fbc, #06b6d4);
+          color: #fff !important; font-weight: 700; font-size: 0.875rem;
+          text-decoration: none; border: none; cursor: pointer;
+          box-shadow: 0 8px 24px rgba(41,31,188,0.3);
+          transition: all 0.25s ease;
+        }
+        .ct-footer-cta-btn-primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 32px rgba(41,31,188,0.45);
+          color: #fff !important;
+        }
+        .ct-footer-cta-btn-ghost {
+          display: inline-flex; align-items: center; gap: 8px;
+          padding: 11px 24px; border-radius: 50px;
+          background: transparent; color: rgba(255,255,255,0.8) !important;
+          font-weight: 600; font-size: 0.875rem; text-decoration: none;
+          border: 1px solid rgba(255,255,255,0.18);
+          transition: all 0.25s ease;
+        }
+        .ct-footer-cta-btn-ghost:hover {
+          border-color: #06b6d4; color: #06b6d4 !important;
+          background: rgba(6,182,212,0.06);
+        }
+
+        /* ─── Main Grid ─── */
+        .ct-footer-main {
+          position: relative; z-index: 1;
+          padding: 64px 0 56px;
         }
         .ct-footer-grid {
           display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
-          gap: 48px;
-          padding-bottom: 60px;
+          grid-template-columns: 2.2fr 1fr 1fr 1.1fr;
+          gap: 52px;
         }
+
+        /* ─── Brand Column ─── */
         .ct-footer-brand-logo {
-          height: 48px; width: auto; object-fit: contain;
-          margin-bottom: 20px; display: block;
-          filter: brightness(1.1);
+          height: 44px; width: auto; object-fit: contain;
+          display: block; margin-bottom: 20px;
+          filter: brightness(1.15) drop-shadow(0 0 12px rgba(6,182,212,0.25));
         }
-        .ct-footer-mission {
-          font-size: 0.9rem; line-height: 1.8;
-          color: rgba(255,255,255,0.6);
-          margin-bottom: 24px; max-width: 320px;
+        .ct-footer-tagline {
+          font-size: 0.88rem; line-height: 1.85;
+          color: rgba(255,255,255,0.5);
+          margin-bottom: 28px; max-width: 300px;
         }
-        .ct-footer-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+        .ct-footer-trust-row {
+          display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px;
+        }
+        .ct-footer-trust-chip {
+          display: inline-flex; align-items: center; gap: 5px;
+          padding: 4px 10px; border-radius: 50px;
+          background: rgba(41,31,188,0.12);
+          border: 1px solid rgba(41,31,188,0.25);
+          font-size: 0.72rem; font-weight: 600;
+          color: rgba(255,255,255,0.55); letter-spacing: 0.3px;
+        }
+        .ct-footer-trust-chip i { color: #f59e0b; font-size: 0.7rem; }
+        .ct-footer-socials { display: flex; gap: 8px; flex-wrap: wrap; }
         .ct-footer-social-btn {
-          width: 38px; height: 38px; border-radius: 50%;
-          background: rgba(255,255,255,0.07);
-          border: 1px solid rgba(255,255,255,0.12);
+          width: 36px; height: 36px; border-radius: 10px;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.10);
           display: flex; align-items: center; justify-content: center;
-          color: rgba(255,255,255,0.65); text-decoration: none;
-          font-size: 0.85rem; transition: all 0.25s ease;
+          color: rgba(255,255,255,0.5); text-decoration: none;
+          font-size: 0.82rem; transition: all 0.25s ease;
         }
         .ct-footer-social-btn:hover {
-          background: #291fbc; border-color: #291fbc;
-          color: #fff; transform: translateY(-3px);
+          background: linear-gradient(135deg, #291fbc, #06b6d4);
+          border-color: transparent; color: #fff;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(41,31,188,0.35);
         }
-        .ct-footer-col-title {
+
+        /* ─── Nav Columns ─── */
+        .ct-footer-col-head {
           font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 0.78rem; font-weight: 700;
-          text-transform: uppercase; letter-spacing: 1.5px;
-          color: rgba(255,255,255,0.9);
-          margin-bottom: 18px; padding-bottom: 12px;
-          border-bottom: 1px solid rgba(255,255,255,0.08);
+          font-size: 0.72rem; font-weight: 800;
+          text-transform: uppercase; letter-spacing: 2px;
+          color: rgba(255,255,255,0.4);
+          margin-bottom: 20px;
+          display: flex; align-items: center; gap: 8px;
+        }
+        .ct-footer-col-head::after {
+          content: '';
+          flex: 1; height: 1px;
+          background: rgba(255,255,255,0.07);
         }
         .ct-footer-nav-link {
-          display: flex; align-items: center; gap: 6px;
-          padding: 5px 0; text-decoration: none;
-          font-size: 0.875rem; font-weight: 400;
-          color: rgba(255,255,255,0.55);
+          display: flex; align-items: center; gap: 0;
+          padding: 6px 0; text-decoration: none;
+          font-size: 0.865rem; font-weight: 400;
+          color: rgba(255,255,255,0.48);
+          transition: all 0.2s ease;
+          border-bottom: 1px solid transparent;
+        }
+        .ct-footer-nav-link span {
+          display: inline-block;
+          transition: transform 0.2s ease;
+        }
+        .ct-footer-nav-link i {
+          font-size: 0.6rem; color: #06b6d4;
+          opacity: 0; margin-right: 0;
+          transform: translateX(-6px);
           transition: all 0.2s ease;
         }
-        .ct-footer-nav-link::before {
-          content: '›'; font-size: 1rem; color: #06b6d4;
-          opacity: 0; transition: opacity 0.2s ease;
-        }
         .ct-footer-nav-link:hover {
-          color: #fff; transform: translateX(4px);
+          color: #fff;
         }
-        .ct-footer-nav-link:hover::before { opacity: 1; }
+        .ct-footer-nav-link:hover i {
+          opacity: 1; margin-right: 6px; transform: translateX(0);
+        }
+        .ct-footer-nav-link:hover span { transform: translateX(2px); }
 
-        .ct-footer-contact-row {
+        /* ─── Contact Column ─── */
+        .ct-footer-contact-item {
           display: flex; align-items: flex-start; gap: 12px;
-          margin-bottom: 14px;
+          margin-bottom: 16px;
         }
         .ct-footer-contact-icon {
-          width: 32px; height: 32px; border-radius: 8px;
-          background: rgba(41,31,188,0.2);
-          border: 1px solid rgba(41,31,188,0.3);
+          width: 34px; height: 34px; border-radius: 9px;
+          background: rgba(6,182,212,0.1);
+          border: 1px solid rgba(6,182,212,0.2);
           display: flex; align-items: center; justify-content: center;
-          color: #06b6d4; font-size: 0.8rem; flex-shrink: 0; margin-top: 2px;
+          color: #06b6d4; font-size: 0.78rem; flex-shrink: 0;
         }
-        .ct-footer-contact-text { font-size: 0.85rem; line-height: 1.6; color: rgba(255,255,255,0.6); }
-        .ct-footer-contact-text a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .ct-footer-contact-text {
+          font-size: 0.84rem; line-height: 1.65;
+          color: rgba(255,255,255,0.55);
+        }
+        .ct-footer-contact-text a {
+          color: rgba(255,255,255,0.75); text-decoration: none;
+          transition: color 0.2s;
+        }
         .ct-footer-contact-text a:hover { color: #06b6d4; }
-
-        .ct-footer-divider {
-          border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 0;
+        .ct-footer-contact-label {
+          font-size: 0.68rem; font-weight: 700; letter-spacing: 1px;
+          text-transform: uppercase; color: rgba(255,255,255,0.25);
+          margin-bottom: 2px;
         }
+
+        /* ─── Divider ─── */
+        .ct-footer-divider {
+          border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0;
+          position: relative; z-index: 1;
+        }
+
+        /* ─── Bottom Bar ─── */
         .ct-footer-bottom {
-          padding: 20px 0;
+          position: relative; z-index: 1;
+          padding: 22px 0;
           display: flex; align-items: center; justify-content: space-between;
           flex-wrap: wrap; gap: 12px;
         }
         .ct-footer-copy {
-          font-size: 0.82rem; color: rgba(255,255,255,0.4);
+          font-size: 0.8rem; color: rgba(255,255,255,0.3);
         }
-        .ct-footer-copy a { color: rgba(255,255,255,0.55); text-decoration: none; }
+        .ct-footer-copy a {
+          color: rgba(255,255,255,0.45); text-decoration: none;
+          transition: color 0.2s;
+        }
         .ct-footer-copy a:hover { color: #06b6d4; }
-        .ct-footer-badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .ct-footer-copy .sep { margin: 0 8px; opacity: 0.3; }
+        .ct-footer-bottom-right {
+          display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
         .ct-footer-badge-pill {
           display: inline-flex; align-items: center; gap: 5px;
           padding: 4px 10px; border-radius: 50px;
-          background: rgba(255,255,255,0.06);
-          border: 1px solid rgba(255,255,255,0.1);
-          font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.5);
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.08);
+          font-size: 0.7rem; font-weight: 600;
+          color: rgba(255,255,255,0.35); letter-spacing: 0.3px;
         }
-        .ct-footer-badge-pill i { color: #f59e0b; }
+        .ct-footer-badge-pill i { font-size: 0.68rem; }
+        .ct-footer-badge-pill.ssl i { color: #10b981; }
+        .ct-footer-badge-pill.ai i { color: #f59e0b; }
+        .ct-footer-badge-pill.india i { color: #ef4444; }
+        .ct-footer-made {
+          font-size: 0.75rem; color: rgba(255,255,255,0.2);
+          display: flex; align-items: center; gap: 4px;
+        }
+        .ct-footer-made span { color: #ef4444; }
 
-        @media (max-width: 1024px) {
-          .ct-footer-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+        /* ─── Responsive ─── */
+        @media (max-width: 1100px) {
+          .ct-footer-grid { grid-template-columns: 1.8fr 1fr 1fr; gap: 36px; }
+          .ct-footer-grid > div:last-child { grid-column: span 3; }
         }
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+          .ct-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+          .ct-footer-grid > div:first-child { grid-column: span 2; }
+          .ct-footer-grid > div:last-child { grid-column: span 2; }
+          .ct-footer-cta-inner { flex-direction: column; text-align: center; }
+          .ct-footer-cta-btns { justify-content: center; }
+          .ct-footer-main { padding: 48px 0 40px; }
+          .ct-footer-cta { padding: 36px 0; }
+        }
+        @media (max-width: 480px) {
           .ct-footer-grid { grid-template-columns: 1fr; gap: 28px; }
-          .ct-footer-wrap { padding-top: 48px; }
+          .ct-footer-grid > div:first-child,
+          .ct-footer-grid > div:last-child { grid-column: span 1; }
           .ct-footer-bottom { flex-direction: column; text-align: center; }
+          .ct-footer-bottom-right { justify-content: center; }
+          .ct-footer-cta-text h3 { font-size: 1.25rem; }
         }
       `}</style>
 
       <footer className="ct-footer-wrap">
-        <div className="container">
-          <div className="ct-footer-grid">
 
-            {/* Column 1: Brand */}
-            <div>
-              <img src="/assets/images/ct-logo.png" alt="ChittorTech" className="ct-footer-brand-logo" />
-              <p className="ct-footer-mission">
-                Empowering businesses across India with cutting-edge AI Solutions, Custom LLMs, Enterprise Automation, Web Development, and Digital Growth Services.
-              </p>
-              <div className="ct-footer-socials">
-                <a href="https://www.facebook.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Facebook">
-                  <i className="fa-brands fa-facebook-f"></i>
+        {/* ─── CTA Strip ─── */}
+        <div className="ct-footer-cta">
+          <div className="container">
+            <div className="ct-footer-cta-inner">
+              <div className="ct-footer-cta-text">
+                <h3>Ready to transform your business with AI?</h3>
+                <p>Book a free consultation with our experts — zero obligation, 100% value.</p>
+              </div>
+              <div className="ct-footer-cta-btns">
+                <a href="/contact-us" className="ct-footer-cta-btn-primary">
+                  <i className="fa-solid fa-rocket"></i> Get Free Consultation
                 </a>
-                <a href="https://www.instagram.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Instagram">
-                  <i className="fa-brands fa-instagram"></i>
-                </a>
-                <a href="https://www.linkedin.com/company/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="LinkedIn">
-                  <i className="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://twitter.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Twitter / X">
-                  <i className="fa-brands fa-x-twitter"></i>
-                </a>
-                <a href="https://www.youtube.com/@chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="YouTube">
-                  <i className="fa-brands fa-youtube"></i>
+                <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer" className="ct-footer-cta-btn-ghost">
+                  <i className="fa-brands fa-whatsapp"></i> WhatsApp Us
                 </a>
               </div>
             </div>
-
-            {/* Column 2: AI Solutions */}
-            <div>
-              <div className="ct-footer-col-title">AI Solutions</div>
-              {[
-                { href: "/crm", label: "AI Chatbots & Support" },
-                { href: "/erp", label: "Enterprise AI Workflows" },
-                { href: "/crm", label: "RAG Knowledge Base" },
-                { href: "/erp", label: "Custom LLM Fine-Tuning" },
-                { href: "/erp", label: "AI Predictive Analytics" },
-                { href: "/erp", label: "OCR & Document AI" },
-                { href: "/web-development-services", label: "Custom SaaS Development" },
-                { href: "/ai-manufacturing", label: "Computer Vision AI" },
-              ].map((l) => (
-                <Link key={l.label} href={l.href} className="ct-footer-nav-link">{l.label}</Link>
-              ))}
-            </div>
-
-            {/* Column 3: IT & Growth Services */}
-            <div>
-              <div className="ct-footer-col-title">IT & Growth Services</div>
-              {[
-                { href: "/web-development-services", label: "Web Development" },
-                { href: "/e-commerce-website-development", label: "E-Commerce Solutions" },
-                { href: "/android-application", label: "Android Mobile Apps" },
-                { href: "/ios-application", label: "iOS Mobile Apps" },
-                { href: "/search-engine-optimization", label: "SEO Services" },
-                { href: "/digital-marketing-services", label: "Digital Marketing" },
-                { href: "/social-media-optimization", label: "Social Media (SMO)" },
-                { href: "/web-development-services", label: "Custom Portals" },
-              ].map((l) => (
-                <Link key={l.label} href={l.href} className="ct-footer-nav-link">{l.label}</Link>
-              ))}
-            </div>
-
-            {/* Column 4: Contact */}
-            <div>
-              <div className="ct-footer-col-title">Contact Us</div>
-
-              <div className="ct-footer-contact-row">
-                <div className="ct-footer-contact-icon"><i className="fa-solid fa-location-dot"></i></div>
-                <div className="ct-footer-contact-text">
-                  Office No. 204, 2nd Floor, Kanishka Tower,<br />
-                  Bhupalpura, Udaipur, Rajasthan – 313001
-                </div>
-              </div>
-              <div className="ct-footer-contact-row">
-                <div className="ct-footer-contact-icon"><i className="fa-solid fa-phone"></i></div>
-                <div className="ct-footer-contact-text">
-                  <a href="tel:+917597451057">+91 7597451057</a><br />
-                  <a href="tel:+917597451057">+91 7597451057</a>
-                </div>
-              </div>
-              <div className="ct-footer-contact-row">
-                <div className="ct-footer-contact-icon"><i className="fa-solid fa-envelope"></i></div>
-                <div className="ct-footer-contact-text">
-                  <a href="mailto:chittortech@gmail.com">chittortech@gmail.com</a>
-                </div>
-              </div>
-              <div className="ct-footer-contact-row">
-                <div className="ct-footer-contact-icon"><i className="fa-brands fa-whatsapp"></i></div>
-                <div className="ct-footer-contact-text">
-                  <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
+        {/* ─── Main Footer Grid ─── */}
+        <div className="ct-footer-main">
+          <div className="container">
+            <div className="ct-footer-grid">
+
+              {/* Col 1: Brand */}
+              <div>
+                <img src="/assets/images/ct-logo.png" alt="ChittorTech" className="ct-footer-brand-logo" />
+                <p className="ct-footer-tagline">
+                  Empowering Indian businesses with cutting-edge AI Solutions, Custom LLMs, Enterprise Automation, POS & ERP Systems, and Digital Growth Services.
+                </p>
+                <div className="ct-footer-trust-row">
+                  <span className="ct-footer-trust-chip"><i className="fa-solid fa-shield-halved"></i> SSL Secured</span>
+                  <span className="ct-footer-trust-chip"><i className="fa-solid fa-brain"></i> AI Powered</span>
+                  <span className="ct-footer-trust-chip"><i className="fa-solid fa-award"></i> Made in India</span>
+                </div>
+                <div className="ct-footer-socials">
+                  <a href="https://www.facebook.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Facebook"><i className="fa-brands fa-facebook-f"></i></a>
+                  <a href="https://www.instagram.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Instagram"><i className="fa-brands fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/company/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
+                  <a href="https://twitter.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Twitter / X"><i className="fa-brands fa-x-twitter"></i></a>
+                  <a href="https://www.youtube.com/@chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="YouTube"><i className="fa-brands fa-youtube"></i></a>
+                </div>
+              </div>
+
+              {/* Col 2: AI Solutions */}
+              <div>
+                <div className="ct-footer-col-head">AI Solutions</div>
+                {[
+                  { href: "/ai-chatbot-development", label: "AI Chatbots & Support" },
+                  { href: "/erp", label: "Enterprise AI Workflows" },
+                  { href: "/crm", label: "RAG Knowledge Base" },
+                  { href: "/erp", label: "Custom LLM Fine-Tuning" },
+                  { href: "/erp", label: "AI Predictive Analytics" },
+                  { href: "/erp", label: "OCR & Document AI" },
+                  { href: "/web-development-services", label: "Custom SaaS Development" },
+                  { href: "/ai-manufacturing", label: "Computer Vision AI" },
+                ].map((l) => (
+                  <Link key={l.label} href={l.href} className="ct-footer-nav-link">
+                    <i className="fa-solid fa-chevron-right"></i>
+                    <span>{l.label}</span>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Col 3: IT & Growth */}
+              <div>
+                <div className="ct-footer-col-head">IT & Growth</div>
+                {[
+                  { href: "/web-development-services", label: "Web Development" },
+                  { href: "/e-commerce-website-development", label: "E-Commerce Solutions" },
+                  { href: "/android-application", label: "Android Mobile Apps" },
+                  { href: "/ios-application", label: "iOS Mobile Apps" },
+                  { href: "/search-engine-optimization", label: "SEO Services" },
+                  { href: "/digital-marketing-services", label: "Digital Marketing" },
+                  { href: "/social-media-optimization", label: "Social Media (SMO)" },
+                  { href: "/web-development-services", label: "Custom Portals" },
+                ].map((l) => (
+                  <Link key={l.label} href={l.href} className="ct-footer-nav-link">
+                    <i className="fa-solid fa-chevron-right"></i>
+                    <span>{l.label}</span>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Col 4: Contact */}
+              <div>
+                <div className="ct-footer-col-head">Get in Touch</div>
+
+                <div className="ct-footer-contact-item">
+                  <div className="ct-footer-contact-icon"><i className="fa-solid fa-location-dot"></i></div>
+                  <div className="ct-footer-contact-text">
+                    <div className="ct-footer-contact-label">Office</div>
+                    Office No. 204, 2nd Floor,<br />
+                    Kanishka Tower, Bhupalpura,<br />
+                    Udaipur, Rajasthan – 313001
+                  </div>
+                </div>
+
+                <div className="ct-footer-contact-item">
+                  <div className="ct-footer-contact-icon"><i className="fa-solid fa-phone"></i></div>
+                  <div className="ct-footer-contact-text">
+                    <div className="ct-footer-contact-label">Call / WhatsApp</div>
+                    <a href="tel:+917597451057">+91 7597451057</a>
+                  </div>
+                </div>
+
+                <div className="ct-footer-contact-item">
+                  <div className="ct-footer-contact-icon"><i className="fa-solid fa-envelope"></i></div>
+                  <div className="ct-footer-contact-text">
+                    <div className="ct-footer-contact-label">Email</div>
+                    <a href="mailto:chittortech@gmail.com">chittortech@gmail.com</a>
+                  </div>
+                </div>
+
+                <div className="ct-footer-contact-item">
+                  <div className="ct-footer-contact-icon" style={{background:'rgba(37,211,102,0.1)',borderColor:'rgba(37,211,102,0.2)',color:'#25d366'}}><i className="fa-brands fa-whatsapp"></i></div>
+                  <div className="ct-footer-contact-text">
+                    <div className="ct-footer-contact-label">WhatsApp</div>
+                    <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer">Chat with us now</a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* ─── Divider ─── */}
         <hr className="ct-footer-divider" />
 
+        {/* ─── Bottom Bar ─── */}
         <div className="container">
           <div className="ct-footer-bottom">
             <div className="ct-footer-copy">
-              © {new Date().getFullYear()} <a href="/">ChittorTech</a>. All rights reserved. &nbsp;·&nbsp;
-              <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp;
+              © {new Date().getFullYear()} <a href="/">ChittorTech</a>.
+              <span className="sep">·</span>
+              <a href="/privacy-policy">Privacy Policy</a>
+              <span className="sep">·</span>
               <a href="/terms">Terms of Service</a>
+              <span className="sep">·</span>
+              <a href="/sitemap.xml">Sitemap</a>
             </div>
-            <div className="ct-footer-badges">
-              <span className="ct-footer-badge-pill"><i className="fa-solid fa-shield-halved"></i> SSL Secured</span>
-              <span className="ct-footer-badge-pill"><i className="fa-solid fa-brain"></i> AI Powered</span>
-              <span className="ct-footer-badge-pill"><i className="fa-solid fa-award"></i> Made in India</span>
+            <div className="ct-footer-bottom-right">
+              <span className="ct-footer-badge-pill ssl"><i className="fa-solid fa-shield-halved"></i> SSL Secured</span>
+              <span className="ct-footer-badge-pill ai"><i className="fa-solid fa-brain"></i> AI Powered</span>
+              <span className="ct-footer-badge-pill india"><i className="fa-solid fa-flag"></i> Made in India</span>
             </div>
           </div>
         </div>
