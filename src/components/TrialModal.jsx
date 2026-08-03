@@ -270,7 +270,6 @@ export default function TrialModal() {
         .trial-flex {
           display: flex;
           flex-direction: row;
-          min-height: 480px;
         }
 
         /* Left Side: Modern White-Blue Banner */
@@ -281,9 +280,8 @@ export default function TrialModal() {
           position: relative;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
           color: #0f172a;
-          padding: 36px 28px;
+          padding: 26px 22px;
           overflow: hidden;
         }
 
@@ -323,28 +321,28 @@ export default function TrialModal() {
         .trial-badge {
           display: inline-flex;
           align-items: center;
-          gap: 7px;
-          padding: 7px 14px;
+          gap: 6px;
+          padding: 5px 12px;
           border-radius: 30px;
           background: rgba(255, 255, 255, 0.9);
           backdrop-filter: blur(8px);
-          font-size: 0.76rem;
+          font-size: 0.74rem;
           font-weight: 700;
           color: #1d4ed8;
           letter-spacing: 0.4px;
-          margin-bottom: 20px;
+          margin-bottom: 12px;
           border: 1px solid #bfdbfe;
-          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+          box-shadow: 0 3px 10px rgba(37, 99, 235, 0.1);
         }
         .trial-badge i {
           color: #2563eb;
-          font-size: 0.8rem;
+          font-size: 0.78rem;
         }
         .trial-banner-content h2 {
-          font-size: 1.65rem;
+          font-size: 1.45rem;
           font-weight: 800;
-          line-height: 1.28;
-          margin-bottom: 14px;
+          line-height: 1.25;
+          margin-bottom: 10px;
           color: #0f172a;
           letter-spacing: -0.4px;
         }
@@ -354,21 +352,22 @@ export default function TrialModal() {
           -webkit-text-fill-color: transparent;
         }
         .trial-banner-content p {
-          font-size: 0.85rem;
+          font-size: 0.81rem;
           color: #475569;
-          line-height: 1.55;
-          margin-bottom: 18px;
+          line-height: 1.48;
+          margin-bottom: 14px;
         }
 
         .trial-logo-card {
           display: inline-flex;
           align-items: center;
-          padding: 8px 14px;
+          padding: 6px 12px;
           background: rgba(255, 255, 255, 0.85);
           backdrop-filter: blur(6px);
-          border-radius: 14px;
+          border-radius: 12px;
           border: 1px solid rgba(219, 234, 254, 0.8);
           box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+          margin-bottom: 14px;
         }
 
         .trial-features {
@@ -376,14 +375,13 @@ export default function TrialModal() {
           z-index: 2;
           display: flex;
           flex-direction: column;
-          gap: 12px;
-          margin-top: 24px;
+          gap: 10px;
         }
         .trial-feature-item {
           display: flex;
           align-items: center;
-          gap: 12px;
-          font-size: 0.83rem;
+          gap: 10px;
+          font-size: 0.79rem;
           font-weight: 600;
           color: #1e293b;
           transition: transform 0.2s ease;
@@ -392,23 +390,23 @@ export default function TrialModal() {
           transform: translateX(3px);
         }
         .trial-feature-icon {
-          width: 32px;
-          height: 32px;
-          border-radius: 10px;
+          width: 28px;
+          height: 28px;
+          border-radius: 8px;
           background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
           color: #ffffff;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 0.8rem;
+          font-size: 0.75rem;
           flex-shrink: 0;
-          box-shadow: 0 4px 10px rgba(37, 99, 235, 0.28);
+          box-shadow: 0 3px 8px rgba(37, 99, 235, 0.25);
         }
 
         /* Right Side: Sleek Modern Form */
         .trial-form-side {
           flex: 1;
-          padding: 36px 40px;
+          padding: 26px 32px;
           background: #ffffff;
           display: flex;
           flex-direction: column;
@@ -418,29 +416,29 @@ export default function TrialModal() {
         .trial-title {
           font-weight: 800;
           color: #0f172a;
-          margin-bottom: 6px;
-          font-size: 1.45rem;
+          margin-bottom: 4px;
+          font-size: 1.35rem;
           letter-spacing: -0.4px;
           display: flex;
           align-items: center;
           gap: 8px;
         }
         .trial-title-dot {
-          width: 8px;
-          height: 8px;
+          width: 7px;
+          height: 7px;
           border-radius: 50%;
           background: #2563eb;
           display: inline-block;
         }
         .trial-subtitle {
           color: #64748b;
-          margin-bottom: 22px;
-          font-size: 0.86rem;
+          margin-bottom: 16px;
+          font-size: 0.83rem;
         }
 
         .trial-input-group {
-          margin-bottom: 14px;
-          border-radius: 12px;
+          margin-bottom: 10px;
+          border-radius: 10px;
           overflow: hidden;
           border: 1.5px solid #e2e8f0;
           transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -670,29 +668,29 @@ export default function TrialModal() {
                       <img
                         src="/assets/images/ct-logo.png"
                         alt="ChittorTech Logo"
-                        style={{ height: "64px", width: "auto", objectFit: "contain" }}
+                        style={{ height: "48px", width: "auto", objectFit: "contain" }}
                       />
                     </div>
-                  </div>
 
-                  <div className="trial-features">
-                    <div className="trial-feature-item">
-                      <div className="trial-feature-icon">
-                        <i className="fas fa-bolt"></i>
+                    <div className="trial-features">
+                      <div className="trial-feature-item">
+                        <div className="trial-feature-icon">
+                          <i className="fas fa-bolt"></i>
+                        </div>
+                        <span>24/7 Intelligent Automation</span>
                       </div>
-                      <span>24/7 Intelligent Automation</span>
-                    </div>
-                    <div className="trial-feature-item">
-                      <div className="trial-feature-icon">
-                        <i className="fas fa-shield-alt"></i>
+                      <div className="trial-feature-item">
+                        <div className="trial-feature-icon">
+                          <i className="fas fa-shield-alt"></i>
+                        </div>
+                        <span>Enterprise Security & Privacy</span>
                       </div>
-                      <span>Enterprise Security & Privacy</span>
-                    </div>
-                    <div className="trial-feature-item">
-                      <div className="trial-feature-icon">
-                        <i className="fas fa-chart-line"></i>
+                      <div className="trial-feature-item">
+                        <div className="trial-feature-icon">
+                          <i className="fas fa-chart-line"></i>
+                        </div>
+                        <span>High-ROI Custom Solutions</span>
                       </div>
-                      <span>High-ROI Custom Solutions</span>
                     </div>
                   </div>
                 </div>
