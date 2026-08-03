@@ -4,214 +4,214 @@ import Link from "next/link";
 import "../../../public/assets/css/premium-products.css";
 const BLOG_POSTS = [
   {
-    icon: "fa-brain",
-    gradient: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #1e293b 100%)",
+    image: "https://picsum.photos/seed/ai1/600/400",
+    trending: true,
     title: "How AI Agents & LLMs Transform Indian Businesses",
     desc: "Discover how custom conversational bots and RAG systems automate 70% of customer support queries and boost daily operations.",
     link: "/beyond-automation-why-agentic-ai-erp-is-the-best-retail-software-move-for-2026"
   },
   {
-    icon: "fa-mobile-screen",
-    gradient: "linear-gradient(135deg, #1e1b4b 0%, #291fbc 60%, #0e7490 100%)",
+    image: "https://picsum.photos/seed/mewari/600/400",
+    trending: false,
     title: "Affiliate Marketing App & Website Built for Mewari Achaar",
     desc: "A complete mobile app and website solution for Mewari Achaar, enabling powerful affiliate marketing and online sales for regional products.",
-    link: "#"
+    link: "/affiliate-marketing-app-mewari-achaar"
   },
   {
-    icon: "fa-map-location-dot",
-    gradient: "linear-gradient(135deg, #0e7490 0%, #06b6d4 60%, #38bdf8 100%)",
+    image: "https://picsum.photos/seed/chit1/600/400",
+    trending: false,
     title: "Visit Chittorgarh App: Boosting Local Tourism",
     desc: "How we developed the Visit Chittorgarh app to provide tourists with a seamless local guide experience and boost the city's tourism economy.",
-    link: "#"
+    link: "/visit-chittorgarh-app-tourism"
   },
   {
-    icon: "fa-file-invoice",
-    gradient: "linear-gradient(135deg, #1e293b 0%, #475569 60%, #94a3b8 100%)",
+    image: "https://picsum.photos/seed/temple/600/400",
+    trending: false,
     title: "Streamlining Shabari Mata Temple (Hubli) with a Custom Invoice System",
     desc: "Developing a robust invoice and billing system to manage temple donations, trust accounting, and operational expenses effectively.",
-    link: "#"
+    link: "/shabari-mata-temple-hubli-invoice-system"
   },
   {
-    icon: "fa-building",
-    gradient: "linear-gradient(135deg, #291fbc 0%, #3b82f6 60%, #60a5fa 100%)",
+    image: "https://picsum.photos/seed/dharam/600/400",
+    trending: false,
     title: "Building a Robust Admin Portal for Dharamshala Management",
     desc: "An end-to-end admin portal built for local Dharamshalas to streamline room bookings, donor tracking, and facility management.",
     link: "/dharamshala-billing-system"
   },
   {
-    icon: "fa-camera",
-    gradient: "linear-gradient(135deg, #b91c1c 0%, #ef4444 60%, #f87171 100%)",
+    image: "https://picsum.photos/seed/chit2/600/400",
+    trending: false,
     title: "Chittorgarh Tourism Website Development",
     desc: "Showcasing the glorious history of Chittorgarh with a modern, high-performance web platform designed to attract global tourists.",
-    link: "#"
+    link: "/chittorgarh-tourism-website-development"
   },
   {
-    icon: "fa-robot",
-    gradient: "linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #a78bfa 100%)",
+    image: "https://picsum.photos/seed/agent/600/400",
+    trending: true,
     title: "The Agentic Shift: Why 2026 Belongs to Autonomous AI Agents",
     desc: "Moving from chatbots to digital coworkers. How autonomous AI agents are executing multi-step business workflows without human intervention.",
-    link: "#"
+    link: "/autonomous-ai-agents-2026"
   },
   {
-    icon: "fa-network-wired",
-    gradient: "linear-gradient(135deg, #064e3b 0%, #059669 60%, #34d399 100%)",
+    image: "https://picsum.photos/seed/lrm/600/400",
+    trending: true,
     title: "Large Reasoning Models (LRMs) vs. LLMs",
     desc: "How the shift toward reasoning and logical step-by-step thinking is fundamentally changing how AI solves complex enterprise problems.",
-    link: "#"
+    link: "/large-reasoning-models-vs-llm"
   },
   {
-    icon: "fa-server",
-    gradient: "linear-gradient(135deg, #7f1d1d 0%, #b91c1c 60%, #f87171 100%)",
+    image: "https://picsum.photos/seed/rag/600/400",
+    trending: true,
     title: "RAG Systems: The Future of Enterprise Knowledge Management",
     desc: "Convert millions of internal PDFs and SQL databases into instantly searchable vector AI systems. The ultimate solution for data retrieval.",
-    link: "#"
+    link: "/rag-systems-enterprise-knowledge"
   },
   {
-    icon: "fa-microchip",
-    gradient: "linear-gradient(135deg, #831843 0%, #db2777 60%, #f472b6 100%)",
+    image: "https://picsum.photos/seed/slm/600/400",
+    trending: true,
     title: "Small Language Models (SLMs): High Efficiency at Lower Cost",
     desc: "Why businesses are adopting compact, industry-specific SLMs over massive generalized AI models for better cost-to-performance ratios.",
-    link: "#"
+    link: "/small-language-models-slm"
   },
   {
-    icon: "fa-shield-halved",
-    gradient: "linear-gradient(135deg, #14532d 0%, #16a34a 60%, #4ade80 100%)",
+    image: "https://picsum.photos/seed/gov/600/400",
+    trending: true,
     title: "AI Governance & Security in the Era of Deepfakes",
     desc: "Establishing strict protocols for AI usage and data privacy as cybersecurity threats and deepfake frauds increase globally.",
-    link: "#"
+    link: "/ai-governance-security-deepfakes"
   },
   {
-    icon: "fa-users-cog",
-    gradient: "linear-gradient(135deg, #4a044e 0%, #c026d3 60%, #e879f9 100%)",
+    image: "https://picsum.photos/seed/pol/600/400",
+    trending: true,
     title: "How AI is Revolutionizing Political Campaigns & Voter Outreach",
     desc: "From targeted data analysis to real-time sentiment tracking, see how artificial intelligence is changing the landscape of elections in India.",
-    link: "#"
+    link: "/ai-political-campaigns-india"
   },
   {
-    icon: "fa-bolt",
-    gradient: "linear-gradient(135deg, #7c2d12 0%, #ea580c 60%, #fb923c 100%)",
+    image: "https://picsum.photos/seed/native/600/400",
+    trending: false,
     title: "Building an AI-Native Organization from the Ground Up",
     desc: "Stop layering AI over legacy software. Learn how to architect your entire operational structure around artificial intelligence.",
-    link: "#"
+    link: "/building-ai-native-organization"
   },
   {
-    icon: "fa-book-open",
-    gradient: "linear-gradient(135deg, #083344 0%, #0891b2 60%, #22d3ee 100%)",
+    image: "https://picsum.photos/seed/hist/600/400",
+    trending: false,
     title: "Historical Data Digitization Using Computer Vision",
     desc: "How AI and computer vision are being used to digitize, preserve, and search ancient Indian manuscripts and historical artifacts.",
-    link: "#"
+    link: "/historical-data-digitization-computer-vision"
   },
   {
-    icon: "fa-truck-fast",
-    gradient: "linear-gradient(135deg, #3b0764 0%, #9333ea 60%, #c084fc 100%)",
+    image: "https://picsum.photos/seed/logis/600/400",
+    trending: false,
     title: "AI in Logistics & Supply Chain: Predictive Analytics at Scale",
     desc: "Predicting demand, optimizing delivery routes, and managing inventory dynamically with custom machine learning pipelines.",
-    link: "#"
+    link: "/ai-logistics-supply-chain-predictive"
   },
   {
-    icon: "fa-chart-pie",
-    gradient: "linear-gradient(135deg, #172554 0%, #2563eb 60%, #60a5fa 100%)",
+    image: "https://picsum.photos/seed/fin/600/400",
+    trending: true,
     title: "The Financial Sector's Pivot to Automated Risk Assessment",
     desc: "Banks and NBFCs are deploying Agentic AI to instantly evaluate credit risk and process loans in minutes instead of days.",
-    link: "#"
+    link: "/financial-sector-automated-risk-assessment"
   },
   {
-    icon: "fa-hospital",
-    gradient: "linear-gradient(135deg, #022c22 0%, #0d9488 60%, #2dd4bf 100%)",
+    image: "https://picsum.photos/seed/health/600/400",
+    trending: false,
     title: "AI in Indian Healthcare: From Remote Diagnostics to Hospital ERPs",
     desc: "Bridging the gap in medical accessibility through intelligent diagnostic tools and streamlined hospital management systems.",
-    link: "#"
+    link: "/ai-indian-healthcare-hospital-erp"
   },
   {
-    icon: "fa-comments",
-    gradient: "linear-gradient(135deg, #451a03 0%, #d97706 60%, #fcd34d 100%)",
+    image: "https://picsum.photos/seed/prompt/600/400",
+    trending: false,
     title: "Mastering Prompt Engineering for Business Teams",
     desc: "The essential guide to crafting effective inputs that extract the most accurate and useful outputs from enterprise LLMs.",
-    link: "#"
+    link: "/mastering-prompt-engineering-business"
   },
   {
-    icon: "fa-cloud",
-    gradient: "linear-gradient(135deg, #4c1d95 0%, #8b5cf6 60%, #c4b5fd 100%)",
+    image: "https://picsum.photos/seed/cloud/600/400",
+    trending: false,
     title: "Cloud-Native Infrastructure for Scalable SaaS",
     desc: "Why Next.js, Vercel, and AWS provide the perfect trifecta for building robust, high-performance enterprise applications.",
-    link: "#"
+    link: "/cloud-native-infrastructure-scalable-saas"
   },
   {
-    icon: "fa-user-secret",
-    gradient: "linear-gradient(135deg, #1e1b4b 0%, #6366f1 60%, #a5b4fc 100%)",
+    image: "https://picsum.photos/seed/sec/600/400",
+    trending: false,
     title: "Zero-Trust Security Architecture in Custom Software",
     desc: "How modern authentication systems ensure absolute data privacy and protection against sophisticated cyber attacks.",
-    link: "#"
+    link: "/zero-trust-security-architecture"
   },
   {
-    icon: "fa-magnifying-glass-chart",
-    gradient: "linear-gradient(135deg, #052e16 0%, #15803d 60%, #86efac 100%)",
+    image: "https://picsum.photos/seed/seo/600/400",
+    trending: true,
     title: "Algorithmic SEO: Using AI to Dominate Search Rankings",
     desc: "Leveraging predictive data, content generation, and technical web audits to skyrocket organic B2B lead generation.",
-    link: "#"
+    link: "/algorithmic-seo-ai-search-rankings"
   },
   {
-    icon: "fa-industry",
-    gradient: "linear-gradient(135deg, #450a0a 0%, #dc2626 60%, #fca5a5 100%)",
+    image: "https://picsum.photos/seed/mfg/600/400",
+    trending: false,
     title: "Smart Manufacturing: IoT Integration and Predictive Maintenance",
     desc: "Connecting factory floors to cloud dashboards to predict machine failures before they halt your production line.",
-    link: "#"
+    link: "/smart-manufacturing-iot-predictive-maintenance"
   },
   {
-    icon: "fa-code-branch",
-    gradient: "linear-gradient(135deg, #172554 0%, #3b82f6 60%, #93c5fd 100%)",
+    image: "https://picsum.photos/seed/multi/600/400",
+    trending: true,
     title: "Multimodal AI Models: The Future of Interactive Interfaces",
     desc: "Building systems that process text, voice, images, and video simultaneously for a hyper-personalized user experience.",
-    link: "#"
+    link: "/multimodal-ai-interactive-interfaces"
   },
   {
-    icon: "fa-desktop",
-    gradient: "linear-gradient(135deg, #3f3f46 0%, #71717a 60%, #d4d4d8 100%)",
+    image: "https://picsum.photos/seed/slop/600/400",
+    trending: false,
     title: "Combating 'AI Slop' with High-Quality Content Generation",
     desc: "Strategies to ensure your enterprise AI produces accurate, valuable, and highly contextual information rather than generic text.",
-    link: "#"
+    link: "/combating-ai-slop-content-generation"
   },
   {
-    icon: "fa-vr-cardboard",
-    gradient: "linear-gradient(135deg, #2e1065 0%, #6b21a8 60%, #d8b4fe 100%)",
+    image: "https://picsum.photos/seed/vr/600/400",
+    trending: false,
     title: "Spatial Computing Meets AI for Real Estate Walkthroughs",
     desc: "Creating immersive, AI-guided virtual tours for real estate developers and prospective buyers using modern web tech.",
-    link: "#"
+    link: "/spatial-computing-ai-real-estate"
   },
   {
-    icon: "fa-gavel",
-    gradient: "linear-gradient(135deg, #064e3b 0%, #10b981 60%, #6ee7b7 100%)",
+    image: "https://picsum.photos/seed/legal/600/400",
+    trending: false,
     title: "Legal Tech: Automating Contract Reviews with RAG",
     desc: "How law firms are using Retrieval-Augmented Generation to instantly parse and cross-reference thousands of legal documents.",
-    link: "#"
+    link: "/legal-tech-automating-contract-reviews"
   },
   {
-    icon: "fa-graduation-cap",
-    gradient: "linear-gradient(135deg, #78350f 0%, #d97706 60%, #fde68a 100%)",
+    image: "https://picsum.photos/seed/ed/600/400",
+    trending: false,
     title: "EdTech Evolution: Hyper-Personalized AI Tutors",
     desc: "Deploying custom SLMs to adapt to individual student learning paces and provide real-time, context-aware educational support.",
-    link: "#"
+    link: "/edtech-evolution-hyper-personalized-ai"
   },
   {
-    icon: "fa-leaf",
-    gradient: "linear-gradient(135deg, #14532d 0%, #22c55e 60%, #86efac 100%)",
+    image: "https://picsum.photos/seed/agri/600/400",
+    trending: false,
     title: "AgriTech: Predictive Analytics for Crop Yield Optimization",
     desc: "Using historical weather data and machine learning to give Indian farmers actionable insights for better harvests.",
-    link: "#"
+    link: "/agritech-predictive-analytics-crop"
   },
   {
-    icon: "fa-robot",
-    gradient: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 60%, #bfdbfe 100%)",
+    image: "https://picsum.photos/seed/phys/600/400",
+    trending: true,
     title: "Physical AI: Bridging the Gap Between Software and Robotics",
     desc: "Intelligence applied to the physical world, powering the next generation of warehouse drones and automated manufacturing robots.",
-    link: "#"
+    link: "/physical-ai-software-robotics"
   },
   {
-    icon: "fa-handshake",
-    gradient: "linear-gradient(135deg, #881337 0%, #e11d48 60%, #fda4af 100%)",
+    image: "https://picsum.photos/seed/hr/600/400",
+    trending: true,
     title: "Digital Co-workers: Integrating AI Agents into HR Processes",
     desc: "Streamlining recruitment, onboarding, and payroll queries by deploying autonomous AI colleagues across the HR department.",
-    link: "#"
+    link: "/digital-coworkers-ai-hr-processes"
   }
 ];
 export default function Page() {
@@ -412,21 +412,34 @@ export default function Page() {
 
 <div className="new-blog-grid">
   {BLOG_POSTS.map((post, idx) => (
-    <div className="new-blog-card" key={idx}>
+    <div className="new-blog-card" key={idx} style={{ position: "relative" }}>
+      {post.trending && (
+        <div style={{
+          position: "absolute",
+          top: "15px",
+          right: "15px",
+          background: "linear-gradient(135deg, #f59e0b, #ef4444)",
+          color: "#fff",
+          padding: "6px 12px",
+          borderRadius: "20px",
+          fontSize: "12px",
+          fontWeight: "bold",
+          zIndex: 10,
+          boxShadow: "0 4px 10px rgba(239, 68, 68, 0.4)"
+        }}>
+          🔥 Trending
+        </div>
+      )}
       <div style={{
         width: "100%",
         height: "200px",
-        background: post.gradient,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: "3.5rem",
-        color: "rgba(255, 255, 255, 0.7)",
+        background: "#eee",
         borderTopLeftRadius: "18px",
         borderTopRightRadius: "18px",
-        position: "relative"
+        position: "relative",
+        overflow: "hidden"
       }}>
-        <i className={`fa-solid ${post.icon}`}></i>
+        <img src={post.image} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </div>
       <div className="new-blog-content">
         <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
