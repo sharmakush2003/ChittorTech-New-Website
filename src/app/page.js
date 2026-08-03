@@ -284,21 +284,6 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState("chatbots");
   const tab = TABS.find((t) => t.key === activeTab) || TABS[0];
 
-  const heroBanners = [
-    "/assets/images/banners/chittortech_admin_dashboard_banner_1785774148111.png",
-    "/assets/images/banners/chittortech_mobile_app_banner_1785774160097.png",
-    "/assets/images/banners/chittortech_chatbot_banner_1785774172930.png",
-    "/assets/images/banners/chittortech_enterprise_it_banner_1785774185953.png",
-  ];
-  const [currentBanner, setCurrentBanner] = useState(0);
-
-  useEffect(() => {
-    const bannerTimer = setInterval(() => {
-      setCurrentBanner((prev) => (prev + 1) % heroBanners.length);
-    }, 3500);
-    return () => clearInterval(bannerTimer);
-  }, []);
-
   useEffect(() => {
     // Lead capture modal auto-popup: 3s then 6s after closing (max 2 times per active tab session)
     if (typeof window === "undefined") return;
@@ -1196,24 +1181,11 @@ export default function HomePage() {
             <div className="col-lg-6">
               <div className="ct-hero-card-wrap">
                 <div className="ct-hero-glass-card">
-                  <div style={{ position: "relative", width: "100%", borderRadius: "12px", overflow: "hidden" }}>
-                    {heroBanners.map((banner, idx) => (
-                      <img
-                        key={idx}
-                        src={banner}
-                        alt="ChittorTech Solutions"
-                        className="ct-hero-card-img"
-                        style={{
-                          position: idx === 0 ? "relative" : "absolute",
-                          top: 0, left: 0,
-                          width: "100%",
-                          opacity: currentBanner === idx ? 1 : 0,
-                          transition: "opacity 0.8s ease-in-out",
-                          zIndex: currentBanner === idx ? 2 : 1
-                        }}
-                      />
-                    ))}
-                  </div>
+                  <img
+                    src="/assets/images/ct-dashboard-hero.png"
+                    alt="ChittorTech AI Analytics & Automation Dashboard"
+                    className="ct-hero-card-img"
+                  />
                 </div>
               </div>
             </div>
