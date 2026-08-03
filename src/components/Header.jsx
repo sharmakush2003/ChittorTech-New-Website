@@ -542,21 +542,25 @@ export default function Header() {
           .ct-mobile-drawer { display: flex; }
         }
         @media (max-width: 768px) {
+          .ct-strip { display: none !important; }
           .ct-float-contact { display: none !important; }
           .ct-float-wa {
             bottom: 20px !important;
             left: 16px !important;
-            width: 44px !important;
-            height: 44px !important;
-            font-size: 1.2rem !important;
+            width: 46px !important;
+            height: 46px !important;
+            font-size: 1.25rem !important;
+            z-index: 9999 !important;
           }
-          .ct-strip {
-            padding: 6px 12px;
-            font-size: 0.72rem;
+          .ct-header {
+            padding: 10px 16px !important;
           }
         }
-        @media (max-width: 480px) {
-          .ct-strip { gap: 6px; }
+        /* Hide Next.js dev indicator portal overlay on mobile/dev */
+        [data-nextjs-toast],
+        nextjs-portal,
+        #nextjs-dev-tools {
+          display: none !important;
         }
       `}</style>
 
