@@ -545,15 +545,19 @@ export default function Header() {
           .ct-strip { display: none !important; }
           .ct-float-contact { display: none !important; }
           .ct-float-wa {
-            bottom: 20px !important;
-            left: 16px !important;
-            width: 46px !important;
-            height: 46px !important;
-            font-size: 1.25rem !important;
+            bottom: 14px !important;
+            left: 14px !important;
+            width: 42px !important;
+            height: 42px !important;
+            font-size: 1.15rem !important;
             z-index: 9999 !important;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4) !important;
           }
           .ct-header {
             padding: 10px 16px !important;
+          }
+          main {
+            padding-bottom: 40px !important;
           }
         }
         /* Hide Next.js dev indicator portal overlay on mobile/dev */

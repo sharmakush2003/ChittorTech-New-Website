@@ -477,18 +477,19 @@
 
 @media (max-width: 768px) {
   .chatbot-container {
-    bottom: 16px;
-    right: 16px;
+    bottom: 14px !important;
+    right: 14px !important;
   }
   .chatbot-fab {
-    width: 46px;
-    height: 46px;
-    font-size: 1.15rem;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.05rem !important;
+    box-shadow: 0 4px 15px rgba(224, 105, 48, 0.4) !important;
   }
   .chatbot-window {
-    width: 92vw;
-    height: 75vh;
-    right: 4vw;
-    bottom: 75px;
+    width: 94vw !important;
+    height: 75vh !important;
+    right: 3vw !important;
+    bottom: 65px !important;
   }
 }
