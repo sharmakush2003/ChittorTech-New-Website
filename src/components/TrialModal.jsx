@@ -701,7 +701,6 @@ export default function TrialModal() {
                   <div>
                     <h3 className="trial-title">
                       <span>Get Free Consultation & Trial</span>
-                      <span className="trial-title-dot"></span>
                     </h3>
                     <p className="trial-subtitle">Tell us about your project and receive a tailored demo.</p>
                   </div>
