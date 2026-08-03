@@ -309,11 +309,8 @@ export default function Footer() {
                   <span className="ct-footer-trust-chip"><i className="fa-solid fa-award"></i> Made in India</span>
                 </div>
                 <div className="ct-footer-socials">
-                  <a href="https://www.facebook.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Facebook"><i className="fa-brands fa-facebook-f"></i></a>
-                  <a href="https://www.instagram.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Instagram"><i className="fa-brands fa-instagram"></i></a>
                   <a href="https://www.linkedin.com/company/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
-                  <a href="https://twitter.com/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="Twitter / X"><i className="fa-brands fa-x-twitter"></i></a>
-                  <a href="https://www.youtube.com/@chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="YouTube"><i className="fa-brands fa-youtube"></i></a>
+                  <a href="https://github.com/sharmakush2003" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="GitHub"><i className="fa-brands fa-github"></i></a>
                 </div>
               </div>
 
