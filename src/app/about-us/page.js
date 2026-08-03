@@ -44,7 +44,7 @@ export default function Page() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.12);
           border: 1px solid rgba(255, 255, 255, 0.2);
           color: #38bdf8 !important;
           font-size: 0.78rem;
@@ -65,7 +65,7 @@ export default function Page() {
         }
         .ab-hero-desc {
           font-size: 1.08rem;
-          color: rgba(255, 255, 255, 0.85) !important;
+          color: #f1f5f9 !important;
           line-height: 1.75;
           max-width: 640px;
           margin-bottom: 32px;
@@ -103,12 +103,12 @@ export default function Page() {
           border-radius: 50px !important;
           font-weight: 600 !important;
           font-size: 0.92rem !important;
-          border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+          border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
           text-decoration: none !important;
           transition: all 0.25s ease !important;
         }
         .ab-btn-ghost:hover {
-          background: rgba(255, 255, 255, 0.1) !important;
+          background: rgba(255, 255, 255, 0.12) !important;
           border-color: #ffffff !important;
           color: #ffffff !important;
         }
@@ -138,7 +138,7 @@ export default function Page() {
         }
         .ab-stat-label {
           font-size: 0.76rem;
-          color: rgba(255, 255, 255, 0.8) !important;
+          color: rgba(255, 255, 255, 0.85) !important;
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.5px;
@@ -203,23 +203,28 @@ export default function Page() {
           box-shadow: 0 6px 16px rgba(37, 99, 235, 0.22);
         }
 
-        /* Meaning Banner (Dark High-Contrast Card) */
+        /* Meaning Banner (Crisp Light Card with Left Blue Accent) */
         .ab-meaning-card {
-          background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+          background: #f8fafc;
           border-radius: 24px;
           padding: 44px 36px;
-          color: #ffffff !important;
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+          color: #1e293b !important;
+          border: 1.5px solid #e2e8f0;
+          border-left: 6px solid #2563eb;
+          box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05);
+        }
+        .ab-meaning-card strong {
+          color: #2563eb !important;
+          font-weight: 700;
         }
         .ab-meaning-title {
           font-size: 2rem;
           font-weight: 800;
-          color: #ffffff !important;
+          color: #0f172a !important;
           margin-bottom: 14px;
         }
         .ab-meaning-desc {
-          color: rgba(255, 255, 255, 0.88) !important;
+          color: #334155 !important;
           line-height: 1.8;
           font-size: 1.04rem;
           margin: 0;
@@ -235,7 +240,7 @@ export default function Page() {
 
         /* CTA Box */
         .ab-cta-banner {
-          background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2563eb 100%);
+          background: linear-gradient(135deg, #1e1b4b 0%, #291fbc 50%, #0284c7 100%);
           border-radius: 28px;
           padding: 56px 36px;
           color: #ffffff !important;
@@ -250,7 +255,7 @@ export default function Page() {
         }
         .ab-cta-desc {
           font-size: 1.05rem;
-          color: rgba(255, 255, 255, 0.88) !important;
+          color: #f1f5f9 !important;
           max-width: 620px;
           margin: 0 auto 30px;
           line-height: 1.7;
@@ -271,9 +276,15 @@ export default function Page() {
           transition: all 0.25s ease !important;
           cursor: pointer;
         }
+        .ab-btn-light i, .ab-btn-light span {
+          color: #1d4ed8 !important;
+        }
         .ab-btn-light:hover {
           transform: translateY(-2px) !important;
           background: #f8fafc !important;
+          color: #1e40af !important;
+        }
+        .ab-btn-light:hover i, .ab-btn-light:hover span {
           color: #1e40af !important;
         }
       `}</style>
@@ -386,24 +397,24 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ── 3. Brand Heritage Section ── */}
+      {/* ── 3. Brand Heritage Section (Light High-Contrast Card) ── */}
       <section className="ab-section" style={{ background: "#ffffff" }}>
         <div className="container">
           <div className="ab-meaning-card">
             <div className="row align-items-center g-4">
               <div className="col-lg-9">
-                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(56, 189, 248, 0.15)", border: "1px solid rgba(56, 189, 248, 0.3)", color: "#38bdf8", padding: "6px 16px", borderRadius: "30px", fontSize: "0.76rem", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "16px" }}>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "#e0f2fe", color: "#0284c7", padding: "6px 16px", borderRadius: "30px", fontSize: "0.76rem", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "16px" }}>
                   <i className="fa-solid fa-shield-halved"></i> Our Origin &amp; Values
                 </div>
                 <h2 className="ab-meaning-title">
-                  The Meaning Behind <span style={{ color: "#38bdf8" }}>ChittorTech</span>
+                  The Meaning Behind <span style={{ color: "#2563eb" }}>ChittorTech</span>
                 </h2>
                 <p className="ab-meaning-desc">
                   The name <strong>"ChittorTech"</strong> is inspired by <strong>Chittorgarh</strong> — a historic city of valor, resilience, and excellence in Rajasthan. Combined with <strong>"Tech"</strong>, it reflects our core philosophy: <strong>building technology that stands strong, serves with precision, and empowers businesses to rise above challenges.</strong> We bring the same spirit of excellence to every AI system, software product, and digital solution we build.
                 </p>
               </div>
               <div className="col-lg-3 text-lg-end text-center d-none d-lg-block">
-                <div style={{ display: "inline-flex", width: "110px", height: "110px", borderRadius: "50%", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", alignItems: "center", justifyContent: "center", fontSize: "3rem", color: "#38bdf8" }}>
+                <div style={{ display: "inline-flex", width: "100px", height: "100px", borderRadius: "50%", background: "#e0f2fe", border: "1px solid #bae6fd", alignItems: "center", justifyContent: "center", fontSize: "2.8rem", color: "#0284c7" }}>
                   <i className="fa-solid fa-building"></i>
                 </div>
               </div>
@@ -535,7 +546,7 @@ export default function Page() {
             </p>
             <div className="d-flex gap-3 justify-content-center flex-wrap">
               <button className="ab-btn-light" data-bs-toggle="modal" data-bs-target="#trialModal">
-                <i className="fa-solid fa-calendar-check"></i> Book Free Demo &amp; Consultation
+                <i className="fa-solid fa-calendar-check"></i> <span>Book Free Demo &amp; Consultation</span>
               </button>
               <Link href="/contact-us" className="ab-btn-ghost">
                 <i className="fa-solid fa-envelope"></i> Contact Us
