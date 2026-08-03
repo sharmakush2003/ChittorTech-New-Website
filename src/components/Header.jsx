@@ -481,7 +481,7 @@ export default function Header() {
           padding-left: 16px; border-left: 1.5px solid rgba(255,255,255,0.06);
           margin-left: 28px; margin-bottom: 8px;
         }
-        .ct-mobile-sub.open { max-height: 600px; }
+        .ct-mobile-sub.open { max-height: 2500px; }
         .ct-mobile-sub-link {
           display: block; padding: 8px 16px; border-radius: 8px;
           font-size: 0.88rem; font-weight: 500; color: #94a3b8;
