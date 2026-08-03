@@ -2,8 +2,218 @@
 import React from "react";
 import Link from "next/link";
 import "../../../public/assets/css/premium-products.css";
-
-
+const BLOG_POSTS = [
+  {
+    icon: "fa-brain",
+    gradient: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #1e293b 100%)",
+    title: "How AI Agents & LLMs Transform Indian Businesses",
+    desc: "Discover how custom conversational bots and RAG systems automate 70% of customer support queries and boost daily operations.",
+    link: "/beyond-automation-why-agentic-ai-erp-is-the-best-retail-software-move-for-2026"
+  },
+  {
+    icon: "fa-mobile-screen",
+    gradient: "linear-gradient(135deg, #1e1b4b 0%, #291fbc 60%, #0e7490 100%)",
+    title: "Affiliate Marketing App & Website Built for Mewari Achaar",
+    desc: "A complete mobile app and website solution for Mewari Achaar, enabling powerful affiliate marketing and online sales for regional products.",
+    link: "#"
+  },
+  {
+    icon: "fa-map-location-dot",
+    gradient: "linear-gradient(135deg, #0e7490 0%, #06b6d4 60%, #38bdf8 100%)",
+    title: "Visit Chittorgarh App: Boosting Local Tourism",
+    desc: "How we developed the Visit Chittorgarh app to provide tourists with a seamless local guide experience and boost the city's tourism economy.",
+    link: "#"
+  },
+  {
+    icon: "fa-file-invoice",
+    gradient: "linear-gradient(135deg, #1e293b 0%, #475569 60%, #94a3b8 100%)",
+    title: "Streamlining Shabari Mata Temple (Hubli) with a Custom Invoice System",
+    desc: "Developing a robust invoice and billing system to manage temple donations, trust accounting, and operational expenses effectively.",
+    link: "#"
+  },
+  {
+    icon: "fa-building",
+    gradient: "linear-gradient(135deg, #291fbc 0%, #3b82f6 60%, #60a5fa 100%)",
+    title: "Building a Robust Admin Portal for Dharamshala Management",
+    desc: "An end-to-end admin portal built for local Dharamshalas to streamline room bookings, donor tracking, and facility management.",
+    link: "/dharamshala-billing-system"
+  },
+  {
+    icon: "fa-camera",
+    gradient: "linear-gradient(135deg, #b91c1c 0%, #ef4444 60%, #f87171 100%)",
+    title: "Chittorgarh Tourism Website Development",
+    desc: "Showcasing the glorious history of Chittorgarh with a modern, high-performance web platform designed to attract global tourists.",
+    link: "#"
+  },
+  {
+    icon: "fa-robot",
+    gradient: "linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #a78bfa 100%)",
+    title: "The Agentic Shift: Why 2026 Belongs to Autonomous AI Agents",
+    desc: "Moving from chatbots to digital coworkers. How autonomous AI agents are executing multi-step business workflows without human intervention.",
+    link: "#"
+  },
+  {
+    icon: "fa-network-wired",
+    gradient: "linear-gradient(135deg, #064e3b 0%, #059669 60%, #34d399 100%)",
+    title: "Large Reasoning Models (LRMs) vs. LLMs",
+    desc: "How the shift toward reasoning and logical step-by-step thinking is fundamentally changing how AI solves complex enterprise problems.",
+    link: "#"
+  },
+  {
+    icon: "fa-server",
+    gradient: "linear-gradient(135deg, #7f1d1d 0%, #b91c1c 60%, #f87171 100%)",
+    title: "RAG Systems: The Future of Enterprise Knowledge Management",
+    desc: "Convert millions of internal PDFs and SQL databases into instantly searchable vector AI systems. The ultimate solution for data retrieval.",
+    link: "#"
+  },
+  {
+    icon: "fa-microchip",
+    gradient: "linear-gradient(135deg, #831843 0%, #db2777 60%, #f472b6 100%)",
+    title: "Small Language Models (SLMs): High Efficiency at Lower Cost",
+    desc: "Why businesses are adopting compact, industry-specific SLMs over massive generalized AI models for better cost-to-performance ratios.",
+    link: "#"
+  },
+  {
+    icon: "fa-shield-halved",
+    gradient: "linear-gradient(135deg, #14532d 0%, #16a34a 60%, #4ade80 100%)",
+    title: "AI Governance & Security in the Era of Deepfakes",
+    desc: "Establishing strict protocols for AI usage and data privacy as cybersecurity threats and deepfake frauds increase globally.",
+    link: "#"
+  },
+  {
+    icon: "fa-users-cog",
+    gradient: "linear-gradient(135deg, #4a044e 0%, #c026d3 60%, #e879f9 100%)",
+    title: "How AI is Revolutionizing Political Campaigns & Voter Outreach",
+    desc: "From targeted data analysis to real-time sentiment tracking, see how artificial intelligence is changing the landscape of elections in India.",
+    link: "#"
+  },
+  {
+    icon: "fa-bolt",
+    gradient: "linear-gradient(135deg, #7c2d12 0%, #ea580c 60%, #fb923c 100%)",
+    title: "Building an AI-Native Organization from the Ground Up",
+    desc: "Stop layering AI over legacy software. Learn how to architect your entire operational structure around artificial intelligence.",
+    link: "#"
+  },
+  {
+    icon: "fa-book-open",
+    gradient: "linear-gradient(135deg, #083344 0%, #0891b2 60%, #22d3ee 100%)",
+    title: "Historical Data Digitization Using Computer Vision",
+    desc: "How AI and computer vision are being used to digitize, preserve, and search ancient Indian manuscripts and historical artifacts.",
+    link: "#"
+  },
+  {
+    icon: "fa-truck-fast",
+    gradient: "linear-gradient(135deg, #3b0764 0%, #9333ea 60%, #c084fc 100%)",
+    title: "AI in Logistics & Supply Chain: Predictive Analytics at Scale",
+    desc: "Predicting demand, optimizing delivery routes, and managing inventory dynamically with custom machine learning pipelines.",
+    link: "#"
+  },
+  {
+    icon: "fa-chart-pie",
+    gradient: "linear-gradient(135deg, #172554 0%, #2563eb 60%, #60a5fa 100%)",
+    title: "The Financial Sector's Pivot to Automated Risk Assessment",
+    desc: "Banks and NBFCs are deploying Agentic AI to instantly evaluate credit risk and process loans in minutes instead of days.",
+    link: "#"
+  },
+  {
+    icon: "fa-hospital",
+    gradient: "linear-gradient(135deg, #022c22 0%, #0d9488 60%, #2dd4bf 100%)",
+    title: "AI in Indian Healthcare: From Remote Diagnostics to Hospital ERPs",
+    desc: "Bridging the gap in medical accessibility through intelligent diagnostic tools and streamlined hospital management systems.",
+    link: "#"
+  },
+  {
+    icon: "fa-comments",
+    gradient: "linear-gradient(135deg, #451a03 0%, #d97706 60%, #fcd34d 100%)",
+    title: "Mastering Prompt Engineering for Business Teams",
+    desc: "The essential guide to crafting effective inputs that extract the most accurate and useful outputs from enterprise LLMs.",
+    link: "#"
+  },
+  {
+    icon: "fa-cloud",
+    gradient: "linear-gradient(135deg, #4c1d95 0%, #8b5cf6 60%, #c4b5fd 100%)",
+    title: "Cloud-Native Infrastructure for Scalable SaaS",
+    desc: "Why Next.js, Vercel, and AWS provide the perfect trifecta for building robust, high-performance enterprise applications.",
+    link: "#"
+  },
+  {
+    icon: "fa-user-secret",
+    gradient: "linear-gradient(135deg, #1e1b4b 0%, #6366f1 60%, #a5b4fc 100%)",
+    title: "Zero-Trust Security Architecture in Custom Software",
+    desc: "How modern authentication systems ensure absolute data privacy and protection against sophisticated cyber attacks.",
+    link: "#"
+  },
+  {
+    icon: "fa-magnifying-glass-chart",
+    gradient: "linear-gradient(135deg, #052e16 0%, #15803d 60%, #86efac 100%)",
+    title: "Algorithmic SEO: Using AI to Dominate Search Rankings",
+    desc: "Leveraging predictive data, content generation, and technical web audits to skyrocket organic B2B lead generation.",
+    link: "#"
+  },
+  {
+    icon: "fa-industry",
+    gradient: "linear-gradient(135deg, #450a0a 0%, #dc2626 60%, #fca5a5 100%)",
+    title: "Smart Manufacturing: IoT Integration and Predictive Maintenance",
+    desc: "Connecting factory floors to cloud dashboards to predict machine failures before they halt your production line.",
+    link: "#"
+  },
+  {
+    icon: "fa-code-branch",
+    gradient: "linear-gradient(135deg, #172554 0%, #3b82f6 60%, #93c5fd 100%)",
+    title: "Multimodal AI Models: The Future of Interactive Interfaces",
+    desc: "Building systems that process text, voice, images, and video simultaneously for a hyper-personalized user experience.",
+    link: "#"
+  },
+  {
+    icon: "fa-desktop",
+    gradient: "linear-gradient(135deg, #3f3f46 0%, #71717a 60%, #d4d4d8 100%)",
+    title: "Combating 'AI Slop' with High-Quality Content Generation",
+    desc: "Strategies to ensure your enterprise AI produces accurate, valuable, and highly contextual information rather than generic text.",
+    link: "#"
+  },
+  {
+    icon: "fa-vr-cardboard",
+    gradient: "linear-gradient(135deg, #2e1065 0%, #6b21a8 60%, #d8b4fe 100%)",
+    title: "Spatial Computing Meets AI for Real Estate Walkthroughs",
+    desc: "Creating immersive, AI-guided virtual tours for real estate developers and prospective buyers using modern web tech.",
+    link: "#"
+  },
+  {
+    icon: "fa-gavel",
+    gradient: "linear-gradient(135deg, #064e3b 0%, #10b981 60%, #6ee7b7 100%)",
+    title: "Legal Tech: Automating Contract Reviews with RAG",
+    desc: "How law firms are using Retrieval-Augmented Generation to instantly parse and cross-reference thousands of legal documents.",
+    link: "#"
+  },
+  {
+    icon: "fa-graduation-cap",
+    gradient: "linear-gradient(135deg, #78350f 0%, #d97706 60%, #fde68a 100%)",
+    title: "EdTech Evolution: Hyper-Personalized AI Tutors",
+    desc: "Deploying custom SLMs to adapt to individual student learning paces and provide real-time, context-aware educational support.",
+    link: "#"
+  },
+  {
+    icon: "fa-leaf",
+    gradient: "linear-gradient(135deg, #14532d 0%, #22c55e 60%, #86efac 100%)",
+    title: "AgriTech: Predictive Analytics for Crop Yield Optimization",
+    desc: "Using historical weather data and machine learning to give Indian farmers actionable insights for better harvests.",
+    link: "#"
+  },
+  {
+    icon: "fa-robot",
+    gradient: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 60%, #bfdbfe 100%)",
+    title: "Physical AI: Bridging the Gap Between Software and Robotics",
+    desc: "Intelligence applied to the physical world, powering the next generation of warehouse drones and automated manufacturing robots.",
+    link: "#"
+  },
+  {
+    icon: "fa-handshake",
+    gradient: "linear-gradient(135deg, #881337 0%, #e11d48 60%, #fda4af 100%)",
+    title: "Digital Co-workers: Integrating AI Agents into HR Processes",
+    desc: "Streamlining recruitment, onboarding, and payroll queries by deploying autonomous AI colleagues across the HR department.",
+    link: "#"
+  }
+];
 export default function Page() {
   return (
     <>
@@ -201,125 +411,36 @@ export default function Page() {
 
 
 <div className="new-blog-grid">
-  {/* Card 1 */}
-  <div className="new-blog-card">
-    <div style={{
-      width: "100%",
-      height: "200px",
-      background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #1e293b 100%)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: "3.5rem",
-      color: "rgba(255, 255, 255, 0.7)",
-      borderTopLeftRadius: "18px",
-      borderTopRightRadius: "18px",
-      position: "relative"
-    }}>
-      <i className="fa-solid fa-brain"></i>
+  {BLOG_POSTS.map((post, idx) => (
+    <div className="new-blog-card" key={idx}>
+      <div style={{
+        width: "100%",
+        height: "200px",
+        background: post.gradient,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "3.5rem",
+        color: "rgba(255, 255, 255, 0.7)",
+        borderTopLeftRadius: "18px",
+        borderTopRightRadius: "18px",
+        position: "relative"
+      }}>
+        <i className={`fa-solid ${post.icon}`}></i>
+      </div>
+      <div className="new-blog-content">
+        <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
+          {post.title}
+        </h3>
+        <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
+          {post.desc}
+        </p>
+        <Link href={post.link} className="new-read-more-btn">
+          Read More
+        </Link>
+      </div>
     </div>
-    <div className="new-blog-content">
-      <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
-        How AI Agents &amp; LLMs Transform Indian Businesses
-      </h3>
-      <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
-        Discover how custom conversational bots and RAG systems automate 70% of customer support queries and boost daily operations.
-      </p>
-      <Link href="/beyond-automation-why-agentic-ai-erp-is-the-best-retail-software-move-for-2026" className="new-read-more-btn">
-        Read More
-      </Link>
-    </div>
-  </div>
-
-  {/* Card 2 */}
-  <div className="new-blog-card">
-    <div style={{
-      width: "100%",
-      height: "200px",
-      background: "linear-gradient(135deg, #1e1b4b 0%, #291fbc 60%, #0e7490 100%)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: "3.5rem",
-      color: "rgba(255, 255, 255, 0.7)",
-      borderTopLeftRadius: "18px",
-      borderTopRightRadius: "18px",
-      position: "relative"
-    }}>
-      <i className="fa-solid fa-gears"></i>
-    </div>
-    <div className="new-blog-content">
-      <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
-        Guide to Selecting the Best Manufacturing ERP
-      </h3>
-      <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
-        Learn how real-time inventory tracking, bill of materials (BOM) management, and automated planning increase shopfloor profitability.
-      </p>
-      <Link href="/best-erp-software-for-manufacturing-in-india" className="new-read-more-btn">
-        Read More
-      </Link>
-    </div>
-  </div>
-
-  {/* Card 3 */}
-  <div className="new-blog-card">
-    <div style={{
-      width: "100%",
-      height: "200px",
-      background: "linear-gradient(135deg, #0e7490 0%, #06b6d4 60%, #38bdf8 100%)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: "3.5rem",
-      color: "rgba(255, 255, 255, 0.7)",
-      borderTopLeftRadius: "18px",
-      borderTopRightRadius: "18px",
-      position: "relative"
-    }}>
-      <i className="fa-solid fa-shop"></i>
-    </div>
-    <div className="new-blog-content">
-      <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
-        Why Retailers Need Cloud-Based POS Systems
-      </h3>
-      <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
-        From multi-store inventory synchronization to integrated customer loyalty programs, learn how to scale your retail network.
-      </p>
-      <Link href="/1-best-cloud-retail-erp-software-to-grow-your-store-faster-in-2026" className="new-read-more-btn">
-        Read More
-      </Link>
-    </div>
-  </div>
-
-  {/* Card 4 */}
-  <div className="new-blog-card">
-    <div style={{
-      width: "100%",
-      height: "200px",
-      background: "linear-gradient(135deg, #1e293b 0%, #475569 60%, #94a3b8 100%)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      fontSize: "3.5rem",
-      color: "rgba(255, 255, 255, 0.7)",
-      borderTopLeftRadius: "18px",
-      borderTopRightRadius: "18px",
-      position: "relative"
-    }}>
-      <i className="fa-solid fa-file-invoice-dollar"></i>
-    </div>
-    <div className="new-blog-content">
-      <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
-        Simplifying GST Billing &amp; Warehouse Logistics
-      </h3>
-      <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
-        A comprehensive guide to managing stock leaks, automated procurement workflows, and direct Indian tax compliance.
-      </p>
-      <Link href="/best-gst-billing-accounting-erp-software-for-manufacturing-companies" className="new-read-more-btn">
-        Read More
-      </Link>
-    </div>
-  </div>
+  ))}
 </div>
 
 {/*  footer */}
