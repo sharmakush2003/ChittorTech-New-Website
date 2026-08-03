@@ -1193,24 +1193,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 2. STATS BAR ── */}
-      <section className="ct-stats-bar">
-        <div className="container">
-          <div className="ct-stats-bar-inner">
-            {[
-              { val: "250+",  label: "AI & Tech Projects Delivered", color: "#8b5cf6" },
-              { val: "99.4%", label: "Client Satisfaction Score", color: "#06b6d4" },
-              { val: "70%",   label: "Avg. Support Automation", color: "#10b981" },
-              { val: "24/7",  label: "Dedicated Tech Support", color: "#f59e0b" },
-            ].map((s) => (
-              <div key={s.label} className="ct-stat-item">
-                <div className="ct-stat-num" style={{ color: s.color }}>{s.val}</div>
-                <div className="ct-stat-lbl">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ── 3. DUAL-LINE CONTINUOUS SLOW MARQUEE ── */}
       <section className="ct-tech-marquee-sec">
