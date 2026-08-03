@@ -170,7 +170,7 @@ export default function TrialModal() {
     setStatusMsg("");
 
     // Validate required fields client-side
-    if (!formData.name || !formData.email || !formData.company || !formData.contact || !formData.location) {
+    if (!formData.name || !formData.email || !formData.contact || !formData.location) {
       setStatusType("danger");
       setStatusMsg("Please fill in all required fields.");
       setSubmitting(false);
