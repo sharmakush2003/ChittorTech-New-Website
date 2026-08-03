@@ -543,16 +543,17 @@ export default function Header() {
         .ct-float-wa:hover { transform: scale(1.12); color: #fff; animation: none; }
         .ct-float-contact {
           position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-          z-index: 9001; display: inline-flex; align-items: center; gap: 8px;
-          padding: 12px 26px; border-radius: 50px;
+          z-index: 9001; 
+          width: 62px; height: 62px; border-radius: 50%;
           background: linear-gradient(135deg, #291fbc, #06b6d4);
-          color: #fff !important; font-weight: 700; font-size: 0.88rem;
+          color: #fff !important; font-size: 1.5rem;
+          display: flex; align-items: center; justify-content: center;
           text-decoration: none; box-shadow: 0 8px 24px rgba(41,31,188,0.38);
-          transition: all 0.25s ease; white-space: nowrap;
+          transition: all 0.25s ease;
           border: 1px solid rgba(255,255,255,0.15);
         }
         .ct-float-contact:hover {
-          transform: translateX(-50%) translateY(-3px);
+          transform: translateX(-50%) scale(1.12);
           box-shadow: 0 14px 36px rgba(41,31,188,0.48);
           color: #fff !important;
         }
@@ -565,13 +566,19 @@ export default function Header() {
         }
         @media (max-width: 768px) {
           .ct-strip { display: none !important; }
-          .ct-float-contact { display: none !important; }
-          .ct-float-wa {
-            bottom: 14px !important;
-            left: 14px !important;
-            width: 50px !important;
-            height: 50px !important;
+          .ct-float-contact {
+            bottom: 20px !important;
+            width: 54px !important;
+            height: 54px !important;
             font-size: 1.35rem !important;
+            display: flex !important;
+          }
+          .ct-float-wa {
+            bottom: 20px !important;
+            left: 20px !important;
+            width: 54px !important;
+            height: 54px !important;
+            font-size: 1.45rem !important;
             z-index: 9999 !important;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4) !important;
           }
@@ -860,9 +867,9 @@ export default function Header() {
       <a href="#" onClick={handleWhatsApp} className="ct-float-wa" title="Chat on WhatsApp">
         <i className="fa-brands fa-whatsapp"></i>
       </a>
-      <Link href="/contact-us" className="ct-float-contact">
-        <i className="fa-solid fa-envelope"></i> Contact Us
-      </Link>
+      <button data-bs-toggle="modal" data-bs-target="#trialModal" className="ct-float-contact" title="Get Free Consultation">
+        <i className="fa-solid fa-file-signature"></i>
+      </button>
     </>
   );
 }

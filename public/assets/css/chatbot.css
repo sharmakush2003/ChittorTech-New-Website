@@ -477,13 +477,13 @@
 
 @media (max-width: 768px) {
   .chatbot-container {
-    bottom: 14px !important;
-    right: 14px !important;
+    bottom: 20px !important;
+    right: 20px !important;
   }
   .chatbot-fab {
-    width: 50px !important;
-    height: 50px !important;
-    font-size: 1.25rem !important;
+    width: 54px !important;
+    height: 54px !important;
+    font-size: 1.35rem !important;
     box-shadow: 0 4px 15px rgba(224, 105, 48, 0.4) !important;
   }
   .chatbot-window {
