@@ -541,9 +541,22 @@ export default function Header() {
           .ct-mobile-overlay { display: block; }
           .ct-mobile-drawer { display: flex; }
         }
+        @media (max-width: 768px) {
+          .ct-float-contact { display: none !important; }
+          .ct-float-wa {
+            bottom: 20px !important;
+            left: 16px !important;
+            width: 44px !important;
+            height: 44px !important;
+            font-size: 1.2rem !important;
+          }
+          .ct-strip {
+            padding: 6px 12px;
+            font-size: 0.72rem;
+          }
+        }
         @media (max-width: 480px) {
-          .ct-float-contact { font-size: 0.78rem; padding: 10px 18px; }
-          .ct-strip { gap: 10px; }
+          .ct-strip { gap: 6px; }
         }
       `}</style>
 
