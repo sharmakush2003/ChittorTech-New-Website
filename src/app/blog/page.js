@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import "../../../public/assets/css/premium-products.css";
 
 
@@ -158,6 +159,8 @@ export default function Page() {
   font-weight: 700;
 }
 
+      {/* ── Blog Grid Section ── */}
+
 .new-blog-content p {
   font-size: 16px;
   color: #444;
@@ -198,24 +201,125 @@ export default function Page() {
 
 
 <div className="new-blog-grid">
-  
-   <div className="new-blog-card">
-  
-    <img src="/website_login/admin/uploads_img/" 
-         alt="" 
-         style={{ "width": "100%", "height": "220px", "objectFit": "cover", "borderTopLeftRadius": "18px", "borderTopRightRadius": "18px" }} />
-  
-
-  <div className="new-blog-content">
-    <h3></h3>
-    <p>
-      ...
-    </p>
-    <a href="" className="new-read-more-btn">Read More</a>
+  {/* Card 1 */}
+  <div className="new-blog-card">
+    <div style={{
+      width: "100%",
+      height: "200px",
+      background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #1e293b 100%)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "3.5rem",
+      color: "rgba(255, 255, 255, 0.7)",
+      borderTopLeftRadius: "18px",
+      borderTopRightRadius: "18px",
+      position: "relative"
+    }}>
+      <i className="fa-solid fa-brain"></i>
+    </div>
+    <div className="new-blog-content">
+      <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
+        How AI Agents &amp; LLMs Transform Indian Businesses
+      </h3>
+      <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
+        Discover how custom conversational bots and RAG systems automate 70% of customer support queries and boost daily operations.
+      </p>
+      <Link href="/beyond-automation-why-agentic-ai-erp-is-the-best-retail-software-move-for-2026" className="new-read-more-btn">
+        Read More
+      </Link>
+    </div>
   </div>
-</div>
 
-  
+  {/* Card 2 */}
+  <div className="new-blog-card">
+    <div style={{
+      width: "100%",
+      height: "200px",
+      background: "linear-gradient(135deg, #1e1b4b 0%, #291fbc 60%, #0e7490 100%)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "3.5rem",
+      color: "rgba(255, 255, 255, 0.7)",
+      borderTopLeftRadius: "18px",
+      borderTopRightRadius: "18px",
+      position: "relative"
+    }}>
+      <i className="fa-solid fa-gears"></i>
+    </div>
+    <div className="new-blog-content">
+      <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
+        Guide to Selecting the Best Manufacturing ERP
+      </h3>
+      <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
+        Learn how real-time inventory tracking, bill of materials (BOM) management, and automated planning increase shopfloor profitability.
+      </p>
+      <Link href="/best-erp-software-for-manufacturing-in-india" className="new-read-more-btn">
+        Read More
+      </Link>
+    </div>
+  </div>
+
+  {/* Card 3 */}
+  <div className="new-blog-card">
+    <div style={{
+      width: "100%",
+      height: "200px",
+      background: "linear-gradient(135deg, #0e7490 0%, #06b6d4 60%, #38bdf8 100%)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "3.5rem",
+      color: "rgba(255, 255, 255, 0.7)",
+      borderTopLeftRadius: "18px",
+      borderTopRightRadius: "18px",
+      position: "relative"
+    }}>
+      <i className="fa-solid fa-shop"></i>
+    </div>
+    <div className="new-blog-content">
+      <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
+        Why Retailers Need Cloud-Based POS Systems
+      </h3>
+      <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
+        From multi-store inventory synchronization to integrated customer loyalty programs, learn how to scale your retail network.
+      </p>
+      <Link href="/1-best-cloud-retail-erp-software-to-grow-your-store-faster-in-2026" className="new-read-more-btn">
+        Read More
+      </Link>
+    </div>
+  </div>
+
+  {/* Card 4 */}
+  <div className="new-blog-card">
+    <div style={{
+      width: "100%",
+      height: "200px",
+      background: "linear-gradient(135deg, #1e293b 0%, #475569 60%, #94a3b8 100%)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontSize: "3.5rem",
+      color: "rgba(255, 255, 255, 0.7)",
+      borderTopLeftRadius: "18px",
+      borderTopRightRadius: "18px",
+      position: "relative"
+    }}>
+      <i className="fa-solid fa-file-invoice-dollar"></i>
+    </div>
+    <div className="new-blog-content">
+      <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "10px", color: "#0f172a" }}>
+        Simplifying GST Billing &amp; Warehouse Logistics
+      </h3>
+      <p style={{ fontSize: "0.92rem", color: "#64748b", lineHeight: "1.6", flexGrow: 1, marginBottom: "20px" }}>
+        A comprehensive guide to managing stock leaks, automated procurement workflows, and direct Indian tax compliance.
+      </p>
+      <Link href="/best-gst-billing-accounting-erp-software-for-manufacturing-companies" className="new-read-more-btn">
+        Read More
+      </Link>
+    </div>
+  </div>
 </div>
 
 {/*  footer */}
