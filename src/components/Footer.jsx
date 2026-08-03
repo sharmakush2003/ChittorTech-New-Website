@@ -365,9 +365,7 @@ export default function Footer() {
                   <div className="ct-footer-contact-icon"><i className="fa-solid fa-location-dot"></i></div>
                   <div className="ct-footer-contact-text">
                     <div className="ct-footer-contact-label">Office</div>
-                    Office No. 204, 2nd Floor,<br />
-                    Kanishka Tower, Bhupalpura,<br />
-                    Udaipur, Rajasthan – 313001
+                    Chittorgarh, Rajasthan – 312001
                   </div>
                 </div>
 
