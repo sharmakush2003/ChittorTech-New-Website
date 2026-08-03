@@ -475,11 +475,20 @@
   font-style: italic;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+  .chatbot-container {
+    bottom: 16px;
+    right: 16px;
+  }
+  .chatbot-fab {
+    width: 46px;
+    height: 46px;
+    font-size: 1.15rem;
+  }
   .chatbot-window {
-    width: 90vw;
+    width: 92vw;
     height: 75vh;
-    right: 5vw;
-    bottom: 90px;
+    right: 4vw;
+    bottom: 75px;
   }
 }

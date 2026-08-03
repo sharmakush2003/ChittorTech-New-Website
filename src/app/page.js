@@ -136,7 +136,7 @@ const TABS = [
     bullets: [
       "Multi-lingual support (English, Hindi, regional dialects)",
       "Instant System & AI Knowledge Base synchronization",
-      "Omnichannel deployment: Web, WhatsApp, iOS & Android",
+      "Omnichannel deployment: Web, WhatsApp & Mobile Apps",
       "Autonomous workflow triggers & zero maintenance"
     ],
     href: "/pos",
