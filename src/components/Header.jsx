@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = {
   aiProducts: [
@@ -61,6 +62,12 @@ export default function Header() {
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const [scrolled, setScrolled]           = useState(false);
   const headerRef = useRef(null);
+  const pathname = usePathname();
+
+  // Close mobile drawer on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -761,7 +768,7 @@ export default function Header() {
       {/* ── Mobile Drawer ── */}
       <div className={`ct-mobile-drawer ${mobileOpen ? "open" : ""}`}>
         <div className="ct-mobile-head">
-          <Link href="/" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
             <img src="/assets/images/ct-logo.png" alt="ChittorTech" />
             <span style={{ color: '#fff', fontSize: '1.25rem', fontWeight: 800, marginLeft: '12px', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ChittorTech</span>
           </Link>
@@ -781,7 +788,7 @@ export default function Header() {
           </button>
           <div className={`ct-mobile-sub ${mobileExpanded === "ai" ? "open" : ""}`}>
             {NAV_ITEMS.aiProducts.map((item) => (
-              <Link key={item.label} href={item.href} className="ct-mobile-sub-link" onClick={() => setMobileOpen(false)}>
+              <Link key={item.label} href={item.href} className="ct-mobile-sub-link">
                 {item.label}
               </Link>
             ))}
@@ -798,19 +805,19 @@ export default function Header() {
           <div className={`ct-mobile-sub ${mobileExpanded === "industries" ? "open" : ""}`}>
             <div className="ct-mobile-sub-head">Retail & FMCG</div>
             {NAV_ITEMS.industries.retail.map((l) => (
-              <Link key={l.href} href={l.href} className="ct-mobile-sub-link" onClick={() => setMobileOpen(false)}>{l.label}</Link>
+              <Link key={l.href} href={l.href} className="ct-mobile-sub-link">{l.label}</Link>
             ))}
             <div className="ct-mobile-sub-head">Fashion & Apparel</div>
             {NAV_ITEMS.industries.fashion.map((l) => (
-              <Link key={l.href} href={l.href} className="ct-mobile-sub-link" onClick={() => setMobileOpen(false)}>{l.label}</Link>
+              <Link key={l.href} href={l.href} className="ct-mobile-sub-link">{l.label}</Link>
             ))}
             <div className="ct-mobile-sub-head">Hospitality</div>
             {NAV_ITEMS.industries.hospitality.map((l) => (
-              <Link key={l.href} href={l.href} className="ct-mobile-sub-link" onClick={() => setMobileOpen(false)}>{l.label}</Link>
+              <Link key={l.href} href={l.href} className="ct-mobile-sub-link">{l.label}</Link>
             ))}
             <div className="ct-mobile-sub-head">Enterprise</div>
             {NAV_ITEMS.industries.enterprise.map((l) => (
-              <Link key={l.href} href={l.href} className="ct-mobile-sub-link" onClick={() => setMobileOpen(false)}>{l.label}</Link>
+              <Link key={l.href} href={l.href} className="ct-mobile-sub-link">{l.label}</Link>
             ))}
           </div>
 
@@ -824,23 +831,23 @@ export default function Header() {
           </button>
           <div className={`ct-mobile-sub ${mobileExpanded === "services" ? "open" : ""}`}>
             {NAV_ITEMS.services.map((item) => (
-              <Link key={item.label} href={item.href} className="ct-mobile-sub-link" onClick={() => setMobileOpen(false)}>
+              <Link key={item.label} href={item.href} className="ct-mobile-sub-link">
                 {item.label}
               </Link>
             ))}
           </div>
 
           <div className="ct-mobile-divider" />
-          <Link href="/about-us" className="ct-mobile-link" onClick={() => setMobileOpen(false)}>
+          <Link href="/about-us" className="ct-mobile-link">
             <span><i className="fa-solid fa-circle-info" style={{marginRight:"8px",color:"#94a3b8"}}></i>About Us</span>
           </Link>
-          <Link href="/blog" className="ct-mobile-link" onClick={() => setMobileOpen(false)}>
+          <Link href="/blog" className="ct-mobile-link">
             <span><i className="fa-solid fa-newspaper" style={{marginRight:"8px",color:"#94a3b8"}}></i>Blog</span>
           </Link>
         </div>
 
         <div className="ct-mobile-footer">
-          <Link href="/contact-us" className="ct-mobile-cta-primary" onClick={() => setMobileOpen(false)}>
+          <Link href="/contact-us" className="ct-mobile-cta-primary">
             <i className="fa-solid fa-rocket"></i> Get Started Free
           </Link>
           <a href="tel:+917597451057" className="ct-mobile-cta-secondary">
