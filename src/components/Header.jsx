@@ -51,7 +51,7 @@ const NAV_ITEMS = {
     { href: "/search-engine-optimization",     icon: "fa-magnifying-glass", label: "SEO Growth Services",      desc: "Rank #1 on Google" },
     { href: "/digital-marketing-services",     icon: "fa-bullhorn",         label: "Digital Marketing",        desc: "Ads, leads, ROI" },
     { href: "/social-media-optimization",      icon: "fa-thumbs-up",        label: "Social Media (SMO)",       desc: "Grow your audience" },
-    { href: "/web-development-services",       icon: "fa-database",         label: "Custom Enterprise Portals",desc: "CRM, ERP, dashboards" },
+    { href: "/web-development-services",       icon: "fa-database",         label: "Custom Enterprise Portals",desc: "Custom web & SaaS platforms" },
   ],
 };
 
