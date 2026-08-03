@@ -13,13 +13,23 @@ import SliderInitializer from "@/components/SliderInitializer";
 export const metadata = {
   title: "Best AI & IT Solutions & IT Services in India – ChittorTech",
   description: "Transforming businesses through innovative, cloud-based software solutions. AI & IT Solutions, AI Knowledge Base, AI Support Chatbot and website development.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/assets/images/ct-logo.png" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         {/* Modern Google Fonts — Inter + Plus Jakarta Sans */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -34,6 +44,13 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <style>{`
+          /* ── Global Mobile Overflow Prevention ── */
+          html, body {
+            overflow-x: hidden !important;
+            max-width: 100% !important;
+          }
+          * { box-sizing: border-box; }
+          img { max-width: 100%; }
           /* Global Fix for City Landing Page Badges */
           .premium-city-hero .badge {
             white-space: normal !important;

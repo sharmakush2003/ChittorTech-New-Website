@@ -722,6 +722,9 @@ export default function HomePage() {
           box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
           transition: all 0.3s ease;
         }
+        .ct-tab-content > div {
+          min-width: 0;
+        }
         .ct-tab-headline {
           font-family: 'Plus Jakarta Sans', sans-serif;
           font-size: 1.5rem;
@@ -742,14 +745,18 @@ export default function HomePage() {
           margin: 0 0 20px;
         }
         .ct-tab-bullets li {
-          display: flex;
-          align-items: center;
+          display: grid;
+          grid-template-columns: 26px 1fr;
+          align-items: start;
           gap: 8px;
           font-size: 0.85rem;
           font-weight: 500;
           color: #334155;
           padding: 6px 0;
           border-bottom: 1px solid #f1f5f9;
+          min-width: 0;
+          word-break: break-word;
+          overflow-wrap: break-word;
         }
         .ct-tab-bullets li::before {
           content: '✓';
@@ -764,6 +771,7 @@ export default function HomePage() {
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          margin-top: 1px;
         }
         .ct-tab-visual {
           background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -779,20 +787,26 @@ export default function HomePage() {
         }
         .ct-tab-visual-head {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: space-between;
           margin-bottom: 16px;
           z-index: 2;
+          gap: 8px;
+          flex-wrap: wrap;
         }
         .ct-tab-visual-title {
           font-family: 'Plus Jakarta Sans', sans-serif;
           font-size: 0.95rem;
           font-weight: 700;
           color: #ffffff;
+          word-break: break-word;
+          overflow-wrap: break-word;
+          max-width: calc(100% - 60px);
         }
         .ct-tab-visual-sub {
           font-size: 0.72rem;
           color: #94a3b8;
+          word-break: break-word;
         }
         .ct-tab-icon-big {
           font-size: 4.5rem;
@@ -803,7 +817,7 @@ export default function HomePage() {
         }
         .ct-tab-feature-cards {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
           gap: 12px;
           position: relative;
           z-index: 2;
@@ -1036,14 +1050,95 @@ export default function HomePage() {
         .ct-bg-slate { background: #f8fafc; }
 
         @media (max-width: 1023px) {
-          .ct-feat-grid, .ct-ind-grid, .ct-process-grid, .ct-testi-grid { grid-template-columns: repeat(2, 1fr); }
+          .ct-feat-grid, .ct-process-grid, .ct-testi-grid { grid-template-columns: repeat(2, 1fr); }
+          .ct-ind-grid { grid-template-columns: repeat(3, 1fr); }
           .ct-stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
           .ct-tab-content { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
         }
+        @media (max-width: 767px) {
+          /* Word break for all text elements */
+          .ct-tab-bullets li, .ct-tab-desc, .ct-tab-headline,
+          .ct-section-h2, .ct-hp-hero h1, .ct-section-p { 
+            word-break: break-word; 
+            overflow-wrap: break-word;
+          }
+          /* Tab visual — constrain width */
+          .ct-tab-visual { 
+            width: 100%; 
+            max-width: 100%; 
+            min-height: auto !important;
+            padding: 18px 14px !important;
+            overflow: hidden;
+          }
+          .ct-tab-feature-cards { 
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 8px;
+          }
+          .ct-tab-mini-card { padding: 10px 8px; }
+          .ct-tab-mini-card .val { font-size: 1.1rem; }
+          .ct-tab-icon-big { font-size: 3rem; }
+        }
         @media (max-width: 640px) {
-          .ct-feat-grid, .ct-ind-grid, .ct-process-grid, .ct-testi-grid { grid-template-columns: 1fr; }
-          .ct-hp-hero { padding: 36px 0 30px; }
-          .ct-cta-banner { padding: 28px 16px; }
+          /* Prevent ALL horizontal overflow */
+          html, body, .ct-hp-hero, section, .container, .container-fluid { 
+            overflow-x: hidden !important; 
+            max-width: 100% !important;
+          }
+          /* Hero */
+          .ct-hp-hero { padding: 32px 0 24px; }
+          .ct-hp-hero h1 { font-size: 1.75rem !important; line-height: 1.2; word-break: break-word; }
+          .ct-hp-hero-sub { font-size: 0.88rem; max-width: 100% !important; }
+          .ct-hp-hero-pills { gap: 6px; }
+          .ct-hp-pill { font-size: 0.72rem; padding: 4px 10px; }
+          .ct-hp-hero-ctas { flex-direction: column; width: 100%; }
+          .ct-hp-hero-ctas a, .ct-hp-hero-ctas button { width: 100% !important; justify-content: center; box-sizing: border-box; }
+          .ct-hero-glass-card { margin-top: 20px; max-height: 220px; }
+          /* Grids */
+          .ct-feat-grid { grid-template-columns: 1fr; gap: 14px; }
+          .ct-ind-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+          .ct-process-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+          .ct-testi-grid { grid-template-columns: 1fr; }
+          .ct-stats-bar-inner { grid-template-columns: repeat(2, 1fr); }
+          /* Tabs */
+          .ct-tabs-wrap { flex-direction: column; gap: 4px; border-radius: 10px; }
+          .ct-tab-pill { width: 100%; justify-content: center; font-size: 0.82rem; padding: 8px 12px; }
+          .ct-tab-content { padding: 16px 14px; gap: 18px; }
+          .ct-tab-headline { font-size: 1.15rem; word-break: break-word; }
+          .ct-tab-desc { font-size: 0.85rem; word-break: break-word; overflow-wrap: break-word; }
+          .ct-tab-bullets li { font-size: 0.82rem; }
+          .ct-tab-feature-cards { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+          .ct-tab-visual { padding: 16px 12px !important; min-height: auto !important; }
+          .ct-tab-content a.ct-btn, .ct-tab-content button.ct-btn {
+            display: flex !important;
+            width: 100% !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+            white-space: normal !important;
+            text-align: center;
+          }
+          /* CTA */
+          .ct-cta-banner { padding: 24px 14px; border-radius: 12px; }
+          .ct-cta-banner h2 { font-size: 1.4rem !important; word-break: break-word; }
+          .ct-cta-banner-btns { flex-direction: column; align-items: stretch; }
+          .ct-cta-banner-btns a, .ct-cta-banner-btns button { width: 100%; justify-content: center; }
+          /* Section header */
+          .ct-section-h2 { font-size: 1.4rem !important; word-break: break-word; }
+          .ct-section-p { font-size: 0.88rem; }
+          /* Marquee section */
+          .ct-tech-marquee-sec { padding: 22px 0 18px; }
+          .ct-tech-chip { font-size: 0.78rem; padding: 5px 11px; }
+        }
+        @media (max-width: 420px) {
+          .ct-hp-hero h1 { font-size: 1.45rem !important; }
+          .ct-ind-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+          .ct-process-grid { grid-template-columns: 1fr; gap: 10px; }
+          .ct-tab-mini-card .val { font-size: 1rem; }
+          .ct-tab-mini-card .lbl { font-size: 0.65rem; }
+          .ct-stat-num { font-size: 1.4rem; }
+          .ct-stat-lbl { font-size: 0.72rem; }
+          .ct-ind-label { font-size: 0.72rem; }
+          .ct-tab-visual-title { font-size: 0.82rem; }
+          .ct-tab-visual-sub { font-size: 0.65rem; }
         }
       `}</style>
 
@@ -1210,7 +1305,7 @@ export default function HomePage() {
                   Learn More About {tab.label} <i className="fa-solid fa-arrow-right"></i>
                 </Link>
               </div>
-              <div className="ct-tab-visual">
+              <div className="ct-tab-visual" style={{ overflow: 'hidden', maxWidth: '100%', width: '100%', boxSizing: 'border-box' }}>
                 <div className="ct-tab-visual-head">
                   <div>
                     <div className="ct-tab-visual-title">{tab.previewTitle}</div>
