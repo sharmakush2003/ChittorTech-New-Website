@@ -423,6 +423,19 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
                     </select>
                   </div>
 
+                  <div className="dy-input-group" style={{ alignItems: "flex-start", padding: "6px" }}>
+                    <span className="dy-input-icon" style={{ marginTop: "8px" }}><i className="fas fa-comment-dots"></i></span>
+                    <textarea
+                      className="form-control"
+                      name="message"
+                      placeholder="Specific Requirements (Optional)"
+                      rows="2"
+                      style={{ border: "none", resize: "none", width: "100%", outline: "none", fontSize: "0.86rem", fontWeight: "500", background: "transparent" }}
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </div>
+
                   <button type="submit" className="dy-btn" disabled={submitting}>
                     {submitting ? "Submitting..." : "Submit Inquiry & Request Demo"}
                     <i className="fas fa-arrow-right"></i>
