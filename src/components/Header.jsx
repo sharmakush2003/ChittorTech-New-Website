@@ -48,7 +48,6 @@ const NAV_ITEMS = {
     { href: "/web-development-services",       icon: "fa-code",             label: "Web Development",          desc: "Next.js, React, Node.js" },
     { href: "/e-commerce-website-development", icon: "fa-cart-shopping",    label: "E-Commerce Solutions",     desc: "Full-stack storefronts" },
     { href: "/android-application",            icon: "fa-android",          label: "Android Mobile Apps",      desc: "Native & cross-platform" },
-    { href: "/ios-application",                icon: "fa-apple",            label: "iOS Mobile Apps",          desc: "Swift & React Native" },
     { href: "/search-engine-optimization",     icon: "fa-magnifying-glass", label: "SEO Growth Services",      desc: "Rank #1 on Google" },
     { href: "/digital-marketing-services",     icon: "fa-bullhorn",         label: "Digital Marketing",        desc: "Ads, leads, ROI" },
     { href: "/social-media-optimization",      icon: "fa-thumbs-up",        label: "Social Media (SMO)",       desc: "Grow your audience" },
