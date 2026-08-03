@@ -1,298 +1,549 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import "../../../public/assets/css/premium-products.css";
-
 
 export default function Page() {
   return (
-    <>
-
+    <div className="ab-page-wrap">
       <style>{`
-        /* ChittorTech Design System — Inner Page Overrides */
-        body { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; }
-        
-        /* Section spacing */
-        section { position: relative; }
-        
-        /* Upgrade existing button styles */
-        .schedule-btn, .btn-hero-primary, a.schedule-btn {
+        /* ─── About Us Page Scoped Design System ─── */
+        .ab-page-wrap {
+          font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+          color: #1e293b;
+          background: #ffffff;
+          overflow-x: hidden;
+        }
+        .ab-page-wrap h1, 
+        .ab-page-wrap h2, 
+        .ab-page-wrap h3, 
+        .ab-page-wrap h4, 
+        .ab-page-wrap h5 {
+          font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+        }
+
+        /* ── Hero Section ── */
+        .ab-hero {
+          background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #1e293b 100%);
+          padding: 95px 0 75px;
+          position: relative;
+          color: #ffffff !important;
+          overflow: hidden;
+        }
+        .ab-hero::before {
+          content: '';
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+          top: -150px;
+          right: -100px;
+          pointer-events: none;
+        }
+        .ab-hero-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: #38bdf8 !important;
+          font-size: 0.78rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          padding: 6px 16px;
+          border-radius: 50px;
+          margin-bottom: 20px;
+        }
+        .ab-hero-title {
+          font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+          font-weight: 800;
+          color: #ffffff !important;
+          line-height: 1.18;
+          margin-bottom: 18px;
+          letter-spacing: -0.5px;
+        }
+        .ab-hero-desc {
+          font-size: 1.08rem;
+          color: rgba(255, 255, 255, 0.85) !important;
+          line-height: 1.75;
+          max-width: 640px;
+          margin-bottom: 32px;
+        }
+
+        /* Buttons */
+        .ab-btn-primary {
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: 8px !important;
+          padding: 13px 30px !important;
+          background: linear-gradient(135deg, #2563eb, #06b6d4) !important;
+          color: #ffffff !important;
+          border-radius: 50px !important;
+          font-weight: 700 !important;
+          font-size: 0.92rem !important;
+          border: none !important;
+          text-decoration: none !important;
+          box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3) !important;
+          transition: all 0.25s ease !important;
+          cursor: pointer;
+        }
+        .ab-btn-primary:hover {
+          transform: translateY(-2px) !important;
+          box-shadow: 0 12px 28px rgba(37, 99, 235, 0.45) !important;
+          color: #ffffff !important;
+        }
+        .ab-btn-ghost {
           display: inline-flex !important;
           align-items: center !important;
           gap: 8px !important;
           padding: 12px 28px !important;
-          background: linear-gradient(135deg, #291fbc, #3b82f6) !important;
-          color: #fff !important;
-          border-radius: 10px !important;
-          font-weight: 700 !important;
-          font-family: 'Inter', sans-serif !important;
-          font-size: 0.95rem !important;
-          border: none !important;
+          background: transparent !important;
+          color: #ffffff !important;
+          border-radius: 50px !important;
+          font-weight: 600 !important;
+          font-size: 0.92rem !important;
+          border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
           text-decoration: none !important;
           transition: all 0.25s ease !important;
-          box-shadow: 0 4px 16px rgba(41,31,188,0.3) !important;
         }
-        .schedule-btn:hover, a.schedule-btn:hover {
-          transform: translateY(-2px) !important;
-          box-shadow: 0 8px 24px rgba(41,31,188,0.4) !important;
-          color: #fff !important;
+        .ab-btn-ghost:hover {
+          background: rgba(255, 255, 255, 0.1) !important;
+          border-color: #ffffff !important;
+          color: #ffffff !important;
         }
 
-        /* Upgrade section titles */
-        .section-title, .main-title, .sec-title {
-          font-family: 'Plus Jakarta Sans', sans-serif !important;
+        /* Stat Cards */
+        .ab-stat-card {
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 18px;
+          padding: 22px 16px;
+          text-align: center;
+          transition: all 0.3s ease;
+        }
+        .ab-stat-card:hover {
+          background: rgba(255, 255, 255, 0.14);
+          transform: translateY(-4px);
+          border-color: rgba(56, 189, 248, 0.4);
+        }
+        .ab-stat-num {
+          font-size: 2.1rem;
+          font-weight: 800;
+          color: #38bdf8 !important;
+          line-height: 1;
+          margin-bottom: 6px;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .ab-stat-label {
+          font-size: 0.76rem;
+          color: rgba(255, 255, 255, 0.8) !important;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        /* Section Wrappers */
+        .ab-section {
+          padding: 80px 0;
+          position: relative;
+        }
+        .ab-sec-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: #eff6ff;
+          color: #2563eb !important;
+          border: 1px solid #bfdbfe;
+          font-size: 0.74rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          padding: 5px 14px;
+          border-radius: 30px;
+          margin-bottom: 14px;
+        }
+        .ab-sec-title {
+          font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+          font-weight: 800;
+          color: #0f172a !important;
+          margin-bottom: 14px;
+          letter-spacing: -0.4px;
+        }
+
+        /* White Elevated Card */
+        .ab-card {
+          background: #ffffff;
+          border-radius: 20px;
+          padding: 32px;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 6px 24px rgba(15, 23, 42, 0.04);
+          transition: all 0.3s ease;
+          height: 100%;
+        }
+        .ab-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 16px 40px rgba(37, 99, 235, 0.1);
+          border-color: #bfdbfe;
+        }
+
+        /* Icon Badge Box */
+        .ab-icon-box {
+          width: 50px;
+          height: 50px;
+          border-radius: 14px;
+          background: linear-gradient(135deg, #2563eb, #06b6d4);
+          color: #ffffff !important;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.25rem;
+          margin-bottom: 20px;
+          box-shadow: 0 6px 16px rgba(37, 99, 235, 0.22);
+        }
+
+        /* Meaning Banner (Dark High-Contrast Card) */
+        .ab-meaning-card {
+          background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+          border-radius: 24px;
+          padding: 44px 36px;
+          color: #ffffff !important;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+        }
+        .ab-meaning-title {
+          font-size: 2rem;
+          font-weight: 800;
+          color: #ffffff !important;
+          margin-bottom: 14px;
+        }
+        .ab-meaning-desc {
+          color: rgba(255, 255, 255, 0.88) !important;
+          line-height: 1.8;
+          font-size: 1.04rem;
+          margin: 0;
+        }
+
+        /* Differentiator Numbers */
+        .ab-diff-num {
+          font-size: 1.7rem;
+          font-weight: 800;
+          color: #2563eb !important;
+          margin-bottom: 10px;
+        }
+
+        /* CTA Box */
+        .ab-cta-banner {
+          background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2563eb 100%);
+          border-radius: 28px;
+          padding: 56px 36px;
+          color: #ffffff !important;
+          text-align: center;
+          box-shadow: 0 20px 50px rgba(37, 99, 235, 0.25);
+        }
+        .ab-cta-title {
+          font-size: clamp(1.8rem, 4vw, 2.5rem);
+          font-weight: 800;
+          color: #ffffff !important;
+          margin-bottom: 14px;
+        }
+        .ab-cta-desc {
+          font-size: 1.05rem;
+          color: rgba(255, 255, 255, 0.88) !important;
+          max-width: 620px;
+          margin: 0 auto 30px;
+          line-height: 1.7;
+        }
+        .ab-btn-light {
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: 8px !important;
+          padding: 13px 30px !important;
+          background: #ffffff !important;
+          color: #1d4ed8 !important;
+          border-radius: 50px !important;
           font-weight: 800 !important;
-          color: #1e1b4b !important;
+          font-size: 0.92rem !important;
+          border: none !important;
+          text-decoration: none !important;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+          transition: all 0.25s ease !important;
+          cursor: pointer;
         }
-
-        /* Upgrade cards */
-        .feature-card, .item-wrap, .why-item, .benfit-item {
-          transition: all 0.3s ease !important;
-          border-radius: 16px !important;
-        }
-        .feature-card:hover, .item-wrap:hover, .why-item:hover {
-          transform: translateY(-6px) !important;
-          box-shadow: 0 20px 50px rgba(41,31,188,0.1) !important;
-        }
-
-        /* Upgrade CTA sections */
-        .cta-sec, .cta-section {
-          background: linear-gradient(135deg, #1e1b4b 0%, #291fbc 60%, #0e7490 100%) !important;
-        }
-        
-        /* Breadcrumb modernization */
-        .breadcrumb-item.active { color: #06b6d4 !important; }
-        
-        /* FAQ accordion */
-        .accordion-button:not(.collapsed) {
-          color: #291fbc !important;
-          background-color: rgba(41,31,188,0.05) !important;
-          box-shadow: none !important;
-        }
-        .accordion-button:focus { box-shadow: 0 0 0 3px rgba(41,31,188,0.2) !important; }
-        
-        /* Tab modernization */
-        .nav-tabs .nav-link.active {
-          color: #291fbc !important;
-          border-bottom-color: #291fbc !important;
+        .ab-btn-light:hover {
+          transform: translateY(-2px) !important;
+          background: #f8fafc !important;
+          color: #1e40af !important;
         }
       `}</style>
 
-      {/* ── Modern Inner Page Hero ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #291fbc 55%, #0e7490 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 60%)', pointerEvents: 'none' }}></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="row align-items-center g-4">
-            <div className="col-lg-8">
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-building`}></i> Our Story
-              </span>
-              <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                About ChittorTech
+      {/* ── 1. Hero Section ── */}
+      <section className="ab-hero">
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div className="row align-items-center g-5">
+            <div className="col-lg-7">
+              <div className="ab-hero-pill">
+                <i className="fa-solid fa-sparkles"></i> Pioneering AI &amp; Software Engineering
+              </div>
+              <h1 className="ab-hero-title">
+                About ChittorTech: Building High-Impact AI &amp; Software Solutions
               </h1>
-              <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                Passionate technologists empowering Indian businesses with cutting-edge software solutions.
+              <p className="ab-hero-desc">
+                We are a team of passionate engineers, AI researchers, and software architects dedicated to empowering Indian SMEs and enterprises with cutting-edge AI chatbots, fine-tuned LLMs, RAG knowledge systems, and custom software platforms.
               </p>
-              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">
-                  <i className="fa-solid fa-calendar-check"></i> Book Free Demo
+              <div className="d-flex gap-3 flex-wrap">
+                <button className="ab-btn-primary" data-bs-toggle="modal" data-bs-target="#trialModal">
+                  <i className="fa-solid fa-rocket"></i> Book Free Demo &amp; Consultation
                 </button>
-                <a href="/contact-us" className="ct-btn ct-btn-ghost">
+                <Link href="/contact-us" className="ab-btn-ghost">
                   <i className="fa-solid fa-envelope"></i> Contact Us
-                </a>
+                </Link>
               </div>
             </div>
-            <div className="col-lg-4 d-none d-lg-flex justify-content-center">
-              <div style={{ width: '160px', height: '160px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem', color: 'rgba(255,255,255,0.4)' }}>
-                <i className={`fa-solid fa-building`}></i>
+
+            <div className="col-lg-5">
+              <div className="row g-3">
+                <div className="col-6">
+                  <div className="ab-stat-card">
+                    <div className="ab-stat-num">250+</div>
+                    <div className="ab-stat-label">Projects Delivered</div>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="ab-stat-card">
+                    <div className="ab-stat-num">99.8%</div>
+                    <div className="ab-stat-label">Client Satisfaction</div>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="ab-stat-card">
+                    <div className="ab-stat-num">4.8★</div>
+                    <div className="ab-stat-label">Google Rating</div>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="ab-stat-card">
+                    <div className="ab-stat-num">24/7</div>
+                    <div className="ab-stat-label">Intelligent Automation</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── About Section ── */}
-      <section className="about-section">
+      {/* ── 2. Who We Are Section ── */}
+      <section className="ab-section" style={{ background: "#f8fafc" }}>
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <div className="heading-wrap text-start">
-                <h2>About <span>ChittorTech</span></h2>
-                <h5>Empowering Businesses with Cutting-Edge AI &amp; Next-Gen IT Solutions</h5>
-                <p>
-                  At ChittorTech, we are a team of passionate engineers, AI researchers, and product builders dedicated to
-                  transforming how businesses operate with technology. We build custom RAG pipelines, fine-tuned LLMs,
-                  intelligent AI chatbots, and enterprise-grade software that delivers real, measurable impact.
+          <div className="row align-items-center g-5">
+            <div className="col-lg-6">
+              <div className="ab-sec-pill">
+                <i className="fa-solid fa-building"></i> Who We Are
+              </div>
+              <h2 className="ab-sec-title">
+                Empowering Businesses with Cutting-Edge AI &amp; Next-Gen IT Solutions
+              </h2>
+              <p style={{ color: "#475569", lineHeight: "1.8", fontSize: "1.02rem", marginBottom: "16px" }}>
+                At ChittorTech, we engineer solutions that deliver real, measurable impact. From deploying autonomous AI agents that handle customer support 24/7, to architecting private knowledge search systems across thousands of enterprise documents, and engineering high-performance web and mobile applications — ChittorTech is your end-to-end technology partner.
+              </p>
+              <p style={{ color: "#475569", lineHeight: "1.8", fontSize: "1.02rem", marginBottom: "24px" }}>
+                We believe cutting-edge AI and software should be accessible to every business — not just large tech giants. ChittorTech bridges this gap by delivering production-ready, scalable, and secure AI solutions tailored to the specific needs of SMEs and enterprise clients alike.
+              </p>
+              
+              <div className="d-flex flex-column gap-3">
+                <div className="d-flex align-items-center gap-3">
+                  <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#dbeafe", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "0.85rem" }}>
+                    <i className="fa-solid fa-check"></i>
+                  </div>
+                  <span style={{ fontWeight: "600", color: "#1e293b" }}>Production-Ready AI Pipelines &amp; Autonomous Workflows</span>
+                </div>
+                <div className="d-flex align-items-center gap-3">
+                  <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#dbeafe", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "0.85rem" }}>
+                    <i className="fa-solid fa-check"></i>
+                  </div>
+                  <span style={{ fontWeight: "600", color: "#1e293b" }}>100% Data Confidentiality &amp; Private Cloud Deployments</span>
+                </div>
+                <div className="d-flex align-items-center gap-3">
+                  <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#dbeafe", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "0.85rem" }}>
+                    <i className="fa-solid fa-check"></i>
+                  </div>
+                  <span style={{ fontWeight: "600", color: "#1e293b" }}>Dedicated Post-Launch Technical Support &amp; Maintenance</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-6">
+              <img
+                src="/assets/images/about-img.png"
+                alt="ChittorTech AI Innovation"
+                className="img-fluid"
+                style={{ borderRadius: "20px", boxShadow: "0 15px 40px rgba(15, 23, 42, 0.08)", border: "1px solid #e2e8f0" }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. Brand Heritage Section ── */}
+      <section className="ab-section" style={{ background: "#ffffff" }}>
+        <div className="container">
+          <div className="ab-meaning-card">
+            <div className="row align-items-center g-4">
+              <div className="col-lg-9">
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(56, 189, 248, 0.15)", border: "1px solid rgba(56, 189, 248, 0.3)", color: "#38bdf8", padding: "6px 16px", borderRadius: "30px", fontSize: "0.76rem", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "16px" }}>
+                  <i className="fa-solid fa-shield-halved"></i> Our Origin &amp; Values
+                </div>
+                <h2 className="ab-meaning-title">
+                  The Meaning Behind <span style={{ color: "#38bdf8" }}>ChittorTech</span>
+                </h2>
+                <p className="ab-meaning-desc">
+                  The name <strong>"ChittorTech"</strong> is inspired by <strong>Chittorgarh</strong> — a historic city of valor, resilience, and excellence in Rajasthan. Combined with <strong>"Tech"</strong>, it reflects our core philosophy: <strong>building technology that stands strong, serves with precision, and empowers businesses to rise above challenges.</strong> We bring the same spirit of excellence to every AI system, software product, and digital solution we build.
                 </p>
-                <br />
-                <p>
-                  From deploying autonomous AI agents that handle customer support 24/7, to architecting private knowledge
-                  search systems across thousands of enterprise documents, and engineering high-performance web and mobile
-                  applications — ChittorTech is your end-to-end technology partner.
+              </div>
+              <div className="col-lg-3 text-lg-end text-center d-none d-lg-block">
+                <div style={{ display: "inline-flex", width: "110px", height: "110px", borderRadius: "50%", background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", alignItems: "center", justifyContent: "center", fontSize: "3rem", color: "#38bdf8" }}>
+                  <i className="fa-solid fa-building"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Vision & Mission Section ── */}
+      <section className="ab-section" style={{ background: "#f8fafc" }}>
+        <div className="container">
+          <div className="text-center mb-5">
+            <div className="ab-sec-pill">
+              <i className="fa-solid fa-compass"></i> Guiding Vision
+            </div>
+            <h2 className="ab-sec-title">Our Vision &amp; Mission</h2>
+          </div>
+
+          <div className="row g-4">
+            <div className="col-md-6">
+              <div className="ab-card">
+                <div className="ab-icon-box">
+                  <i className="fa-solid fa-eye"></i>
+                </div>
+                <h3 style={{ fontSize: "1.45rem", fontWeight: "800", color: "#0f172a", marginBottom: "12px" }}>
+                  Vision
+                </h3>
+                <p style={{ color: "#475569", lineHeight: "1.75", fontSize: "1.02rem", margin: 0 }}>
+                  To be India's most trusted AI engineering company — making intelligent automation, custom LLMs, and next-generation software accessible to every business, from ambitious startups to global enterprises.
                 </p>
-                <br />
-                <p>
-                  We believe cutting-edge AI and software should be accessible to every business — not just large
-                  enterprises. ChittorTech bridges this gap by delivering production-ready, scalable, and secure AI
-                  solutions tailored to the specific needs of SMEs and enterprise clients alike.
+              </div>
+            </div>
+
+            <div className="col-md-6">
+              <div className="ab-card">
+                <div className="ab-icon-box" style={{ background: "linear-gradient(135deg, #06b6d4, #3b82f6)" }}>
+                  <i className="fa-solid fa-bullseye"></i>
+                </div>
+                <h3 style={{ fontSize: "1.45rem", fontWeight: "800", color: "#0f172a", marginBottom: "12px" }}>
+                  Mission
+                </h3>
+                <p style={{ color: "#475569", lineHeight: "1.75", fontSize: "1.02rem", margin: 0 }}>
+                  To accelerate digital transformation for businesses by delivering custom AI solutions, RAG-powered knowledge systems, intelligent chatbots, and full-stack software that unlock new levels of efficiency, intelligence, and growth.
                 </p>
               </div>
             </div>
-            <div className="col-md-6">
-              <img src="/assets/images/about-img.png" alt="ChittorTech AI Solutions" className="about-img" />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Vision & Mission Section ── */}
-      <section className="mission-section">
+      {/* ── 5. Why Choose ChittorTech (6 Highlights) ── */}
+      <section className="ab-section" style={{ background: "#ffffff" }}>
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <div className="mission-img">
-                <img src="/assets/images/mission.png" alt="ChittorTech Vision" className="mission-img" />
-              </div>
+          <div className="text-center mb-5">
+            <div className="ab-sec-pill">
+              <i className="fa-solid fa-award"></i> Why Choose Us
             </div>
-            <div className="col-md-6">
-              <div className="mission-wrap">
-                <h3>Vision</h3>
-                <p>To be India's most trusted AI engineering company — making intelligent automation, custom LLMs, and
-                  next-generation software accessible to every business, from ambitious startups to global enterprises.</p>
-                <br />
-                <h3>Mission</h3>
-                <p>To accelerate digital transformation for businesses by delivering custom AI solutions, RAG-powered
-                  knowledge systems, intelligent chatbots, and full-stack software that unlock new levels of efficiency,
-                  intelligence, and growth.</p>
-                <div className="mission-wrap">
-                  <h4>Our Commitment To Innovation</h4>
-                  <p>At ChittorTech, innovation is at the heart of everything we do. Our AI-driven services enable businesses to:</p>
-                  <ul>
-                    <li>Deploy custom AI chatbots and voice assistants that resolve queries instantly</li>
-                    <li>Build RAG-powered search systems across internal documents and knowledge bases</li>
-                    <li>Fine-tune open-source LLMs on proprietary data for maximum accuracy and security</li>
-                    <li>Automate complex workflows with multi-step autonomous AI agents</li>
-                    <li>Develop high-performance web, mobile, and SaaS applications</li>
-                    <li>Scale with cloud-native infrastructure on AWS, GCP, and Azure</li>
-                  </ul>
+            <h2 className="ab-sec-title">Why Leading Businesses Partner With ChittorTech</h2>
+          </div>
+
+          <div className="row g-4">
+            {[
+              { num: "01", title: "250+ Projects Delivered", desc: "Proven track record delivering high-performance AI, web, mobile, and enterprise SaaS products across India." },
+              { num: "02", title: "RAG & LLM Specialists", desc: "Deep expertise in custom LLM fine-tuning, RAG document search, and multi-step autonomous AI workflows." },
+              { num: "03", title: "End-to-End Execution", desc: "From initial discovery and architectural design to cloud deployment and ongoing maintenance." },
+              { num: "04", title: "4.8+ Google Rating", desc: "Consistently rated top-tier by clients reflecting our unwavering commitment to quality and satisfaction." },
+              { num: "05", title: "100% Data Confidentiality", desc: "Air-gapped and private cloud deployment options to keep your enterprise data completely secure." },
+              { num: "06", title: "Dedicated Support", desc: "Continuous technical support, system monitoring, and performance optimizations post-launch." },
+            ].map((item, idx) => (
+              <div key={idx} className="col-lg-4 col-md-6">
+                <div className="ab-card">
+                  <div className="ab-diff-num">{item.num}</div>
+                  <h4 style={{ fontSize: "1.15rem", fontWeight: "800", color: "#0f172a", marginBottom: "8px" }}>
+                    {item.title}
+                  </h4>
+                  <p style={{ color: "#64748b", fontSize: "0.92rem", lineHeight: "1.6", margin: 0 }}>
+                    {item.desc}
+                  </p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Why Choose ChittorTech Section ── */}
-      <section className="mission-section">
+      {/* ── 6. Industries We Serve ── */}
+      <section className="ab-section" style={{ background: "#f8fafc" }}>
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-7">
-              <div className="mission-wrap">
-                <div className="heading-wrap">
-                  <h2>Why Choose <span>ChittorTech</span>?</h2>
-                </div>
-                <ul>
-                  <li>250+ AI &amp; technology projects delivered across India</li>
-                  <li>Specialized in RAG, LLM fine-tuning, and agentic AI workflows</li>
-                  <li>End-to-end delivery — from discovery to production deployment</li>
-                  <li>4.8+ Google reviews reflecting consistent client satisfaction</li>
-                  <li>Affordable, scalable solutions for SMEs and enterprise clients</li>
-                  <li>100% data privacy options including local and private cloud deployments</li>
-                  <li>Dedicated post-launch technical support and monitoring</li>
-                </ul>
-              </div>
+          <div className="text-center mb-5">
+            <div className="ab-sec-pill">
+              <i className="fa-solid fa-briefcase"></i> Industry Solutions
             </div>
-            <div className="col-md-5">
-              <div className="soft-solutions-img">
-                <img src="/assets/images/img1.png" alt="Why ChittorTech" className="mission-img" />
-              </div>
-            </div>
+            <h2 className="ab-sec-title">Who We Serve</h2>
           </div>
-        </div>
-      </section>
 
-      {/* ── Brand Origin Section ── */}
-      <section className="mission-section">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-12">
-              <div className="mission-wrap">
-                <div className="heading-wrap text-center">
-                  <h2>The Meaning Behind <span>ChittorTech</span></h2>
-                  <p>The name <strong>"ChittorTech"</strong> is inspired by <strong>Chittorgarh</strong> — a city of valor,
-                    resilience, and excellence in Rajasthan. Combined with <strong>"Tech"</strong>, it reflects our core
-                    philosophy: <strong>building technology that stands strong, serves with precision, and empowers
-                    businesses to rise above challenges.</strong> We bring the same spirit of excellence to every AI
-                    system, software product, and digital solution we build.</p>
+          <div className="row g-4">
+            {[
+              { title: "E-Commerce & Retail", desc: "AI product search, recommendation engines, automated support chatbots, and smart inventory." },
+              { title: "Healthcare & Pharma", desc: "Medical document AI, patient data extraction, clinical decision support, and compliance automation." },
+              { title: "Manufacturing & Logistics", desc: "Computer vision quality control, predictive maintenance, supply chain AI, and real-time tracking." },
+              { title: "BFSI & Fintech", desc: "AI underwriting, document OCR, risk analytics, and regulatory compliance automation." },
+              { title: "Education & EdTech", desc: "AI tutoring systems, intelligent content search, student analytics, and personalized learning paths." },
+              { title: "Legal & Consulting", desc: "Contract AI, knowledge management, automated research tools, and document summarization." },
+            ].map((ind, idx) => (
+              <div key={idx} className="col-lg-4 col-md-6">
+                <div className="ab-card" style={{ padding: "26px" }}>
+                  <h4 style={{ fontSize: "1.1rem", fontWeight: "700", color: "#0f172a", marginBottom: "8px" }}>
+                    {ind.title}
+                  </h4>
+                  <p style={{ color: "#64748b", fontSize: "0.9rem", lineHeight: "1.6", margin: 0 }}>
+                    {ind.desc}
+                  </p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Who We Serve Section ── */}
-      <section className="mission-section">
+      {/* ── 7. Call To Action ── */}
+      <section className="ab-section" style={{ background: "#ffffff", paddingBottom: "90px" }}>
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-7 order-md-2">
-              <div className="mission-wrap">
-                <div className="heading-wrap">
-                  <h2>Who <span>We Serve</span></h2>
-                </div>
-                <ul>
-                  <li><strong>E-Commerce &amp; Retail:</strong> AI-powered product search, recommendation engines, automated customer support, and fraud detection</li>
-                  <li><strong>Healthcare &amp; Pharma:</strong> Medical document AI, patient data extraction, clinical decision support, and compliance automation</li>
-                  <li><strong>Manufacturing &amp; Logistics:</strong> Computer vision quality control, predictive maintenance, supply chain AI, and real-time tracking</li>
-                  <li><strong>BFSI &amp; Fintech:</strong> AI underwriting, document OCR, risk analytics, and regulatory compliance automation</li>
-                  <li><strong>Education &amp; EdTech:</strong> AI tutoring systems, intelligent content search, student analytics, and personalized learning paths</li>
-                  <li><strong>Legal &amp; Consulting:</strong> Contract AI, knowledge management, automated research tools, and document summarization</li>
-                  <li><strong>Startups &amp; SMEs:</strong> Full-stack web &amp; mobile apps, SaaS development, SEO, and digital marketing services</li>
-                  <li><strong>Enterprise IT:</strong> Cloud migrations, custom software integrations, API development, and cybersecurity solutions</li>
-                  <li>Our solutions are flexible and scalable — built for businesses of all sizes seeking to compete with AI-powered technology.</li>
-                </ul>
-              </div>
-            </div>
-            <div className="col-md-5 order-md-1">
-              <div className="soft-solutions-img">
-                <img src="/assets/images/img1.png" alt="Who We Serve" className="mission-img" />
-              </div>
+          <div className="ab-cta-banner">
+            <h2 className="ab-cta-title">
+              Ready To Accelerate Your Business With AI?
+            </h2>
+            <p className="ab-cta-desc">
+              Schedule a free consultation today and discover how ChittorTech can engineer tailored AI automation and software solutions for your growth.
+            </p>
+            <div className="d-flex gap-3 justify-content-center flex-wrap">
+              <button className="ab-btn-light" data-bs-toggle="modal" data-bs-target="#trialModal">
+                <i className="fa-solid fa-calendar-check"></i> Book Free Demo &amp; Consultation
+              </button>
+              <Link href="/contact-us" className="ab-btn-ghost">
+                <i className="fa-solid fa-envelope"></i> Contact Us
+              </Link>
             </div>
           </div>
         </div>
       </section>
-
-      {/* ── Commitment Section ── */}
-      <section className="values-section">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <div className="values-text">
-                <h2>Our Commitment To <span>Your Success</span></h2>
-                <p>At ChittorTech, we partner with businesses to engineer technology that creates a measurable competitive
-                  advantage. Our AI solutions and software products help enterprises:</p>
-                <ul>
-                  <li>Automate repetitive workflows and eliminate manual inefficiencies</li>
-                  <li>Make faster, smarter decisions with AI-driven analytics and insights</li>
-                  <li>Deploy private, secure AI systems with zero compromise on data confidentiality</li>
-                  <li>Scale from prototype to production with cloud-native, enterprise-grade infrastructure</li>
-                  <li>Drive measurable ROI through automation, lead generation, and customer retention</li>
-                </ul>
-                <p>Hundreds of businesses and professionals trust ChittorTech — making us one of India's most reliable
-                  AI engineering and software development partners.</p>
-                <p><strong>Schedule a Free Consultation Today</strong> and discover how ChittorTech can accelerate your
-                  digital transformation.</p>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="values-image">
-                <img src="/assets/images/value.png" alt="ChittorTech Team Collaboration" width="500" height="auto" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }
