@@ -162,7 +162,7 @@ export default function Header() {
         }
         .ct-header-inner {
           display: flex; align-items: center; justify-content: space-between;
-          height: 68px; padding: 0 28px;
+          height: 76px; padding: 0 28px;
           max-width: 1360px; margin: 0 auto; gap: 12px;
         }
 
@@ -172,7 +172,7 @@ export default function Header() {
           text-decoration: none;
         }
         .ct-logo img {
-          height: 42px; width: auto; object-fit: contain;
+          height: 50px; width: auto; object-fit: contain;
           transition: filter 0.25s ease;
           /* White logo → make it show on white bg using invert + brand color */
           filter: invert(1) sepia(1) saturate(8) hue-rotate(200deg) brightness(0.75);
@@ -180,6 +180,14 @@ export default function Header() {
         .ct-logo:hover img {
           filter: invert(1) sepia(1) saturate(10) hue-rotate(200deg) brightness(0.65);
           transform: scale(1.02);
+        }
+        .ct-logo-text {
+          font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+          font-size: 1.45rem;
+          font-weight: 800;
+          color: #0f172a;
+          margin-left: 12px;
+          letter-spacing: -0.02em;
         }
 
         /* ─── Desktop Nav ─── */
@@ -407,105 +415,113 @@ export default function Header() {
         }
         .ct-hamburger:hover { background: rgba(41,31,188,0.06); }
         .ct-hamburger span {
-          width: 20px; height: 2px; border-radius: 2px;
-          background: #1e293b; transition: all 0.3s ease;
+          width: 24px; height: 3px; border-radius: 1px;
+          background: #000000; transition: all 0.3s ease;
           display: block;
         }
-        .ct-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .ct-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
         .ct-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-        .ct-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .ct-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
         /* ─── Mobile Drawer ─── */
         .ct-mobile-overlay {
-          display: none;
           position: fixed; inset: 0; background: rgba(0,0,0,0.45);
           backdrop-filter: blur(4px); z-index: 8000;
-          opacity: 0; transition: opacity 0.3s ease;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-        .ct-mobile-overlay.open { opacity: 1; }
+        .ct-mobile-overlay.open {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
         .ct-mobile-drawer {
           position: fixed; top: 0; right: -100%; bottom: 0;
           width: min(340px, 88vw);
-          background: #fff; z-index: 8001;
-          box-shadow: -24px 0 80px rgba(0,0,0,0.18);
+          background: #0f172a; z-index: 8001;
+          box-shadow: -24px 0 80px rgba(0,0,0,0.4);
           transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
           display: flex; flex-direction: column; overflow-y: auto;
+          color: #f8fafc;
         }
         .ct-mobile-drawer.open { right: 0; }
         .ct-mobile-head {
           display: flex; align-items: center; justify-content: space-between;
-          padding: 20px 20px 16px;
-          border-bottom: 1px solid #f1f5f9;
+          padding: 20px 24px 16px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           flex-shrink: 0;
         }
-        .ct-mobile-head img { height: 36px; object-fit: contain; }
+        .ct-mobile-head img { height: 38px; object-fit: contain; filter: brightness(0) invert(1) !important; }
         .ct-mobile-close {
-          width: 34px; height: 34px; border-radius: 8px;
-          border: 1px solid #e2e8f0; background: transparent; cursor: pointer;
+          width: 36px; height: 36px; border-radius: 50%;
+          border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); cursor: pointer;
           display: flex; align-items: center; justify-content: center;
-          color: #64748b; font-size: 0.85rem; transition: all 0.2s;
+          color: #cbd5e1; font-size: 0.95rem; transition: all 0.25s ease;
         }
-        .ct-mobile-close:hover { background: #fee2e2; border-color: #fca5a5; color: #ef4444; }
-        .ct-mobile-nav { padding: 12px 12px; flex: 1; }
+        .ct-mobile-close:hover { background: rgba(239,68,68,0.2); border-color: rgba(239,68,68,0.4); color: #ef4444; transform: rotate(90deg); }
+        .ct-mobile-nav { padding: 24px 20px; flex: 1; }
         .ct-mobile-link {
           display: flex; align-items: center; justify-content: space-between;
-          padding: 11px 12px; border-radius: 10px; text-decoration: none;
-          font-size: 0.9rem; font-weight: 600; color: #1e293b;
+          padding: 12px 16px; border-radius: 12px; text-decoration: none;
+          font-size: 0.95rem; font-weight: 600; color: #cbd5e1;
           transition: all 0.2s; cursor: pointer; background: transparent; border: none;
           width: 100%; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-          letter-spacing: -0.1px;
+          letter-spacing: -0.1px; margin-bottom: 4px;
         }
         .ct-mobile-link:hover, .ct-mobile-link.active {
-          background: rgba(41,31,188,0.05); color: #291fbc;
+          background: rgba(255,255,255,0.06); color: #ffffff;
         }
-        .ct-mobile-link i.chevron { font-size: 0.6rem; color: #94a3b8; transition: transform 0.25s; }
-        .ct-mobile-link.active i.chevron { transform: rotate(180deg); color: #291fbc; }
+        .ct-mobile-link i.chevron { font-size: 0.65rem; color: #64748b; transition: transform 0.25s; }
+        .ct-mobile-link.active i.chevron { transform: rotate(180deg); color: #06b6d4; }
         .ct-mobile-sub {
           overflow: hidden; max-height: 0;
           transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
-          padding-left: 12px;
+          padding-left: 16px; border-left: 1.5px solid rgba(255,255,255,0.06);
+          margin-left: 28px; margin-bottom: 8px;
         }
         .ct-mobile-sub.open { max-height: 600px; }
         .ct-mobile-sub-link {
-          display: block; padding: 8px 12px; border-radius: 8px;
-          font-size: 0.835rem; font-weight: 500; color: #475569;
+          display: block; padding: 8px 16px; border-radius: 8px;
+          font-size: 0.88rem; font-weight: 500; color: #94a3b8;
           text-decoration: none; transition: all 0.18s;
         }
-        .ct-mobile-sub-link:hover { background: rgba(41,31,188,0.04); color: #291fbc; }
+        .ct-mobile-sub-link:hover { background: rgba(255,255,255,0.04); color: #06b6d4; }
         .ct-mobile-sub-head {
-          font-size: 0.66rem; font-weight: 800; text-transform: uppercase;
-          letter-spacing: 1.5px; color: #94a3b8; padding: 10px 12px 4px;
+          font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+          letter-spacing: 1.5px; color: #475569; padding: 12px 16px 4px;
         }
-        .ct-mobile-divider { height: 1px; background: #f1f5f9; margin: 8px 0; }
+        .ct-mobile-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 12px 0; }
         .ct-mobile-footer {
-          padding: 16px 16px 20px;
-          border-top: 1px solid #f1f5f9;
-          display: flex; flex-direction: column; gap: 10px;
-          flex-shrink: 0;
+          padding: 20px 20px 24px;
+          border-top: 1px solid rgba(255,255,255,0.08);
+          display: flex; flex-direction: column; gap: 12px;
+          flex-shrink: 0; background: rgba(0,0,0,0.2);
         }
         .ct-mobile-cta-primary {
           display: flex; align-items: center; justify-content: center; gap: 8px;
-          padding: 13px 20px; border-radius: 12px;
-          background: linear-gradient(135deg, #291fbc, #06b6d4);
-          color: #fff !important; font-weight: 700; font-size: 0.9rem;
-          text-decoration: none; box-shadow: 0 4px 16px rgba(41,31,188,0.3);
-          transition: all 0.2s;
+          padding: 14px 20px; border-radius: 12px;
+          background: linear-gradient(135deg, #7c3aed, #4f46e5);
+          color: #fff !important; font-weight: 700; font-size: 0.92rem;
+          text-decoration: none; box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+          transition: all 0.25s ease;
         }
-        .ct-mobile-cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(41,31,188,0.4); }
+        .ct-mobile-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,0.45); }
         .ct-mobile-cta-secondary {
           display: flex; align-items: center; justify-content: center; gap: 8px;
-          padding: 12px 20px; border-radius: 12px;
-          border: 1.5px solid #e2e8f0; color: #374151 !important;
-          font-weight: 600; font-size: 0.88rem; text-decoration: none;
+          padding: 13px 20px; border-radius: 12px;
+          border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03);
+          color: #cbd5e1 !important; font-weight: 600; font-size: 0.9rem; text-decoration: none;
           transition: all 0.2s;
         }
-        .ct-mobile-cta-secondary:hover { border-color: #291fbc; color: #291fbc !important; }
+        .ct-mobile-cta-secondary:hover { border-color: #ffffff; color: #ffffff !important; background: rgba(255,255,255,0.06); }
 
         /* ─── Floating Buttons ─── */
         .ct-float-wa {
           position: fixed; bottom: 30px; left: 30px; z-index: 9000;
-          width: 52px; height: 52px; border-radius: 50%;
-          background: #25d366; color: #fff; font-size: 1.35rem;
+          width: 62px; height: 62px; border-radius: 50%;
+          background: #25d366; color: #fff; font-size: 1.625rem;
           display: flex; align-items: center; justify-content: center;
           text-decoration: none;
           box-shadow: 0 6px 20px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.4);
@@ -538,7 +554,6 @@ export default function Header() {
         @media (max-width: 1100px) {
           .ct-nav, .ct-nav-right { display: none !important; }
           .ct-hamburger { display: flex !important; }
-          .ct-mobile-overlay { display: block; }
           .ct-mobile-drawer { display: flex; }
         }
         @media (max-width: 768px) {
@@ -547,14 +562,21 @@ export default function Header() {
           .ct-float-wa {
             bottom: 14px !important;
             left: 14px !important;
-            width: 42px !important;
-            height: 42px !important;
-            font-size: 1.15rem !important;
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 1.35rem !important;
             z-index: 9999 !important;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4) !important;
           }
           .ct-header {
-            padding: 10px 16px !important;
+            padding: 0 !important;
+          }
+          .ct-header-inner {
+            height: 64px !important;
+            padding: 0 20px !important;
+          }
+          .ct-logo img {
+            height: 40px !important;
           }
           main {
             padding-bottom: 40px !important;
@@ -587,6 +609,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="ct-logo">
               <img src="/assets/images/ct-logo.png" alt="ChittorTech" />
+              <span className="ct-logo-text">ChittorTech</span>
             </Link>
 
             {/* Desktop Nav */}
@@ -738,7 +761,10 @@ export default function Header() {
       {/* ── Mobile Drawer ── */}
       <div className={`ct-mobile-drawer ${mobileOpen ? "open" : ""}`}>
         <div className="ct-mobile-head">
-          <img src="/assets/images/ct-logo.png" alt="ChittorTech" />
+          <Link href="/" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <img src="/assets/images/ct-logo.png" alt="ChittorTech" />
+            <span style={{ color: '#fff', fontSize: '1.25rem', fontWeight: 800, marginLeft: '12px', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>ChittorTech</span>
+          </Link>
           <button className="ct-mobile-close" onClick={() => setMobileOpen(false)}>
             <i className="fa-solid fa-xmark"></i>
           </button>

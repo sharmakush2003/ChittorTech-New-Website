@@ -8,8 +8,11 @@ export default function SliderInitializer() {
 
   useEffect(() => {
     const triggerInit = () => {
-      if (typeof window !== "undefined" && typeof window.initChittortechServices === "function") {
-        window.initChittortechServices();
+      if (typeof window !== "undefined") {
+        const initFn = window.initChittorTechServices || window.initChittortechServices;
+        if (typeof initFn === "function") {
+          initFn();
+        }
       }
     };
 

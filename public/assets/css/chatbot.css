@@ -47,14 +47,14 @@
 }
 
 .chatbot-fab {
-  width: 60px;
-  height: 60px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background: #e06930;
   background: linear-gradient(to right, #e06930, #fbc145);
   border: 2px solid rgba(255, 255, 255, 0.5);
   color: white;
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -481,9 +481,9 @@
     right: 14px !important;
   }
   .chatbot-fab {
-    width: 42px !important;
-    height: 42px !important;
-    font-size: 1.05rem !important;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.25rem !important;
     box-shadow: 0 4px 15px rgba(224, 105, 48, 0.4) !important;
   }
   .chatbot-window {

@@ -1150,10 +1150,7 @@ export default function HomePage() {
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <div className="row align-items-center g-4">
             <div className="col-lg-6 text-center text-lg-start">
-              <div className="ct-hp-hero-badge">
-                <span className="dot"></span>
-                Next-Gen Enterprise AI & Software Partner
-              </div>
+
               <h1>
                 Build & Scale With<br />
                 <span className="gradient-text">Custom AI & IT Software.</span>
