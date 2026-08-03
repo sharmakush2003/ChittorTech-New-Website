@@ -422,6 +422,7 @@ export default function TrialModal() {
           display: flex;
           align-items: center;
           gap: 8px;
+          padding-right: 36px;
         }
         .trial-title-dot {
           width: 7px;
@@ -737,25 +738,12 @@ export default function TrialModal() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="Work Email*"
+                            placeholder="Email ID*"
                             required
                           />
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="trial-input-group">
-                          <span className="trial-input-group-text"><i className="fas fa-building"></i></span>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="company"
-                            value={formData.company}
-                            onChange={handleChange}
-                            placeholder="Company Name*"
-                            required
-                          />
-                        </div>
-                      </div>
+
                       <div className="col-md-6">
                         <div className="trial-input-group">
                           <span className="trial-input-group-text"><i className="fas fa-industry"></i></span>
@@ -776,20 +764,7 @@ export default function TrialModal() {
                           </select>
                         </div>
                       </div>
-                      <div className="col-md-6">
-                        <div className="trial-input-group">
-                          <span className="trial-input-group-text"><i className="fas fa-briefcase"></i></span>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="firm"
-                            value={formData.firm}
-                            onChange={handleChange}
-                            placeholder="Business Type*"
-                            required
-                          />
-                        </div>
-                      </div>
+
                       <div className="col-md-6">
                         <div className="trial-input-group">
                           <span className="trial-input-group-text"><i className="fas fa-phone-alt"></i></span>
