@@ -104,10 +104,6 @@ export default function TrialModal() {
     function scheduleNext() {
       if (popupCount >= maxPopups || sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted || !shouldShowModal()) return;
       
-      // Delay intervals:
-      // Show 1: 3 seconds after page load (popupCount === 0)
-      // Show 2: 6 seconds after first close (popupCount === 1)
-      // Show 3: 15 seconds after second close (popupCount === 2)
       let delay = 3000;
       if (popupCount === 1) {
         delay = 6000;
@@ -167,12 +163,13 @@ export default function TrialModal() {
   const handleCheckboxChange = (e) => {
     setDontShow(e.target.checked);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setStatusMsg("");
 
-    // Validate required fields client-side to ensure complete data
+    // Validate required fields client-side
     if (!formData.name || !formData.email || !formData.company || !formData.contact || !formData.location) {
       setStatusType("danger");
       setStatusMsg("Please fill in all required fields.");
@@ -180,14 +177,14 @@ export default function TrialModal() {
       return;
     }
 
-    // Capture the submission data before resetting the form
+    // Capture submission data
     const submissionPayload = { ...formData };
 
-    // 1. Show instant success to the user so they do not have to wait 5-10 seconds
+    // 1. Instant feedback to user
     setStatusType("success");
     setStatusMsg("Thank you! We will contact you soon.");
     
-    // 2. Clear the form fields immediately
+    // 2. Clear form fields
     setFormData({
       name: "",
       email: "",
@@ -199,12 +196,12 @@ export default function TrialModal() {
       message: "",
     });
 
-    // 3. Mark as permanently dismissed in session/local state so the modal doesn't show again
+    // 3. Mark as submitted in session/local storage
     localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
     sessionStorage.setItem("trial_modal_submitted", "true");
     setIsSubmitted(true);
 
-    // 4. Hide the modal dynamically after 2 seconds
+    // 4. Hide modal automatically after 2.5s
     setTimeout(() => {
       const trialModalEl = document.getElementById("trialModal");
       if (trialModalEl && window.bootstrap && window.bootstrap.Modal) {
@@ -213,8 +210,9 @@ export default function TrialModal() {
           modalInstance.hide();
         }
       }
-    }, 2000);
-    // 5. Send the API request in the background (asynchronously) directly to Google Apps Script
+    }, 2500);
+
+    // 5. Send payload in background
     const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
     if (scriptUrl) {
       try {
@@ -248,18 +246,19 @@ export default function TrialModal() {
         }
         .modal-backdrop {
           z-index: 9999998 !important;
-          background-color: rgba(15, 23, 42, 0.75) !important;
-          backdrop-filter: blur(6px);
+          background-color: rgba(15, 23, 42, 0.68) !important;
+          backdrop-filter: blur(8px);
         }
         #trialModal .modal-dialog {
-          max-width: 820px;
-          width: 95%;
+          max-width: 860px;
+          width: 94%;
+          margin: 1.75rem auto;
         }
         #trialModal .modal-content {
-          border-radius: 20px;
+          border-radius: 24px;
           overflow: hidden;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.45);
+          border: 1px solid rgba(219, 234, 254, 0.9);
+          box-shadow: 0 25px 60px -15px rgba(37, 99, 235, 0.22), 0 10px 25px -5px rgba(15, 23, 42, 0.15);
           max-height: 90vh;
           background: #ffffff;
         }
@@ -271,30 +270,52 @@ export default function TrialModal() {
         .trial-flex {
           display: flex;
           flex-direction: row;
-          min-height: 440px;
+          min-height: 480px;
         }
+
+        /* Left Side: Modern White-Blue Banner */
         .trial-banner {
           flex: 0 0 38%;
-          background: #f8fafc;
-          border-right: 1px solid #e2e8f0;
+          background: linear-gradient(145deg, #f0f7ff 0%, #e0f2fe 50%, #eff6ff 100%);
+          border-right: 1px solid #dbeafe;
           position: relative;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           color: #0f172a;
-          padding: 32px 24px;
+          padding: 36px 28px;
           overflow: hidden;
         }
-        .trial-banner::before {
-          content: '';
+
+        /* Glowing background decorative shapes */
+        .trial-banner-orb1 {
           position: absolute;
-          top: -50%;
-          right: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
+          top: -80px;
+          right: -80px;
+          width: 240px;
+          height: 240px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
           pointer-events: none;
+          animation: floatOrb 8s ease-in-out infinite alternate;
         }
+        .trial-banner-orb2 {
+          position: absolute;
+          bottom: -60px;
+          left: -60px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+          pointer-events: none;
+          animation: floatOrb 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes floatOrb {
+          0% { transform: translate(0, 0) scale(1); }
+          100% { transform: translate(15px, 15px) scale(1.08); }
+        }
+
         .trial-banner-content {
           position: relative;
           z-index: 2;
@@ -302,59 +323,92 @@ export default function TrialModal() {
         .trial-badge {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          padding: 6px 12px;
-          border-radius: 20px;
-          background: #eef2ff;
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: #4f46e5;
-          letter-spacing: 0.5px;
-          margin-bottom: 16px;
-          border: 1px solid #c7d2fe;
+          gap: 7px;
+          padding: 7px 14px;
+          border-radius: 30px;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(8px);
+          font-size: 0.76rem;
+          font-weight: 700;
+          color: #1d4ed8;
+          letter-spacing: 0.4px;
+          margin-bottom: 20px;
+          border: 1px solid #bfdbfe;
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+        }
+        .trial-badge i {
+          color: #2563eb;
+          font-size: 0.8rem;
         }
         .trial-banner-content h2 {
-          font-size: 1.55rem;
+          font-size: 1.65rem;
           font-weight: 800;
-          line-height: 1.3;
-          margin-bottom: 12px;
+          line-height: 1.28;
+          margin-bottom: 14px;
           color: #0f172a;
+          letter-spacing: -0.4px;
+        }
+        .trial-text-gradient {
+          background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
         .trial-banner-content p {
-          font-size: 0.82rem;
+          font-size: 0.85rem;
           color: #475569;
-          line-height: 1.5;
+          line-height: 1.55;
+          margin-bottom: 18px;
         }
+
+        .trial-logo-card {
+          display: inline-flex;
+          align-items: center;
+          padding: 8px 14px;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(6px);
+          border-radius: 14px;
+          border: 1px solid rgba(219, 234, 254, 0.8);
+          box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+        }
+
         .trial-features {
           position: relative;
           z-index: 2;
           display: flex;
           flex-direction: column;
           gap: 12px;
-          margin-top: 20px;
+          margin-top: 24px;
         }
         .trial-feature-item {
           display: flex;
           align-items: center;
-          gap: 10px;
-          font-size: 0.8rem;
-          color: #334155;
+          gap: 12px;
+          font-size: 0.83rem;
+          font-weight: 600;
+          color: #1e293b;
+          transition: transform 0.2s ease;
+        }
+        .trial-feature-item:hover {
+          transform: translateX(3px);
         }
         .trial-feature-icon {
-          width: 26px;
-          height: 26px;
-          border-radius: 50%;
-          background: #e0e7ff;
-          color: #4f46e5;
+          width: 32px;
+          height: 32px;
+          border-radius: 10px;
+          background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+          color: #ffffff;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 0.75rem;
+          font-size: 0.8rem;
           flex-shrink: 0;
+          box-shadow: 0 4px 10px rgba(37, 99, 235, 0.28);
         }
+
+        /* Right Side: Sleek Modern Form */
         .trial-form-side {
           flex: 1;
-          padding: 32px 36px;
+          padding: 36px 40px;
           background: #ffffff;
           display: flex;
           flex-direction: column;
@@ -364,105 +418,170 @@ export default function TrialModal() {
         .trial-title {
           font-weight: 800;
           color: #0f172a;
-          margin-bottom: 4px;
-          font-size: 1.35rem;
-          letter-spacing: -0.3px;
+          margin-bottom: 6px;
+          font-size: 1.45rem;
+          letter-spacing: -0.4px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .trial-title-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #2563eb;
+          display: inline-block;
         }
         .trial-subtitle {
           color: #64748b;
-          margin-bottom: 20px;
-          font-size: 0.85rem;
+          margin-bottom: 22px;
+          font-size: 0.86rem;
         }
-        .trial-form-side .input-group {
-          margin-bottom: 12px;
-          border-radius: 10px;
+
+        .trial-input-group {
+          margin-bottom: 14px;
+          border-radius: 12px;
           overflow: hidden;
-          border: 1px solid #e2e8f0;
-          transition: all 0.2s ease;
+          border: 1.5px solid #e2e8f0;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
           background: #f8fafc;
+          display: flex;
+          align-items: center;
         }
-        .trial-form-side .input-group:focus-within {
-          border-color: #6366f1;
-          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        .trial-input-group:focus-within {
+          border-color: #2563eb;
+          box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
           background: #ffffff;
+          transform: translateY(-1px);
         }
-        .trial-form-side .input-group-text {
+        .trial-input-group-text {
           background: transparent;
           border: none;
-          color: #6366f1;
-          width: 42px;
+          color: #3b82f6;
+          padding-left: 14px;
+          padding-right: 10px;
+          display: flex;
+          align-items: center;
           justify-content: center;
-          font-size: 0.85rem;
+          font-size: 0.9rem;
+          transition: color 0.2s ease;
         }
-        .trial-form-side .form-control, .trial-form-side .form-select {
+        .trial-input-group:focus-within .trial-input-group-text {
+          color: #1d4ed8;
+        }
+        .trial-form-side .form-control, 
+        .trial-form-side .form-select {
           border: none;
-          padding: 10px 14px;
-          font-size: 0.85rem;
+          padding: 11px 14px 11px 0;
+          font-size: 0.86rem;
+          font-weight: 500;
           background: transparent;
-          color: #1e293b;
+          color: #0f172a;
+          box-shadow: none !important;
         }
         .trial-form-side .form-control::placeholder {
           color: #94a3b8;
+          font-weight: 400;
         }
-        .trial-form-side .form-control:focus, .trial-form-side .form-select:focus {
-          box-shadow: none;
-          background: transparent;
+        .trial-form-side .form-select {
+          cursor: pointer;
+          color: #0f172a;
         }
-        .trial-textarea {
-          border: 1px solid #e2e8f0 !important;
-          border-radius: 10px !important;
-          padding: 10px 14px !important;
-          font-size: 0.85rem !important;
-          background: #f8fafc !important;
-          transition: all 0.2s ease;
+        .trial-form-side .form-select option {
+          background: #ffffff;
+          color: #0f172a;
         }
-        .trial-textarea:focus {
-          border-color: #6366f1 !important;
-          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
-          background: #ffffff !important;
+
+        .trial-textarea-wrap {
+          margin-bottom: 16px;
+          border-radius: 12px;
+          border: 1.5px solid #e2e8f0;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          background: #f8fafc;
+          padding: 10px 14px;
         }
-        .trial-btn {
-          width: 100%;
-          padding: 12px;
-          border-radius: 10px;
-          font-weight: 700;
-          font-size: 0.9rem;
-          background: linear-gradient(135deg, #4f46e5 0%, #0284c7 100%);
-          border: none;
-          color: white;
-          transition: all 0.3s ease;
-          margin-top: 8px;
-          box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-          letter-spacing: 0.3px;
-        }
-        .trial-btn:hover {
-          background: linear-gradient(135deg, #4338ca 0%, #0369a1 100%);
-          box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+        .trial-textarea-wrap:focus-within {
+          border-color: #2563eb;
+          box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14);
+          background: #ffffff;
           transform: translateY(-1px);
         }
+        .trial-textarea {
+          border: none !important;
+          padding: 0 !important;
+          font-size: 0.86rem !important;
+          font-weight: 500 !important;
+          background: transparent !important;
+          box-shadow: none !important;
+          color: #0f172a !important;
+          width: 100%;
+          resize: none;
+        }
+        .trial-textarea::placeholder {
+          color: #94a3b8;
+          font-weight: 400;
+        }
+
+        .trial-btn {
+          width: 100%;
+          padding: 13px 20px;
+          border-radius: 12px;
+          font-weight: 700;
+          font-size: 0.92rem;
+          background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+          border: none;
+          color: #ffffff;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          margin-top: 4px;
+          box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.4);
+          letter-spacing: 0.3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          cursor: pointer;
+        }
+        .trial-btn:hover:not(:disabled) {
+          background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+          box-shadow: 0 12px 25px -4px rgba(37, 99, 235, 0.5);
+          transform: translateY(-2px);
+        }
+        .trial-btn:active:not(:disabled) {
+          transform: translateY(0);
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .trial-btn:disabled {
+          opacity: 0.75;
+          cursor: not-allowed;
+        }
+
         .close-modal-custom {
           position: absolute;
-          top: 16px;
-          right: 16px;
+          top: 18px;
+          right: 18px;
           z-index: 1001;
           background: #f1f5f9;
+          border: 1px solid #e2e8f0;
           border-radius: 50%;
-          width: 30px;
-          height: 30px;
+          width: 32px;
+          height: 32px;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
           color: #64748b;
-          transition: all 0.2s ease;
+          transition: all 0.25s ease;
         }
         .close-modal-custom:hover {
-          background: #e2e8f0;
-          color: #0f172a;
+          background: #2563eb;
+          border-color: #2563eb;
+          color: #ffffff;
+          transform: rotate(90deg) scale(1.05);
         }
+
         .dont-show-box {
-          margin-top: 14px;
-          font-size: 0.78rem;
+          margin-top: 16px;
+          font-size: 0.8rem;
           color: #64748b;
           display: flex;
           align-items: center;
@@ -470,9 +589,44 @@ export default function TrialModal() {
         }
         .dont-show-box input {
           cursor: pointer;
-          accent-color: #4f46e5;
-          width: 15px;
-          height: 15px;
+          accent-color: #2563eb;
+          width: 16px;
+          height: 16px;
+          border-radius: 4px;
+        }
+
+        .trial-alert-success {
+          background: #ecfdf5;
+          border: 1px solid #a7f3d0;
+          color: #065f46;
+          border-radius: 12px;
+          padding: 10px 14px;
+          font-size: 0.84rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 16px;
+          animation: fadeInDown 0.3s ease;
+        }
+        .trial-alert-danger {
+          background: #fef2f2;
+          border: 1px solid #fecaca;
+          color: #991b1b;
+          border-radius: 12px;
+          padding: 10px 14px;
+          font-size: 0.84rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 16px;
+          animation: fadeInDown 0.3s ease;
+        }
+
+        @keyframes fadeInDown {
+          from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 767px) {
@@ -483,7 +637,7 @@ export default function TrialModal() {
             display: none;
           }
           .trial-form-side {
-            padding: 24px 20px;
+            padding: 28px 22px;
           }
         }
       `}</style>
@@ -496,57 +650,75 @@ export default function TrialModal() {
             </div>
             <div className="modal-body">
               <div className="trial-flex">
-                {/* Left Side: ChittorTech Modern AI Banner */}
+                {/* Left Side: ChittorTech Modern AI Banner (White & Blue) */}
                 <div className="trial-banner">
+                  <div className="trial-banner-orb1"></div>
+                  <div className="trial-banner-orb2"></div>
+
                   <div className="trial-banner-content">
                     <div className="trial-badge">
-                      <i className="fas fa-sparkles"></i> ChittorTech Exclusive
+                      <i className="fas fa-sparkles"></i>
+                      <span>ChittorTech Exclusive</span>
                     </div>
-                    <h2>Transform Your Business With AI</h2>
-                    <p className="mb-2">Request a personalized demo and discover custom AI chatbots, workflows, and automation built for your growth.</p>
-                    <div className="my-3">
+                    <h2>
+                      Transform Your Business <span className="trial-text-gradient">With AI</span>
+                    </h2>
+                    <p>
+                      Request a personalized demo and discover custom AI chatbots, workflows, and enterprise automation built for your growth.
+                    </p>
+                    <div className="trial-logo-card">
                       <img
                         src="/assets/images/ct-logo.png"
                         alt="ChittorTech Logo"
-                        style={{ height: "80px", width: "auto", objectFit: "contain" }}
+                        style={{ height: "64px", width: "auto", objectFit: "contain" }}
                       />
                     </div>
                   </div>
 
                   <div className="trial-features">
                     <div className="trial-feature-item">
-                      <div className="trial-feature-icon"><i className="fas fa-bolt"></i></div>
+                      <div className="trial-feature-icon">
+                        <i className="fas fa-bolt"></i>
+                      </div>
                       <span>24/7 Intelligent Automation</span>
                     </div>
                     <div className="trial-feature-item">
-                      <div className="trial-feature-icon"><i className="fas fa-shield-alt"></i></div>
+                      <div className="trial-feature-icon">
+                        <i className="fas fa-shield-alt"></i>
+                      </div>
                       <span>Enterprise Security & Privacy</span>
                     </div>
                     <div className="trial-feature-item">
-                      <div className="trial-feature-icon"><i className="fas fa-chart-line"></i></div>
-                      <span>High ROI Custom Solutions</span>
+                      <div className="trial-feature-icon">
+                        <i className="fas fa-chart-line"></i>
+                      </div>
+                      <span>High-ROI Custom Solutions</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Right Side: Sleek Modern Form */}
+                {/* Right Side: Modern White & Blue Form */}
                 <div className="trial-form-side">
                   <div>
-                    <h3 className="trial-title">Get Free Consultation & Trial</h3>
+                    <h3 className="trial-title">
+                      <span>Get Free Consultation & Trial</span>
+                      <span className="trial-title-dot"></span>
+                    </h3>
                     <p className="trial-subtitle">Tell us about your project and receive a tailored demo.</p>
                   </div>
 
                   {statusMsg && (
-                    <div className={`alert alert-${statusType} py-2 px-3 mb-3 small`}>
-                      {statusMsg}
+                    <div className={statusType === "success" ? "trial-alert-success" : "trial-alert-danger"}>
+                      <i className={statusType === "success" ? "fas fa-check-circle" : "fas fa-exclamation-triangle"}></i>
+                      <span>{statusMsg}</span>
                     </div>
                   )}
 
                   <form onSubmit={handleSubmit} id="trialForm">
                     <div className="row g-2">
                       <div className="col-md-6">
-                        <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-user"></i></span>
+                        <div className="trial-input-group">
+                          <span className="trial-input-group-text"><i className="fas fa-user"></i></span>
                           <input
                             type="text"
                             className="form-control"
@@ -559,8 +731,8 @@ export default function TrialModal() {
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-envelope"></i></span>
+                        <div className="trial-input-group">
+                          <span className="trial-input-group-text"><i className="fas fa-envelope"></i></span>
                           <input
                             type="email"
                             className="form-control"
@@ -573,8 +745,8 @@ export default function TrialModal() {
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-building"></i></span>
+                        <div className="trial-input-group">
+                          <span className="trial-input-group-text"><i className="fas fa-building"></i></span>
                           <input
                             type="text"
                             className="form-control"
@@ -587,8 +759,8 @@ export default function TrialModal() {
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-industry"></i></span>
+                        <div className="trial-input-group">
+                          <span className="trial-input-group-text"><i className="fas fa-industry"></i></span>
                           <select
                             name="industry"
                             className="form-select"
@@ -607,8 +779,8 @@ export default function TrialModal() {
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-briefcase"></i></span>
+                        <div className="trial-input-group">
+                          <span className="trial-input-group-text"><i className="fas fa-briefcase"></i></span>
                           <input
                             type="text"
                             className="form-control"
@@ -621,8 +793,8 @@ export default function TrialModal() {
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-phone-alt"></i></span>
+                        <div className="trial-input-group">
+                          <span className="trial-input-group-text"><i className="fas fa-phone-alt"></i></span>
                           <input
                             type="text"
                             className="form-control"
@@ -635,8 +807,8 @@ export default function TrialModal() {
                         </div>
                       </div>
                       <div className="col-12">
-                        <div className="input-group">
-                          <span className="input-group-text"><i className="fas fa-map-marker-alt"></i></span>
+                        <div className="trial-input-group">
+                          <span className="trial-input-group-text"><i className="fas fa-map-marker-alt"></i></span>
                           <input
                             type="text"
                             className="form-control"
@@ -650,9 +822,10 @@ export default function TrialModal() {
                         </div>
                       </div>
                     </div>
-                    <div className="mb-2">
+
+                    <div className="trial-textarea-wrap">
                       <textarea
-                        className="form-control trial-textarea"
+                        className="trial-textarea"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
@@ -662,7 +835,17 @@ export default function TrialModal() {
                     </div>
 
                     <button type="submit" className="trial-btn" disabled={submitting}>
-                      {submitting ? "Submitting Request..." : "Request Free Trial & Demo"}
+                      {submitting ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          <span>Submitting Request...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Request Free Trial & Demo</span>
+                          <i className="fas fa-arrow-right fs-6 ms-1"></i>
+                        </>
+                      )}
                     </button>
 
                     <div className="dont-show-box">
@@ -684,4 +867,3 @@ export default function TrialModal() {
     </>
   );
 }
-
