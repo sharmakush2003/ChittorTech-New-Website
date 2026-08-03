@@ -28,7 +28,7 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
     setStatusMsg("");
 
     // Validate required fields
-    if (!formData.name || !formData.email || !formData.company || !formData.contact || !formData.location) {
+    if (!formData.name || !formData.email || !formData.contact || !formData.location) {
       setStatusType("danger");
       setStatusMsg("Please fill in all required fields.");
       setSubmitting(false);
@@ -346,7 +346,7 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
                       type="text"
                       className="form-control"
                       name="name"
-                      placeholder="Full Name*"
+                      placeholder="Full Name"
                       required
                       value={formData.name}
                       onChange={handleChange}
@@ -359,22 +359,9 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
                       type="email"
                       className="form-control"
                       name="email"
-                      placeholder="Work Email*"
+                      placeholder="Email"
                       required
                       value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div className="dy-input-group">
-                    <span className="dy-input-icon"><i className="fas fa-building"></i></span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="company"
-                      placeholder="Company Name*"
-                      required
-                      value={formData.company}
                       onChange={handleChange}
                     />
                   </div>
