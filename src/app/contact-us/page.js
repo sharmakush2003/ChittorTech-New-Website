@@ -108,6 +108,41 @@ export default function Page() {
           font-size: 0.92rem;
           line-height: 1.6;
         }
+        .premium-input-group {
+          margin-bottom: 8px;
+        }
+        .input-with-icon {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+        .input-with-icon i {
+          position: absolute;
+          left: 16px;
+          color: #94a3b8;
+          font-size: 0.9rem;
+          pointer-events: none;
+          z-index: 10;
+        }
+        .input-with-icon .form-control,
+        .input-with-icon .form-select {
+          padding-left: 42px !important;
+          border-radius: 10px;
+          border: 1px solid #e2e8f0;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-size: 0.9rem;
+          color: #1e293b;
+          background-color: #f8fafc;
+          transition: all 0.25s ease;
+          width: 100%;
+        }
+        .input-with-icon .form-control:focus,
+        .input-with-icon .form-select:focus {
+          border-color: #291fbc;
+          box-shadow: 0 0 0 3px rgba(41,31,188,0.15);
+          background-color: #fff;
+        }
       `}</style>
 
       {/* ── Modern Inner Page Hero ── */}
@@ -213,11 +248,11 @@ export default function Page() {
                   <div className="col-12">
                     <div className="premium-input-group">
                       <label className="form-label fw-bold small text-muted">PROJECT DETAILS / REQUIREMENTS</label>
-                      <textarea name="remark" className="form-control" placeholder="Tell us more about your project or AI automation requirements..." style={{ height: "120px", paddingLeft: "15px" }}></textarea>
+                      <textarea name="remark" className="form-control" placeholder="Tell us more about your project or AI automation requirements..." style={{ height: "120px", padding: "12px 16px", borderRadius: "10px", fontSize: "0.9rem" }}></textarea>
                     </div>
                   </div>
-                  <div className="col-12 text-center mt-4">
-                    <button type="submit" className="ct-btn ct-btn-primary ct-btn-lg" style={{ padding: "14px 40px", fontWeight: "bold" }}>
+                  <div className="col-12 mt-3 d-flex justify-content-center">
+                    <button type="submit" className="schedule-btn w-100" style={{ maxWidth: "260px", justifyContent: "center" }}>
                       Send Message <i className="fas fa-paper-plane ms-2"></i>
                     </button>
                   </div>
