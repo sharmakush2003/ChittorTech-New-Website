@@ -158,7 +158,7 @@ export default function Page() {
             <li>AI bank reconciliation & stock audit trail</li>
             <li>AI P&amp;L statements and balance sheets</li>
             <li>AI GST filing & compliance automation</li>
-            <li>AI integrated POS & inventory accounting</li>
+            <li>AI integrated Billing & inventory accounting</li>
          </ul>
       </div>
    </div>
@@ -203,7 +203,7 @@ export default function Page() {
                               <img src="/assets/images/fe1.png" alt="SMS Bills &amp; Offers" className="img-fluid mb-3" />
                              <h4>AI Billing & Checkout</h4>
 <ul>
-   <li>AI instant POS for fast and precise bill generation</li>
+   <li>AI instant Management for fast and precise bill generation</li>
    <li>AI weight-based billing with scale integration for loose items</li>
    <li>AI multiple payment support – cash, cards, UPI, and digital wallets</li>
    <li>AI cash & transaction monitoring for payments and refunds</li>
@@ -249,7 +249,7 @@ export default function Page() {
 <ul>
    <li>AI ledger & finance management for profits, expenses, and balance sheets</li>
    <li>AI tax & GST filing with audit-ready automated reports</li>
-   <li>AI integrated POS accounting syncing sales and inventory with accounts</li>
+   <li>AI integrated Management accounting syncing sales and inventory with accounts</li>
 </ul>
                             </div>
                           </div>
@@ -391,7 +391,7 @@ export default function Page() {
                   <li>✔ Everything in Standard, plus:</li>
                   <li>✔ Multi-Branch Management</li>
                   <li>✔ Online Store Integration</li>
-                  <li>✔ Weigh-Scale & Mobile POS Integration</li>
+                  <li>✔ Weigh-Scale & Mobile Management Integration</li>
                   <li>✔ Dedicated Support & Custom Features</li>
                </ul>
                <div className="price">Custom Pricing</div>
@@ -591,12 +591,12 @@ export default function Page() {
         <div className="col-md-7">
    <div className="heading-wrap text-start">
       <h2>Your AI Personal Assistant for <span>Kirana Store Management</span></h2>
-      <p>From billing to home deliveries, manage every aspect of your Kirana store with an intelligent AI-driven POS platform.</p>
+      <p>From billing to home deliveries, manage every aspect of your Kirana store with an intelligent AI-driven Management platform.</p>
    </div>
 
    <div className="expertise-wrap bridal-wrap">
       <ul>
-         <li>AI Smart POS – Fast, accurate billing with minimal effort</li>
+         <li>AI Smart Management – Fast, accurate billing with minimal effort</li>
          <li>AI Multi-Store Control – Operate multiple outlets anytime, anywhere</li>
          <li>AI Inventory & Barcode Management – Track and organize stock automatically</li>
          <li>AI Multi-Payment Processing – Accept cash, cards, UPI, and digital wallets seamlessly</li>
@@ -928,7 +928,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A cloud-based POS and inventory system to manage billing, stock, accounts, AI Knowledge Base, and online orders for Kirana stores.
+                           A cloud-based Management and inventory system to manage billing, stock, accounts, AI Knowledge Base, and online orders for Kirana stores.
                         </div>
                      </div>
                   </div>
@@ -984,7 +984,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse5" className="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           Yes, reward regular customers with loyalty points, coupons, and discounts via POS and AI Knowledge Base features.
+                           Yes, reward regular customers with loyalty points, coupons, and discounts via Management and AI Knowledge Base features.
                         </div>
                      </div>
                   </div>
@@ -1054,7 +1054,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           Yes, ChittorTech offers full customization for POS, inventory, AI Knowledge Base, accounting, and e-commerce integration.
+                           Yes, ChittorTech offers full customization for Management, inventory, AI Knowledge Base, accounting, and e-commerce integration.
                         </div>
                      </div>
                   </div>

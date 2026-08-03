@@ -86,7 +86,7 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-scissors`}></i> Boutique POS
+                <i className={`fa-solid fa-scissors`}></i> Boutique Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
                 Boutique Store Management Software
@@ -202,7 +202,7 @@ export default function Page() {
                           <ul>
     <li>
         <strong>Fast &amp; Efficient Billing</strong><br />
-        Quick checkout with barcode scanning, multiple cash counters, and instant POS processing.
+        Quick checkout with barcode scanning, multiple cash counters, and instant Management processing.
     </li>
     <li>
         <strong>Instant SMS Billing &amp; Promotions</strong><br />
@@ -570,7 +570,7 @@ export default function Page() {
                        <div className="key-box">
                            <h3>For Staff:</h3>
                            <ul>
-                              <li>Easy-to-use POS interface</li>
+                              <li>Easy-to-use Management interface</li>
                               <li>Reduce manual errors by 99%</li>
                               <li>Speed up billing by 90%</li>
                            </ul>
@@ -629,7 +629,7 @@ export default function Page() {
                               <li style={{ "listStyle": "none" }}>✅ Update inventory daily for real-time stock accuracy</li>
                               <li style={{ "listStyle": "none" }}>✅ Use barcode scanning to avoid billing mistakes</li>
                               <li style={{ "listStyle": "none" }}>✅ Monitor sales reports before reordering garments</li>
-                              <li style={{ "listStyle": "none" }}>✅ Train staff on POS for faster checkouts</li>
+                              <li style={{ "listStyle": "none" }}>✅ Train staff on Management for faster checkouts</li>
                               <li style={{ "listStyle": "none" }}>✅ Centralize customer data for loyalty & targeted marketing</li>
                               <li style={{ "listStyle": "none" }}>✅ Enable stock transfer between stores to avoid shortages</li>
                               <li style={{ "listStyle": "none" }}>✅ Analyze MIS reports to forecast demand & trends</li>
@@ -736,7 +736,7 @@ export default function Page() {
       <section className="faq-template">
           <div className="container">
               <div className="heading-wrap text-center">
-                  <h2> Frequently Asked <span>Questions – Chittortech Boutique POS</span> </h2>
+                  <h2> Frequently Asked <span>Questions – Chittortech Boutique Management</span> </h2>
               </div>
               <div className="row">
                   <div className="col-md-12">

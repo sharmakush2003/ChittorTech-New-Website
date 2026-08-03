@@ -138,7 +138,7 @@ export default function Page() {
     <div className="col-md-3 col-sm-6">
         <div className="key-box">
             <h3>AI-Assisted Fast Billing</h3>
-            <p>Handle customer billing quickly using an AI-enabled POS that supports tax rules and multiple payment methods without delays.</p>
+            <p>Handle customer billing quickly using an AI-enabled Management that supports tax rules and multiple payment methods without delays.</p>
             <ul>
                 <li>Automatic e-way bill generation</li>
                 <li>AI-supported e-invoicing</li>
@@ -184,7 +184,7 @@ export default function Page() {
         <div className="col-md-12">
             <div className="heading-wrap">
                <h2>AI-Powered AI Assistant Software Built for Home Décor & Furniture Stores</h2>
-			   <p>Run your showroom, warehouse, and online furniture business smoothly with an AI-enabled POS and management system designed for complete control and higher profitability.</p>
+			   <p>Run your showroom, warehouse, and online furniture business smoothly with an AI-enabled Management and management system designed for complete control and higher profitability.</p>
             </div>
             <div className="desktop-industries">
                <div className="row justify-content-center">
@@ -449,7 +449,7 @@ export default function Page() {
                 Create and apply discounts across all locations from one place.
             </li>
             <li>
-                <strong>Single POS for All Stores –</strong>
+                <strong>Single Management for All Stores –</strong>
                 Manage products and SKUs from multiple outlets using one unified system.
             </li>
             <li>
@@ -482,7 +482,7 @@ export default function Page() {
     <div className="heading-wrap text-start">
         <h2>AI-Powered Furniture Store Management — <span>From Showroom to Customer Home</span></h2>
         <p>
-            Our smart POS and management system for furniture retailers brings every daily operation
+            Our smart Management and management system for furniture retailers brings every daily operation
             into one easy-to-use platform.
         </p>
     </div>
@@ -490,7 +490,7 @@ export default function Page() {
     <div className="expertise-wrap bridal-wrap">
         <ul>
             <li>
-                <strong>AI-Enabled POS & Billing –</strong>
+                <strong>AI-Enabled Billing & Billing –</strong>
                 Fast checkout with GST-ready invoices, multiple payment options, and automatic loyalty point calculation.
             </li>
             <li>
@@ -541,7 +541,7 @@ export default function Page() {
                <ul>
                   <li> Thousands Retailers Trust Us</li>
                   <li> Rated 4.8+ on Google Reviews</li>
-                  <li> Multi-Featured POS (Inventory, Accounting, AI Knowledge Base & eCommerce)</li>
+                  <li> Multi-Featured Management (Inventory, Accounting, AI Knowledge Base & eCommerce)</li>
                   <li> Cloud-Based – Manage from anywhere</li>
                   <li> User-Friendly Interface</li>
                   <li> Runs on Any Device (Desktop, Tablet, Mobile)</li>
@@ -562,7 +562,7 @@ export default function Page() {
          <div className="col-md-7 order-md-2">
             <div className="clothing-stores-text software-wrap specialized-box">
                <h2>Seamless Integrations with Multiple Platforms</h2>
-               <p>ChittorTech POS connects with:</p>
+               <p>ChittorTech Management connects with:</p>
                <ul>
                   <li>E-commerce platforms (Shopify, WooCommerce, Magento)</li>
                   <li>Payment gateways (UPI, Cards, Wallets, Net Banking)</li>
@@ -596,7 +596,7 @@ export default function Page() {
          </div>
          <div className="col-md-7 order-md-1">
             <div className="heading-wrap text-start">
-               <h2> Benefits of ChittorTech POS for Home  <span>Décor & Furniture Shops</span> </h2>
+               <h2> Benefits of ChittorTech Management for Home  <span>Décor & Furniture Shops</span> </h2>
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
@@ -639,7 +639,7 @@ export default function Page() {
            <div className="key-box">
                <h3>Step 2: Product Browsing & Selection</h3>
                <ul>
-                  <li>Salesperson assists using POS catalog with images, sizes, colors, and stock availability.</li>
+                  <li>Salesperson assists using Management catalog with images, sizes, colors, and stock availability.</li>
                   <li>Example: A customer looking for a sofa can see available fabrics, finishes, and price variations.</li>
                </ul>
            </div>
@@ -717,7 +717,7 @@ export default function Page() {
 <section className="faq-template py-5">
    <div className="container">
       <div className="heading-wrap text-center mb-4">
-         <h2>Frequently Asked Questions – <span>ChittorTech POS</span></h2>
+         <h2>Frequently Asked Questions – <span>ChittorTech Management</span></h2>
       </div>
       <div className="row">
          <div className="col-md-12">
@@ -759,7 +759,7 @@ export default function Page() {
                      <h2 className="accordion-header" id="heading3">
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                            data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                        Who can use ChittorTech POS?
+                        Who can use ChittorTech Management?
                         </button>
                      </h2>
                      <div id="collapse3" className="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqAccordion">

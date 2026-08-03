@@ -86,10 +86,10 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-gift`}></i> Gift Shop POS
+                <i className={`fa-solid fa-gift`}></i> Gift Shop Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Gift Shop POS & Management Software
+                Gift Shop Billing & Management Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
                 Manage unique SKUs, seasonal inventory, and customer gifting with ease.
@@ -178,7 +178,7 @@ export default function Page() {
                               <div className="flip-card-back">
                                  <img src="/assets/images/fe1.png" alt="OCR" className="img-fluid mb-3" />
                                  <h4>Point of Sale (POS) System</h4>
-                                 <p>Accept multiple payment modes, integrate mobile POS, and accelerate checkout processes.</p>
+                                 <p>Accept multiple payment modes, integrate mobile Management, and accelerate checkout processes.</p>
                               </div>
                            </div>
                         </div>
@@ -282,13 +282,13 @@ export default function Page() {
                         </div>
                      </div>
                   </div>
-                  {/* Feature 9: Image-Based POS */}
+                  {/* Feature 9: Image-Based Management */}
                   <div className="col-md-4 col-12 mb-4">
                      <div className="boxes flip-container">
                         <div className="flip-card">
                            <div className="flip-card-inner">
                               <div className="flip-card-back">
-                                 <img src="/assets/images/fe8.png" alt="Image-Based POS" className="img-fluid mb-3" />
+                                 <img src="/assets/images/fe8.png" alt="Image-Based Management" className="img-fluid mb-3" />
                                  <h4>Offers & Discount Management</h4>
                                  <p>Easily create promotional vouchers, coupon codes, and seasonal discounts.</p>
                               </div>
@@ -324,13 +324,13 @@ export default function Page() {
                         </div>
                      </div>
                   </div>
-                  {/* Feature 12: Advanced POS System */}
+                  {/* Feature 12: Advanced Management System */}
                   <div className="col-md-4 col-12 mb-4">
                      <div className="boxes flip-container">
                         <div className="flip-card">
                            <div className="flip-card-inner">
                               <div className="flip-card-back">
-                                 <img src="/assets/images/fe11.png" alt="Advanced POS System" className="img-fluid mb-3" />
+                                 <img src="/assets/images/fe11.png" alt="Advanced Management System" className="img-fluid mb-3" />
                                  <h4>Online Store Management</h4>
                                  <p>Create an online gift store or integrate with Shopify and WooCommerce for omnichannel sales.</p>
                               </div>
@@ -361,7 +361,7 @@ export default function Page() {
                   <div className="price">💳 ₹2,999 <span>/month</span></div>
                </div>
                <ul className="pricing-features">
-                  <li>✔ Smart POS &amp; Billing</li>
+                  <li>✔ Smart Billing &amp; Billing</li>
                   <li>✔ Basic Inventory Management &amp; Stock Alerts</li>
                   <li>✔ Digital GST-Compliant Invoices</li>
                   <li>✔ WhatsApp Notifications</li>
@@ -459,12 +459,12 @@ export default function Page() {
          </div>
          <div className="col-md-7 order-md-1">
             <div className="heading-wrap text-start">
-               <h2> Complete Store Management from POS to Inventory: Everything  <span>Covered in One Solution</span> </h2>
+               <h2> Complete Store Management from Management to Inventory: Everything  <span>Covered in One Solution</span> </h2>
                <p>Our integrated Gift Shop AI Support Chatbot software from ChittorTech has everything your store needs to run smoothly and efficiently.</p>
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li>Powerful POS Solution</li>
+                  <li>Powerful Management Solution</li>
                   <li>Manage Multiple Stores Anywhere, Anytime</li>
                   <li>Organize Your Inventory and Barcodes</li>
                   <li>Support Multiple Payment Modes</li>
@@ -586,10 +586,10 @@ export default function Page() {
                </div>
             </div>
 
-            {/* 04. Billing and POS */}
+            {/* 04. Billing and Management */}
             <div className="col-lg-4 col-md-6">
                <div className="key-box">
-                  <h3>04. Billing and POS</h3>
+                  <h3>04. Billing and Management</h3>
                   <ul>
                      <li>Scan product barcodes to generate bills quickly.</li>
                      <li>Accept multiple payment modes (cash, card, UPI).</li>
@@ -708,7 +708,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS &amp; AI & IT Solutions solution to manage billing, inventory, AI Knowledge Base, loyalty, and e-commerce for gift shops.
+                           A1. A cloud-based Billing &amp; AI & IT Solutions solution to manage billing, inventory, AI Knowledge Base, loyalty, and e-commerce for gift shops.
                         </div>
                      </div>
                   </div>
@@ -834,7 +834,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes. ChittorTech offers full customization for POS, inventory, AI Knowledge Base, e-commerce, and multi-branch features.
+                           A10. Yes. ChittorTech offers full customization for Management, inventory, AI Knowledge Base, e-commerce, and multi-branch features.
                         </div>
                      </div>
                   </div>

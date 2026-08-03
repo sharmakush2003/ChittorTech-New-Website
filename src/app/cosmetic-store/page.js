@@ -86,10 +86,10 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-pump-soap`}></i> Cosmetics POS
+                <i className={`fa-solid fa-pump-soap`}></i> Cosmetics Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Cosmetic Store POS & Management
+                Cosmetic Store Billing & Management
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
                 Manage beauty products, brands, expiry dates, and loyalty programs effortlessly.
@@ -121,12 +121,12 @@ export default function Page() {
    <div className="container">
      <div className="row justify-content-center gy-4">
 
-    {/* AI-Powered POS for Faster Checkout */}
+    {/* AI-Powered Management for Faster Checkout */}
     <div className="col-md-3 col-sm-6">
         <div className="key-box">
-            <h3>AI-Powered POS for Faster Checkout</h3>
+            <h3>AI-Powered Management for Faster Checkout</h3>
             <p>
-                Handle customer billing smoothly using an AI-enabled POS system that applies taxes
+                Handle customer billing smoothly using an AI-enabled Management system that applies taxes
                 automatically, supports digital payments, and reduces waiting time at counters.
             </p>
             <ul>
@@ -237,7 +237,7 @@ export default function Page() {
 
             <li><strong>AI Cash Counter Monitoring –</strong> Track cash and digital collections across multiple billing counters.</li>
 
-            <li><strong>AI Mobile POS (mPOS) –</strong> Bill customers anywhere in-store using smartphones or tablets.</li>
+            <li><strong>AI Mobile Management (mPOS) –</strong> Bill customers anywhere in-store using smartphones or tablets.</li>
 
             <li><strong>AI Business Intelligence Reports –</strong> Access 150+ real-time MIS reports and dashboards for smarter decisions.</li>
         </ul>
@@ -450,7 +450,7 @@ export default function Page() {
                </h2>
                <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                   <div className="accordion-body">
-                     A comprehensive system that automates POS, inventory, AI Knowledge Base, accounting, and online store operations for beauty stores.
+                     A comprehensive system that automates Management, inventory, AI Knowledge Base, accounting, and online store operations for beauty stores.
                   </div>
                </div>
             </div>

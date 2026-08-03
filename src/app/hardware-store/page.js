@@ -86,10 +86,10 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-wrench`}></i> Hardware POS
+                <i className={`fa-solid fa-wrench`}></i> Hardware Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Hardware Store POS & Management Software
+                Hardware Store Billing & Management Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
                 Manage thousands of hardware SKUs, brands, and supplier orders with ease.
@@ -135,11 +135,11 @@ export default function Page() {
             </div>
          </div>
 
-         {/* Hi-Speed Billing POS */}
+         {/* Hi-Speed Billing Management */}
          <div className="col-md-3 col-sm-6">
             <div className="key-box">
-               <h3>Hi-Speed Billing POS</h3>
-               <p>Enjoy faster and accurate billing with image-based POS, and accept multiple payment modes including UPI, cards, and digital wallets.</p>
+               <h3>Hi-Speed Billing Management</h3>
+               <p>Enjoy faster and accurate billing with image-based Management, and accept multiple payment modes including UPI, cards, and digital wallets.</p>
                <ul>
                   <li>GST-Compliant Billing</li>
                   <li>Multiple Payment Options</li>
@@ -468,7 +468,7 @@ export default function Page() {
                   <div className="price">💳 ₹3,499 <span>/month</span></div>
                </div>
                <ul className="pricing-features">
-                  <li>✔ Smart POS & Billing</li>
+                  <li>✔ Smart Billing & Billing</li>
                   <li>✔ Basic Inventory Management & Stock Alerts</li>
                   <li>✔ Digital GST-Compliant Invoices</li>
                   <li>✔ Barcode & Label Generator</li>
@@ -589,7 +589,7 @@ export default function Page() {
                   <li>Unified Customer Database – Access all your customers' information in one place for easy marketing and AI Knowledge Base activities.</li>
                   <li>Seamless Stock Transfer & Requests – Effortlessly move stock between warehouses and stores to ensure availability at all times.</li>
                   <li>Insightful Reporting & Analytics – Generate detailed reports from all hardware store branches in one dashboard. Make smart, data-driven business decisions.</li>
-                  <li>Simplified Store Management – Manage stock SKUs across all locations from a single POS system.</li>
+                  <li>Simplified Store Management – Manage stock SKUs across all locations from a single Management system.</li>
                   <li>Efficient Inventory Control – Track all inventory in real time—no more guessing or manual counting.</li>
                </ul>
             </div>
@@ -651,7 +651,7 @@ export default function Page() {
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li>Powerful POS Solution</li>
+                  <li>Powerful Management Solution</li>
                   <li>Manage Multiple Stores Anywhere, Anytime</li>
                   <li>Organize Your Inventory and Barcodes</li>
                   <li>Support Multiple Payment Modes</li>
@@ -722,10 +722,10 @@ export default function Page() {
             </div>
          </div>
 
-         {/* 04. Billing and POS */}
+         {/* 04. Billing and Management */}
          <div className="col-lg-4 col-md-6">
             <div className="key-box">
-               <h3>04. Billing and POS</h3>
+               <h3>04. Billing and Management</h3>
                <ul>
                   <li>Scan product barcodes for fast billing.</li>
                   <li>Accept multiple payment modes (cash, card, UPI).</li>
@@ -828,7 +828,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS &amp; AI & IT Solutions solution to manage billing, inventory, AI Knowledge Base, GST compliance, and e-commerce for hardware stores.
+                           A1. A cloud-based Billing &amp; AI & IT Solutions solution to manage billing, inventory, AI Knowledge Base, GST compliance, and e-commerce for hardware stores.
                         </div>
                      </div>
                   </div>
@@ -954,7 +954,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes. ChittorTech provides full customization for POS, inventory, AI Knowledge Base, multi-location, and e-commerce modules.
+                           A10. Yes. ChittorTech provides full customization for Management, inventory, AI Knowledge Base, multi-location, and e-commerce modules.
                         </div>
                      </div>
                   </div>

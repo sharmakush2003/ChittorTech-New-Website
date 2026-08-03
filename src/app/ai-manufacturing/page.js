@@ -121,17 +121,17 @@ export default function Page() {
    <div className="container">
       <div className="row justify-content-center gy-4">
 
-   {/* Intelligent POS & Billing */}
+   {/* Intelligent Billing & Billing */}
    <div className="col-md-3 col-sm-6">
       <div className="key-box">
-         <h3>Intelligent POS & Billing</h3>
+         <h3>Intelligent Billing & Billing</h3>
          <p>
-            AI-assisted POS for fast, accurate, and GST-compliant billing with support for all modern payment modes.
+            AI-assisted Management for fast, accurate, and GST-compliant billing with support for all modern payment modes.
          </p>
          <ul>
             <li>AI-powered, error-free billing</li>
             <li>UPI, cards, wallets & cash support</li>
-            <li>Mobile POS (mPOS) for on-the-go billing</li>
+            <li>Mobile Management (mPOS) for on-the-go billing</li>
             <li>Automated GST calculation & invoices</li>
          </ul>
       </div>
@@ -314,7 +314,7 @@ Chittortech AI Retail AI Automation is a next-generation, AI-powered retail solu
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS and AI & IT Solutions solution designed to manage billing, inventory, accounting, AI Knowledge Base, and online sales for pet stores.
+                           A1. A cloud-based Management and AI & IT Solutions solution designed to manage billing, inventory, accounting, AI Knowledge Base, and online sales for pet stores.
                         </div>
                      </div>
                   </div>
@@ -370,7 +370,7 @@ Chittortech AI Retail AI Automation is a next-generation, AI-powered retail solu
                      </h2>
                      <div id="collapse5" className="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A5. Yes, the Mobile POS feature allows billing from any device, anywhere.
+                           A5. Yes, the Mobile Management feature allows billing from any device, anywhere.
                         </div>
                      </div>
                   </div>
@@ -440,7 +440,7 @@ Chittortech AI Retail AI Automation is a next-generation, AI-powered retail solu
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes. ChittorTech offers full customization for POS, AI Knowledge Base, inventory management, and accounting modules.
+                           A10. Yes. ChittorTech offers full customization for Management, AI Knowledge Base, inventory management, and accounting modules.
                         </div>
                      </div>
                   </div>

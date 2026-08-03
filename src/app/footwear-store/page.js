@@ -86,10 +86,10 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-shoe-prints`}></i> Footwear POS
+                <i className={`fa-solid fa-shoe-prints`}></i> Footwear Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Footwear Store POS & Management Software
+                Footwear Store Billing &amp; Management Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
                 Size-wise inventory, brand management, and fast billing for shoe stores.
@@ -122,7 +122,7 @@ export default function Page() {
       <section className="manufacturing-key section-bg">
             <div className="container">
                      <div className="heading-wrap">
-                         <h2>Modern Garment Billing POS by <span>ChittorTech</span> </h2>
+                         <h2>Modern Garment Billing Management by <span>ChittorTech</span> </h2>
                      </div>
                <div className="row justify-content-center gy-4">
                    {/* Simplified GST Compliance */}
@@ -155,7 +155,7 @@ export default function Page() {
                    <div className="col-md-4 col-sm-6">
                        <div className="key-box">
                            <h3>Omnichannel Retail – Online & Offline</h3>
-                           <p>Expand your garment business with our omnichannel POS solution. Manage both physical stores and online shops effortlessly with seamless Shopify and WooCommerce integrations.</p>
+                           <p>Expand your garment business with our omnichannel Management solution. Manage both physical stores and online shops effortlessly with seamless Shopify and WooCommerce integrations.</p>
                            <ul>
                               <li>Easy online store setup</li>
                               <li>Shopify & WooCommerce integration</li>
@@ -264,11 +264,11 @@ export default function Page() {
                       <div className="clothing-stores-text">
     <h2>One Complete Software for Every Garment Store Operation</h2>
     <p>
-        ChittorTech delivers an all-in-one garment POS and management system that brings every
+        ChittorTech delivers an all-in-one garment Management and management system that brings every
         daily task—sales, stock, payments, and online selling—onto one smart platform.
     </p>
     <ul>
-        <li>High-speed POS for smooth and accurate billing</li>
+        <li>High-speed Management for smooth and accurate billing</li>
         <li>Centralized control of multiple outlets from any location</li>
         <li>Real-time inventory tracking with barcode support</li>
         <li>Support for all major payment options</li>
@@ -324,7 +324,7 @@ export default function Page() {
                  <div className="col-md-12">
                    <div className="bridal-store">
                       <h2>ChittorTech that Simplify Garment Store Management</h2>
-                      <h5>An All-Inclusive POS Solution for Readymade Garment, Clothing & Fashion Stores</h5>
+                      <h5>An All-Inclusive Management Solution for Readymade Garment, Clothing & Fashion Stores</h5>
                       <p>Running a readymade garment or clothing store can be hectic. You’re constantly assisting customers, showcasing multiple garment options, generating bills, and offering different payment modes for a smooth checkout. Slow processes and outdated systems simply don’t work for modern apparel businesses.</p>
                       <p>What you need is a solution that keeps everything organized, speeds up billing, manages inventory, and ensures seamless operations. You need ChittorTech!</p>
                    </div>

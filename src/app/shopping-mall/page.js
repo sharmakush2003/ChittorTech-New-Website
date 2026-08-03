@@ -590,12 +590,12 @@ export default function Page() {
 
          <div className="col-md-7">
             <div className="heading-wrap text-start">
-               <h2>End-to-End Shopping Mall Management from POS to Inventory</h2>
+               <h2>End-to-End Shopping Mall Management from Management to Inventory</h2>
                <p>Powerful software to streamline your mall operations across billing, inventory, and reporting:</p>
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li>Powerful POS Solution</li>
+                  <li>Powerful Management Solution</li>
                   <li>Manage Multiple Stores Anywhere, Anytime</li>
                   <li>Organize Your Inventory and Barcodes</li>
                   <li>Support Multiple Payment Modes</li>
@@ -653,10 +653,10 @@ export default function Page() {
             </div>
          </div>
 
-         {/* 04. Billing and POS */}
+         {/* 04. Billing and Management */}
          <div className="col-lg-4 col-md-6">
             <div className="key-box">
-               <h3>04. Billing and POS</h3>
+               <h3>04. Billing and Management</h3>
                <ul>
                   <li>Scan product barcodes for quick billing.</li>
                   <li>Accept multiple payment options (cash, card, UPI).</li>
@@ -765,7 +765,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS and AI & IT Solutions that centralizes billing, inventory, accounting, AI Knowledge Base, and multi-store management for shopping malls.
+                           A1. A cloud-based Management and AI & IT Solutions that centralizes billing, inventory, accounting, AI Knowledge Base, and multi-store management for shopping malls.
                         </div>
                      </div>
                   </div>
@@ -891,7 +891,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes, ChittorTech offers full customization of POS, AI Knowledge Base, inventory, and accounting modules to fit your mall operations.
+                           A10. Yes, ChittorTech offers full customization of Management, AI Knowledge Base, inventory, and accounting modules to fit your mall operations.
                         </div>
                      </div>
                   </div>

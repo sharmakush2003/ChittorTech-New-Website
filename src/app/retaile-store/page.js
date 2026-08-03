@@ -121,14 +121,14 @@ export default function Page() {
    <div className="container">
      <div className="row justify-content-center gy-4">
 
-   {/* Intelligent POS & Billing */}
+   {/* Intelligent Billing & Billing */}
    <div className="col-md-4 col-sm-6">
       <div className="key-box">
-         <h3>Intelligent POS & Billing</h3>
+         <h3>Intelligent Billing & Billing</h3>
          <ul>
             <li>AI-assisted fast & error-free billing</li>
             <li>Accept cash, cards, UPI & digital wallets</li>
-            <li>Mobile POS (mPOS) for on-the-go billing</li>
+            <li>Mobile Management (mPOS) for on-the-go billing</li>
             <li>Image-based AI product scanning</li>
             <li>GST-compliant automated invoicing</li>
          </ul>
@@ -367,7 +367,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS and AI & IT Solutions solution designed to manage billing, inventory, AI Knowledge Base, GST compliance, loyalty programs, and multi-store operations for liquor shops.
+                           A1. A cloud-based Management and AI & IT Solutions solution designed to manage billing, inventory, AI Knowledge Base, GST compliance, loyalty programs, and multi-store operations for liquor shops.
                         </div>
                      </div>
                   </div>
@@ -493,7 +493,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes. ChittorTech provides full customization for POS, inventory management, multi-location operations, and AI Knowledge Base modules.
+                           A10. Yes. ChittorTech provides full customization for Management, inventory management, multi-location operations, and AI Knowledge Base modules.
                         </div>
                      </div>
                   </div>

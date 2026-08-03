@@ -421,7 +421,7 @@ export default function Page() {
                                      <p><strong>How to Use:</strong> Generate reports for stock movement, low/high-selling items, and category-wise sales.</p>
                                  </div>
                                  <div className="ai-solutions-item">
-                                     <h4>8. Integration with POS, AI Knowledge Base, and E-commerce</h4>
+                                     <h4>8. Integration with Management, AI Knowledge Base, and E-commerce</h4>
                                      <p><strong>Benefit:</strong> Centralized control for all business operations.</p>
                                      <p><strong>How to Use:</strong> Connect the inventory system to billing, AI Knowledge Base, accounting, and online platforms.</p>
                                  </div>
@@ -663,7 +663,7 @@ Thousands   merchants trust ChittorTech for efficient
                                   <h2 className="accordion-header" id="headingEight">
                                       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                           data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                          Can it integrate with POS, AI Knowledge Base, and e-commerce systems?
+                                          Can it integrate with Management, AI Knowledge Base, and e-commerce systems?
                                       </button>
                                   </h2>
                                   <div id="collapseEight" className="accordion-collapse collapse"

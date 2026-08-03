@@ -123,12 +123,12 @@ export default function Page() {
             <div className="container">
               <div className="row justify-content-center gy-4">
 
-    {/* Next-Gen Garment Billing POS */}
+    {/* Next-Gen Garment Billing Management */}
     <div className="col-md-4 col-sm-6">
         <div className="key-box">
-            <h3>Next-Gen Garment Billing POS</h3>
+            <h3>Next-Gen Garment Billing Management</h3>
             <p>
-                Checkout becomes quick and hassle-free with a smart POS system that automates billing
+                Checkout becomes quick and hassle-free with a smart Management system that automates billing
                 and supports secure digital payments for garment retailers.
             </p>
             <ul>
@@ -237,7 +237,7 @@ export default function Page() {
                 <strong>Easy Returns &amp; Exchanges</strong> – Process refunds and swaps with real-time inventory updates.
             </li>
             <li>
-                <strong>Live Stock Audits</strong> – Verify inventory instantly using mobile POS devices.
+                <strong>Live Stock Audits</strong> – Verify inventory instantly using mobile Management devices.
             </li>
             <li>
                 <strong>Advanced Business Reports</strong> – Get access to 150+ detailed MIS and analytical reports.
@@ -289,7 +289,7 @@ export default function Page() {
             stores and retail chains.
         </p>
         <ul>
-            <li>High-performance POS for fast billing</li>
+            <li>High-performance Management for fast billing</li>
             <li>Centralized control of multiple outlets from any location</li>
             <li>Smart stock tracking with barcode support</li>
             <li>Flexible payment acceptance options</li>
@@ -433,7 +433,7 @@ export default function Page() {
                            <h2>Benefits of Using Garment AI & IT Solutions</h2>
                            <ul>
                               <li>For business owners: save 120+ hours monthly, get real-time profit & loss insights, and manage all outlets centrally.</li>
-                              <li>For staff: simple POS interface, 99% fewer manual errors, and 90% faster billing.</li>
+                              <li>For staff: simple Management interface, 99% fewer manual errors, and 90% faster billing.</li>
                               <li>For customers: faster checkouts, instant invoices on WhatsApp, and attractive loyalty programs.</li>
                            </ul>
                        </div>
@@ -501,7 +501,7 @@ export default function Page() {
                               <li>Update inventory daily for accuracy.</li>
                               <li>Use barcode billing to avoid errors.</li>
                               <li>Check real-time sales reports before reordering.</li>
-                              <li>Train staff to use POS for faster service.</li>
+                              <li>Train staff to use Management for faster service.</li>
                               <li>Use the customer database for loyalty programs and promotions.</li>
                               <li>Expand with online and offline selling for more revenue.</li>
                            </ul>
@@ -641,7 +641,7 @@ export default function Page() {
                                 <h3>Secure data backup</h3>
                              </li>
                              <li>
-                                <h3>Easy-to-use POS system</h3>
+                                <h3>Easy-to-use Management system</h3>
                              </li>
                              <li>
                                 <h3>Free onboarding & training sessions</h3>

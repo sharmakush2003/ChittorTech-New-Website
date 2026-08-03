@@ -86,10 +86,10 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-shop`}></i> Minimart POS
+                <i className={`fa-solid fa-shop`}></i> Minimart Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Minimart POS & Management Software
+                Minimart Billing & Management Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
                 Perfect for small-to-mid-sized marts — fast billing, smart inventory, easy reporting.
@@ -124,11 +124,11 @@ export default function Page() {
          <div className="col-md-3 col-sm-6">
             <div className="key-box">
                <h3>Fast & Hassle-Free Billing</h3>
-               <p>Generate bills instantly with a high-speed POS system. Accept multiple payment modes and stay GST-compliant for smooth checkouts.</p>
+               <p>Generate bills instantly with a high-speed Management system. Accept multiple payment modes and stay GST-compliant for smooth checkouts.</p>
                <ul>
                   <li>GST-compliant invoicing</li>
                   <li>Cash, card, and UPI payment support</li>
-                  <li>Image-based POS for quick product identification</li>
+                  <li>Image-based Management for quick product identification</li>
                   <li>E-invoicing & digital bill sharing</li>
                </ul>
             </div>
@@ -297,15 +297,15 @@ export default function Page() {
                         </div>
                      </div>
                   </div>
-                  {/* Feature 9: Image-Based POS */}
+                  {/* Feature 9: Image-Based Management */}
                   <div className="col-md-4 col-12 mb-4">
                      <div className="boxes flip-container">
                         <div className="flip-card">
                            <div className="flip-card-inner">
                               <div className="flip-card-back">
-                                 <img src="/assets/images/fe8.png" alt="Image-Based POS" className="img-fluid mb-3" />
-                                 <h4>Image-Based POS</h4>
-                                 <p>Quickly identify products for faster checkouts with an intuitive image-based POS system.</p>
+                                 <img src="/assets/images/fe8.png" alt="Image-Based Management" className="img-fluid mb-3" />
+                                 <h4>Image-Based Management</h4>
+                                 <p>Quickly identify products for faster checkouts with an intuitive image-based Management system.</p>
                               </div>
                            </div>
                         </div>
@@ -339,15 +339,15 @@ export default function Page() {
                         </div>
                      </div>
                   </div>
-                  {/* Feature 12: Advanced POS System */}
+                  {/* Feature 12: Advanced Management System */}
                   <div className="col-md-4 col-12 mb-4">
                      <div className="boxes flip-container">
                         <div className="flip-card">
                            <div className="flip-card-inner">
                               <div className="flip-card-back">
-                                 <img src="/assets/images/fe11.png" alt="Advanced POS System" className="img-fluid mb-3" />
-                                 <h4>Advanced POS System</h4>
-                                 <p>Handle all transactions effortlessly with our advanced POS, supporting multiple payment options.</p>
+                                 <img src="/assets/images/fe11.png" alt="Advanced Management System" className="img-fluid mb-3" />
+                                 <h4>Advanced Management System</h4>
+                                 <p>Handle all transactions effortlessly with our advanced Management, supporting multiple payment options.</p>
                               </div>
                            </div>
                         </div>
@@ -470,7 +470,7 @@ export default function Page() {
          <div className="col-lg-4 col-md-6">
             <div className="key-box">
                <h3>Simplified Store Management</h3>
-               <p>Operate multiple minimart stores efficiently using POS systems designed specifically for minimart operations</p>
+               <p>Operate multiple minimart stores efficiently using Management systems designed specifically for minimart operations</p>
             </div>
          </div>
       </div>
@@ -488,13 +488,13 @@ export default function Page() {
          </div>
          <div className="col-md-7 order-md-1">
             <div className="heading-wrap text-start">
-               <h2>One Smart POS for Every Minimart Requirement
+               <h2>One Smart Management for Every Minimart Requirement
 Powerful tools to <span> improve efficiency, control inventory, and drive data-backed growth.</span> </h2>
                <p>ChittorTech’ Minimart AI Assistant Software provides everything needed to enhance store operations and make data-driven decisions:</p>
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li>Powerful POS solution</li>
+                  <li>Powerful Management solution</li>
                   <li>Manage multiple stores anytime, anywhere</li>
                   <li>Inventory & barcode management</li>
                   <li>Multiple payment modes</li>
@@ -554,7 +554,7 @@ Powerful tools to <span> improve efficiency, control inventory, and drive data-b
             <div className="expertise-wrap bridal-wrap">
                <ul>
                   <li><strong>Rated 4.8+ on Google:</strong> Highly trusted by 2K+ reviews</li>
-                  <li><strong>Multi-Featured:</strong> Integrates POS with inventory, accounting, invoicing, and more</li>
+                  <li><strong>Multi-Featured:</strong> Integrates Management with inventory, accounting, invoicing, and more</li>
                   <li><strong>Training & Implementation:</strong> Free guidance to ensure smooth software adoption</li>
                   <li><strong>Cloud-Based Access:</strong> Manage your minimart from anywhere, anytime</li>
                   <li><strong>User-Friendly Interface:</strong> Intuitive and visually appealing</li>
@@ -618,7 +618,7 @@ Powerful tools to <span> improve efficiency, control inventory, and drive data-b
             <div className="key-box">
                <h3>03. Billing & Checkout</h3>
                <ul>
-                  <li>Scan product barcodes or use image-based POS for quick product identification.</li>
+                  <li>Scan product barcodes or use image-based Management for quick product identification.</li>
                   <li>The system automatically applies GST & discounts.</li>
                   <li>Accept payments via cash, UPI, card, or wallets.</li>
                   <li>Share bills via print, SMS, or WhatsApp.</li>
@@ -704,7 +704,7 @@ Powerful tools to <span> improve efficiency, control inventory, and drive data-b
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A cloud-based POS and inventory system to manage billing, stock, AI Knowledge Base, accounting, and online orders for Minimart stores.
+                           A cloud-based Management and inventory system to manage billing, stock, AI Knowledge Base, accounting, and online orders for Minimart stores.
                         </div>
                      </div>
                   </div>
@@ -790,12 +790,12 @@ Powerful tools to <span> improve efficiency, control inventory, and drive data-b
                   <div className="accordion-item">
                      <h2 className="accordion-header" id="heading8">
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-                        Does it have mobile POS capabilities?
+                        Does it have mobile Management capabilities?
                         </button>
                      </h2>
                      <div id="collapse8" className="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           Yes, the system supports mobile POS, allowing staff to bill anywhere in the store.
+                           Yes, the system supports mobile Management, allowing staff to bill anywhere in the store.
                         </div>
                      </div>
                   </div>
@@ -821,7 +821,7 @@ Powerful tools to <span> improve efficiency, control inventory, and drive data-b
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           Yes, ChittorTech offers full customization for POS, AI Knowledge Base, inventory, accounting, and e-commerce integration.
+                           Yes, ChittorTech offers full customization for Management, AI Knowledge Base, inventory, accounting, and e-commerce integration.
                         </div>
                      </div>
                   </div>

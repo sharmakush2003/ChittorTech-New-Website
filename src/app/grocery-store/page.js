@@ -86,7 +86,7 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-basket-shopping`}></i> Grocery POS
+                <i className={`fa-solid fa-basket-shopping`}></i> Grocery Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
                 Smart Grocery Store Management Software
@@ -121,10 +121,10 @@ export default function Page() {
    <div className="container">
    <div className="row justify-content-center gy-4">
 
-      {/* AI Automated Billing & Smart POS */}
+      {/* AI Automated Billing & Smart Management */}
       <div className="col-md-4 col-sm-6">
          <div className="key-box">
-            <h3>AI Automated Billing & Smart POS</h3>
+            <h3>AI Automated Billing & Smart Management</h3>
             <p>Eliminate manual billing with AI-powered fast and accurate checkout using integrated payment options.</p>
             <ul>
                <li>AI sales invoices – generate bills automatically</li>
@@ -328,7 +328,7 @@ export default function Page() {
                         <div className="flip-card">
                           <div className="flip-card-inner">
                             <div className="flip-card-back">
-                              <img src="/assets/images/b1.png" alt="Intelligent POS" className="img-fluid mb-3" />
+                              <img src="/assets/images/b1.png" alt="Intelligent Management" className="img-fluid mb-3" />
                               <h4>AI Weigh-Scale Integration & Returns</h4>
                               <p>Accurate billing for weighted items and seamless return management.
 </p>
@@ -494,7 +494,7 @@ export default function Page() {
 
    <div className="expertise-wrap bridal-wrap">
       <ul>
-         <li><strong>AI Smart POS :</strong> Fast, accurate checkout for every store.</li>
+         <li><strong>AI Smart Management :</strong> Fast, accurate checkout for every store.</li>
          <li><strong>AI Multi-Store Management :</strong> Control multiple outlets anytime, anywhere.</li>
          <li><strong>AI Inventory & Barcode Control :</strong> Track and organize stock intelligently.</li>
          <li><strong>AI Multi-Payment Support :</strong> Accept cards, UPI, wallets with AI-managed processing.</li>
@@ -523,7 +523,7 @@ export default function Page() {
        <div className="col-md-3 col-sm-6">
            <div className="key-box">
                <h3>User-Friendly</h3>
-               <p> Intuitive invoicing and POS system for seamless day-to-day operations.</p>
+               <p> Intuitive invoicing and Management system for seamless day-to-day operations.</p>
            </div>
        </div>
 
@@ -716,10 +716,10 @@ export default function Page() {
                 <div className="key-box">
                     <h3>3. Billing & POS</h3>
                     <ul>
-                        <li><strong>Create Bills:</strong> Use the POS system to quickly scan items and generate GST-compliant invoices.</li>
+                        <li><strong>Create Bills:</strong> Use the Management system to quickly scan items and generate GST-compliant invoices.</li>
                         <li><strong>Multiple Payment Options:</strong> Accept cash, card, UPI, and digital wallets.</li>
                         <li><strong>Digital Bills:</strong> Send bills via SMS or WhatsApp to customers.</li>
-                        <li><strong>No-Queue Billing:</strong> For large stores, manage multiple billing counters or mobile POS (mPOS).</li>
+                        <li><strong>No-Queue Billing:</strong> For large stores, manage multiple billing counters or mobile Management (mPOS).</li>
                     </ul>
                 </div>
             </div>
@@ -822,7 +822,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A cloud-based POS system designed for grocery stores to manage billing, inventory, accounting, AI Knowledge Base, and reporting in one platform.
+                           A cloud-based Management system designed for grocery stores to manage billing, inventory, accounting, AI Knowledge Base, and reporting in one platform.
                         </div>
                      </div>
                   </div>
@@ -948,7 +948,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           Yes, ChittorTech offers full customization for POS, inventory, AI Knowledge Base, and e-commerce features.
+                           Yes, ChittorTech offers full customization for Management, inventory, AI Knowledge Base, and e-commerce features.
                         </div>
                      </div>
                   </div>

@@ -624,7 +624,7 @@ export default function Page() {
     </div>
 
     <div className="expertise-wrap bridal-wrap">
-        <h4>AI-Smart POS & Cloud Command Center</h4>
+        <h4>AI-Smart Billing & Cloud Command Center</h4>
         <ul>
             <li>Centralized control for multiple temples and branches from one dashboard.</li>
             <li>Live inventory tracking with AI-assisted barcode management.</li>
@@ -986,7 +986,7 @@ export default function Page() {
                 <div className="key-box">
                     <h3>STEP 9: Accept Payments Easily</h3>
                     <ul>
-                        <li>At the billing counter, generate a bill using the POS system.</li>
+                        <li>At the billing counter, generate a bill using the Management system.</li>
                         <li>Devotee scans the QR code and pays via UPI or other modes.</li>
                         <li>Receipt is generated and stored automatically.</li>
                         <li>No long queues, no manual errors.</li>

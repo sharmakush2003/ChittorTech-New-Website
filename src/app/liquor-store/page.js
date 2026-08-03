@@ -86,7 +86,7 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-wine-bottle`}></i> Liquor POS
+                <i className={`fa-solid fa-wine-bottle`}></i> Liquor Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
                 Liquor Store Management Software
@@ -144,7 +144,7 @@ export default function Page() {
                   <li>GST-Compliant Billing & Tax Automation</li>
                   <li>Digital Bills & Cash Register Integration</li>
                   <li>Barcode Scanning for Faster Billing</li>
-                  <li>Image-Based POS</li>
+                  <li>Image-Based Management</li>
                </ul>
             </div>
          </div>
@@ -456,7 +456,7 @@ export default function Page() {
             </div>
             <div className="expertise-wrap liquor-wrap">
                <ul>
-                  <li><strong>Powerful POS Solution</strong> – Speed up billing with barcode scanning and GST-compliant invoicing.</li>
+                  <li><strong>Powerful Management Solution</strong> – Speed up billing with barcode scanning and GST-compliant invoicing.</li>
                   <li><strong>Manage Multiple Stores Anywhere, Anytime</strong> – Connect and control multiple outlets from one centralized dashboard.</li>
                   <li><strong>Organize Your Inventory and Barcodes</strong> – Maintain accurate stock levels with real-time updates and barcode tracking.</li>
                   <li><strong>Support Multiple Payment Modes</strong> – Accept payments via cash, cards, UPI, or digital wallets for customer convenience.</li>
@@ -565,10 +565,10 @@ export default function Page() {
             </div>
          </div>
 
-         {/* 04. Billing and POS */}
+         {/* 04. Billing and Management */}
          <div className="col-lg-4 col-md-6">
             <div className="key-box">
-               <h3>04. Billing and POS</h3>
+               <h3>04. Billing and Management</h3>
                <ul>
                   <li>Scan product barcodes to generate bills quickly.</li>
                   <li>Accept multiple payment modes (cash, card, UPI).</li>
@@ -694,7 +694,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS and AI & IT Solutions solution designed to manage billing, inventory, AI Knowledge Base, GST compliance, loyalty programs, and multi-store operations for liquor shops.
+                           A1. A cloud-based Management and AI & IT Solutions solution designed to manage billing, inventory, AI Knowledge Base, GST compliance, loyalty programs, and multi-store operations for liquor shops.
                         </div>
                      </div>
                   </div>
@@ -820,7 +820,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes. ChittorTech provides full customization for POS, inventory management, multi-location operations, and AI Knowledge Base modules.
+                           A10. Yes. ChittorTech provides full customization for Management, inventory management, multi-location operations, and AI Knowledge Base modules.
                         </div>
                      </div>
                   </div>

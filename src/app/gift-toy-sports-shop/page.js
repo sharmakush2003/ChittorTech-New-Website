@@ -86,7 +86,7 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-gift`}></i> Multi-Retail POS
+                <i className={`fa-solid fa-gift`}></i> Multi-Retail Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
                 Gift, Toy & Sports Shop Software
@@ -181,11 +181,11 @@ export default function Page() {
                            <div className="flip-card-inner">
                               <div className="flip-card-back">
                                  <img src="/assets/images/fe1.png" alt="OCR" className="img-fluid mb-3" />
-                                 <h4>AI Smart POS & Billing</h4>
-<p>Lightning-fast AI-powered POS designed for smooth, queue-free checkouts.</p>
+                                 <h4>AI Smart Billing & Billing</h4>
+<p>Lightning-fast AI-powered Management designed for smooth, queue-free checkouts.</p>
 <ul>
    <li>Accept multiple payments: UPI, cards, wallets, and cash</li>
-   <li>Mobile POS support for on-the-go billing</li>
+   <li>Mobile Management support for on-the-go billing</li>
    <li>Modern AI mPOS ensures error-free, GST-compliant invoicing</li>
 </ul>
 
@@ -293,7 +293,7 @@ export default function Page() {
                   <div className="price">💳 ₹2,999 <span>/month</span></div>
                </div>
                <ul className="pricing-features">
-                  <li>✔ Smart POS &amp; Billing</li>
+                  <li>✔ Smart Billing &amp; Billing</li>
                   <li>✔ Basic Inventory Management &amp; Stock Alerts</li>
                   <li>✔ Digital GST-Compliant Invoices</li>
                   <li>✔ WhatsApp Notifications</li>
@@ -402,7 +402,7 @@ export default function Page() {
 
    <div className="expertise-wrap bridal-wrap">
       <ul>
-         <li><strong>AI Smart POS System –</strong> Fast and reliable AI-powered billing with smooth checkout.</li>
+         <li><strong>AI Smart Management System –</strong> Fast and reliable AI-powered billing with smooth checkout.</li>
          <li><strong>Multiple Payment Support –</strong> Accept UPI, cards, wallets, and cash effortlessly.</li>
          <li><strong>AI Multi-Store Management –</strong> Control all branches from one intelligent dashboard, anytime, anywhere.</li>
          <li><strong>AI Inventory & Barcode Management –</strong> Real-time stock tracking with AI-assisted barcode generation.</li>
@@ -529,10 +529,10 @@ export default function Page() {
                </div>
             </div>
 
-            {/* 04. Billing and POS */}
+            {/* 04. Billing and Management */}
             <div className="col-lg-4 col-md-6">
                <div className="key-box">
-                  <h3>04. Billing and POS</h3>
+                  <h3>04. Billing and Management</h3>
                   <ul>
                      <li>Scan product barcodes to generate bills quickly.</li>
                      <li>Accept multiple payment modes (cash, card, UPI).</li>
@@ -651,7 +651,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS &amp; AI & IT Solutions solution to manage billing, inventory, AI Knowledge Base, loyalty, and e-commerce for gift shops.
+                           A1. A cloud-based Billing &amp; AI & IT Solutions solution to manage billing, inventory, AI Knowledge Base, loyalty, and e-commerce for gift shops.
                         </div>
                      </div>
                   </div>
@@ -777,7 +777,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes. ChittorTech offers full customization for POS, inventory, AI Knowledge Base, e-commerce, and multi-branch features.
+                           A10. Yes. ChittorTech offers full customization for Management, inventory, AI Knowledge Base, e-commerce, and multi-branch features.
                         </div>
                      </div>
                   </div>

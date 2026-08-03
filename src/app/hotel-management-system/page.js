@@ -36,7 +36,7 @@ export default function Page() {
                 Next-Gen Hotel Management System
               </h1>
               <p style={{ fontSize: "1.08rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.75, maxWidth: "650px", marginBottom: "32px" }}>
-                All-in-one Cloud Property Management System (PMS) for luxury hotels, boutique stays, and hotel chains. Features direct website booking engines, real-time Manager Admin push notifications, restaurant POS (KOT), housekeeping grids, and channel manager sync.
+                All-in-one Cloud Property Management System (PMS) for luxury hotels, boutique stays, and hotel chains. Features direct website booking engines, real-time Manager Admin push notifications, restaurant Management (KOT), housekeeping grids, and channel manager sync.
               </p>
               <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
                 <a href="#hotel-live-approval-demo" className="ct-btn ct-btn-primary ct-btn-lg">
@@ -91,7 +91,7 @@ export default function Page() {
               { icon: "fa-globe", title: "Direct Commission-Free Booking Engine", desc: "Guests book directly on your hotel website with live room rate selection, instant booking confirmation, and payment gateway integration." },
               { icon: "fa-bell", title: "Instant Manager Admin Push Alerts", desc: "Real-time alerts sent to the Manager Admin Panel on desktop and mobile as soon as a guest submits an online booking request." },
               { icon: "fa-circle-check", title: "Real-Time Admin Room Approval", desc: "Hotel managers can review guest details, check-in dates, special requests, and approve or reassign rooms instantly in real-time." },
-              { icon: "fa-utensils", title: "Restaurant POS & KOT Integration", desc: "Integrated Kitchen Order Tickets (KOT) and room service POS that post food bills directly to guest room folios upon checkout." },
+              { icon: "fa-utensils", title: "Restaurant Billing & KOT Integration", desc: "Integrated Kitchen Order Tickets (KOT) and room service Management that post food bills directly to guest room folios upon checkout." },
               { icon: "fa-broom", title: "Housekeeping & Room Status Grid", desc: "Live color-coded room status tracking (Clean, Out of Order, Dirty, Occupied) updated instantly across staff mobile devices." },
               { icon: "fa-chart-pie", title: "Night Audit & RevPAR Reports", desc: "Automated daily night audit, GSTR-1 tax filings, occupancy percentage heatmaps, and financial revenue management analytics." }
             ].map((f) => (
@@ -228,7 +228,7 @@ export default function Page() {
           <div style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #291fbc 100%)", borderRadius: "24px", padding: "60px 40px", textAlign: "center", color: "#fff" }}>
             <h2 style={{ fontWeight: 900, fontSize: "2.2rem", marginBottom: "14px" }}>Transform Your Hotel Operations &amp; Direct Bookings</h2>
             <p style={{ color: "rgba(255,255,255,0.85)", maxWidth: "600px", margin: "0 auto 28px" }}>
-              Automate your hotel front desk, restaurant POS, and real-time manager approval notifications with ChittorTech Hotel Management Software.
+              Automate your hotel front desk, restaurant Management, and real-time manager approval notifications with ChittorTech Hotel Management Software.
             </p>
             <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
               <button className="ct-btn ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal" style={{ background: "#fff", color: "#291fbc", fontWeight: 800 }}>

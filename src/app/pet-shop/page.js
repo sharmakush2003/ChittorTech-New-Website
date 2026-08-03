@@ -86,10 +86,10 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-paw`}></i> Pet Shop POS
+                <i className={`fa-solid fa-paw`}></i> Pet Shop Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Pet Shop POS & Management Software
+                Pet Shop Billing & Management Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
                 Manage pet products, veterinary services, and grooming bookings in one system.
@@ -129,7 +129,7 @@ export default function Page() {
                <ul>
                   <li>GST-Compliant Billing & Invoices</li>
                   <li>Multiple Payment Modes (Cash, Cards, UPI)</li>
-                  <li>Mobile POS for on-the-go billing</li>
+                  <li>Mobile Management for on-the-go billing</li>
                </ul>
             </div>
          </div>
@@ -227,7 +227,7 @@ export default function Page() {
                               <div className="flip-card-back">
                                  <img src="/assets/images/fe3.png" alt="Omnichannel Sales" className="img-fluid mb-3" />
                                  <h4>Omnichannel Sales</h4>
-                                 <p>Manage orders from your online store, marketplaces, or in-store POS seamlessly.</p>
+                                 <p>Manage orders from your online store, marketplaces, or in-store Management seamlessly.</p>
                               </div>
                            </div>
                         </div>
@@ -418,7 +418,7 @@ export default function Page() {
 
          <div className="col-md-7 order-md-1">
             <div className="heading-wrap text-start">
-               <h2>Centralized POS Solution for Multi-Store  <span>Pet Shop Management</span></h2>
+               <h2>Centralized Management Solution for Multi-Store  <span>Pet Shop Management</span></h2>
                <p>Easily manage your pet store branches and franchises across locations from a centralized system with ChittorTech.</p>
             </div>
             <div className="expertise-wrap bridal-wrap">
@@ -490,7 +490,7 @@ export default function Page() {
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li>Powerful POS Solution</li>
+                  <li>Powerful Management Solution</li>
                   <li>Manage Multiple Stores Anywhere, Anytime</li>
                   <li>Organize Your Inventory and Barcodes</li>
                   <li>Support Multiple Payment Modes</li>
@@ -558,10 +558,10 @@ export default function Page() {
             </div>
          </div>
 
-         {/* 04. Billing and POS */}
+         {/* 04. Billing and Management */}
          <div className="col-lg-4 col-md-6">
             <div className="key-box">
-               <h3>04. Billing and POS</h3>
+               <h3>04. Billing and Management</h3>
                <ul>
                   <li>Scan product barcodes to generate bills quickly.</li>
                   <li>Accept multiple payment modes, including cash, card, and UPI.</li>
@@ -675,7 +675,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS and AI & IT Solutions solution designed to manage billing, inventory, accounting, AI Knowledge Base, and online sales for pet stores.
+                           A1. A cloud-based Management and AI & IT Solutions solution designed to manage billing, inventory, accounting, AI Knowledge Base, and online sales for pet stores.
                         </div>
                      </div>
                   </div>
@@ -731,7 +731,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse5" className="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A5. Yes, the Mobile POS feature allows billing from any device, anywhere.
+                           A5. Yes, the Mobile Management feature allows billing from any device, anywhere.
                         </div>
                      </div>
                   </div>
@@ -801,7 +801,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes. ChittorTech offers full customization for POS, AI Knowledge Base, inventory management, and accounting modules.
+                           A10. Yes. ChittorTech offers full customization for Management, AI Knowledge Base, inventory management, and accounting modules.
                         </div>
                      </div>
                   </div>

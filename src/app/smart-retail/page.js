@@ -176,10 +176,10 @@ export default function Page() {
         </div>
     </div>
 
-    {/* Unified POS System */}
+    {/* Unified Management System */}
     <div className="col-lg-4 col-md-6">
         <div className="key-box">
-            <h3>Unified POS System</h3>
+            <h3>Unified Management System</h3>
             <h5>Integrated, flexible, and intelligent</h5>
             <p>Combine billing, AI Knowledge Base, inventory, and online channels in one platform:</p>
             <ul>
@@ -411,7 +411,7 @@ export default function Page() {
                                 <li>Smart mirrors (VR try-ons) for garments, beauty, and eyewear</li>
                                 <li>Customer-facing displays & kiosks for self-service billing</li>
                                 <li>Traffic analytics & footfall counters for smarter retail space planning</li>
-                                <li>Real-time integrations with POS, AI Knowledge Base, and e-commerce</li>
+                                <li>Real-time integrations with Management, AI Knowledge Base, and e-commerce</li>
                               </ul>
                               <p>Our future-ready technologies are transforming supermarkets, grocery chains, fashion outlets, hypermarkets, and MSMEs into next-gen smart stores.</p>
                           </div>
@@ -458,7 +458,7 @@ export default function Page() {
                                            <ul>
                                              <li>Place the product on the AI-powered scale at checkout.</li>
                                              <li>The system automatically detects weight and calculates price.</li>
-                                             <li>The total is synced instantly with POS/self-checkout systems.</li>
+                                             <li>The total is synced instantly with Management/self-checkout systems.</li>
                                            </ul>
                                            <h5><strong>Benefits:</strong></h5>
                                            <ul>
@@ -522,10 +522,10 @@ export default function Page() {
                                  <div className="flip-card">
                                     <div className="flip-card-inner">
                                        <div className="flip-card-back">
-                                          <h4>Smart Object Detection at POS</h4>
+                                          <h4>Smart Object Detection at Management</h4>
                                            <h5><strong>How to Use:</strong></h5>
                                            <ul>
-                                            <li>Place items on the POS counter with sensors.</li>
+                                            <li>Place items on the Management counter with sensors.</li>
                                             <li>System automatically identifies and bills products using its database.</li>
                                             <li>Integrated with inventory and AI Knowledge Base for real-time updates.</li>
                                            </ul>
@@ -548,7 +548,7 @@ export default function Page() {
                                           <h4>Intelligent Analytics & Reporting</h4>
                                            <h5><strong>How to Use:</strong></h5>
                                            <ul>
-                                            <li>Access dashboards for POS reports, sales trends, traffic analysis, and inventory.</li>
+                                            <li>Access dashboards for Management reports, sales trends, traffic analysis, and inventory.</li>
                                             <li>Retailers can monitor store performance in real time.</li>
                                             <li>Use predictive analytics for inventory restocking.</li>
 
@@ -592,10 +592,10 @@ export default function Page() {
                                  <div className="flip-card">
                                     <div className="flip-card-inner">
                                        <div className="flip-card-back">
-                                          <h4>Seamless Integrations with POS, AI Knowledge Base, and Payments</h4>
+                                          <h4>Seamless Integrations with Management, AI Knowledge Base, and Payments</h4>
                                            <h5><strong>How to Use:</strong></h5>
                                            <ul>
-                                            <li>Integrate existing POS, e-commerce, inventory, and payment systems.</li>
+                                            <li>Integrate existing Management, e-commerce, inventory, and payment systems.</li>
                                             <li>Use a single dashboard to manage in-store & online sales.</li>
                                             <li>Accept payments through cards, UPI, wallets, loyalty points, or cash.</li>
                                            </ul>
@@ -681,7 +681,7 @@ export default function Page() {
                                 <h2 className="accordion-header" id="headingFour">
                                     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        How does smart object detection at POS improve efficiency?
+                                        How does smart object detection at Management improve efficiency?
                                     </button>
                                 </h2>
                                 <div id="collapseFour" className="accordion-collapse collapse"
@@ -729,7 +729,7 @@ export default function Page() {
                                 <h2 className="accordion-header" id="headingSeven">
                                     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                        Why is seamless integration with POS, AI Knowledge Base, and payments important?
+                                        Why is seamless integration with Management, AI Knowledge Base, and payments important?
                                     </button>
                                 </h2>
                                 <div id="collapseSeven" className="accordion-collapse collapse"

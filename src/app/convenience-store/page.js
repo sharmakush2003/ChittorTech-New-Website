@@ -210,7 +210,7 @@ export default function Page() {
                            <img src="/assets/images/ni1.png" alt="Faster Billing" className="img-fluid mb-3" />
                             <h3>Lightning-Fast Billing</h3>
          <ul>
-            <li>Queue-free checkout with barcode scanning and instant POS entries</li>
+            <li>Queue-free checkout with barcode scanning and instant Management entries</li>
             <li>Supports cash, UPI, cards, and digital wallets</li>
             <li>SMS bills and instant offer notifications</li>
          </ul>
@@ -286,9 +286,9 @@ export default function Page() {
                        <div className="flip-card-inner">
                          <div className="flip-card-back">
                            <img src="/assets/images/ni5.png" alt="Inventory Management" className="img-fluid mb-3" />
-                            <h3>Omnichannel & Mobile POS</h3>
+                            <h3>Omnichannel & Mobile Management</h3>
          <ul>
-            <li>Mobile POS for billing and stock verification</li>
+            <li>Mobile Management for billing and stock verification</li>
             <li>Shopify and WooCommerce integration</li>
             <li>Real-time inventory sync across offline and online stores</li>
          </ul>
@@ -344,7 +344,7 @@ export default function Page() {
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li><strong>Powerful POS Solution –</strong> Manage multiple stores anytime, anywhere.</li>
+                  <li><strong>Powerful Management Solution –</strong> Manage multiple stores anytime, anywhere.</li>
                   <li><strong>Inventory & Barcode Management –</strong> Track, bill, and stock efficiently.</li>
                   <li><strong>Multiple Payment Modes –</strong> Cash, card, UPI, and digital wallets.</li>
                   <li><strong>Real-Time Insights –</strong> Actionable analytics for better forecasting.</li>
@@ -392,7 +392,7 @@ export default function Page() {
            <div className="col-md-12">
              <div className="bridal-store">
                 <h2>Keeping All Your Branches in the Profitable Loop</h2>
-                <p>A centralized POS system that unifies all your convenience store branches, streamlines operations, and maximizes profitability.</p>
+                <p>A centralized Management system that unifies all your convenience store branches, streamlines operations, and maximizes profitability.</p>
              </div>
            </div>
        </div>
@@ -442,7 +442,7 @@ export default function Page() {
            <div className="key-box">
                <h3>Centralized Management & Inventory Control</h3>
                <ul>
-                  <li>Monitor all store branches from a single POS interface.</li>
+                  <li>Monitor all store branches from a single Management interface.</li>
                   <li>Track all stock levels centrally to ensure consistency and accuracy.</li>
                </ul>
            </div>
@@ -468,7 +468,7 @@ export default function Page() {
 
    <div className="expertise-wrap bridal-wrap">
       <ul>
-         <li><strong>Smart POS Engine –</strong> Effortlessly operate one or multiple convenience stores from anywhere.</li>
+         <li><strong>Smart Management Engine –</strong> Effortlessly operate one or multiple convenience stores from anywhere.</li>
          <li><strong>AI Inventory & Barcode Control –</strong> Track products, categories, and stock levels with high accuracy.</li>
          <li><strong>Flexible Payment Options –</strong> Accept cash, UPI, cards, and digital wallets seamlessly.</li>
          <li><strong>Insightful AI Reports –</strong> Forecast demand, analyze sales trends, and optimize daily operations.</li>
@@ -533,7 +533,7 @@ export default function Page() {
             <div className="expertise-wrap bridal-wrap">
                <ul>
                   <li>Pick the items you want to buy from the store shelves.</li>
-                  <li>At checkout, the cashier scans your items using the POS system.</li>
+                  <li>At checkout, the cashier scans your items using the Management system.</li>
                   <li>The bill is generated instantly, including any discounts or loyalty points.</li>
                   <li>Choose your preferred payment method: cash, card, UPI, or digital wallet.</li>
                   <li>Receive your bill instantly on your mobile via SMS or email if requested.</li>
@@ -604,12 +604,12 @@ export default function Page() {
                    <h2 className="accordion-header" id="heading6">
                      <button className="accordion-button" type="button" data-bs-toggle="collapse"
                        data-bs-target="#collapse6" aria-expanded="true" aria-controls="collapse6">
-                       What are the top benefits of implementing POS for convenience stores?
+                       What are the top benefits of implementing Management for convenience stores?
                      </button>
                    </h2>
                    <div id="collapse6" className="accordion-collapse collapse show" aria-labelledby="heading6" data-bs-parent="#faqAccordion">
                      <div className="accordion-body">
-                       A POS system streamlines billing, inventory management, and customer loyalty programs. It reduces manual errors, speeds up checkout, improves stock tracking, and provides real-time business insights to optimize operations.
+                       A Management system streamlines billing, inventory management, and customer loyalty programs. It reduces manual errors, speeds up checkout, improves stock tracking, and provides real-time business insights to optimize operations.
                      </div>
                    </div>
                  </div>

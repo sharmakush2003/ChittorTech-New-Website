@@ -86,7 +86,7 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-pen`}></i> Stationery POS
+                <i className={`fa-solid fa-pen`}></i> Stationery Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
                 Stationery Store Management Software
@@ -199,11 +199,11 @@ export default function Page() {
                            <div className="flip-card-inner">
                               <div className="flip-card-back">
                                  <img src="/assets/images/r1.png" alt="POS System" className="img-fluid mb-3" />
-                                   <h3>AI Smart POS & Payments</h3>
+                                   <h3>AI Smart Billing & Payments</h3>
          <ul>
             <li>AI-assisted billing for faster checkout</li>
             <li>Accept UPI, cards, wallets, and cash</li>
-            <li>Mobile POS for fairs and temporary counters</li>
+            <li>Mobile Management for fairs and temporary counters</li>
          </ul>
                               </div>
                            </div>
@@ -519,7 +519,7 @@ export default function Page() {
 
    <div className="expertise-wrap stationery-wrap">
       <ul>
-         <li>AI-enabled POS for fast and accurate billing</li>
+         <li>AI-enabled Management for fast and accurate billing</li>
          <li>Centralized control of multiple stationery outlets from any location</li>
          <li>AI-driven inventory tracking with barcode support</li>
          <li>Easy acceptance of all major payment options</li>
@@ -849,7 +849,7 @@ export default function Page() {
                      <h2 className="accordion-header" id="heading6">
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                            data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                        Does it support mobile POS (mPOS)?
+                        Does it support mobile Management (mPOS)?
                         </button>
                      </h2>
                      <div id="collapse6" className="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#faqAccordion">

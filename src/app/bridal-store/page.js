@@ -123,10 +123,10 @@ export default function Page() {
             <div className="container">
                <div className="row justify-content-center gy-4">
 
-    {/* Modern AI-Powered Bridal POS */}
+    {/* Modern AI-Powered Bridal Management */}
     <div className="col-lg-4 col-md-6">
         <div className="key-box">
-            <h3>Modern AI-Powered Bridal POS</h3>
+            <h3>Modern AI-Powered Bridal Management</h3>
             <p>
                 Streamline billing, checkouts, and inventory management with an all-in-one
                 AI-driven solution built specifically for bridal stores.
@@ -267,7 +267,7 @@ export default function Page() {
                   </div>
                  <div className="col-md-7 order-md-1">
     <div className="heading-wrap text-start">
-        <h2>Advanced Bridal POS Platform</h2>
+        <h2>Advanced Bridal Management Platform</h2>
     </div>
 
     <div className="expertise-wrap bridal-wrap">
@@ -311,7 +311,7 @@ export default function Page() {
                               <li><strong> User-Friendly:</strong> Easy to learn and operate.</li>
                               <li><strong> Affordable:</strong> Competitive pricing for bridal store solutions.</li>
                               <li><strong> Cloud-Based:</strong> Access your data from any device, anywhere.</li>
-                              <li><strong> Multi-Featured:</strong> Combines POS, inventory, accounting, and invoicing.</li>
+                              <li><strong> Multi-Featured:</strong> Combines Management, inventory, accounting, and invoicing.</li>
                               <li><strong> Quick Support Team:</strong> Assistance whenever needed.</li>
                               <li><strong> Data-Driven Insights:</strong> Optimize stocks, pricing, and collections.</li>
                               <li><strong> Tailored for Bridal Stores:</strong> Designed for wedding wear retail operations.</li>
@@ -389,7 +389,7 @@ export default function Page() {
             <div className="row">
                <div className="col-md-12">
                   <div className="heading-wrap">
-                     <h2> All-in-One POS Solution for Bridal, <br /> <span>Garment, and Fashion Stores</span> </h2>
+                     <h2> All-in-One Management Solution for Bridal, <br /> <span>Garment, and Fashion Stores</span> </h2>
                      <p>Running a bridal or fashion store can be overwhelming. From assisting customers with a wide variety of bridal and fashion outfits to managing billing and offering multiple payment options, every step requires precision and efficiency. Outdated systems slow down your operations — ChittorTech is here to change that!</p>
                   </div>
                </div>

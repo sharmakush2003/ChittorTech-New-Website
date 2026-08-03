@@ -136,9 +136,9 @@ export default function Page() {
          <div className="col-md-3 col-sm-6">
             <div className="key-box">
                <h3>Efficient Cashier Counters</h3>
-               <p>Streamline billing at multiple counters with smart POS systems, GST-compliant invoices, and integrated payment gateways for a smooth checkout experience.</p>
+               <p>Streamline billing at multiple counters with smart Management systems, GST-compliant invoices, and integrated payment gateways for a smooth checkout experience.</p>
                <ul>
-                  <li>Smart POS</li>
+                  <li>Smart Management</li>
                   <li>GST-integrated billing</li>
                   <li>Mobile invoice sharing</li>
                </ul>
@@ -320,7 +320,7 @@ export default function Page() {
                      <div className="flip-card">
                        <div className="flip-card-inner">
                          <div className="flip-card-back">
-                           <img src="/assets/images/ss10.png" alt="Intelligent POS" className="img-fluid mb-3" />
+                           <img src="/assets/images/ss10.png" alt="Intelligent Management" className="img-fluid mb-3" />
                            <h4>Expense Management</h4>
                            <p>Track store expenses throughout the year with detailed financial records.</p>
                          </div>
@@ -618,7 +618,7 @@ export default function Page() {
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li>Powerful POS Solution</li>
+                  <li>Powerful Management Solution</li>
                   <li>Manage Multiple Stores Anywhere, Anytime</li>
                   <li>Manage Your Inventory and Barcodes</li>
                   <li>Handle Multiple Payment Modes</li>
@@ -769,7 +769,7 @@ export default function Page() {
         <div className="col-md-12">
           <div className="bridal-store">
              <h2>About ChittorTech for Departmental Stores</h2>
-             <p>At ChittorTech, we understand the unique challenges faced by departmental store owners—from managing large product ranges and multiple categories to ensuring smooth billing experiences. With integrated POS, multi-store management, omnichannel e-commerce, and a smart AI Knowledge Base module, our departmental store software ensures faster operations, improved efficiency, and enhanced customer satisfaction.</p>
+             <p>At ChittorTech, we understand the unique challenges faced by departmental store owners—from managing large product ranges and multiple categories to ensuring smooth billing experiences. With integrated Management, multi-store management, omnichannel e-commerce, and a smart AI Knowledge Base module, our departmental store software ensures faster operations, improved efficiency, and enhanced customer satisfaction.</p>
           </div>
         </div>
     </div>
@@ -800,7 +800,7 @@ export default function Page() {
               <div className="card service-box text-center p-4 animate-in" data-delay="200">
                 <figure> <img src="/assets/images/ft3.png" /> </figure>
                 <h4>Faster Billing & Checkout</h4>
-                <p>Smart POS and multiple billing counters reduce waiting time, enabling quick and seamless customer checkouts.</p>
+                <p>Smart Management and multiple billing counters reduce waiting time, enabling quick and seamless customer checkouts.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
@@ -922,7 +922,7 @@ export default function Page() {
         <div className="key-box">
           <h3>Manage Billing</h3>
           <ul>
-            <li>Use the POS system to process sales at multiple counters.</li>
+            <li>Use the Management system to process sales at multiple counters.</li>
             <li>Accept payments via cash, cards, UPI, or mobile wallets.</li>
             <li>Share invoices directly with customers via SMS or email.</li>
           </ul>

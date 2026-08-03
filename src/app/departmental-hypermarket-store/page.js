@@ -143,7 +143,7 @@ export default function Page() {
             <h3>Efficient Billing & Cashier Operations</h3>
             <p>Fast, error-free checkout across multiple counters.</p>
             <ul>
-               <li>Multi-counter POS management</li>
+               <li>Multi-counter Management management</li>
                <li>GST-compliant invoices</li>
                <li>Smooth, queue-free billing</li>
             </ul>
@@ -200,7 +200,7 @@ export default function Page() {
                          <div className="flip-card-back">
                            <img src="/assets/images/ss1.png" alt="Faster Billing" className="img-fluid mb-3" />
                           <h4>AI Fast Checkout & AI Smart Billing</h4>
-<p>Process payments instantly with AI-driven POS for smooth, accurate, and AI-powered billing.</p>
+<p>Process payments instantly with AI-driven Management for smooth, accurate, and AI-powered billing.</p>
 
                          </div>
                        </div>
@@ -362,7 +362,7 @@ export default function Page() {
                      <div className="flip-card">
                        <div className="flip-card-inner">
                          <div className="flip-card-back">
-                           <img src="/assets/images/ss10.png" alt="Intelligent POS" className="img-fluid mb-3" />
+                           <img src="/assets/images/ss10.png" alt="Intelligent Management" className="img-fluid mb-3" />
                           <h4>AI Expiry & Product Alerts</h4>
 <ul>
    <li>Track expiry dates with AI monitoring</li>
@@ -418,9 +418,9 @@ export default function Page() {
                        <div className="flip-card-inner">
                          <div className="flip-card-back">
                            <img src="/assets/images/ss13.png" alt="Weigh Scale Integration" className="img-fluid mb-3" />
-                          <h4>AI-Powered POS & Checkout</h4>
+                          <h4>AI-Powered Billing & Checkout</h4>
 <ul>
-   <li>Intelligent POS with AI-assisted billing and automated reorders</li>
+   <li>Intelligent Management with AI-assisted billing and automated reorders</li>
    <li>Support for AI-integrated weighing scales and fast checkout</li>
 </ul>
                          </div>
@@ -683,7 +683,7 @@ export default function Page() {
    <div className="expertise-wrap bridal-wrap">
       <ul>
          <li>
-            <strong>AI-Powered POS Solution –</strong>
+            <strong>AI-Powered Management Solution –</strong>
             Fast, accurate, and intelligent checkout for every store.
          </li>
 
@@ -858,7 +858,7 @@ export default function Page() {
         <div className="col-md-12">
           <div className="bridal-store">
              <h2>About ChittorTech for Departmental Stores</h2>
-             <p>At ChittorTech, we understand the unique challenges faced by departmental store owners—from managing large product ranges and multiple categories to ensuring smooth billing experiences. With integrated POS, multi-store management, omnichannel e-commerce, and a smart AI Knowledge Base module, our departmental store software ensures faster operations, improved efficiency, and enhanced customer satisfaction.</p>
+             <p>At ChittorTech, we understand the unique challenges faced by departmental store owners—from managing large product ranges and multiple categories to ensuring smooth billing experiences. With integrated Management, multi-store management, omnichannel e-commerce, and a smart AI Knowledge Base module, our departmental store software ensures faster operations, improved efficiency, and enhanced customer satisfaction.</p>
           </div>
         </div>
     </div>
@@ -889,7 +889,7 @@ export default function Page() {
               <div className="card service-box text-center p-4 animate-in" data-delay="200">
                 <figure> <img src="/assets/images/ft3.png" /> </figure>
                 <h4>Faster Billing & Checkout</h4>
-                <p>Smart POS and multiple billing counters reduce waiting time, enabling quick and seamless customer checkouts.</p>
+                <p>Smart Management and multiple billing counters reduce waiting time, enabling quick and seamless customer checkouts.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
@@ -1011,7 +1011,7 @@ export default function Page() {
         <div className="key-box">
           <h3>Manage Billing</h3>
           <ul>
-            <li>Use the POS system to process sales at multiple counters.</li>
+            <li>Use the Management system to process sales at multiple counters.</li>
             <li>Accept payments via cash, cards, UPI, or mobile wallets.</li>
             <li>Share invoices directly with customers via SMS or email.</li>
           </ul>

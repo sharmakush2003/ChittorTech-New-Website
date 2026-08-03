@@ -163,7 +163,7 @@ export default function Page() {
         <div className="row">
             <div className="col-md-12">
                 <div className="heading-wrap text-center mb-5">
-                    <h2>Simple & Powerful POS <span>Billing Features</span></h2>
+                    <h2>Simple & Powerful Management <span>Billing Features</span></h2>
                     <p className="text-muted">High-speed invoicing tools designed for retail, wholesale, and multi-store operations.</p>
                 </div>
                 <div className="desktop-industries">
@@ -283,7 +283,7 @@ export default function Page() {
 <section className="complete-seo-service">
    <div className="container my-5">
       <div className="heading-wrap text-center">
-         <h2>Automated Billing with <span>Advanced POS Integration</span></h2>
+         <h2>Automated Billing with <span>Advanced Management Integration</span></h2>
          <p>Expand operational limits with advanced modules for payments, offline checkouts, and image selection.</p>
       </div>
       <div className="row mt-4">
@@ -303,19 +303,19 @@ export default function Page() {
                <p className="text-muted">Enable customers to scan product barcodes with their smartphones, pay online, and bypass billing counter lines.</p>
             </div>
          </div>
-         {/* Hybrid POS */}
+         {/* Hybrid Management */}
          <div className="col-md-3 col-sm-6 mb-4">
             <div className="card service-box text-center p-4" style={{ "height": "100%", "borderRadius": "12px", "border": "1px solid #e2e8f0", "background": "#fff" }}>
-               <figure><img src="/assets/images/auto3.png" className="img-fluid" alt="Hybrid POS" style={{ "maxHeight": "60px" }} /></figure>
-               <h4 className="mt-3">Hybrid POS</h4>
+               <figure><img src="/assets/images/auto3.png" className="img-fluid" alt="Hybrid Management" style={{ "maxHeight": "60px" }} /></figure>
+               <h4 className="mt-3">Hybrid Management</h4>
                <p className="text-muted">Generate invoices offline during network outages. Data automatically syncs with the cloud once back online.</p>
             </div>
          </div>
-         {/* Image-Based POS */}
+         {/* Image-Based Management */}
          <div className="col-md-3 col-sm-6 mb-4">
             <div className="card service-box text-center p-4" style={{ "height": "100%", "borderRadius": "12px", "border": "1px solid #e2e8f0", "background": "#fff" }}>
-               <figure><img src="/assets/images/auto4.png" className="img-fluid" alt="Image-Based POS" style={{ "maxHeight": "60px" }} /></figure>
-               <h4 className="mt-3">Image-Based POS</h4>
+               <figure><img src="/assets/images/auto4.png" className="img-fluid" alt="Image-Based Management" style={{ "maxHeight": "60px" }} /></figure>
+               <h4 className="mt-3">Image-Based Management</h4>
                <p className="text-muted">Visual grid layout for products without barcodes. Cashiers can tap images for rapid billing on touch terminals.</p>
             </div>
          </div>
@@ -497,7 +497,7 @@ export default function Page() {
                      </h2>
                      <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                         <div className="accordion-body text-muted" style={{ "background": "#f8fafc" }}>
-                           Absolutely. Our Hybrid POS database lets you generate billing invoices when internet connectivity is offline. Once the connection is re-established, the records auto-sync with the central cloud dashboard.
+                           Absolutely. Our Hybrid Management database lets you generate billing invoices when internet connectivity is offline. Once the connection is re-established, the records auto-sync with the central cloud dashboard.
                         </div>
                      </div>
                   </div>

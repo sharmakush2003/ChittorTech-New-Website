@@ -67,7 +67,7 @@ export default function Page() {
                     <h3 className="fw-bold mb-4">Why Retail Businesses in  Need AI & IT Solutions</h3>
                     <p className="mb-4">Retail stores require fast operations and accurate data. Our Retail AI Automation helps businesses manage invoicing, billing, and omnichannel operations from one system:</p>
                     <ul className="list-unstyled">
-                        <li className="mb-2"><i className="bi bi-check-circle-fill text-warning me-2"></i> Fast POS & Barcode billing</li>
+                        <li className="mb-2"><i className="bi bi-check-circle-fill text-warning me-2"></i> Fast Billing & Barcode billing</li>
                         <li className="mb-2"><i className="bi bi-check-circle-fill text-warning me-2"></i> Multi-store & Stock management</li>
                         <li className="mb-2"><i className="bi bi-check-circle-fill text-warning me-2"></i> AI Knowledge Base & Loyalty programs</li>
                         <li className="mb-2"><i className="bi bi-check-circle-fill text-warning me-2"></i> Sales tracking & Analytics</li>
@@ -91,7 +91,7 @@ export default function Page() {
                 <div className="feature-box p-4 border rounded shadow-sm h-100">
                     <div className="icon mb-3"><i className="bi bi-receipt fs-2 text-primary"></i></div>
                     <h4>Smart AI Support Chatbot</h4>
-                    <p>Fast GST billing, barcode support, multi-payment modes, and touch POS integration to improve retail speed.</p>
+                    <p>Fast GST billing, barcode support, multi-payment modes, and touch Management integration to improve retail speed.</p>
                 </div>
             </div>
             <div className="col-md-4">

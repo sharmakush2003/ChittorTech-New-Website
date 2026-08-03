@@ -89,7 +89,7 @@ export default function Page() {
                 <i className={`fa-solid fa-cart-shopping`}></i> Supermarket AI & IT Solutions
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Supermarket POS & Management Software
+                Supermarket Billing & Management Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
                 Handle high-volume billing, multi-department inventory, and loyalty programs effortlessly.
@@ -289,13 +289,13 @@ export default function Page() {
                         </div>
                      </div>
                   </div>
-                  {/* Feature 9: Image-Based POS */}
+                  {/* Feature 9: Image-Based Management */}
                   <div className="col-md-4 col-12 mb-4">
                      <div className="boxes flip-container">
                         <div className="flip-card">
                            <div className="flip-card-inner">
                               <div className="flip-card-back">
-                                 <img src="/assets/images/fe9.png" alt="Image-Based POS" className="img-fluid mb-3" />
+                                 <img src="/assets/images/fe9.png" alt="Image-Based Management" className="img-fluid mb-3" />
                                  <h4>Omnichannel Integration</h4>
                                  <p>Easily launch your online supermarket store with Shopify or WooCommerce integration</p>
                               </div>
@@ -331,13 +331,13 @@ export default function Page() {
                         </div>
                      </div>
                   </div>
-                  {/* Feature 12: Advanced POS System */}
+                  {/* Feature 12: Advanced Management System */}
                   <div className="col-md-4 col-12 mb-4">
                      <div className="boxes flip-container">
                         <div className="flip-card">
                            <div className="flip-card-inner">
                               <div className="flip-card-back">
-                                 <img src="/assets/images/fe12.png" alt="Advanced POS System" className="img-fluid mb-3" />
+                                 <img src="/assets/images/fe12.png" alt="Advanced Management System" className="img-fluid mb-3" />
                                  <h4>Reporting & Analytics</h4>
                                  <p>Access 150+ MIS reports with dashboards and visual analytics to make informed business decisions.</p>
                               </div>
@@ -422,7 +422,7 @@ export default function Page() {
    <div className="heading-wrap">
       <h2>Top Benefits of <span>AI-Powered Supermarket AI Assistant Software</span></h2>
       <p>
-         A modern AI supermarket POS system does more than billing—it automates operations,
+         A modern AI supermarket Management system does more than billing—it automates operations,
          reduces errors, and increases profitability while enhancing the customer experience.
       </p>
    </div>
@@ -642,13 +642,13 @@ export default function Page() {
          </div>
         <div className="col-md-7 order-md-1">
    <div className="heading-wrap text-start">
-      <h2>Why Choose ChittorTech <span>for Supermarket POS?</span></h2>
+      <h2>Why Choose ChittorTech <span>for Supermarket Management?</span></h2>
       <p>Run your supermarket smarter, faster, and more efficiently with our AI-powered all-in-one platform:</p>
    </div>
 
    <div className="expertise-wrap bridal-wrap">
       <ul>
-         <li><strong>AI Smart POS –</strong> Fast, accurate billing with support for multiple payment options.</li>
+         <li><strong>AI Smart Management –</strong> Fast, accurate billing with support for multiple payment options.</li>
          <li><strong>AI Multi-Store & Franchise Control –</strong> Manage all branches from a single intelligent dashboard.</li>
          <li><strong>AI Inventory & Barcode Management –</strong> Track stock in real time and optimize replenishment.</li>
          <li><strong>AI Flexible Payments –</strong> Accept cash, cards, UPI, and digital wallets seamlessly.</li>
@@ -699,7 +699,7 @@ export default function Page() {
       <div className="heading-wrap">
          <h2>ChittorTech: Creating Smarter, <span>More Efficient Supermarkets</span></h2>
          <p>Purpose-built for modern supermarkets, our seamless Supermarket Billing Software comes with an easy-to-use and intuitive interface.</p>
-         <p>We understand the multiple complexities of running a supermarket—managing stock, streamlining operations, enhancing customer experience, and ensuring smooth billing. That’s why ChittorTech offers a powerful POS system crafted especially for supermarket needs.</p>
+         <p>We understand the multiple complexities of running a supermarket—managing stock, streamlining operations, enhancing customer experience, and ensuring smooth billing. That’s why ChittorTech offers a powerful Management system crafted especially for supermarket needs.</p>
       </div>
       <div className="row justify-content-center gy-4">
          {/* 01. Login & Setup */}
@@ -730,7 +730,7 @@ export default function Page() {
             <div className="key-box">
                <h3>Billing & Checkout</h3>
                <ul>
-                  <li>Start billing quickly with our POS system.</li>
+                  <li>Start billing quickly with our Management system.</li>
                   <li>Accept payments via cash, UPI, debit/credit cards, and wallets.</li>
                   <li>Use customer-facing displays & multiple billing counters to reduce queues.</li>
                   <li>Automatically generate GST-compliant invoices.</li>
@@ -806,7 +806,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse1" className="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A1. A cloud-based POS & inventory management system designed for supermarkets to handle billing, stock, AI Knowledge Base, accounting, and online sales.
+                           A1. A cloud-based Billing & inventory management system designed for supermarkets to handle billing, stock, AI Knowledge Base, accounting, and online sales.
                         </div>
                      </div>
                   </div>
@@ -923,7 +923,7 @@ export default function Page() {
                      </h2>
                      <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#faqAccordion">
                         <div className="accordion-body">
-                           A10. Yes, ChittorTech offers full customization for POS, inventory, AI Knowledge Base, accounting, and e-commerce integrations.
+                           A10. Yes, ChittorTech offers full customization for Management, inventory, AI Knowledge Base, accounting, and e-commerce integrations.
                         </div>
                      </div>
                   </div>

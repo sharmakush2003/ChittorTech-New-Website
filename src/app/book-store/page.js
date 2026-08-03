@@ -86,10 +86,10 @@ export default function Page() {
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-book-open`}></i> Bookstore POS
+                <i className={`fa-solid fa-book-open`}></i> Bookstore Management
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Book Store POS & Management Software
+                Book Store Billing & Management Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
                 ISBN-level inventory, fast billing, and supplier management for bookstores.
@@ -195,8 +195,8 @@ export default function Page() {
                                  <img src="/assets/images/ok1.png" alt="Customer Profiles" className="img-fluid mb-3" />
                                 <h4>Customer & POS Management</h4>
 <ul>
-   <li>Intelligent POS with built-in payment gateway support</li>
-   <li>Mobile POS for book fairs, pop-ups, and exhibitions</li>
+   <li>Intelligent Management with built-in payment gateway support</li>
+   <li>Mobile Management for book fairs, pop-ups, and exhibitions</li>
    <li>Smart customer segmentation and interaction tracking</li>
 </ul>
 
@@ -417,7 +417,7 @@ export default function Page() {
    </div>
    <div className="expertise-wrap bridal-wrap">
       <ul>
-         <li>High-performance POS for fast and accurate billing</li>
+         <li>High-performance Management for fast and accurate billing</li>
          <li>Centralized control of multiple bookstore locations from anywhere</li>
          <li>Intelligent stock tracking with barcode support</li>
          <li>Flexible payment options for seamless checkout</li>
@@ -739,7 +739,7 @@ export default function Page() {
                      <h2 className="accordion-header" id="heading6">
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                            data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                        Does it support mobile POS (mPOS)?
+                        Does it support mobile Management (mPOS)?
                         </button>
                      </h2>
                      <div id="collapse6" className="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#faqAccordion">

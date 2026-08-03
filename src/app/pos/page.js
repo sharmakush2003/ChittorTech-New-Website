@@ -135,14 +135,14 @@ export default function Page() {
                        <div className="expertise-wrap pro-list">
                            <h5>Common Retail Challenges We Solve</h5>
                            <ul>
-                                 <li><strong>Billing & Payment Management</strong> <br />Slow checkout processes, billing errors, GST invoice mismatches, limited payment options, and frequent POS failures can frustrate both customers and staff. Traditional or manual billing methods often increase counter delays and reduce service efficiency.
+                                 <li><strong>Billing & Payment Management</strong> <br />Slow checkout processes, billing errors, GST invoice mismatches, limited payment options, and frequent Management failures can frustrate both customers and staff. Traditional or manual billing methods often increase counter delays and reduce service efficiency.
 A cloud-based AI Support Chatbot system ensures faster transactions, multiple payment integrations, and smooth, error-free billing operations.
 </li>
                                  <li><strong>Accounting & Tax Compliance</strong> <br />Recording daily sales, managing expenses, preparing financial statements, and meeting GST compliance requirements can be complex and time-consuming. Without automation, accounting inaccuracies and compliance risks increase.
-An integrated retail POS accounting solution automatically records transactions, simplifies tax calculations, and supports accurate GST reporting.
+An integrated retail Management accounting solution automatically records transactions, simplifies tax calculations, and supports accurate GST reporting.
 </li>
                                  <li><strong>Inventory Control & Stock Visibility</strong> <br /> Managing large product catalogs, multiple suppliers, and varying stock levels is a major challenge for growing retail stores. Issues like overstocking, dead stock, or sudden stockouts can impact profitability.
-An intelligent POS inventory management system provides real-time stock updates, automated alerts, and efficient supplier tracking.
+An intelligent Management inventory management system provides real-time stock updates, automated alerts, and efficient supplier tracking.
 </li>
                                  <li><strong>Reports, Analytics & Business Insights</strong> <br />Retailers often struggle to generate meaningful insights from sales data, customer behavior, supplier performance, or inventory trends. Lack of accurate reports can slow business growth and planning.
 A retail AI Assistant Software with advanced reporting and analytics delivers clear, actionable insights to support smarter business decisions.
@@ -171,7 +171,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                           <h2>ChittorTech – Built to Match Your     <span>Retail Business Requirements</span> </h2>
                        </div>
                        <div className="expertise-wrap pro-list">
-                           <h5>A Complete POS Solution for Every Retail Challenge</h5>
+                           <h5>A Complete Management Solution for Every Retail Challenge</h5>
                            <ul>
                                 <li><strong>Smooth & Effortless Billing</strong> <br />ChittorTech offers a powerful AI Support Chatbot software designed for retailers, SMEs, and wholesalers. Generate GST-compliant invoices, accept multiple payment modes, and ensure fast, stable billing that keeps checkout lines moving without interruptions.</li>
 
@@ -402,7 +402,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                                        <div className="flip-card-back">
                                           <img src="/assets/images/fast15.png" alt="GST-Billing Compatibility" className="img-fluid mb-3" />
                                           <h4>
-                                            Mobile POS & Self-Checkout
+                                            Mobile Billing & Self-Checkout
                                           </h4>
                                           <p>Support handheld billing and self-service kiosks.</p>
                                        </div>
@@ -467,8 +467,8 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                   <div className="row align-items-center">
                       <div className="col-md-12">
                           <div className="clothing-stores-text">
-                              <h2 className="text-center">How ChittorTech POS Simplifies Your Retail Operations</h2>
-                              <p>ChittorTech POS brings all your store activities into one smart system—covering billing, stock control, accounts, customer management, and online sales.</p>
+                              <h2 className="text-center">How ChittorTech Management Simplifies Your Retail Operations</h2>
+                              <p>ChittorTech Management brings all your store activities into one smart system—covering billing, stock control, accounts, customer management, and online sales.</p>
                               <div className="ai-solutions-item-wrap inventory-wrap">
                                  <div className="ai-solutions-item">
                                      <h4>1. Create Tax-Ready Invoices</h4>
@@ -504,10 +504,10 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                   <div className="row align-items-center">
                       <div className="col-md-6">
                           <div className="clothing-stores-text">
-                              <h2>Key Advantages of ChittorTech POS</h2>
+                              <h2>Key Advantages of ChittorTech Management</h2>
                               <ul>
                                  <li><strong>	Cloud-Powered Access:</strong> Manage your store operations securely from any location, at any time.</li>
-                                 <li><strong>	Device-Friendly System:</strong> Runs smoothly on desktops, laptops, tablets, and POS terminals without hardware restrictions.</li>
+                                 <li><strong>	Device-Friendly System:</strong> Runs smoothly on desktops, laptops, tablets, and Management terminals without hardware restrictions.</li>
                                  <li><strong>	Secure Data Protection:</strong>Your business data is safely stored in the cloud with zero risk of loss.</li>
                                  <li><strong>	Responsive Support Team:</strong> Get fast and reliable assistance whenever you need help.</li>
                                  <li><strong>	Easy Third-Party Integration:</strong>Connect effortlessly with payment services, delivery partners, and business tools.</li>
@@ -536,7 +536,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                  <div className="col-md-12">
                    <div className="bridal-store">
                       <h2>One of India’s Easiest AI Support Chatbot Solutions to Use</h2>
-                      <p>ChittorTech delivers a cloud-powered POS system built for retail stores, supermarkets, and restaurants. From billing and stock control to customer management, accounting, and online order handling—everything runs smoothly from a single platform.</p>
+                      <p>ChittorTech delivers a cloud-powered Management system built for retail stores, supermarkets, and restaurants. From billing and stock control to customer management, accounting, and online order handling—everything runs smoothly from a single platform.</p>
                       <h5>Discover a simpler, smarter way to manage your business. Book a demo today. </h5>
                    </div>
                  </div>
@@ -587,7 +587,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                 </div>
                 <div className="col-md-7">
                     <div className="clothing-stores-text software-wrap specialized-box">
-                        <h2>Customer-Centric POS Features</h2>
+                        <h2>Customer-Centric Management Features</h2>
                         <ul>
                            <li><strong>	Rewards & Membership Management–</strong> Create, track, and manage loyalty programs to encourage repeat purchases.</li>
 
@@ -702,7 +702,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                     <div className="col-lg-12 col-9">
                         <div className="heading-wrap ">
                             <h2>Core Features of Chittortech<span>Solutions AI Assistant Software</span> </h2>
-                            <p>ChittorTech is an all-in-one POS platform built to handle complete retail operations—from billing and inventory to AI Knowledge Base, accounting, and analytics—through a single, unified system.</p>
+                            <p>ChittorTech is an all-in-one Management platform built to handle complete retail operations—from billing and inventory to AI Knowledge Base, accounting, and analytics—through a single, unified system.</p>
                         </div>
                     </div>
                 </div>
@@ -729,7 +729,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                            <ul>
     <li>Fast product lookup using smart search and shortcuts</li>
     <li>Barcode-enabled billing for error-free transactions</li>
-    <li>Mobile POS for on-the-go billing</li>
+    <li>Mobile Management for on-the-go billing</li>
     <li>GST-compliant invoices generated instantly</li>
 </ul>
 
@@ -774,7 +774,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                    {/* Mobile and Cloud-Based Access */}
                    <div className="col-lg-4 col-md-6">
                        <div className="key-box">
-                           <h3>Mobile POS (mPOS) Capabilities</h3>
+                           <h3>Mobile Management (mPOS) Capabilities</h3>
                            <p>Enable flexible billing using mobile devices:</p>
                            <ul>
     <li>Barcode scanning for faster checkouts</li>
@@ -875,10 +875,10 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                   <div className="col-md-6">
                       <div className="heading-wrap text-start mobile-a pro-list">
                           <h2>Real-Time Insights with Chittortech  <span> AI Assistant Software</span> </h2>
-                          <p>ChittorTech POS lets you monitor sales, inventory, and product performance instantly from a centralized dashboard. Receive timely alerts and detailed reports across all your stores and branches, helping you scale your retail business faster and smarter.</p>
+                          <p>ChittorTech Management lets you monitor sales, inventory, and product performance instantly from a centralized dashboard. Receive timely alerts and detailed reports across all your stores and branches, helping you scale your retail business faster and smarter.</p>
                        </div>
                        <div className="expertise-wrap pro-list">
-                           <h5>Why Choose ChittorTech POS?</h5>
+                           <h5>Why Choose ChittorTech Management?</h5>
                           <ul>
     <li>
         <strong>Multi-Store Management Anytime, Anywhere</strong><br />
@@ -898,7 +898,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
     </li>
     <li>
         <strong>Integrated Online Store</strong><br />
-        Expand your reach with an e-commerce platform directly connected to your POS.
+        Expand your reach with an e-commerce platform directly connected to your Management.
     </li>
 </ul>
 
@@ -965,7 +965,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
         </li>
         <li>
             <strong>Hardware-Free Operation</strong><br />
-            Operate your POS system on any device—no specific hardware required.
+            Operate your Management system on any device—no specific hardware required.
         </li>
         <li>
             <strong>Reliable Data Security</strong><br />
@@ -1023,7 +1023,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
     </ul>
     <p>
         Boost customer satisfaction, streamline store operations, and drive business growth with
-        <strong>ChittorTech POS.</strong>
+        <strong>ChittorTech Management.</strong>
     </p>
 </div>
 
@@ -1095,7 +1095,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                                   <h2 className="accordion-header" id="headingFour">
                                       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                           data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                           Why choose ChittorTech over other POS providers?
+                                           Why choose ChittorTech over other Management providers?
                                       </button>
                                   </h2>
                                   <div id="collapseFour" className="accordion-collapse collapse"

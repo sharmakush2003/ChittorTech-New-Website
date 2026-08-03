@@ -36,7 +36,7 @@ export default function Page() {
                 Resort &amp; Guest House Management Software
               </h1>
               <p style={{ fontSize: "1.08rem", color: "rgba(255,255,255,0.85)", lineHeight: 1.75, maxWidth: "650px", marginBottom: "32px" }}>
-                Tailored software for eco-resorts, luxury villas, wellness retreats, and company guest houses. Manage cottage availability, outdoor activity packages, restaurant/bar POS, and real-time Admin Panel booking approvals.
+                Tailored software for eco-resorts, luxury villas, wellness retreats, and company guest houses. Manage cottage availability, outdoor activity packages, restaurant/bar Management, and real-time Admin Panel booking approvals.
               </p>
               <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
                 <a href="#resort-live-demo" className="ct-btn ct-btn-primary ct-btn-lg" style={{ background: "#0d9488", borderColor: "#0d9488" }}>
@@ -72,7 +72,7 @@ export default function Page() {
               { icon: "fa-house-chimney-window", title: "Cottage & Villa Inventory Engine", desc: "Manage multi-property layouts, private pool villas, tents, and cottages with real-time room availability grids." },
               { icon: "fa-bell", title: "Instant Admin Real-Time Notifications", desc: "Every online cottage reservation sends instant alerts to resort managers for real-time room lock and guest approval." },
               { icon: "fa-person-hiking", title: "Activity & Spa Booking Management", desc: "Schedule safari tours, spa packages, bonfire nights, and adventure activities linked directly to the guest invoice." },
-              { icon: "fa-utensils", title: "Poolside Bar & Dining POS", desc: "Integrated food & beverage billing with wireless tablet ordering for poolside bars, beach cafes, and room service." },
+              { icon: "fa-utensils", title: "Poolside Bar & Dining Management", desc: "Integrated food & beverage billing with wireless tablet ordering for poolside bars, beach cafes, and room service." },
               { icon: "fa-people-group", title: "Group Event & Wedding Packages", desc: "Manage group check-ins, banquet halls, corporate retreats, and destination wedding billing seamlessly." },
               { icon: "fa-file-certificate", title: "GST & Foreign Guest C-Form Reports", desc: "Automated police C-Form generation for foreign tourists, tax invoices, and multi-currency billing support." }
             ].map((f) => (

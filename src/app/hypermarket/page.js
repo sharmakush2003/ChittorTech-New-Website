@@ -138,7 +138,7 @@ export default function Page() {
          <div className="col-md-3 col-sm-6">
             <div className="key-box">
                <h3>Efficient Cashier Management</h3>
-               <p>Streamline billing and checkout with smart POS and multiple cash counter management.</p>
+               <p>Streamline billing and checkout with smart Management and multiple cash counter management.</p>
                <ul>
                   <li>Multiple cash counters</li>
                   <li>GST-compliant billing</li>
@@ -332,7 +332,7 @@ export default function Page() {
                         <div className="flip-card">
                           <div className="flip-card-inner">
                             <div className="flip-card-back">
-                              <img src="/assets/images/ry10.png" alt="Intelligent POS" className="img-fluid mb-3" />
+                              <img src="/assets/images/ry10.png" alt="Intelligent Management" className="img-fluid mb-3" />
                               <h4>Auto-Reorders</h4>
                               <p>Automatically reorder frequently sold items to prevent stock-outs.</p>
                             </div>
@@ -613,7 +613,7 @@ export default function Page() {
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li>Powerful POS solution</li>
+                  <li>Powerful Management solution</li>
                   <li>Manage multiple stores anywhere, anytime</li>
                   <li>Inventory & barcode management</li>
                   <li>Multiple payment modes</li>
@@ -922,7 +922,7 @@ export default function Page() {
       <div className="col-md-4 col-sm-6">
         <div className="key-box">
           <h3>Quick and Smooth Billing</h3>
-          <p>Customers experience faster checkout at multiple billing counters with automated POS and GST-compliant invoicing.</p>
+          <p>Customers experience faster checkout at multiple billing counters with automated Management and GST-compliant invoicing.</p>
         </div>
       </div>
 
