@@ -25,8 +25,10 @@ export default function TrialModal() {
     const trialModalEl = document.getElementById("trialModal");
     if (!trialModalEl) return;
 
-    // Check if submitted in this session
-    const wasSubmitted = sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted;
+    // Check if submitted in this session or within last 7 days
+    const submittedAt = localStorage.getItem("trial_modal_submitted_at");
+    const isSubmittedRecent = submittedAt && (Date.now() - parseInt(submittedAt) <= 7 * 24 * 60 * 60 * 1000);
+    const wasSubmitted = sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted || isSubmittedRecent;
     if (wasSubmitted) {
       return; // Do absolutely nothing if already submitted
     }
@@ -38,11 +40,13 @@ export default function TrialModal() {
     let remainingTime = 0;
 
     function shouldShowModal() {
+      const subAt = localStorage.getItem("trial_modal_submitted_at");
+      if (subAt && (Date.now() - parseInt(subAt) <= 7 * 24 * 60 * 60 * 1000)) return false;
       if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) return false;
       const lastDismissed = localStorage.getItem("trial_modal_dismissed_v2_at");
       if (!lastDismissed) return true;
-      const sevenDaysInMs = 7 * 24 * 60 * 60 * 1000;
-      return Date.now() - parseInt(lastDismissed) > sevenDaysInMs;
+      const twoDaysInMs = 2 * 24 * 60 * 60 * 1000;
+      return Date.now() - parseInt(lastDismissed) > twoDaysInMs;
     }
 
     function showModal() {
@@ -104,9 +108,9 @@ export default function TrialModal() {
     function scheduleNext() {
       if (popupCount >= maxPopups || sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted || !shouldShowModal()) return;
       
-      let delay = 3000;
+      let delay = 4000;
       if (popupCount === 1) {
-        delay = 6000;
+        delay = 7000;
       } else if (popupCount === 2) {
         delay = 15000;
       }
@@ -196,8 +200,8 @@ export default function TrialModal() {
       message: "",
     });
 
-    // 3. Mark as submitted in session/local storage
-    localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
+    // 3. Mark as submitted in session/local storage for 7 days silence
+    localStorage.setItem("trial_modal_submitted_at", Date.now().toString());
     sessionStorage.setItem("trial_modal_submitted", "true");
     setIsSubmitted(true);
 
@@ -827,7 +831,7 @@ export default function TrialModal() {
                         checked={dontShow}
                         onChange={handleCheckboxChange}
                       />
-                      <label htmlFor="dontShowTrial">Don't show this popup for 7 days</label>
+                      <label htmlFor="dontShowTrial">Don't show this popup for 2 days</label>
                     </div>
                   </form>
                 </div>
