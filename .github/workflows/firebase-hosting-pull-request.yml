@@ -13,7 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install --legacy-peer-deps && npm run build
         env:
           NEXT_PUBLIC_GOOGLE_SCRIPT_URL: https://script.google.com/macros/s/AKfycbwAbYh5e8QSjDkF0ABri8D1Rtr89xG24vNM0LnK7AsBm7n-w-nwHOUFbYvWxgn2EFyx5Q/exec
 
