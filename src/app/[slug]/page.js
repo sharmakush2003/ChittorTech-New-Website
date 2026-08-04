@@ -79,11 +79,21 @@ export async function generateStaticParams() {
       line = line.trim();
       if (!line) continue;
 
+      const locMatch = line.match(/<loc>(.*?)<\/loc>/i);
+      let url = "";
+      if (locMatch) {
+        url = locMatch[1].trim();
+      } else if (line.startsWith("http://") || line.startsWith("https://")) {
+        url = line;
+      } else {
+        continue; // Skip xml tags like <urlset>, <changefreq>, <priority>, etc.
+      }
+
       // Extract the slug after the domain
-      const slugPath = line.replace("https://chittortech.online/", "");
+      const slugPath = url.replace("https://chittortech.online/", "").replace(/^http:\/\/chittortech\.online\//, "").replace(/^\//, "");
       
       // Skip empty, main routes, inquiry forms, and cities sub-routes
-      if (!slugPath || skipRoutes.has(slugPath) || slugPath.startsWith("cities/") || slugPath.startsWith("pos_bill/")) {
+      if (!slugPath || skipRoutes.has(slugPath) || slugPath.startsWith("cities/") || slugPath.startsWith("pos_bill/") || slugPath.includes("<") || slugPath.includes(">")) {
         continue;
       }
 
