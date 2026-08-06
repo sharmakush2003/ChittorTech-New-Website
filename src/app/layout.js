@@ -84,7 +84,7 @@ export default function RootLayout({ children }) {
               "description": "Transforming businesses through innovative, cloud-based software solutions. AI & IT Solutions, AI Knowledge Base, AI Support Chatbot and website development.",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Jaipur",
+                "addressLocality": "Chittorgarh",
                 "addressRegion": "Rajasthan",
                 "addressCountry": "IN"
               },
