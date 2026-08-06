@@ -79,33 +79,33 @@ export default function Page() {
       `}</style>
 
       {/* ── Modern Inner Page Hero ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #291fbc 55%, #0e7490 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
+      <section style={{ background: 'linear-gradient(135deg, #0c1a2e 0%, #92400e 55%, #b45309 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 60%)', pointerEvents: 'none' }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-shoe-prints`}></i> Footwear Management
+                <i className={`fa-solid fa-socks`}></i> Footwear & Shoe Retail Tech
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Footwear Store Billing &amp; Management Software
+                Shoe Store & Footwear Chain Billing Platform
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                Size-wise inventory, brand management, and fast billing for shoe stores.
+                Step into smarter operations — manage size-wise inventory, brand-level pricing, multi-outlet stock transfers, and GST billing for your footwear business all from a single platform.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">
-                  <i className="fa-solid fa-calendar-check"></i> Book Free Demo
+                  <i className="fa-solid fa-calendar-check"></i> Start Free Trial
                 </button>
                 <a href="/contact-us" className="ct-btn ct-btn-ghost">
-                  <i className="fa-solid fa-envelope"></i> Contact Us
+                  <i className="fa-solid fa-envelope"></i> Speak to an Expert
                 </a>
               </div>
             </div>
             <div className="col-lg-4 d-none d-lg-flex justify-content-center">
               <div style={{ width: '160px', height: '160px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem', color: 'rgba(255,255,255,0.4)' }}>
-                <i className={`fa-solid fa-shoe-prints`}></i>
+                <i className={`fa-solid fa-socks`}></i>
               </div>
             </div>
           </div>
@@ -122,44 +122,44 @@ export default function Page() {
       <section className="manufacturing-key section-bg">
             <div className="container">
                      <div className="heading-wrap">
-                         <h2>Modern Garment Billing Management by <span>ChittorTech</span> </h2>
+                         <h2>Purpose-Built Footwear Management Tools by <span>ChittorTech</span></h2>
                      </div>
                <div className="row justify-content-center gy-4">
-                   {/* Simplified GST Compliance */}
+                   {/* Fast Checkout & GST Billing */}
                    <div className="col-md-4 col-sm-6">
                        <div className="key-box">
-                           <h3>Simplify Billing & Checkout</h3>
-                           <p>Now billing and checkouts are no longer pain points with ChittorTech’ automated invoicing features and integrated payment gateways, all powered by our advanced AI Assistant Software.</p>
+                           <h3>Rapid Checkout & GST Billing</h3>
+                           <p>Process walk-in customers in seconds with ChittorTech's barcode-scan billing, automated GST calculation, and instant multi-mode payment collection.</p>
                            <ul>
-                              <li>Quick sales invoices</li>
-                              <li>Multiple payment modes</li>
-                              <li>UPI integration</li>
+                              <li>One-scan barcode invoicing</li>
+                              <li>UPI, card & cash payment modes</li>
+                              <li>Auto CGST/SGST split on bills</li>
                            </ul>
                        </div>
                    </div>
 
-                   {/* Real-Time Financial Reporting */}
+                   {/* Size-Pair Inventory Engine */}
                    <div className="col-md-4 col-sm-6">
                        <div className="key-box">
-                           <h3>Smarter Garment Inventory Management</h3>
-                           <p>Sort and organize inventory by brand, size, color, and pattern with our intelligent inventory management system. Stay ahead of trends and automate reorders with ease.</p>
+                           <h3>Size-Pair Inventory Engine</h3>
+                           <p>Track your stock by brand, article number, size (UK 4–13), color, and material. Know exactly how many pairs of each SKU remain across every outlet.</p>
                            <ul>
-                              <li>Manage product variants</li>
-                              <li>Barcode & label generator</li>
-                              <li>Stock audit & verification</li>
+                              <li>Article-wise & brand-wise stock view</li>
+                              <li>Pair-level barcode & label printing</li>
+                              <li>Low-pair alert & auto reorder</li>
                            </ul>
                        </div>
                    </div>
 
-                   {/* Centralized Multi-Store Management */}
+                   {/* Online + Walk-In Retail */}
                    <div className="col-md-4 col-sm-6">
                        <div className="key-box">
-                           <h3>Omnichannel Retail – Online & Offline</h3>
-                           <p>Expand your garment business with our omnichannel Management solution. Manage both physical stores and online shops effortlessly with seamless Shopify and WooCommerce integrations.</p>
+                           <h3>Walk-In & Online Channel Sync</h3>
+                           <p>Sell footwear in your store and on your website simultaneously. ChittorTech keeps inventory synced across both channels so you never oversell a pair.</p>
                            <ul>
-                              <li>Easy online store setup</li>
-                              <li>Shopify & WooCommerce integration</li>
-                              <li>Integrated payment gateways</li>
+                              <li>Live stock sync across channels</li>
+                              <li>E-commerce store integration</li>
+                              <li>Unified order & return management</li>
                            </ul>
                        </div>
                    </div>

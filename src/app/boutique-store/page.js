@@ -79,33 +79,33 @@ export default function Page() {
       `}</style>
 
       {/* ── Modern Inner Page Hero ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #291fbc 55%, #0e7490 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
+      <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #be185d 55%, #9333ea 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(250,168,212,0.18) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 60%)', pointerEvents: 'none' }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-scissors`}></i> Boutique Management
+                <i className={`fa-solid fa-tag`}></i> Boutique & Label Retail
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Boutique Store Management Software
+                Boutique POS & Fashion Label Retail Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                Style meets technology — manage inventory, billing, and customer data for your boutique.
+                Give your boutique a competitive edge — run lightning-fast billing, track style-wise stock movements, build loyal customer communities, and sell across online & offline channels from one sleek dashboard.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">
-                  <i className="fa-solid fa-calendar-check"></i> Book Free Demo
+                  <i className="fa-solid fa-calendar-check"></i> See It Live
                 </button>
                 <a href="/contact-us" className="ct-btn ct-btn-ghost">
-                  <i className="fa-solid fa-envelope"></i> Contact Us
+                  <i className="fa-solid fa-envelope"></i> Talk to Expert
                 </a>
               </div>
             </div>
             <div className="col-lg-4 d-none d-lg-flex justify-content-center">
               <div style={{ width: '160px', height: '160px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem', color: 'rgba(255,255,255,0.4)' }}>
-                <i className={`fa-solid fa-scissors`}></i>
+                <i className={`fa-solid fa-tag`}></i>
               </div>
             </div>
           </div>
@@ -190,61 +190,57 @@ export default function Page() {
                   <div className="col-md-5 order-md-2">
                        <div className="expertise-img text-start">
                            <figure>
-                              <img src="/assets/images/img202.jpg" alt="Local &amp; National SEO Expertise" />
+                              <img src="/assets/images/img202.jpg" alt="Boutique Retail Software Features" />
                            </figure>
                        </div>
                   </div>
                   <div className="col-md-7 order-md-1">
                       <div className="heading-wrap text-start">
-                          <h2> <span>Elevate Your Boutique with Our Smart Retail Software</span> </h2>
+                          <h2> <span>How ChittorTech Transforms Your Boutique Operations</span> </h2>
                        </div>
                        <div className="expertise-wrap bridal-wrap">
                           <ul>
     <li>
-        <strong>Fast &amp; Efficient Billing</strong><br />
-        Quick checkout with barcode scanning, multiple cash counters, and instant Management processing.
+        <strong>Zero-Delay Checkout</strong><br />
+        Barcode scanning, digital cash registers, and one-tap payment processing mean customers walk out happy — every time.
     </li>
     <li>
-        <strong>Instant SMS Billing &amp; Promotions</strong><br />
-        Share invoices, offers, and feedback requests via SMS to keep customers engaged.
+        <strong>Digital Invoicing via SMS & WhatsApp</strong><br />
+        Instantly share professional GST-compliant receipts through SMS and WhatsApp without any printing hassle.
     </li>
     <li>
-        <strong>Flexible Payment Methods</strong><br />
-        Accept UPI, cards, net banking, and other digital payment options with ease.
+        <strong>Omnichannel Payment Acceptance</strong><br />
+        UPI, debit/credit cards, net banking, and cash — your boutique is ready for every payment preference your customers have.
     </li>
     <li>
-        <strong>Organized Inventory Management</strong><br />
-        Sort merchandise by color, style, brand, gender, and material for better control.
+        <strong>Catalogue-Based Inventory</strong><br />
+        Categorize your collection by style, gender, season, size, color, and brand with a visual catalogue layout.
     </li>
     <li>
-        <strong>Size-Wise Stock Planning</strong><br />
-        Track popular sizes (XS–XXL) to ensure fast-moving items are always available.
+        <strong>Demand-Driven Reordering</strong><br />
+        Auto-trigger purchase orders for fast-moving pieces based on live sales velocity data.
     </li>
     <li>
-        <strong>Smart Reordering</strong><br />
-        Monitor top-selling items and automate reorders to avoid stockouts.
+        <strong>Seasonal Offer Engine</strong><br />
+        Create and schedule festive discounts, flat-off campaigns, bundle packs, and digital coupon codes with one click.
     </li>
     <li>
-        <strong>Promotions &amp; Discounts</strong><br />
-        Create in-store deals, bundle offers, and promo codes to drive sales.
+        <strong>VIP Loyalty Programmes</strong><br />
+        Reward your best shoppers with tiered loyalty points, exclusive early access, and birthday perks.
     </li>
     <li>
-        <strong>Loyalty &amp; Membership Rewards</strong><br />
-        Reward repeat customers with points and exclusive benefits.
+        <strong>Customer Segmentation & Analytics</strong><br />
+        Identify your top buyers, inactive segments, and average spend patterns to run high-conversion targeted campaigns.
     </li>
     <li>
-        <strong>Customer Insights &amp; Segmentation</strong><br />
-        Classify buyers as VIP, regular, or inactive for targeted marketing campaigns.
+        <strong>WhatsApp Marketing Integration</strong><br />
+        Push new arrivals, sale alerts, and event invites directly to customers' WhatsApp inboxes.
     </li>
     <li>
-        <strong>WhatsApp Integration</strong><br />
-        Communicate instantly by sending invoices, promotions, and offers via WhatsApp.
+        <strong>Multi-Branch Stock Visibility</strong><br />
+        Whether you run two boutiques or twenty, get live stock status across every location without manual audits.
     </li>
-    <li>
-        <strong>Warehouse &amp; Supply Chain Control</strong><br />
-        Streamline vendor management and track stock movement effortlessly.
-    </li>
-   
+
 </ul>
 
                        </div>

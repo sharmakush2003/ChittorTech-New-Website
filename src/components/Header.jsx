@@ -24,11 +24,11 @@ const NAV_ITEMS = {
       { href: "/fruits-vegetable-shop", icon: "fa-leaf",           label: "Fresh Food & Agri Tech" },
     ],
     fashion: [
-      { href: "/garments",              icon: "fa-shirt",          label: "Apparel & Garment Brands" },
-      { href: "/boutique-store",        icon: "fa-bag-shopping",   label: "Fashion Boutiques & Labels" },
-      { href: "/footwear-store",        icon: "fa-shoe-prints",    label: "Footwear & Shoe Chains" },
-      { href: "/bridal-store",          icon: "fa-gem",            label: "Bridal & Luxury Stores" },
-      { href: "/textile",               icon: "fa-scroll",         label: "Textile Mills & Fabrics" },
+      { href: "/garments",              icon: "fa-vest",            label: "Apparel & Garment Brands" },
+      { href: "/boutique-store",        icon: "fa-tag",             label: "Fashion Boutiques & Labels" },
+      { href: "/footwear-store",        icon: "fa-socks",           label: "Footwear & Shoe Chains" },
+      { href: "/bridal-store",          icon: "fa-crown",           label: "Bridal & Luxury Stores" },
+      { href: "/textile",               icon: "fa-swatchbook",      label: "Textile Mills & Fabrics" },
     ],
     hospitality: [
       { href: "/dharamshala-billing-system",  icon: "fa-torii-gate",    label: "Dharamshala Management" },
@@ -357,6 +357,27 @@ export default function Header() {
           margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
         }
         .ct-mega-col-head i { font-size: 0.7rem; }
+        /* Fashion column accent */
+        .ct-mega-col--fashion {
+          background: linear-gradient(160deg, rgba(219,39,119,0.04) 0%, rgba(249,168,212,0.07) 100%);
+          border-radius: 12px;
+          padding: 10px 12px 10px 10px;
+          border-right: none;
+          margin: -2px 8px -2px 0;
+        }
+        .ct-mega-col--fashion + .ct-mega-col { padding-left: 8px; border-left: 1px solid #f1f5f9; }
+        .ct-mega-col--fashion .ct-mega-col-head {
+          display: inline-flex; align-items: center; gap: 6px;
+          background: linear-gradient(135deg, #db2777, #f472b6);
+          color: #fff; border-radius: 50px;
+          padding: 3px 10px 3px 7px;
+          font-size: 0.62rem; letter-spacing: 1px;
+          margin-bottom: 10px;
+        }
+        .ct-mega-col--fashion .ct-mega-col-head i { font-size: 0.65rem; color: #fff; }
+        .ct-mega-col--fashion .ct-mega-link i { color: #db2777; }
+        .ct-mega-col--fashion .ct-mega-link:hover { background: rgba(219,39,119,0.06); color: #db2777; }
+        .ct-mega-col--fashion .ct-mega-link:hover i { color: #be185d; }
         .ct-mega-link {
           display: flex; align-items: center; gap: 8px;
           padding: 7px 8px; border-radius: 8px;
@@ -684,8 +705,8 @@ export default function Header() {
                           </Link>
                         ))}
                       </div>
-                      <div className="ct-mega-col">
-                        <div className="ct-mega-col-head"><i className="fa-solid fa-shirt"></i> Fashion & Apparel</div>
+                      <div className="ct-mega-col ct-mega-col--fashion">
+                        <div className="ct-mega-col-head"><i className="fa-solid fa-wand-magic-sparkles"></i> Style & Apparel</div>
                         {NAV_ITEMS.industries.fashion.map((l) => (
                           <Link key={l.href} href={l.href} className="ct-mega-link" onClick={() => setActiveDropdown(null)}>
                             <i className={`fa-solid ${l.icon}`}></i>{l.label}

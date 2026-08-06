@@ -79,33 +79,33 @@ export default function Page() {
       `}</style>
 
       {/* ── Modern Inner Page Hero ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #291fbc 55%, #0e7490 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
+      <section style={{ background: 'linear-gradient(135deg, #1a0a00 0%, #7c2d12 45%, #a16207 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(253,224,71,0.12) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 60%)', pointerEvents: 'none' }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-ring`}></i> Bridal Store
+                <i className={`fa-solid fa-crown`}></i> Bridal & Luxury Retail
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Bridal Store Management Software
+                Bridal & Luxury Fashion Store Management Suite
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                Manage collections, orders, alterations, and customer bookings for your bridal store.
+                Transform every bride's journey into a personalised white-glove experience — from the first consultation to final delivery — while tracking collections, alteration timelines, and advance deposits with precision.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">
-                  <i className="fa-solid fa-calendar-check"></i> Book Free Demo
+                  <i className="fa-solid fa-calendar-check"></i> Request a Demo
                 </button>
                 <a href="/contact-us" className="ct-btn ct-btn-ghost">
-                  <i className="fa-solid fa-envelope"></i> Contact Us
+                  <i className="fa-solid fa-envelope"></i> Connect With Us
                 </a>
               </div>
             </div>
             <div className="col-lg-4 d-none d-lg-flex justify-content-center">
               <div style={{ width: '160px', height: '160px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem', color: 'rgba(255,255,255,0.4)' }}>
-                <i className={`fa-solid fa-ring`}></i>
+                <i className={`fa-solid fa-crown`}></i>
               </div>
             </div>
           </div>

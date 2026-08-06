@@ -79,33 +79,33 @@ export default function Page() {
       `}</style>
 
       {/* ── Modern Inner Page Hero ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #291fbc 55%, #0e7490 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
+      <section style={{ background: 'linear-gradient(135deg, #1a0533 0%, #7c1fa8 55%, #0d6fa8 100%)', padding: '90px 0 70px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 70%)', top: '-200px', right: '-100px', borderRadius: '50%', pointerEvents: 'none' }}></div>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 60%)', pointerEvents: 'none' }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', padding: '6px 16px', borderRadius: '50px', marginBottom: '20px' }}>
-                <i className={`fa-solid fa-shirt`}></i> Garments AI & IT Solutions
+                <i className={`fa-solid fa-vest`}></i> Apparel & Textile Automation
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Garments AI & IT Solutions & Billing Software
+                Smart Apparel & Garment Management Platform
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                Handle garment manufacturing, distribution, and retail billing in one platform.
+                From yarn to dispatch — automate your entire garment production cycle, multi-warehouse inventory, and export billing in one unified workspace.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">
-                  <i className="fa-solid fa-calendar-check"></i> Book Free Demo
+                  <i className="fa-solid fa-calendar-check"></i> Schedule Free Demo
                 </button>
                 <a href="/contact-us" className="ct-btn ct-btn-ghost">
-                  <i className="fa-solid fa-envelope"></i> Contact Us
+                  <i className="fa-solid fa-envelope"></i> Get in Touch
                 </a>
               </div>
             </div>
             <div className="col-lg-4 d-none d-lg-flex justify-content-center">
               <div style={{ width: '160px', height: '160px', borderRadius: '50%', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem', color: 'rgba(255,255,255,0.4)' }}>
-                <i className={`fa-solid fa-shirt`}></i>
+                <i className={`fa-solid fa-vest`}></i>
               </div>
             </div>
           </div>
@@ -120,16 +120,16 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Garment Manufacturers <span>Industry in India</span></h1>
-                  <p>In today’s competitive fashion and apparel landscape, garment manufacturers face ever-growing challenges—managing complex production processes, controlling costs, meeting strict deadlines, and delivering high-quality garments. To stay ahead in this fast-moving industry, adopting a powerful AI & IT Solutions system is no longer an option, but a necessity.</p>
-                  <p><b>ChittorTech</b> is designed specifically for garment manufacturers in India, ensuring smooth handling of everything—from raw material procurement, inventory, cutting, stitching, quality control, packaging, to final delivery—helping garment businesses <b>maximize efficiency, compliance, and profitability</b>.</p>
+                  <h2>India's Most Adaptable Software for the Apparel & Garment Sector</h2>
+                  <p>India's apparel sector is one of the most dynamic manufacturing ecosystems in the world — balancing volume production, style diversity, export deadlines, and domestic distribution simultaneously. Manual tools and fragmented software can't keep up. ChittorTech delivers an end-to-end digital platform built exclusively around how Indian garment businesses actually operate.</p>
+                  <p><b>ChittorTech</b> eliminates production bottlenecks by connecting every thread of your business — raw material intake, cut-plan optimization, line-wise stitching targets, QC checkpoints, packaging, and last-mile dispatch — into one intelligent dashboard that helps apparel brands <b>scale faster, cut waste, and stay GST-compliant</b>.</p>
                </div>
             </div>
          </div>
          <div className="col-md-6">
             <div className="seo-services-img manufacturers-img">
                <figure>
-                  <img src="/assets/images/img286.jpg" alt="Garment Manufacture" />
+                  <img src="/assets/images/img286.jpg" alt="Apparel & Garment ERP Software" />
                </figure>
             </div>
          </div>
@@ -143,33 +143,31 @@ export default function Page() {
          <div className="col-md-5">
             <div className="expertise-img text-start">
                <figure>
-                  <img src="/assets/images/img287.jpg" alt="Garment AI Manufacturing Solutions" />
+                  <img src="/assets/images/img287.jpg" alt="Why Apparel Brands Need ERP" />
                </figure>
             </div>
          </div>
          <div className="col-md-7">
             <div className="heading-wrap text-start">
-               <h2>Why <span>Garment Manufacturers</span> Need AI & IT Solutions?</h2>
-               <p>The garment industry operates differently from other manufacturing sectors. High volumes, frequent style changes, seasonal demand, labor dependency, and complex supply chains require a specialized AI & IT Solutions system. Here’s why:</p>
+               <h2>Why <span>Apparel & Garment Businesses</span> Are Switching to ChittorTech?</h2>
+               <p>The fashion supply chain runs on precision timing and product diversity that no generic ERP can handle. Here's what makes apparel operations uniquely complex — and why ChittorTech is engineered for exactly this:</p>
             </div>
             <div className="expertise-wrap bridal-wrap">
                <ul>
-                  <li><strong>SKU Management</strong> – Handle multiple sizes, colors, and designs with ease.</li>
-                  <li><strong>Real-Time Inventory Tracking</strong> – Track fabrics, trims, and finished goods efficiently.</li>
-                  <li><strong>Production Planning</strong> – Optimize cutting, stitching, and finishing processes.</li>
-                  <li><strong>Order Management</strong> – Manage bulk and custom orders seamlessly.</li>
-                  <li><strong>Costing & Profitability Analysis</strong> – Get accurate per-piece costing and margin insights.</li>
-                  <li><strong>Supply Chain Control</strong> – Monitor vendors, suppliers, logistics, and distributors.</li>
-                  <li><strong>Compliance & Certifications</strong> – Ensure production meets international standards.</li>
+                  <li><strong>Multi-Variant SKU Engine</strong> – Seamlessly handle hundreds of size-color-design combinations per style.</li>
+                  <li><strong>Live Fabric & Trim Tracker</strong> – Know exactly how many meters of each fabric remain, in real time.</li>
+                  <li><strong>Cut-to-Pack Production Flow</strong> – Map and monitor cutting, stitching, washing, and finishing stage-by-stage.</li>
+                  <li><strong>B2B Order Fulfilment</strong> – Process bulk orders from retail chains and export buyers with automatic packing lists.</li>
+                  <li><strong>Margin Intelligence</strong> – Automatically compute per-piece cost, style-wise profitability, and wastage impact.</li>
+                  <li><strong>Vendor & Logistics Control</strong> – Track jobwork units, fabric suppliers, logistics, and third-party embellishers.</li>
+                  <li><strong>Export & Compliance Ready</strong> – Generate shipping bills, packing declarations, and GST reports instantly.</li>
                </ul>
-               <p>Our AI & IT Solutions in India addresses all these challenges with advanced automation and intelligent insights.</p>
+               <p>ChittorTech removes the guesswork from garment production and replaces it with data-driven clarity across your entire value chain.</p>
             </div>
          </div>
       </div>
    </div>
 </section>
-
-
 
 <section className="manufacturing-key section-bg pt-60">
    <div className="container">
