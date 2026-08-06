@@ -1,3 +1,8 @@
+// ─── Google Analytics 4 — ChittorTech ────────────────────────────────────────
+// Property: ChittorTech Website | Measurement ID: G-G9QX6M81EL
+const GA4_ID = "G-G9QX6M81EL";
+// ─────────────────────────────────────────────────────────────────────────────
+
 import "../../public/assets/css/style.css";
 import "../../public/assets/css/responsive.css";
 import "../../public/assets/css/chatbot.css";
@@ -74,6 +79,23 @@ export default function RootLayout({ children }) {
         <Footer />
         <Chatbot />
         <TrialModal />
+
+        {/* ── Google Analytics GA4 ── */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA4_ID}', {
+              page_path: window.location.pathname,
+              send_page_view: true,
+            });
+          `}
+        </Script>
 
         {/* Legacy jQuery/Bootstrap/plugins — required by inner pages */}
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" strategy="beforeInteractive" />
