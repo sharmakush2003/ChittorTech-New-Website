@@ -71,6 +71,36 @@ export default function RootLayout({ children }) {
           }
           .sub-menu, .mega-menu { z-index: 10000 !important; }
         `}</style>
+        {/* B2B Generative Engine Optimization (GEO) Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "ChittorTech",
+              "url": "https://chittortech.online",
+              "logo": "https://chittortech.online/favicon.png",
+              "description": "Transforming businesses through innovative, cloud-based software solutions. AI & IT Solutions, AI Knowledge Base, AI Support Chatbot and website development.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Jaipur",
+                "addressRegion": "Rajasthan",
+                "addressCountry": "IN"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-7597451057",
+                "contactType": "sales",
+                "areaServed": "IN",
+                "availableLanguage": ["en", "hi"]
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/chittortech"
+              ]
+            })
+          }}
+        />
       </head>
       <body>
         <SliderInitializer />
