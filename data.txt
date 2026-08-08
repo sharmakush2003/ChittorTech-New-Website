@@ -1,0 +1,91 @@
+🔍 Digifysoft ka Raaz Mil Gaya!
+Code dekh ke pata chala — yeh same team ka website hai (same CSS, same chatbot code, same components)! Lekin unke leads aane ke specific technical reasons hain:
+
+Digifysoft vs ChittorTech — Direct Comparison
+Feature	Digifysoft ✅	ChittorTech ❌
+Facebook Pixel	2 Pixels installed	❌ None
+Google Tag Manager	GTM-WHJP4VP8	❌ None
+Google Analytics GA4	G-B33CPPPGFN	❌ None
+Open Graph Tags	✅ Full OG meta	❌ Missing
+Twitter Cards	✅ Present	❌ Missing
+Canonical URLs	✅ Per page	❌ Missing
+Hreflang (India)	✅ en-in	❌ Missing
+PHP Server Rendering	✅ Google indexes directly	Static JS (harder)
+Floating Contact Button	✅ Always visible	Needs check
+Facebook Ads Running	✅ Almost certainly	❌ None
+Asli Raaz — Leads Kahan Se Aa Rahi Hain?
+2 Facebook Pixels = Active Facebook/Instagram Ads chal rahe hain!
+
+Digifysoft ke 10-20 leads = Facebook & Instagram Ads se aa rahi hain — SEO se NAHIN!
+
+Facebook Ad → Business owner dekhta hai
+           → Landing page par aata hai
+           → "Book Free Demo" click karta hai
+           → LEAD! 💰
+ChittorTech ke liye Abhi Kya Karu?
+3 cheezein add karta hoon turant:
+
+✅ Open Graph + Twitter Card metadata — social sharing improve hoga
+✅ Canonical URLs — SEO strengthen hoga
+✅ Google Analytics GA4 — traffic track hoga
+Aur tumhe karna hai:
+
+🔴 Facebook Pixel setup + ₹300-500/day Instagram/Facebook Ad — yahi Digifysoft ka main lead source hai!
+Shall I add OG tags + GA4 + canonical to the layout.js abhi? Aur Google Ads/Facebook Ads setup guide bhi de sakta hoon. 🎯
+
+8:22 PM
+Shall I add OG tags + GA4 + canonical to the layout.js abhi? Aur Google Ads/Facebook Ads setup guide bhi de sakta hoon. 🎯 yeh ky h!
+8:24 PM
+Yeh Teen Cheezein Kya Hain?
+1. 🏷️ OG Tags (Open Graph)
+Jab koi tumhara website link WhatsApp, Facebook, LinkedIn par share kare — yeh decide karta hai kaisi preview dikhegi:
+
+Without OG Tags:
+
+chittortech.online/hotel-management-system
+(koi image nahi, koi description nahi — boring link)
+With OG Tags:
+
+┌─────────────────────────────┐
+│  [ChittorTech Logo/Image]   │
+│  Hotel Management Software  │
+│  India | ChittorTech        │
+│  Complete hotel software... │
+└─────────────────────────────┘
+= Zyada clicks, zyada trust!
+
+2. 📊 GA4 (Google Analytics 4)
+Tumhare website par kya ho raha hai yeh dekhne ka tool:
+
+Kitne log aaye?
+Kahan se aaye? (Google, WhatsApp, Facebook)
+Kaunsa page sabse zyada dekha?
+Kitni der ruke?
+Koi form fill kiya?
+Without GA4 = Andheron mein teer chalana 🏹
+With GA4 = Puri clarity ki kahan se leads aa rahi hain ✅
+
+3. 🔗 Canonical URL
+Google ko batata hai ki yeh page ka "official" address kya hai:
+
+html
+<!-- Bina canonical ke Google confuse ho jata hai: -->
+chittortech.online/hotel-management-system  ← original?
+chittortech.online/hotel-management-system/ ← same page?
+www.chittortech.online/hotel-management-system ← same page?
+<!-- Canonical se Google samajh jata hai: -->
+"Official page = chittortech.online/hotel-management-system" ✅
+= Duplicate content penalty se bachata hai, ranking improve hoti hai
+
+Karu? ✅
+Yeh teeno add karna = 15 minutes ka kaam, SEO + lead tracking dono improve!
+
+Haan bolo — layout.js mein abhi add kar deta hoon sab kuch! 🚀
+
+8:24 PM
+Shall I add OG tags + GA4 + canonical to the layout.js abhi? Aur Google Ads/Facebook Ads setup guide bhi de sakta hoon. 🎯m yeh kaisa krna h?
+8:25 PM
+Main abhi code add karta hoon — aur saath explain bhi karunga! Let me first generate an OG image and then update layout.js.
+
+User cancelled agent execution.
+8:25 PM
