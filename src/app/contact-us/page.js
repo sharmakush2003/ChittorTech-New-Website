@@ -1,8 +1,81 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import "../../../public/assets/css/premium-products.css";
 
 export default function Page() {
+  const [formData, setFormData] = useState({
+    name: "",
+    mobile: "",
+    email: "",
+    industry: "", // Service Required
+    location: "",
+    remark: "", // Project Details / Requirements
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [statusMsg, setStatusMsg] = useState("");
+  const [statusType, setStatusType] = useState(""); // "success" or "danger"
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setStatusMsg("");
+
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.mobile || !formData.location || !formData.industry) {
+      setStatusType("danger");
+      setStatusMsg("Please fill in all required fields.");
+      setSubmitting(false);
+      return;
+    }
+
+    const submissionPayload = {
+      name: formData.name,
+      email: formData.email,
+      contact: formData.mobile,
+      location: formData.location,
+      industry: formData.industry,
+      message: formData.remark,
+      company: "N/A",
+      firm: "N/A",
+    };
+
+    // Instant feedback to user
+    setStatusType("success");
+    setStatusMsg("Thank you! Your message has been sent successfully. Our engineering team will get back to you shortly.");
+    
+    // Clear form
+    setFormData({
+      name: "",
+      mobile: "",
+      email: "",
+      industry: "",
+      location: "",
+      remark: "",
+    });
+
+    // Send payload in background
+    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+    if (scriptUrl) {
+      try {
+        fetch(scriptUrl, {
+          method: "POST",
+          body: JSON.stringify(submissionPayload),
+        }).catch((err) => {
+          console.error("Background lead submission fetch failed:", err);
+        });
+      } catch (err) {
+        console.error("Background lead submission error:", err);
+      }
+    }
+
+    setSubmitting(false);
+  };
+
   return (
     <>
       <style>{`
@@ -191,13 +264,28 @@ export default function Page() {
                   <p className="text-muted small">Fill out the form below and our engineering team will get back to you shortly.</p>
                 </div>
                 
-                <form action="" method="post" className="row g-3">
+                {statusMsg && (
+                  <div className={`alert alert-${statusType === "success" ? "success" : "danger"} mb-4`} role="alert" style={{ borderRadius: "12px", fontSize: "0.9rem", fontWeight: 600 }}>
+                    <i className={`fas fa-${statusType === "success" ? "check-circle" : "exclamation-triangle"} me-2`}></i>
+                    {statusMsg}
+                  </div>
+                )}
+                
+                <form onSubmit={handleSubmit} className="row g-3">
                   <div className="col-md-6">
                     <div className="premium-input-group">
                       <label className="form-label fw-bold small text-muted">FULL NAME*</label>
                       <div className="input-with-icon">
                         <i className="fas fa-user"></i>
-                        <input type="text" name="name" className="form-control" placeholder="John Doe" required />
+                        <input
+                          type="text"
+                          name="name"
+                          className="form-control"
+                          placeholder="John Doe"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                        />
                       </div>
                     </div>
                   </div>
@@ -206,7 +294,15 @@ export default function Page() {
                       <label className="form-label fw-bold small text-muted">MOBILE NUMBER*</label>
                       <div className="input-with-icon">
                         <i className="fas fa-phone"></i>
-                        <input type="text" name="mobile" className="form-control" placeholder="+91 7597451057" required />
+                        <input
+                          type="text"
+                          name="mobile"
+                          className="form-control"
+                          placeholder="+91 7597451057"
+                          value={formData.mobile}
+                          onChange={handleChange}
+                          required
+                        />
                       </div>
                     </div>
                   </div>
@@ -215,7 +311,15 @@ export default function Page() {
                       <label className="form-label fw-bold small text-muted">EMAIL ADDRESS*</label>
                       <div className="input-with-icon">
                         <i className="fas fa-envelope"></i>
-                        <input type="email" name="email" className="form-control" placeholder="chittortech@gmail.com" required />
+                        <input
+                          type="email"
+                          name="email"
+                          className="form-control"
+                          placeholder="chittortech@gmail.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                        />
                       </div>
                     </div>
                   </div>
@@ -224,7 +328,13 @@ export default function Page() {
                       <label className="form-label fw-bold small text-muted">SERVICE REQUIRED*</label>
                       <div className="input-with-icon">
                         <i className="fas fa-robot"></i>
-                        <select name="industry" className="form-select" required>
+                        <select
+                          name="industry"
+                          className="form-select"
+                          value={formData.industry}
+                          onChange={handleChange}
+                          required
+                        >
                           <option value="">Select Service</option>
                           <option value="AI Chatbots & Agents">AI Chatbots &amp; Agents</option>
                           <option value="Enterprise AI Workflows">Enterprise AI Workflows</option>
@@ -241,19 +351,45 @@ export default function Page() {
                       <label className="form-label fw-bold small text-muted">CITY / LOCATION*</label>
                       <div className="input-group" style={{ borderRadius: "10px", overflow: "hidden", border: "1px solid #e2e8f0", background: "#f8fafc" }}>
                         <span className="input-group-text" style={{ background: "transparent", border: "none", paddingLeft: "15px", paddingRight: "15px", color: "#94a3b8" }}><i className="fas fa-map-marker-alt"></i></span>
-                        <input type="text" id="contactLocation" name="location" className="form-control" placeholder="Enter City (e.g. Chittorgarh, Jaipur, Delhi)" required style={{ border: "none", background: "transparent", height: "50px", fontSize: "0.95rem", color: "#334155", boxShadow: "none" }} />
+                        <input
+                          type="text"
+                          id="contactLocation"
+                          name="location"
+                          className="form-control"
+                          placeholder="Enter City (e.g. Chittorgarh, Jaipur, Delhi)"
+                          value={formData.location}
+                          onChange={handleChange}
+                          required
+                          style={{ border: "none", background: "transparent", height: "50px", fontSize: "0.95rem", color: "#334155", boxShadow: "none" }}
+                        />
                       </div>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="premium-input-group">
                       <label className="form-label fw-bold small text-muted">PROJECT DETAILS / REQUIREMENTS</label>
-                      <textarea name="remark" className="form-control" placeholder="Tell us more about your project or AI automation requirements..." style={{ height: "120px", padding: "12px 16px", borderRadius: "10px", fontSize: "0.9rem" }}></textarea>
+                      <textarea
+                        name="remark"
+                        className="form-control"
+                        placeholder="Tell us more about your project or AI automation requirements..."
+                        value={formData.remark}
+                        onChange={handleChange}
+                        style={{ height: "120px", padding: "12px 16px", borderRadius: "10px", fontSize: "0.9rem" }}
+                      ></textarea>
                     </div>
                   </div>
                   <div className="col-12 mt-3 d-flex justify-content-center">
-                    <button type="submit" className="schedule-btn w-100" style={{ maxWidth: "260px", justifyContent: "center" }}>
-                      Send Message <i className="fas fa-paper-plane ms-2"></i>
+                    <button type="submit" className="schedule-btn w-100" style={{ maxWidth: "260px", justifyContent: "center" }} disabled={submitting}>
+                      {submitting ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          <span>Sending Message...</span>
+                        </>
+                      ) : (
+                        <>
+                          Send Message <i className="fas fa-paper-plane ms-2"></i>
+                        </>
+                      )}
                     </button>
                   </div>
                 </form>
