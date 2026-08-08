@@ -1,0 +1,27 @@
+name: ChittorTech API Health Monitor
+
+on:
+  schedule:
+    # Runs daily at 9:00 AM UTC (2:30 PM IST)
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check API Status
+        run: |
+          URL="${{ vars.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }}"
+          if [ -z "$URL" ]; then
+            echo "Error: NEXT_PUBLIC_GOOGLE_SCRIPT_URL variable is not set in GitHub Repository Variables!"
+            exit 1
+          fi
+          RESPONSE=$(curl -sL "$URL")
+          echo "Response received: $RESPONSE"
+          if [[ "$RESPONSE" == *'"status":"success"'* ]]; then
+            echo "API is healthy!"
+          else
+            echo "API Health Check FAILED!"
+            exit 1
+          fi

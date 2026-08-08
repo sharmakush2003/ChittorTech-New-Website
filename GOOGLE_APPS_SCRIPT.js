@@ -250,3 +250,18 @@ function testAuthorization() {
   }
   Logger.log("Authorization Successful! External fetch and email sending are now enabled.");
 }
+
+function doGet(e) {
+  try {
+    return ContentService.createTextOutput(JSON.stringify({ 
+      status: "success", 
+      msg: "ChittorTech API is active and healthy." 
+    })).setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({ 
+      status: "error", 
+      msg: error.toString() 
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
