@@ -872,7 +872,7 @@ export default function Page() {
                     <h3>STEP 1: Login to Your Dashboard</h3>
                     <ul>
                         <li>Open your browser on any device (laptop, PC, tablet, or mobile).</li>
-                        <li>Go to the official link: <a href="https://www.chittortech.in/">https://www.chittortech.in/</a></li>
+                        <li>Go to the official link: <a href="https://chittortech.online/">https://chittortech.online/</a></li>
                         <li>Enter your Username & Password (provided at the time of onboarding).</li>
                         <li>Access the main dashboard showing donations, devotees, inventory, expenses, and reports.</li>
                         <li>Tip: Ensure a stable internet connection.</li>

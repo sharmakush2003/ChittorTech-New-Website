@@ -139,6 +139,18 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://chittortech.online/ai-solutions</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://chittortech.online/ai-knowledge</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://chittortech.online/google-play-store-publishing-guide-compliance-launch</loc>
     <lastmod>2026-08-10</lastmod>
     <changefreq>monthly</changefreq>

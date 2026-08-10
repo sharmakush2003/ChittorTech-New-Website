@@ -206,7 +206,7 @@ export default function Page() {
         </div>
 
         <div className="btn-wrapper mt-4">
-            <a href="https://chittortech.in/" className="btn-action btn-home-action">
+            <a href="https://chittortech.online/" className="btn-action btn-home-action">
                 <i className="fa-solid fa-house"></i> Explore Main Website
             </a>
         </div>

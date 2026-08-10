@@ -617,7 +617,7 @@ export default function Page() {
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
                    <h4>Way 1: For Tech-Savvy Business Owners</h4>
                    <ul className="list-unstyled">
-                     <li>Visit our website: chittortech.in</li>
+                     <li>Visit our website: chittortech.online</li>
                      <li>Use the search panel at the top to type your industry, e.g., AI Software, Automobile, Cyber Security, eCommerce, Real Estate, Restaurants, etc.</li>
                      <li>Click the relevant SEO package page.</li>
                      <li>Choose the package type based on your target locations (local, national, international).</li>
@@ -633,7 +633,7 @@ export default function Page() {
                    <h4>Way 2: For Non-Tech-Savvy Users</h4>
                    <ul className="list-unstyled">
                      <li>Contact our SEO experts via Call or WhatsApp for guidance.</li>
-                     <li>Visit chittortech.in and search for your industry (e.g., Travel Agencies, Dentists, Law Firms, Movers & Packers, Roofing Companies, Real Estate, etc.).</li>
+                     <li>Visit chittortech.online and search for your industry (e.g., Travel Agencies, Dentists, Law Firms, Movers & Packers, Roofing Companies, Real Estate, etc.).</li>
                      <li>Follow the same steps as Way 1 to choose a package, keywords, and proceed to payment.</li>
                      <li>Receive a confirmation email and a call within 24 hours for strategy discussion and campaign initiation.</li>
                    </ul>
