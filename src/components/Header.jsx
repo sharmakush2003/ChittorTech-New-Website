@@ -49,6 +49,7 @@ const NAV_ITEMS = {
     { href: "/web-development-services",       icon: "fa-code",             label: "Web Development",          desc: "Next.js, React, Node.js" },
     { href: "/e-commerce-website-development", icon: "fa-cart-shopping",    label: "E-Commerce Solutions",     desc: "Full-stack storefronts" },
     { href: "/android-application",            icon: "fa-android",          label: "Android Mobile Apps",      desc: "Native & cross-platform" },
+    { href: "/google-play-publishing",         icon: "fa-upload",           label: "Google Play Publishing",   desc: "Verify & publish your apps" },
     { href: "/search-engine-optimization",     icon: "fa-magnifying-glass", label: "SEO Growth Services",      desc: "Rank #1 on Google" },
     { href: "/digital-marketing-services",     icon: "fa-bullhorn",         label: "Digital Marketing",        desc: "Ads, leads, ROI" },
     { href: "/social-media-optimization",      icon: "fa-thumbs-up",        label: "Social Media (SMO)",       desc: "Grow your audience" },
@@ -343,13 +344,14 @@ export default function Header() {
           letter-spacing: 0.5px; text-transform: uppercase;
         }
         .ct-mega-grid {
-          display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+          display: grid; grid-template-columns: repeat(4,1fr); gap: 12px;
         }
         .ct-mega-col {
-          padding: 0 16px 0 0; border-right: 1px solid #f1f5f9;
+          border-radius: 12px;
+          padding: 12px 14px;
+          transition: all 0.25s ease;
+          border: 1px solid rgba(255, 255, 255, 0.4);
         }
-        .ct-mega-col:last-child { border-right: none; padding-right: 0; }
-        .ct-mega-col:not(:first-child) { padding-left: 16px; }
         .ct-mega-col-head {
           font-size: 0.68rem; font-weight: 800;
           text-transform: uppercase; letter-spacing: 1.5px;
@@ -357,15 +359,28 @@ export default function Header() {
           margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
         }
         .ct-mega-col-head i { font-size: 0.7rem; }
+
+        /* Retail column accent */
+        .ct-mega-col--retail {
+          background: linear-gradient(160deg, rgba(37,99,235,0.03) 0%, rgba(147,197,253,0.06) 100%);
+        }
+        .ct-mega-col--retail .ct-mega-col-head {
+          display: inline-flex; align-items: center; gap: 6px;
+          background: linear-gradient(135deg, #2563eb, #60a5fa);
+          color: #fff; border-radius: 50px;
+          padding: 3px 10px 3px 7px;
+          font-size: 0.62rem; letter-spacing: 1px;
+          margin-bottom: 10px;
+        }
+        .ct-mega-col--retail .ct-mega-col-head i { font-size: 0.65rem; color: #fff; }
+        .ct-mega-col--retail .ct-mega-link i { color: #2563eb; }
+        .ct-mega-col--retail .ct-mega-link:hover { background: rgba(37,99,235,0.06); color: #2563eb; }
+        .ct-mega-col--retail .ct-mega-link:hover i { color: #1d4ed8; }
+
         /* Fashion column accent */
         .ct-mega-col--fashion {
-          background: linear-gradient(160deg, rgba(219,39,119,0.04) 0%, rgba(249,168,212,0.07) 100%);
-          border-radius: 12px;
-          padding: 10px 12px 10px 10px;
-          border-right: none;
-          margin: -2px 8px -2px 0;
+          background: linear-gradient(160deg, rgba(219,39,119,0.03) 0%, rgba(249,168,212,0.06) 100%);
         }
-        .ct-mega-col--fashion + .ct-mega-col { padding-left: 8px; border-left: 1px solid #f1f5f9; }
         .ct-mega-col--fashion .ct-mega-col-head {
           display: inline-flex; align-items: center; gap: 6px;
           background: linear-gradient(135deg, #db2777, #f472b6);
@@ -378,6 +393,40 @@ export default function Header() {
         .ct-mega-col--fashion .ct-mega-link i { color: #db2777; }
         .ct-mega-col--fashion .ct-mega-link:hover { background: rgba(219,39,119,0.06); color: #db2777; }
         .ct-mega-col--fashion .ct-mega-link:hover i { color: #be185d; }
+
+        /* Hospitality column accent */
+        .ct-mega-col--hospitality {
+          background: linear-gradient(160deg, rgba(16,185,129,0.03) 0%, rgba(110,231,183,0.06) 100%);
+        }
+        .ct-mega-col--hospitality .ct-mega-col-head {
+          display: inline-flex; align-items: center; gap: 6px;
+          background: linear-gradient(135deg, #10b981, #34d399);
+          color: #fff; border-radius: 50px;
+          padding: 3px 10px 3px 7px;
+          font-size: 0.62rem; letter-spacing: 1px;
+          margin-bottom: 10px;
+        }
+        .ct-mega-col--hospitality .ct-mega-col-head i { font-size: 0.65rem; color: #fff; }
+        .ct-mega-col--hospitality .ct-mega-link i { color: #10b981; }
+        .ct-mega-col--hospitality .ct-mega-link:hover { background: rgba(16,185,129,0.06); color: #10b981; }
+        .ct-mega-col--hospitality .ct-mega-link:hover i { color: #047857; }
+
+        /* Enterprise column accent */
+        .ct-mega-col--enterprise {
+          background: linear-gradient(160deg, rgba(99,102,241,0.03) 0%, rgba(165,180,252,0.06) 100%);
+        }
+        .ct-mega-col--enterprise .ct-mega-col-head {
+          display: inline-flex; align-items: center; gap: 6px;
+          background: linear-gradient(135deg, #6366f1, #818cf8);
+          color: #fff; border-radius: 50px;
+          padding: 3px 10px 3px 7px;
+          font-size: 0.62rem; letter-spacing: 1px;
+          margin-bottom: 10px;
+        }
+        .ct-mega-col--enterprise .ct-mega-col-head i { font-size: 0.65rem; color: #fff; }
+        .ct-mega-col--enterprise .ct-mega-link i { color: #6366f1; }
+        .ct-mega-col--enterprise .ct-mega-link:hover { background: rgba(99,102,241,0.06); color: #6366f1; }
+        .ct-mega-col--enterprise .ct-mega-link:hover i { color: #4f46e5; }
         .ct-mega-link {
           display: flex; align-items: center; gap: 8px;
           padding: 7px 8px; border-radius: 8px;
@@ -547,7 +596,7 @@ export default function Header() {
 
         /* ─── Floating Buttons ─── */
         .ct-float-wa {
-          position: fixed; bottom: 30px; left: 30px; z-index: 9000;
+          position: fixed; bottom: 30px; left: 30px; z-index: 999999;
           width: 62px; height: 62px; border-radius: 50%;
           background: #25d366; color: #fff; font-size: 1.625rem;
           display: flex; align-items: center; justify-content: center;
@@ -697,7 +746,7 @@ export default function Header() {
                       <span className="ct-mega-badge"><i className="fa-solid fa-star"></i> 20+ Verticals</span>
                     </div>
                     <div className="ct-mega-grid">
-                      <div className="ct-mega-col">
+                      <div className="ct-mega-col ct-mega-col--retail">
                         <div className="ct-mega-col-head"><i className="fa-solid fa-store"></i> Retail & FMCG</div>
                         {NAV_ITEMS.industries.retail.map((l) => (
                           <Link key={l.href} href={l.href} className="ct-mega-link" onClick={() => setActiveDropdown(null)}>
@@ -713,7 +762,7 @@ export default function Header() {
                           </Link>
                         ))}
                       </div>
-                      <div className="ct-mega-col">
+                      <div className="ct-mega-col ct-mega-col--hospitality">
                         <div className="ct-mega-col-head"><i className="fa-solid fa-hotel"></i> Hospitality</div>
                         {NAV_ITEMS.industries.hospitality.map((l) => (
                           <Link key={l.href} href={l.href} className="ct-mega-link" onClick={() => setActiveDropdown(null)}>
@@ -721,7 +770,7 @@ export default function Header() {
                           </Link>
                         ))}
                       </div>
-                      <div className="ct-mega-col">
+                      <div className="ct-mega-col ct-mega-col--enterprise">
                         <div className="ct-mega-col-head"><i className="fa-solid fa-building"></i> Enterprise</div>
                         {NAV_ITEMS.industries.enterprise.map((l) => (
                           <Link key={l.href} href={l.href} className="ct-mega-link" onClick={() => setActiveDropdown(null)}>

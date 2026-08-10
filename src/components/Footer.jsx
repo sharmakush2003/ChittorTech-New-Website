@@ -341,6 +341,7 @@ export default function Footer() {
                   { href: "/web-development-services", label: "Web Development" },
                   { href: "/e-commerce-website-development", label: "E-Commerce Solutions" },
                   { href: "/android-application", label: "Android Mobile Apps" },
+                  { href: "/google-play-publishing", label: "Google Play Publishing" },
                   { href: "/search-engine-optimization", label: "SEO Services" },
                   { href: "/digital-marketing-services", label: "Digital Marketing" },
                   { href: "/social-media-optimization", label: "Social Media (SMO)" },
