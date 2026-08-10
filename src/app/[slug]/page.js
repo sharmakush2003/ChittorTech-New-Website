@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import DynamicBlogClient from "./DynamicBlogClient";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const sitemapPath = path.join(process.cwd(), "public/sitemap.xml");
   try {

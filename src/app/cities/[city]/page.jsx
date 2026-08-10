@@ -2,6 +2,8 @@ import React from "react";
 import citiesData from "@/data/cities.json";
 import { notFound } from "next/navigation";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return Object.keys(citiesData).map((city) => ({
     city: city,
