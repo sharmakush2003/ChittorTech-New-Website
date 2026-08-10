@@ -1,5 +1,28 @@
 # ChittorTech Partnership Strategy
 
+## 🚀 Progress Tracker (Pitched Successfully)
+We have officially reached out and pitched to the following **10+ major companies** for partnerships and IT vendor empanelment:
+1. **Zoho** (Enterprise SaaS)
+2. **Freshworks** (Enterprise SaaS)
+3. **ERPNext / Frappe** (Open-Source ERP)
+4. **Odoo** (Open-Source ERP)
+5. **Salesforce India** (Enterprise CRM)
+6. **The Big 4 Consulting** (KPMG, PwC, EY - for Government Tenders)
+7. **Vedanta Group & Hindustan Zinc** (Heavy Industry / Digital Transformation)
+8. **Wonder Cement** (Heavy Industry / Automation)
+9. **RK Marble Group** (Marble Export / B2B Portals)
+10. **Mumal Marbles** (Marble Export / Inventory Automation)
+11. **Bhilwara Textile Giants** (RSWM Ltd, Sangam India Ltd - Supply Chain Automation)
+
+## 🎯 Next Steps / Future Targets
+Once we start getting responses from the above list, we can expand our outreach to:
+* **EdTech Giants (PhysicsWallah, Unacademy):** For building localized tech centers and student portals in Rajasthan.
+* **AgriTech Companies (DeHaat, Ninjacart):** For local supply chain tracking and rural tech deployment.
+* **Renewable Energy Firms (Adani Green, Tata Power):** For building customized energy monitoring dashboards for their solar projects in Rajasthan.
+* **Logistics & Delivery (Delhivery, Ecom Express):** For IT networking and local digital presence in their fulfillment centers.
+
+---
+
 This document outlines the strategy for ChittorTech to position itself as a Local Technical & Operations Partner for larger companies expanding into Tier-2 and Tier-3 cities.
 
 ## Target Companies & Sectors
