@@ -4,7 +4,7 @@ import Link from "next/link";
 import "../../../public/assets/css/premium-products.css";
 const BLOG_POSTS = [
   {
-    image: "https://picsum.photos/seed/playstoreblog/600/400",
+    image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80",
     trending: true,
     title: "Google Play Store Publishing: The Ultimate Compliance & Launch Guide",
     desc: "Struggling with Google's new 20-tester requirement or organization identity verification? Learn how ChittorTech's specialized publishing service handles Play Console setup, asset optimization, and policy audits for a successful app launch.",
