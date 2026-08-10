@@ -73,7 +73,7 @@ export default function GooglePlayPublishingPage() {
       title: "Publish on ChittorTech Account",
       priceUSD: "$199",
       priceINR: "₹16,599",
-      popular: true,
+      popular: false,
       policyType: "chittortech_account",
       desc: "No developer account? No problem. Skip the $25 registration fee and identity verification. We publish your app on our verified organization console.",
       features: [
@@ -90,7 +90,7 @@ export default function GooglePlayPublishingPage() {
       title: "Full Account Setup & Launch",
       priceUSD: "$299",
       priceINR: "₹25,499",
-      popular: false,
+      popular: true,
       policyType: "full_setup",
       desc: "For businesses wanting their own dedicated developer console. We handle organization verification, setup, and publish the first app.",
       features: [
