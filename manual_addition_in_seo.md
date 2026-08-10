@@ -9,10 +9,11 @@ This guide outlines the steps to manually submit the new Google Play Publishing 
 Follow these steps to request immediate indexing from Google:
 
 1. **Open Google Search Console**: Log in to your [Google Search Console](https://search.google.com/search-console).
-2. **Inspect the URL**: Copy the full link of the new page:
-   `https://chittortech.online/google-play-publishing`
-3. **Paste in URL Inspection Tool**: Paste this URL in the search bar at the top of Search Console and press Enter.
-4. **Request Indexing**: Click the **"Request Indexing"** button. Google will test if the page is live and add it to its priority crawl queue.
+2. **Inspect the URLs**: Copy the full links of the new pages:
+   * Service Page: `https://chittortech.online/google-play-publishing`
+   * Blog Page: `https://chittortech.online/google-play-store-publishing-guide-compliance-launch`
+3. **Paste in URL Inspection Tool**: Paste these URLs in the search bar at the top of Search Console one by one and press Enter.
+4. **Request Indexing**: Click the **"Request Indexing"** button for each. Google will test if the page is live and add it to its priority crawl queue.
 
 ---
 

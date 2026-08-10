@@ -4,6 +4,13 @@ import Link from "next/link";
 import "../../../public/assets/css/premium-products.css";
 const BLOG_POSTS = [
   {
+    image: "https://picsum.photos/seed/playstoreblog/600/400",
+    trending: true,
+    title: "Google Play Store Publishing: The Ultimate Compliance & Launch Guide",
+    desc: "Struggling with Google's new 20-tester requirement or organization identity verification? Learn how ChittorTech's specialized publishing service handles Play Console setup, asset optimization, and policy audits for a successful app launch.",
+    link: "/google-play-store-publishing-guide-compliance-launch"
+  },
+  {
     image: "https://picsum.photos/seed/ai1/600/400",
     trending: true,
     title: "How AI Agents & LLMs Transform Indian Businesses",
