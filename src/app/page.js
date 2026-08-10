@@ -285,53 +285,7 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState("chatbots");
   const tab = TABS.find((t) => t.key === activeTab) || TABS[0];
 
-  useEffect(() => {
-    // Lead capture modal auto-popup: 3s then 6s after closing (max 2 times per active tab session)
-    if (typeof window === "undefined") return;
 
-    const popupCount = parseInt(sessionStorage.getItem("ct_popup_count") || "0", 10);
-    if (popupCount >= 2) return;
-
-    const showModal = () => {
-      const modalEl = document.getElementById("trialModal");
-      if (modalEl && window.bootstrap) {
-        const bsModal = window.bootstrap.Modal.getOrCreateInstance(modalEl);
-        bsModal.show();
-        const currentCount = parseInt(sessionStorage.getItem("ct_popup_count") || "0", 10) + 1;
-        sessionStorage.setItem("ct_popup_count", currentCount.toString());
-      }
-    };
-
-    // First popup at 3 seconds
-    let timer1 = setTimeout(() => {
-      const currentCount = parseInt(sessionStorage.getItem("ct_popup_count") || "0", 10);
-      if (currentCount === 0) {
-        showModal();
-      }
-    }, 3000);
-
-    // Watch for modal hide event to trigger 6s follow-up popup
-    const handleModalHide = () => {
-      const currentCount = parseInt(sessionStorage.getItem("ct_popup_count") || "0", 10);
-      if (currentCount === 1) {
-        setTimeout(() => {
-          showModal();
-        }, 6000);
-      }
-    };
-
-    const modalEl = document.getElementById("trialModal");
-    if (modalEl) {
-      modalEl.addEventListener("hidden.bs.modal", handleModalHide);
-    }
-
-    return () => {
-      clearTimeout(timer1);
-      if (modalEl) {
-        modalEl.removeEventListener("hidden.bs.modal", handleModalHide);
-      }
-    };
-  }, []);
 
   return (
     <>

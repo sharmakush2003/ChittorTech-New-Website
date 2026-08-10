@@ -34,10 +34,8 @@ export default function TrialModal() {
     const trialModalEl = document.getElementById("trialModal");
     if (!trialModalEl) return;
 
-    // Check if submitted in this session or within last 7 days
-    const submittedAt = localStorage.getItem("trial_modal_submitted_at");
-    const isSubmittedRecent = submittedAt && (Date.now() - parseInt(submittedAt) <= 7 * 24 * 60 * 60 * 1000);
-    const wasSubmitted = sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted || isSubmittedRecent;
+    // Check if submitted in this session
+    const wasSubmitted = sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted;
     if (wasSubmitted) {
       return; // Do absolutely nothing if already submitted
     }
@@ -49,8 +47,6 @@ export default function TrialModal() {
     let remainingTime = 0;
 
     function shouldShowModal() {
-      const subAt = localStorage.getItem("trial_modal_submitted_at");
-      if (subAt && (Date.now() - parseInt(subAt) <= 7 * 24 * 60 * 60 * 1000)) return false;
       if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) return false;
       const lastDismissed = localStorage.getItem("trial_modal_dismissed_v2_at");
       if (!lastDismissed) return true;
@@ -166,7 +162,7 @@ export default function TrialModal() {
       trialModalEl.removeEventListener("hidden.bs.modal", onHiddenModal);
       clearTimer();
     };
-  }, [isSubmitted]);
+  }, [isSubmitted, mounted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

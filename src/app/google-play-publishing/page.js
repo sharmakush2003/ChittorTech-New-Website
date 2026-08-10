@@ -401,18 +401,9 @@ export default function GooglePlayPublishingPage() {
                         </li>
                       ))}
                     </ul>
-                    <a href={`https://api.whatsapp.com/send?phone=917597451057&text=${encodeURIComponent(pkg.whatsappMsg)}`} target="_blank" rel="noopener noreferrer" className={`w-100 ${pkg.popular ? 'btn-gplay-primary' : 'btn-gplay-whatsapp'} justify-content-center`}>
+                    <a href={`https://api.whatsapp.com/send?phone=917597451057&text=${encodeURIComponent(pkg.whatsappMsg)}`} target="_blank" rel="noopener noreferrer" className="w-100 btn-gplay-whatsapp justify-content-center">
                       <i className="fa-brands fa-whatsapp"></i> Get Started
                     </a>
-                    <div className="mt-3 pt-3 border-top text-start" style={{ fontSize: '0.8rem', width: '100%' }}>
-                      <div className="fw-bold text-dark mb-1" style={{ fontSize: '0.85rem' }}><i className="fa-solid fa-circle-info text-primary"></i> Optional Add-ons:</div>
-                      <div className="text-secondary mb-1">
-                        <i className="fa-solid fa-plus text-success me-1"></i> Google Analytics 4 Setup: <strong>+$59 / ₹4,999</strong>
-                      </div>
-                      <div className="text-secondary">
-                        <i className="fa-solid fa-plus text-success me-1"></i> Search Console Integration: <strong>+$39 / ₹2,999</strong>
-                      </div>
-                    </div>
                     <div className="mt-3 pt-2 border-top text-center" style={{ width: '100%' }}>
                       <button onClick={() => setActivePolicy(pkg.policyType)} className="btn btn-link text-decoration-none p-0 text-danger fw-bold" style={{ fontSize: '0.8rem', border: 'none', background: 'none', cursor: 'pointer' }}>
                         <i className="fa-solid fa-circle-exclamation me-1"></i> View Publishing Policy
