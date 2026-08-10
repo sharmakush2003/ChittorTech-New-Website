@@ -17,10 +17,19 @@ export default function TrialModal() {
   const [statusMsg, setStatusMsg] = useState("");
   const [statusType, setStatusType] = useState(""); // "success" or "danger"
   const [submitting, setSubmitting] = useState(false);
-
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 2500); // Delay rendering to the DOM for PageSpeed optimization
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     // Only run on the client side
     const trialModalEl = document.getElementById("trialModal");
     if (!trialModalEl) return;
@@ -233,6 +242,8 @@ export default function TrialModal() {
 
     setSubmitting(false);
   };
+
+  if (!mounted) return null;
 
   return (
     <>
