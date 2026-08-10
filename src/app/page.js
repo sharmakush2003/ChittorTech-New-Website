@@ -1157,13 +1157,16 @@ export default function HomePage() {
                 <span className="gradient-text">Custom AI & IT Software.</span>
               </h1>
               <p className="ct-hp-hero-sub">
-                From autonomous AI chatbots, RAG knowledge search systems, and custom LLMs to high-performance Next.js web apps — ChittorTech delivers tech that drives exponential business growth.
+                From autonomous AI chatbots, RAG knowledge search systems, and custom LLMs to high-performance Next.js web apps and <Link href="/google-play-publishing" style={{ color: '#60a5fa', textDecoration: 'underline', fontWeight: 600 }}>Google Play Store publishing</Link> — ChittorTech delivers tech that drives exponential business growth.
               </p>
               <div className="ct-hp-hero-pills">
                 <span className="ct-hp-pill"><i className="fa-solid fa-robot" style={{ color: "#8b5cf6" }}></i> AI Agents</span>
                 <span className="ct-hp-pill"><i className="fa-solid fa-brain" style={{ color: "#06b6d4" }}></i> RAG & LLMs</span>
                 <span className="ct-hp-pill"><i className="fa-solid fa-code" style={{ color: "#10b981" }}></i> Next.js / SaaS</span>
                 <span className="ct-hp-pill"><i className="fa-solid fa-chart-line" style={{ color: "#f59e0b" }}></i> SEO Growth</span>
+                <Link href="/google-play-publishing" className="ct-hp-pill text-decoration-none" style={{ cursor: 'pointer', color: '#cbd5e1' }}>
+                  <i className="fa-brands fa-google-play" style={{ color: "#60a5fa" }}></i> Play Store Publishing
+                </Link>
               </div>
               <div className="ct-hp-hero-ctas justify-content-center justify-content-lg-start">
                 <button
