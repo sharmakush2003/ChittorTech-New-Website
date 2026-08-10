@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 /* ── 2 Rows of Tech Stack Items (44 Total Technologies) ── */
 const TECH_ROW_1 = [
@@ -1181,10 +1182,13 @@ export default function HomePage() {
             <div className="col-lg-6">
               <div className="ct-hero-card-wrap">
                 <div className="ct-hero-glass-card">
-                  <img
+                  <Image
                     src="/assets/images/ct-dashboard-hero.png"
                     alt="ChittorTech AI Analytics & Automation Dashboard"
                     className="ct-hero-card-img"
+                    width={800}
+                    height={500}
+                    priority={true}
                   />
                 </div>
               </div>
