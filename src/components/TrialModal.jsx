@@ -146,6 +146,7 @@ export default function TrialModal() {
     };
 
     const onHiddenModal = () => {
+      setDontShow(false);
       if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) {
         clearTimer();
         return;
@@ -837,6 +838,7 @@ export default function TrialModal() {
                         id="dontShowTrial"
                         checked={dontShow}
                         onChange={handleCheckboxChange}
+                        autoComplete="off"
                       />
                       <label htmlFor="dontShowTrial">Don't show this popup for 2 days</label>
                     </div>
