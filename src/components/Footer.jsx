@@ -141,9 +141,6 @@ export default function Footer() {
         .ct-footer-social-btn.linkedin { background: #e8f3ff; color: #0a66c2; border: 1px solid #d0e7ff; }
         .ct-footer-social-btn.linkedin:hover { background: #0a66c2; color: #fff; border-color: transparent; }
         
-        .ct-footer-social-btn.pinterest { background: #ffebeb; color: #bd081c; border: 1px solid #ffd2d2; }
-        .ct-footer-social-btn.pinterest:hover { background: #bd081c; color: #fff; border-color: transparent; }
-        
         .ct-footer-social-btn.gmb { background: #e8f5e9; color: #34a853; border: 1px solid #c8e6c9; }
         .ct-footer-social-btn.gmb:hover { background: #34a853; color: #fff; border-color: transparent; }
         
@@ -325,7 +322,6 @@ export default function Footer() {
                 </div>
                 <div className="ct-footer-socials">
                   <a href="https://www.linkedin.com/company/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn linkedin" title="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
-                  <a href="https://www.pinterest.com/chittortech/" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn pinterest" title="Pinterest"><i className="fa-brands fa-pinterest-p"></i></a>
                   <a href="https://maps.google.com/?q=ChittorTech+Chittorgarh" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn gmb" title="Google My Business (GMB)"><i className="fa-brands fa-google"></i></a>
                   <a href="https://istart.rajasthan.gov.in/profile/11478/startups" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn istart" title="iStart Rajasthan Startup"><i className="fa-solid fa-rocket"></i></a>
                   <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn whatsapp" title="WhatsApp"><i className="fa-brands fa-whatsapp"></i></a>

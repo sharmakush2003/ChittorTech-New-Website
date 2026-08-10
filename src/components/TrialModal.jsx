@@ -67,14 +67,28 @@ export default function TrialModal() {
         localStorage.getItem("trial_modal_submitted_at") ||
         isSubmitted
       ) return;
-      if (window.bootstrap && window.bootstrap.Modal) {
-        const modalInstance = window.bootstrap.Modal.getOrCreateInstance(trialModalEl);
-        if (isAuto) {
-          trialModalEl.setAttribute("data-auto-opened", "true");
-        } else {
-          trialModalEl.removeAttribute("data-auto-opened");
+
+      const triggerShow = () => {
+        if (window.bootstrap && window.bootstrap.Modal) {
+          const modalInstance = window.bootstrap.Modal.getOrCreateInstance(trialModalEl);
+          if (isAuto) {
+            trialModalEl.setAttribute("data-auto-opened", "true");
+          } else {
+            trialModalEl.removeAttribute("data-auto-opened");
+          }
+          modalInstance.show();
+          return true;
         }
-        modalInstance.show();
+        return false;
+      };
+
+      if (!triggerShow()) {
+        const interval = setInterval(() => {
+          if (triggerShow()) {
+            clearInterval(interval);
+          }
+        }, 500);
+        setTimeout(() => clearInterval(interval), 10000);
       }
     }
 
