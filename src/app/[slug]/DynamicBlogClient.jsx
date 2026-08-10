@@ -1,3 +1,7 @@
+"use client";
+
+import React, { useState } from "react";
+
 const BLOG_CONTENT = {
   "google-play-store-publishing-guide-compliance-launch": {
     heading: "How to Safely Publish & Rank Your App on Google Play Store",
