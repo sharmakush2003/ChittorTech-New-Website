@@ -1,21 +1,22 @@
 # ChittorTech Partnership Strategy
 
 ## 🚀 Progress Tracker (Pitched Successfully)
-We have officially reached out and pitched to the following **10+ major companies** for partnerships and IT vendor empanelment:
+We have officially reached out and pitched to the following **major companies** for partnerships and IT vendor empanelment:
 1. **Zoho** (Enterprise SaaS)
 2. **Freshworks** (Enterprise SaaS)
 3. **ERPNext / Frappe** (Open-Source ERP)
 4. **Odoo** (Open-Source ERP)
 5. **Salesforce India** (Enterprise CRM)
-6. **The Big 4 Consulting** (KPMG, PwC, EY - for Government Tenders)
-7. **Vedanta Group & Hindustan Zinc** (Heavy Industry / Digital Transformation)
-8. **Wonder Cement** (Heavy Industry / Automation)
-9. **RK Marble Group** (Marble Export / B2B Portals)
-10. **Mumal Marbles** (Marble Export / Inventory Automation)
-11. **Bhilwara Textile Giants** (RSWM Ltd, Sangam India Ltd - Supply Chain Automation)
+6. **Vedanta Group** (Heavy Industry / Digital Transformation)
+7. **Wonder Cement** (Heavy Industry / Automation)
+8. **RK Marble Group** (Marble Export / B2B Portals)
+9. **Mumal Marbles** (Marble Export / Inventory Automation)
+10. **Sangam India Ltd** (Bhilwara Textile / Supply Chain Automation)
+11. **RSWM Ltd** (LNJ Bhilwara Textile / B2B Portals)
 
 ## 🎯 Next Steps / Future Targets
 Once we start getting responses from the above list, we can expand our outreach to:
+* **The Big 4 Consulting (KPMG, PwC, EY, Deloitte):** For acting as their local IT vendor in Rajasthan Government Smart City tenders.
 * **EdTech Giants (PhysicsWallah, Unacademy):** For building localized tech centers and student portals in Rajasthan.
 * **AgriTech Companies (DeHaat, Ninjacart):** For local supply chain tracking and rural tech deployment.
 * **Renewable Energy Firms (Adani Green, Tata Power):** For building customized energy monitoring dashboards for their solar projects in Rajasthan.
