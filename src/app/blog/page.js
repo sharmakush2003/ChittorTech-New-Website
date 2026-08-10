@@ -34,7 +34,7 @@ const BLOG_POSTS = [
   {
     image: "https://picsum.photos/seed/temple/600/400",
     trending: false,
-    title: "Streamlining Sabari Mala Temple (Hubli) with a Custom Invoice System",
+    title: "Streamlining Sabari Mala Mandir (Hubli) with a Custom Invoice System",
     desc: "Developing a robust invoice and billing system to manage temple donations, trust accounting, and operational expenses effectively.",
     link: "/shabari-mata-temple-hubli-invoice-system"
   },

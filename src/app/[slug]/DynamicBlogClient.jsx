@@ -26,34 +26,132 @@ const BLOG_CONTENT = {
       }
     ],
     summary: "At ChittorTech, we eliminate the complexity of app publishing. By providing tester pools, policy compliance consulting, and verified developer consoles, we guarantee your app reaches your audience safely and quickly."
+  },
+  "shabari-mata-temple-hubli-invoice-system": {
+    heading: "Sabari Mala Mandir (Hubli) Custom Invoice & Billing System",
+    intro: "Sabarimala Mandir is one of India's largest pilgrimage management challenges. With millions of devotees offering donations, booking services, and requesting 80G tax exemption certificates, a standard billing machine falls short. ChittorTech engineered a custom offline-online hybrid invoice system to handle trust accounting, room booking, and counter billing seamlessly.",
+    capabilitiesTitle: "Sabari Mala Mandir Custom ERP Capabilities:",
+    capabilities: [
+      {
+        title: "80G Tax Exemption Receipts",
+        desc: "Instant creation of digital and printed donation receipts with automatic 80G compliance tax data formatting."
+      },
+      {
+        title: "Offline/Online Hybrid Sync",
+        desc: "Allows temple counters to issue invoices instantly even during zero internet connectivity, with background cloud auto-sync."
+      },
+      {
+        title: "Devotee Room & Queue Booking",
+        desc: "Integrated system to manage dharamshala check-ins, queue reservations, and inventory logs in real-time."
+      },
+      {
+        title: "Trust & Donation Accounting",
+        desc: "Secure ledgers tracking every single rupee donated, with automated audit trails and daily bank deposits logging."
+      }
+    ],
+    summary: "We designed a robust billing solution that handles the high-volume traffic of Sabari Mala Mandir counters. With modern UI, receipt print integrations, and transparent accounting, we help temple trusts manage their resources with absolute trust."
+  },
+  "ai-governance-security-deepfakes": {
+    heading: "AI Governance, Security & Deepfake Mitigation Guide",
+    intro: "As Generative AI shifts from experimentation to core operations, enterprises face new security risks. From deepfake impersonations and data privacy leaks to regulatory audits, safeguarding your AI pipeline is crucial. ChittorTech provides end-to-end security compliance for custom LLMs and RAG engines.",
+    capabilitiesTitle: "Our Enterprise AI Security Safeguards:",
+    capabilities: [
+      {
+        title: "Deepfake & KYC Verification",
+        desc: "AI models designed to detect synthesized media, audio manipulations, and facial spoofing during digital onboarding."
+      },
+      {
+        title: "Data Sanitization & Guardrails",
+        desc: "Ensuring PII (Personally Identifiable Information) is automatically masked or removed before passing to public LLMs."
+      },
+      {
+        title: "Enterprise Role Access Control",
+        desc: "Strict RBAC (Role-Based Access Control) to verify which employee can access specific vector database files."
+      },
+      {
+        title: "Compliance & Audit Logging",
+        desc: "Maintaining detailed prompt-response transaction logs to ensure adherence to data sovereignty and AI laws."
+      }
+    ],
+    summary: "At ChittorTech, we ensure your transition to Agentic AI is safe, compliant, and secure. We establish zero-trust architectures to defend your proprietary data against modern threats."
+  },
+  "building-ai-native-organization": {
+    heading: "Building an AI-Native Organization from the Ground Up",
+    intro: "Integrating AI is no longer about adding a chatbot to a legacy website. To achieve true productivity gains, organizations must restructure their workflows, databases, and employee roles around autonomous agents. This guide outlines ChittorTech's playbook for building an AI-native business.",
+    capabilitiesTitle: "AI-Native Operational Foundations:",
+    capabilities: [
+      {
+        title: "Multi-Agent Core Workflows",
+        desc: "Replacing static department silos with self-orchestrated AI teams that execute sales, support, and documentation."
+      },
+      {
+        title: "Proprietary Model Fine-Tuning",
+        desc: "Training compact, specialized SLMs (Small Language Models) on your company's internal data for maximum efficiency."
+      },
+      {
+        title: "Real-Time Data Pipelines",
+        desc: "Connecting databases directly to LLMs via secure APIs for live, autonomous decision-making."
+      },
+      {
+        title: "Digital Coworker Onboarding",
+        desc: "Designing interfaces where employees seamlessly collaborate with AI assistants rather than manually editing tables."
+      }
+    ],
+    summary: "Shifting to an AI-native structure cuts operational overhead by up to 60%. ChittorTech serves as your strategic engineering partner, designing the custom pipelines and models needed to automate your growth."
   }
 };
 
-export default function DynamicBlogClient({ slug, cleanTitle }) {
-  const content = BLOG_CONTENT[slug] || {
-    heading: "Enterprise Business Automation by ChittorTech",
-    intro: "Whether you need scalable cloud-based ERP systems, multi-store retail billing, automated manufacturing planning, or bilingual AI chatbots for customer support — ChittorTech delivers custom technology integrations that eliminate operational delays and improve efficiency.",
-    capabilitiesTitle: "Key Capabilities included:",
+const getDynamicContent = (slug, cleanTitle) => {
+  if (BLOG_CONTENT[slug]) {
+    return BLOG_CONTENT[slug];
+  }
+
+  const title = cleanTitle;
+  let theme = "software automation";
+  let techKeywords = ["custom development", "system integration", "cloud scaling", "automated workflows"];
+  
+  if (slug.includes("ai") || slug.includes("llm") || slug.includes("chatbot") || slug.includes("rag") || slug.includes("reasoning") || slug.includes("prompt") || slug.includes("slop")) {
+    theme = "artificial intelligence and machine learning";
+    techKeywords = ["custom LLM training", "vector search semantic indexing", "autonomous AI agents", "prompt engineering standards"];
+  } else if (slug.includes("erp") || slug.includes("billing") || slug.includes("invoice") || slug.includes("pos") || slug.includes("accounting") || slug.includes("inventory") || slug.includes("invoicing") || slug.includes("payroll")) {
+    theme = "enterprise resource planning (ERP) systems";
+    techKeywords = ["GST tax calculation engines", "multi-outlet store sync", "automated ledger logs", "inventory stock alerts"];
+  } else if (slug.includes("seo") || slug.includes("marketing") || slug.includes("outreach") || slug.includes("rankings")) {
+    theme = "digital marketing and algorithmic SEO";
+    techKeywords = ["technical SEO crawlers", "algorithmic keyword research", "backlink profiles", "conversion funnel optimization"];
+  } else if (slug.includes("cloud") || slug.includes("infrastructure") || slug.includes("security") || slug.includes("zero-trust") || slug.includes("saas")) {
+    theme = "secure cloud-native systems";
+    techKeywords = ["AWS/Vercel serverless compute", "Zero-Trust authorization", "multi-tenant schema isolation", "real-time API endpoint monitoring"];
+  }
+
+  return {
+    heading: title,
+    intro: `In modern business operations, adopting proper tech strategies is key to maintaining a competitive edge. This article explores how implementing ${title} helps enterprises streamline workflows, eliminate manual errors, and scale operations seamlessly. Our technical team at ChittorTech designs robust architectures tailored for this specific use case.`,
+    capabilitiesTitle: `Key Technical Features of our ${title} System:`,
     capabilities: [
       {
-        title: "BOM & Production Management",
-        desc: "Automate raw material tracking, production routing, and real-time inventory updates for factories."
+        title: "High-Performance Integration",
+        desc: `We build custom architectures for ${title} to ensure sub-second latency, zero downtime, and complete compatibility with your legacy database stack.`
       },
       {
-        title: "GST-Compliant Counter Billing",
-        desc: "Fast barcode checkout, instant receipt printing, tax calculations, and 80G trust certifications."
+        title: "Automated Workflows",
+        desc: `Deploy automated background workers and secure pipelines that handle ${techKeywords[0]} and ${techKeywords[1]} without manual intervention.`
       },
       {
-        title: "Multi-Location Sync",
-        desc: "Centrally manage sales, stock, and staff across multiple branches or retail counters."
+        title: "Advanced Security & Auditing",
+        desc: `Protect your proprietary databases with standard role-based access control (RBAC), end-to-end data encryption, and real-time operational logging.`
       },
       {
-        title: "Bilingual AI support",
-        desc: "AI-powered WhatsApp bots and online chatbots trained on your business database to handle inquiries."
+        title: "Cloud Connectivity & APIs",
+        desc: `Integrated notification triggers via WhatsApp APIs, webhooks, and custom dashboards designed specifically to manage ${techKeywords[2]} and ${techKeywords[3]}.`
       }
     ],
-    summary: "Inspired by the resilience and strength of Chittorgarh, we design software architectures that help business owners maintain complete visibility over their processes. With private cloud hosting, end-to-end security compliance, and dedicated technical maintenance, ChittorTech is your trusted development team."
+    summary: `At ChittorTech, we are dedicated to helping businesses grow through reliable, modern software engineering. By building tailored systems around ${title}, we help managers cut operational overhead and focus on strategic scaling. Contact our engineering team today to see a live demonstration of these features in action.`
   };
+};
+
+export default function DynamicBlogClient({ slug, cleanTitle }) {
+  const content = getDynamicContent(slug, cleanTitle);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
