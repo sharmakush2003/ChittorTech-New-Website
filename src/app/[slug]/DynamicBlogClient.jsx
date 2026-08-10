@@ -98,6 +98,54 @@ const BLOG_CONTENT = {
       }
     ],
     summary: "Shifting to an AI-native structure cuts operational overhead by up to 60%. ChittorTech serves as your strategic engineering partner, designing the custom pipelines and models needed to automate your growth."
+  },
+  "physical-ai-software-robotics": {
+    heading: "Physical AI: Bridging Software and Robotics",
+    intro: "Physical AI represents the boundary where software reasoning meets the physical world. While traditional AI acts on screens and text, Physical AI drives drones, warehouse systems, and manufacturing robots. ChittorTech builds custom machine learning models and edge computing pipelines to power autonomous physical operations.",
+    capabilitiesTitle: "Our Physical AI Capabilities:",
+    capabilities: [
+      {
+        title: "Edge Model Deployment",
+        desc: "Optimizing and deploying neural networks directly on Edge devices (Jetson Nano, Raspberry Pi, industrial PLCs)."
+      },
+      {
+        title: "IoT & Sensor Integration",
+        desc: "Real-time sync of LiDAR, ultrasonic, and camera feeds into a centralized cloud automation pipeline."
+      },
+      {
+        title: "Predictive Control Systems",
+        desc: "Custom Reinforcement Learning models that allow robotic arms to adapt and correct errors dynamically."
+      },
+      {
+        title: "Low-Latency Communications",
+        desc: "Ultra-fast websocket and gRPC data transfer protocols to ensure zero-delay remote telemetry monitoring."
+      }
+    ],
+    summary: "Physical AI transforms static machinery into intelligent coworkers. ChittorTech partners with smart factories and logistics centers to design and scale the secure software brains behind physical automation."
+  },
+  "digital-coworkers-ai-hr-processes": {
+    heading: "Digital Co-workers: Integrating AI Agents into HR Processes",
+    intro: "Human Resource departments waste thousands of hours on repetitive inquiries, candidate screening, and onboarding paperwork. ChittorTech builds autonomous AI agents (Digital Co-workers) that act as virtual HR partners, answering policy questions, processing payroll, and scoring candidates automatically.",
+    capabilitiesTitle: "Digital HR Agent Capabilities:",
+    capabilities: [
+      {
+        title: "Automated Resume Screening",
+        desc: "Semantic matching models that screen hundreds of PDFs against job descriptions to score and rank candidates."
+      },
+      {
+        title: "24/7 Policy Q&A Agent",
+        desc: "WhatsApp and Slack-integrated bots trained on your employee handbook to answer leave and benefit queries instantly."
+      },
+      {
+        title: "Seamless Payroll Integration",
+        desc: "AI workflows that automatically verify timesheets and trigger payroll invoice generation in your ERP."
+      },
+      {
+        title: "Employee Onboarding Workflows",
+        desc: "Step-by-step digital coworker pipelines that verify employee background details and generate offer letters."
+      }
+    ],
+    summary: "By deploying digital coworkers, HR teams can redirect 60% of their operational bandwidth to strategic talent development. Contact ChittorTech to schedule a live HR agent demonstration."
   }
 };
 
