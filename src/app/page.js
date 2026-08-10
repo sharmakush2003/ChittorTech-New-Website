@@ -112,18 +112,18 @@ const FEATURES = [
 ];
 
 const INDUSTRIES = [
-  { icon: "fa-cart-shopping",   label: "Supermarkets & Retail",  href: "/supermarket", color: "#8b5cf6" },
-  { icon: "fa-shirt",           label: "Apparel & Garments",     href: "/garments", color: "#ec4899" },
-  { icon: "fa-hospital",        label: "Hospitals & Healthcare", href: "/hospitals", color: "#06b6d4" },
-  { icon: "fa-pills",           label: "Pharma & Life Sciences",  href: "/pharma", color: "#10b981" },
-  { icon: "fa-graduation-cap",  label: "Education & EdTech",     href: "/schools-educational-institutions", color: "#f59e0b" },
-  { icon: "fa-industry",        label: "Smart Manufacturing",    href: "/ai-manufacturing", color: "#6366f1" },
-  { icon: "fa-mobile-screen",   label: "Electronics & Hardware", href: "/electronics-smartphones", color: "#3b82f6" },
-  { icon: "fa-shoe-prints",     label: "Footwear & Fashion",     href: "/footwear-store", color: "#14b8a6" },
-  { icon: "fa-store",           label: "Kirana & FMCG",          href: "/kirana-store", color: "#84cc16" },
-  { icon: "fa-truck-fast",      label: "Logistics & Supply",     href: "/logistics", color: "#f97316" },
-  { icon: "fa-building",        label: "B2B Enterprise",         href: "/industrial-products", color: "#a855f7" },
-  { icon: "fa-book-open",       label: "Publishing & Media",     href: "/book-store", color: "#0284c7" },
+  { icon: "fa-cart-shopping", label: "Supermarkets & Retail", href: "/supermarket", color: "#8b5cf6" },
+  { icon: "fa-shirt", label: "Apparel & Garments", href: "/garments", color: "#ec4899" },
+  { icon: "fa-hospital", label: "Hospitals & Healthcare", href: "/hospitals", color: "#06b6d4" },
+  { icon: "fa-pills", label: "Pharma & Life Sciences", href: "/pharma", color: "#10b981" },
+  { icon: "fa-graduation-cap", label: "Education & EdTech", href: "/schools-educational-institutions", color: "#f59e0b" },
+  { icon: "fa-industry", label: "Smart Manufacturing", href: "/ai-manufacturing", color: "#6366f1" },
+  { icon: "fa-mobile-screen", label: "Electronics & Hardware", href: "/electronics-smartphones", color: "#3b82f6" },
+  { icon: "fa-shoe-prints", label: "Footwear & Fashion", href: "/footwear-store", color: "#14b8a6" },
+  { icon: "fa-store", label: "Kirana & FMCG", href: "/kirana-store", color: "#84cc16" },
+  { icon: "fa-truck-fast", label: "Logistics & Supply", href: "/logistics", color: "#f97316" },
+  { icon: "fa-building", label: "B2B Enterprise", href: "/industrial-products", color: "#a855f7" },
+  { icon: "fa-book-open", label: "Publishing & Media", href: "/book-store", color: "#0284c7" },
 ];
 
 /* ── Dynamic Technology Stack Tabs Data ── */
@@ -1188,30 +1188,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 4. FEATURES GRID ── */}
-      <section className="ct-bg-slate" style={{ padding: "60px 0" }}>
-        <div className="container">
-          <div className="ct-section-head">
-            <span className="ct-section-eyebrow"><i className="fa-solid fa-sparkles"></i> Core Capabilities</span>
-            <h2 className="ct-section-h2">Cutting-Edge AI & IT Services</h2>
-            <p className="ct-section-p">
-              From autonomous AI agents to enterprise full-stack web engineering — construct your scalable tech advantage.
-            </p>
-          </div>
-          <div className="ct-feat-grid">
-            {FEATURES.map((f) => (
-              <Link href={f.href} key={f.href} className="ct-feat-card">
-                <div className="ct-feat-icon" style={{ background: f.bgColor, color: f.color, border: `1px solid ${f.borderColor}` }}>
-                  <i className={`fa-solid ${f.icon}`}></i>
-                </div>
-                <div className="ct-feat-h3">{f.title}</div>
-                <p className="ct-feat-p">{f.desc}</p>
-                <span className="ct-feat-link" style={{ color: f.color }}>Explore solutions <i className="fa-solid fa-arrow-right"></i></span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ── 5. PRODUCT TABS (DYNAMICALLY UPDATING) ── */}
       <section className="ct-bg-white" style={{ padding: "60px 0" }}>
@@ -1304,12 +1281,12 @@ export default function HomePage() {
           </div>
           <div className="ct-feat-grid">
             {[
-              { icon: "fa-robot",         title: "Cutting-Edge AI Expertise",   desc: "We build with modern LLMs, vector embeddings, RAG architectures, and autonomous multi-agent systems.", color: "#8b5cf6" },
-              { icon: "fa-shield-halved", title: "Enterprise-Grade Security",   desc: "100% data confidentiality, end-to-end encryption, and options for private on-premise cloud deployments.", color: "#06b6d4" },
-              { icon: "fa-bolt",          title: "Rapid Agile Engineering",     desc: "From concept to production-ready AI prototype in as little as 2 weeks — accelerating digital ROI.", color: "#10b981" },
-              { icon: "fa-headset",       title: "Dedicated Tech Support",      desc: "Direct communication with engineers, proactive 24/7 monitoring, and continuous system optimization.", color: "#f59e0b" },
-              { icon: "fa-cloud",         title: "Cloud-Native Scalability",    desc: "Architected on AWS, GCP, and Vercel to seamlessly serve millions of high-concurrency requests.", color: "#3b82f6" },
-              { icon: "fa-chart-line",    title: "Measurable Business ROI",     desc: "Every AI feature is engineered to directly lower operational overhead and boost user lead conversion.", color: "#ec4899" },
+              { icon: "fa-robot", title: "Cutting-Edge AI Expertise", desc: "We build with modern LLMs, vector embeddings, RAG architectures, and autonomous multi-agent systems.", color: "#8b5cf6" },
+              { icon: "fa-shield-halved", title: "Enterprise-Grade Security", desc: "100% data confidentiality, end-to-end encryption, and options for private on-premise cloud deployments.", color: "#06b6d4" },
+              { icon: "fa-bolt", title: "Rapid Agile Engineering", desc: "From concept to production-ready AI prototype in as little as 2 weeks — accelerating digital ROI.", color: "#10b981" },
+              { icon: "fa-headset", title: "Dedicated Tech Support", desc: "Direct communication with engineers, proactive 24/7 monitoring, and continuous system optimization.", color: "#f59e0b" },
+              { icon: "fa-cloud", title: "Cloud-Native Scalability", desc: "Architected on AWS, GCP, and Vercel to seamlessly serve millions of high-concurrency requests.", color: "#3b82f6" },
+              { icon: "fa-chart-line", title: "Measurable Business ROI", desc: "Every AI feature is engineered to directly lower operational overhead and boost user lead conversion.", color: "#ec4899" },
             ].map((w) => (
               <div key={w.title} className="ct-feat-card">
                 <div className="ct-feat-icon" style={{ background: `${w.color}15`, color: w.color, border: `1px solid ${w.color}25` }}>
@@ -1361,10 +1338,10 @@ export default function HomePage() {
                 <div className="d-flex justify-content-between align-items-center mb-3">
                   <div className="ct-stars">{"★".repeat(t.rating)}</div>
                   <svg viewBox="0 0 24 24" width="18" height="18">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z" />
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                   </svg>
                 </div>
                 <p className="ct-testi-text">"{t.text}"</p>
@@ -1387,10 +1364,10 @@ export default function HomePage() {
               className="ct-btn-google"
             >
               <svg viewBox="0 0 24 24" width="20" height="20">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z" />
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
               </svg>
               <span>View all reviews on Google</span>
             </a>
