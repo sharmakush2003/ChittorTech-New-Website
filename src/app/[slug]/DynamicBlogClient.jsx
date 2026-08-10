@@ -1,8 +1,55 @@
-"use client";
-
-import React, { useState } from "react";
+const BLOG_CONTENT = {
+  "google-play-store-publishing-guide-compliance-launch": {
+    heading: "How to Safely Publish & Rank Your App on Google Play Store",
+    intro: "Google Play Console publishing has become highly strict in 2026. With the introduction of the mandatory 20-tester rule for 14 days, identity verification for organization accounts, and rigid policy audits, developers face constant rejection. This guide explains how ChittorTech solves these hurdles to ensure a 100% approval rate.",
+    capabilitiesTitle: "Our Google Play Publishing Solutions:",
+    capabilities: [
+      {
+        title: "20-Tester Compliance Management",
+        desc: "We provide 20 verified real tester accounts to run your app for 14 days continuously, meeting Google's strict feedback compliance."
+      },
+      {
+        title: "Verified Organization Console Hosting",
+        desc: "Publish on our established, verified Google Play developer account to bypass $25 registration fees and strict identity audits."
+      },
+      {
+        title: "Pre-Submission Policy Audits",
+        desc: "We manually scan your source code, privacy policy, and assets to detect any malware, fraudulent behavior, or policy-violating code before Google does."
+      },
+      {
+        title: "ASO (App Store Optimization) Setup",
+        desc: "Keyword research and screenshot optimization to ensure your app ranks highly in Play Store search results from Day 1."
+      }
+    ],
+    summary: "At ChittorTech, we eliminate the complexity of app publishing. By providing tester pools, policy compliance consulting, and verified developer consoles, we guarantee your app reaches your audience safely and quickly."
+  }
+};
 
 export default function DynamicBlogClient({ slug, cleanTitle }) {
+  const content = BLOG_CONTENT[slug] || {
+    heading: "Enterprise Business Automation by ChittorTech",
+    intro: "Whether you need scalable cloud-based ERP systems, multi-store retail billing, automated manufacturing planning, or bilingual AI chatbots for customer support — ChittorTech delivers custom technology integrations that eliminate operational delays and improve efficiency.",
+    capabilitiesTitle: "Key Capabilities included:",
+    capabilities: [
+      {
+        title: "BOM & Production Management",
+        desc: "Automate raw material tracking, production routing, and real-time inventory updates for factories."
+      },
+      {
+        title: "GST-Compliant Counter Billing",
+        desc: "Fast barcode checkout, instant receipt printing, tax calculations, and 80G trust certifications."
+      },
+      {
+        title: "Multi-Location Sync",
+        desc: "Centrally manage sales, stock, and staff across multiple branches or retail counters."
+      },
+      {
+        title: "Bilingual AI support",
+        desc: "AI-powered WhatsApp bots and online chatbots trained on your business database to handle inquiries."
+      }
+    ],
+    summary: "Inspired by the resilience and strength of Chittorgarh, we design software architectures that help business owners maintain complete visibility over their processes. With private cloud hosting, end-to-end security compliance, and dedicated technical maintenance, ChittorTech is your trusted development team."
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -288,33 +335,23 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
           <div className="row g-5">
             <div className="col-lg-7">
               <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "#0f172a", marginBottom: "20px" }}>
-                Enterprise Business Automation by ChittorTech
+                {content.heading}
               </h2>
               <p style={{ fontSize: "1.02rem", color: "#475569", lineHeight: "1.8", marginBottom: "24px" }}>
-                Whether you need scalable cloud-based ERP systems, multi-store retail billing, automated manufacturing planning, or bilingual AI chatbots for customer support — ChittorTech delivers custom technology integrations that eliminate operational delays and improve efficiency.
+                {content.intro}
               </p>
 
               <div className="dy-card mb-4">
                 <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "#0f172a", marginBottom: "16px" }}>
-                  Key Capabilities included:
+                  {content.capabilitiesTitle}
                 </h3>
                 <ul className="dy-bullets">
-                  <li>
-                    <div className="dy-bullet-icon"><i className="fas fa-check"></i></div>
-                    <span><strong>BOM &amp; Production Management:</strong> Automate raw material tracking, production routing, and real-time inventory updates for factories.</span>
-                  </li>
-                  <li>
-                    <div className="dy-bullet-icon"><i className="fas fa-check"></i></div>
-                    <span><strong>GST-Compliant Counter Billing:</strong> Fast barcode checkout, instant receipt printing, tax calculations, and 80G trust certifications.</span>
-                  </li>
-                  <li>
-                    <div className="dy-bullet-icon"><i className="fas fa-check"></i></div>
-                    <span><strong>Multi-Location Sync:</strong> Centrally manage sales, stock, and staff across multiple branches or retail counters.</span>
-                  </li>
-                  <li>
-                    <div className="dy-bullet-icon"><i className="fas fa-check"></i></div>
-                    <span><strong>Bilingual AI support:</strong> AI-powered WhatsApp bots and online chatbots trained on your business database to handle inquiries.</span>
-                  </li>
+                  {content.capabilities.map((c, idx) => (
+                    <li key={idx}>
+                      <div className="dy-bullet-icon"><i className="fas fa-check"></i></div>
+                      <span><strong>{c.title}:</strong> {c.desc}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -322,7 +359,7 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
                 Why Indian Enterprises Trust ChittorTech
               </h2>
               <p style={{ fontSize: "0.98rem", color: "#475569", lineHeight: "1.75" }}>
-                Inspired by the resilience and strength of Chittorgarh, we design software architectures that help business owners maintain complete visibility over their processes. With private cloud hosting, end-to-end security compliance, and dedicated technical maintenance, ChittorTech is your trusted development team.
+                {content.summary}
               </p>
             </div>
 
