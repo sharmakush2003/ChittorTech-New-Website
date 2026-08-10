@@ -129,19 +129,34 @@ export default function Footer() {
         .ct-footer-socials { display: flex; gap: 8px; flex-wrap: wrap; }
         .ct-footer-social-btn {
           width: 36px; height: 36px; border-radius: 10px;
-          background: #fff;
-          border: 1px solid #e2e8f0;
           display: flex; align-items: center; justify-content: center;
-          color: #64748b; text-decoration: none;
-          font-size: 0.82rem; transition: all 0.25s ease;
+          text-decoration: none;
+          font-size: 0.95rem; transition: all 0.25s ease;
           box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
         .ct-footer-social-btn:hover {
-          background: linear-gradient(135deg, #291fbc, #06b6d4);
-          border-color: transparent; color: #fff;
           transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(41,31,188,0.25);
+          box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
         }
+        .ct-footer-social-btn.linkedin { background: #e8f3ff; color: #0a66c2; border: 1px solid #d0e7ff; }
+        .ct-footer-social-btn.linkedin:hover { background: #0a66c2; color: #fff; border-color: transparent; }
+        
+        .ct-footer-social-btn.pinterest { background: #ffebeb; color: #bd081c; border: 1px solid #ffd2d2; }
+        .ct-footer-social-btn.pinterest:hover { background: #bd081c; color: #fff; border-color: transparent; }
+        
+        .ct-footer-social-btn.gmb { background: #e8f5e9; color: #34a853; border: 1px solid #c8e6c9; }
+        .ct-footer-social-btn.gmb:hover { background: #34a853; color: #fff; border-color: transparent; }
+        
+        .ct-footer-social-btn.istart { background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; }
+        .ct-footer-social-btn.istart:hover { background: #ef6c00; color: #fff; border-color: transparent; }
+        
+        .ct-footer-social-btn.whatsapp { background: #e8f5e9; color: #25d366; border: 1px solid #c8e6c9; }
+        .ct-footer-social-btn.whatsapp:hover { background: #25d366; color: #fff; border-color: transparent; }
+        
+        .ct-footer-social-btn.quora { background: #fdf2f2; color: #b92b27; border: 1px solid #fee2e2; }
+        .ct-footer-social-btn.quora:hover { background: #b92b27; color: #fff; border-color: transparent; }
+        
+
 
         /* ─── Nav Columns ─── */
         .ct-footer-col-head {
@@ -309,8 +324,12 @@ export default function Footer() {
                   <span className="ct-footer-trust-chip"><i className="fa-solid fa-award"></i> Made in India</span>
                 </div>
                 <div className="ct-footer-socials">
-                  <a href="https://www.linkedin.com/company/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
-                  <a href="https://github.com/sharmakush2003" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn" title="GitHub"><i className="fa-brands fa-github"></i></a>
+                  <a href="https://www.linkedin.com/company/chittortech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn linkedin" title="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
+                  <a href="https://www.pinterest.com/chittortech/" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn pinterest" title="Pinterest"><i className="fa-brands fa-pinterest-p"></i></a>
+                  <a href="https://maps.google.com/?q=ChittorTech+Chittorgarh" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn gmb" title="Google My Business (GMB)"><i className="fa-brands fa-google"></i></a>
+                  <a href="https://istart.rajasthan.gov.in/profile/11478/startups" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn istart" title="iStart Rajasthan Startup"><i className="fa-solid fa-rocket"></i></a>
+                  <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn whatsapp" title="WhatsApp"><i className="fa-brands fa-whatsapp"></i></a>
+                  <a href="https://www.quora.com/profile/ChittorTech" target="_blank" rel="noopener noreferrer" className="ct-footer-social-btn quora" title="Quora"><i className="fa-brands fa-quora"></i></a>
                 </div>
               </div>
 

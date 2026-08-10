@@ -34,30 +34,46 @@ export default function TrialModal() {
     const trialModalEl = document.getElementById("trialModal");
     if (!trialModalEl) return;
 
-    // Check if submitted in this session
-    const wasSubmitted = sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted;
+    // Check if submitted (session storage or local storage)
+    const wasSubmitted = 
+      sessionStorage.getItem("trial_modal_submitted") === "true" || 
+      localStorage.getItem("trial_modal_submitted_at") ||
+      isSubmitted;
     if (wasSubmitted) {
       return; // Do absolutely nothing if already submitted
     }
 
-    let popupCount = parseInt(sessionStorage.getItem("trial_popup_count")) || 0;
+    let popupCount = parseInt(localStorage.getItem("trial_popup_count")) || 0;
     const maxPopups = 3;
     let timerId = null;
     let startTime = null;
     let remainingTime = 0;
 
     function shouldShowModal() {
-      if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) return false;
+      if (
+        sessionStorage.getItem("trial_modal_submitted") === "true" || 
+        localStorage.getItem("trial_modal_submitted_at") ||
+        isSubmitted
+      ) return false;
       const lastDismissed = localStorage.getItem("trial_modal_dismissed_v2_at");
       if (!lastDismissed) return true;
       const twoDaysInMs = 2 * 24 * 60 * 60 * 1000;
       return Date.now() - parseInt(lastDismissed) > twoDaysInMs;
     }
 
-    function showModal() {
-      if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) return;
+    function showModal(isAuto = false) {
+      if (
+        sessionStorage.getItem("trial_modal_submitted") === "true" || 
+        localStorage.getItem("trial_modal_submitted_at") ||
+        isSubmitted
+      ) return;
       if (window.bootstrap && window.bootstrap.Modal) {
         const modalInstance = window.bootstrap.Modal.getOrCreateInstance(trialModalEl);
+        if (isAuto) {
+          trialModalEl.setAttribute("data-auto-opened", "true");
+        } else {
+          trialModalEl.removeAttribute("data-auto-opened");
+        }
         modalInstance.show();
       }
     }
@@ -70,9 +86,9 @@ export default function TrialModal() {
       timerId = setTimeout(() => {
         const isAnyModalShow = document.querySelector(".modal.show");
         if (!isAnyModalShow && shouldShowModal()) {
-          showModal();
+          showModal(true);
           popupCount++;
-          sessionStorage.setItem("trial_popup_count", popupCount.toString());
+          localStorage.setItem("trial_popup_count", popupCount.toString());
         }
         timerId = null;
       }, remainingTime);
@@ -93,9 +109,9 @@ export default function TrialModal() {
         timerId = setTimeout(() => {
           const isAnyModalShow = document.querySelector(".modal.show");
           if (!isAnyModalShow && shouldShowModal()) {
-            showModal();
+            showModal(true);
             popupCount++;
-            sessionStorage.setItem("trial_popup_count", popupCount.toString());
+            localStorage.setItem("trial_popup_count", popupCount.toString());
           }
           timerId = null;
         }, remainingTime);
@@ -111,13 +127,19 @@ export default function TrialModal() {
     }
 
     function scheduleNext() {
-      if (popupCount >= maxPopups || sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted || !shouldShowModal()) return;
+      if (
+        popupCount >= maxPopups || 
+        sessionStorage.getItem("trial_modal_submitted") === "true" || 
+        localStorage.getItem("trial_modal_submitted_at") ||
+        isSubmitted || 
+        !shouldShowModal()
+      ) return;
       
-      let delay = 4000;
+      let delay = 2500; // 2.5s delay + 2.5s PageSpeed mount delay = 5 seconds total from page load
       if (popupCount === 1) {
-        delay = 7000;
+        delay = 10000; // 10 seconds after 1st close
       } else if (popupCount === 2) {
-        delay = 15000;
+        delay = 15000; // 15 seconds after 2nd close
       }
 
       startTimer(delay);
@@ -147,11 +169,19 @@ export default function TrialModal() {
 
     const onHiddenModal = () => {
       setDontShow(false);
-      if (sessionStorage.getItem("trial_modal_submitted") === "true" || isSubmitted) {
+      if (
+        sessionStorage.getItem("trial_modal_submitted") === "true" || 
+        localStorage.getItem("trial_modal_submitted_at") ||
+        isSubmitted
+      ) {
         clearTimer();
         return;
       }
-      scheduleNext();
+      const wasAuto = trialModalEl.getAttribute("data-auto-opened") === "true";
+      trialModalEl.removeAttribute("data-auto-opened");
+      if (wasAuto) {
+        scheduleNext();
+      }
     };
 
     trialModalEl.addEventListener("hide.bs.modal", onHideModal);
@@ -161,6 +191,7 @@ export default function TrialModal() {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       trialModalEl.removeEventListener("hide.bs.modal", onHideModal);
       trialModalEl.removeEventListener("hidden.bs.modal", onHiddenModal);
+      trialModalEl.removeAttribute("data-auto-opened");
       clearTimer();
     };
   }, [isSubmitted, mounted]);

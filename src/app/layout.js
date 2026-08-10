@@ -97,7 +97,10 @@ export default function RootLayout({ children }) {
                 "availableLanguage": ["en", "hi"]
               },
               "sameAs": [
-                "https://www.linkedin.com/company/chittortech"
+                "https://www.linkedin.com/company/chittortech",
+                "https://www.pinterest.com/chittortech/",
+                "https://maps.google.com/?q=ChittorTech+Chittorgarh",
+                "https://istart.rajasthan.gov.in/profile/11478/startups"
               ]
             })
           }}
