@@ -3,15 +3,27 @@ const express = require('express');
 const qrcode = require('qrcode');
 const axios = require('axios');
 const mongoose = require('mongoose');
-const puppeteer = require('puppeteer');
 const { Client, LocalAuth, RemoteAuth } = require('whatsapp-web.js');
 const { processIncomingMessage } = require('./botEngine');
 const { getRecentLeads } = require('./leadService');
 
-// Get Chrome executable path from our installed puppeteer package
-// This ensures whatsapp-web.js uses the correct Chrome binary on Render Linux
-const CHROME_EXECUTABLE = process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath();
-console.log(`[Server] Using Chrome executable: ${CHROME_EXECUTABLE}`);
+// Find Chrome executable from whatsapp-web.js's own bundled puppeteer-core
+// This avoids version conflicts with any separately-installed puppeteer package
+function findChromePath() {
+    if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+        return process.env.PUPPETEER_EXECUTABLE_PATH;
+    }
+    try {
+        // Use whatsapp-web.js's own puppeteer-core to resolve the correct Chrome path
+        const wwjsPuppeteer = require('./node_modules/whatsapp-web.js/node_modules/puppeteer-core');
+        return wwjsPuppeteer.executablePath();
+    } catch (e) {
+        console.warn('[Server] Could not auto-detect Chrome path:', e.message);
+        return undefined;
+    }
+}
+const CHROME_EXECUTABLE = findChromePath();
+console.log(`[Server] Chrome executable: ${CHROME_EXECUTABLE || 'auto-detect by whatsapp-web.js'}`);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -57,7 +69,6 @@ async function initializeWhatsAppClient() {
 
     const puppeteerOpts = {
         headless: true,
-        executablePath: CHROME_EXECUTABLE,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -69,6 +80,11 @@ async function initializeWhatsAppClient() {
             '--disable-gpu'
         ]
     };
+
+    // Only set executablePath if we resolved one successfully
+    if (CHROME_EXECUTABLE) {
+        puppeteerOpts.executablePath = CHROME_EXECUTABLE;
+    }
 
 
     const client = new Client({
