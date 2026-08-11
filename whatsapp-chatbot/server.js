@@ -3,10 +3,43 @@ const express = require('express');
 const qrcode = require('qrcode');
 const axios = require('axios');
 const mongoose = require('mongoose');
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
 const { Client, LocalAuth, RemoteAuth } = require('whatsapp-web.js');
 const { processIncomingMessage } = require('./botEngine');
 const { getRecentLeads } = require('./leadService');
 
+const CACHE_DIR = process.env.PUPPETEER_CACHE_DIR || path.join(__dirname, '.puppeteer-cache');
+const CHROME_BINARY = path.join(CACHE_DIR, 'chrome', 'linux-146.0.7680.31', 'chrome-linux64', 'chrome');
+
+/**
+ * Ensure Chrome is downloaded before starting WhatsApp client.
+ * Runs at server startup — completely bypasses build-time Chrome issues.
+ */
+async function ensureChromeInstalled() {
+    if (fs.existsSync(CHROME_BINARY)) {
+        console.log(`[Chrome] ✅ Found Chrome at: ${CHROME_BINARY}`);
+        return CHROME_BINARY;
+    }
+    console.log(`[Chrome] ⏳ Chrome not found. Downloading now to: ${CACHE_DIR}`);
+    console.log('[Chrome] This may take 2-3 minutes on first startup...');
+    try {
+        execSync(
+            `node_modules/.bin/puppeteer browsers install chrome`,
+            {
+                stdio: 'inherit',
+                cwd: __dirname,
+                env: { ...process.env, PUPPETEER_CACHE_DIR: CACHE_DIR }
+            }
+        );
+        console.log('[Chrome] ✅ Chrome downloaded successfully!');
+        return CHROME_BINARY;
+    } catch (err) {
+        console.error('[Chrome] ❌ Chrome download failed:', err.message);
+        return undefined;
+    }
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,10 +55,11 @@ let lastPingTime = new Date();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 /**
  * Initialize WhatsApp Client with fallback Strategy
  */
-async function initializeWhatsAppClient() {
+async function initializeWhatsAppClient(chromePath) {
     let authStrategy;
     const useMongo = process.env.USE_MONGODB === 'true' && process.env.MONGODB_URI;
 
@@ -48,18 +82,6 @@ async function initializeWhatsAppClient() {
     } else {
         console.log('[Server] MongoDB not configured. Using LocalAuth strategy (Local Session Storage).');
         authStrategy = new LocalAuth({ dataPath: './.wwebjs_auth' });
-    }
-
-    // Lazily resolve Chrome path inside async function (never at module load time)
-    let chromePath = process.env.PUPPETEER_EXECUTABLE_PATH;
-    if (!chromePath) {
-        try {
-            const pup = require('puppeteer');
-            chromePath = pup.executablePath();
-            console.log(`[Server] Chrome path from puppeteer package: ${chromePath}`);
-        } catch (e) {
-            console.warn('[Server] puppeteer not found, letting whatsapp-web.js handle Chrome path');
-        }
     }
 
     const puppeteerOpts = {
@@ -137,8 +159,11 @@ async function initializeWhatsAppClient() {
     return client;
 }
 
-// Start Client
-const client = initializeWhatsAppClient();
+// Start: ensure Chrome is installed FIRST, then boot WhatsApp client
+(async () => {
+    const chromePath = await ensureChromeInstalled();
+    await initializeWhatsAppClient(chromePath);
+})();
 
 // ==========================================
 // EXPRESS WEB ROUTES & CONTROLLERS
