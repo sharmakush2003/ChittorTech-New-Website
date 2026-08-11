@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: chittortech-whatsapp-bot
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: npm install --legacy-peer-deps
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: USE_MONGODB
+        value: "true"
+      - key: MONGODB_URI
+        sync: false
+      - key: SERVER_URL
+        sync: false
