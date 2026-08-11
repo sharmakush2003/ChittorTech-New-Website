@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 const SERVER_URL = process.env.SERVER_URL || `http://localhost:${PORT}`;
 
 // Global Bot Status Tracker
-let botStatus = 'INITIALIZING'; // 'INITIALIZING', 'QR_READY', 'AUTHENTICATED', 'READY', 'DISCONNECTED'
+let botStatus = 'INITIALIZING';
 let currentQrCode = null;
 let currentQrDataUrl = null;
 let botStartTime = new Date();
@@ -49,21 +49,27 @@ async function initializeWhatsAppClient() {
         authStrategy = new LocalAuth({ dataPath: './.wwebjs_auth' });
     }
 
+    const puppeteerOpts = {
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-accelerated-2d-canvas',
+            '--no-first-run',
+            '--no-zygote',
+            '--single-process',
+            '--disable-gpu'
+        ]
+    };
+
+    if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+        puppeteerOpts.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+    }
+
     const client = new Client({
         authStrategy: authStrategy,
-        puppeteer: {
-            headless: true,
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-accelerated-2d-canvas',
-                '--no-first-run',
-                '--no-zygote',
-                '--single-process',
-                '--disable-gpu'
-            ]
-        }
+        puppeteer: puppeteerOpts
     });
 
     // 1. QR Code Event
@@ -106,7 +112,6 @@ async function initializeWhatsAppClient() {
     client.on('disconnected', (reason) => {
         console.warn(`[Server] ⚠️ WhatsApp Client Disconnected: ${reason}`);
         botStatus = 'DISCONNECTED';
-        // Re-initialize client after delay
         setTimeout(() => {
             console.log('[Server] Re-initializing WhatsApp Client...');
             client.initialize();
@@ -124,9 +129,6 @@ const client = initializeWhatsAppClient();
 // EXPRESS WEB ROUTES & CONTROLLERS
 // ==========================================
 
-/**
- * GET / : Server Health & Dashboard Status Page
- */
 app.get('/', (req, res) => {
     const uptimeSec = Math.floor((new Date() - botStartTime) / 1000);
     const statusColor = botStatus === 'READY' ? 'green' : botStatus === 'QR_READY' ? 'orange' : 'gray';
@@ -167,9 +169,6 @@ app.get('/', (req, res) => {
     `);
 });
 
-/**
- * GET /qr : Live Web QR Code Scanner Page
- */
 app.get('/qr', (req, res) => {
     if (botStatus === 'READY' || botStatus === 'AUTHENTICATED') {
         return res.send(`
@@ -247,9 +246,6 @@ app.get('/qr', (req, res) => {
     `);
 });
 
-/**
- * GET /ping : Anti-Sleep / Health Check Endpoint
- */
 app.get('/ping', (req, res) => {
     lastPingTime = new Date();
     res.status(200).json({
@@ -260,9 +256,6 @@ app.get('/ping', (req, res) => {
     });
 });
 
-/**
- * GET /leads : Endpoint to view recorded customer leads
- */
 app.get('/leads', async (req, res) => {
     try {
         const leads = await getRecentLeads(50);
@@ -275,16 +268,11 @@ app.get('/leads', async (req, res) => {
     }
 });
 
-// Start Express Server
 app.listen(PORT, () => {
     console.log(`[Server] Express server running on port ${PORT}`);
     console.log(`[Server] Dashboard URL: ${SERVER_URL}`);
     console.log(`[Server] QR Viewer URL: ${SERVER_URL}/qr`);
 
-    // ===================================================
-    // ⚡ 24/7 ANTI-SLEEP KEEP-ALIVE SELF-PING MECHANISM
-    // ===================================================
-    // Automatically pings /ping every 10 minutes to prevent Render free tier sleep
     const TEN_MINUTES_MS = 10 * 60 * 1000;
     setInterval(async () => {
         try {
