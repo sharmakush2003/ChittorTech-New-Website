@@ -7,23 +7,6 @@ const { Client, LocalAuth, RemoteAuth } = require('whatsapp-web.js');
 const { processIncomingMessage } = require('./botEngine');
 const { getRecentLeads } = require('./leadService');
 
-// Find Chrome executable from whatsapp-web.js's own bundled puppeteer-core
-// This avoids version conflicts with any separately-installed puppeteer package
-function findChromePath() {
-    if (process.env.PUPPETEER_EXECUTABLE_PATH) {
-        return process.env.PUPPETEER_EXECUTABLE_PATH;
-    }
-    try {
-        // Use whatsapp-web.js's own puppeteer-core to resolve the correct Chrome path
-        const wwjsPuppeteer = require('./node_modules/whatsapp-web.js/node_modules/puppeteer-core');
-        return wwjsPuppeteer.executablePath();
-    } catch (e) {
-        console.warn('[Server] Could not auto-detect Chrome path:', e.message);
-        return undefined;
-    }
-}
-const CHROME_EXECUTABLE = findChromePath();
-console.log(`[Server] Chrome executable: ${CHROME_EXECUTABLE || 'auto-detect by whatsapp-web.js'}`);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -67,6 +50,18 @@ async function initializeWhatsAppClient() {
         authStrategy = new LocalAuth({ dataPath: './.wwebjs_auth' });
     }
 
+    // Lazily resolve Chrome path inside async function (never at module load time)
+    let chromePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+    if (!chromePath) {
+        try {
+            const pup = require('puppeteer');
+            chromePath = pup.executablePath();
+            console.log(`[Server] Chrome path from puppeteer package: ${chromePath}`);
+        } catch (e) {
+            console.warn('[Server] puppeteer not found, letting whatsapp-web.js handle Chrome path');
+        }
+    }
+
     const puppeteerOpts = {
         headless: true,
         args: [
@@ -81,9 +76,9 @@ async function initializeWhatsAppClient() {
         ]
     };
 
-    // Only set executablePath if we resolved one successfully
-    if (CHROME_EXECUTABLE) {
-        puppeteerOpts.executablePath = CHROME_EXECUTABLE;
+    if (chromePath) {
+        puppeteerOpts.executablePath = chromePath;
+        console.log(`[Server] Using Chrome: ${chromePath}`);
     }
 
 
