@@ -5,7 +5,9 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
+const { promisify } = require('util');
+const execAsync = promisify(exec);
 const { Client, LocalAuth, RemoteAuth } = require('whatsapp-web.js');
 const { processIncomingMessage } = require('./botEngine');
 const { getRecentLeads } = require('./leadService');
@@ -22,15 +24,14 @@ async function ensureChromeInstalled() {
         console.log(`[Chrome] ✅ Found Chrome at: ${CHROME_BINARY}`);
         return CHROME_BINARY;
     }
-    console.log(`[Chrome] ⏳ Chrome not found. Downloading now to: ${CACHE_DIR}`);
-    console.log('[Chrome] This may take 2-3 minutes on first startup...');
+    console.log(`[Chrome] ⏳ Chrome not found. Downloading now (background)...`);
     try {
-        execSync(
+        await execAsync(
             `node_modules/.bin/puppeteer browsers install chrome`,
             {
-                stdio: 'inherit',
                 cwd: __dirname,
-                env: { ...process.env, PUPPETEER_CACHE_DIR: CACHE_DIR }
+                env: { ...process.env, PUPPETEER_CACHE_DIR: CACHE_DIR },
+                timeout: 300000 // 5 minute timeout
             }
         );
         console.log('[Chrome] ✅ Chrome downloaded successfully!');
@@ -159,11 +160,8 @@ async function initializeWhatsAppClient(chromePath) {
     return client;
 }
 
-// Start: ensure Chrome is installed FIRST, then boot WhatsApp client
-(async () => {
-    const chromePath = await ensureChromeInstalled();
-    await initializeWhatsAppClient(chromePath);
-})();
+// NOTE: Chrome download and WhatsApp init happen INSIDE app.listen
+// so that Express port binds FIRST — prevents Render startup timeout kill
 
 // ==========================================
 // EXPRESS WEB ROUTES & CONTROLLERS
@@ -308,20 +306,28 @@ app.get('/leads', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`[Server] Express server running on port ${PORT}`);
     console.log(`[Server] Dashboard URL: ${SERVER_URL}`);
     console.log(`[Server] QR Viewer URL: ${SERVER_URL}/qr`);
 
+    // Start keep-alive self-ping
     const TEN_MINUTES_MS = 10 * 60 * 1000;
     setInterval(async () => {
         try {
-            const pingUrl = `${SERVER_URL}/ping`;
-            console.log(`[Auto-KeepAlive ⏰] Sending self-ping to ${pingUrl}...`);
-            await axios.get(pingUrl);
-            console.log(`[Auto-KeepAlive ✅] Self-ping successful. Render server kept awake!`);
+            await axios.get(`${SERVER_URL}/ping`);
+            console.log(`[Auto-KeepAlive ✅] Self-ping OK`);
         } catch (err) {
-            console.warn(`[Auto-KeepAlive ⚠️] Self-ping warning: ${err.message}`);
+            console.warn(`[Auto-KeepAlive ⚠️] ${err.message}`);
         }
     }, TEN_MINUTES_MS);
+
+    // Download Chrome + init WhatsApp AFTER port is bound
+    // This prevents Render startup timeout from killing the process
+    try {
+        const chromePath = await ensureChromeInstalled();
+        await initializeWhatsAppClient(chromePath);
+    } catch (err) {
+        console.error('[Server] Fatal init error:', err.message);
+    }
 });
