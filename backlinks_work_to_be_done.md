@@ -31,6 +31,10 @@ Add the following HTML snippet to the footer component of each client project:
 | 5 | `https://anju-mathur-counselling.vercel.app/` | ❌ Has text "Kush Sharma", missing ChittorTech link | Update footer text to ChittorTech with link |
 | 6 | `https://shaadi-sutra.vercel.app/` | ❌ Has text "Kush Sharma", missing ChittorTech link | Update footer text to ChittorTech with link |
 | 7 | `https://www.visitchittorgarh.in/` | ❌ Author meta exists, missing HTML link | Add visible footer HTML backlink |
+| 8 | `https://poster-generation-eight.vercel.app/` | ❌ Missing HTML Link Tag | Add footer HTML link & redeploy |
+| 9 | `https://guest-analytics-auite.vercel.app/` | ❌ Missing HTML Link Tag | Add footer HTML link & redeploy |
+| 10 | `https://vehicle-fuel-tracker-one.vercel.app/` | ❌ Missing HTML Link Tag | Add footer HTML link & redeploy |
+| 11 | `https://bill-generator-theta-cyan.vercel.app/` | ❌ Title mentions brand, missing HTML link | Add footer HTML link & redeploy |
 
 ---
 
