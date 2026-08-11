@@ -4,7 +4,7 @@ services:
     env: node
     region: singapore
     plan: free
-    buildCommand: rm -rf /opt/render/.cache/puppeteer && npm install --legacy-peer-deps
+    buildCommand: npm install --legacy-peer-deps
     startCommand: node server.js
     envVars:
       - key: PORT

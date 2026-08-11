@@ -3,9 +3,15 @@ const express = require('express');
 const qrcode = require('qrcode');
 const axios = require('axios');
 const mongoose = require('mongoose');
+const puppeteer = require('puppeteer');
 const { Client, LocalAuth, RemoteAuth } = require('whatsapp-web.js');
 const { processIncomingMessage } = require('./botEngine');
 const { getRecentLeads } = require('./leadService');
+
+// Get Chrome executable path from our installed puppeteer package
+// This ensures whatsapp-web.js uses the correct Chrome binary on Render Linux
+const CHROME_EXECUTABLE = process.env.PUPPETEER_EXECUTABLE_PATH || puppeteer.executablePath();
+console.log(`[Server] Using Chrome executable: ${CHROME_EXECUTABLE}`);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -51,6 +57,7 @@ async function initializeWhatsAppClient() {
 
     const puppeteerOpts = {
         headless: true,
+        executablePath: CHROME_EXECUTABLE,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -63,9 +70,6 @@ async function initializeWhatsAppClient() {
         ]
     };
 
-    if (process.env.PUPPETEER_EXECUTABLE_PATH) {
-        puppeteerOpts.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
-    }
 
     const client = new Client({
         authStrategy: authStrategy,
