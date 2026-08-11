@@ -13,31 +13,39 @@ const { processIncomingMessage } = require('./botEngine');
 const { getRecentLeads } = require('./leadService');
 
 const CACHE_DIR = process.env.PUPPETEER_CACHE_DIR || path.join(__dirname, '.puppeteer-cache');
-const CHROME_BINARY = path.join(CACHE_DIR, 'chrome', 'linux-146.0.7680.31', 'chrome-linux64', 'chrome');
 
 /**
- * Ensure Chrome is downloaded before starting WhatsApp client.
- * Runs at server startup — completely bypasses build-time Chrome issues.
+ * Ensure Chrome is downloaded. Returns the actual executable path.
+ * Uses puppeteer.executablePath() dynamically — never hardcodes Chrome version.
  */
 async function ensureChromeInstalled() {
-    if (fs.existsSync(CHROME_BINARY)) {
-        console.log(`[Chrome] ✅ Found Chrome at: ${CHROME_BINARY}`);
-        return CHROME_BINARY;
+    // Always set PUPPETEER_CACHE_DIR so puppeteer finds Chrome in our project dir
+    process.env.PUPPETEER_CACHE_DIR = CACHE_DIR;
+
+    // Get expected path from puppeteer (works even before download)
+    const puppeteerPkg = require('puppeteer');
+    const chromePath = puppeteerPkg.executablePath();
+
+    if (fs.existsSync(chromePath)) {
+        console.log(`[Chrome] ✅ Found at: ${chromePath}`);
+        return chromePath;
     }
-    console.log(`[Chrome] ⏳ Chrome not found. Downloading now (background)...`);
+
+    // Chrome not yet downloaded — download it now
+    console.log(`[Chrome] ⏳ Downloading Chrome to: ${CACHE_DIR}...`);
     try {
         await execAsync(
             `node_modules/.bin/puppeteer browsers install chrome`,
             {
                 cwd: __dirname,
                 env: { ...process.env, PUPPETEER_CACHE_DIR: CACHE_DIR },
-                timeout: 300000 // 5 minute timeout
+                timeout: 300000
             }
         );
-        console.log('[Chrome] ✅ Chrome downloaded successfully!');
-        return CHROME_BINARY;
+        console.log(`[Chrome] ✅ Download complete! Path: ${chromePath}`);
+        return chromePath;
     } catch (err) {
-        console.error('[Chrome] ❌ Chrome download failed:', err.message);
+        console.error('[Chrome] ❌ Download failed:', err.message);
         return undefined;
     }
 }
