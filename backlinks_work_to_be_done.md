@@ -24,17 +24,17 @@ Add the following HTML snippet to the footer component of each client project:
 
 | # | Client Website URL | Current Backlink Status | Required Action |
 |---|--------------------|-------------------------|-----------------|
-| 1 | `https://jain-dharamsala-front.vercel.app/` | ❌ Missing HTML Link Tag | Add footer HTML link & redeploy |
-| 2 | `https://dharamsala-admin-portal.vercel.app/` | ❌ Has email link, missing website URL | Replace mailto link with website backlink |
-| 3 | `https://chittor-tech-certificate-generator-eight.vercel.app/` | ❌ Title mentions brand, missing footer link | Add footer HTML backlink |
-| 4 | `https://www.rewardclub.site/` | ❌ Missing ChittorTech link | Add footer HTML backlink |
-| 5 | `https://anju-mathur-counselling.vercel.app/` | ❌ Has text "Kush Sharma", missing ChittorTech link | Update footer text to ChittorTech with link |
-| 6 | `https://shaadi-sutra.vercel.app/` | ❌ Has text "Kush Sharma", missing ChittorTech link | Update footer text to ChittorTech with link |
-| 7 | `https://www.visitchittorgarh.in/` | ❌ Author meta exists, missing HTML link | Add visible footer HTML backlink |
-| 8 | `https://poster-generation-eight.vercel.app/` | ❌ Missing HTML Link Tag | Add footer HTML link & redeploy |
-| 9 | `https://guest-analytics-auite.vercel.app/` | ❌ Missing HTML Link Tag | Add footer HTML link & redeploy |
-| 10 | `https://vehicle-fuel-tracker-one.vercel.app/` | ❌ Missing HTML Link Tag | Add footer HTML link & redeploy |
-| 11 | `https://bill-generator-theta-cyan.vercel.app/` | ❌ Title mentions brand, missing HTML link | Add footer HTML link & redeploy |
+| 1 | `https://dharamsala-admin-portal.vercel.app/` | ✅ Replaced mailto with website backlink | Replace mailto link with website backlink |
+| 2 | `https://chittor-tech-certificate-generator-eight.vercel.app/` | ✅ Backlink Added | Add footer HTML backlink |
+| 3 | `https://www.rewardclub.site/` | ✅ Backlink Added | Add footer HTML backlink |
+| 4 | `https://anju-mathur-counselling.vercel.app/` | ✅ Backlink Added | Update footer text to ChittorTech with link |
+| 5 | `https://shaadi-sutra.vercel.app/` | ✅ Backlink Added | Update footer text to ChittorTech with link |
+| 6 | `https://www.visitchittorgarh.in/` | ❌ Author meta exists, missing HTML link | Add visible footer HTML backlink |
+| 7 | `https://poster-generation-eight.vercel.app/` | ✅ Backlink Added | Add footer HTML link & redeploy |
+| 8 | `https://guest-analytics-auite.vercel.app/` | ✅ Backlink Added | Add footer HTML link & redeploy |
+| 9 | `https://vehicle-fuel-tracker-one.vercel.app/` | ✅ Backlink Added | Add footer HTML link & redeploy |
+| 10 | `https://bill-generator-theta-cyan.vercel.app/` | ✅ Backlink Added | Add footer HTML link & redeploy |
+| 11 | `https://jain-dharamsala-front.vercel.app/` | ✅ Backlink Added | Add footer HTML link & redeploy |
 
 ---
 
