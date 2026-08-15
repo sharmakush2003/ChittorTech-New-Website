@@ -9,11 +9,42 @@ export default function Chatbot() {
   const [inputVal, setInputVal] = useState("");
   const messagesEndRef = useRef(null);
 
+  // Pre-chat Registration states
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [countryCode, setCountryCode] = useState("+91");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [validationError, setValidationError] = useState("");
+
   const defaultGreeting = "Hello! I'm the Chittortech AI Assistant. How can I help you today?";
   const suggestions = ["What is Chittortech?", "View Services", "Contact Support"];
 
-  // Initialize chatbot messages from localStorage on client side
+  // Initialize chatbot messages and user registration from localStorage
   useEffect(() => {
+    const savedUserInfo = localStorage.getItem("chittortech_user_info");
+    let isUserRegistered = false;
+    let registeredName = "there";
+    if (savedUserInfo) {
+      try {
+        const userInfo = JSON.parse(savedUserInfo);
+        if (userInfo.name && userInfo.phone) {
+          setUserName(userInfo.name);
+          registeredName = userInfo.name;
+          const parts = userInfo.phone.split(" ");
+          if (parts.length > 1) {
+            setCountryCode(parts[0]);
+            setPhoneNumber(parts.slice(1).join(" "));
+          } else {
+            setPhoneNumber(userInfo.phone);
+          }
+          setIsRegistered(true);
+          isUserRegistered = true;
+        }
+      } catch (e) {
+        console.error("Failed to parse user info:", e);
+      }
+    }
+
     const savedMessages = localStorage.getItem("chittortech_chat_history");
     if (savedMessages) {
       try {
@@ -26,14 +57,19 @@ export default function Chatbot() {
         console.error("Failed to parse chat history:", e);
       }
     }
-    setMessages([
-      {
-        role: "ai",
-        content: defaultGreeting,
-        isSystem: true,
-        timestamp: new Date().toISOString(),
-      },
-    ]);
+
+    if (isUserRegistered) {
+      setMessages([
+        {
+          role: "ai",
+          content: `Hello ${registeredName}! How can I assist you today? If you have any questions or need help, just let me know.`,
+          isSystem: true,
+          timestamp: new Date().toISOString(),
+        },
+      ]);
+    } else {
+      setMessages([]);
+    }
   }, []);
 
   // Save messages to localstorage whenever they change
@@ -54,14 +90,8 @@ export default function Chatbot() {
 
   const resetChat = () => {
     localStorage.removeItem("chittortech_chat_history");
-    setMessages([
-      {
-        role: "ai",
-        content: defaultGreeting,
-        isSystem: true,
-        timestamp: new Date().toISOString(),
-      },
-    ]);
+    setIsRegistered(false);
+    setMessages([]);
   };
 
   const formatTime = (isoString) => {
@@ -89,7 +119,6 @@ export default function Chatbot() {
       .replace(/<\/ul>\n<ul>/g, "");
 
     // Inject contact/demo dynamic triggers
-    // Standard contact link: /contact-us
     html = html.replace(
       /\[ACTION:CONTACT\]/g,
       '<a href="/contact-us" class="message-action-btn">Contact Us <i class="fas fa-arrow-right"></i></a>'
@@ -100,6 +129,108 @@ export default function Chatbot() {
     );
 
     return { __html: `<p>${html}</p>` };
+  };
+
+  const typeMessage = (text) => {
+    setIsLoading(false);
+    const newMsg = {
+      role: "ai",
+      content: "",
+      timestamp: new Date().toISOString(),
+      isTyping: true,
+    };
+
+    setMessages((prev) => [...prev, newMsg]);
+
+    let currentText = "";
+    let index = 0;
+
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        currentText += text[index];
+        index++;
+        setMessages((prev) => {
+          const updated = [...prev];
+          if (updated.length > 0 && updated[updated.length - 1].role === "ai") {
+            updated[updated.length - 1].content = currentText;
+          }
+          return updated;
+        });
+      } else {
+        clearInterval(interval);
+        setMessages((prev) => {
+          const updated = [...prev];
+          if (updated.length > 0 && updated[updated.length - 1].role === "ai") {
+            const last = { ...updated[updated.length - 1] };
+            delete last.isTyping;
+            updated[updated.length - 1] = last;
+          }
+          return updated;
+        });
+      }
+    }, 15);
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const name = userName.trim();
+    const phone = phoneNumber.trim();
+
+    if (!name || name.length < 2) {
+      setValidationError("Please enter a valid name (at least 2 characters).");
+      return;
+    }
+
+    if (!phone || phone.length < 8) {
+      setValidationError("Please enter a valid phone number.");
+      return;
+    }
+
+    setValidationError("");
+    const fullPhone = `${countryCode} ${phone}`;
+
+    localStorage.setItem(
+      "chittortech_user_info",
+      JSON.stringify({ name, phone: fullPhone })
+    );
+
+    // Send lead alert to Google Apps Script Web App in background
+    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+    if (scriptUrl) {
+      const leadPayload = {
+        name: name,
+        email: "chatbot-lead@chittortech.online",
+        contact: fullPhone,
+        location: "Chatbot Lead Capture",
+        industry: "N/A",
+        message: "User initiated a chat session with the ChittorTech AI Assistant.",
+        company: "N/A",
+        firm: "N/A"
+      };
+
+      try {
+        fetch(scriptUrl, {
+          method: "POST",
+          body: JSON.stringify(leadPayload),
+        }).catch((err) => {
+          console.error("Background chatbot lead submission fetch failed:", err);
+        });
+      } catch (err) {
+        console.error("Background chatbot lead submission error:", err);
+      }
+    }
+
+    setIsRegistered(true);
+
+    const regMsg = {
+      role: "user",
+      content: `Name : ${name}\nPhone : ${fullPhone}`,
+      timestamp: new Date().toISOString(),
+    };
+
+    setMessages((prev) => [...prev, regMsg]);
+    const welcomeText = `Hello ${name}! How can I assist you today? If you have any questions or need help, just let me know.`;
+    typeMessage(welcomeText);
   };
 
   const handleSend = async (customText = "") => {
@@ -118,9 +249,9 @@ export default function Chatbot() {
     setIsLoading(true);
 
     try {
-      // Build previous messages payload for AI context (omit system messages and map format)
+      // Build previous messages payload for AI context (omit system messages and user registration card)
       const chatHistory = [...messages, userMsg]
-        .filter((m) => !m.isSystem)
+        .filter((m) => !m.isSystem && !(m.content.startsWith("Name :") && m.content.includes("Phone :")))
         .map((m) => ({
           role: m.role === "ai" ? "assistant" : "user",
           content: m.content,
@@ -183,26 +314,10 @@ CHITTORTECH KNOWLEDGE BASE:
         ? data.choices[0].message.content 
         : "Sorry, I didn't quite catch that. Could you please rephrase?";
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "ai",
-          content: reply,
-          timestamp: new Date().toISOString(),
-        },
-      ]);
+      typeMessage(reply);
     } catch (e) {
       console.error(e);
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "ai",
-          content: "Sorry, I am facing some network issues right now. Please call us at +91 7597451057 for assistance.",
-          timestamp: new Date().toISOString(),
-        },
-      ]);
-    } finally {
-      setIsLoading(false);
+      typeMessage("Sorry, I am facing some network issues right now. Please call us at +91 7597451057 for assistance.");
     }
   };
 
@@ -241,7 +356,11 @@ CHITTORTECH KNOWLEDGE BASE:
           aria-label="Open AI Assistant" 
           title="Talk to AI"
         >
-          <i className="fa-solid fa-comments"></i>
+          {isOpen ? (
+            <i className="fa-solid fa-chevron-down"></i>
+          ) : (
+            <i className="fa-solid fa-comments"></i>
+          )}
           <div className="pulse-ring"></div>
         </button>
 
@@ -250,100 +369,188 @@ CHITTORTECH KNOWLEDGE BASE:
           <div className="chatbot-header">
             <div className="chatbot-header-info">
               <div className="chatbot-avatar" style={{ position: "relative" }}>
-                <img src="/assets/images/ct-logo.png" alt="Logo" style={{ width: "40px", height: "40px", objectFit: "contain", borderRadius: "50%", background: "#fff" }} />
+                <img src="/assets/images/chatbot-kaira.webp" alt="Logo" style={{ width: "40px", height: "40px", objectFit: "cover", borderRadius: "50%", background: "#fff" }} />
                 <span style={{ position: "absolute", bottom: "-2px", right: "-2px", width: "10px", height: "10px", background: "#10b981", border: "2px solid #fff", borderRadius: "50%", boxShadow: "0 0 8px rgba(16, 185, 129, 0.6)" }}></span>
               </div>
               <div className="chatbot-header-text">
-                <h4>Chittortech AI</h4>
-                <span style={{ color: "#64748b", fontWeight: "500", fontSize: "0.7rem", textTransform: "none", letterSpacing: 0 }}>Typically replies instantly</span>
+                <h4>Kaira</h4>
+                <span style={{ color: "#64748b", fontWeight: "500", fontSize: "0.7rem", textTransform: "none", letterSpacing: 0 }}>Customer Support Executive</span>
               </div>
             </div>
             <div className="chatbot-header-actions">
-              <button onClick={resetChat} className="chatbot-reset-btn" title="Clear Chat">
-                <i className="fas fa-trash-alt"></i>
-              </button>
+              {isRegistered && (
+                <button onClick={resetChat} className="chatbot-reset-btn" title="Clear Chat">
+                  <i className="fas fa-trash-alt"></i>
+                </button>
+              )}
               <button onClick={toggleChat} className="chatbot-close-btn" title="Close Chat">
                 <i className="fas fa-chevron-down"></i>
               </button>
             </div>
           </div>
 
-          <div id="chatbot-messages" className="chatbot-messages">
-            {messages.map((msg, idx) => (
-              <div key={idx} className={`message ${msg.role}`}>
-                {msg.role === "ai" ? (
-                  <div dangerouslySetInnerHTML={parseMarkdown(msg.content)} />
-                ) : (
-                  <div>{msg.content}</div>
+          {!isRegistered ? (
+            <div className="chatbot-reg-container">
+              <div className="chatbot-reg-welcome">
+                <i className="fas fa-robot"></i>
+                <h3>Start ChittorTech AI Chat</h3>
+                <p>Please enter your name and phone number to start a conversation with our AI Assistant.</p>
+              </div>
+
+              <form onSubmit={handleRegister} className="chatbot-reg-form">
+                <div className="chatbot-reg-group">
+                  <label className="chatbot-reg-label">Name</label>
+                  <input
+                    type="text"
+                    className="chatbot-reg-input"
+                    placeholder="Enter your name"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="chatbot-reg-group">
+                  <label className="chatbot-reg-label">Phone Number</label>
+                  <div className="chatbot-phone-wrapper">
+                    <select
+                      className="chatbot-country-select"
+                      value={countryCode}
+                      onChange={(e) => setCountryCode(e.target.value)}
+                    >
+                      <option value="+91">🇮🇳 +91</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      <option value="+971">🇦🇪 +971</option>
+                      <option value="+61">🇦🇺 +61</option>
+                    </select>
+                    <input
+                      type="tel"
+                      className="chatbot-reg-input"
+                      style={{ flex: 1 }}
+                      placeholder="Enter mobile number"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
+                      required
+                    />
+                  </div>
+                </div>
+
+                {validationError && (
+                  <div className="chatbot-reg-error">{validationError}</div>
                 )}
-                
-                <span className="msg-time">{formatTime(msg.timestamp)}</span>
-                
-                {msg.role === "ai" && !msg.isSystem && (
-                  <div 
-                    className="msg-copy-btn" 
-                    title="Copy message"
-                    onClick={() => handleCopy(msg.content, idx)}
-                  >
-                    <i id={`copy-icon-${idx}`} className="far fa-copy"></i>
+
+                <button type="submit" className="chatbot-reg-btn">
+                  <span>Start Chat</span>
+                  <i className="fas fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+          ) : (
+            <>
+              <div id="chatbot-messages" className="chatbot-messages">
+                {messages.map((msg, idx) => (
+                  <div key={idx} className={`message-wrapper ${msg.role}`}>
+                    {msg.role === "ai" && (
+                      <div className="message-avatar-wrap">
+                        <img 
+                          src="/assets/images/chatbot-kaira.webp" 
+                          alt="AI" 
+                          onError={(e) => { e.target.src = '/assets/images/ct-logo.png'; }}
+                        />
+                      </div>
+                    )}
+                    <div className="message-content-wrap">
+                      {msg.role === "ai" && (
+                        <span className="message-sender-name">Kaira</span>
+                      )}
+                      <div className={`message ${msg.role}`}>
+                        {msg.role === "ai" ? (
+                          <div dangerouslySetInnerHTML={parseMarkdown(msg.content)} />
+                        ) : (
+                          <div style={{ whiteSpace: "pre-line" }}>{msg.content}</div>
+                        )}
+                        
+                        <span className="msg-time">{formatTime(msg.timestamp)}</span>
+                        
+                        {msg.role === "ai" && !msg.isSystem && !msg.isTyping && (
+                          <div 
+                            className="msg-copy-btn" 
+                            title="Copy message"
+                            onClick={() => handleCopy(msg.content, idx)}
+                          >
+                            <i id={`copy-icon-${idx}`} className="far fa-copy"></i>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {isLoading && (
+                  <div className="message-wrapper ai">
+                    <div className="message-avatar-wrap">
+                      <img src="/assets/images/chatbot-kaira.webp" alt="AI" onError={(e) => { e.target.src = '/assets/images/ct-logo.png'; }} />
+                    </div>
+                    <div className="message-content-wrap">
+                      <span className="message-sender-name">Kaira</span>
+                      <div className="message ai typing">
+                        <div className="typing-dots">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 )}
+                <div ref={messagesEndRef} />
               </div>
-            ))}
 
-            {isLoading && (
-              <div className="message ai typing">
-                <div className="typing-dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
+              {/* Render Suggestions */}
+              {messages.length <= 1 && (
+                <div id="chatbot-suggestions" className="suggestion-vertical-menu" style={{ display: "flex", padding: "0 20px" }}>
+                  {suggestions.map((s, i) => (
+                    <button 
+                      key={i} 
+                      className="suggestion-btn"
+                      onClick={() => handleSend(s)}
+                    >
+                      {s} <i className="fas fa-chevron-right"></i>
+                    </button>
+                  ))}
                 </div>
+              )}
+
+              <div className="chatbot-disclaimer">
+                <i className="fas fa-shield-alt"></i>
+                <span>This AI bot can make mistakes. Please double-check information.</span>
               </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
 
-          {/* Render Suggestions */}
-          {messages.length <= 1 && (
-            <div id="chatbot-suggestions" className="suggestion-vertical-menu" style={{ display: "flex", padding: "0 20px" }}>
-              {suggestions.map((s, i) => (
+              <div className="chatbot-input-area">
+                <input 
+                  type="text" 
+                  id="chatbot-input" 
+                  className="chatbot-input" 
+                  placeholder="Ask about our services..." 
+                  value={inputVal}
+                  onChange={(e) => setInputVal(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
                 <button 
-                  key={i} 
-                  className="suggestion-btn"
-                  onClick={() => handleSend(s)}
+                  id="chatbot-send-btn" 
+                  className="chatbot-send"
+                  onClick={() => handleSend()}
+                  disabled={isLoading}
                 >
-                  {s} <i className="fas fa-chevron-right"></i>
+                  <i className="fas fa-paper-plane"></i>
                 </button>
-              ))}
-            </div>
+              </div>
+            </>
           )}
-
-          <div className="chatbot-disclaimer">
-            <i className="fas fa-shield-alt"></i>
-            <span>This AI bot can make mistakes. Please double-check information.</span>
-          </div>
-
-          <div className="chatbot-input-area">
-            <input 
-              type="text" 
-              id="chatbot-input" 
-              className="chatbot-input" 
-              placeholder="Ask about our services..." 
-              value={inputVal}
-              onChange={(e) => setInputVal(e.target.value)}
-              onKeyDown={handleKeyDown}
-            />
-            <button 
-              id="chatbot-send-btn" 
-              className="chatbot-send"
-              onClick={() => handleSend()}
-              disabled={isLoading}
-            >
-              <i className="fas fa-paper-plane"></i>
-            </button>
-          </div>
         </div>
       </div>
     </>
   );
 }
+
