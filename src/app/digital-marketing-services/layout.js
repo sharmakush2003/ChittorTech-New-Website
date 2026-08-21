@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Digital Marketing Services India | Online Marketing Agency | ChittorTech",
-  description: "Grow your business online with ChittorTech's full-stack digital marketing services. SEO, social media, PPC, content marketing, and email campaigns for Indian businesses.",
+  title: "Best Digital Marketing Services in India | Online Marketing Agency | ChittorTech",
+  description: "Grow your business online with the best digital marketing services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech. Book a free consultation.",
 };
 
 export default function Layout({ children }) {

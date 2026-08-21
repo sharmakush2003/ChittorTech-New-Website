@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "AI Manufacturing Software India | Smart Factory Solutions | ChittorTech",
-  description: "AI-powered manufacturing management software for Indian factories. Production planning, quality control, machine monitoring, workforce management, and supply chain automation.",
+  title: "Best AI Manufacturing Software in India | Smart Factory Solutions | ChittorTech",
+  description: "Streamline operations with the best ai manufacturing software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

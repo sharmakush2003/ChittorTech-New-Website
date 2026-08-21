@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Technical SEO Services India | Core Web Vitals & Site Speed | ChittorTech",
-  description: "Fix technical SEO issues and improve Core Web Vitals with ChittorTech. We handle site speed, structured data, crawlability, mobile optimisation, and indexing for Indian websites.",
+  title: "Best Technical SEO Services in India | Core Web Vitals & Site Speed | ChittorTech",
+  description: "Grow your business online with the best technical seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech. Book a free consultation.",
 };
 
 export default function Layout({ children }) {

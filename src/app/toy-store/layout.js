@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Toy Store Software India | Children's Shop Billing System | ChittorTech",
-  description: "Toy store billing and inventory management for Indian toy retailers. Age-category stock management, brand-wise inventory, GST invoicing, and seasonal sales analysis.",
+  title: "Best Toy Store Software in India | Children | ChittorTech",
+  description: "Boost your sales with the best toy store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

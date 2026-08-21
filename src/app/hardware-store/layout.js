@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Hardware Store Software India | Building Material Shop Billing | ChittorTech",
-  description: "Hardware and building material store software for Indian retailers. Manage tools, pipes, fittings, paints, and electrical items with unit-wise billing, GST, and supplier management.",
+  title: "Best Hardware Store Software in India | Building Material Shop Billing | ChittorTech",
+  description: "Boost your sales with the best hardware store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

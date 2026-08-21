@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Kirana Store Billing Software India | Local Shop POS System | ChittorTech",
-  description: "Simple and affordable billing software for kirana stores and local grocery shops in India. Fast billing, GST invoicing, stock management, credit tracking, and daily reports.",
+  title: "Best Kirana Store Billing Software in India | Local Shop POS System | ChittorTech",
+  description: "Boost your sales with the best kirana store billing software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

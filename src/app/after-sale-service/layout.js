@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "After Sale Service Management India | Service CRM Software | ChittorTech",
-  description: "After-sale service and warranty management software for Indian businesses. Track service requests, AMC contracts, technician assignments, spare parts, and customer satisfaction.",
+  title: "Best After Sale Service Management in India | Service CRM Software | ChittorTech",
+  description: "Streamline operations with the best after sale service management in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

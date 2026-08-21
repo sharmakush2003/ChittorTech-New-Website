@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Hospital Management Software India | Healthcare HMS | ChittorTech",
-  description: "Comprehensive hospital management software for Indian clinics and hospitals. Patient records, OPD/IPD management, billing, pharmacy, lab, and appointment scheduling in one system.",
+  title: "Best Hospital Management Software in India | Healthcare HMS | ChittorTech",
+  description: "Streamline operations with the best hospital management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

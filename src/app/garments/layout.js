@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Garment Store Software India | Clothing Shop Billing & Inventory | ChittorTech",
-  description: "Billing and inventory management software for garment and clothing stores in India. Size/colour-wise stock tracking, GST billing, fashion retail analytics, and customer purchase history.",
+  title: "Best Garment Store Software in India | Clothing Shop Billing & Inventory | ChittorTech",
+  description: "Boost your sales with the best garment store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

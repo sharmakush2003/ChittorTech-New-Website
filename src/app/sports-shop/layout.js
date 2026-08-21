@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Sports Shop Software India | Sports Equipment Store Billing | ChittorTech",
-  description: "Sports equipment store management software for Indian retailers. Manage cricket, badminton, football equipment inventory, GST billing, brand-wise stock, and customer loyalty points.",
+  title: "Best Sports Shop Software in India | Sports Equipment Store Billing | ChittorTech",
+  description: "Boost your sales with the best sports shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

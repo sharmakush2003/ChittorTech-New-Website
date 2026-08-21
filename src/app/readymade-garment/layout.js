@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Readymade Garment Software India | RMG Retail Billing System | ChittorTech",
-  description: "Readymade garment retail software for Indian clothing brands and manufacturers. Piece-wise billing, size/colour inventory, brand-wise reporting, and GST-compliant invoicing.",
+  title: "Best Readymade Garment Software in India | RMG Retail Billing System | ChittorTech",
+  description: "Boost your sales with the best readymade garment software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

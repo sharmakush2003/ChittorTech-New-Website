@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Trading Business Software India | Import Export Management | ChittorTech",
-  description: "Comprehensive trading business management software for Indian traders. Purchase, sales, stock transfer, multi-location inventory, party-wise ledger, and GST compliance in one platform.",
+  title: "Best Trading Business Software in India | Import Export Management | ChittorTech",
+  description: "Streamline operations with the best trading business software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

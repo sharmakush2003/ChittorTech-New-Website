@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Grocery Store Management Software India | Supermarket Billing | ChittorTech",
-  description: "Complete grocery store management software for Indian retail. Barcode scanning, expiry tracking, GST billing, supplier management, and inventory control for grocery shops.",
+  title: "Best Grocery Store Management Software in India | Supermarket Billing | ChittorTech",
+  description: "Boost your sales with the best grocery store management software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

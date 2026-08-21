@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Online Booking Admin Portal India | Hotel Reservation Management | ChittorTech",
-  description: "Powerful admin portal for managing hotel and property online bookings. View reservations, manage room inventory, process payments, and generate reports in real time.",
+  title: "Best Online Booking Admin Portal in India | Hotel Reservation Management | ChittorTech",
+  description: "Streamline operations with the best online booking admin portal in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

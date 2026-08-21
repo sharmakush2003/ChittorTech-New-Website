@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Stationery Store Software India | School & Office Supply Shop Billing | ChittorTech",
-  description: "Stationery shop billing and inventory software for Indian retailers. Manage books, pens, office supplies, seasonal school items, GST invoicing, and wholesale customer accounts.",
+  title: "Best Stationery Store Software in India | School & Office Supply Shop Billing | ChittorTech",
+  description: "Boost your sales with the best stationery store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

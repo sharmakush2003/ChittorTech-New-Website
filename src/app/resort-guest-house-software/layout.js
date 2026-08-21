@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Resort & Guest House Software India | Property Management System | ChittorTech",
-  description: "All-in-one software for resorts, guest houses, and boutique properties in India. Manage bookings, billing, housekeeping, staff, and guests with ChittorTech's PMS solution.",
+  title: "Best Resort & Guest House Software in India | Property Management System | ChittorTech",
+  description: "Streamline operations with the best resort & guest house software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

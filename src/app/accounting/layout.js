@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Accounting Software India | GST Billing & Finance Management | ChittorTech",
-  description: "GST-compliant accounting software for Indian SMEs. Manage accounts, invoicing, ledgers, balance sheets, and tax filings with ChittorTech's easy-to-use accounting system.",
+  title: "Best GST Accounting Software in India for Small Business | ChittorTech",
+  description: "Simplify tax filing and bookkeeping with the best GST accounting software in India. Manage ledgers, cash flow, balance sheets, and generate reports instantly. Get started today.",
 };
 
 export default function Layout({ children }) {

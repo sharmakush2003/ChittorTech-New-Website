@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Retail Store Management Software India | Multi-Store POS | ChittorTech",
-  description: "Retail store management software for single and multi-outlet Indian retailers. Centralized billing, inter-store stock transfers, unified customer data, and chain-wide sales analytics.",
+  title: "Best Retail Store Management Software in India | Multi-Store POS | ChittorTech",
+  description: "Boost your sales with the best retail store management software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

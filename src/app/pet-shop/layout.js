@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Pet Shop Software India | Pet Store Billing & Management | ChittorTech",
-  description: "Pet shop management software for Indian pet retailers. Manage pets, food, accessories, medicines, and grooming services. GST billing, stock tracking, and customer pet profiles.",
+  title: "Best Pet Shop Software in India | Pet Store Billing & Management | ChittorTech",
+  description: "Boost your sales with the best pet shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

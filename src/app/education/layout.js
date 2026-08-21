@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Education Management Software India | EdTech Solutions | ChittorTech",
-  description: "Digital solutions for the education sector in India. LMS, online classes, student portals, fee management, and institution administration tools for schools, colleges, and coaching centres.",
+  title: "Best Education Management Software in India | EdTech Solutions | ChittorTech",
+  description: "Streamline operations with the best education management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

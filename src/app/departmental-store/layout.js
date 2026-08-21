@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Departmental Store Software India | Multi-Section Retail POS | ChittorTech",
-  description: "Departmental store management software for Indian multi-section retail outlets. Manage clothing, electronics, groceries, and more with unified billing and inventory tracking.",
+  title: "Best Departmental Store Software in India | Multi-Section Retail POS | ChittorTech",
+  description: "Boost your sales with the best departmental store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

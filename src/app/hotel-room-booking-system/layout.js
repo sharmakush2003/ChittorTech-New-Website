@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Hotel Room Booking System India | Online Reservation Software | ChittorTech",
-  description: "Online hotel room booking system for Indian properties. Real-time availability, direct bookings, OTA integration, payment gateway, and automated confirmation. Reduce commission costs.",
+  title: "Best Hotel Room Booking System in India | Online Reservation Software | ChittorTech",
+  description: "Streamline operations with the best hotel room booking system in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

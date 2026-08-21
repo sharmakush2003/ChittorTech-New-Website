@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Liquor Store Software India | Wine Shop Billing & Inventory | ChittorTech",
-  description: "Liquor store billing and inventory management software for Indian wine and spirit shops. Brand-wise stock, age-restricted sales compliance, GST invoicing, and supplier purchase management.",
+  title: "Best Liquor Store Software in India | Wine Shop Billing & Inventory | ChittorTech",
+  description: "Boost your sales with the best liquor store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Fruits & Vegetable Shop Software India | Fresh Produce POS | ChittorTech",
-  description: "Billing software for fruits and vegetable shops in India. Weight-based billing, daily price updates, perishable stock management, GST invoicing, and vendor payment tracking.",
+  title: "Best Fruits & Vegetable Shop Software in India | Fresh Produce POS | ChittorTech",
+  description: "Boost your sales with the best fruits & vegetable shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Electronics & Smartphone Store Software India | Mobile Shop POS | ChittorTech",
-  description: "Electronics and mobile phone store management software for Indian retailers. IMEI tracking, warranty management, repair service billing, GST invoicing, and brand-wise inventory.",
+  title: "Best Electronics & Smartphone Store Software in India | Mobile Shop POS | ChittorTech",
+  description: "Streamline operations with the best electronics & smartphone store software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

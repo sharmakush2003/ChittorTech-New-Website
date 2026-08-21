@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Off-Page SEO Services India | Link Building & Authority | ChittorTech",
-  description: "Build domain authority and drive more organic traffic with ChittorTech's off-page SEO services. Quality backlink building, guest posting, and brand mentions for Indian businesses.",
+  title: "Best Off-Page SEO Services in India | Link Building & Authority | ChittorTech",
+  description: "Grow your business online with the best off-page seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech. Book a free consultation.",
 };
 
 export default function Layout({ children }) {

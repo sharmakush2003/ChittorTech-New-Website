@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Employee Background Verification India | Digital BGV Services | ChittorTech",
-  description: "Fast and reliable employee background verification services for Indian companies. Criminal record check, education verification, employment history, and address verification. API integration available.",
+  title: "Best Employee Background Verification in India | Digital BGV Services | ChittorTech",
+  description: "Streamline operations with the best employee background verification in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

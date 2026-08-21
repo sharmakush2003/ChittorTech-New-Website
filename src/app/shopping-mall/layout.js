@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Shopping Mall Software India | Mall Management System | ChittorTech",
-  description: "Comprehensive shopping mall management software for Indian malls. Tenant management, common area billing, visitor analytics, parking management, and mall-wide sales reporting.",
+  title: "Best Shopping Mall Software in India | Mall Management System | ChittorTech",
+  description: "Boost your sales with the best shopping mall software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "SEO Services India | Search Engine Optimization Company | ChittorTech",
-  description: "Rank higher on Google with ChittorTech's expert SEO services in India. On-page, off-page, and technical SEO strategies to drive organic traffic and generate more business leads.",
+  title: "Best SEO Services in India | Search Engine Optimization Company | ChittorTech",
+  description: "Grow your business online with the best seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech. Book a free consultation.",
 };
 
 export default function Layout({ children }) {

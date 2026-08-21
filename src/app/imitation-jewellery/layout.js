@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Imitation Jewellery Software India | Artificial Jewellery Shop POS | ChittorTech",
-  description: "Billing and inventory software for imitation and artificial jewellery shops in India. Design-wise stock, gold/silver-plated item tracking, GST invoicing, and wholesale billing.",
+  title: "Best Imitation Jewellery Software in India | Artificial Jewellery Shop POS | ChittorTech",
+  description: "Boost your sales with the best imitation jewellery software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

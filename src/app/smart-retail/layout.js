@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Smart Retail Software India | AI-Powered Retail Analytics | ChittorTech",
-  description: "Transform your retail business with ChittorTech's smart retail solutions. AI-driven demand forecasting, customer analytics, automated reordering, and omnichannel management for Indian retailers.",
+  title: "Best Smart Retail Software in India | AI-Powered Retail Analytics | ChittorTech",
+  description: "Boost your sales with the best smart retail software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

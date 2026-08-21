@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Logistics Management Software India | Transport & Fleet Management | ChittorTech",
-  description: "End-to-end logistics management software for Indian transport companies. Vehicle tracking, trip management, freight billing, driver records, and supply chain visibility in real time.",
+  title: "Best Logistics Management Software in India | Transport & Fleet Management | ChittorTech",
+  description: "Streamline operations with the best logistics management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

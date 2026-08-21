@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Gift Shop Software India | Gift Store Billing & Inventory | ChittorTech",
-  description: "Gift shop billing and management software for Indian gift retailers. Manage gift items, hampers, wrapping, seasonal inventory, corporate gifting orders, and GST invoicing.",
+  title: "Best Gift Shop Software in India | Gift Store Billing & Inventory | ChittorTech",
+  description: "Boost your sales with the best gift shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "On-Page SEO Services India | Website Optimization Experts | ChittorTech",
-  description: "Improve your website's Google ranking with professional on-page SEO services. ChittorTech optimises meta tags, content, URL structure, internal linking, and page speed for Indian websites.",
+  title: "Best On-Page SEO Services in India | Website Optimization Experts | ChittorTech",
+  description: "Grow your business online with the best on-page seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech. Book a free consultation.",
 };
 
 export default function Layout({ children }) {

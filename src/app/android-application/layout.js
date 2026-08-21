@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Android App Development India | Mobile App Development | ChittorTech",
-  description: "Custom Android application development for Indian businesses. From retail apps to enterprise solutions, ChittorTech builds scalable, user-friendly Android apps at affordable prices.",
+  title: "Best Android App Development in India | Mobile App Development | ChittorTech",
+  description: "Grow your business online with the best android app development in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech. Book a free consultation.",
 };
 
 export default function Layout({ children }) {

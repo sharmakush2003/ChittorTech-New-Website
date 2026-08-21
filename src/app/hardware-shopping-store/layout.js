@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Hardware Shopping Store Software India | DIY Retail POS | ChittorTech",
-  description: "Comprehensive billing and inventory software for hardware shopping stores in India. Multi-category product management, trade customer billing, GST compliance, and purchase order management.",
+  title: "Best Hardware Shopping Store Software in India | DIY Retail POS | ChittorTech",
+  description: "Boost your sales with the best hardware shopping store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

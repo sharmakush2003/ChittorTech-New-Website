@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Gift Toy & Sports Shop Software India | Combo Retail POS | ChittorTech",
-  description: "All-in-one POS software for gift, toy, and sports combination stores in India. Multi-category inventory, barcode billing, GST compliance, and sales performance analytics.",
+  title: "Best Gift Toy & Sports Shop Software in India | Combo Retail POS | ChittorTech",
+  description: "Boost your sales with the best gift toy & sports shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Omnichannel Retail Software India | Unified Commerce Platform | ChittorTech",
-  description: "Sell seamlessly across online and offline channels with ChittorTech's omnichannel retail platform. Unified inventory, orders, and customer data for Indian retailers and brands.",
+  title: "Best Omnichannel Retail Software in India | Unified Commerce Platform | ChittorTech",
+  description: "Streamline operations with the best omnichannel retail software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

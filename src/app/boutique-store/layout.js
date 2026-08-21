@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Boutique Store Software India | Fashion Boutique POS System | ChittorTech",
-  description: "Premium boutique management software for Indian fashion stores. Style-wise inventory, customer wishlists, loyalty programmes, GST billing, and designer collection management.",
+  title: "Best Boutique Store Software in India | Fashion Boutique POS System | ChittorTech",
+  description: "Boost your sales with the best boutique store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

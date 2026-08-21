@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "POS Software India | Point of Sale System for Retail | ChittorTech",
-  description: "Fast and reliable POS software for retail shops, supermarkets, and restaurants in India. Billing, inventory, GST, barcode, and customer management in one system. Book a demo.",
+  title: "Best Retail POS Billing Software in India | GST POS System | ChittorTech",
+  description: "Get the best Retail POS billing software in India. Perfect for retail stores, supermarkets & restaurants with barcode billing, inventory, GST compliance & offline mode. Book a free demo.",
 };
 
 export default function Layout({ children }) {

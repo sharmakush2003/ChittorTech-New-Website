@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Textile Business Software India | Fabric & Cloth Shop Management | ChittorTech",
-  description: "Textile and fabric shop management software for Indian cloth merchants. Meter-wise billing, GST on textiles, multi-unit stock management, and supplier purchase tracking.",
+  title: "Best Textile Business Software in India | Fabric & Cloth Shop Management | ChittorTech",
+  description: "Boost your sales with the best textile business software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

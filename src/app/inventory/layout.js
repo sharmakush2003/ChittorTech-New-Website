@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Inventory Management Software India | Stock Control | ChittorTech",
-  description: "Real-time inventory management software for Indian businesses. Track stock, manage warehouses, automate reorders, and reduce losses. Ideal for retail, wholesale, and manufacturing.",
+  title: "Best Inventory Management Software in India | Stock Control System | ChittorTech",
+  description: "Avoid stockouts and track inventory in real-time with the best warehouse & stock control software in India. Automated reordering, barcode tracking, and multi-location management.",
 };
 
 export default function Layout({ children }) {

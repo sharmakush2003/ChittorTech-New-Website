@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Departmental Hypermarket Software India | Enterprise Retail POS | ChittorTech",
-  description: "Enterprise-grade software for departmental hypermarkets in India. Centralized inventory, multi-floor billing, customer loyalty, staff scheduling, and comprehensive business analytics.",
+  title: "Best Departmental Hypermarket Software in India | Enterprise Retail POS | ChittorTech",
+  description: "Boost your sales with the best departmental hypermarket software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

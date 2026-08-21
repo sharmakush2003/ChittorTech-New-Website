@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "ERP Software India | Cloud ERP System for SMEs | ChittorTech",
-  description: "ChittorTech's cloud-based ERP software for Indian small and medium businesses. Manage inventory, accounting, HR, payroll & supply chain in one platform. Free demo available.",
+  title: "Best Cloud ERP Software in India for SMEs | ERP System | ChittorTech",
+  description: "Scale your business with the best Cloud ERP software in India. Automate manufacturing, inventory control, GST billing, HR, and accounting on a single secure platform. Request a free demo.",
 };
 
 export default function Layout({ children }) {

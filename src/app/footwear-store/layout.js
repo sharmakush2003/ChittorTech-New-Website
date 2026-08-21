@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Footwear Store Software India | Shoe Shop Billing System | ChittorTech",
-  description: "Footwear shop billing and inventory software for Indian shoe retailers. Size/colour-wise stock, brand management, GST invoicing, customer loyalty, and supplier tracking.",
+  title: "Best Footwear Store Software in India | Shoe Shop Billing System | ChittorTech",
+  description: "Boost your sales with the best footwear store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

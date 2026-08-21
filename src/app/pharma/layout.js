@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Pharma Distribution Software India | Medical Billing System | ChittorTech",
-  description: "Pharmacy and pharmaceutical distribution software for Indian medicine shops and distributors. Drug inventory, expiry tracking, GST billing, and sales reports. Compliant with Indian regulations.",
+  title: "Best Pharma Distribution Software in India | Medical Billing System | ChittorTech",
+  description: "Boost your sales with the best pharma distribution software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

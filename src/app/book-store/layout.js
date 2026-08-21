@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Book Store Software India | Library & Book Shop Billing | ChittorTech",
-  description: "Book store and library management software for Indian booksellers. ISBN-based inventory, author/publisher tracking, rental management, GST billing, and school book set management.",
+  title: "Best Book Store Software in India | Library & Book Shop Billing | ChittorTech",
+  description: "Boost your sales with the best book store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports. Request a free demo.",
 };
 
 export default function Layout({ children }) {

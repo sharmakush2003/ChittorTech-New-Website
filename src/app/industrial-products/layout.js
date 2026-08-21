@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Industrial Products Software India | B2B Wholesale Management | ChittorTech",
-  description: "Industrial products and wholesale business management software for Indian B2B companies. Manage bulk orders, credit accounts, trade discounts, purchase orders, and GST invoicing.",
+  title: "Best Industrial Products Software in India | B2B Wholesale Management | ChittorTech",
+  description: "Streamline operations with the best industrial products software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

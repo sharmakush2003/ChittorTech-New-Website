@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Minimart Billing Software India | Small Store POS System | ChittorTech",
-  description: "Easy-to-use minimart billing software for small Indian grocery and convenience stores. Fast checkout, GST billing, stock alerts, and daily sales summary reports.",
+  title: "Best Minimart Billing Software in India | Small Store POS System | ChittorTech",
+  description: "Streamline operations with the best minimart billing software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {

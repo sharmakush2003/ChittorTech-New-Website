@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Home Decor & Furniture Software India | Interior Store Billing | ChittorTech",
-  description: "Home decor and furniture store management software for Indian retailers. SKU-wise tracking, room-set inventory, installation scheduling, GST billing, and customer order management.",
+  title: "Best Home Decor & Furniture Software in India | Interior Store Billing | ChittorTech",
+  description: "Streamline operations with the best home decor & furniture software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 
 export default function Layout({ children }) {
