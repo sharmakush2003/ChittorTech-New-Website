@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Best AI Chatbot Development Company in India | ChittorTech",
+  title: "Best AI Chatbot Development India | ChittorTech",
   description: "Build custom AI chatbots, WhatsApp AI assistants, RAG document search, and 24/7 automated customer support for Indian businesses with ChittorTech.",
   keywords: [
     "AI Chatbot Development India",
@@ -13,7 +13,7 @@ export const metadata = {
     canonical: "https://chittortech.online/ai-chatbot-development",
   },
   openGraph: {
-    title: "Best AI Chatbot Development Company in India | ChittorTech",
+    title: "Best AI Chatbot Development Company in In | ChittorTech",
     description: "Build custom AI chatbots, WhatsApp AI assistants, RAG document search, and 24/7 automated customer support for Indian businesses with ChittorTech.",
     url: "https://chittortech.online/ai-chatbot-development",
     siteName: "ChittorTech",

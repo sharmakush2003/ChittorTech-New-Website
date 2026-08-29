@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Best Employee Background Verification in India | Digital BGV Services | ChittorTech",
+  title: "Best Employee Background Verification | ChittorTech",
   description: "Streamline operations with the best employee background verification in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 

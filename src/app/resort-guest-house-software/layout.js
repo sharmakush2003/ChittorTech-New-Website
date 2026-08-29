@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Best Resort & Guest House Software in India | Property Management System | ChittorTech",
+  title: "Best Resort & Guest House Software | ChittorTech",
   description: "Streamline operations with the best resort & guest house software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting. Get a free trial today.",
 };
 

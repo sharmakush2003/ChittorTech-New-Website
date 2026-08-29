@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Best GST Invoicing & Billing Software in India | ChittorTech",
+  title: "Best GST Invoicing Billing Software | ChittorTech",
   description: "Generate professional, tax-compliant GST bills instantly with the best invoicing software in India. Send automatic payment reminders, manage accounts receivable & get paid faster.",
 };
 

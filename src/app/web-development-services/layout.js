@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Best Web Development Services in India | Custom Website Design | ChittorTech",
+  title: "Best Web Development Services | ChittorTech",
   description: "Grow your business online with the best web development services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech. Book a free consultation.",
 };
 

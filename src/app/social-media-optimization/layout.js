@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Best Social Media Optimization in India | SMO Services | ChittorTech",
+  title: "Best Social Media Optimization SMO | ChittorTech",
   description: "Grow your business online with the best social media optimization in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech. Book a free consultation.",
 };
 

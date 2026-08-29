@@ -16,7 +16,7 @@ import TrialModal from "@/components/TrialModal";
 import SliderInitializer from "@/components/SliderInitializer";
 
 export const metadata = {
-  title: "Best AI & IT Solutions & IT Services in India – ChittorTech",
+  title: "Best AI & IT Services Company in India | ChittorTech",
   description: "Transforming businesses through innovative, cloud-based software solutions. AI & IT Solutions, AI Knowledge Base, AI Support Chatbot and website development.",
   icons: {
     icon: [
