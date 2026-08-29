@@ -120,7 +120,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Pharma Manufacturers <span>Industry in India</span></h1>
+                  <h2>Best AI & IT Solutions for Pharma Manufacturers <span>Industry in India</span></h2>
                   <p>The pharmaceutical sector is one of the most dynamic and highly regulated industries in India, especially in India. Pharma manufacturers here must comply with strict guidelines while managing complex processes such as <b>R&D, production, distribution, and quality control</b>.</p>
                   <p><b>ChittorTech</b> offers the best AI & IT Solutions for pharma manufacturers in India, helping businesses <b>optimize efficiency, ensure compliance, and scale operations seamlessly</b>.</p>
                </div>

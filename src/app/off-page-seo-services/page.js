@@ -122,7 +122,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>Best Off-Page SEO Company in India – <span> ChittorTech</span> </h1>
+                          <h2>Best Off-Page SEO Company in India – <span> ChittorTech</span> </h2>
                           <p>Looking to achieve a top rank on Google where most clicks happen? As a leading off-page SEO company in India, ChittorTech helps you climb the ranks with high-quality backlinks, strategic guest blogging, influencer outreach, and content promotion that drives referral traffic and boosts your online authority.</p>
                          <p>
   Get your free proposal from the 

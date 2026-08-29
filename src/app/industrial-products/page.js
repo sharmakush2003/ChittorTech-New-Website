@@ -120,7 +120,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Industrial Products Manufacturers <span>in India</span></h1>
+                  <h2>Best AI & IT Solutions for Industrial Products Manufacturers <span>in India</span></h2>
                   <p>The Industrial Products manufacturing sector is the backbone of the economy, covering a wide range of industries such as machinery, heavy equipment, tools, automotive components, and engineered products. With rising customer demands, global competition, and stricter compliance requirements, manufacturers must rely on advanced technology to ensure smooth operations and sustainable growth.</p>
                   <p><b>ChittorTech</b> delivers the Best AI & IT Solutions for Industrial Products Manufacturers in India, designed to streamline complex production cycles, manage vast inventories, and improve overall efficiency. Our AI & IT Solutions solution empowers businesses to integrate production, inventory, procurement, sales, finance, and compliance into one unified platform.</p>
                </div>

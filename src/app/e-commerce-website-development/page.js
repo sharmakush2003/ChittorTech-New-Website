@@ -122,7 +122,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>Best eCommerce Website Development in India –   <span>ChittorTech </span> </h1>
+                          <h2>Best eCommerce Website Development in India –   <span>ChittorTech </span> </h2>
                           <h5>Transform Your Online Store into a Sales Powerhouse</h5>
                           <p>At ChittorTech, we specialize in creating custom, engaging, and high-performing eCommerce websites that turn casual browsers into loyal customers. Our team works with businesses of all sizes to deliver eCommerce solutions that are on time, on budget, and built for success.</p>
                           <p>Whether you want to launch a new store or revamp your existing one, we provide end-to-end e-commerce website development in India, helping your business grow in the digital marketplace.</p>

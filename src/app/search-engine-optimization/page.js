@@ -120,7 +120,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>ChittorTech – Best SEO Company in India | <span>Best SEO Service in India</span> </h1>
+                          <h2>ChittorTech – Best SEO Company in India | <span>Best SEO Service in India</span> </h2>
                           <h5>ChittorTech: SEO Services in India – Driving Business Growth</h5>
                           <p>Are you a business owner looking to expand your customer base? Do you have a social media presence but struggle to get noticed? Have you seen countless businesses thriving online and wonder how you can do the same? The answer is  <strong>SEO – Search Engine Optimization.</strong> </p>
                          <p>

@@ -120,7 +120,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Employee Background Verification Services <span>in India .</span></h1>
+                  <h2>Best AI & IT Solutions for Employee Background Verification Services <span>in India .</span></h2>
                   <p>In today’s competitive business landscape, employee trust and credibility play a critical role in organizational success. Companies across industries are realizing that hiring the right talent is not just about qualifications and skills, but also about integrity, past behavior, and professional authenticity. This is where employee background verification (BGV) services become a necessity for HR departments, recruitment agencies, and corporates.</p>
                   <p>The process of verifying an employee’s history, educational qualifications, work experience, criminal record, financial background, and identity can be time-consuming and complex without the right technology. Manual checks often lead to delays, errors, and even compliance risks.</p>
                   <p>To streamline this, <strong>ChittorTech</strong> offers the Best AI & IT Solutions for Employee Background Verification Services in India, helping organizations and verification agencies digitize, automate, and accelerate the entire BGV process while ensuring compliance, accuracy, and efficiency.</p>

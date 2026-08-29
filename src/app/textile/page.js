@@ -120,7 +120,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>Best AI & IT Solutions for Textile Manufacturers  <span>Industry in India</span> </h1>
+                          <h2>Best AI & IT Solutions for Textile Manufacturers  <span>Industry in India</span> </h2>
                           <p>The <b>textile manufacturing industry in India</b> is a thriving ecosystem, ranging from traditional artisanal weaving to large-scale garment exports. Jaipur, with its globally admired block prints and handcrafted textiles, and Delhi NCR, with its industrial garment clusters, form the backbone of North India’s textile supply chain.</p>
 
                           <p>Yet, with opportunity comes complexity. Textile businesses here face challenges in <b> inventory control, order fulfillment, production scheduling, supplier management, and quality compliance.</b> Traditional manual systems or generic AI & IT Solutions solutions often fail to meet the unique needs of textile operations.</p>

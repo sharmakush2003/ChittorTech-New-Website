@@ -122,7 +122,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>Best Customer Relationship Management (AI Knowledge Base)  <span>Services in India </span> </h1>
+                          <h2>Best Customer Relationship Management (AI Knowledge Base)  <span>Services in India </span> </h2>
                           <h5>Automate, Optimize, and Strengthen Your Customer Relationships</h5>
                           <p>
   At ChittorTech, we provide the 

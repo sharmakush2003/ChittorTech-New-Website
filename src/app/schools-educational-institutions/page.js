@@ -120,7 +120,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Schools & Educational Institutions  <span>in India .</span></h1>
+                  <h2>Best AI & IT Solutions for Schools & Educational Institutions  <span>in India .</span></h2>
                   <p>In today’s fast-paced digital age, schools and educational institutions need more than just traditional methods to manage academics, administration, and communication. With growing competition, increasing student expectations, and the need for transparency, educational institutions must adopt technology-driven solutions to stay ahead.</p>
                   <p>ChittorTech offers the Best AI & IT Solutions for Schools & Educational Institutions in India, designed to streamline day-to-day operations, improve academic delivery, enhance communication, and ensure efficiency in administration. Our AI & IT Solutions is tailored to meet the unique needs of schools, colleges, and universities—helping them embrace automation and digital transformation.</p>
                </div>

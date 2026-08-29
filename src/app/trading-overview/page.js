@@ -120,7 +120,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Trading Businesses <span>in India | ChittorTech</span></h1>
+                  <h2>Best AI & IT Solutions for Trading Businesses <span>in India | ChittorTech</span></h2>
                   <p>In the fast-paced world of trading, businesses must constantly deal with fluctuating market demands, competitive pricing pressures, diverse customer expectations, and complex supply chain networks. Whether you operate in wholesale distribution, retail trading, import-export, FMCG, or multi-category trading, the ability to manage your operations seamlessly is the key to long-term success.</p>
                   <p>This is where <b>ChittorTech</b> steps in as a trusted technology partner. We provide the Best AI & IT Solutions for Trading Businesses in India, helping companies of all sizes streamline their operations, manage resources efficiently, and maximize profitability.</p>
                   <p>With our industry-specific AI & IT Solutions solution, you can overcome operational bottlenecks, improve customer satisfaction, and stay ahead of the competition.</p>

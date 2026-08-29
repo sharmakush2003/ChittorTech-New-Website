@@ -122,7 +122,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>ChittorTech – Best Android App Development <span>Company in India</span> </h1>
+                          <h2>ChittorTech – Best Android App Development <span>Company in India</span> </h2>
                           <p>In today’s mobile-first world, businesses cannot afford to ignore Android. With more than 87% of the global smartphone market share, Android has become the most powerful platform to connect, engage, and retain customers. At ChittorTech, we provide end-to-end Android app development services that empower businesses to create high-performing, user-friendly, and scalable mobile applications.</p>
                           <p>Whether you need an app for smartphones, tablets, smart TVs, or wearables, our expert team delivers solutions that align with your business goals and deliver an exceptional user experience.</p>
                          <p>

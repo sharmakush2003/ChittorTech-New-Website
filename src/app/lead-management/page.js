@@ -120,7 +120,7 @@ export default function Page() {
     <div className="row align-items-center">
       <div className="col-md-6">
         <div className="clothing-stores-text">
-          <h1>ChittorTech – Complete Lead Management System</h1>
+          <h2>ChittorTech – Complete Lead Management System</h2>
           <p>Every business wants more sales. But the truth is, getting leads is only the first step. The real challenge is managing those leads properly — from the first message to the final bill.</p>
           <p>Many companies lose potential customers because:</p>
           <ul>

@@ -121,7 +121,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>Top Responsive Web Design Company in India  <span>– ChittorTech</span> </h1>
+                          <h2>Top Responsive Web Design Company in India  <span>– ChittorTech</span> </h2>
                         <p>
   In today’s fast-paced digital world, having a website that looks good is no longer enough. Your website must be responsive, user-friendly, and adaptable across all devices. At ChittorTech, we are recognized as the 
   <a href="/modern-responsive-website-design" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>

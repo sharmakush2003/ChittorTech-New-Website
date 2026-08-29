@@ -122,7 +122,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>Best Social Media Optimization Company in India  <span>– ChittorTech</span> </h1>
+                          <h2>Best Social Media Optimization Company in India  <span>– ChittorTech</span> </h2>
                          <p>
                           Looking for the 
                           <strong>

@@ -120,7 +120,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Hospitals <span>in India .</span></h1>
+                  <h2>Best AI & IT Solutions for Hospitals <span>in India .</span></h2>
                   <p>In today’s fast-paced and technology-driven healthcare sector, hospitals are under constant pressure to deliver high-quality patient care, manage operational efficiency, comply with strict medical regulations, and maintain transparency in billing and administration. With growing patient demands, complex medical records, and large healthcare teams, hospitals require a robust AI & IT Solutions (Enterprise Resource Planning) software to streamline processes and ensure smooth day-to-day operations.</p>
                   <p><strong>ChittorTech</strong> provides the Best AI & IT Solutions for Hospitals in India, designed specifically for healthcare institutions. Our AI & IT Solutions solution empowers hospitals to integrate departments, automate workflows, enhance patient experiences, and make informed decisions with real-time insights.</p>
                </div>

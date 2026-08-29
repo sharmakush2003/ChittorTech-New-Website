@@ -123,7 +123,7 @@ export default function Page() {
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
 
-                          <h1>Best Web Development Company in India  <span>ChittorTech</span> </h1>
+                          <h2>Best Web Development Company in India  <span>ChittorTech</span> </h2>
                         <p>
                           With over 15 years of experience, ChittorTech is recognized as the 
                           <a href="/web-development-services" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>

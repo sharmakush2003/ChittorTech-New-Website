@@ -122,7 +122,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>Best Technical SEO Service in India –  <span>ChittorTech</span> </h1>
+                          <h2>Best Technical SEO Service in India –  <span>ChittorTech</span> </h2>
                           <p>
   In today’s digital era, having a visually appealing website is no longer enough. Your website needs to be technically optimized to rank higher on search engines and deliver an exceptional user experience. Technical SEO ensures that search engines can crawl, index, and rank your pages effectively. At ChittorTech, we provide the 
   <a href="/technical-seo-services" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>

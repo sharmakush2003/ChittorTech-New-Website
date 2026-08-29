@@ -120,7 +120,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Electronics & Smartphone Manufacturers <span>Industry in India</span> | ChittorTech</h1>
+                  <h2>Best AI & IT Solutions for Electronics & Smartphone Manufacturers <span>Industry in India</span> | ChittorTech</h2>
                   <p>In today’s competitive and technology-driven market, the Electronics & Smartphone manufacturing industry faces constant pressure to innovate, deliver faster, and maintain strict quality standards. With rapid advancements in technology, shorter product lifecycles, and increasing global demand, manufacturers need a powerful AI & IT Solutions solution to optimize every aspect of their business.</p>
                   <p><b>ChittorTech</b> provides the Best AI & IT Solutions for Electronics & Smartphone Manufacturers in India, enabling businesses to streamline production, manage complex supply chains, track inventory efficiently, and maintain regulatory compliance.</p>
                </div>

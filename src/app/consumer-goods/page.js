@@ -120,7 +120,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="seo-services">
                <div className="heading-wrap text-start">
-                  <h1>Best AI & IT Solutions for Consumer Goods Manufacturers <span>Industry in India</span></h1>
+                  <h2>Best AI & IT Solutions for Consumer Goods Manufacturers <span>Industry in India</span></h2>
                   <p>The Consumer Goods industry is one of the fastest-growing sectors in India, especially in regions like India, where manufacturing and distribution hubs play a crucial role in meeting market demand. Managing this industry involves complex operations such as <b>production planning, inventory control, supply chain management, order processing, and customer relationship management</b>. Without a robust digital solution, businesses often face challenges like delays, high costs, and inefficient workflows.</p>
                   <p><b>ChittorTech</b> is designed for Consumer Goods manufacturers in India, simplifying end-to-end business operations and helping manufacturers, wholesalers, and distributors <b>achieve higher efficiency, compliance, and profitability</b>.</p>
                </div>

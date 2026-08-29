@@ -122,7 +122,7 @@ export default function Page() {
                    <div className="col-md-6">
                      <div className="seo-services">
                         <div className="heading-wrap text-start">
-                          <h1>Best On-Page SEO Services in India –  <span>ChittorTech</span> </h1>
+                          <h2>Best On-Page SEO Services in India –  <span>ChittorTech</span> </h2>
                        <p>
   In today’s digital landscape, having a website alone is not enough. To achieve visibility and reach your target audience, your website must be optimized with 
   <a href="/on-page-seo-services" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>
