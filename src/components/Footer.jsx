@@ -393,7 +393,7 @@ export default function Footer() {
                   <div className="ct-footer-contact-icon"><i className="fa-solid fa-envelope"></i></div>
                   <div className="ct-footer-contact-text">
                     <div className="ct-footer-contact-label">Email</div>
-                    <a href="mailto:chittortech@gmail.com">chittortech@gmail.com</a>
+                    <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:chittortech@gmail.com" rel="nofollow">chittortech@gmail.com</a><!--/email_off-->' }} />
                   </div>
                 </div>
 

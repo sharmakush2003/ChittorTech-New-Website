@@ -403,7 +403,7 @@ export default function Page() {
                       <div className="info-icon mx-auto mb-3"><i className="fas fa-envelope"></i></div>
                       <div className="info-content">
                         <h5>Email Support</h5>
-                        <a href="mailto:chittortech@gmail.com" className="fw-bold text-dark">chittortech@gmail.com</a>
+                        <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:chittortech@gmail.com" rel="nofollow" className="fw-bold text-dark">chittortech@gmail.com</a><!--/email_off-->' }} />
                       </div>
                     </div>
                   </div>
