@@ -362,7 +362,7 @@ export default function Page() {
                       <div className="col-md-6">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img170.jpg" />
+                                 <img src="/assets/images/img170.jpg" alt="ChittorTech Omnichannel - img170" />
                               </figure>
                           </div>
                       </div>
@@ -402,7 +402,7 @@ export default function Page() {
                       <div className="col-md-6 order-md-1">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img171.jpg" />
+                                 <img src="/assets/images/img171.jpg" alt="ChittorTech Omnichannel - img171" />
                               </figure>
                           </div>
                       </div>
@@ -430,7 +430,7 @@ export default function Page() {
                       <div className="col-md-6">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img172.jpg" />
+                                 <img src="/assets/images/img172.jpg" alt="ChittorTech Omnichannel - img172" />
                               </figure>
                           </div>
                       </div>
@@ -476,7 +476,7 @@ export default function Page() {
                       <div className="col-md-6 order-md-1">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img173.jpg" />
+                                 <img src="/assets/images/img173.jpg" alt="ChittorTech Omnichannel - img173" />
                               </figure>
                           </div>
                       </div>
@@ -514,7 +514,7 @@ export default function Page() {
                       <div className="col-md-6">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img174.jpg" />
+                                 <img src="/assets/images/img174.jpg" alt="ChittorTech Omnichannel - img174" />
                               </figure>
                           </div>
                       </div>
@@ -640,7 +640,7 @@ export default function Page() {
                       <div className="col-md-6">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img175.jpg" />
+                                 <img src="/assets/images/img175.jpg" alt="ChittorTech Omnichannel - img175" />
                               </figure>
                           </div>
                       </div>
@@ -674,7 +674,7 @@ export default function Page() {
                       <div className="col-md-6 order-md-1">
                           <div className="clothing-stores-img text-start">
                               <figure>
-                                 <img src="/assets/images/img176.jpg" />
+                                 <img src="/assets/images/img176.jpg" alt="ChittorTech Omnichannel - img176" />
                               </figure>
                           </div>
                       </div>
@@ -692,19 +692,19 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/gro1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/gro1.png" alt="ChittorTech Omnichannel - gro1" /> </figure>
                                 <h3>4X Revenue Growth</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/gro2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/gro2.png" alt="ChittorTech Omnichannel - gro2" /> </figure>
                                 <h3>90% Faster Order Processing</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/gro3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/gro3.png" alt="ChittorTech Omnichannel - gro3" /> </figure>
                                 <h3>99% Reduced Manual Errors</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/gro4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/gro4.png" alt="ChittorTech Omnichannel - gro4" /> </figure>
                                 <h3>Trusted by thousands of retailers across India</h3>
                              </li>
                           </ul>

@@ -322,7 +322,7 @@ export default function Page() {
                    <div className="col-md-6">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/Competitive-pricing.png" />
+                              <img src="/assets/images/Competitive-pricing.png" alt="ChittorTech Bridal Store - Competitive pricing" />
                            </figure>
                        </div>
                    </div>
@@ -340,27 +340,27 @@ export default function Page() {
                   </div>
                   <div className="why-choose-grid">
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/core1.png" /> </figure>
+                        <figure> <img src="/assets/images/core1.png" alt="ChittorTech Bridal Store - core1" /> </figure>
                         <p>E-commerce Platforms</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/core2.png" /> </figure>
+                        <figure> <img src="/assets/images/core2.png" alt="ChittorTech Bridal Store - core2" /> </figure>
                         <p>Communication & Marketing</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/core3.png" /> </figure>
+                        <figure> <img src="/assets/images/core3.png" alt="ChittorTech Bridal Store - core3" /> </figure>
                         <p>Payment Solutions</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/core4.png" /> </figure>
+                        <figure> <img src="/assets/images/core4.png" alt="ChittorTech Bridal Store - core4" /> </figure>
                         <p>Business Applications</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/core5.png" /> </figure>
+                        <figure> <img src="/assets/images/core5.png" alt="ChittorTech Bridal Store - core5" /> </figure>
                         <p> Shipping & Logistics</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/core6.png" /> </figure>
+                        <figure> <img src="/assets/images/core6.png" alt="ChittorTech Bridal Store - core6" /> </figure>
                         <p> E-Invoicing & Compliance</p>
                      </div>
                   </div>

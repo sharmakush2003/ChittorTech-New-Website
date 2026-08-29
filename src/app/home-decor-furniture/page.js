@@ -576,7 +576,7 @@ export default function Page() {
          <div className="col-md-5 order-md-1">
             <div className="clothing-stores-img text-end">
                <figure>
-                  <img src="/assets/images/img104.jpg" />
+                  <img src="/assets/images/img104.jpg" alt="ChittorTech Home Decor Furniture - img104" />
                </figure>
             </div>
          </div>

@@ -200,9 +200,7 @@ export default function Page() {
          {/* Blog Main Image (on top) */}
       
         <div style={{ "marginBottom": "20px" }}>
-          <img src="/website_login/admin/uploads_img/" 
-               alt="" 
-               style={{ "width": "80%", "height": "auto", "borderRadius": "8px" }} />
+          <img src="/website_login/admin/uploads_img/" alt="ChittorTech Blog Master - uploads img" style={{ "width": "80%", "height": "auto", "borderRadius": "8px" }} />
         </div>
       
     <h1 className="blog-detail-title"></h1>

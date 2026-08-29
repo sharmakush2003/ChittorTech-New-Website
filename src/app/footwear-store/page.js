@@ -248,7 +248,7 @@ export default function Page() {
                    <div className="col-md-6 order-md-1">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/img216.jpg" />
+                              <img src="/assets/images/img216.jpg" alt="ChittorTech Footwear Store - img216" />
                            </figure>
                        </div>
                    </div>
@@ -281,7 +281,7 @@ export default function Page() {
                    <div className="col-md-6">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/img217.jpg" />
+                              <img src="/assets/images/img217.jpg" alt="ChittorTech Footwear Store - img217" />
                            </figure>
                        </div>
                    </div>
@@ -492,7 +492,7 @@ export default function Page() {
                    <div className="col-md-5 order-md-1">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img104.jpg" />
+                              <img src="/assets/images/img104.jpg" alt="ChittorTech Footwear Store - img104" />
                            </figure>
                        </div>
                    </div>

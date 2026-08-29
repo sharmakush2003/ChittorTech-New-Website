@@ -159,23 +159,23 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/po1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/po1.png" alt="ChittorTech Custom Crm Solutions - po1" /> </figure>
                                 <h3>Proven Expertise: Experienced in delivering custom AI Knowledge Base solutions for startups and Fortune 500 companies.</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/po2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/po2.png" alt="ChittorTech Custom Crm Solutions - po2" /> </figure>
                                 <h3>Seamless Automation: Automate sales, marketing, and support processes to improve efficiency.</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/po3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/po3.png" alt="ChittorTech Custom Crm Solutions - po3" /> </figure>
                                 <h3>Tailored Solutions: Our AI Knowledge Base systems are customized to meet the specific needs of your business.</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/po4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/po4.png" alt="ChittorTech Custom Crm Solutions - po4" /> </figure>
                                 <h3>Global Standards: Secure, scalable, and compliant with top-tier data security protocols.</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/po6.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/po6.png" alt="ChittorTech Custom Crm Solutions - po6" /> </figure>
                                 <h3>Dedicated Support: Continuous maintenance and upgrades to keep your AI Knowledge Base running smoothly.</h3>
                              </li>
                           </ul>
@@ -196,7 +196,7 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/cr1.png" /> </figure>
+                   <figure> <img src="/assets/images/cr1.png" alt="ChittorTech Custom Crm Solutions - cr1" /> </figure>
                    <h4>AI Knowledge Base Consulting</h4>
                    <p>We assist organizations in planning and managing AI Knowledge Base projects effectively:</p>
                    <ul className="list-unstyled">
@@ -208,7 +208,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/cr2.png" /> </figure>
+                   <figure> <img src="/assets/images/cr2.png" alt="ChittorTech Custom Crm Solutions - cr2" /> </figure>
                    <h4>AI Knowledge Base Implementation & Migration</h4>
                    <p>Streamline customer-facing operations and ensure smooth transitions:</p>
                    <ul className="list-unstyled">
@@ -220,7 +220,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/cr3.png" /> </figure>
+                   <figure> <img src="/assets/images/cr3.png" alt="ChittorTech Custom Crm Solutions - cr3" /> </figure>
                    <h4>Custom AI Knowledge Base Development</h4>
                    <p>Tailored AI Customer Engine development services to match your unique business requirements:</p>
                    <ul className="list-unstyled">
@@ -232,7 +232,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/cr4.png" /> </figure>
+                   <figure> <img src="/assets/images/cr4.png" alt="ChittorTech Custom Crm Solutions - cr4" /> </figure>
                    <h4> AI Knowledge Base Testing</h4>
                    <p>Ensure reliability, security, and performance:</p>
                    <ul className="list-unstyled">
@@ -244,7 +244,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/cr5.png" /> </figure>
+                   <figure> <img src="/assets/images/cr5.png" alt="ChittorTech Custom Crm Solutions - cr5" /> </figure>
                    <h4> Support & Evolution</h4>
                    <p>Ongoing monitoring, data administration, and upgrades:</p>
                    <ul className="list-unstyled">
@@ -256,7 +256,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/cr6.png" /> </figure>
+                   <figure> <img src="/assets/images/cr6.png" alt="ChittorTech Custom Crm Solutions - cr6" /> </figure>
                    <h4> AI Knowledge Base Campaign Management</h4>
                    <p>Manage marketing campaigns effectively with AI Knowledge Base systems in India:</p>
                    <ul className="list-unstyled">
@@ -567,7 +567,7 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/industry1.png" />
+                              <img src="/assets/images/industry1.png" alt="ChittorTech Custom Crm Solutions - industry1" />
                            </figure>
                        </div>
                    </div>

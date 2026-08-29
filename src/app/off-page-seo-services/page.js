@@ -158,15 +158,15 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/off1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/off1.png" alt="ChittorTech Off Page Seo Services - off1" /> </figure>
                                 <h3>Personalized Off-Page SEO Services tailored to your business needs</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/off2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/off2.png" alt="ChittorTech Off Page Seo Services - off2" /> </figure>
                                 <h3>98% Client Satisfaction Score with measurable results</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/off3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/off3.png" alt="ChittorTech Off Page Seo Services - off3" /> </figure>
                                 <h3>Successfully handled 8,000+ projects across industries</h3>
                              </li>
                           </ul>
@@ -194,9 +194,9 @@ export default function Page() {
                        </div>
                        <div className="expertise-wrap">
                            <ul>
-                              <li> <img src="/assets/images/check.png" />Personalized Off-Page SEO Services tailored to your business needs</li>
-                              <li> <img src="/assets/images/check.png" />98% Client Satisfaction Score with measurable results</li>
-                              <li> <img src="/assets/images/check.png" />Successfully handled 8,000+ projects across industries</li>
+                              <li> <img src="/assets/images/check.png" alt="ChittorTech Off Page Seo Services - check" />Personalized Off-Page SEO Services tailored to your business needs</li>
+                              <li> <img src="/assets/images/check.png" alt="ChittorTech Off Page Seo Services - check" />98% Client Satisfaction Score with measurable results</li>
+                              <li> <img src="/assets/images/check.png" alt="ChittorTech Off Page Seo Services - check" />Successfully handled 8,000+ projects across industries</li>
                            </ul>
                        </div>
                   </div>
@@ -214,35 +214,35 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/cp1.png" /> </figure>
+                   <figure> <img src="/assets/images/cp1.png" alt="ChittorTech Off Page Seo Services - cp1" /> </figure>
                    <h4>Content Promotion</h4>
                    <p>We promote your content through targeted campaigns and social media strategies to reach the right audience and earn backlinks from authoritative websites.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/cp2.png" /> </figure>
+                   <figure> <img src="/assets/images/cp2.png" alt="ChittorTech Off Page Seo Services - cp2" /> </figure>
                    <h4>Strategic Outreach</h4>
                    <p>We connect your content with respected bloggers, journalists, and influencers. Guest blogging and influencer collaborations help build credibility and online authority.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/cp3.png" /> </figure>
+                   <figure> <img src="/assets/images/cp3.png" alt="ChittorTech Off Page Seo Services - cp3" /> </figure>
                    <h4> Earned Media Expertise</h4>
                    <p>We create high-quality content like infographics, guest blogs, and videos to attract natural backlinks, boost brand authority, and drive meaningful traffic.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/cp4.png" /> </figure>
+                   <figure> <img src="/assets/images/cp4.png" alt="ChittorTech Off Page Seo Services - cp4" /> </figure>
                    <h4>Industry Networking</h4>
                    <p>With relationships across <strong>200+ industries,</strong> we secure backlinks quickly from trusted sources, increasing your site’s authority.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/cp5.png" /> </figure>
+                   <figure> <img src="/assets/images/cp5.png" alt="ChittorTech Off Page Seo Services - cp5" /> </figure>
                    <h4>Link Analysis & Disavow</h4>
                    <p>We monitor your backlink profile, remove spammy links, and ensure a clean, trustworthy SEO strategy.</p>
                  </div>
@@ -262,10 +262,10 @@ export default function Page() {
                        </div>
                        <div className="expertise-wrap">
                            <ul>
-                              <li> <img src="/assets/images/ccheck1.png" /> Best Off-Page SEO Company in India with proven expertise</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Ethical & Result-Oriented Strategies for long-term growth</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Expert Team with years of experience in link-building and outreach</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Transparent Reporting and measurable results</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech Off Page Seo Services - ccheck1" /> Best Off-Page SEO Company in India with proven expertise</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech Off Page Seo Services - ccheck1" /> Ethical & Result-Oriented Strategies for long-term growth</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech Off Page Seo Services - ccheck1" /> Expert Team with years of experience in link-building and outreach</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech Off Page Seo Services - ccheck1" /> Transparent Reporting and measurable results</li>
                            </ul>
                        </div>
                   </div>
@@ -322,77 +322,77 @@ export default function Page() {
                   </div>
                   <div className="why-choose-grid textile-manufacturers-wrap">
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t1.png" /> </figure>
+                        <figure> <img src="/assets/images/t1.png" alt="ChittorTech Off Page Seo Services - t1" /> </figure>
                         <h3>Travel & Tourism</h3>
                         <p>Backlinks from travel blogs, tourism boards, and directories</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t2.png" /> </figure>
+                        <figure> <img src="/assets/images/t2.png" alt="ChittorTech Off Page Seo Services - t2" /> </figure>
                         <h3>Education</h3>
                         <p>Authority building via academic websites and course platforms</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t3.png" /> </figure>
+                        <figure> <img src="/assets/images/t3.png" alt="ChittorTech Off Page Seo Services - t3" /> </figure>
                         <h3>eCommerce</h3>
                         <p>Links from product review sites, influencers, and niche blogs</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t4.png" /> </figure>
+                        <figure> <img src="/assets/images/t4.png" alt="ChittorTech Off Page Seo Services - t4" /> </figure>
                         <h3>Healthcare</h3>
                         <p>Backlinks from medical blogs, health directories, and forums</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t5.png" /> </figure>
+                        <figure> <img src="/assets/images/t5.png" alt="ChittorTech Off Page Seo Services - t5" /> </figure>
                         <h3>Real Estate</h3>
                         <p> Property portals, local business sites, and real estate blogs</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t6.png" /> </figure>
+                        <figure> <img src="/assets/images/t6.png" alt="ChittorTech Off Page Seo Services - t6" /> </figure>
                         <h3>Entertainment & Media</h3>
                         <p> Media publications, fan communities, and news sites </p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t7.png" /> </figure>
+                        <figure> <img src="/assets/images/t7.png" alt="ChittorTech Off Page Seo Services - t7" /> </figure>
                         <h3>Food & Beverage</h3>
                         <p> Recipe blogs, food review sites, and local directories </p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t8.png" /> </figure>
+                        <figure> <img src="/assets/images/t8.png" alt="ChittorTech Off Page Seo Services - t8" /> </figure>
                         <h3>Logistics & Transportation</h3>
                         <p>  Industry directories, business partners, and forums </p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t9.png" /> </figure>
+                        <figure> <img src="/assets/images/t9.png" alt="ChittorTech Off Page Seo Services - t9" /> </figure>
                         <h3>Retail</h3>
                         <p>Product review sites, lifestyle blogs, and marketplaces</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t10.png" /> </figure>
+                        <figure> <img src="/assets/images/t10.png" alt="ChittorTech Off Page Seo Services - t10" /> </figure>
                         <h3>Hospitality</h3>
                         <p>  Travel review sites, booking platforms, and influencer blogs</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t11.png" /> </figure>
+                        <figure> <img src="/assets/images/t11.png" alt="ChittorTech Off Page Seo Services - t11" /> </figure>
                         <h3>Sports & Fitness</h3>
                         <p> Fitness blogs, sports news sites, and local clubs </p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t12.png" /> </figure>
+                        <figure> <img src="/assets/images/t12.png" alt="ChittorTech Off Page Seo Services - t12" /> </figure>
                         <h3>Automotive</h3>
                         <p>Auto review sites, forums, and industry publications </p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t13.png" /> </figure>
+                        <figure> <img src="/assets/images/t13.png" alt="ChittorTech Off Page Seo Services - t13" /> </figure>
                         <h3>Finance</h3>
                         <p> Finance blogs, news sites, and professional directories</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t14.png" /> </figure>
+                        <figure> <img src="/assets/images/t14.png" alt="ChittorTech Off Page Seo Services - t14" /> </figure>
                         <h3>Luxury Goods</h3>
                         <p>High-end lifestyle magazines, influencer sites</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/t15.png" /> </figure>
+                        <figure> <img src="/assets/images/t15.png" alt="ChittorTech Off Page Seo Services - t15" /> </figure>
                         <h3>Artificial Intelligence</h3>
                         <p> Tech blogs, AI forums, and industry leaders </p>
                      </div>

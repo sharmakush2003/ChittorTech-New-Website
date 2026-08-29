@@ -377,23 +377,23 @@ export default function Page() {
             <div className="why-choose-wrap">
                <ul>
                   <li>
-                     <figure> <img src="/assets/images/ct1.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ct1.png" alt="ChittorTech Cosmetic Store - ct1" /> </figure>
                      <h3>3X Revenue Growth Rate</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/ct2.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ct2.png" alt="ChittorTech Cosmetic Store - ct2" /> </figure>
                      <h3>117+ Billing Hours Saved/Month</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/ct3.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ct3.png" alt="ChittorTech Cosmetic Store - ct3" /> </figure>
                      <h3>88% Faster Processing Time</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/ct4.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ct4.png" alt="ChittorTech Cosmetic Store - ct4" /> </figure>
                      <h3>Business Applications</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/ct5.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ct5.png" alt="ChittorTech Cosmetic Store - ct5" /> </figure>
                      <h3>S97% Reduction in Manual Errors</h3>
                   </li>
                </ul>
@@ -424,7 +424,7 @@ export default function Page() {
          <div className="col-md-5">
             <div className="clothing-stores-img text-end">
                <figure>
-                  <img src="/assets/images/img228.jpg" />
+                  <img src="/assets/images/img228.jpg" alt="ChittorTech Cosmetic Store - img228" />
                </figure>
             </div>
          </div>

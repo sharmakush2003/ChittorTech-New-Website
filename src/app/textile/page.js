@@ -211,70 +211,70 @@ export default function Page() {
                 <div className="row">
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp1.png" /> </figure>
+                         <figure> <img src="/assets/images/erp1.png" alt="ChittorTech Textile - erp1" /> </figure>
                          <h3>End-to-End Fabric Tracking</h3>
                          <p>From greige (raw fabric) to finished garment, track every stage with full traceability and zero leakages.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp2.png" /> </figure>
+                         <figure> <img src="/assets/images/erp2.png" alt="ChittorTech Textile - erp2" /> </figure>
                          <h3>Advanced Inventory Management </h3>
                          <p>Lot-wise tracking, rejection monitoring, and real-time stock updates reduce wastage.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp3.png" /> </figure>
+                         <figure> <img src="/assets/images/erp3.png" alt="ChittorTech Textile - erp3" /> </figure>
                          <h3>Supplier & Procurement Integration </h3>
                          <p>Streamlined purchase orders, delivery updates, and approval workflows minimize delays.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp4.png" /> </figure>
+                         <figure> <img src="/assets/images/erp4.png" alt="ChittorTech Textile - erp4" /> </figure>
                          <h3>GRN (Goods Received Note) Management</h3>
                          <p> Digitally verify goods received, calculate weight loss, and record rejections with accuracy.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp5.png" /> </figure>
+                         <figure> <img src="/assets/images/erp5.png" alt="ChittorTech Textile - erp5" /> </figure>
                          <h3>Production Program Management </h3>
                          <p>Allocate lots, calculate costs per unit, and track progress against deadlines.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp6.png" /> </figure>
+                         <figure> <img src="/assets/images/erp6.png" alt="ChittorTech Textile - erp6" /> </figure>
                          <h3>Automated Challans & Invoices</h3>
                          <p>Reduce billing errors with one-click generation of challans and invoices.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp7.png" /> </figure>
+                         <figure> <img src="/assets/images/erp7.png" alt="ChittorTech Textile - erp7" /> </figure>
                          <h3>Real-time Dashboards & Reporting</h3>
                          <p>Interactive dashboards provide visibility into orders, production, and lead times.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp8.png" /> </figure>
+                         <figure> <img src="/assets/images/erp8.png" alt="ChittorTech Textile - erp8" /> </figure>
                          <h3>Forecasting & Demand Planning</h3>
                          <p>Use past sales data to predict demand for fabrics, colors, and styles.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp9.png" /> </figure>
+                         <figure> <img src="/assets/images/erp9.png" alt="ChittorTech Textile - erp9" /> </figure>
                          <h3>Style & Material Master Data </h3>
                          <p>Centralized database for styles, measurement charts, pricing, and variants.</p>
                       </div>
                    </div>
                    <div className="col-md-3">
                       <div className="ai-solutions-features-box">
-                         <figure> <img src="/assets/images/erp10.png" /> </figure>
+                         <figure> <img src="/assets/images/erp10.png" alt="ChittorTech Textile - erp10" /> </figure>
                          <h3>Result </h3>
                          <p>With these modules, ChittorTech has proven itself as the best AI & IT Solutions for Textile Manufacturers Industry in India.</p>
                       </div>
@@ -293,32 +293,32 @@ export default function Page() {
                   </div>
                   <div className="why-choose-grid textile-manufacturers-wrap">
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ma1.png" /> </figure>
+                        <figure> <img src="/assets/images/ma1.png" alt="ChittorTech Textile - ma1" /> </figure>
                         <h3>Operational Efficiency</h3>
                         <p>Digitize manual workflows, eliminate duplication, and increase speed.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ma2.png" /> </figure>
+                        <figure> <img src="/assets/images/ma2.png" alt="ChittorTech Textile - ma2" /> </figure>
                         <h3>Cost Savings & Waste Reduction</h3>
                         <p> Accurate rejection management prevents raw material losses.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ma3.png" /> </figure>
+                        <figure> <img src="/assets/images/ma3.png" alt="ChittorTech Textile - ma3" /> </figure>
                         <h3>Improved Quality Control</h3>
                         <p>Traceability and audit trails ensure compliance with export standards.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ma4.png" /> </figure>
+                        <figure> <img src="/assets/images/ma4.png" alt="ChittorTech Textile - ma4" /> </figure>
                         <h3>Faster Delivery Cycles</h3>
                         <p>Automated documentation and streamlined production reduce lead times.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ma5.png" /> </figure>
+                        <figure> <img src="/assets/images/ma5.png" alt="ChittorTech Textile - ma5" /> </figure>
                         <h3>Scalability</h3>
                         <p> Adaptable for small handloom workshops in Jaipur and large exporters in NCR.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ma6.png" /> </figure>
+                        <figure> <img src="/assets/images/ma6.png" alt="ChittorTech Textile - ma6" /> </figure>
                         <h3>Data-driven Decisions</h3>
                         <p> Dashboards and analytics provide clear visibility to make smarter decisions. </p>
                      </div>
@@ -381,14 +381,14 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/industry1.png" />
+                              <img src="/assets/images/industry1.png" alt="ChittorTech Textile - industry1" />
                            </figure>
                        </div>
                    </div>
                    <div className="col-md-5">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/industry2.png" />
+                              <img src="/assets/images/industry2.png" alt="ChittorTech Textile - industry2" />
                            </figure>
                        </div>
                    </div>

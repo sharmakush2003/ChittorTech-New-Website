@@ -205,35 +205,35 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/ux1.png" /> </figure>
+                   <figure> <img src="/assets/images/ux1.png" alt="ChittorTech Modern Responsive Website Design - ux1" /> </figure>
                    <h4>Improved User Experience (UX)</h4>
                    <p>A responsive website ensures fluid navigation, readability, and functionality across all devices. Happy users are more likely to stay longer and convert into customers.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/ux2.png" /> </figure>
+                   <figure> <img src="/assets/images/ux2.png" alt="ChittorTech Modern Responsive Website Design - ux2" /> </figure>
                    <h4>Enhanced Rankings</h4>
                    <p>Mobile-friendly websites are favored by search engines, improving your chances of ranking higher on Google, Bing, and Yahoo.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/ux3.png" /> </figure>
+                   <figure> <img src="/assets/images/ux3.png" alt="ChittorTech Modern Responsive Website Design - ux3" /> </figure>
                    <h4>Increased Traffic</h4>
                    <p>A website that works on all devices attracts more visitors, reducing bounce rates and increasing engagement.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/ux4.png" /> </figure>
+                   <figure> <img src="/assets/images/ux4.png" alt="ChittorTech Modern Responsive Website Design - ux4" /> </figure>
                    <h4>Cost-Effective</h4>
                    <p>A single responsive website eliminates the need for multiple versions, saving time and development costs.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/ux5.png" /> </figure>
+                   <figure> <img src="/assets/images/ux5.png" alt="ChittorTech Modern Responsive Website Design - ux5" /> </figure>
                    <h4>Future-Proof Design</h4>
                    <p>Responsive design ensures your website remains compatible with new devices and screen sizes entering the market</p>
                  </div>

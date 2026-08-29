@@ -518,7 +518,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                       <div className="col-md-6">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img112.jpg" />
+                                 <img src="/assets/images/img112.jpg" alt="ChittorTech Pos - img112" />
                               </figure>
                           </div>
                       </div>
@@ -567,7 +567,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img113.jpg" />
+                              <img src="/assets/images/img113.jpg" alt="ChittorTech Pos - img113" />
                            </figure>
                        </div>
                    </div>
@@ -581,7 +581,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                 <div className="col-md-5">
                     <div className="clothing-stores-img">
                         <figure>
-                           <img src="/assets/images/img114.jpg" />
+                           <img src="/assets/images/img114.jpg" alt="ChittorTech Pos - img114" />
                         </figure>
                     </div>
                 </div>
@@ -627,7 +627,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img115.png" />
+                              <img src="/assets/images/img115.png" alt="ChittorTech Pos - img115" />
                            </figure>
                        </div>
                    </div>
@@ -641,7 +641,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                 <div className="col-md-5">
                     <div className="clothing-stores-img">
                         <figure>
-                           <img src="/assets/images/img116.jpg" />
+                           <img src="/assets/images/img116.jpg" alt="ChittorTech Pos - img116" />
                         </figure>
                     </div>
                 </div>
@@ -685,7 +685,7 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img117.jpg" />
+                              <img src="/assets/images/img117.jpg" alt="ChittorTech Pos - img117" />
                            </figure>
                        </div>
                    </div>
@@ -809,27 +809,27 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Pos - platforms1" /> </figure>
                                 <h3>E-commerce Platforms</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Pos - platforms2" /> </figure>
                                 <h3>Communication & Marketing Tools</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Pos - platforms3" /> </figure>
                                 <h3>Payment Solutions</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Pos - platforms4" /> </figure>
                                 <h3>Business Applications</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms5.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms5.png" alt="ChittorTech Pos - platforms5" /> </figure>
                                 <h3>Shipping & Logistics</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms6.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms6.png" alt="ChittorTech Pos - platforms6" /> </figure>
                                 <h3>E-Invoicing & Compliance platforms</h3>
                              </li>
                           </ul>
@@ -918,19 +918,19 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/41.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/41.png" alt="ChittorTech Pos - 41" /> </figure>
                                 <h3>4X Revenue Growth Rate</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/42.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/42.png" alt="ChittorTech Pos - 42" /> </figure>
                                 <h3>120+ Billing Hours Saved Per Month</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/43.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/43.png" alt="ChittorTech Pos - 43" /> </figure>
                                 <h3>90% Faster Processing Time</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/43.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/43.png" alt="ChittorTech Pos - 43" /> </figure>
                                 <h3>99% Decrease in Manual Errors</h3>
                              </li>
                           </ul>
@@ -986,14 +986,14 @@ A retail AI Assistant Software with advanced reporting and analytics delivers cl
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img119.png" />
+                              <img src="/assets/images/img119.png" alt="ChittorTech Pos - img119" />
                            </figure>
                        </div>
                    </div>
                    <div className="col-md-5">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/img120.jpg" />
+                              <img src="/assets/images/img120.jpg" alt="ChittorTech Pos - img120" />
                            </figure>
                        </div>
                    </div>

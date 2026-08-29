@@ -158,19 +158,19 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/h1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/h1.png" alt="ChittorTech On Page Seo Services - h1" /> </figure>
                                 <h3>Higher search engine rankings</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/h2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/h2.png" alt="ChittorTech On Page Seo Services - h2" /> </figure>
                                 <h3>Better user experience and navigation</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/h3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/h3.png" alt="ChittorTech On Page Seo Services - h3" /> </figure>
                                 <h3>Increased organic traffic</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/h4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/h4.png" alt="ChittorTech On Page Seo Services - h4" /> </figure>
                                 <h3>Greater conversion potential</h3>
                              </li>
                           </ul>
@@ -191,7 +191,7 @@ export default function Page() {
              <div className="row">
                <div className="col-md-3 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/c1.png" /> </figure>
+                   <figure> <img src="/assets/images/c1.png" alt="ChittorTech On Page Seo Services - c1" /> </figure>
                    <h4>Content Optimization</h4>
                    <ul className="list-unstyled">
                      <li>High-quality, relevant content tailored for your audience</li>
@@ -202,7 +202,7 @@ export default function Page() {
                </div>
                <div className="col-md-3 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/c21.png" /> </figure>
+                   <figure> <img src="/assets/images/c21.png" alt="ChittorTech On Page Seo Services - c21" /> </figure>
                    <h4>Meta Tags Optimization</h4>
                    <ul className="list-unstyled">
                      <li>Optimized title tags, meta descriptions, and meta keywords</li>
@@ -213,7 +213,7 @@ export default function Page() {
                </div>
                <div className="col-md-3 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/c31.png" /> </figure>
+                   <figure> <img src="/assets/images/c31.png" alt="ChittorTech On Page Seo Services - c31" /> </figure>
                    <h4>URL Optimization</h4>
                    <ul className="list-unstyled">
                      <li>SEO-friendly, readable URLs</li>
@@ -224,7 +224,7 @@ export default function Page() {
                </div>
                <div className="col-md-3 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/c41.png" /> </figure>
+                   <figure> <img src="/assets/images/c41.png" alt="ChittorTech On Page Seo Services - c41" /> </figure>
                    <h4>Site Structure Optimization</h4>
                    <ul className="list-unstyled">
                      <li>Clear navigation hierarchy</li>
@@ -247,7 +247,7 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/ap1.png" /> </figure>
+                   <figure> <img src="/assets/images/ap1.png" alt="ChittorTech On Page Seo Services - ap1" /> </figure>
                    <h4>Our approach</h4>
                    <ul className="list-unstyled">
                      <li>Identify target audience and search intent</li>
@@ -260,7 +260,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/ap2.png" /> </figure>
+                   <figure> <img src="/assets/images/ap2.png" alt="ChittorTech On Page Seo Services - ap2" /> </figure>
                    <h4>Best practices</h4>
                    <ul className="list-unstyled">
                      <li>Unique and descriptive titles</li>
@@ -272,7 +272,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/ap3.png" /> </figure>
+                   <figure> <img src="/assets/images/ap3.png" alt="ChittorTech On Page Seo Services - ap3" /> </figure>
                    <h4>Guidelines</h4>
                    <ul className="list-unstyled">
                      <li>H1 for main headings, H2-H6 for subheadings</li>
@@ -296,10 +296,10 @@ export default function Page() {
                        </div>
                        <div className="expertise-wrap">
                            <ul>
-                              <li> <img src="/assets/images/ccheck1.png" /> Improved Search Rankings: Boost website visibility and organic traffic</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Targeted Audience Reach: Attract users searching for your services</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Enhanced User Experience: Better navigation and readability</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Higher ROI: Increase conversions and business growth</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> Improved Search Rankings: Boost website visibility and organic traffic</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> Targeted Audience Reach: Attract users searching for your services</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> Enhanced User Experience: Better navigation and readability</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> Higher ROI: Increase conversions and business growth</li>
                            </ul>
                        </div>
                   </div>
@@ -326,11 +326,11 @@ export default function Page() {
                        </div>
                        <div className="expertise-wrap">
                            <ul>
-                              <li> <img src="/assets/images/ccheck1.png" /> High-quality backlink building from authoritative websites</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Guest posting & content outreach</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Social bookmarking and directory submissions</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Influencer collaborations to boost brand presence</li>
-                              <li> <img src="/assets/images/ccheck1.png" /> Online reputation management to enhance credibility</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> High-quality backlink building from authoritative websites</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> Guest posting & content outreach</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> Social bookmarking and directory submissions</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> Influencer collaborations to boost brand presence</li>
+                              <li> <img src="/assets/images/ccheck1.png" alt="ChittorTech On Page Seo Services - ccheck1" /> Online reputation management to enhance credibility</li>
                            </ul>
                            <p>Our off-page SEO strategies complement on-page optimization, ensuring your website ranks higher and attracts more qualified traffic.</p>
                        </div>

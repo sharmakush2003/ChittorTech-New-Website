@@ -158,47 +158,47 @@ export default function Page() {
                           <h4>ChittorTech offers customized SEO packages for multiple industries, including:</h4>
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/seo1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo1.png" alt="ChittorTech Search Engine Optimization - seo1" /> </figure>
                                 <h3>Education & Coaching</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo2.png" alt="ChittorTech Search Engine Optimization - seo2" /> </figure>
                                 <h3>Healthcare & Medica</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo3.png" alt="ChittorTech Search Engine Optimization - seo3" /> </figure>
                                 <h3>Finance & Banking</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo4.png" alt="ChittorTech Search Engine Optimization - seo4" /> </figure>
                                 <h3>Home Improvement & Construction</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo5.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo5.png" alt="ChittorTech Search Engine Optimization - seo5" /> </figure>
                                 <h3>Manufacturing & Industrial</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo6.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo6.png" alt="ChittorTech Search Engine Optimization - seo6" /> </figure>
                                 <h3>eCommerce & Retail</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo7.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo7.png" alt="ChittorTech Search Engine Optimization - seo7" /> </figure>
                                 <h3>Local Businesses</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo8.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo8.png" alt="ChittorTech Search Engine Optimization - seo8" /> </figure>
                                 <h3>Travel & Tourism</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo9.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo9.png" alt="ChittorTech Search Engine Optimization - seo9" /> </figure>
                                 <h3>Hotels & Hospitality</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo10.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo10.png" alt="ChittorTech Search Engine Optimization - seo10" /> </figure>
                                 <h3>Gambling & Casinos</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/seo12.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/seo12.png" alt="ChittorTech Search Engine Optimization - seo12" /> </figure>
                                 <h3>Astrology & Spiritual Services</h3>
                              </li>
                           </ul>
@@ -257,73 +257,73 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/ind1.png" /> </figure>
+                   <figure> <img src="/assets/images/ind1.png" alt="ChittorTech Search Engine Optimization - ind1" /> </figure>
                    <h4>AI Tools SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/ind2.png" /> </figure>
+                   <figure> <img src="/assets/images/ind2.png" alt="ChittorTech Search Engine Optimization - ind2" /> </figure>
                    <h4>Astrology SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/ind3.png" /> </figure>
+                   <figure> <img src="/assets/images/ind3.png" alt="ChittorTech Search Engine Optimization - ind3" /> </figure>
                    <h4>Automobile SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/ind4.png" /> </figure>
+                   <figure> <img src="/assets/images/ind4.png" alt="ChittorTech Search Engine Optimization - ind4" /> </figure>
                    <h4>Consultant SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/ind5.png" /> </figure>
+                   <figure> <img src="/assets/images/ind5.png" alt="ChittorTech Search Engine Optimization - ind5" /> </figure>
                    <h4>Coworking SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ind6.png" /> </figure>
+                   <figure> <img src="/assets/images/ind6.png" alt="ChittorTech Search Engine Optimization - ind6" /> </figure>
                    <h4>Cyber Security SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ind7.png" /> </figure>
+                   <figure> <img src="/assets/images/ind7.png" alt="ChittorTech Search Engine Optimization - ind7" /> </figure>
                    <h4>Data Recovery SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ind8.png" /> </figure>
+                   <figure> <img src="/assets/images/ind8.png" alt="ChittorTech Search Engine Optimization - ind8" /> </figure>
                    <h4>Data Science SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ind9.png" /> </figure>
+                   <figure> <img src="/assets/images/ind9.png" alt="ChittorTech Search Engine Optimization - ind9" /> </figure>
                    <h4>Dentists SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ind10.png" /> </figure>
+                   <figure> <img src="/assets/images/ind10.png" alt="ChittorTech Search Engine Optimization - ind10" /> </figure>
                    <h4>eCommerce SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ind11.png" /> </figure>
+                   <figure> <img src="/assets/images/ind11.png" alt="ChittorTech Search Engine Optimization - ind11" /> </figure>
                    <h4>Education SEO Services</h4>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ind12.png" /> </figure>
+                   <figure> <img src="/assets/images/ind12.png" alt="ChittorTech Search Engine Optimization - ind12" /> </figure>
                    <h4>Finance SEO Services</h4>
                  </div>
                </div>

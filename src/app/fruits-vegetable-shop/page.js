@@ -194,19 +194,19 @@ export default function Page() {
             <div className="why-choose-wrap">
                <ul>
                   <li>
-                     <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Fruits Vegetable Shop - platforms1" /> </figure>
                      <h3>Real-time expense, revenue, and profit tracking</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Fruits Vegetable Shop - platforms2" /> </figure>
                      <h3>GST-compliant invoicing & returns</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Fruits Vegetable Shop - platforms3" /> </figure>
                      <h3>Cash register & card/UPI integration</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Fruits Vegetable Shop - platforms4" /> </figure>
                      <h3>Detailed reporting & analytics with 150+ reports</h3>
                   </li>
                </ul>
@@ -496,19 +496,19 @@ export default function Page() {
             <div className="why-choose-wrap">
                <ul>
                   <li>
-                     <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Fruits Vegetable Shop - platforms1" /> </figure>
                      <h3>1X Revenue Growth Rate</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Fruits Vegetable Shop - platforms2" /> </figure>
                      <h3>46+ Billing Hours Saved/Month</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Fruits Vegetable Shop - platforms3" /> </figure>
                      <h3>34% Faster Processing Time</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Fruits Vegetable Shop - platforms4" /> </figure>
                      <h3>38% Decrease in Manual Errors</h3>
                   </li>
                </ul>

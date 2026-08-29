@@ -482,19 +482,19 @@ export default function Page() {
             <div className="why-choose-wrap">
                <ul>
                   <li>
-                     <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Liquor Store - platforms1" /> </figure>
                      <h3>4X Revenue Growth Rate</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Liquor Store - platforms2" /> </figure>
                      <h3>65+ Billing Hours Saved per Month</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Liquor Store - platforms3" /> </figure>
                      <h3>49% Faster Processing Time</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Liquor Store - platforms4" /> </figure>
                      <h3>53% Reduction in Manual Errors</h3>
                   </li>
                </ul>

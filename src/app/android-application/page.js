@@ -374,27 +374,27 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/ja1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/ja1.png" alt="ChittorTech Android Application - ja1" /> </figure>
                                 <h3>Kotlin & Java</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/ja2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/ja2.png" alt="ChittorTech Android Application - ja2" /> </figure>
                                 <h3>Android Studio & SDK</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/ja3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/ja3.png" alt="ChittorTech Android Application - ja3" /> </figure>
                                 <h3>Firebase (Push Notifications, Analytics, ML Kit)</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/ja4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/ja4.png" alt="ChittorTech Android Application - ja4" /> </figure>
                                 <h3>Google Play Services (Maps, APIs, Authentication)</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/ja5.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/ja5.png" alt="ChittorTech Android Application - ja5" /> </figure>
                                 <h3>MVVM Architecture & Jetpack Components</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/ja6.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/ja6.png" alt="ChittorTech Android Application - ja6" /> </figure>
                                 <h3>Glide, Retrofit, and RXJava2</h3>
                              </li>
                           </ul>
@@ -442,42 +442,42 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/op1.png" /> </figure>
+                   <figure> <img src="/assets/images/op1.png" alt="ChittorTech Android Application - op1" /> </figure>
                    <h4>Custom Android App Development</h4>
                    <p>We design and develop tailor-made Android applications that meet your business objectives, whether you are a startup, SME, or enterprise. Every app is built to match your brand identity and target audience.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/op2.png" /> </figure>
+                   <figure> <img src="/assets/images/op2.png" alt="ChittorTech Android Application - op2" /> </figure>
                    <h4>E-commerce App Development</h4>
                    <p>Mobile commerce is booming, and we provide feature-rich Android apps with secure payment gateways, shopping carts, product catalogs, and push notifications to boost customer engagement and sales.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/op3.png" /> </figure>
+                   <figure> <img src="/assets/images/op3.png" alt="ChittorTech Android Application - op3" /> </figure>
                    <h4>On-Demand App Solutions</h4>
                    <p>From food delivery to taxi booking and healthcare to fitness, we build on-demand Android applications that simplify everyday services and ensure seamless user experiences.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/op4.png" /> </figure>
+                   <figure> <img src="/assets/images/op4.png" alt="ChittorTech Android Application - op4" /> </figure>
                    <h4>Enterprise Mobility Solutions</h4>
                    <p>For large organizations, we develop powerful apps that streamline operations, improve employee collaboration, and enable secure access to data on the go.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/op5.png" /> </figure>
+                   <figure> <img src="/assets/images/op5.png" alt="ChittorTech Android Application - op5" /> </figure>
                    <h4>UI/UX Design</h4>
                    <p>A good app isn’t just about functionality—it’s about design too. Our creative design team focuses on intuitive, user-friendly interfaces that make apps visually appealing and easy to navigate.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/op6.png" /> </figure>
+                   <figure> <img src="/assets/images/op6.png" alt="ChittorTech Android Application - op6" /> </figure>
                    <h4>App Maintenance and Support</h4>
                    <p>Technology evolves, and so do apps. We provide continuous support, performance monitoring, bug fixing, and regular updates to keep your Android app secure, fast, and reliable.</p>
                  </div>

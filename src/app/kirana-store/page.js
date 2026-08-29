@@ -620,19 +620,19 @@ export default function Page() {
             <div className="why-choose-wrap">
                <ul>
                   <li>
-                     <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Kirana Store - platforms1" /> </figure>
                      <h3>2X Revenue Growth Rate</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Kirana Store - platforms2" /> </figure>
                      <h3>69+ Billing Hours Saved/Month</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Kirana Store - platforms3" /> </figure>
                      <h3>51% Faster Processing Time</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Kirana Store - platforms4" /> </figure>
                      <h3>57% Decrease in Manual Errors</h3>
                   </li>
                </ul>

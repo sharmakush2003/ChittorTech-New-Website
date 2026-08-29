@@ -269,7 +269,7 @@ export default function Page() {
                    <div className="col-md-6 order-md-1">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/img207.jpg" />
+                              <img src="/assets/images/img207.jpg" alt="ChittorTech Readymade Garment - img207" />
                            </figure>
                        </div>
                    </div>
@@ -302,7 +302,7 @@ export default function Page() {
                    <div className="col-md-6">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/img208.jpg" />
+                              <img src="/assets/images/img208.jpg" alt="ChittorTech Readymade Garment - img208" />
                            </figure>
                        </div>
                    </div>
@@ -417,7 +417,7 @@ export default function Page() {
                    <div className="col-md-5 order-md-1">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img210.jpg" />
+                              <img src="/assets/images/img210.jpg" alt="ChittorTech Readymade Garment - img210" />
                            </figure>
                        </div>
                    </div>
@@ -441,7 +441,7 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img211.jpg" />
+                              <img src="/assets/images/img211.jpg" alt="ChittorTech Readymade Garment - img211" />
                            </figure>
                        </div>
                    </div>
@@ -469,7 +469,7 @@ export default function Page() {
                    <div className="col-md-5 order-md-1">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img212.jpg" />
+                              <img src="/assets/images/img212.jpg" alt="ChittorTech Readymade Garment - img212" />
                            </figure>
                        </div>
                    </div>
@@ -510,7 +510,7 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img213.jpg" />
+                              <img src="/assets/images/img213.jpg" alt="ChittorTech Readymade Garment - img213" />
                            </figure>
                        </div>
                    </div>

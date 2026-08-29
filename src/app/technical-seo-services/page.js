@@ -224,7 +224,7 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/au1.png" /> </figure>
+                   <figure> <img src="/assets/images/au1.png" alt="ChittorTech Technical Seo Services - au1" /> </figure>
                    <h4>Technical SEO Audit</h4>
                    <p>We conduct a detailed audit of your website to identify technical issues and opportunities for improvement. This includes checking:</p>
                    <ul className="list-unstyled">
@@ -238,7 +238,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/au2.png" /> </figure>
+                   <figure> <img src="/assets/images/au2.png" alt="ChittorTech Technical Seo Services - au2" /> </figure>
                    <h4>Page Speed Optimization</h4>
                    <p>Our experts ensure fast-loading pages by:</p>
                    <ul className="list-unstyled">
@@ -252,63 +252,63 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/au3.png" /> </figure>
+                   <figure> <img src="/assets/images/au3.png" alt="ChittorTech Technical Seo Services - au3" /> </figure>
                    <h4> Mobile Optimization</h4>
                    <p>Google prioritizes mobile-first indexing. Our team ensures your website is responsive, fast, and fully functional on all devices.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/au4.png" /> </figure>
+                   <figure> <img src="/assets/images/au4.png" alt="ChittorTech Technical Seo Services - au4" /> </figure>
                    <h4> Structured Data & Schema Markup</h4>
                    <p>Schema markup helps search engines understand your content and display rich snippets in search results, improving CTR.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/au5.png" /> </figure>
+                   <figure> <img src="/assets/images/au5.png" alt="ChittorTech Technical Seo Services - au5" /> </figure>
                    <h4>Crawl Error Fixing & Indexing Optimization</h4>
                    <p>We identify and fix crawl errors, broken links, orphan pages, and redirects to ensure smooth indexing by search engines.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/au6.png" /> </figure>
+                   <figure> <img src="/assets/images/au6.png" alt="ChittorTech Technical Seo Services - au6" /> </figure>
                    <h4>XML Sitemap & Robots.txt Optimization</h4>
                    <p>We create and optimize sitemaps and robots.txt files, directing search engines to index the right pages</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/au7.png" /> </figure>
+                   <figure> <img src="/assets/images/au7.png" alt="ChittorTech Technical Seo Services - au7" /> </figure>
                    <h4>Duplicate Content & Canonicalization</h4>
                    <p>Using canonical tags and URL optimization, we prevent duplicate content issues and guide search engines to the preferred version of pages.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/au8.png" /> </figure>
+                   <figure> <img src="/assets/images/au8.png" alt="ChittorTech Technical Seo Services - au8" /> </figure>
                    <h4>HTTPS & Website Security</h4>
                    <p>A secure website builds user trust and improves Google rankings. We implement SSL certificates and ensure HTTPS for all pages.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/au9.png" /> </figure>
+                   <figure> <img src="/assets/images/au9.png" alt="ChittorTech Technical Seo Services - au9" /> </figure>
                    <h4> Penalty Recovery</h4>
                    <p>If your website has been penalized by Google, we identify the cause, implement fixes, and help recover lost rankings.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/au10.png" /> </figure>
+                   <figure> <img src="/assets/images/au10.png" alt="ChittorTech Technical Seo Services - au10" /> </figure>
                    <h4>Website Migration Support</h4>
                    <p>We manage smooth domain or platform migrations while maintaining rankings, updating links, and eliminating duplicate content.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/au11.png" /> </figure>
+                   <figure> <img src="/assets/images/au11.png" alt="ChittorTech Technical Seo Services - au11" /> </figure>
                    <h4>Backlink Audit & Cleanup</h4>
                    <p>We analyze and remove harmful backlinks to improve domain authority and search engine trustworthiness.</p>
                  </div>
@@ -524,7 +524,7 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/industry1.png" />
+                              <img src="/assets/images/industry1.png" alt="ChittorTech Technical Seo Services - industry1" />
                            </figure>
                        </div>
                    </div>

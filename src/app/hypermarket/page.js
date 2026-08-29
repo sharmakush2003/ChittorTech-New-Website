@@ -636,19 +636,19 @@ export default function Page() {
             <div className="why-choose-wrap">
                <ul>
                   <li>
-                     <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Hypermarket - platforms1" /> </figure>
                      <h3>3X Revenue growth rate</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Hypermarket - platforms2" /> </figure>
                      <h3>96+ Billing hours saved per month</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Hypermarket - platforms3" /> </figure>
                      <h3>72% Faster processing time</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Hypermarket - platforms4" /> </figure>
                      <h3>79% Decrease in manual errors</h3>
                   </li>
                </ul>
@@ -742,27 +742,27 @@ export default function Page() {
               <div className="why-choose-wrap">
                  <ul>
                     <li>
-                       <figure> <img src="/assets/images/ns1.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns1.png" alt="ChittorTech Hypermarket - ns1" /> </figure>
                        <h3>E-commerce Platforms</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns2.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns2.png" alt="ChittorTech Hypermarket - ns2" /> </figure>
                        <h3> Communication & Marketing Tools</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns3.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns3.png" alt="ChittorTech Hypermarket - ns3" /> </figure>
                        <h3> Payment Solutions</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns4.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns4.png" alt="ChittorTech Hypermarket - ns4" /> </figure>
                        <h3>Business Applications</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns5.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns5.png" alt="ChittorTech Hypermarket - ns5" /> </figure>
                        <h3>Shipping & Logistics</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns6.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns6.png" alt="ChittorTech Hypermarket - ns6" /> </figure>
                        <h3>E-Invoicing & Compliance</h3>
                     </li>
                  </ul>
@@ -802,105 +802,105 @@ export default function Page() {
           <div className="row">
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                <figure> <img src="/assets/images/utq.png" /> </figure>
+                <figure> <img src="/assets/images/utq.png" alt="ChittorTech Hypermarket - utq" /> </figure>
                 <h4>Optimized Inventory Management</h4>
                 <p>Keep accurate stock levels, track expiry dates, and automate reorders to avoid stock-outs.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                <figure> <img src="/assets/images/ut2.png" /> </figure>
+                <figure> <img src="/assets/images/ut2.png" alt="ChittorTech Hypermarket - ut2" /> </figure>
                 <h4>Centralized Multi-Store Management</h4>
                 <p>Manage multiple hypermarket branches from a single platform with unified inventory, reporting, and customer data.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                <figure> <img src="/assets/images/ut3.png" /> </figure>
+                <figure> <img src="/assets/images/ut3.png" alt="ChittorTech Hypermarket - ut3" /> </figure>
                 <h4>Seamless Stock Transfers</h4>
                 <p>Easily transfer goods between stores to balance inventory and meet customer demand efficiently.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                <figure> <img src="/assets/images/ut4.png" /> </figure>
+                <figure> <img src="/assets/images/ut4.png" alt="ChittorTech Hypermarket - ut4" /> </figure>
                 <h4>Enhanced Customer Engagement</h4>
                 <p>Use loyalty points, membership programs, and personalized promotions to improve customer retention.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut5.png" /> </figure>
+                <figure> <img src="/assets/images/ut5.png" alt="ChittorTech Hypermarket - ut5" /> </figure>
                 <h4>Accurate Billing & POS </h4>
                 <p>Streamline checkout with multiple billing counters, GST-compliant invoicing, and integrated payment gateways.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut6.png" /> </figure>
+                <figure> <img src="/assets/images/ut6.png" alt="ChittorTech Hypermarket - ut6" /> </figure>
                 <h4>Advanced Reporting & Analytics</h4>
                 <p>Access 150+ MIS reports for sales, inventory, and financial insights to make data-driven decisions.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut7.png" /> </figure>
+                <figure> <img src="/assets/images/ut7.png" alt="ChittorTech Hypermarket - ut7" /> </figure>
                 <h4>Cloud-Based Access</h4>
                 <p>Monitor and manage your hypermarket anytime, anywhere, without hardware restrictions.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut8.png" /> </figure>
+                <figure> <img src="/assets/images/ut8.png" alt="ChittorTech Hypermarket - ut8" /> </figure>
                 <h4>Financial Management</h4>
                 <p>Maintain accurate accounts, track expenses, and ensure compliance with GST-integrated accounting.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut9.png" /> </figure>
+                <figure> <img src="/assets/images/ut9.png" alt="ChittorTech Hypermarket - ut9" /> </figure>
                 <h4>Omnichannel Ecommerce</h4>
                 <p>Sell online seamlessly, synchronize inventory, and provide a smooth shopping experience to customers.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut10.png" /> </figure>
+                <figure> <img src="/assets/images/ut10.png" alt="ChittorTech Hypermarket - ut10" /> </figure>
                 <h4>User-Friendly Interface </h4>
                 <p>Minimal learning curve for staff with intuitive design for effortless operations.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut11.png" /> </figure>
+                <figure> <img src="/assets/images/ut11.png" alt="ChittorTech Hypermarket - ut11" /> </figure>
                 <h4>Weighing Scale & Barcode Integration</h4>
                 <p> Accurate product billing and professional labeling for efficient store operations.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut12.png" /> </figure>
+                <figure> <img src="/assets/images/ut12.png" alt="ChittorTech Hypermarket - ut12" /> </figure>
                 <h4>Customer Feedback & Reviews</h4>
                 <p>Collect insights directly from customers to improve services and satisfaction.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut13.png" /> </figure>
+                <figure> <img src="/assets/images/ut13.png" alt="ChittorTech Hypermarket - ut13" /> </figure>
                 <h4>WhatsApp Integration</h4>
                 <p> Engage customers instantly with updates, promotions, and notifications.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut14.png" /> </figure>
+                <figure> <img src="/assets/images/ut14.png" alt="ChittorTech Hypermarket - ut14" /> </figure>
                 <h4>Reduced Manual Errors</h4>
                 <p>Automate routine tasks to save time, improve efficiency, and reduce human errors.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ut15.png" /> </figure>
+                <figure> <img src="/assets/images/ut15.png" alt="ChittorTech Hypermarket - ut15" /> </figure>
                 <h4>Increased Revenue & Efficiency</h4>
                 <p> Optimize stock, streamline billing, and improve operational productivity to boost profitability.</p>
               </div>

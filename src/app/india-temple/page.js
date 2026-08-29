@@ -655,27 +655,27 @@ export default function Page() {
           </div>
           <div className="why-choose-grid">
              <div className="grid-item">
-                <figure> <img src="/assets/images/img614.png" /> </figure>
+                <figure> <img src="/assets/images/img614.png" alt="ChittorTech India Temple - img614" /> </figure>
                 <p>3X Revenue growth rate</p>
              </div>
              <div className="grid-item">
-                <figure> <img src="/assets/images/img615.png" /> </figure>
+                <figure> <img src="/assets/images/img615.png" alt="ChittorTech India Temple - img615" /> </figure>
                 <p>116+ Billing hours saved per month</p>
              </div>
              <div className="grid-item">
-                <figure> <img src="/assets/images/img616.png" /> </figure>
+                <figure> <img src="/assets/images/img616.png" alt="ChittorTech India Temple - img616" /> </figure>
                 <p>87% Faster transaction processing</p>
              </div>
              <div className="grid-item">
-                <figure> <img src="/assets/images/img617.png" /> </figure>
+                <figure> <img src="/assets/images/img617.png" alt="ChittorTech India Temple - img617" /> </figure>
                 <p>95% Reduction in manual errors</p>
              </div>
              <div className="grid-item">
-                <figure> <img src="/assets/images/img618.png" /> </figure>
+                <figure> <img src="/assets/images/img618.png" alt="ChittorTech India Temple - img618" /> </figure>
                 <p>Shipping &amp; Logistics</p>
              </div>
              <div className="grid-item">
-                <figure> <img src="/assets/images/img619.png" /> </figure>
+                <figure> <img src="/assets/images/img619.png" alt="ChittorTech India Temple - img619" /> </figure>
                 <p>E-Invoicing &amp; Compliance</p>
              </div>
           </div>
@@ -693,84 +693,84 @@ export default function Page() {
     <div className="row">
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="0">
-          <figure> <img src="/assets/images/img620.png" /> </figure>
+          <figure> <img src="/assets/images/img620.png" alt="ChittorTech India Temple - img620" /> </figure>
           <h4>Compatible on Any Device</h4>
           <p>Access from Android, iOS, desktop, or tablets — anywhere, anytime.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="100">
-          <figure> <img src="/assets/images/img621.png" /> </figure>
+          <figure> <img src="/assets/images/img621.png" alt="ChittorTech India Temple - img621" /> </figure>
           <h4>Data-Driven Insights</h4>
           <p>Leverage reports & analytics to optimize inventory, pricing, rituals, and temple resources.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="200">
-          <figure> <img src="/assets/images/img622.png" /> </figure>
+          <figure> <img src="/assets/images/img622.png" alt="ChittorTech India Temple - img622" /> </figure>
           <h4>Multi-Feature Integration</h4>
           <p>POS, inventory, donations, accounting — all in one single solution.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="300">
-          <figure> <img src="/assets/images/img623.png" /> </figure>
+          <figure> <img src="/assets/images/img623.png" alt="ChittorTech India Temple - img623" /> </figure>
           <h4>Cloud-Based Software</h4>
           <p>No local servers. Access your temple data securely from anywhere.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="400">
-          <figure> <img src="/assets/images/img624.png" /> </figure>
+          <figure> <img src="/assets/images/img624.png" alt="ChittorTech India Temple - img624" /> </figure>
           <h4>Hardware Independent</h4>
           <p>No special hardware required. Just log in and manage.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="500">
-          <figure> <img src="/assets/images/img625.png" /> </figure>
+          <figure> <img src="/assets/images/img625.png" alt="ChittorTech India Temple - img625" /> </figure>
           <h4>No Data Loss</h4>
           <p>Your temple’s data is stored securely on encrypted cloud servers.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="500">
-          <figure> <img src="/assets/images/img626.png" /> </figure>
+          <figure> <img src="/assets/images/img626.png" alt="ChittorTech India Temple - img626" /> </figure>
           <h4> Expert Support Team</h4>
           <p>Our team ensures smooth implementation and ongoing assistance.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="500">
-          <figure> <img src="/assets/images/img627.png" /> </figure>
+          <figure> <img src="/assets/images/img627.png" alt="ChittorTech India Temple - img627" /> </figure>
           <h4>Smart Integrations</h4>
           <p>Seamlessly integrates with payment gateways, logistics, marketing, and more.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="500">
-          <figure> <img src="/assets/images/img628.png" /> </figure>
+          <figure> <img src="/assets/images/img628.png" alt="ChittorTech India Temple - img628" /> </figure>
           <h4>Tailored for Temples</h4>
           <p>Custom-built modules for rituals, donations, devotee engagement, and branch management.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="500">
-          <figure> <img src="/assets/images/img629.png" /> </figure>
+          <figure> <img src="/assets/images/img629.png" alt="ChittorTech India Temple - img629" /> </figure>
           <h4> Easy Access</h4>
           <p>User-friendly interface for staff and management.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="500">
-          <figure> <img src="/assets/images/img630.png" /> </figure>
+          <figure> <img src="/assets/images/img630.png" alt="ChittorTech India Temple - img630" /> </figure>
           <h4>Training & Implementation</h4>
           <p>Our experts train your staff for effortless adoption.</p>
         </div>
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="500">
-          <figure> <img src="/assets/images/img631.png" /> </figure>
+          <figure> <img src="/assets/images/img631.png" alt="ChittorTech India Temple - img631" /> </figure>
           <h4>Speed & Precision</h4>
           <p>Built for high performance, accuracy, and scalability.</p>
         </div>
@@ -846,7 +846,7 @@ export default function Page() {
            <div className="col-md-6">
                <div className="clothing-stores-img">
                    <figure>
-                      <img src="/assets/images/img633.jpg" />
+                      <img src="/assets/images/img633.jpg" alt="ChittorTech India Temple - img633" />
                    </figure>
                </div>
            </div>

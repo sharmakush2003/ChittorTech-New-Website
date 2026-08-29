@@ -436,7 +436,7 @@ export default function Page() {
                       <div className="col-md-6">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img103.jpg" />
+                                 <img src="/assets/images/img103.jpg" alt="ChittorTech Accounting - img103" />
                               </figure>
                           </div>
                       </div>
@@ -460,27 +460,27 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Accounting - platforms1" /> </figure>
                                 <h3>E-commerce Platforms</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Accounting - platforms2" /> </figure>
                                 <h3>Communication & Marketing Tools</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Accounting - platforms3" /> </figure>
                                 <h3>Payment Solutions</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Accounting - platforms4" /> </figure>
                                 <h3>Business Applications</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms5.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms5.png" alt="ChittorTech Accounting - platforms5" /> </figure>
                                 <h3>Shipping & Logistics</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms6.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms6.png" alt="ChittorTech Accounting - platforms6" /> </figure>
                                 <h3>E-Invoicing & Compliance Tools</h3>
                              </li>
                           </ul>
@@ -513,7 +513,7 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img104.jpg" />
+                              <img src="/assets/images/img104.jpg" alt="ChittorTech Accounting - img104" />
                            </figure>
                        </div>
                    </div>
@@ -527,7 +527,7 @@ export default function Page() {
                 <div className="col-md-5">
                     <div className="clothing-stores-img">
                         <figure>
-                           <img src="/assets/images/img105.jpg" />
+                           <img src="/assets/images/img105.jpg" alt="ChittorTech Accounting - img105" />
                         </figure>
                     </div>
                 </div>
@@ -594,7 +594,7 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img106.jpg" />
+                              <img src="/assets/images/img106.jpg" alt="ChittorTech Accounting - img106" />
                            </figure>
                        </div>
                    </div>

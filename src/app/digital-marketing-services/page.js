@@ -129,7 +129,7 @@ export default function Page() {
                           <div className="col-md-12">
                               <div className="solutions-holds-box">
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv1.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv1.png" alt="ChittorTech Digital Marketing Services - sv1" /> </figure>
                                    <h3>
   <a href="/search-engine-optimization" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>
     Search Engine Optimization (SEO)
@@ -146,7 +146,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv2.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv2.png" alt="ChittorTech Digital Marketing Services - sv2" /> </figure>
                                     <h3>  Pay-Per-Click Advertising (PPC)</h3>
                                     <ul>
                                         <li>Google Ads, Bing Ads, and Display Advertising campaigns</li>
@@ -157,7 +157,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv3.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv3.png" alt="ChittorTech Digital Marketing Services - sv3" /> </figure>
                                     <h3></h3>
 									<h3>
   <a href="/social-media-optimization" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>
@@ -175,7 +175,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv4.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv4.png" alt="ChittorTech Digital Marketing Services - sv4" /> </figure>
                                     <h3> Reputation Management</h3>
 									
                                     <ul>
@@ -187,7 +187,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv5.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv5.png" alt="ChittorTech Digital Marketing Services - sv5" /> </figure>
                                     <h3> </h3>
 									<h3>
   <a href="/web-development-services" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>
@@ -204,7 +204,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv6.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv6.png" alt="ChittorTech Digital Marketing Services - sv6" /> </figure>
                                     <h3> App Development</h3>
                                     <ul>
                                         <li>iOS & Android mobile app development</li>
@@ -216,7 +216,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv7.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv7.png" alt="ChittorTech Digital Marketing Services - sv7" /> </figure>
                                     <h3>  Content Marketing</h3>
                                     <ul>
                                         <li>Blog writing, articles, and guest posting</li>
@@ -228,7 +228,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv8.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv8.png" alt="ChittorTech Digital Marketing Services - sv8" /> </figure>
                                     <h3>Email Marketing</h3>
                                     <ul>
                                         <li>Personalized email campaigns to nurture leads</li>
@@ -240,7 +240,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv9.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv9.png" alt="ChittorTech Digital Marketing Services - sv9" /> </figure>
                                     <h3> White Label SEO Reseller Program)</h3>
                                     <ul>
                                         <li>Partner with us and resell premium SEO services</li>
@@ -252,7 +252,7 @@ export default function Page() {
                                     </ul>
                                  </div>
                                  <div className="holds-box">
-                                    <figure> <img src="/assets/images/sv10.png" alt="" /> </figure>
+                                    <figure> <img src="/assets/images/sv10.png" alt="ChittorTech Digital Marketing Services - sv10" /> </figure>
                                     <h3>  Additional Services We Offer</h3>
                                     <ul>
                                         <li>Conversion Rate Optimization (CRO): Increase sales & leads from existing traffic</li>
@@ -344,7 +344,7 @@ export default function Page() {
                  </div>
                  <div className="col-md-6">
                     <div className="website-development-img">
-                       <figure> <img src="/assets/images/img109.jpg" /> </figure>
+                       <figure> <img src="/assets/images/img109.jpg" alt="ChittorTech Digital Marketing Services - img109" /> </figure>
                     </div>
                  </div>
              </div>
@@ -534,7 +534,7 @@ export default function Page() {
                  </div>
                  <div className="col-md-6">
                     <div className="website-development-img">
-                       <figure> <img src="/assets/images/website.jpg" /> </figure>
+                       <figure> <img src="/assets/images/website.jpg" alt="ChittorTech Digital Marketing Services - website" /> </figure>
                     </div>
                  </div>
              </div>

@@ -261,7 +261,7 @@ export default function Page() {
                       <div className="col-md-6">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img183.jpg" />
+                                 <img src="/assets/images/img183.jpg" alt="ChittorTech Smart Retail - img183" />
                               </figure>
                           </div>
                       </div>
@@ -419,7 +419,7 @@ export default function Page() {
                       <div className="col-md-6">
                           <div className="clothing-stores-img text-end">
                               <figure>
-                                 <img src="/assets/images/img184.jpg" />
+                                 <img src="/assets/images/img184.jpg" alt="ChittorTech Smart Retail - img184" />
                               </figure>
                           </div>
                       </div>

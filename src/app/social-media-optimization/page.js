@@ -162,22 +162,22 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/so1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/so1.png" alt="ChittorTech Social Media Optimization - so1" /> </figure>
                                 <h3>Social Media Profile Creation & Management</h3>
                                 <p>Establish and optimize profiles on Facebook, Instagram, LinkedIn, Twitter, and YouTube.</p>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/so2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/so2.png" alt="ChittorTech Social Media Optimization - so2" /> </figure>
                                 <h3>Content & Graphics Development </h3>
                                 <p>Create engaging posts, visuals, and videos tailored to your audience.</p>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/so3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/so3.png" alt="ChittorTech Social Media Optimization - so3" /> </figure>
                                 <h3>Targeted Advertising</h3>
                                 <p>Run campaigns to reach potential customers actively interested in your products or services.</p>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/so4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/so4.png" alt="ChittorTech Social Media Optimization - so4" /> </figure>
                                 <h3>Performance Analytics & Reporting</h3>
                                 <p>Track metrics and provide actionable insights to maximize ROI.</p>
                              </li>
@@ -248,35 +248,35 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/f1.png" /> </figure>
+                   <figure> <img src="/assets/images/f1.png" alt="ChittorTech Social Media Optimization - f1" /> </figure>
                    <h4>Facebook</h4>
                    <p>Broad reach, powerful ads, ideal for B2C and eCommerce.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/f2.png" /> </figure>
+                   <figure> <img src="/assets/images/f2.png" alt="ChittorTech Social Media Optimization - f2" /> </figure>
                    <h4>Instagram</h4>
                    <p>Visual storytelling and influencer campaigns for younger audiences.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/f3.png" /> </figure>
+                   <figure> <img src="/assets/images/f3.png" alt="ChittorTech Social Media Optimization - f3" /> </figure>
                    <h4>Twitter </h4>
                    <p>Real-time updates and trend engagement for media and tech.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/f4.png" /> </figure>
+                   <figure> <img src="/assets/images/f4.png" alt="ChittorTech Social Media Optimization - f4" /> </figure>
                    <h4>LinkedIn</h4>
                    <p> B2B lead generation and professional networking.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/f5.png" /> </figure>
+                   <figure> <img src="/assets/images/f5.png" alt="ChittorTech Social Media Optimization - f5" /> </figure>
                    <h4>YouTube</h4>
                    <p>Long-form videos and tutorials for brand awareness and engagement.</p>
                  </div>

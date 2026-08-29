@@ -207,42 +207,42 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/w1.png" /> </figure>
+                   <figure> <img src="/assets/images/w1.png" alt="ChittorTech Web Development Services - w1" /> </figure>
                    <h4>WordPress Development</h4>
                    <p>WordPress powers a large portion of websites worldwide. As the best web design company in India, we create custom-designed WordPress websites with unique features, modern designs, and optimized performance. Whether you need a corporate website, blog, or eCommerce platform, our web development services ensure your website is responsive, SEO-friendly, and conversion-focused.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/w2.png" /> </figure>
+                   <figure> <img src="/assets/images/w2.png" alt="ChittorTech Web Development Services - w2" /> </figure>
                    <h4>Magento & Adobe Commerce Development</h4>
                     <p>Need a fully customized CMS or eCommerce website? As a top web development company in India, ChittorTech specializes in Magento and Adobe Commerce platforms. We build websites tailored to your business needs, integrating product management, payment gateways, shipping, and advanced features for a seamless online shopping experience.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/w3.png" /> </figure>
+                   <figure> <img src="/assets/images/w3.png" alt="ChittorTech Web Development Services - w3" /> </figure>
                    <h4>Custom CMS Development</h4>
                    <p>Managing website content efficiently is essential. Our CMS development services allow you to control, edit, and publish content with ease. We develop CMS solutions on WordPress, Joomla, Drupal, Wix, BigCommerce, Laravel, and CodeIgniter, ensuring scalability, security, and user-friendly interfaces.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/w4.png" /> </figure>
+                   <figure> <img src="/assets/images/w4.png" alt="ChittorTech Web Development Services - w4" /> </figure>
                    <h4>NET Development</h4>
                    <p>As a leading web development company in India, we deliver robust .NET solutions for both desktop and mobile applications. Our team handles complex and large-scale projects, ensuring timely delivery, high performance, and scalability for enterprise-level solutions.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/w5.png" /> </figure>
+                   <figure> <img src="/assets/images/w5.png" alt="ChittorTech Web Development Services - w5" /> </figure>
                    <h4>Custom PHP Web Development</h4>
                    <p>For businesses that require unique web applications, our custom PHP development services provide full-stack solutions tailored to your needs. We create visually stunning, functional websites with PHP, Laravel, and CodeIgniter, ensuring fast performance and modern design aesthetics.</p>
                  </div>
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/w6.png" /> </figure>
+                   <figure> <img src="/assets/images/w6.png" alt="ChittorTech Web Development Services - w6" /> </figure>
                    <h4>Mobile App Development</h4>
                    <p>Expand your digital presence with custom mobile applications. We develop native, hybrid, and web apps for Android and iOS platforms, ensuring mobile-friendly designs, smooth performance, and user-centric functionality.</p>
                  </div>
@@ -334,42 +334,42 @@ export default function Page() {
                   </div>
                   <div className="why-choose-grid textile-manufacturers-wrap">
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ha1.png" /> </figure>
+                        <figure> <img src="/assets/images/ha1.png" alt="ChittorTech Web Development Services - ha1" /> </figure>
                         <h3>Healthcare</h3>
                         <p>Patient portals, booking systems, and responsive informational websites.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ha2.png" /> </figure>
+                        <figure> <img src="/assets/images/ha2.png" alt="ChittorTech Web Development Services - ha2" /> </figure>
                         <h3>Education</h3>
                         <p> eLearning platforms, university portals, and course management systems.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ha3.png" /> </figure>
+                        <figure> <img src="/assets/images/ha3.png" alt="ChittorTech Web Development Services - ha3" /> </figure>
                         <h3>Retail & E-Commerce</h3>
                         <p>Optimized online stores for higher conversions.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ha4.png" /> </figure>
+                        <figure> <img src="/assets/images/ha4.png" alt="ChittorTech Web Development Services - ha4" /> </figure>
                         <h3>Finance & Banking</h3>
                         <p>Secure websites for fintech, banks, and insurance firms.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ha5.png" /> </figure>
+                        <figure> <img src="/assets/images/ha5.png" alt="ChittorTech Web Development Services - ha5" /> </figure>
                         <h3>Travel & Tourism</h3>
                         <p>  Booking portals and interactive travel websites.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ha6.png" /> </figure>
+                        <figure> <img src="/assets/images/ha6.png" alt="ChittorTech Web Development Services - ha6" /> </figure>
                         <h3>Food & Restaurants</h3>
                         <p> Online ordering, delivery management systems, and responsive menus. </p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ha7.png" /> </figure>
+                        <figure> <img src="/assets/images/ha7.png" alt="ChittorTech Web Development Services - ha7" /> </figure>
                         <h3>Non-Profit Organizations</h3>
                         <p>Community portals, donation systems, and informational websites.</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/ha8.png" /> </figure>
+                        <figure> <img src="/assets/images/ha8.png" alt="ChittorTech Web Development Services - ha8" /> </figure>
                         <h3>Telecom/Tech, Utilities, B2B, Chemical Industries </h3>
                         <p> Tailored web solutions for operational efficiency and online growth.</p>
                      </div>

@@ -449,27 +449,27 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Inventory - platforms1" /> </figure>
                                 <h3>AI Inventory Turnover Analysis </h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Inventory - platforms2" /> </figure>
                                 <h3>Top & Low Performing Products </h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Inventory - platforms3" /> </figure>
                                 <h3>Low & Negative Stock Alerts </h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Inventory - platforms4" /> </figure>
                                 <h3>Smart ABC Classification </h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms5.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms5.png" alt="ChittorTech Inventory - platforms5" /> </figure>
                                 <h3>Intelligent Stock Reorder Reports </h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/platforms6.png" alt="" /> </figure>
+                                <figure> <img src="/assets/images/platforms6.png" alt="ChittorTech Inventory - platforms6" /> </figure>
                                 <h3>Stock Movement & Adjustment Tracking </h3>
                              </li>
                           </ul>
@@ -488,7 +488,7 @@ export default function Page() {
                 <div className="col-md-5">
                     <div className="clothing-stores-img">
                         <figure>
-                           <img src="/assets/images/img105.jpg" />
+                           <img src="/assets/images/img105.jpg" alt="ChittorTech Inventory - img105" />
                         </figure>
                     </div>
                 </div>

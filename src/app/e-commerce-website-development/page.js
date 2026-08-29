@@ -154,7 +154,7 @@ export default function Page() {
              <div className="row">
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                   <figure> <img src="/assets/images/ec1.png" /> </figure>
+                   <figure> <img src="/assets/images/ec1.png" alt="ChittorTech E Commerce Website Development - ec1" /> </figure>
                    <h4> Custom eCommerce Web Development</h4>
                  <p>
   With our 
@@ -174,7 +174,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                   <figure> <img src="/assets/images/ec2.png" /> </figure>
+                   <figure> <img src="/assets/images/ec2.png" alt="ChittorTech E Commerce Website Development - ec2" /> </figure>
                    <h4> eCommerce Website Design & Redesign</h4>
                    <p>A visually appealing website is critical to attract and retain customers. Our e-commerce website design in India services focus on creating designs that are:</p>
                    <ul className="list-unstyled">
@@ -188,7 +188,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                   <figure> <img src="/assets/images/ec3.png" /> </figure>
+                   <figure> <img src="/assets/images/ec3.png" alt="ChittorTech E Commerce Website Development - ec3" /> </figure>
                    <h4>Migration Between Platforms</h4>
                    <p>Switching platforms? Whether it’s WooCommerce to Shopify, Magento to Shopify, or vice versa, we handle every step of migration.</p>
                    <ul className="list-unstyled">
@@ -201,7 +201,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                   <figure> <img src="/assets/images/ec4.png" /> </figure>
+                   <figure> <img src="/assets/images/ec4.png" alt="ChittorTech E Commerce Website Development - ec4" /> </figure>
                    <h4> eCommerce Website Maintenance</h4>
                    <p>A thriving online store requires regular updates, security checks, and feature enhancements. Our maintenance services ensure your website is:</p>
                    <ul className="list-unstyled">
@@ -215,7 +215,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                   <figure> <img src="/assets/images/ec5.png" /> </figure>
+                   <figure> <img src="/assets/images/ec5.png" alt="ChittorTech E Commerce Website Development - ec5" /> </figure>
                    <h4> CMS-Based eCommerce Development</h4>
                    <p>We specialize in building websites using popular CMS platforms like Shopify, WordPress with WooCommerce, and Adobe Commerce (Magento).</p>
                    <ul className="list-unstyled">
@@ -228,7 +228,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ec6.png" /> </figure>
+                   <figure> <img src="/assets/images/ec6.png" alt="ChittorTech E Commerce Website Development - ec6" /> </figure>
                    <h4> eCommerce Integrations</h4>
                    <p>Integrate your online store with tools and APIs that improve efficiency:</p>
                    <ul className="list-unstyled">
@@ -240,7 +240,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ec7.png" /> </figure>
+                   <figure> <img src="/assets/images/ec7.png" alt="ChittorTech E Commerce Website Development - ec7" /> </figure>
                    <h4> Product & Data Imports</h4>
                    <p>Easily import products and data from multiple sources to keep your store updated:</p>
                    <ul className="list-unstyled">
@@ -253,7 +253,7 @@ export default function Page() {
                </div>
                <div className="col-md-6 col-lg-4 mb-4">
                  <div className="card service-box text-center p-4 animate-in" data-delay="500">
-                   <figure> <img src="/assets/images/ec8.png" /> </figure>
+                   <figure> <img src="/assets/images/ec8.png" alt="ChittorTech E Commerce Website Development - ec8" /> </figure>
                    <h4> Checkouts & Payment Gateways</h4>
                    <p>A fast and simple checkout increases conversions. We create:</p>
                    <ul className="list-unstyled">
@@ -379,7 +379,7 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img144.jpg" />
+                              <img src="/assets/images/img144.jpg" alt="ChittorTech E Commerce Website Development - img144" />
                            </figure>
                        </div>
                    </div>
@@ -431,27 +431,27 @@ export default function Page() {
                        <div className="why-choose-wrap">
                           <ul>
                              <li>
-                                <figure> <img src="/assets/images/img521.jpg" alt="" /> </figure>
+                                <figure> <img src="/assets/images/img521.jpg" alt="ChittorTech E Commerce Website Development - img521" /> </figure>
                                 <h3>Node.js</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/img522.jpg" alt="" /> </figure>
+                                <figure> <img src="/assets/images/img522.jpg" alt="ChittorTech E Commerce Website Development - img522" /> </figure>
                                 <h3> Flutter</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/img523.jpg" alt="" /> </figure>
+                                <figure> <img src="/assets/images/img523.jpg" alt="ChittorTech E Commerce Website Development - img523" /> </figure>
                                 <h3>Shopify</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/img524.jpg" alt="" /> </figure>
+                                <figure> <img src="/assets/images/img524.jpg" alt="ChittorTech E Commerce Website Development - img524" /> </figure>
                                 <h3> WooCommerce</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/img525.jpg" alt="" /> </figure>
+                                <figure> <img src="/assets/images/img525.jpg" alt="ChittorTech E Commerce Website Development - img525" /> </figure>
                                 <h3>Magento</h3>
                              </li>
                              <li>
-                                <figure> <img src="/assets/images/img526.jpg" alt="" /> </figure>
+                                <figure> <img src="/assets/images/img526.jpg" alt="ChittorTech E Commerce Website Development - img526" /> </figure>
                                 <h3>OpenCart</h3>
                              </li>
                           </ul>

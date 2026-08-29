@@ -641,19 +641,19 @@ export default function Page() {
             <div className="why-choose-wrap">
                <ul>
                   <li>
-                     <figure> <img src="/assets/images/ce1.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ce1.png" alt="ChittorTech Departmental Store - ce1" /> </figure>
                      <h3>4X revenue growth rate</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/ce2.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ce2.png" alt="ChittorTech Departmental Store - ce2" /> </figure>
                      <h3>120+ billing hours saved per month</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/ce3.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ce3.png" alt="ChittorTech Departmental Store - ce3" /> </figure>
                      <h3>90% faster processing time</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/ce4.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/ce4.png" alt="ChittorTech Departmental Store - ce4" /> </figure>
                      <h3>99% reduction in manual errors</h3>
                   </li>
                </ul>
@@ -733,27 +733,27 @@ export default function Page() {
               <div className="why-choose-wrap">
                  <ul>
                     <li>
-                       <figure> <img src="/assets/images/ns1.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns1.png" alt="ChittorTech Departmental Store - ns1" /> </figure>
                        <h3>E-commerce Platforms</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns2.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns2.png" alt="ChittorTech Departmental Store - ns2" /> </figure>
                        <h3> Communication & Marketing Tools</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns3.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns3.png" alt="ChittorTech Departmental Store - ns3" /> </figure>
                        <h3> Payment Solutions</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns4.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns4.png" alt="ChittorTech Departmental Store - ns4" /> </figure>
                        <h3>Business Applications</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns5.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns5.png" alt="ChittorTech Departmental Store - ns5" /> </figure>
                        <h3>Shipping & Logistics</h3>
                     </li>
                     <li>
-                       <figure> <img src="/assets/images/ns6.png" alt="" /> </figure>
+                       <figure> <img src="/assets/images/ns6.png" alt="ChittorTech Departmental Store - ns6" /> </figure>
                        <h3>E-Invoicing & Compliance</h3>
                     </li>
                  </ul>
@@ -784,98 +784,98 @@ export default function Page() {
           <div className="row">
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                <figure> <img src="/assets/images/ft1.png" /> </figure>
+                <figure> <img src="/assets/images/ft1.png" alt="ChittorTech Departmental Store - ft1" /> </figure>
                 <h4>Streamlined Multi-Store Management</h4>
                 <p>Manage multiple branches from a single dashboard, ensuring consistent operations and unified customer data.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="100">
-                <figure> <img src="/assets/images/ft2.png" /> </figure>
+                <figure> <img src="/assets/images/ft2.png" alt="ChittorTech Departmental Store - ft2" /> </figure>
                 <h4>Improved Inventory Efficiency</h4>
                 <p>Track stock levels, automate reorders, and reduce stockouts to keep shelves fully stocked at all times.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="200">
-                <figure> <img src="/assets/images/ft3.png" /> </figure>
+                <figure> <img src="/assets/images/ft3.png" alt="ChittorTech Departmental Store - ft3" /> </figure>
                 <h4>Faster Billing & Checkout</h4>
                 <p>Smart Management and multiple billing counters reduce waiting time, enabling quick and seamless customer checkouts.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="300">
-                <figure> <img src="/assets/images/ft4.png" /> </figure>
+                <figure> <img src="/assets/images/ft4.png" alt="ChittorTech Departmental Store - ft4" /> </figure>
                 <h4>Accurate Financial Management</h4>
                 <p>Integrated GST-compliant billing and accounting modules simplify tax filing and maintain accurate financial records.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft5.png" /> </figure>
+                <figure> <img src="/assets/images/ft5.png" alt="ChittorTech Departmental Store - ft5" /> </figure>
                 <h4>Enhanced Customer Loyalty</h4>
                 <p>Loyalty points, membership programs, personalized offers, and discount management encourage repeat purchases.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft6.png" /> </figure>
+                <figure> <img src="/assets/images/ft6.png" alt="ChittorTech Departmental Store - ft6" /> </figure>
                 <h4>Omnichannel Sales Expansion</h4>
                 <p>Easily launch an online store and synchronize inventory between physical and online stores for seamless sales.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft7.png" /> </figure>
+                <figure> <img src="/assets/images/ft7.png" alt="ChittorTech Departmental Store - ft7" /> </figure>
                 <h4>Data-Driven Insights</h4>
                 <p>Access 150+ MIS reports and analytics to monitor sales trends, customer behavior, and store performance.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft8.png" /> </figure>
+                <figure> <img src="/assets/images/ft8.png" alt="ChittorTech Departmental Store - ft8" /> </figure>
                 <h4>Seamless Stock Transfers</h4>
                 <p>Transfer inventory efficiently between stores to balance stock and meet customer demand.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft9.png" /> </figure>
+                <figure> <img src="/assets/images/ft9.png" alt="ChittorTech Departmental Store - ft9" /> </figure>
                 <h4>User-Friendly Experience</h4>
                 <p>Intuitive interface allows staff to operate the system with minimal training.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft10.png" /> </figure>
+                <figure> <img src="/assets/images/ft10.png" alt="ChittorTech Departmental Store - ft10" /> </figure>
                 <h4>WhatsApp & Communication Integration</h4>
                 <p>Communicate directly with customers for promotions, updates, and reminders to improve engagement.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft11.png" /> </figure>
+                <figure> <img src="/assets/images/ft11.png" alt="ChittorTech Departmental Store - ft11" /> </figure>
                 <h4>Reduced Manual Errors</h4>
                 <p>Automation across billing, inventory, and reporting ensures high accuracy in daily operations.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft12.png" /> </figure>
+                <figure> <img src="/assets/images/ft12.png" alt="ChittorTech Departmental Store - ft12" /> </figure>
                 <h4>Centralized Customer Database</h4>
                 <p>Maintain consistent customer information across all stores, enabling personalized service and loyalty management.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft13.png" /> </figure>
+                <figure> <img src="/assets/images/ft13.png" alt="ChittorTech Departmental Store - ft13" /> </figure>
                 <h4>Scalable & Cloud-Based</h4>
                 <p>Access your departmental store software anytime, anywhere, and easily scale as your business grows.</p>
               </div>
             </div>
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="400">
-                <figure> <img src="/assets/images/ft14.png" /> </figure>
+                <figure> <img src="/assets/images/ft14.png" alt="ChittorTech Departmental Store - ft14" /> </figure>
                 <h4>Compliance & Reporting Made Easy</h4>
                 <p>Simplified GST compliance, e-way bill generation, and expense tracking reduce administrative workload.</p>
               </div>

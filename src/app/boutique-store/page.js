@@ -285,7 +285,7 @@ export default function Page() {
                    <div className="col-md-6 order-md-1">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/img203.jpg" />
+                              <img src="/assets/images/img203.jpg" alt="ChittorTech Boutique Store - img203" />
                            </figure>
                        </div>
                    </div>
@@ -318,7 +318,7 @@ export default function Page() {
                    <div className="col-md-6">
                        <div className="clothing-stores-img">
                            <figure>
-                              <img src="/assets/images/img204.jpg" />
+                              <img src="/assets/images/img204.jpg" alt="ChittorTech Boutique Store - img204" />
                            </figure>
                        </div>
                    </div>
@@ -336,21 +336,21 @@ export default function Page() {
                   </div>
                   <div className="why-choose-grid">
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/en1.png" /> </figure>
+                        <figure> <img src="/assets/images/en1.png" alt="ChittorTech Boutique Store - en1" /> </figure>
                         <p>Up to 4× increase in overall sales performance
 </p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/en2.png" /> </figure>
+                        <figure> <img src="/assets/images/en2.png" alt="ChittorTech Boutique Store - en2" /> </figure>
                         <p>Over 120 hours of billing work eliminated every month
 </p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/en3.png" /> </figure>
+                        <figure> <img src="/assets/images/en3.png" alt="ChittorTech Boutique Store - en3" /> </figure>
                         <p>Transaction speed improved by nearly 90%</p>
                      </div>
                      <div className="grid-item">
-                        <figure> <img src="/assets/images/en4.png" /> </figure>
+                        <figure> <img src="/assets/images/en4.png" alt="ChittorTech Boutique Store - en4" /> </figure>
                         <p> Manual mistakes reduced to almost zero (99% accuracy)
 </p>
                      </div>
@@ -607,7 +607,7 @@ export default function Page() {
                    <div className="col-md-5">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img104.jpg" />
+                              <img src="/assets/images/img104.jpg" alt="ChittorTech Boutique Store - img104" />
                            </figure>
                        </div>
                    </div>
@@ -638,7 +638,7 @@ export default function Page() {
                    <div className="col-md-5 order-md-1">
                        <div className="clothing-stores-img text-end">
                            <figure>
-                              <img src="/assets/images/img104.jpg" />
+                              <img src="/assets/images/img104.jpg" alt="ChittorTech Boutique Store - img104" />
                            </figure>
                        </div>
                    </div>

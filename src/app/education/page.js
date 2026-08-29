@@ -338,7 +338,7 @@ export default function Page() {
          <div className="col-md-6">
             <div className="clothing-stores-img text-end">
                <figure>
-                  <img src="/assets/images/img198.jpg" />
+                  <img src="/assets/images/img198.jpg" alt="ChittorTech Education - img198" />
                </figure>
             </div>
          </div>

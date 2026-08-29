@@ -516,19 +516,19 @@ Powerful tools to <span> improve efficiency, control inventory, and drive data-b
             <div className="why-choose-wrap">
                <ul>
                   <li>
-                     <figure> <img src="/assets/images/platforms1.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms1.png" alt="ChittorTech Minimart - platforms1" /> </figure>
                      <h3>Revenue Growth: 2X increase in store efficiency</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms2.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms2.png" alt="ChittorTech Minimart - platforms2" /> </figure>
                      <h3>Time Savings: 60+ billing hours saved/month</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms3.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms3.png" alt="ChittorTech Minimart - platforms3" /> </figure>
                      <h3>Faster Processing: 45% faster operations</h3>
                   </li>
                   <li>
-                     <figure> <img src="/assets/images/platforms4.png" alt="" /> </figure>
+                     <figure> <img src="/assets/images/platforms4.png" alt="ChittorTech Minimart - platforms4" /> </figure>
                      <h3>Reduced Errors: 49% decrease in manual mistakes</h3>
                   </li>
                </ul>
