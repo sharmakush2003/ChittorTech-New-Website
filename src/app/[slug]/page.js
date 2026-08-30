@@ -2,7 +2,7 @@ import React from "react";
 import fs from "fs";
 import path from "path";
 import DynamicBlogClient from "./DynamicBlogClient";
-import chittorgarhServices from "@/data/chittorgarhServices.json";
+import cityServices from "@/data/cityServices.json";
 
 export const dynamicParams = false;
 
@@ -25,7 +25,7 @@ const getCleanTitle = (s) => {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const service = chittorgarhServices[slug];
+  const service = cityServices[slug];
 
   if (service) {
     return {
@@ -72,8 +72,8 @@ export async function generateStaticParams() {
   const sitemapPath = path.join(process.cwd(), "public/sitemap.xml");
   const pathsMap = new Map();
 
-  // Add all dedicated Chittorgarh services
-  Object.keys(chittorgarhServices).forEach((s) => {
+  // Add all dedicated City Services (588+ URLs)
+  Object.keys(cityServices).forEach((s) => {
     pathsMap.set(s, { slug: s });
   });
 
