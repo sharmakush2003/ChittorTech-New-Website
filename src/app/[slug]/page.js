@@ -140,10 +140,8 @@ export async function generateStaticParams() {
       "schools-educational-institutions",
       "employee-background-verification",
       "hospitals",
-      "ai-business",
       "blog",
-      "contact-us",
-      "demo"
+      "contact-us"
     ]);
 
     for (let line of lines) {
