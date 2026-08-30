@@ -12,6 +12,9 @@ const staticPages = getDirectories(appDir).filter(f => !excludeFolders.has(f));
 const citiesData = JSON.parse(fs.readFileSync('src/data/cities.json', 'utf8'));
 const citySlugs = Object.keys(citiesData).map(c => 'cities/' + c);
 
+const chittorgarhServicesData = JSON.parse(fs.readFileSync('src/data/chittorgarhServices.json', 'utf8'));
+const chittorgarhSlugs = Object.keys(chittorgarhServicesData);
+
 const oldSitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
 const oldUrls = (oldSitemap.match(/<loc>(.*?)<\/loc>/gi) || []).map(u => u.replace(/<\/?loc>/g, '').trim());
 
@@ -23,6 +26,7 @@ allUniquePaths.add('about-us');
 
 staticPages.forEach(p => allUniquePaths.add(p));
 citySlugs.forEach(c => allUniquePaths.add(c));
+chittorgarhSlugs.forEach(s => allUniquePaths.add(s));
 
 oldUrls.forEach(u => {
   const p = u.replace('https://chittortech.online/', '').replace(/^\//, '');
@@ -52,7 +56,7 @@ Array.from(allUniquePaths).sort().forEach(p => {
   if (!p) {
     priority = '1.0';
     changefreq = 'daily';
-  } else if (p === 'contact-us' || p === 'demo' || coreServices.has(p)) {
+  } else if (p === 'contact-us' || p === 'demo' || coreServices.has(p) || chittorgarhServicesData[p]) {
     priority = '0.9';
     changefreq = 'weekly';
   } else if (p.startsWith('cities/')) {

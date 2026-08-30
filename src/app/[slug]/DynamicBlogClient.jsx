@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import chittorgarhServices from "@/data/chittorgarhServices.json";
 
 const BLOG_CONTENT = {
   "google-play-store-publishing-guide-compliance-launch": {
@@ -150,6 +151,9 @@ const BLOG_CONTENT = {
 };
 
 const getDynamicContent = (slug, cleanTitle) => {
+  if (chittorgarhServices[slug]) {
+    return chittorgarhServices[slug];
+  }
   if (BLOG_CONTENT[slug]) {
     return BLOG_CONTENT[slug];
   }
@@ -470,11 +474,11 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
         <div className="container">
           <div className="dy-hero-badge">
             <i className="fas fa-sparkles"></i>
-            <span>ChittorTech Solutions &amp; Guides</span>
+            <span>{content.badge || "ChittorTech Solutions & Guides"}</span>
           </div>
-          <h1 className="dy-hero-title">{cleanTitle}</h1>
+          <h1 className="dy-hero-title">{content.heading || cleanTitle}</h1>
           <p className="dy-hero-desc">
-            Explore secure, cloud-based workflow automation, GST-compliant billing, inventory management, and custom enterprise AI solutions tailored to boost business growth.
+            {content.intro || "Explore secure, cloud-based workflow automation, GST-compliant billing, inventory management, and custom enterprise AI solutions tailored to boost business growth."}
           </p>
         </div>
       </section>
@@ -485,7 +489,7 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
           <div className="row g-5">
             <div className="col-lg-7">
               <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "#0f172a", marginBottom: "20px" }}>
-                {content.heading}
+                {content.heading || cleanTitle}
               </h2>
               <p style={{ fontSize: "1.02rem", color: "#475569", lineHeight: "1.8", marginBottom: "24px" }}>
                 {content.intro}
@@ -506,7 +510,7 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
               </div>
 
               <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#0f172a", marginTop: "40px", marginBottom: "16px" }}>
-                Why Indian Enterprises Trust ChittorTech
+                {slug.includes("chittorgarh") ? "Why Chittorgarh Businesses Choose ChittorTech" : "Why Indian Enterprises Trust ChittorTech"}
               </h2>
               <p style={{ fontSize: "0.98rem", color: "#475569", lineHeight: "1.75" }}>
                 {content.summary}

@@ -2,15 +2,84 @@ import React from "react";
 import fs from "fs";
 import path from "path";
 import DynamicBlogClient from "./DynamicBlogClient";
+import chittorgarhServices from "@/data/chittorgarhServices.json";
 
 export const dynamicParams = false;
 
+// Helper to convert slug to clean title
+const getCleanTitle = (s) => {
+  if (!s) return "ChittorTech Enterprise AI & IT Solutions";
+  let clean = s.replace(/-/g, " ");
+  clean = clean.replace(/\w\S*/g, (txt) => {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+  clean = clean.replace(/Erp/g, "ERP");
+  clean = clean.replace(/Pos/g, "POS");
+  clean = clean.replace(/Gst/g, "GST");
+  clean = clean.replace(/Bom/g, "BOM");
+  clean = clean.replace(/Ai/g, "AI");
+  clean = clean.replace(/Smes/g, "SMEs");
+  clean = clean.replace(/By Chittortech/g, "by ChittorTech");
+  return clean;
+};
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const service = chittorgarhServices[slug];
+
+  if (service) {
+    return {
+      title: service.metaTitle,
+      description: service.metaDescription,
+      keywords: service.metaKeywords,
+      alternates: {
+        canonical: `https://chittortech.online/${slug}`,
+      },
+      openGraph: {
+        title: service.metaTitle,
+        description: service.metaDescription,
+        url: `https://chittortech.online/${slug}`,
+        siteName: "ChittorTech",
+        locale: "en_IN",
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: service.metaTitle,
+        description: service.metaDescription,
+      },
+    };
+  }
+
+  const cleanTitle = getCleanTitle(slug);
+  return {
+    title: `${cleanTitle} | ChittorTech`,
+    description: `Discover comprehensive solutions, features, and expert implementation for ${cleanTitle} by ChittorTech.`,
+    alternates: {
+      canonical: `https://chittortech.online/${slug}`,
+    },
+    openGraph: {
+      title: `${cleanTitle} | ChittorTech`,
+      description: `Discover comprehensive solutions, features, and expert implementation for ${cleanTitle} by ChittorTech.`,
+      url: `https://chittortech.online/${slug}`,
+      siteName: "ChittorTech",
+      type: "article",
+    },
+  };
+}
+
 export async function generateStaticParams() {
   const sitemapPath = path.join(process.cwd(), "public/sitemap.xml");
+  const pathsMap = new Map();
+
+  // Add all dedicated Chittorgarh services
+  Object.keys(chittorgarhServices).forEach((s) => {
+    pathsMap.set(s, { slug: s });
+  });
+
   try {
     const content = fs.readFileSync(sitemapPath, "utf8");
     const lines = content.split("\n");
-    const paths = [];
 
     // Static routes to skip as they are handled by static pages
     const skipRoutes = new Set([
@@ -99,38 +168,18 @@ export async function generateStaticParams() {
         continue;
       }
 
-      paths.push({
-        slug: slugPath,
-      });
+      pathsMap.set(slugPath, { slug: slugPath });
     }
 
-    return paths;
+    return Array.from(pathsMap.values());
   } catch (err) {
     console.error("Failed to read sitemap.xml for generateStaticParams:", err);
-    return [];
+    return Array.from(pathsMap.values());
   }
 }
 
 export default async function Page({ params }) {
   const { slug } = await params;
-
-  // Convert slug to clean title
-  const getCleanTitle = (s) => {
-    if (!s) return "ChittorTech Enterprise AI & IT Solutions";
-    let clean = s.replace(/-/g, " ");
-    clean = clean.replace(/\w\S*/g, (txt) => {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-    clean = clean.replace(/Erp/g, "ERP");
-    clean = clean.replace(/Pos/g, "POS");
-    clean = clean.replace(/Gst/g, "GST");
-    clean = clean.replace(/Bom/g, "BOM");
-    clean = clean.replace(/Ai/g, "AI");
-    clean = clean.replace(/Smes/g, "SMEs");
-    clean = clean.replace(/By Chittortech/g, "by ChittorTech");
-    return clean;
-  };
-
   const cleanTitle = getCleanTitle(slug);
 
   return <DynamicBlogClient slug={slug} cleanTitle={cleanTitle} />;
