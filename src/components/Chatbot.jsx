@@ -300,7 +300,7 @@ CHITTORTECH KNOWLEDGE BASE:
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "openai/gpt-oss-120b",
           messages: finalMessages,
           temperature: 0.7,
           max_tokens: 500
