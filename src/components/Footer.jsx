@@ -412,6 +412,148 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* ─── Expandable / Rich Directory Section for Complete Internal Linking ─── */}
+        <div className="ct-footer-directory py-4" style={{ background: '#f1f5f9', borderTop: '1px solid #e2e8f0' }}>
+          <div className="container">
+            <div className="row g-4 text-start">
+              
+              {/* Industry POS & Retail Billing */}
+              <div className="col-lg-3 col-md-6">
+                <div className="fw-bold text-dark small text-uppercase mb-2" style={{ letterSpacing: '1px' }}>
+                  <i className="fa-solid fa-cash-register me-1 text-primary"></i> Retail & POS Systems
+                </div>
+                <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
+                  {[
+                    { href: "/pos", label: "Retail POS Software" },
+                    { href: "/supermarket", label: "Supermarket POS" },
+                    { href: "/hypermarket", label: "Hypermarket Billing" },
+                    { href: "/departmental-store", label: "Departmental Store" },
+                    { href: "/grocery-store", label: "Grocery Billing" },
+                    { href: "/kirana-store", label: "Kirana Store POS" },
+                    { href: "/garments", label: "Garment Store POS" },
+                    { href: "/footwear-store", label: "Footwear Billing" },
+                    { href: "/boutique-store", label: "Boutique POS" },
+                    { href: "/bridal-store", label: "Bridal Store" },
+                    { href: "/textile", label: "Textile Billing" },
+                    { href: "/readymade-garment", label: "Readymade Garments" },
+                    { href: "/pharma", label: "Pharma Distribution" },
+                    { href: "/cosmetic-store", label: "Cosmetic Store" },
+                    { href: "/imitation-jewellery", label: "Jewellery Billing" },
+                    { href: "/hardware-store", label: "Hardware Store" },
+                    { href: "/home-decor-furniture", label: "Furniture POS" },
+                    { href: "/pet-shop", label: "Pet Shop POS" },
+                    { href: "/book-store", label: "Book Store POS" },
+                    { href: "/gift-shop", label: "Gift Shop POS" },
+                    { href: "/fruits-vegetable-shop", label: "Fruits & Vegetables" },
+                    { href: "/liquor-store", label: "Liquor Store POS" },
+                  ].map((item, idx) => (
+                    <Link key={idx} href={item.href} className="text-secondary text-decoration-none me-2 mb-1 hover-primary">
+                      {item.label} <span className="text-muted">·</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Core ERP & Enterprise Systems */}
+              <div className="col-lg-3 col-md-6">
+                <div className="fw-bold text-dark small text-uppercase mb-2" style={{ letterSpacing: '1px' }}>
+                  <i className="fa-solid fa-cubes me-1 text-primary"></i> ERP & Automation
+                </div>
+                <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
+                  {[
+                    { href: "/erp", label: "Enterprise ERP" },
+                    { href: "/crm", label: "AI CRM & Lead Mgmt" },
+                    { href: "/accounting", label: "GST Accounting" },
+                    { href: "/inventory", label: "Inventory Management" },
+                    { href: "/payroll", label: "Payroll & HRMS" },
+                    { href: "/invoicing", label: "GST Invoicing" },
+                    { href: "/lead-management", label: "Sales Lead Tracking" },
+                    { href: "/logistics", label: "Logistics & Transport" },
+                    { href: "/omnichannel", label: "Omnichannel Commerce" },
+                    { href: "/smart-retail", label: "Smart Retail Platform" },
+                    { href: "/custom-crm-solutions", label: "Custom CRM" },
+                    { href: "/industrial-products", label: "Industrial Wholesale" },
+                    { href: "/consumer-goods", label: "FMCG Distribution" },
+                    { href: "/trading-overview", label: "Trading ERP" },
+                    { href: "/after-sale-service", label: "Service CRM & Warranty" },
+                    { href: "/employee-background-verification", label: "Employee BGV" },
+                  ].map((item, idx) => (
+                    <Link key={idx} href={item.href} className="text-secondary text-decoration-none me-2 mb-1">
+                      {item.label} <span className="text-muted">·</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Hospitality, Institutions & Digital Services */}
+              <div className="col-lg-3 col-md-6">
+                <div className="fw-bold text-dark small text-uppercase mb-2" style={{ letterSpacing: '1px' }}>
+                  <i className="fa-solid fa-hotel me-1 text-primary"></i> Hospitality & Digital
+                </div>
+                <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
+                  {[
+                    { href: "/hotel-management-system", label: "Hotel Management (HMS)" },
+                    { href: "/hotel-room-booking-system", label: "Room Booking System" },
+                    { href: "/dharamshala-billing-system", label: "Dharamshala Management" },
+                    { href: "/resort-guest-house-software", label: "Resort & Guest House" },
+                    { href: "/online-booking-admin-portal", label: "Booking Admin Portal" },
+                    { href: "/india-temple", label: "Temple Trust Billing" },
+                    { href: "/hospitals", label: "Hospital Management (HMS)" },
+                    { href: "/schools-educational-institutions", label: "School Management" },
+                    { href: "/education", label: "EdTech Software" },
+                    { href: "/search-engine-optimization", label: "SEO Services" },
+                    { href: "/on-page-seo-services", label: "On-Page SEO" },
+                    { href: "/off-page-seo-services", label: "Off-Page SEO" },
+                    { href: "/technical-seo-services", label: "Technical SEO" },
+                    { href: "/digital-marketing-services", label: "Digital Marketing" },
+                    { href: "/social-media-optimization", label: "SMO Services" },
+                    { href: "/modern-responsive-website-design", label: "Responsive Web Design" },
+                    { href: "/google-play-publishing", label: "Google Play Console Publishing" },
+                  ].map((item, idx) => (
+                    <Link key={idx} href={item.href} className="text-secondary text-decoration-none me-2 mb-1">
+                      {item.label} <span className="text-muted">·</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Major City Landing Pages */}
+              <div className="col-lg-3 col-md-6">
+                <div className="fw-bold text-dark small text-uppercase mb-2" style={{ letterSpacing: '1px' }}>
+                  <i className="fa-solid fa-map-location-dot me-1 text-primary"></i> Popular City Hubs
+                </div>
+                <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
+                  {[
+                    "mumbai", "delhi", "bengaluru", "hyderabad", "ahmedabad", "chennai", "kolkata",
+                    "pune", "jaipur", "surat", "lucknow", "kanpur", "nagpur", "indore", "bhopal",
+                    "patna", "vadodara", "ghaziabad", "ludhiana", "agra", "nashik", "faridabad",
+                    "meerut", "rajkot", "varanasi", "amritsar", "allahabad", "visakhapatnam", "jabalpur",
+                    "gwalior", "coimbatore", "vijayawada", "jodhpur", "madurai", "raipur", "chandigarh",
+                    "guwahati", "solapur", "hubli", "bareilly", "moradabad", "mysore", "gurgaon",
+                    "aligarh", "jalandhar", "tiruchirappalli", "bhubaneswar", "salem", "mira-bhayandar",
+                    "thiruvananthapuram", "bhiwandi", "saharanpur", "gorakhpur", "guntur", "bikaner",
+                    "amravati", "noida", "jamshedpur", "bhilai", "cuttack", "firozabad", "kochi",
+                    "nellore", "bhavnagar", "dehradun", "durgapur", "asansol", "rourkela", "nanded",
+                    "kolhapur", "ajmer", "akola", "gulbarga", "jamnagar", "ujjain", "loni", "siliguri",
+                    "jhansi", "ulhasnagar", "jammu", "sangli", "mangalore", "erode", "belgaum",
+                    "kurnool", "ambattur", "tirunelveli", "malegaon", "gaya", "udaipur", "bhilwara"
+                  ].map((city) => (
+                    <Link
+                      key={city}
+                      href={`/cities/${city}`}
+                      className="text-secondary text-decoration-none me-2 mb-1"
+                      style={{ textTransform: 'capitalize' }}
+                    >
+                      {city.replace('-', ' ')} <span className="text-muted">·</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         {/* ─── Divider ─── */}
         <hr className="ct-footer-divider" />
 
@@ -424,6 +566,8 @@ export default function Footer() {
               <a href="/privacy-policy">Privacy Policy</a>
               <span className="sep">·</span>
               <a href="/terms">Terms of Service</a>
+              <span className="sep">·</span>
+              <a href="/blog">Blog</a>
               <span className="sep">·</span>
               <a href="/sitemap.xml">Sitemap</a>
             </div>

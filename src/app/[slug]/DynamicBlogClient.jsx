@@ -474,7 +474,7 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
         <div className="container">
           <div className="dy-hero-badge">
             <i className="fas fa-sparkles"></i>
-            <span>{content.badge || "ChittorTech Solutions & Guides"}</span>
+            <span>{content.badge || "ChittorTech Guides"}</span>
           </div>
           <h1 className="dy-hero-title">{content.heading || cleanTitle}</h1>
           <p className="dy-hero-desc">

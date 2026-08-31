@@ -16,8 +16,48 @@ import TrialModal from "@/components/TrialModal";
 import SliderInitializer from "@/components/SliderInitializer";
 
 export const metadata = {
-  title: "Best AI & IT Services Company in India | ChittorTech",
-  description: "Transforming businesses through innovative, cloud-based software solutions. AI & IT Solutions, AI Knowledge Base, AI Support Chatbot and website development.",
+  metadataBase: new URL("https://chittortech.online"),
+  title: {
+    default: "Best AI & IT Services Company in India | ChittorTech",
+    template: "%s | ChittorTech",
+  },
+  description: "Empowering businesses with AI Solutions, Custom LLMs, Enterprise Automation, POS & ERP Systems, and Digital Growth Services.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Best AI & IT Services Company in India | ChittorTech",
+    description: "Empowering businesses with AI Solutions, Custom LLMs, Enterprise Automation, POS & ERP Systems, and Digital Growth Services.",
+    url: "https://chittortech.online",
+    siteName: "ChittorTech",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/favicon.png",
+        width: 512,
+        height: 512,
+        alt: "ChittorTech",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best AI & IT Services Company in India | ChittorTech",
+    description: "Empowering businesses with AI Solutions, Custom LLMs, Enterprise Automation, POS & ERP Systems, and Digital Growth Services.",
+    images: ["/favicon.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },

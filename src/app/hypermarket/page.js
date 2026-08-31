@@ -802,7 +802,7 @@ export default function Page() {
           <div className="row">
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card service-box text-center p-4 animate-in" data-delay="0">
-                <figure> <img src="/assets/images/utq.png" alt="ChittorTech Hypermarket - utq" /> </figure>
+                <figure> <img src="/assets/images/departmental-hypermarket-store.png" alt="ChittorTech Hypermarket Solutions" /> </figure>
                 <h4>Optimized Inventory Management</h4>
                 <p>Keep accurate stock levels, track expiry dates, and automate reorders to avoid stock-outs.</p>
               </div>

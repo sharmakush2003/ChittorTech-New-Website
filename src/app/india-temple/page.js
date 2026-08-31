@@ -735,7 +735,7 @@ export default function Page() {
       </div>
       <div className="col-md-6 col-lg-4 mb-4">
         <div className="card service-box text-center p-4 animate-in" data-delay="500">
-          <figure> <img src="/assets/images/img626.png" alt="ChittorTech India Temple - img626" /> </figure>
+          <figure> <img src="/assets/images/Cloud-Temple-Management.png" alt="ChittorTech Temple Management Solutions" /> </figure>
           <h4> Expert Support Team</h4>
           <p>Our team ensures smooth implementation and ongoing assistance.</p>
         </div>

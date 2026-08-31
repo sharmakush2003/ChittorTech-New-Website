@@ -6,34 +6,36 @@ const getDirectories = srcPath => fs.readdirSync(srcPath, { withFileTypes: true 
   .filter(dirent => dirent.isDirectory())
   .map(dirent => dirent.name);
 
-const excludeFolders = new Set(['api', 'cities', 'city', '[slug]', 'pos_bill', '404', 'blog-details', 'blog-master']);
-const staticPages = getDirectories(appDir).filter(f => !excludeFolders.has(f));
+// Exclude internal routing helpers and non-page folders
+const excludeFolders = new Set([
+  'api', 'cities', 'city', '[slug]', 'pos_bill', '404', 'blog-details', 'blog-master', '.system_generated'
+]);
 
-const citiesData = JSON.parse(fs.readFileSync('src/data/cities.json', 'utf8'));
-const citySlugs = Object.keys(citiesData).map(c => 'cities/' + c);
+const staticPages = getDirectories(appDir).filter(f => !excludeFolders.has(f) && fs.existsSync(path.join(appDir, f, 'page.js') || path.join(appDir, f, 'page.jsx')));
 
-const chittorgarhServicesData = JSON.parse(fs.readFileSync('src/data/chittorgarhServices.json', 'utf8'));
-const chittorgarhSlugs = Object.keys(chittorgarhServicesData);
+// City dynamic pages
+let citySlugs = [];
+if (fs.existsSync('src/data/cities.json')) {
+  const citiesData = JSON.parse(fs.readFileSync('src/data/cities.json', 'utf8'));
+  citySlugs = Object.keys(citiesData).map(c => 'cities/' + c);
+}
 
-const oldSitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
-const oldUrls = (oldSitemap.match(/<loc>(.*?)<\/loc>/gi) || []).map(u => u.replace(/<\/?loc>/g, '').trim());
+// Chittorgarh Local & City Service Slugs
+let cityServiceSlugs = [];
+if (fs.existsSync('src/data/cityServices.json')) {
+  const servicesData = JSON.parse(fs.readFileSync('src/data/cityServices.json', 'utf8'));
+  cityServiceSlugs = Object.keys(servicesData);
+}
 
 const allUniquePaths = new Set();
-allUniquePaths.add(''); // Home page
-allUniquePaths.add('contact-us');
-allUniquePaths.add('demo');
-allUniquePaths.add('about-us');
+allUniquePaths.add(''); // Homepage
 
 staticPages.forEach(p => allUniquePaths.add(p));
 citySlugs.forEach(c => allUniquePaths.add(c));
-chittorgarhSlugs.forEach(s => allUniquePaths.add(s));
+cityServiceSlugs.forEach(s => allUniquePaths.add(s));
 
-oldUrls.forEach(u => {
-  const p = u.replace('https://chittortech.online/', '').replace(/^\//, '');
-  if (p && !p.startsWith('pos_bill') && !p.startsWith('api/')) {
-    allUniquePaths.add(p);
-  }
-});
+// Delete any known bad paths
+['404', 'city', 'blog-details', 'blog-master', 'undefined', 'null'].forEach(bad => allUniquePaths.delete(bad));
 
 const today = new Date().toISOString().split('T')[0];
 
@@ -42,7 +44,7 @@ const coreServices = new Set([
   'omnichannel', 'smart-retail', 'lead-management', 'logistics', 
   'web-development-services', 'search-engine-optimization', 'digital-marketing-services', 
   'custom-crm-solutions', 'e-commerce-website-development', 'android-application', 
-  'ai-solutions', 'ai-manufacturing', 'ai-knowledge', 'ai-business'
+  'ai-solutions', 'ai-manufacturing', 'ai-chatbot-development'
 ]);
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -56,7 +58,7 @@ Array.from(allUniquePaths).sort().forEach(p => {
   if (!p) {
     priority = '1.0';
     changefreq = 'daily';
-  } else if (p === 'contact-us' || p === 'demo' || coreServices.has(p) || chittorgarhServicesData[p]) {
+  } else if (p === 'contact-us' || p === 'demo' || coreServices.has(p)) {
     priority = '0.9';
     changefreq = 'weekly';
   } else if (p.startsWith('cities/')) {
@@ -78,4 +80,4 @@ Array.from(allUniquePaths).sort().forEach(p => {
 xml += '</urlset>\n';
 
 fs.writeFileSync('public/sitemap.xml', xml, 'utf8');
-console.log(`Successfully generated public/sitemap.xml with ${allUniquePaths.size} URLs.`);
+console.log(`Successfully generated public/sitemap.xml with ${allUniquePaths.size} clean, active URLs.`);
