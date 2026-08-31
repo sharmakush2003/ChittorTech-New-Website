@@ -524,19 +524,17 @@ export default function Footer() {
                 </div>
                 <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
                   {[
-                    "mumbai", "delhi", "bengaluru", "hyderabad", "ahmedabad", "chennai", "kolkata",
-                    "pune", "jaipur", "surat", "lucknow", "kanpur", "nagpur", "indore", "bhopal",
-                    "patna", "vadodara", "ghaziabad", "ludhiana", "agra", "nashik", "faridabad",
-                    "meerut", "rajkot", "varanasi", "amritsar", "allahabad", "visakhapatnam", "jabalpur",
-                    "gwalior", "coimbatore", "vijayawada", "jodhpur", "madurai", "raipur", "chandigarh",
-                    "guwahati", "solapur", "hubli", "bareilly", "moradabad", "mysore", "gurgaon",
-                    "aligarh", "jalandhar", "tiruchirappalli", "bhubaneswar", "salem", "mira-bhayandar",
-                    "thiruvananthapuram", "bhiwandi", "saharanpur", "gorakhpur", "guntur", "bikaner",
-                    "amravati", "noida", "jamshedpur", "bhilai", "cuttack", "firozabad", "kochi",
-                    "nellore", "bhavnagar", "dehradun", "durgapur", "asansol", "rourkela", "nanded",
-                    "kolhapur", "ajmer", "akola", "gulbarga", "jamnagar", "ujjain", "loni", "siliguri",
-                    "jhansi", "ulhasnagar", "jammu", "sangli", "mangalore", "erode", "belgaum",
-                    "kurnool", "ambattur", "tirunelveli", "malegaon", "gaya", "udaipur", "bhilwara"
+                    "agra", "ahmedabad", "ajmer", "alwar", "amritsar", "anand", "aurangabad", "banswara", "barmer",
+                    "belgaum", "bengaluru", "bharatpur", "bhavnagar", "bhilwara", "bhopal", "bhubaneswar", "bundi",
+                    "chandigarh", "chennai", "chittorgarh", "churu", "coimbatore", "dausa", "davanagere", "dehradun",
+                    "delhi", "dharwad", "faridabad", "gandhinagar", "ghaziabad", "gurgaon", "guwahati", "hanumangarh",
+                    "hubli", "hyderabad", "indore", "jaipur", "jalandhar", "jammu", "jamnagar", "jhalawar", "jodhpur",
+                    "junagadh", "kannur", "kanpur", "karimnagar", "kochi", "kolkata", "kota", "lucknow", "ludhiana",
+                    "madurai", "mangalore", "meerut", "mumbai", "mysuru", "nagaur", "nagpur", "nashik", "nizamabad",
+                    "noida", "pali", "panipat", "pratapgarh", "pune", "raipur", "rajkot", "rajsamand", "ranchi",
+                    "salem", "sawai-madhopur", "shimla", "sikar", "sonipat", "sri-ganganagar", "srinagar", "surat",
+                    "thane", "thiruvananthapuram", "thrissur", "tiruppur", "tonk", "trichy", "tumakuru", "udaipur",
+                    "vadodara", "varanasi", "vijayawada", "visakhapatnam", "warangal"
                   ].map((city) => (
                     <Link
                       key={city}
