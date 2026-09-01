@@ -280,6 +280,146 @@ export default function Footer() {
           .ct-footer-bottom-right { justify-content: center; }
           .ct-footer-cta-text h3 { font-size: 1.25rem; }
         }
+
+        /* ─── Tabular Card Directory Architecture ─── */
+        .ct-footer-directory {
+          background: #f8fafc;
+          border-top: 1px solid #e2e8f0;
+          padding: 32px 0 28px;
+        }
+        .ct-dir-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 20px;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .ct-dir-heading {
+          font-size: 0.94rem;
+          font-weight: 700;
+          color: #0f172a;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          letter-spacing: -0.2px;
+        }
+        .ct-dir-heading i { color: #2563eb; font-size: 0.88rem; }
+        .ct-dir-subhead {
+          font-size: 0.76rem;
+          color: #64748b;
+        }
+        .ct-dir-card {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          padding: 16px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+          transition: all 0.2s ease;
+        }
+        .ct-dir-card:hover {
+          border-color: #cbd5e1;
+          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+        }
+        .ct-dir-card-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-bottom: 10px;
+          margin-bottom: 12px;
+          border-bottom: 1px solid #f1f5f9;
+        }
+        .ct-dir-card-title {
+          font-size: 0.8rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          color: #1e293b;
+          display: flex;
+          align-items: center;
+          gap: 7px;
+        }
+        .ct-dir-card-badge {
+          font-size: 0.66rem;
+          font-weight: 700;
+          padding: 2px 7px;
+          border-radius: 20px;
+          background: #f1f5f9;
+          color: #475569;
+          border: 1px solid #e2e8f0;
+        }
+        .ct-dir-pills-wrap {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .ct-dir-pill {
+          display: inline-flex;
+          align-items: center;
+          font-size: 0.74rem;
+          font-weight: 500;
+          color: #475569;
+          text-decoration: none;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          padding: 3px 8px;
+          border-radius: 6px;
+          transition: all 0.15s ease;
+          line-height: 1.4;
+        }
+        .ct-dir-pill:hover {
+          background: #eff6ff;
+          color: #1d4ed8;
+          border-color: #bfdbfe;
+          transform: translateY(-1px);
+        }
+        .ct-dir-scroll-box {
+          max-height: 240px;
+          overflow-y: auto;
+          padding-right: 4px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+        }
+        .ct-dir-scroll-box::-webkit-scrollbar {
+          width: 4px;
+        }
+        .ct-dir-scroll-box::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 4px;
+        }
+        .ct-city-pill {
+          display: inline-flex;
+          align-items: center;
+          font-size: 0.72rem;
+          font-weight: 500;
+          color: #475569;
+          text-decoration: none;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          padding: 3px 7px;
+          border-radius: 6px;
+          text-transform: capitalize;
+          transition: all 0.15s ease;
+          line-height: 1.35;
+        }
+        .ct-city-pill:hover {
+          background: #0f172a;
+          color: #ffffff;
+          border-color: #0f172a;
+          transform: translateY(-1px);
+        }
+        @media (max-width: 768px) {
+          .ct-dir-top {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+            margin-bottom: 14px;
+          }
+        }
       `}</style>
 
       <footer className="ct-footer-wrap">
@@ -413,138 +553,166 @@ export default function Footer() {
         </div>
 
         {/* ─── Expandable / Rich Directory Section for Complete Internal Linking ─── */}
-        <div className="ct-footer-directory py-4" style={{ background: '#f1f5f9', borderTop: '1px solid #e2e8f0' }}>
+        <div className="ct-footer-directory">
           <div className="container">
-            <div className="row g-4 text-start">
+            <div className="ct-dir-top">
+              <div className="ct-dir-heading">
+                <i className="fa-solid fa-layer-group"></i> Solutions &amp; City Hubs Directory
+              </div>
+              <div className="ct-dir-subhead">
+                Explore ChittorTech's complete ecosystem of enterprise software, POS systems, and regional deployment hubs.
+              </div>
+            </div>
+
+            <div className="row g-3 text-start">
               
               {/* Industry POS & Retail Billing */}
               <div className="col-lg-3 col-md-6">
-                <div className="fw-bold text-dark small text-uppercase mb-2" style={{ letterSpacing: '1px' }}>
-                  <i className="fa-solid fa-cash-register me-1 text-primary"></i> Retail & POS Systems
-                </div>
-                <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
-                  {[
-                    { href: "/pos", label: "Retail POS Software" },
-                    { href: "/supermarket", label: "Supermarket POS" },
-                    { href: "/hypermarket", label: "Hypermarket Billing" },
-                    { href: "/departmental-store", label: "Departmental Store" },
-                    { href: "/grocery-store", label: "Grocery Billing" },
-                    { href: "/kirana-store", label: "Kirana Store POS" },
-                    { href: "/garments", label: "Garment Store POS" },
-                    { href: "/footwear-store", label: "Footwear Billing" },
-                    { href: "/boutique-store", label: "Boutique POS" },
-                    { href: "/bridal-store", label: "Bridal Store" },
-                    { href: "/textile", label: "Textile Billing" },
-                    { href: "/readymade-garment", label: "Readymade Garments" },
-                    { href: "/pharma", label: "Pharma Distribution" },
-                    { href: "/cosmetic-store", label: "Cosmetic Store" },
-                    { href: "/imitation-jewellery", label: "Jewellery Billing" },
-                    { href: "/hardware-store", label: "Hardware Store" },
-                    { href: "/home-decor-furniture", label: "Furniture POS" },
-                    { href: "/pet-shop", label: "Pet Shop POS" },
-                    { href: "/book-store", label: "Book Store POS" },
-                    { href: "/gift-shop", label: "Gift Shop POS" },
-                    { href: "/fruits-vegetable-shop", label: "Fruits & Vegetables" },
-                    { href: "/liquor-store", label: "Liquor Store POS" },
-                  ].map((item, idx) => (
-                    <Link key={idx} href={item.href} className="text-secondary text-decoration-none me-2 mb-1 hover-primary">
-                      {item.label} <span className="text-muted">·</span>
-                    </Link>
-                  ))}
+                <div className="ct-dir-card">
+                  <div className="ct-dir-card-head">
+                    <div className="ct-dir-card-title">
+                      <i className="fa-solid fa-cash-register text-primary"></i> Retail &amp; POS
+                    </div>
+                    <span className="ct-dir-card-badge">22 Apps</span>
+                  </div>
+                  <div className="ct-dir-pills-wrap">
+                    {[
+                      { href: "/pos", label: "Retail POS Software" },
+                      { href: "/supermarket", label: "Supermarket POS" },
+                      { href: "/hypermarket", label: "Hypermarket Billing" },
+                      { href: "/departmental-store", label: "Departmental Store" },
+                      { href: "/grocery-store", label: "Grocery Billing" },
+                      { href: "/kirana-store", label: "Kirana Store POS" },
+                      { href: "/garments", label: "Garment Store POS" },
+                      { href: "/footwear-store", label: "Footwear Billing" },
+                      { href: "/boutique-store", label: "Boutique POS" },
+                      { href: "/bridal-store", label: "Bridal Store" },
+                      { href: "/textile", label: "Textile Billing" },
+                      { href: "/readymade-garment", label: "Readymade Garments" },
+                      { href: "/pharma", label: "Pharma Distribution" },
+                      { href: "/cosmetic-store", label: "Cosmetic Store" },
+                      { href: "/imitation-jewellery", label: "Jewellery Billing" },
+                      { href: "/hardware-store", label: "Hardware Store" },
+                      { href: "/home-decor-furniture", label: "Furniture POS" },
+                      { href: "/pet-shop", label: "Pet Shop POS" },
+                      { href: "/book-store", label: "Book Store POS" },
+                      { href: "/gift-shop", label: "Gift Shop POS" },
+                      { href: "/fruits-vegetable-shop", label: "Fruits & Veg" },
+                      { href: "/liquor-store", label: "Liquor Store POS" },
+                    ].map((item, idx) => (
+                      <Link key={idx} href={item.href} className="ct-dir-pill">
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* Core ERP & Enterprise Systems */}
               <div className="col-lg-3 col-md-6">
-                <div className="fw-bold text-dark small text-uppercase mb-2" style={{ letterSpacing: '1px' }}>
-                  <i className="fa-solid fa-cubes me-1 text-primary"></i> ERP & Automation
-                </div>
-                <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
-                  {[
-                    { href: "/erp", label: "Enterprise ERP" },
-                    { href: "/crm", label: "AI CRM & Lead Mgmt" },
-                    { href: "/accounting", label: "GST Accounting" },
-                    { href: "/inventory", label: "Inventory Management" },
-                    { href: "/payroll", label: "Payroll & HRMS" },
-                    { href: "/invoicing", label: "GST Invoicing" },
-                    { href: "/lead-management", label: "Sales Lead Tracking" },
-                    { href: "/logistics", label: "Logistics & Transport" },
-                    { href: "/omnichannel", label: "Omnichannel Commerce" },
-                    { href: "/smart-retail", label: "Smart Retail Platform" },
-                    { href: "/custom-crm-solutions", label: "Custom CRM" },
-                    { href: "/industrial-products", label: "Industrial Wholesale" },
-                    { href: "/consumer-goods", label: "FMCG Distribution" },
-                    { href: "/trading-overview", label: "Trading ERP" },
-                    { href: "/after-sale-service", label: "Service CRM & Warranty" },
-                    { href: "/employee-background-verification", label: "Employee BGV" },
-                  ].map((item, idx) => (
-                    <Link key={idx} href={item.href} className="text-secondary text-decoration-none me-2 mb-1">
-                      {item.label} <span className="text-muted">·</span>
-                    </Link>
-                  ))}
+                <div className="ct-dir-card">
+                  <div className="ct-dir-card-head">
+                    <div className="ct-dir-card-title">
+                      <i className="fa-solid fa-cubes text-indigo" style={{ color: '#6366f1' }}></i> ERP &amp; Systems
+                    </div>
+                    <span className="ct-dir-card-badge">16 Modules</span>
+                  </div>
+                  <div className="ct-dir-pills-wrap">
+                    {[
+                      { href: "/erp", label: "Enterprise ERP" },
+                      { href: "/crm", label: "AI CRM & Leads" },
+                      { href: "/accounting", label: "GST Accounting" },
+                      { href: "/inventory", label: "Inventory Mgmt" },
+                      { href: "/payroll", label: "Payroll & HRMS" },
+                      { href: "/invoicing", label: "GST Invoicing" },
+                      { href: "/lead-management", label: "Sales Lead Tracking" },
+                      { href: "/logistics", label: "Logistics & Transport" },
+                      { href: "/omnichannel", label: "Omnichannel POS" },
+                      { href: "/smart-retail", label: "Smart Retail" },
+                      { href: "/custom-crm-solutions", label: "Custom CRM" },
+                      { href: "/industrial-products", label: "Industrial Wholesale" },
+                      { href: "/consumer-goods", label: "FMCG Distribution" },
+                      { href: "/trading-overview", label: "Trading ERP" },
+                      { href: "/after-sale-service", label: "Service & Warranty" },
+                      { href: "/employee-background-verification", label: "Employee BGV" },
+                    ].map((item, idx) => (
+                      <Link key={idx} href={item.href} className="ct-dir-pill">
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* Hospitality, Institutions & Digital Services */}
               <div className="col-lg-3 col-md-6">
-                <div className="fw-bold text-dark small text-uppercase mb-2" style={{ letterSpacing: '1px' }}>
-                  <i className="fa-solid fa-hotel me-1 text-primary"></i> Hospitality & Digital
-                </div>
-                <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
-                  {[
-                    { href: "/hotel-management-system", label: "Hotel Management (HMS)" },
-                    { href: "/hotel-room-booking-system", label: "Room Booking System" },
-                    { href: "/dharamshala-billing-system", label: "Dharamshala Management" },
-                    { href: "/resort-guest-house-software", label: "Resort & Guest House" },
-                    { href: "/online-booking-admin-portal", label: "Booking Admin Portal" },
-                    { href: "/india-temple", label: "Temple Trust Billing" },
-                    { href: "/hospitals", label: "Hospital Management (HMS)" },
-                    { href: "/schools-educational-institutions", label: "School Management" },
-                    { href: "/education", label: "EdTech Software" },
-                    { href: "/search-engine-optimization", label: "SEO Services" },
-                    { href: "/on-page-seo-services", label: "On-Page SEO" },
-                    { href: "/off-page-seo-services", label: "Off-Page SEO" },
-                    { href: "/technical-seo-services", label: "Technical SEO" },
-                    { href: "/digital-marketing-services", label: "Digital Marketing" },
-                    { href: "/social-media-optimization", label: "SMO Services" },
-                    { href: "/modern-responsive-website-design", label: "Responsive Web Design" },
-                    { href: "/google-play-publishing", label: "Google Play Console Publishing" },
-                  ].map((item, idx) => (
-                    <Link key={idx} href={item.href} className="text-secondary text-decoration-none me-2 mb-1">
-                      {item.label} <span className="text-muted">·</span>
-                    </Link>
-                  ))}
+                <div className="ct-dir-card">
+                  <div className="ct-dir-card-head">
+                    <div className="ct-dir-card-title">
+                      <i className="fa-solid fa-hotel text-emerald" style={{ color: '#10b981' }}></i> Hospitality &amp; Web
+                    </div>
+                    <span className="ct-dir-card-badge">17 Suites</span>
+                  </div>
+                  <div className="ct-dir-pills-wrap">
+                    {[
+                      { href: "/hotel-management-system", label: "Hotel HMS" },
+                      { href: "/hotel-room-booking-system", label: "Room Booking" },
+                      { href: "/dharamshala-billing-system", label: "Dharamshala Mgmt" },
+                      { href: "/resort-guest-house-software", label: "Resort & Guest House" },
+                      { href: "/online-booking-admin-portal", label: "Booking Portal" },
+                      { href: "/india-temple", label: "Temple Trust Billing" },
+                      { href: "/hospitals", label: "Hospital HMS" },
+                      { href: "/schools-educational-institutions", label: "School Mgmt" },
+                      { href: "/education", label: "EdTech Software" },
+                      { href: "/search-engine-optimization", label: "SEO Services" },
+                      { href: "/on-page-seo-services", label: "On-Page SEO" },
+                      { href: "/off-page-seo-services", label: "Off-Page SEO" },
+                      { href: "/technical-seo-services", label: "Technical SEO" },
+                      { href: "/digital-marketing-services", label: "Digital Marketing" },
+                      { href: "/social-media-optimization", label: "SMO Services" },
+                      { href: "/modern-responsive-website-design", label: "Web Design" },
+                      { href: "/google-play-publishing", label: "Play Store Launch" },
+                    ].map((item, idx) => (
+                      <Link key={idx} href={item.href} className="ct-dir-pill">
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* Major City Landing Pages */}
               <div className="col-lg-3 col-md-6">
-                <div className="fw-bold text-dark small text-uppercase mb-2" style={{ letterSpacing: '1px' }}>
-                  <i className="fa-solid fa-map-location-dot me-1 text-primary"></i> Popular City Hubs
-                </div>
-                <div className="d-flex flex-wrap gap-1" style={{ fontSize: '0.78rem' }}>
-                  {[
-                    "agra", "ahmedabad", "ajmer", "alwar", "amritsar", "anand", "aurangabad", "banswara", "barmer",
-                    "belgaum", "bengaluru", "bharatpur", "bhavnagar", "bhilwara", "bhopal", "bhubaneswar", "bundi",
-                    "chandigarh", "chennai", "chittorgarh", "churu", "coimbatore", "dausa", "davanagere", "dehradun",
-                    "delhi", "dharwad", "faridabad", "gandhinagar", "ghaziabad", "gurgaon", "guwahati", "hanumangarh",
-                    "hubli", "hyderabad", "indore", "jaipur", "jalandhar", "jammu", "jamnagar", "jhalawar", "jodhpur",
-                    "junagadh", "kannur", "kanpur", "karimnagar", "kochi", "kolkata", "kota", "lucknow", "ludhiana",
-                    "madurai", "mangalore", "meerut", "mumbai", "mysuru", "nagaur", "nagpur", "nashik", "nizamabad",
-                    "noida", "pali", "panipat", "pratapgarh", "pune", "raipur", "rajkot", "rajsamand", "ranchi",
-                    "salem", "sawai-madhopur", "shimla", "sikar", "sonipat", "sri-ganganagar", "srinagar", "surat",
-                    "thane", "thiruvananthapuram", "thrissur", "tiruppur", "tonk", "trichy", "tumakuru", "udaipur",
-                    "vadodara", "varanasi", "vijayawada", "visakhapatnam", "warangal"
-                  ].map((city) => (
-                    <Link
-                      key={city}
-                      href={`/cities/${city}`}
-                      className="text-secondary text-decoration-none me-2 mb-1"
-                      style={{ textTransform: 'capitalize' }}
-                    >
-                      {city.replace('-', ' ')} <span className="text-muted">·</span>
-                    </Link>
-                  ))}
+                <div className="ct-dir-card">
+                  <div className="ct-dir-card-head">
+                    <div className="ct-dir-card-title">
+                      <i className="fa-solid fa-map-location-dot text-amber" style={{ color: '#f59e0b' }}></i> Popular Cities
+                    </div>
+                    <span className="ct-dir-card-badge">90+ Hubs</span>
+                  </div>
+                  <div className="ct-dir-scroll-box">
+                    {[
+                      "agra", "ahmedabad", "ajmer", "alwar", "amritsar", "anand", "aurangabad", "banswara", "barmer",
+                      "belgaum", "bengaluru", "bharatpur", "bhavnagar", "bhilwara", "bhopal", "bhubaneswar", "bundi",
+                      "chandigarh", "chennai", "chittorgarh", "churu", "coimbatore", "dausa", "davanagere", "dehradun",
+                      "delhi", "dharwad", "faridabad", "gandhinagar", "ghaziabad", "gurgaon", "guwahati", "hanumangarh",
+                      "hubli", "hyderabad", "indore", "jaipur", "jalandhar", "jammu", "jamnagar", "jhalawar", "jodhpur",
+                      "junagadh", "kannur", "kanpur", "karimnagar", "kochi", "kolkata", "kota", "lucknow", "ludhiana",
+                      "madurai", "mangalore", "meerut", "mumbai", "mysuru", "nagaur", "nagpur", "nashik", "nizamabad",
+                      "noida", "pali", "panipat", "pratapgarh", "pune", "raipur", "rajkot", "rajsamand", "ranchi",
+                      "salem", "sawai-madhopur", "shimla", "sikar", "sonipat", "sri-ganganagar", "srinagar", "surat",
+                      "thane", "thiruvananthapuram", "thrissur", "tiruppur", "tonk", "trichy", "tumakuru", "udaipur",
+                      "vadodara", "varanasi", "vijayawada", "visakhapatnam", "warangal"
+                    ].map((city) => (
+                      <Link
+                        key={city}
+                        href={`/cities/${city}`}
+                        className="ct-city-pill"
+                      >
+                        {city.replace('-', ' ')}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
 

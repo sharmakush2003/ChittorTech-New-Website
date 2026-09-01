@@ -250,7 +250,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Nisha Singh",
-    role: "Sister",
+    role: "",
     initials: "N",
     avatarBg: "linear-gradient(135deg, #2563eb, #3b82f6)",
     rating: 5,
@@ -258,7 +258,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Muskan Falwaria",
-    role: "College Classmate",
+    role: "",
     initials: "M",
     avatarBg: "linear-gradient(135deg, #2563eb, #3b82f6)",
     rating: 5,
@@ -266,7 +266,7 @@ const TESTIMONIALS = [
   },
   {
     name: "Priyanka Vyas",
-    role: "School Junior",
+    role: "",
     initials: "P",
     avatarBg: "linear-gradient(135deg, #2563eb, #3b82f6)",
     rating: 5,
@@ -1349,7 +1349,7 @@ export default function HomePage() {
                   <div className="ct-testi-avatar" style={{ background: t.avatarBg }}>{t.initials}</div>
                   <div>
                     <div className="ct-testi-name">{t.name}</div>
-                    <div className="ct-testi-role">{t.role}</div>
+                    {t.role ? <div className="ct-testi-role">{t.role}</div> : null}
                   </div>
                 </div>
               </div>
