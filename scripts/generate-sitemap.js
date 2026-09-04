@@ -34,6 +34,13 @@ if (fs.existsSync('src/data/blogPosts.json')) {
   blogSlugs = blogsData.map(b => b.link ? b.link.replace(/^\//, '') : '').filter(Boolean);
 }
 
+// Technology Slugs (44 Pages)
+let techSlugs = [];
+if (fs.existsSync('src/data/technologies.json')) {
+  const techData = JSON.parse(fs.readFileSync('src/data/technologies.json', 'utf8'));
+  techSlugs = techData.map(t => 'technology/' + t.slug);
+}
+
 const allUniquePaths = new Set();
 allUniquePaths.add(''); // Homepage
 
@@ -41,6 +48,7 @@ staticPages.forEach(p => allUniquePaths.add(p));
 citySlugs.forEach(c => allUniquePaths.add(c));
 cityServiceSlugs.forEach(s => allUniquePaths.add(s));
 blogSlugs.forEach(b => allUniquePaths.add(b));
+techSlugs.forEach(t => allUniquePaths.add(t));
 
 // Delete any known bad paths
 ['404', 'city', 'blog-details', 'blog-master', 'undefined', 'null'].forEach(bad => allUniquePaths.delete(bad));

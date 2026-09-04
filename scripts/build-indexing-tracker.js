@@ -3,29 +3,7 @@ const path = require('path');
 
 const validUrls = fs.readFileSync('valid_urls.txt', 'utf8').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
 const blogs = JSON.parse(fs.readFileSync('src/data/blogPosts.json', 'utf8')).map(b => 'https://chittortech.online' + (b.link.startsWith('/') ? b.link : '/' + b.link));
-
-// Helper to prioritize high-value pages
-function prioritize(urls, excludeSet) {
-  const corePages = [];
-  const blogPages = [];
-  const cityPages = [];
-  const cityServicePages = [];
-
-  urls.forEach(u => {
-    if (excludeSet.has(u)) return;
-    if (blogs.includes(u)) {
-      blogPages.push(u);
-    } else if (u.includes('/cities/')) {
-      cityPages.push(u);
-    } else if (u.split('/').length === 4 && !u.includes('-in-')) {
-      corePages.push(u);
-    } else {
-      cityServicePages.push(u);
-    }
-  });
-
-  return [...corePages, ...blogPages, ...cityPages, ...cityServicePages];
-}
+const techs = JSON.parse(fs.readFileSync('src/data/technologies.json', 'utf8')).map(t => `https://chittortech.online/technology/${t.slug}`);
 
 // ----------------------------------------------------
 // BATCH 1: PREVIOUS SUBMISSIONS
@@ -46,44 +24,110 @@ const yandexInitial = [
   'https://chittortech.online/cities/bengaluru'
 ];
 
-// ----------------------------------------------------
-// BATCH 2: SUBMITTED ON SEP 04, 2026 (SHIFTED TO DONE)
-// ----------------------------------------------------
-const bingPoolSep4 = prioritize(validUrls, new Set(bingInitial));
+// Helper to prioritize high-value pages for previous Sep 4 batch
+function prioritizeSep4(urls, excludeSet) {
+  const corePages = [];
+  const blogPages = [];
+  const cityPages = [];
+  const cityServicePages = [];
+
+  urls.forEach(u => {
+    if (excludeSet.has(u)) return;
+    if (u.includes('/technology/')) return; // Tech pages were not part of Sep 4 batch
+    if (blogs.includes(u)) {
+      blogPages.push(u);
+    } else if (u.includes('/cities/')) {
+      cityPages.push(u);
+    } else if (u.split('/').length === 4 && !u.includes('-in-')) {
+      corePages.push(u);
+    } else {
+      cityServicePages.push(u);
+    }
+  });
+
+  return [...corePages, ...blogPages, ...cityPages, ...cityServicePages];
+}
+
+// BATCH 2: SUBMITTED ON SEP 04, 2026 (MARKED AS DONE)
+const bingPoolSep4 = prioritizeSep4(validUrls, new Set(bingInitial));
 const bingBatchSep4 = bingPoolSep4.slice(0, 100);
 
-const yandexPoolSep4 = prioritize(validUrls, new Set(yandexInitial));
+const yandexPoolSep4 = prioritizeSep4(validUrls, new Set(yandexInitial));
 const yandexBatchSep4 = yandexPoolSep4.slice(0, 150);
 
-// TOTAL ALL-TIME SUBMITTED (DONE) SETS
+// TOTAL ALL-TIME COMPLETED (DONE)
 const allBingDone = [...bingInitial, ...bingBatchSep4];
 const allYandexDone = [...yandexInitial, ...yandexBatchSep4];
 
 // ----------------------------------------------------
-// BATCH 3: NEXT QUEUE (FOR NEXT ROUND / TOMORROW)
+// BATCH 3: TOMORROW (SEP 05, 2026) — PRIORITY #1: 44 TECH PAGES
 // ----------------------------------------------------
-const bingPoolNext = prioritize(validUrls, new Set(allBingDone));
-const bingBatchNext100 = bingPoolNext.slice(0, 100);
+function prioritizeTomorrow(urls, excludeSet) {
+  const techPages = [];
+  const remainingPages = [];
 
-const yandexPoolNext = prioritize(validUrls, new Set(allYandexDone));
-const yandexBatchNext150 = yandexPoolNext.slice(0, 150);
+  // 1. Put all 44 technology pages first
+  techs.forEach(u => {
+    if (!excludeSet.has(u)) {
+      techPages.push(u);
+    }
+  });
+
+  // 2. Put other unsubmitted high-value pages next
+  urls.forEach(u => {
+    if (!excludeSet.has(u) && !techs.includes(u)) {
+      remainingPages.push(u);
+    }
+  });
+
+  return [...techPages, ...remainingPages];
+}
+
+const bingPoolTomorrow = prioritizeTomorrow(validUrls, new Set(allBingDone));
+const bingBatchTomorrow100 = bingPoolTomorrow.slice(0, 100);
+
+const yandexPoolTomorrow = prioritizeTomorrow(validUrls, new Set(allYandexDone));
+const yandexBatchTomorrow150 = yandexPoolTomorrow.slice(0, 150);
 
 let doc = `# 🌐 Search Engine URL Indexing Tracker & Submission Log
 
-This file permanently tracks all submitted URLs across **Bing Webmaster Tools**, **Yandex Webmaster**, and **Google Search Console** to ensure **zero duplicates** and 100% crawl coverage.
+This file tracks all submitted URLs across **Bing Webmaster Tools**, **Yandex Webmaster**, and **Google Search Console** to ensure **zero duplicates** and maximum crawl efficiency.
 
-- **Total Active URLs in Site Index:** ${validUrls.length} URLs
-- **Last Updated:** September 4, 2026 (Batch 2 Marked as DONE)
+- **Total Active URLs in Site Index:** ${validUrls.length} URLs (Includes all 44 new Technology pages)
+- **Last Updated:** September 4, 2026
+- **Prepared For:** **Tomorrow's Daily Quota (September 5, 2026)**
 
 ---
 
 ## 📊 Overall Submission Progress
 
-| Search Engine | Total Quota Used | Done / Submitted | Remaining in Pool | Completion % |
+| Search Engine | Daily Quota | Total Done (Completed) | Prepared for Tomorrow | Remaining in Queue |
 | :--- | :--- | :--- | :--- | :--- |
-| **Bing Webmaster Tools** | 100 / day | **${allBingDone.length} URLs** | ${validUrls.length - allBingDone.length} URLs | ${((allBingDone.length / validUrls.length) * 100).toFixed(1)}% |
-| **Yandex Webmaster** | 150 / day | **${allYandexDone.length} URLs** | ${validUrls.length - allYandexDone.length} URLs | ${((allYandexDone.length / validUrls.length) * 100).toFixed(1)}% |
-| **Google Search Console** | 10-20 / day | Top 20 Core URLs | On-Demand Priority | Active |
+| **Bing Webmaster Tools** | 100 / day | **${allBingDone.length} URLs** | **100 URLs** (All 44 Techs + 56 Cities) | ${validUrls.length - allBingDone.length - bingBatchTomorrow100.length} URLs |
+| **Yandex Webmaster** | 150 / day | **${allYandexDone.length} URLs** | **150 URLs** (All 44 Techs + 106 Cities) | ${validUrls.length - allYandexDone.length - yandexBatchTomorrow150.length} URLs |
+| **Google Search Console** | 10-20 / day | Top 20 Core URLs | On-Demand Daily Inspections | Active |
+
+---
+
+## 🚀 TOMORROW'S BATCH (September 5, 2026): Bing Webmaster Tools (100 URLs Quota)
+> **Instructions for Tomorrow:** Copy the 100 URLs below and paste directly into [Bing Webmaster Tools URL Submission](https://www.bing.com/webmasters/submiturl?siteUrl=https://chittortech.online/).
+> 
+> ⭐ **Features all 44 brand-new Technology pages at the top (#1 to #44) for immediate indexing, followed by 56 next city landing pages.**
+
+\`\`\`text
+${bingBatchTomorrow100.join('\n')}
+\`\`\`
+
+---
+
+## 🚀 TOMORROW'S BATCH (September 5, 2026): Yandex Webmaster (150 URLs Quota)
+> **Instructions for Tomorrow:** Copy the 150 URLs below and paste directly into [Yandex Webmaster Reindex Pages](https://webmaster.yandex.com/site/https:chittortech.online:443/indexing/reindex/).
+> 
+> ⭐ **Features all 44 brand-new Technology pages at the top (#1 to #44) for immediate indexing, followed by 106 next city landing pages.**
+
+\`\`\`text
+${yandexBatchTomorrow150.join('\n')}
+\`\`\`
 
 ---
 
@@ -117,30 +161,13 @@ ${allYandexDone.join('\n')}
 
 ---
 
-## 🚀 NEXT BATCH READY (For Tomorrow / Next Round)
-> **Note:** None of these URLs have ever been submitted. They are 100% fresh and deduplicated from the completed lists above.
-
-### 🟢 Next 100 URLs for Bing Webmaster Tools (Quota: 100)
-\`\`\`text
-${bingBatchNext100.join('\n')}
-\`\`\`
-
----
-
-### 🟢 Next 150 URLs for Yandex Webmaster (Quota: 150)
-\`\`\`text
-${yandexBatchNext150.join('\n')}
-\`\`\`
-
----
-
 ## 🔍 Google Search Console Priority Inspection (Top 20 Critical Hubs)
 \`\`\`text
-${prioritize(validUrls, new Set()).slice(0, 20).join('\n')}
+${techs.slice(0, 10).concat(blogs.slice(0, 10)).join('\n')}
 \`\`\`
 `;
 
 fs.writeFileSync('SEARCH_ENGINE_INDEXING_TRACKER.md', doc, 'utf8');
-console.log('Successfully updated SEARCH_ENGINE_INDEXING_TRACKER.md with batches shifted to DONE!');
-console.log('Bing Done:', allBingDone.length, '| Bing Next:', bingBatchNext100.length);
-console.log('Yandex Done:', allYandexDone.length, '| Yandex Next:', yandexBatchNext150.length);
+console.log('Successfully updated SEARCH_ENGINE_INDEXING_TRACKER.md with tomorrow batch prioritized!');
+console.log(`Tomorrow Bing Batch: ${bingBatchTomorrow100.length} URLs (First 44 are Technologies)`);
+console.log(`Tomorrow Yandex Batch: ${yandexBatchTomorrow150.length} URLs (First 44 are Technologies)`);

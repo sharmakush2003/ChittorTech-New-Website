@@ -3,56 +3,11 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-/* ── 2 Rows of Tech Stack Items (44 Total Technologies) ── */
-const TECH_ROW_1 = [
-  { name: "JavaScript", icon: "fa-brands fa-js", color: "#f7df1e" },
-  { name: "TypeScript", icon: "fa-brands fa-js", color: "#3178c6" },
-  { name: "HTML5", icon: "fa-brands fa-html5", color: "#e34f26" },
-  { name: "CSS3", icon: "fa-brands fa-css3-alt", color: "#1572b6" },
-  { name: "React", icon: "fa-brands fa-react", color: "#61dafb" },
-  { name: "Next.js", icon: "fa-solid fa-layer-group", color: "#0f172a" },
-  { name: "Vue.js", icon: "fa-brands fa-vuejs", color: "#4fc08d" },
-  { name: "Angular", icon: "fa-brands fa-angular", color: "#dd0031" },
-  { name: "Node.js", icon: "fa-brands fa-node-js", color: "#339933" },
-  { name: "Python", icon: "fa-brands fa-python", color: "#3776ab" },
-  { name: "Java", icon: "fa-brands fa-java", color: "#007396" },
-  { name: "Kotlin", icon: "fa-solid fa-code", color: "#7f52ff" },
-  { name: "Android SDK", icon: "fa-brands fa-android", color: "#3ddc84" },
-  { name: "Swift / iOS", icon: "fa-brands fa-swift", color: "#f05138" },
-  { name: "Flutter", icon: "fa-solid fa-mobile-screen-button", color: "#02569b" },
-  { name: "React Native", icon: "fa-brands fa-react", color: "#61dafb" },
-  { name: "Expo Go", icon: "fa-solid fa-mobile-screen", color: "#0f172a" },
-  { name: "PHP", icon: "fa-brands fa-php", color: "#777bb4" },
-  { name: "Laravel", icon: "fa-brands fa-laravel", color: "#ff2d20" },
-  { name: "MongoDB", icon: "fa-solid fa-leaf", color: "#47a248" },
-  { name: "PostgreSQL", icon: "fa-solid fa-database", color: "#4169e1" },
-  { name: "MySQL", icon: "fa-solid fa-database", color: "#00758f" },
-];
+import technologies from "@/data/technologies.json";
 
-const TECH_ROW_2 = [
-  { name: "Redis", icon: "fa-solid fa-server", color: "#dc382d" },
-  { name: "Pinecone Vector DB", icon: "fa-solid fa-brain", color: "#06b6d4" },
-  { name: "OpenAI GPT-4", icon: "fa-solid fa-robot", color: "#10a37f" },
-  { name: "TensorFlow", icon: "fa-solid fa-diagram-project", color: "#ff6f00" },
-  { name: "PyTorch", icon: "fa-solid fa-fire", color: "#ee4c2c" },
-  { name: "GraphQL", icon: "fa-solid fa-diagram-next", color: "#e10098" },
-  { name: "Socket.IO", icon: "fa-solid fa-bolt", color: "#0f172a" },
-  { name: "AWS Cloud", icon: "fa-brands fa-aws", color: "#ff9900" },
-  { name: "Google Cloud", icon: "fa-brands fa-google-cloud", color: "#4285f4" },
-  { name: "Microsoft Azure", icon: "fa-brands fa-microsoft", color: "#0089d6" },
-  { name: "Docker", icon: "fa-brands fa-docker", color: "#2496ed" },
-  { name: "Kubernetes", icon: "fa-solid fa-dharmachakra", color: "#326ce5" },
-  { name: "GitHub", icon: "fa-brands fa-github", color: "#181717" },
-  { name: "GitLab", icon: "fa-brands fa-gitlab", color: "#fc6d26" },
-  { name: "VS Code", icon: "fa-solid fa-laptop-code", color: "#007acc" },
-  { name: "Vercel", icon: "fa-solid fa-play", color: "#0f172a" },
-  { name: "Figma", icon: "fa-brands fa-figma", color: "#f24e1e" },
-  { name: "Tailwind CSS", icon: "fa-brands fa-css3", color: "#38bdf8" },
-  { name: "Bootstrap", icon: "fa-brands fa-bootstrap", color: "#7952b3" },
-  { name: "Lottie Animations", icon: "fa-solid fa-film", color: "#00dab6" },
-  { name: "Postman", icon: "fa-solid fa-paper-plane", color: "#ff6c37" },
-  { name: "FastAPI", icon: "fa-solid fa-bolt", color: "#059669" },
-];
+/* ── 2 Rows of Tech Stack Items from technologies.json (44 Total Technologies) ── */
+const TECH_ROW_1 = technologies.slice(0, 22);
+const TECH_ROW_2 = technologies.slice(22, 44);
 
 const FEATURES = [
   {
@@ -519,15 +474,18 @@ export default function HomePage() {
           font-family: 'Plus Jakarta Sans', sans-serif;
           font-size: 0.84rem;
           font-weight: 700;
-          color: #1e293b;
+          color: #1e293b !important;
           white-space: nowrap;
           transition: all 0.2s ease;
+          text-decoration: none !important;
+          cursor: pointer;
         }
         .ct-tech-chip:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
-          border-color: #cbd5e1;
+          transform: translateY(-3px) scale(1.02);
+          box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+          border-color: #3b82f6;
           background: #ffffff;
+          color: #2563eb !important;
         }
         .ct-tech-disclaimer {
           text-align: center;
@@ -1166,19 +1124,29 @@ export default function HomePage() {
             {/* Line 1 Scrolling Left */}
             <div className="ct-tech-marquee-track-left">
               {[...TECH_ROW_1, ...TECH_ROW_1].map((t, idx) => (
-                <div key={`r1-${t.name}-${idx}`} className="ct-tech-chip">
+                <Link
+                  key={`r1-${t.slug}-${idx}`}
+                  href={`/technology/${t.slug}`}
+                  className="ct-tech-chip"
+                  title={`Explore ${t.name} Development Services`}
+                >
                   <i className={t.icon} style={{ color: t.color, fontSize: "1.1rem" }}></i>
                   <span>{t.name}</span>
-                </div>
+                </Link>
               ))}
             </div>
             {/* Line 2 Scrolling Right */}
             <div className="ct-tech-marquee-track-right">
               {[...TECH_ROW_2, ...TECH_ROW_2].map((t, idx) => (
-                <div key={`r2-${t.name}-${idx}`} className="ct-tech-chip">
+                <Link
+                  key={`r2-${t.slug}-${idx}`}
+                  href={`/technology/${t.slug}`}
+                  className="ct-tech-chip"
+                  title={`Explore ${t.name} Development Services`}
+                >
                   <i className={t.icon} style={{ color: t.color, fontSize: "1.1rem" }}></i>
                   <span>{t.name}</span>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
