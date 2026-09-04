@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import DynamicBlogClient from "./DynamicBlogClient";
 import cityServices from "@/data/cityServices.json";
+import blogPosts from "@/data/blogPosts.json";
 
 export const dynamicParams = false;
 
@@ -51,6 +52,32 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  // Check if this is a defined blog post
+  const blogPost = blogPosts.find((p) => p.link && p.link.replace(/^\//, "") === slug);
+  if (blogPost) {
+    return {
+      title: `${blogPost.title} | ChittorTech`,
+      description: blogPost.desc,
+      alternates: {
+        canonical: `https://chittortech.online/${slug}`,
+      },
+      openGraph: {
+        title: `${blogPost.title} | ChittorTech`,
+        description: blogPost.desc,
+        url: `https://chittortech.online/${slug}`,
+        siteName: "ChittorTech",
+        locale: "en_IN",
+        images: blogPost.image ? [{ url: blogPost.image }] : undefined,
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${blogPost.title} | ChittorTech`,
+        description: blogPost.desc,
+      },
+    };
+  }
+
   const cleanTitle = getCleanTitle(slug);
   return {
     title: `${cleanTitle} | ChittorTech`,
@@ -70,11 +97,20 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
   const sitemapPath = path.join(process.cwd(), "public/sitemap.xml");
+  const validUrlsPath = path.join(process.cwd(), "valid_urls.txt");
   const pathsMap = new Map();
 
-  // Add all dedicated City Services (588+ URLs)
+  // 1. Add all dedicated City Services (588+ URLs)
   Object.keys(cityServices).forEach((s) => {
     pathsMap.set(s, { slug: s });
+  });
+
+  // 2. Add all Blog Posts (31 URLs)
+  blogPosts.forEach((post) => {
+    if (post.link) {
+      const s = post.link.replace(/^\//, "");
+      if (s) pathsMap.set(s, { slug: s });
+    }
   });
 
   try {

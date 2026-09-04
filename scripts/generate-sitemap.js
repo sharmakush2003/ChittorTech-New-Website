@@ -27,12 +27,20 @@ if (fs.existsSync('src/data/cityServices.json')) {
   cityServiceSlugs = Object.keys(servicesData);
 }
 
+// Blog Posts Slugs
+let blogSlugs = [];
+if (fs.existsSync('src/data/blogPosts.json')) {
+  const blogsData = JSON.parse(fs.readFileSync('src/data/blogPosts.json', 'utf8'));
+  blogSlugs = blogsData.map(b => b.link ? b.link.replace(/^\//, '') : '').filter(Boolean);
+}
+
 const allUniquePaths = new Set();
 allUniquePaths.add(''); // Homepage
 
 staticPages.forEach(p => allUniquePaths.add(p));
 citySlugs.forEach(c => allUniquePaths.add(c));
 cityServiceSlugs.forEach(s => allUniquePaths.add(s));
+blogSlugs.forEach(b => allUniquePaths.add(b));
 
 // Delete any known bad paths
 ['404', 'city', 'blog-details', 'blog-master', 'undefined', 'null'].forEach(bad => allUniquePaths.delete(bad));
