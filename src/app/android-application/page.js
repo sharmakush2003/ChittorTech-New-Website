@@ -89,10 +89,10 @@ export default function Page() {
                 <i className={`fa-solid fa-android`}></i> Android Dev
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Android App Development Services
+                Mobile App Development & Android Solutions
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                Native and cross-platform Android apps built for performance and scale.
+                Leading mobile app development company in India. We engineer custom native Android apps, scalable iOS apps, and cross-platform mobile solutions built for speed, security, and high user retention.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">

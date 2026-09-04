@@ -89,10 +89,10 @@ export default function Page() {
                 <i className={`fa-solid fa-bullhorn`}></i> Digital Marketing
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Digital Marketing Services
+                Digital Marketing Agency in Chittorgarh & SEO Services
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                Full-spectrum digital marketing — SEO, SMO, PPC, content — that drives real results.
+                Full-spectrum digital marketing and ROI-driven SEO services. Google Ads PPC, social media management, organic search ranking, and lead generation that drives revenue.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">

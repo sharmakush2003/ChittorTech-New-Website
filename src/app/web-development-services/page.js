@@ -89,10 +89,10 @@ export default function Page() {
                 <i className={`fa-solid fa-code`}></i> Web Dev
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Web Development Services
+                Website Developer & Custom Web Development Services
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                From landing pages to enterprise portals — full-stack web development for businesses.
+                Top-rated website developer near you for fast, responsive web design and full-stack custom web development. High-converting websites engineered for SEO, speed, and business growth.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">

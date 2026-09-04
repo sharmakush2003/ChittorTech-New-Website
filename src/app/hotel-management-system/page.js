@@ -183,10 +183,10 @@ export default function Page() {
                 <i className="fa-solid fa-hotel"></i> Luxury PMS &amp; Cloud ERP Suite
               </span>
               <h1 style={{ fontSize: "clamp(2.4rem, 4.5vw, 3.6rem)", fontWeight: 900, lineHeight: 1.15, marginBottom: "22px" }}>
-                Enterprise Property Management Software (PMS)
+                Live PMS & Hotel Room Management System
               </h1>
               <p style={{ fontSize: "1.1rem", color: "#94a3b8", lineHeight: 1.8, maxWidth: "680px", marginBottom: "36px" }}>
-                A high-speed cloud platform designed to automate premium hotels and multi-destination resorts. Keep front-office bookings, housekeeping assignments, restaurant KOTs, and global OTA channels perfectly synchronized in a single dashboard.
+                Enterprise Cloud Live PMS & all-in-one hotel room management system. Keep front-office bookings, guest check-ins, housekeeping assignments, restaurant KOTs, and global OTA channels perfectly synchronized in real time.
               </p>
               <div className="cta-btn-group" style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
                 <a href="#hotel-live-timeline" className="ct-btn ct-btn-lg" style={{ background: "linear-gradient(90deg, #4f46e5, #0891b2)", color: "#fff", border: "none", fontWeight: 700 }}>

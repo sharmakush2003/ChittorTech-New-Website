@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "Best Web Development Services | ChittorTech",
-  description: "Grow your business online with the best web development services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+  title: "Website Developer & Custom Web Development Services India | ChittorTech",
+  description: "Searching for the best website developer near you? ChittorTech delivers custom responsive web design, robust web development, and secure cloud web hosting in India. Get a free quote!",
   alternates: {
     canonical: "https://chittortech.online/web-development-services",
   },
   openGraph: {
-    title: "Best Web Development Services | ChittorTech",
-    description: "Grow your business online with the best web development services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+    title: "Website Developer & Custom Web Development Services India | ChittorTech",
+    description: "Searching for the best website developer near you? ChittorTech delivers custom responsive web design, robust web development, and secure cloud web hosting in India. Get a free quote!",
     url: "https://chittortech.online/web-development-services",
     siteName: "ChittorTech",
     locale: "en_IN",
@@ -16,14 +16,14 @@ export const metadata = {
         url: "/favicon.png",
         width: 512,
         height: 512,
-        alt: "Best Web Development Services | ChittorTech",
+        alt: "Website Developer & Web Development Services | ChittorTech",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Web Development Services | ChittorTech",
-    description: "Grow your business online with the best web development services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+    title: "Website Developer & Custom Web Development Services India | ChittorTech",
+    description: "Searching for the best website developer near you? ChittorTech delivers custom responsive web design, robust web development, and secure cloud web hosting in India. Get a free quote!",
     images: ["/favicon.png"],
   },
 };

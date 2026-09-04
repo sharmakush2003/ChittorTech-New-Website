@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "Best Hotel Management System (HMS) | ChittorTech",
-  description: "Automate check-ins, room booking, billing, and housekeeping with the best Hotel Management System (HMS) in India.",
+  title: "Live PMS & Hotel Management System Software (HMS) | ChittorTech",
+  description: "Cloud Live PMS & all-in-one hotel room management system software in India. Automate reservations, instant check-in/out, GST billing POS, and housekeeping.",
   alternates: {
     canonical: "https://chittortech.online/hotel-management-system",
   },
   openGraph: {
-    title: "Best Hotel Management System (HMS) | ChittorTech",
-    description: "Automate check-ins, room booking, billing, and housekeeping with the best Hotel Management System (HMS) in India.",
+    title: "Live PMS & Hotel Management System Software (HMS) | ChittorTech",
+    description: "Cloud Live PMS & all-in-one hotel room management system software in India. Automate reservations, instant check-in/out, GST billing POS, and housekeeping.",
     url: "https://chittortech.online/hotel-management-system",
     siteName: "ChittorTech",
     locale: "en_IN",
@@ -16,14 +16,14 @@ export const metadata = {
         url: "/favicon.png",
         width: 512,
         height: 512,
-        alt: "Best Hotel Management System (HMS) | ChittorTech",
+        alt: "Live PMS & Hotel Management System | ChittorTech",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Hotel Management System (HMS) | ChittorTech",
-    description: "Automate check-ins, room booking, billing, and housekeeping with the best Hotel Management System (HMS) in India.",
+    title: "Live PMS & Hotel Management System Software (HMS) | ChittorTech",
+    description: "Cloud Live PMS & all-in-one hotel room management system software in India. Automate reservations, instant check-in/out, GST billing POS, and housekeeping.",
     images: ["/favicon.png"],
   },
 };

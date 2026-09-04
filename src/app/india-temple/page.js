@@ -89,10 +89,10 @@ export default function Page() {
                 <i className={`fa-solid fa-place-of-worship`}></i> Temple AI & IT Solutions
               </span>
               <h1 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(1.9rem, 4vw, 3rem)', fontWeight: 900, color: '#fff', lineHeight: 1.15, marginBottom: '16px' }}>
-                Temple Management Software
+                Temple Management System & Mandir Billing POS Software
               </h1>
               <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, maxWidth: '600px', marginBottom: '32px' }}>
-                Manage donations, events, bookings, and devotee data for religious organizations.
+                All-in-one Mandir & Temple software for religious trusts across India. Streamline counter donation billing POS, online pooja & seva booking, dharamshala room allotment, and automated trust accounting.
               </p>
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button className="ct-btn ct-btn-primary ct-btn-lg" data-bs-toggle="modal" data-bs-target="#trialModal">

@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "Best Digital Marketing Agency India | ChittorTech",
-  description: "Grow your business online with the best digital marketing services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+  title: "Digital Marketing Agency in Chittorgarh & SEO Services India | ChittorTech",
+  description: "Top-rated digital marketing agency in Chittorgarh and across India. 360° digital growth with SEO, Google Ads PPC, social media marketing, and lead generation. Free audit!",
   alternates: {
     canonical: "https://chittortech.online/digital-marketing-services",
   },
   openGraph: {
-    title: "Best Digital Marketing Agency India | ChittorTech",
-    description: "Grow your business online with the best digital marketing services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+    title: "Digital Marketing Agency in Chittorgarh & SEO Services India | ChittorTech",
+    description: "Top-rated digital marketing agency in Chittorgarh and across India. 360° digital growth with SEO, Google Ads PPC, social media marketing, and lead generation. Free audit!",
     url: "https://chittortech.online/digital-marketing-services",
     siteName: "ChittorTech",
     locale: "en_IN",
@@ -16,14 +16,14 @@ export const metadata = {
         url: "/favicon.png",
         width: 512,
         height: 512,
-        alt: "Best Digital Marketing Agency India | ChittorTech",
+        alt: "Digital Marketing Agency in Chittorgarh | ChittorTech",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Digital Marketing Agency India | ChittorTech",
-    description: "Grow your business online with the best digital marketing services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+    title: "Digital Marketing Agency in Chittorgarh & SEO Services India | ChittorTech",
+    description: "Top-rated digital marketing agency in Chittorgarh and across India. 360° digital growth with SEO, Google Ads PPC, social media marketing, and lead generation. Free audit!",
     images: ["/favicon.png"],
   },
 };

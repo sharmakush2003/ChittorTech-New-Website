@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "Best Temple Management Software | ChittorTech",
-  description: "Streamline operations with the best temple management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
+  title: "Temple Management System & Mandir Billing POS Software | ChittorTech",
+  description: "Best Temple Management Software in India for Mandir Trusts & Devasthanams. Features fast counter donation billing POS, seva booking, dharamshala room management & accounting.",
   alternates: {
     canonical: "https://chittortech.online/india-temple",
   },
   openGraph: {
-    title: "Best Temple Management Software | ChittorTech",
-    description: "Streamline operations with the best temple management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
+    title: "Temple Management System & Mandir Billing POS Software | ChittorTech",
+    description: "Best Temple Management Software in India for Mandir Trusts & Devasthanams. Features fast counter donation billing POS, seva booking, dharamshala room management & accounting.",
     url: "https://chittortech.online/india-temple",
     siteName: "ChittorTech",
     locale: "en_IN",
@@ -16,14 +16,14 @@ export const metadata = {
         url: "/favicon.png",
         width: 512,
         height: 512,
-        alt: "Best Temple Management Software | ChittorTech",
+        alt: "Temple Management System & Mandir Billing POS | ChittorTech",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Temple Management Software | ChittorTech",
-    description: "Streamline operations with the best temple management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
+    title: "Temple Management System & Mandir Billing POS Software | ChittorTech",
+    description: "Best Temple Management Software in India for Mandir Trusts & Devasthanams. Features fast counter donation billing POS, seva booking, dharamshala room management & accounting.",
     images: ["/favicon.png"],
   },
 };

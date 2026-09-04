@@ -1065,11 +1065,11 @@ export default function HomePage() {
             <div className="col-lg-6 text-center text-lg-start">
 
               <h1>
-                Build & Scale With<br />
-                <span className="gradient-text">Custom AI & IT Software.</span>
+                ChittorTech: Leading Web &<br />
+                <span className="gradient-text">Mobile App Development Company.</span>
               </h1>
               <p className="ct-hp-hero-sub">
-                From autonomous AI chatbots, RAG knowledge search systems, and custom LLMs to high-performance Next.js web apps and <Link href="/google-play-publishing" style={{ color: '#60a5fa', textDecoration: 'underline', fontWeight: 600 }}>Google Play Store publishing</Link> — ChittorTech delivers tech that drives exponential business growth.
+                From high-converting web development and native mobile apps to AI software and <Link href="/google-play-publishing" style={{ color: '#60a5fa', textDecoration: 'underline', fontWeight: 600 }}>Google Play Store publishing</Link> — ChittorTech delivers custom IT solutions that drive exponential business growth.
               </p>
               <div className="ct-hp-hero-pills">
                 <span className="ct-hp-pill"><i className="fa-solid fa-robot" style={{ color: "#8b5cf6" }}></i> AI Agents</span>

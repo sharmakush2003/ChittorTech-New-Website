@@ -18,16 +18,16 @@ import SliderInitializer from "@/components/SliderInitializer";
 export const metadata = {
   metadataBase: new URL("https://chittortech.online"),
   title: {
-    default: "Best AI & IT Services Company in India | ChittorTech",
+    default: "ChittorTech™ | Leading IT Services, Mobile App & Web Development Company",
     template: "%s | ChittorTech",
   },
-  description: "Empowering businesses with AI Solutions, Custom LLMs, Enterprise Automation, POS & ERP Systems, and Digital Growth Services.",
+  description: "ChittorTech is a premier IT & Software company in India specializing in custom Mobile App Development, Web Development, Cloud PMS, Temple Management Systems, and Enterprise AI Solutions.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Best AI & IT Services Company in India | ChittorTech",
-    description: "Empowering businesses with AI Solutions, Custom LLMs, Enterprise Automation, POS & ERP Systems, and Digital Growth Services.",
+    title: "ChittorTech™ | Leading IT Services, Mobile App & Web Development Company",
+    description: "ChittorTech is a premier IT & Software company in India specializing in custom Mobile App Development, Web Development, Cloud PMS, Temple Management Systems, and Enterprise AI Solutions.",
     url: "https://chittortech.online",
     siteName: "ChittorTech",
     locale: "en_IN",
@@ -43,8 +43,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best AI & IT Services Company in India | ChittorTech",
-    description: "Empowering businesses with AI Solutions, Custom LLMs, Enterprise Automation, POS & ERP Systems, and Digital Growth Services.",
+    title: "ChittorTech™ | Leading IT Services, Mobile App & Web Development Company",
+    description: "ChittorTech is a premier IT & Software company in India specializing in custom Mobile App Development, Web Development, Cloud PMS, Temple Management Systems, and Enterprise AI Solutions.",
     images: ["/favicon.png"],
   },
   robots: {

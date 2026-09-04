@@ -1,12 +1,12 @@
 export const metadata = {
-  title: "Best Android App Development in India | ChittorTech",
-  description: "Grow your business online with the best android app development in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+  title: "Mobile App Development Company & Android Apps | ChittorTech",
+  description: "Looking for top mobile app development near you? ChittorTech builds custom Android apps, cross-platform mobile solutions, and enterprise software. Get a free quote today!",
   alternates: {
     canonical: "https://chittortech.online/android-application",
   },
   openGraph: {
-    title: "Best Android App Development in India | ChittorTech",
-    description: "Grow your business online with the best android app development in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+    title: "Mobile App Development Company & Android Apps | ChittorTech",
+    description: "Looking for top mobile app development near you? ChittorTech builds custom Android apps, cross-platform mobile solutions, and enterprise software. Get a free quote today!",
     url: "https://chittortech.online/android-application",
     siteName: "ChittorTech",
     locale: "en_IN",
@@ -16,14 +16,14 @@ export const metadata = {
         url: "/favicon.png",
         width: 512,
         height: 512,
-        alt: "Best Android App Development in India | ChittorTech",
+        alt: "Mobile App Development Company | ChittorTech",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Android App Development in India | ChittorTech",
-    description: "Grow your business online with the best android app development in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
+    title: "Mobile App Development Company & Android Apps | ChittorTech",
+    description: "Looking for top mobile app development near you? ChittorTech builds custom Android apps, cross-platform mobile solutions, and enterprise software. Get a free quote today!",
     images: ["/favicon.png"],
   },
 };
