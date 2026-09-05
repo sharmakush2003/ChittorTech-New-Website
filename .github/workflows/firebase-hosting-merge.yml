@@ -17,7 +17,7 @@ jobs:
           node-version: "20"
       - run: npm install --legacy-peer-deps && npm run build
         env:
-          NEXT_PUBLIC_GOOGLE_SCRIPT_URL: ${{ vars.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }}
+          NEXT_PUBLIC_GOOGLE_SCRIPT_URL: https://script.google.com/macros/s/AKfycbzqxCCQ-V3XJvM8CRj7DQkC5d0ivAkYbY2OJ8_11WnOjauVFaIHmigCfeHUdHknRV5v/exec
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

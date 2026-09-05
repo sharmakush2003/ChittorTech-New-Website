@@ -52,8 +52,10 @@ export async function submitLead(formData) {
 
   // 2. Trigger Email via Google Apps Script (in background, non-blocking)
   const scriptUrl =
-    process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL ||
-    "https://script.google.com/macros/s/AKfycbzqxCCQ-V3XJvM8CRj7DQkC5d0ivAkYbY2OJ8_11WnOjauVFaIHmigCfeHUdHknRV5v/exec";
+    process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL &&
+    !process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL.includes("AKfycbzpTM2VcC")
+      ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
+      : "https://script.google.com/macros/s/AKfycbzqxCCQ-V3XJvM8CRj7DQkC5d0ivAkYbY2OJ8_11WnOjauVFaIHmigCfeHUdHknRV5v/exec";
   if (scriptUrl) {
     try {
       fetch(scriptUrl, {

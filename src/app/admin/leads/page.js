@@ -10,8 +10,10 @@ import {
 } from "@/lib/leadService";
 
 const SCRIPT_URL =
-  process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL ||
-  "https://script.google.com/macros/s/AKfycbzqxCCQ-V3XJvM8CRj7DQkC5d0ivAkYbY2OJ8_11WnOjauVFaIHmigCfeHUdHknRV5v/exec";
+  process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL &&
+  !process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL.includes("AKfycbzpTM2VcC")
+    ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
+    : "https://script.google.com/macros/s/AKfycbzqxCCQ-V3XJvM8CRj7DQkC5d0ivAkYbY2OJ8_11WnOjauVFaIHmigCfeHUdHknRV5v/exec";
 
 export default function AdminLeadsPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
