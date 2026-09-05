@@ -111,27 +111,95 @@ export default function Chatbot() {
   const parseMarkdown = (text) => {
     if (!text) return { __html: "" };
 
-    // Format code block
-    let html = text
-      .replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>")
-      .replace(/`([^`]+)`/g, "<code>$1</code>")
-      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-      .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-      .replace(/\n\n/g, "</p><p>")
-      .replace(/^- (.*$)/gim, "<ul><li>$1</li></ul>")
-      .replace(/<\/ul>\n<ul>/g, "");
+    let content = text;
 
-    // Inject contact/demo dynamic triggers
-    html = html.replace(
+    // 1. Code blocks: ```code```
+    content = content.replace(/```([\s\S]*?)```/g, (match, code) => {
+      const escaped = code
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+      return `<pre><code>${escaped.trim()}</code></pre>`;
+    });
+
+    // 2. Inline code: `code`
+    content = content.replace(/`([^`]+)`/g, "<code>$1</code>");
+
+    // 3. Bold: **text**
+    content = content.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+
+    // 4. Markdown links: [label](url)
+    content = content.replace(
+      /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer" class="chat-markdown-link">$1 <i class="fas fa-external-link-alt" style="font-size: 0.72em; margin-left: 2px;"></i></a>'
+    );
+
+    // 5. Action button triggers
+    content = content.replace(
       /\[ACTION:CONTACT\]/g,
-      '<a href="/contact-us" class="message-action-btn">Contact Us <i class="fas fa-arrow-right"></i></a>'
+      '<div class="chat-action-wrapper"><a href="/contact-us" class="message-action-btn">Contact Us <i class="fas fa-arrow-right ms-2"></i></a></div>'
     );
-    html = html.replace(
+    content = content.replace(
       /\[ACTION:DEMO\]/g,
-      '<a href="#" data-bs-toggle="modal" data-bs-target="#trialModal" class="message-action-btn">Request a Demo <i class="fas fa-laptop"></i></a>'
+      '<div class="chat-action-wrapper"><a href="#" data-bs-toggle="modal" data-bs-target="#trialModal" class="message-action-btn">Request a Demo <i class="fas fa-laptop ms-2"></i></a></div>'
     );
 
-    return { __html: `<p>${html}</p>` };
+    // 6. Auto-link Email Addresses with email badge (only match raw emails, avoid href attributes)
+    content = content.replace(
+      /\b([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})\b/g,
+      (match, email, offset, fullStr) => {
+        const before = fullStr.slice(Math.max(0, offset - 15), offset);
+        if (before.includes('href="') || before.includes('mailto:')) return match;
+        return `<a href="mailto:${email}" class="chat-email-badge"><i class="fas fa-envelope"></i><span>${email}</span></a>`;
+      }
+    );
+
+    // 7. Line-by-line parser for clean paragraphs & bullet points without irregular indents
+    const lines = content.split("\n");
+    const output = [];
+    let inList = false;
+
+    for (let i = 0; i < lines.length; i++) {
+      const rawLine = lines[i];
+      const trimmed = rawLine.trim();
+
+      // Check if line is an action button or pre tag already wrapped
+      if (trimmed.includes('class="chat-action-wrapper"') || trimmed.startsWith("<pre")) {
+        if (inList) {
+          output.push("</ul>");
+          inList = false;
+        }
+        output.push(trimmed);
+        continue;
+      }
+
+      // Check if line is a bullet item (- or * or •)
+      const bulletMatch = trimmed.match(/^[-*•]\s+(.*)$/);
+
+      if (bulletMatch) {
+        if (!inList) {
+          output.push('<ul class="chat-bullet-list">');
+          inList = true;
+        }
+        output.push(`<li>${bulletMatch[1]}</li>`);
+      } else {
+        if (inList) {
+          output.push("</ul>");
+          inList = false;
+        }
+        if (trimmed === "") {
+          output.push('<div class="chat-gap"></div>');
+        } else {
+          output.push(`<p class="chat-line">${trimmed}</p>`);
+        }
+      }
+    }
+
+    if (inList) {
+      output.push("</ul>");
+    }
+
+    return { __html: output.join("") };
   };
 
   const typeMessage = (text) => {
@@ -256,21 +324,29 @@ export default function Chatbot() {
       const groqKey = p1 + p2;
       const systemPrompt = {
         role: "system",
-        content: `You are the official ChittorTech Principal AI Assistant for ChittorTech.
+        content: `You are Kaira, the official Customer Support Executive and AI Assistant for ChittorTech.
  
 STRICT BOUNDARY & RESTRICTION RULE:
 - You MUST ONLY answer questions strictly related to ChittorTech company, its web & mobile services, invoicing software, digital products, portfolio projects, founders (Kush Sharma & Lav Sharma), contact information, and pricing.
 - If the user asks ANY general knowledge, general coding, politics, math, jokes, or unrelated off-topic questions (e.g. "Who is the Prime Minister?", "Write Python code for snake game"), politely decline by stating: "I am ChittorTech's official AI assistant. I can only assist you with questions regarding ChittorTech services, invoicing software, portfolio projects, and founder inquiries. How can I help you with ChittorTech today?"
-- NEVER break character. Maintain an elite, high-end engineering tone.
+- NEVER break character. Maintain an elite, polite, and helpful tone.
 - Do NOT mention "DigiFy" or "DigiFy Soft Solutions" under any circumstances. Always refer to the company as ChittorTech.
- 
+
+RESPONSE FORMATTING RULES (CRITICAL):
+- Keep your answers clean, well-spaced, and nicely aligned.
+- When listing contact emails or points, ALWAYS use standard clean bullet points (- Item) without any tabs or leading indentation spaces.
+- For official emails, present them neatly:
+  - Business Enquiries: business@chittortech.online
+  - General Enquiries & Support: contact@chittortech.online
+- Keep paragraphs short and concise.
+
 CHITTORTECH KNOWLEDGE BASE:
 - Company Name: ChittorTech (Premier IT Startup & Digital Product Engineering Agency).
 - Location: Chittorgarh, Rajasthan, India (Office is located only in Chittorgarh, Rajasthan, but serving clients all over the world).
 - Founders: Kush Sharma (Founder) & Lav Sharma (Co-Founder).
-- Official Emails:
-  * Business Enquiries: business@chittortech.online
-  * General Enquiries & Support: contact@chittortech.online
+- Official Contact Emails:
+  - Business Enquiries: business@chittortech.online
+  - General Enquiries & Support: contact@chittortech.online
 - Phone: +91 7597451057
 - Core Services & Products:
   1. Invoicing Software: Custom invoicing and billing software for retail shops, distributors, and service providers.
@@ -340,12 +416,14 @@ CHITTORTECH KNOWLEDGE BASE:
 
   return (
     <>
-      {/* Background Blur Overlay */}
-      <div 
-        id="chatbot-overlay" 
-        className={`chatbot-overlay ${isOpen ? "open" : ""}`}
-        onClick={toggleChat}
-      />
+      {/* Background Blur Overlay (only present when chat is open) */}
+      {isOpen && (
+        <div 
+          id="chatbot-overlay" 
+          className="chatbot-overlay open"
+          onClick={toggleChat}
+        />
+      )}
 
       <div className="chatbot-container">
         {/* FAB Button */}

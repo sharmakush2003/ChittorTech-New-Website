@@ -24,10 +24,31 @@ export default function TrialModal() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setMounted(true);
-    }, 2500); // Delay rendering to the DOM for PageSpeed optimization
-    return () => clearTimeout(timer);
+    setMounted(true);
+  }, []);
+
+  // Guarantee 1-click modal opening for all consultation & demo buttons
+  useEffect(() => {
+    const handleModalTrigger = (e) => {
+      const trigger = e.target.closest('[data-bs-target="#trialModal"], [data-target="#trialModal"]');
+      if (trigger) {
+        e.preventDefault();
+        const trialModalEl = document.getElementById("trialModal");
+        if (trialModalEl) {
+          if (typeof window !== "undefined" && window.bootstrap && window.bootstrap.Modal) {
+            const modalInstance = window.bootstrap.Modal.getOrCreateInstance(trialModalEl);
+            modalInstance.show();
+          } else {
+            trialModalEl.classList.add("show");
+            trialModalEl.style.display = "block";
+            document.body.classList.add("modal-open");
+          }
+        }
+      }
+    };
+
+    document.addEventListener("click", handleModalTrigger);
+    return () => document.removeEventListener("click", handleModalTrigger);
   }, []);
 
   useEffect(() => {

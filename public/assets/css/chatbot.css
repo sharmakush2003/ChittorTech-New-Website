@@ -69,6 +69,10 @@
   transform: scale(1.1) rotate(5deg);
 }
 
+.chatbot-fab i {
+  pointer-events: none;
+}
+
 .chatbot-fab .pulse-ring {
   position: absolute;
   top: 0;
@@ -79,6 +83,7 @@
   border-radius: 50%;
   animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
   z-index: -1;
+  pointer-events: none;
 }
 
 .chatbot-window {
@@ -210,9 +215,16 @@
   font-size: 0.95rem;
   line-height: 1.6;
   animation: messageFadeIn 0.3s ease-out;
-  word-break: break-word;
+  word-break: normal;
   overflow-wrap: break-word;
-  white-space: pre-wrap;
+}
+
+.message.user {
+  white-space: pre-line;
+}
+
+.message.ai {
+  white-space: normal;
 }
 
 /* Markdown styling inside messages */
@@ -233,16 +245,87 @@
   white-space: pre;
 }
 .message ul, .message ol {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 6px;
+  margin-bottom: 6px;
   padding-left: 20px;
 }
 .message p { 
-  margin: 0 0 8px 0; 
-  white-space: pre-wrap;
-  word-break: break-word;
+  margin: 0 0 6px 0; 
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 .message p:last-child { margin-bottom: 0; }
+
+/* Enhanced Chatbot Typography & Formatting */
+.chat-line {
+  margin: 0 0 6px 0;
+  line-height: 1.55;
+  color: #334155;
+  font-size: 0.93rem;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.chat-line:last-child {
+  margin-bottom: 0;
+}
+
+.chat-gap {
+  height: 6px;
+}
+
+.chat-bullet-list {
+  margin: 6px 0 8px 0;
+  padding-left: 18px;
+  list-style-type: disc;
+}
+
+.chat-bullet-list li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+  color: #334155;
+  font-size: 0.93rem;
+}
+.chat-bullet-list li:last-child {
+  margin-bottom: 0;
+}
+
+.chat-email-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #eff6ff;
+  color: #1d4ed8 !important;
+  border: 1px solid #bfdbfe;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.86rem;
+  text-decoration: none !important;
+  margin: 2px 2px 2px 4px;
+  vertical-align: middle;
+  word-break: break-word;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.05);
+}
+
+.chat-email-badge:hover {
+  background: #dbeafe;
+  color: #1e40af !important;
+  border-color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.chat-markdown-link {
+  color: #2563eb !important;
+  font-weight: 600;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+.chat-action-wrapper {
+  margin-top: 8px;
+  margin-bottom: 2px;
+}
 
 .message-action-btn {
   display: flex;

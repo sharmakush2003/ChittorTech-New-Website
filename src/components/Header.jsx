@@ -617,7 +617,8 @@ export default function Header() {
         .ct-float-wa:hover { transform: scale(1.12); color: #fff; animation: none; }
         .ct-float-contact {
           position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-          z-index: 9001; 
+          z-index: 999999; 
+          cursor: pointer;
           width: 62px; height: 62px; border-radius: 50%;
           background: linear-gradient(135deg, #291fbc, #06b6d4);
           color: #fff !important; font-size: 1.5rem;
@@ -938,10 +939,10 @@ export default function Header() {
       </div>
 
       {/* ── Floating Buttons ── */}
-      <a href="#" onClick={handleWhatsApp} className="ct-float-wa" title="Chat on WhatsApp">
+      <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer" className="ct-float-wa" title="Chat on WhatsApp">
         <i className="fa-brands fa-whatsapp"></i>
       </a>
-      <button data-bs-toggle="modal" data-bs-target="#trialModal" className="ct-float-contact" title="Get Free Consultation">
+      <button type="button" data-bs-toggle="modal" data-bs-target="#trialModal" className="ct-float-contact" title="Get Free Consultation" aria-label="Get Free Consultation">
         <i className="fa-solid fa-file-signature"></i>
       </button>
     </>
