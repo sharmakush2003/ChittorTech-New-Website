@@ -67,7 +67,8 @@ const policyContent = {
         <h3>11. Contact Us</h3>
         <p>If you have any questions regarding this Privacy Policy, you may contact us at:</p>
         <ul>
-          <li><strong>Email:</strong> chittortech@gmail.com</li>
+          <li><strong>General &amp; Privacy:</strong> contact@chittortech.online</li>
+          <li><strong>Business Enquiries:</strong> business@chittortech.online</li>
           <li><strong>Website:</strong> ChittorTech</li>
         </ul>
       </>
@@ -157,7 +158,8 @@ const policyContent = {
         <h3>16. Contact Information</h3>
         <p>For any questions regarding these Terms & Conditions, you may contact:</p>
         <ul>
-          <li><strong>Email:</strong> chittortech@gmail.com</li>
+          <li><strong>General Enquiry:</strong> contact@chittortech.online</li>
+          <li><strong>Business Enquiries:</strong> business@chittortech.online</li>
           <li><strong>Website:</strong> ChittorTech</li>
         </ul>
       </>
@@ -172,7 +174,8 @@ const policyContent = {
         <h3>1. Support Channels</h3>
         <p>For technical support, business inquiries, bug reports, or project discussions, you may contact us through our official channels:</p>
         <ul>
-          <li><strong>Email:</strong> chittortech@gmail.com</li>
+          <li><strong>Business Enquiries:</strong> business@chittortech.online</li>
+          <li><strong>General &amp; Technical Support:</strong> contact@chittortech.online</li>
           <li><strong>Website:</strong> ChittorTech</li>
         </ul>
         

@@ -268,7 +268,9 @@ CHITTORTECH KNOWLEDGE BASE:
 - Company Name: ChittorTech (Premier IT Startup & Digital Product Engineering Agency).
 - Location: Chittorgarh, Rajasthan, India (Office is located only in Chittorgarh, Rajasthan, but serving clients all over the world).
 - Founders: Kush Sharma (Founder) & Lav Sharma (Co-Founder).
-- Email: chittortech@gmail.com
+- Official Emails:
+  * Business Enquiries: business@chittortech.online
+  * General Enquiries & Support: contact@chittortech.online
 - Phone: +91 7597451057
 - Core Services & Products:
   1. Invoicing Software: Custom invoicing and billing software for retail shops, distributors, and service providers.

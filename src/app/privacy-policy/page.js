@@ -73,7 +73,8 @@ export default function PrivacyPolicyPage() {
             <h3 style={{ fontSize: "1.3rem", fontWeight: "700", color: "#1e293b", marginTop: "24px", marginBottom: "12px" }}>11. Contact Us</h3>
             <p>If you have any questions regarding this Privacy Policy, you may contact us at:</p>
             <ul style={{ paddingLeft: "20px", marginBottom: "20px" }}>
-              <li><strong>Email:</strong> chittortech@gmail.com</li>
+              <li><strong>General &amp; Privacy Enquiries:</strong> <a href="mailto:contact@chittortech.online">contact@chittortech.online</a></li>
+              <li><strong>Business Enquiries:</strong> <a href="mailto:business@chittortech.online">business@chittortech.online</a></li>
               <li><strong>Website:</strong> ChittorTech</li>
             </ul>
           </div>

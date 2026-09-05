@@ -51,7 +51,8 @@ export default function TermsPage() {
             <h3 style={{ fontSize: "1.3rem", fontWeight: "700", color: "#1e293b", marginTop: "24px", marginBottom: "12px" }}>8. Contact Information</h3>
             <p>For any questions regarding these Terms & Conditions, you may contact:</p>
             <ul style={{ paddingLeft: "20px", marginBottom: "20px" }}>
-              <li><strong>Email:</strong> chittortech@gmail.com</li>
+              <li><strong>General Enquiry:</strong> <a href="mailto:contact@chittortech.online">contact@chittortech.online</a></li>
+              <li><strong>Business Enquiries:</strong> <a href="mailto:business@chittortech.online">business@chittortech.online</a></li>
               <li><strong>Website:</strong> ChittorTech</li>
             </ul>
           </div>

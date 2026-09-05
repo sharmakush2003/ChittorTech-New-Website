@@ -537,8 +537,10 @@ export default function Footer() {
                 <div className="ct-footer-contact-item">
                   <div className="ct-footer-contact-icon"><i className="fa-solid fa-envelope"></i></div>
                   <div className="ct-footer-contact-text">
-                    <div className="ct-footer-contact-label">Email</div>
-                    <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:chittortech@gmail.com" rel="nofollow">chittortech@gmail.com</a><!--/email_off-->' }} />
+                    <div className="ct-footer-contact-label">Business Inquiries</div>
+                    <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:business@chittortech.online" rel="nofollow">business@chittortech.online</a><!--/email_off-->' }} />
+                    <div className="ct-footer-contact-label" style={{ marginTop: '6px' }}>General Inquiries</div>
+                    <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:contact@chittortech.online" rel="nofollow">contact@chittortech.online</a><!--/email_off-->' }} />
                   </div>
                 </div>
 
