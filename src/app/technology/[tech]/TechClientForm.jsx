@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { submitLead } from "@/lib/leadService";
 
 export default function TechClientForm({ techName }) {
   const [formData, setFormData] = useState({
@@ -49,17 +50,9 @@ export default function TechClientForm({ techName }) {
       message: "",
     });
 
-    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-    if (scriptUrl) {
-      try {
-        fetch(scriptUrl, {
-          method: "POST",
-          body: JSON.stringify(payload),
-        }).catch((err) => console.error("Lead submission error:", err));
-      } catch (err) {
-        console.error("Lead submission error:", err);
-      }
-    }
+    submitLead(payload).catch((err) => {
+      console.error("Tech form submission error:", err);
+    });
 
     setSubmitting(false);
   };

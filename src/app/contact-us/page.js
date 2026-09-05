@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/lib/leadService";
 import "../../../public/assets/css/premium-products.css";
 
 export default function Page() {
@@ -58,20 +59,10 @@ export default function Page() {
       remark: "",
     });
 
-    // Send payload in background
-    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-    if (scriptUrl) {
-      try {
-        fetch(scriptUrl, {
-          method: "POST",
-          body: JSON.stringify(submissionPayload),
-        }).catch((err) => {
-          console.error("Background lead submission fetch failed:", err);
-        });
-      } catch (err) {
-        console.error("Background lead submission error:", err);
-      }
-    }
+    // Send payload into Firestore and trigger email
+    submitLead(submissionPayload).catch((err) => {
+      console.error("Lead submission error:", err);
+    });
 
     setSubmitting(false);
   };

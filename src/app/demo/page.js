@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/lib/leadService";
 import "../../../public/assets/css/premium-products.css";
 
 export default function DemoPage() {
@@ -55,17 +56,9 @@ export default function DemoPage() {
       remark: "",
     });
 
-    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-    if (scriptUrl) {
-      try {
-        fetch(scriptUrl, {
-          method: "POST",
-          body: JSON.stringify(submissionPayload),
-        }).catch((err) => console.error("Demo submission failed:", err));
-      } catch (err) {
-        console.error("Demo error:", err);
-      }
-    }
+    submitLead(submissionPayload).catch((err) => {
+      console.error("Demo lead submission error:", err);
+    });
 
     setSubmitting(false);
   };

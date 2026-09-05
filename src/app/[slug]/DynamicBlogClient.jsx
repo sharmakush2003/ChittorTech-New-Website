@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { submitLead } from "@/lib/leadService";
 import chittorgarhServices from "@/data/chittorgarhServices.json";
 
 const BLOG_CONTENT = {
@@ -257,20 +258,10 @@ export default function DynamicBlogClient({ slug, cleanTitle }) {
       message: "",
     });
 
-    // 3. Send payload in background
-    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-    if (scriptUrl) {
-      try {
-        fetch(scriptUrl, {
-          method: "POST",
-          body: JSON.stringify(submissionPayload),
-        }).catch((err) => {
-          console.error("Background lead submission fetch failed:", err);
-        });
-      } catch (err) {
-        console.error("Background lead submission error:", err);
-      }
-    }
+    // 3. Send payload into Firestore and trigger email
+    submitLead(submissionPayload).catch((err) => {
+      console.error("Background lead submission error:", err);
+    });
 
     setSubmitting(false);
   };

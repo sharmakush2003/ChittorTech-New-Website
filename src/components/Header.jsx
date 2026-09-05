@@ -101,6 +101,10 @@ export default function Header() {
   const toggleDropdown = (key) =>
     setActiveDropdown((prev) => (prev === key ? null : key));
 
+  if (pathname && pathname.startsWith("/admin")) {
+    return null;
+  }
+
   return (
     <>
       <style>{`

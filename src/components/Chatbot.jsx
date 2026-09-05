@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { submitLead } from "@/lib/leadService";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +10,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [inputVal, setInputVal] = useState("");
   const messagesEndRef = useRef(null);
+  const pathname = usePathname();
 
   // Pre-chat Registration states
   const [isRegistered, setIsRegistered] = useState(false);
@@ -194,31 +197,22 @@ export default function Chatbot() {
       JSON.stringify({ name, phone: fullPhone })
     );
 
-    // Send lead alert to Google Apps Script Web App in background
-    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-    if (scriptUrl) {
-      const leadPayload = {
-        name: name,
-        email: "chatbot-lead@chittortech.online",
-        contact: fullPhone,
-        location: "Chatbot Lead Capture",
-        industry: "N/A",
-        message: "User initiated a chat session with the ChittorTech AI Assistant.",
-        company: "N/A",
-        firm: "N/A"
-      };
+    // Send lead to Firestore and email alert in background
+    const leadPayload = {
+      name: name,
+      email: "chatbot-lead@chittortech.online",
+      contact: fullPhone,
+      location: "Chatbot Lead Capture",
+      industry: "AI Chatbot User",
+      message: "User initiated a chat session with the ChittorTech AI Assistant.",
+      company: "N/A",
+      firm: "N/A",
+      source: "ChittorTech AI Chatbot",
+    };
 
-      try {
-        fetch(scriptUrl, {
-          method: "POST",
-          body: JSON.stringify(leadPayload),
-        }).catch((err) => {
-          console.error("Background chatbot lead submission fetch failed:", err);
-        });
-      } catch (err) {
-        console.error("Background chatbot lead submission error:", err);
-      }
-    }
+    submitLead(leadPayload).catch((err) => {
+      console.error("Chatbot lead submission error:", err);
+    });
 
     setIsRegistered(true);
 
@@ -337,6 +331,10 @@ CHITTORTECH KNOWLEDGE BASE:
       }, 2000);
     }
   };
+
+  if (pathname && pathname.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <>

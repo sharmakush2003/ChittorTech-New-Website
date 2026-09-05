@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { submitLead } from "@/lib/leadService";
 
 export default function TrialModal() {
   const [formData, setFormData] = useState({
@@ -19,6 +21,7 @@ export default function TrialModal() {
   const [submitting, setSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -267,25 +270,15 @@ export default function TrialModal() {
       }
     }, 2500);
 
-    // 5. Send payload in background
-    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-    if (scriptUrl) {
-      try {
-        fetch(scriptUrl, {
-          method: "POST",
-          body: JSON.stringify(submissionPayload),
-        }).catch((err) => {
-          console.error("Background lead submission fetch failed:", err);
-        });
-      } catch (err) {
-        console.error("Background lead submission error:", err);
-      }
-    }
+    // 5. Send payload into Firestore and trigger email
+    submitLead(submissionPayload).catch((err) => {
+      console.error("Lead submission error:", err);
+    });
 
     setSubmitting(false);
   };
 
-  if (!mounted) return null;
+  if (!mounted || (pathname && pathname.startsWith("/admin"))) return null;
 
   return (
     <>

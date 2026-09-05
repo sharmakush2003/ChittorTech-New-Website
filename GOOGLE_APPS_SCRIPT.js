@@ -1,29 +1,42 @@
 /**
  * Google Apps Script Web App for ChittorTech
  * Handles:
- * 1. Client-side Lead alerts (formats into a premium, logo-free HTML template with optimized spacing)
- * 2. Chatbot requests (proxies messages to the Groq API)
+ * 1. Secure Admin 2FA OTP Generation & Verification (Server-Side Cached, Zero-Leakage)
+ * 2. Client-side Lead alerts (formats into a premium, logo-free HTML template with optimized spacing)
+ * 3. Chatbot requests (proxies messages to the Groq API)
  *
  * Deployment instructions:
  * 1. Go to https://script.google.com
- * 2. Paste this code into the editor.
- * 3. Replace 'YOUR_GROQ_API_KEY' with your actual Groq API key.
- * 4. Click Deploy > New Deployment.
- * 5. Set Select type to 'Web app', Description to 'ChittorTech API v3', Execute as 'Me', Who has access to 'Anyone'.
- * 6. Click Deploy and copy the Web App URL.
- * 7. Put this URL in your GitHub repository environment config or local .env.local file.
+ * 2. Paste this complete code into the editor.
+ * 3. Replace 'YOUR_GROQ_API_KEY' with your actual Groq API key (on line 145).
+ * 4. Click Deploy > Manage Deployments > Edit (Pencil Icon) > Version: New Version > Deploy.
  */
 
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     
-    // Check if it is a chatbot request
+    // 1. Secure Server-Side 2FA OTP Request (Generated on Google Cloud, never in browser)
+    if (data.action === "admin_request_otp") {
+      return handleAdminRequestOtp(data);
+    }
+
+    // 2. Secure Server-Side 2FA OTP Verification
+    if (data.action === "admin_verify_otp") {
+      return handleAdminVerifyOtp(data);
+    }
+
+    // 3. Master Access Key Recovery Dispatch
+    if (data.action === "admin_recover_key") {
+      return handleAdminRecoverKey(data);
+    }
+
+    // 4. Chatbot request
     if (data.action === "chat") {
       return handleChat(data.messages);
     }
     
-    // Otherwise, handle as a lead submission
+    // 4. Otherwise, handle as a lead submission
     return handleLead(data);
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ status: "error", msg: error.toString() }))
@@ -31,9 +44,188 @@ function doPost(e) {
   }
 }
 
+/**
+ * Generates a 6-digit OTP entirely on the server and emails it to authorized admins.
+ * OTP is NEVER returned to client — prevents inspect element & network tab sniffing.
+ */
+function handleAdminRequestOtp(data) {
+  try {
+    // Generate secure 6-digit numeric OTP on server
+    const otp = String(Math.floor(100000 + Math.random() * 900000));
+    
+    // Cache on server for 5 minutes (300 seconds)
+    const cache = CacheService.getScriptCache();
+    cache.put("chittortech_admin_2fa_otp", otp, 300);
+
+    const htmlBody = `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Inter', Helvetica, Arial, sans-serif; background-color: #f8fafc; margin: 0; padding: 0; color: #1e293b; }
+    .container { max-width: 520px; margin: 30px auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+    .header { background: #0f172a; padding: 28px 30px; text-align: center; }
+    .header h1 { color: #ffffff; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; }
+    .content { padding: 36px 30px; text-align: center; }
+    .otp-box { background: #eff6ff; border: 2px dashed #2563eb; border-radius: 12px; padding: 16px 24px; font-size: 34px; font-weight: 800; letter-spacing: 8px; color: #1d4ed8; display: inline-block; margin: 24px 0; font-family: monospace; }
+    .warning { font-size: 13px; color: #64748b; line-height: 1.5; }
+    .footer { background: #f8fafc; padding: 16px 20px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>ChittorTech™ CRM Security</h1>
+    </div>
+    <div class="content">
+      <h2 style="margin: 0 0 10px 0; color: #0f172a; font-size: 20px; font-weight: 800;">Admin 2FA Verification Code</h2>
+      <p style="color: #475569; font-size: 14px; margin: 0;">Use the one-time security code below to complete your login to ChittorTech CRM. Valid for 5 minutes.</p>
+      <div class="otp-box">${otp}</div>
+      <p class="warning">If you did not request this verification code, someone might be attempting to access your dashboard. Your account remains protected.</p>
+      <div style="margin-top: 20px; padding: 12px 16px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; text-align: left; font-size: 13px; color: #475569;">
+        🔑 <strong>Master Admin Access Key:</strong> <code style="font-size: 13px; font-weight: bold; color: #0f172a;">255856</code><br>
+        <span style="font-size: 11px; color: #64748b;">(Note: Keep this confidential. If you ever forget it, use "Forgot Admin Access Key" on the login screen).</span>
+      </div>
+    </div>
+    <div class="footer">
+      Automated Security Alert · ChittorTech IT Solutions
+    </div>
+  </div>
+</body>
+</html>`;
+
+    MailApp.sendEmail({
+      to: "kushsharma.cor@gmail.com",
+      cc: "lavsharma.cor@gmail.com",
+      subject: `🔐 ChittorTech Admin 2FA Code: ${otp}`,
+      htmlBody: htmlBody
+    });
+
+    // NOTE: OTP is NEVER returned to client. Inspect / Network sees nothing!
+    return ContentService.createTextOutput(JSON.stringify({ 
+      status: "success", 
+      msg: "Verification code sent to registered administrator devices." 
+    })).setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ 
+      status: "error", 
+      msg: err.toString() 
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Validates the entered OTP server-side against the cached OTP.
+ */
+function handleAdminVerifyOtp(data) {
+  try {
+    const entered = data.enteredOtp ? String(data.enteredOtp).trim() : "";
+    const cache = CacheService.getScriptCache();
+    const stored = cache.get("chittortech_admin_2fa_otp");
+
+    if (!stored) {
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "error",
+        verified: false,
+        msg: "Verification code expired or not found. Please request a new code."
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    if (stored === entered) {
+      // Invalidate immediately so it cannot be reused
+      cache.remove("chittortech_admin_2fa_otp");
+      const sessionToken = Utilities.getUuid();
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "success",
+        verified: true,
+        token: sessionToken
+      })).setMimeType(ContentService.MimeType.JSON);
+    } else {
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "error",
+        verified: false,
+        msg: "Incorrect verification code. Please check your email and try again."
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      verified: false,
+      msg: err.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Dispatches Master Admin Access Key to authorized admin email address.
+ */
+function handleAdminRecoverKey(data) {
+  try {
+    const rawEmail = (data.email || "").trim().toLowerCase();
+    
+    // Allowed administrator emails
+    const authorizedAdmins = ["kushsharma.cor@gmail.com", "lavsharma.cor@gmail.com"];
+    if (!authorizedAdmins.includes(rawEmail)) {
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "error",
+        msg: "Unauthorized email. Key recovery is only permitted for registered administrator accounts."
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    const masterKey = "255856";
+
+    const htmlBody = `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Inter', Helvetica, Arial, sans-serif; background-color: #f8fafc; margin: 0; padding: 0; color: #1e293b; }
+    .container { max-width: 520px; margin: 30px auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+    .header { background: #0f172a; padding: 28px 30px; text-align: center; }
+    .header h1 { color: #ffffff; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; }
+    .content { padding: 36px 30px; text-align: center; }
+    .key-box { background: #eff6ff; border: 2px dashed #2563eb; border-radius: 12px; padding: 16px 24px; font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #1d4ed8; display: inline-block; margin: 24px 0; font-family: monospace; }
+    .warning { font-size: 13px; color: #64748b; line-height: 1.5; }
+    .footer { background: #f8fafc; padding: 16px 20px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>ChittorTech™ CRM Security</h1>
+    </div>
+    <div class="content">
+      <h2 style="margin: 0 0 10px 0; color: #0f172a; font-size: 20px; font-weight: 800;">Master Admin Access Key</h2>
+      <p style="color: #475569; font-size: 14px; margin: 0;">You requested to recover the Admin Access Key for ChittorTech CRM.</p>
+      <div class="key-box">${masterKey}</div>
+      <p class="warning">Keep this key strictly confidential. Use it together with 2-Factor Authentication to log in to your CRM dashboard.</p>
+    </div>
+    <div class="footer">
+      Automated Security Alert · ChittorTech IT Solutions
+    </div>
+  </div>
+</body>
+</html>`;
+
+    MailApp.sendEmail({
+      to: rawEmail,
+      subject: `🔑 ChittorTech Master Admin Key Recovery`,
+      htmlBody: htmlBody
+    });
+
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "success",
+      msg: "Master Access Key has been dispatched to your email inbox."
+    })).setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      msg: err.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
 function handleChat(messages) {
-  // Replace this with your actual Groq API Key
-  const apiKey = "YOUR_GROQ_API_KEY"; 
+  // Groq API Key (Configure in Project Settings > Script Properties or set here)
+  const apiKey = PropertiesService.getScriptProperties().getProperty("GROQ_API_KEY") || "YOUR_GROQ_API_KEY"; 
   
   const systemPrompt = {
     role: "system",
@@ -228,7 +420,7 @@ function handleLead(data) {
 </html>`;
 
   MailApp.sendEmail({
-    to: "Kushsharma.cor@gmail.com",
+    to: "kushsharma.cor@gmail.com",
     cc: "lavsharma.cor@gmail.com",
     subject: `New ChittorTech Lead - ${name}`,
     htmlBody: htmlBody
@@ -250,18 +442,3 @@ function testAuthorization() {
   }
   Logger.log("Authorization Successful! External fetch and email sending are now enabled.");
 }
-
-function doGet(e) {
-  try {
-    return ContentService.createTextOutput(JSON.stringify({ 
-      status: "success", 
-      msg: "ChittorTech API is active and healthy." 
-    })).setMimeType(ContentService.MimeType.JSON);
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({ 
-      status: "error", 
-      msg: error.toString() 
-    })).setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
