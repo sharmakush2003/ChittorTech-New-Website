@@ -35,9 +35,12 @@ export default function AdminLayout({ children }) {
           background-color: #ffffff !important;
           margin: 0 !important;
           padding: 0 !important;
+          color: #0f172a !important;
+          font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+          -webkit-font-smoothing: antialiased !important;
         }
       `}</style>
-      <div id="admin-portal-root">
+      <div id="admin-portal-root" style={{ minHeight: "100vh", backgroundColor: "#ffffff" }}>
         {children}
       </div>
     </>

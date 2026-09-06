@@ -54,6 +54,40 @@ export default function AdminLeadsPage() {
     generateCaptcha();
   }, []);
 
+  // Live IST Clock (HH:MM:SS) and Date
+  const [currentTime, setCurrentTime] = useState("");
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const updateClock = () => {
+      const now = new Date();
+      try {
+        const timeFormatter = new Intl.DateTimeFormat("en-IN", {
+          timeZone: "Asia/Kolkata",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+        });
+        const dateFormatter = new Intl.DateTimeFormat("en-IN", {
+          timeZone: "Asia/Kolkata",
+          weekday: "short",
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+        setCurrentTime(timeFormatter.format(now));
+        setCurrentDate(dateFormatter.format(now));
+      } catch {
+        setCurrentTime(now.toLocaleTimeString());
+        setCurrentDate(now.toDateString());
+      }
+    };
+    updateClock();
+    const timer = setInterval(updateClock, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   // OTP resend cooldown timer
   useEffect(() => {
     if (resendCooldown <= 0) return;
@@ -405,11 +439,11 @@ export default function AdminLeadsPage() {
   const renderStatusBadge = (status) => {
     const s = status || "new";
     const styles = {
-      new: { bg: "#fef3c7", text: "#92400e", label: "New Lead", dot: "#f59e0b" },
-      contacted: { bg: "#e0e7ff", text: "#3730a3", label: "Contacted", dot: "#6366f1" },
-      qualified: { bg: "#ede9fe", text: "#5b21b6", label: "Qualified", dot: "#8b5cf6" },
-      converted: { bg: "#dcfce7", text: "#166534", label: "Converted", dot: "#22c55e" },
-      lost: { bg: "#f1f5f9", text: "#475569", label: "Lost / Closed", dot: "#94a3b8" },
+      new: { bg: "rgba(245, 158, 11, 0.12)", text: "#fbbf24", border: "rgba(245, 158, 11, 0.3)", label: "New Lead", dot: "#f59e0b" },
+      contacted: { bg: "rgba(99, 102, 241, 0.14)", text: "#818cf8", border: "rgba(99, 102, 241, 0.3)", label: "Contacted", dot: "#6366f1" },
+      qualified: { bg: "rgba(168, 85, 247, 0.14)", text: "#c084fc", border: "rgba(168, 85, 247, 0.3)", label: "Qualified", dot: "#a855f7" },
+      converted: { bg: "rgba(34, 197, 94, 0.14)", text: "#4ade80", border: "rgba(34, 197, 94, 0.3)", label: "Converted", dot: "#22c55e" },
+      lost: { bg: "rgba(148, 163, 184, 0.12)", text: "#94a3b8", border: "rgba(148, 163, 184, 0.25)", label: "Lost / Closed", dot: "#94a3b8" },
     };
     const current = styles[s] || styles.new;
     return (
@@ -419,11 +453,13 @@ export default function AdminLeadsPage() {
           alignItems: "center",
           gap: "6px",
           padding: "4px 10px",
-          borderRadius: "20px",
+          borderRadius: "999px",
           backgroundColor: current.bg,
           color: current.text,
-          fontSize: "0.76rem",
+          border: `1px solid ${current.border}`,
+          fontSize: "0.75rem",
           fontWeight: 700,
+          letterSpacing: "0.2px",
         }}
       >
         <span
@@ -432,6 +468,7 @@ export default function AdminLeadsPage() {
             height: "6px",
             borderRadius: "50%",
             backgroundColor: current.dot,
+            boxShadow: `0 0 8px ${current.dot}`,
           }}
         />
         {current.label}
@@ -449,29 +486,53 @@ export default function AdminLeadsPage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#ffffff",
+          background: "radial-gradient(circle at center, #0f172a 0%, #030712 100%)",
           fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+          color: "#ffffff",
         }}
       >
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center", position: "relative" }}>
+          <div
+            style={{
+              position: "absolute",
+              top: "-40px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "140px",
+              height: "140px",
+              background: "radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, transparent 70%)",
+              filter: "blur(20px)",
+              pointerEvents: "none",
+            }}
+          />
           <img
             src="/favicon.png"
             alt="ChittorTech"
-            style={{ width: "48px", height: "48px", borderRadius: "12px", marginBottom: "16px" }}
+            style={{
+              width: "56px",
+              height: "56px",
+              borderRadius: "16px",
+              marginBottom: "20px",
+              boxShadow: "0 0 25px rgba(59, 130, 246, 0.4)",
+              position: "relative",
+            }}
           />
           <div
             style={{
-              width: "36px",
-              height: "36px",
-              border: "3px solid #e2e8f0",
-              borderTopColor: "#2563eb",
+              width: "40px",
+              height: "40px",
+              border: "3px solid rgba(255, 255, 255, 0.1)",
+              borderTopColor: "#38bdf8",
               borderRadius: "50%",
               animation: "spin 0.8s linear infinite",
-              margin: "0 auto 12px",
+              margin: "0 auto 16px",
             }}
           />
-          <p style={{ color: "#64748b", fontSize: "0.88rem", fontWeight: 600, margin: 0 }}>
-            Verifying Admin Session...
+          <p style={{ color: "#f8fafc", fontSize: "0.95rem", fontWeight: 700, margin: "0 0 6px 0", letterSpacing: "-0.2px" }}>
+            Verifying Admin Session
+          </p>
+          <p style={{ color: "#64748b", fontSize: "0.8rem", margin: 0 }}>
+            ChittorTech™ Secure Enclave
           </p>
         </div>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
@@ -480,37 +541,553 @@ export default function AdminLeadsPage() {
   }
 
   // If not authenticated, show clean login & 2FA design matching Affiliate Marketing App
+  // If not authenticated, show clean 2-column split-screen layout:
+  // Left: Colorful ChittorTech Enterprise CRM Data & Showcase (Rich, lively & "bhara-bhara")
+  // Right: Clean, executive-grade secure login & 2FA functionality
   if (!isAuthenticated) {
     return (
-      <div style={loginStyles.container}>
-        <div style={loginStyles.card}>
-          {/* Header */}
-          <div style={loginStyles.header}>
-            <div style={loginStyles.logoContainer}>
-              <img src="/favicon.png" alt="ChittorTech Logo" style={loginStyles.logo} />
+      <div className="ct-admin-split-container" style={loginStyles.container}>
+        {/* LEFT COLUMN: Colorful ChittorTech Showcase & Live Data (Rich & Comprehensive) */}
+        <div className="ct-admin-showcase-col" style={loginStyles.showcaseCol}>
+          {/* Top Brand Header, Live IST Clock & Badges */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", flexShrink: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "12px",
+                  background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 12px rgba(37, 99, 235, 0.25)",
+                  padding: "2px",
+                  flexShrink: 0,
+                }}
+              >
+                <img
+                  src="/favicon.png"
+                  alt="ChittorTech Logo"
+                  style={{ width: "30px", height: "30px", borderRadius: "8px" }}
+                />
+              </div>
+              <div>
+                <div style={{ fontSize: "1.2rem", fontWeight: 800, color: "#0f172a", letterSpacing: "-0.4px", lineHeight: "1.2" }}>
+                  ChittorTech<span style={{ color: "#2563eb" }}>™</span> CRM
+                </div>
+                <div style={{ fontSize: "0.68rem", fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "1px" }}>
+                  Enterprise Pipeline Operations
+                </div>
+              </div>
             </div>
-            <h1 style={loginStyles.title}>ChittorTech</h1>
-            <span style={loginStyles.subtitle}>
-              {step === "otp" ? "2FA VERIFICATION" : step === "forgot" ? "KEY RECOVERY" : "ADMIN CRM PORTAL"}
-            </span>
+
+            {/* Enterprise Security Badge */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  background: "rgba(37, 99, 235, 0.08)",
+                  color: "#1d4ed8",
+                  fontSize: "0.72rem",
+                  fontWeight: 700,
+                  padding: "5px 12px",
+                  borderRadius: "20px",
+                  border: "1px solid rgba(37, 99, 235, 0.2)",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                <i className="fas fa-shield-alt" style={{ fontSize: "10px" }}></i>
+                ENTERPRISE CONSOLE
+              </div>
+            </div>
           </div>
 
-          {/* STEP 1: LOGIN FORM */}
-          {step === "login" && (
-            <form onSubmit={handleLogin} style={loginStyles.form}>
-              {loginError && (
-                <div style={loginStyles.errorAlert}>
-                  <i className="fas fa-exclamation-circle" style={{ flexShrink: 0, fontSize: "14px" }}></i>
-                  <span>{loginError}</span>
-                </div>
-              )}
+          {/* Center Content: Rich Headline & Comprehensive Data Widgets */}
+          <div style={{ margin: "clamp(6px, 1.2vh, 12px) 0", flex: "1 1 auto", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div style={{ marginBottom: "clamp(6px, 1vh, 10px)" }}>
+              <h2
+                style={{
+                  fontSize: "clamp(1.2rem, 1.6vw, 1.55rem)",
+                  fontWeight: 800,
+                  color: "#0f172a",
+                  lineHeight: "1.25",
+                  letterSpacing: "-0.5px",
+                  margin: "0 0 4px 0",
+                }}
+              >
+                Command Center for Customer Growth &amp; Pipeline.
+              </h2>
+              <p style={{ color: "#64748b", fontSize: "clamp(0.74rem, 0.85vw, 0.82rem)", lineHeight: "1.4", margin: 0 }}>
+                Unified real-time multichannel ecosystem streaming customer inquiries from Web Forms, WhatsApp, Custom Software, and Marketing Campaigns.
+              </p>
+            </div>
 
-              {/* Access Key */}
-              <div style={loginStyles.inputGroup}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <label htmlFor="passcode" style={loginStyles.label}>Admin Access Key</label>
+            {/* 4 Colorful Data Metric Cards (2x2 Grid) */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "clamp(6px, 1vh, 10px)" }}>
+              {/* Card 1: Total Inquiries (Blue) */}
+              <div
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid #bfdbfe",
+                  borderRadius: "12px",
+                  padding: "clamp(7px, 1vh, 10px) 12px",
+                  boxShadow: "0 2px 6px rgba(37,99,235,0.06)",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div style={{ position: "absolute", top: 0, left: 0, width: "3.5px", height: "100%", background: "#2563eb" }} />
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
+                  <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#1e40af", textTransform: "uppercase", letterSpacing: "0.4px" }}>Total Inquiries</span>
+                  <span style={{ width: "24px", height: "24px", borderRadius: "6px", background: "#eff6ff", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <i className="fas fa-users" style={{ fontSize: "10px" }}></i>
+                  </span>
+                </div>
+                <div style={{ fontSize: "clamp(1.15rem, 1.35vw, 1.35rem)", fontWeight: 800, color: "#0f172a", lineHeight: "1.1", marginBottom: "2px" }}>
+                  2,840+
+                </div>
+                <div style={{ fontSize: "0.66rem", color: "#16a34a", fontWeight: 700, display: "flex", alignItems: "center", gap: "4px" }}>
+                  <i className="fas fa-arrow-up" style={{ fontSize: "8px" }}></i> 38.4% MoM Growth
+                </div>
+              </div>
+
+              {/* Card 2: Deal Pipeline (Emerald) */}
+              <div
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid #a7f3d0",
+                  borderRadius: "12px",
+                  padding: "clamp(7px, 1vh, 10px) 12px",
+                  boxShadow: "0 2px 6px rgba(16,185,129,0.06)",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div style={{ position: "absolute", top: 0, left: 0, width: "3.5px", height: "100%", background: "#10b981" }} />
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
+                  <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#065f46", textTransform: "uppercase", letterSpacing: "0.4px" }}>Pipeline Volume</span>
+                  <span style={{ width: "24px", height: "24px", borderRadius: "6px", background: "#ecfdf5", color: "#059669", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <i className="fas fa-chart-line" style={{ fontSize: "10px" }}></i>
+                  </span>
+                </div>
+                <div style={{ fontSize: "clamp(1.15rem, 1.35vw, 1.35rem)", fontWeight: 800, color: "#0f172a", lineHeight: "1.1", marginBottom: "2px" }}>
+                  ₹4.82 Cr+
+                </div>
+                <div style={{ fontSize: "0.66rem", color: "#059669", fontWeight: 700 }}>
+                  Active High-Intent Deals
+                </div>
+              </div>
+
+              {/* Card 3: Speed-to-Lead (Purple) */}
+              <div
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid #ddd6fe",
+                  borderRadius: "12px",
+                  padding: "clamp(7px, 1vh, 10px) 12px",
+                  boxShadow: "0 2px 6px rgba(124,58,237,0.06)",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div style={{ position: "absolute", top: 0, left: 0, width: "3.5px", height: "100%", background: "#7c3aed" }} />
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
+                  <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#5b21b6", textTransform: "uppercase", letterSpacing: "0.4px" }}>Response Velocity</span>
+                  <span style={{ width: "24px", height: "24px", borderRadius: "6px", background: "#f5f3ff", color: "#7c3aed", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <i className="fas fa-bolt" style={{ fontSize: "10px" }}></i>
+                  </span>
+                </div>
+                <div style={{ fontSize: "clamp(1.15rem, 1.35vw, 1.35rem)", fontWeight: 800, color: "#0f172a", lineHeight: "1.1", marginBottom: "2px" }}>
+                  &lt; 12 Mins
+                </div>
+                <div style={{ fontSize: "0.66rem", color: "#7c3aed", fontWeight: 700 }}>
+                  WhatsApp Auto-Routing
+                </div>
+              </div>
+
+              {/* Card 4: Conversion Ratio (Amber) */}
+              <div
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid #fed7aa",
+                  borderRadius: "12px",
+                  padding: "clamp(7px, 1vh, 10px) 12px",
+                  boxShadow: "0 2px 6px rgba(245,158,11,0.06)",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div style={{ position: "absolute", top: 0, left: 0, width: "3.5px", height: "100%", background: "#f59e0b" }} />
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
+                  <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#9a3412", textTransform: "uppercase", letterSpacing: "0.4px" }}>Win Conversion</span>
+                  <span style={{ width: "24px", height: "24px", borderRadius: "6px", background: "#fff7ed", color: "#ea580c", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <i className="fas fa-check-double" style={{ fontSize: "10px" }}></i>
+                  </span>
+                </div>
+                <div style={{ fontSize: "clamp(1.15rem, 1.35vw, 1.35rem)", fontWeight: 800, color: "#0f172a", lineHeight: "1.1", marginBottom: "2px" }}>
+                  84.6%
+                </div>
+                <div style={{ fontSize: "0.66rem", color: "#c2410c", fontWeight: 700 }}>
+                  Qualified Deals Won
+                </div>
+              </div>
+            </div>
+
+            {/* ENTERPRISE CRM WORKFLOW ENGINE (Clean, Modern & Prestigious) */}
+            <div
+              style={{
+                backgroundColor: "#ffffff",
+                border: "1px solid #e2e8f0",
+                borderRadius: "12px",
+                padding: "clamp(8px, 1.2vh, 12px) 14px",
+                boxShadow: "0 2px 6px rgba(0,0,0,0.02)",
+                marginBottom: "clamp(6px, 1vh, 10px)",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
+                <span style={{ fontSize: "0.68rem", fontWeight: 800, color: "#1e293b", textTransform: "uppercase", letterSpacing: "0.6px", display: "flex", alignItems: "center", gap: "6px" }}>
+                  <i className="fas fa-layer-group" style={{ color: "#2563eb", fontSize: "11px" }}></i>
+                  Enterprise CRM Pipeline Automation
+                </span>
+                <span style={{ fontSize: "0.65rem", color: "#059669", fontWeight: 700, backgroundColor: "#ecfdf5", border: "1px solid #a7f3d0", padding: "2px 7px", borderRadius: "4px" }}>
+                  ✓ Sub-15m Routing
+                </span>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
+                {/* Module 1 */}
+                <div style={{ backgroundColor: "#f8fafc", border: "1px solid #f1f5f9", borderRadius: "10px", padding: "8px 10px" }}>
+                  <div style={{ width: "24px", height: "24px", borderRadius: "6px", backgroundColor: "#eff6ff", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "5px" }}>
+                    <i className="fas fa-bolt" style={{ fontSize: "11px" }}></i>
+                  </div>
+                  <div style={{ fontSize: "0.74rem", fontWeight: 700, color: "#0f172a", marginBottom: "2px" }}>Instant Auto-Push</div>
+                  <div style={{ fontSize: "0.65rem", color: "#64748b", lineHeight: "1.3" }}>Real-time alerts to WhatsApp &amp; sales desks</div>
+                </div>
+
+                {/* Module 2 */}
+                <div style={{ backgroundColor: "#f8fafc", border: "1px solid #f1f5f9", borderRadius: "10px", padding: "8px 10px" }}>
+                  <div style={{ width: "24px", height: "24px", borderRadius: "6px", backgroundColor: "#ecfdf5", color: "#10b981", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "5px" }}>
+                    <i className="fas fa-filter" style={{ fontSize: "11px" }}></i>
+                  </div>
+                  <div style={{ fontSize: "0.74rem", fontWeight: 700, color: "#0f172a", marginBottom: "2px" }}>Smart Qualifying</div>
+                  <div style={{ fontSize: "0.65rem", color: "#64748b", lineHeight: "1.3" }}>Lead scoring &amp; automated stage progression</div>
+                </div>
+
+                {/* Module 3 */}
+                <div style={{ backgroundColor: "#f8fafc", border: "1px solid #f1f5f9", borderRadius: "10px", padding: "8px 10px" }}>
+                  <div style={{ width: "24px", height: "24px", borderRadius: "6px", backgroundColor: "#f5f3ff", color: "#7c3aed", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "5px" }}>
+                    <i className="fas fa-shield-alt" style={{ fontSize: "11px" }}></i>
+                  </div>
+                  <div style={{ fontSize: "0.74rem", fontWeight: 700, color: "#0f172a", marginBottom: "2px" }}>Zero-Trust Enclave</div>
+                  <div style={{ fontSize: "0.65rem", color: "#64748b", lineHeight: "1.3" }}>256-bit encryption &amp; audit access logging</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Visual Multi-Channel Lead Distribution Progress Bar Widget */}
+            <div
+              style={{
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
+                borderRadius: "12px",
+                padding: "clamp(7px, 1vh, 10px) 12px",
+                boxShadow: "0 2px 6px rgba(0,0,0,0.02)",
+                marginBottom: "clamp(6px, 1vh, 10px)",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "5px" }}>
+                <span style={{ fontSize: "0.68rem", fontWeight: 700, color: "#334155", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                  <i className="fas fa-chart-pie" style={{ color: "#2563eb", marginRight: "5px" }}></i>
+                  Multi-Channel Inbound Mix
+                </span>
+                <span style={{ fontSize: "0.65rem", color: "#64748b", fontWeight: 600 }}>Active Channels</span>
+              </div>
+              {/* Segmented Color Bar */}
+              <div style={{ width: "100%", height: "6px", borderRadius: "3px", display: "flex", overflow: "hidden", marginBottom: "5px", background: "#f1f5f9" }}>
+                <div style={{ width: "42%", background: "#2563eb" }} title="Web Portals: 42%" />
+                <div style={{ width: "36%", background: "#10b981" }} title="WhatsApp: 36%" />
+                <div style={{ width: "14%", background: "#8b5cf6" }} title="Custom Software: 14%" />
+                <div style={{ width: "8%", background: "#f59e0b" }} title="Direct / Inbound: 8%" />
+              </div>
+              {/* Channel Legends */}
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.66rem", color: "#475569", fontWeight: 600, flexWrap: "wrap", gap: "4px" }}>
+                <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2563eb" }} /> Web (42%)
+                </span>
+                <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10b981" }} /> WhatsApp (36%)
+                </span>
+                <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#8b5cf6" }} /> Software (14%)
+                </span>
+                <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#f59e0b" }} /> Direct (8%)
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Simple Bottom Brand Line */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #f1f5f9", paddingTop: "clamp(8px, 1.2vh, 12px)", flexShrink: 0, color: "#94a3b8", fontSize: "clamp(0.7rem, 0.78vw, 0.76rem)", fontWeight: 500 }}>
+            <span>© {new Date().getFullYear()} ChittorTech™. All rights reserved.</span>
+            <span>Enterprise Pipeline Console</span>
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN: The Authentic Executive Admin Sign In Card (50% Width & Matching Height) */}
+        <div className="ct-admin-panel-col" style={loginStyles.panelCol}>
+          {/* Top Security Status Bar with Live IST Clock & Live Sync */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", flexShrink: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px #22c55e" }} />
+              <span style={{ fontSize: "0.82rem", fontWeight: 800, color: "#0f172a", letterSpacing: "-0.2px" }}>
+                ChittorTech™ Enclave Gateway
+              </span>
+            </div>
+
+            {/* LIVE IST CLOCK & STATUS WIDGET */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap", justifyContent: "flex-end" }}>
+              {/* Live IST Clock (HH:MM:SS) + Date Pill */}
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  backgroundColor: "#ffffff",
+                  border: "1.5px solid #cbd5e1",
+                  borderRadius: "10px",
+                  paddingTop: "4px",
+                  paddingBottom: "4px",
+                  paddingLeft: "10px",
+                  paddingRight: "10px",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
+                }}
+              >
+                <i className="far fa-clock" style={{ color: "#2563eb", fontSize: "12px" }}></i>
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    fontWeight: 800,
+                    color: "#0f172a",
+                    fontFamily: "monospace",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  {currentTime || "--:--:--"}
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.62rem",
+                    fontWeight: 800,
+                    color: "#1d4ed8",
+                    backgroundColor: "#eff6ff",
+                    border: "1px solid #bfdbfe",
+                    paddingTop: "1px",
+                    paddingBottom: "1px",
+                    paddingLeft: "5px",
+                    paddingRight: "5px",
+                    borderRadius: "4px",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  IST
+                </span>
+                <span style={{ width: "1px", height: "13px", backgroundColor: "#cbd5e1" }} />
+                <span style={{ fontSize: "0.72rem", fontWeight: 600, color: "#475569", whiteSpace: "nowrap" }}>
+                  {currentDate || ""}
+                </span>
+              </div>
+
+              {/* Live Sync Active Pill */}
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  background: "rgba(34, 197, 94, 0.12)",
+                  color: "#166534",
+                  padding: "4px 10px",
+                  borderRadius: "20px",
+                  fontSize: "0.72rem",
+                  fontWeight: 700,
+                  border: "1px solid rgba(34, 197, 94, 0.25)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px #22c55e" }} />
+                Live Sync
+              </div>
+            </div>
+          </div>
+
+          <div style={loginStyles.card}>
+
+            {/* Header */}
+            <div style={loginStyles.header}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: "8px" }}>
+                <div style={loginStyles.logoContainer}>
+                  <img src="/favicon.png" alt="ChittorTech Logo" style={loginStyles.logo} />
+                </div>
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    background: "rgba(37, 99, 235, 0.08)",
+                    color: "#2563eb",
+                    fontSize: "0.68rem",
+                    fontWeight: 700,
+                    padding: "4px 10px",
+                    borderRadius: "20px",
+                    border: "1px solid rgba(37, 99, 235, 0.2)",
+                  }}
+                >
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 5px #22c55e" }} />
+                  RESTRICTED ENCLAVE
+                </span>
+              </div>
+              <h1 style={loginStyles.title}>
+                {step === "otp" ? "Security Verification" : step === "forgot" ? "Master Key Recovery" : "Executive Sign In"}
+              </h1>
+              <p style={{ color: "#64748b", fontSize: "0.78rem", margin: "3px 0 0 0", lineHeight: "1.4" }}>
+                {step === "otp"
+                  ? "Enter the 6-digit cryptographic verification token dispatched to your device."
+                  : step === "forgot"
+                  ? "Enter registered administrator email address to receive your master access key."
+                  : "Enter authorized master credentials to access the CRM console."}
+              </p>
+            </div>
+
+            {/* STEP 1: LOGIN FORM */}
+            {step === "login" && (
+              <form onSubmit={handleLogin} style={loginStyles.form}>
+                {/* Security Alert Banner */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    background: "#f0fdf4",
+                    border: "1px solid #bbf7d0",
+                    borderRadius: "10px",
+                    padding: "8px 12px",
+                    fontSize: "0.74rem",
+                    color: "#166534",
+                    fontWeight: 500,
+                  }}
+                >
+                  <i className="fas fa-shield-alt" style={{ color: "#16a34a", fontSize: "12px", flexShrink: 0 }}></i>
+                  <span>End-to-End Encrypted Session with Dual 2FA Verification.</span>
+                </div>
+
+                {loginError && (
+                  <div style={loginStyles.errorAlert}>
+                    <i className="fas fa-exclamation-circle" style={{ flexShrink: 0, fontSize: "14px" }}></i>
+                    <span>{loginError}</span>
+                  </div>
+                )}
+
+                {/* Access Key */}
+                <div style={loginStyles.inputGroup}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <label htmlFor="passcode" style={loginStyles.label}>Admin Access Key</label>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStep("forgot");
+                        setRecoveryError("");
+                        setRecoverySuccess(false);
+                        setRecoveryEmail("");
+                        generateCaptcha();
+                      }}
+                      style={{
+                        background: "transparent",
+                        border: "none",
+                        color: "#2563eb",
+                        fontSize: "0.76rem",
+                        fontWeight: 600,
+                        cursor: "pointer",
+                        padding: 0,
+                      }}
+                    >
+                      Forgot Key?
+                    </button>
+                  </div>
+                  <div style={loginStyles.inputWrapper}>
+                    <i className="fas fa-key" style={loginStyles.inputIcon}></i>
+                    <input
+                      id="passcode"
+                      type={showPassword ? "text" : "password"}
+                      required
+                      value={passcode}
+                      onChange={(e) => {
+                        setPasscode(e.target.value);
+                        setLoginError("");
+                      }}
+                      placeholder="Enter master access key..."
+                      style={{ ...loginStyles.input, paddingRight: "40px" }}
+                      autoFocus
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={loginStyles.eyeButton}
+                      title={showPassword ? "Hide key" : "Show key"}
+                    >
+                      <i className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"} style={{ fontSize: "13px" }}></i>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Security Verification (CAPTCHA) */}
+                <div style={loginStyles.inputGroup}>
+                  <label htmlFor="captcha" style={loginStyles.label}>Human Verification</label>
+                  <div style={loginStyles.captchaRow}>
+                    <div style={loginStyles.captchaBox}>{captchaCode}</div>
+                    <button
+                      type="button"
+                      onClick={generateCaptcha}
+                      style={loginStyles.refreshButton}
+                      title="Refresh Captcha"
+                    >
+                      <i className="fas fa-sync-alt" style={{ fontSize: "13px" }}></i>
+                    </button>
+                    <input
+                      id="captcha"
+                      type="text"
+                      required
+                      value={captchaInput}
+                      onChange={(e) => setCaptchaInput(e.target.value)}
+                      placeholder="Enter code"
+                      style={{ ...loginStyles.input, flex: 1, paddingLeft: "12px" }}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loginLoading}
+                  style={{
+                    ...loginStyles.submitButton,
+                    ...(loginLoading ? loginStyles.submitButtonDisabled : {}),
+                  }}
+                >
+                  {loginLoading ? (
+                    <span style={loginStyles.spinner} />
+                  ) : (
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                      Proceed to 2FA Authentication <i className="fas fa-arrow-right" style={{ fontSize: "12px" }}></i>
+                    </span>
+                  )}
+                </button>
+
+                <div style={{ textAlign: "center", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid #f1f5f9" }}>
                   <button
                     type="button"
+                    id="forgot-admin-access-key-btn"
                     onClick={() => {
                       setStep("forgot");
                       setRecoveryError("");
@@ -522,351 +1099,311 @@ export default function AdminLeadsPage() {
                       background: "transparent",
                       border: "none",
                       color: "#2563eb",
-                      fontSize: "0.78rem",
+                      fontSize: "0.82rem",
                       fontWeight: 600,
                       cursor: "pointer",
-                      padding: 0,
+                      padding: "4px 8px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      borderRadius: "6px",
                     }}
                   >
-                    Forgot Key?
+                    <i className="fas fa-unlock-alt" style={{ fontSize: "11px", color: "#2563eb" }}></i>
+                    <span>Forgot Admin Access Key?</span>
                   </button>
                 </div>
-                <div style={loginStyles.inputWrapper}>
-                  <i className="fas fa-lock" style={loginStyles.inputIcon}></i>
-                  <input
-                    id="passcode"
-                    type={showPassword ? "text" : "password"}
-                    required
-                    value={passcode}
-                    onChange={(e) => {
-                      setPasscode(e.target.value);
-                      setLoginError("");
-                    }}
-                    placeholder="••••••••"
-                    style={{ ...loginStyles.input, paddingRight: "40px" }}
-                    autoFocus
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    style={loginStyles.eyeButton}
-                    title={showPassword ? "Hide key" : "Show key"}
-                  >
-                    <i className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"} style={{ fontSize: "13px" }}></i>
-                  </button>
-                </div>
-              </div>
+              </form>
+            )}
 
-              {/* Security Verification (CAPTCHA) */}
-              <div style={loginStyles.inputGroup}>
-                <label htmlFor="captcha" style={loginStyles.label}>Security Verification</label>
-                <div style={loginStyles.captchaRow}>
-                  <div style={loginStyles.captchaBox}>{captchaCode}</div>
-                  <button
-                    type="button"
-                    onClick={generateCaptcha}
-                    style={loginStyles.refreshButton}
-                    title="Refresh Captcha"
-                  >
-                    <i className="fas fa-sync-alt" style={{ fontSize: "13px" }}></i>
-                  </button>
-                  <input
-                    id="captcha"
-                    type="text"
-                    required
-                    value={captchaInput}
-                    onChange={(e) => setCaptchaInput(e.target.value)}
-                    placeholder="Enter code"
-                    style={{ ...loginStyles.input, flex: 1, paddingLeft: "12px" }}
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loginLoading}
-                style={{
-                  ...loginStyles.submitButton,
-                  ...(loginLoading ? loginStyles.submitButtonDisabled : {}),
-                }}
-              >
-                {loginLoading ? (
-                  <span style={loginStyles.spinner} />
-                ) : (
-                  "Proceed to 2FA"
-                )}
-              </button>
-
-              <div style={{ textAlign: "center", marginTop: "16px", paddingTop: "14px", borderTop: "1px solid #f1f5f9" }}>
-                <button
-                  type="button"
-                  id="forgot-admin-access-key-btn"
-                  onClick={() => {
-                    setStep("forgot");
-                    setRecoveryError("");
-                    setRecoverySuccess(false);
-                    setRecoveryEmail("");
-                    generateCaptcha();
-                  }}
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    color: "#2563eb",
-                    fontSize: "0.85rem",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    padding: "6px 12px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "7px",
-                    borderRadius: "6px",
-                  }}
-                >
-                  <i className="fas fa-key" style={{ fontSize: "12px", color: "#2563eb" }}></i>
-                  <span>Forgot Admin Access Key?</span>
-                </button>
-              </div>
-            </form>
-          )}
-
-          {/* STEP 2: 2FA OTP VERIFICATION */}
-          {step === "otp" && (
-            <div style={loginStyles.form}>
-              <div style={{ textAlign: "center", marginBottom: "4px" }}>
-                <div style={loginStyles.otpIconWrap}>
-                  <i className="fas fa-shield-alt" style={{ color: "#10b981", fontSize: "28px" }}></i>
-                </div>
-              </div>
-
-              <div style={{ textAlign: "center", marginBottom: "4px" }}>
-                <p style={loginStyles.otpTitle}>Security Verification</p>
-                <p style={loginStyles.otpSub}>
-                  A 6-digit one-time passcode has been dispatched to authorized administrator devices.
-                </p>
-              </div>
-
-              {otpError && (
-                <div style={loginStyles.errorAlert}>
-                  <i className="fas fa-exclamation-circle" style={{ flexShrink: 0, fontSize: "14px" }}></i>
-                  <span>{otpError}</span>
-                </div>
-              )}
-              {otpSuccess && (
-                <div style={loginStyles.successAlert}>
-                  <i className="fas fa-check-circle" style={{ flexShrink: 0, fontSize: "14px" }}></i>
-                  <span>Verified! Redirecting to dashboard...</span>
-                </div>
-              )}
-
-              {/* 6 OTP Digit Inputs */}
-              <div style={loginStyles.otpRow} onPaste={handleOtpPaste}>
-                {otpDigits.map((digit, i) => (
-                  <input
-                    key={i}
-                    ref={(el) => { otpRefs.current[i] = el; }}
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={1}
-                    value={digit}
-                    onChange={(e) => handleOtpChange(i, e.target.value)}
-                    onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                    style={{
-                      ...loginStyles.otpDigitInput,
-                      ...(digit ? loginStyles.otpDigitFilled : {}),
-                    }}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={handleVerifyOtp}
-                disabled={otpLoading || otpSuccess || otpDigits.join("").length < 6}
-                style={{
-                  ...loginStyles.submitButton,
-                  ...(otpLoading || otpSuccess || otpDigits.join("").length < 6 ? loginStyles.submitButtonDisabled : {}),
-                }}
-              >
-                {otpLoading ? (
-                  <span style={loginStyles.spinner} />
-                ) : otpSuccess ? (
-                  "Verified ✓"
-                ) : (
-                  "Verify & Access Dashboard"
-                )}
-              </button>
-
-              <div style={{ textAlign: "center", marginTop: "4px" }}>
-                <button
-                  type="button"
-                  onClick={handleResendOtp}
-                  disabled={resendCooldown > 0}
-                  style={loginStyles.resendButton}
-                >
-                  {resendCooldown > 0 ? `Resend code in ${resendCooldown}s` : "Resend verification code"}
-                </button>
-                <br />
-                <button
-                  type="button"
-                  onClick={() => {
-                    setStep("login");
-                    setOtpDigits(["", "", "", "", "", ""]);
-                    setOtpError("");
-                    generateCaptcha();
-                  }}
-                  style={{ ...loginStyles.resendButton, color: "#94a3b8", marginTop: "6px" }}
-                >
-                  ← Back to login
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* STEP 3: FORGOT KEY RECOVERY */}
-          {step === "forgot" && (
-            <form onSubmit={handleRecoverKey} style={loginStyles.form}>
-              <div style={{ textAlign: "center", marginBottom: "4px" }}>
-                <div style={{ ...loginStyles.otpIconWrap, background: "#eff6ff" }}>
-                  <i className="fas fa-key" style={{ color: "#2563eb", fontSize: "24px" }}></i>
-                </div>
-              </div>
-
-              <div style={{ textAlign: "center", marginBottom: "4px" }}>
-                <p style={loginStyles.otpTitle}>Recover Admin Access Key</p>
-                <p style={loginStyles.otpSub}>
-                  Enter your registered administrator email address. Your Master Access Key will be dispatched directly to your inbox.
-                </p>
-              </div>
-
-              {recoveryError && (
-                <div style={loginStyles.errorAlert}>
-                  <i className="fas fa-exclamation-circle" style={{ flexShrink: 0, fontSize: "14px" }}></i>
-                  <span>{recoveryError}</span>
-                </div>
-              )}
-              {recoverySuccess && (
-                <div style={{ ...loginStyles.successAlert, display: "block", textAlign: "left" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
-                    <i className="fas fa-check-circle" style={{ flexShrink: 0, fontSize: "15px" }}></i>
-                    <strong style={{ fontSize: "13px" }}>Master Access Key Dispatched!</strong>
+            {/* STEP 2: 2FA OTP VERIFICATION */}
+            {step === "otp" && (
+              <div style={loginStyles.form}>
+                <div style={{ textAlign: "center", marginBottom: "4px" }}>
+                  <div style={loginStyles.otpIconWrap}>
+                    <i className="fas fa-shield-alt" style={{ color: "#10b981", fontSize: "28px" }}></i>
                   </div>
-                  <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "#166534", lineHeight: "1.4" }}>
-                    Please check your registered inbox (including Spam / Updates) for your key, then return to sign in.
+                </div>
+
+                <div style={{ textAlign: "center", marginBottom: "4px" }}>
+                  <p style={loginStyles.otpTitle}>Security Verification</p>
+                  <p style={loginStyles.otpSub}>
+                    A 6-digit one-time passcode has been dispatched to authorized administrator devices.
                   </p>
+                </div>
+
+                {otpError && (
+                  <div style={loginStyles.errorAlert}>
+                    <i className="fas fa-exclamation-circle" style={{ flexShrink: 0, fontSize: "14px" }}></i>
+                    <span>{otpError}</span>
+                  </div>
+                )}
+                {otpSuccess && (
+                  <div style={loginStyles.successAlert}>
+                    <i className="fas fa-check-circle" style={{ flexShrink: 0, fontSize: "14px" }}></i>
+                    <span>Verified! Redirecting to dashboard...</span>
+                  </div>
+                )}
+
+                {/* 6 OTP Digit Inputs */}
+                <div style={loginStyles.otpRow} onPaste={handleOtpPaste}>
+                  {otpDigits.map((digit, i) => (
+                    <input
+                      key={i}
+                      ref={(el) => { otpRefs.current[i] = el; }}
+                      type="text"
+                      inputMode="numeric"
+                      maxLength={1}
+                      value={digit}
+                      onChange={(e) => handleOtpChange(i, e.target.value)}
+                      onKeyDown={(e) => handleOtpKeyDown(i, e)}
+                      style={{
+                        ...loginStyles.otpDigitInput,
+                        ...(digit ? loginStyles.otpDigitFilled : {}),
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleVerifyOtp}
+                  disabled={otpLoading || otpSuccess || otpDigits.join("").length < 6}
+                  style={{
+                    ...loginStyles.submitButton,
+                    ...(otpLoading || otpSuccess || otpDigits.join("").length < 6 ? loginStyles.submitButtonDisabled : {}),
+                  }}
+                >
+                  {otpLoading ? (
+                    <span style={loginStyles.spinner} />
+                  ) : otpSuccess ? (
+                    "Verified ✓"
+                  ) : (
+                    "Verify & Access Dashboard"
+                  )}
+                </button>
+
+                <div style={{ textAlign: "center", marginTop: "4px" }}>
+                  <button
+                    type="button"
+                    onClick={handleResendOtp}
+                    disabled={resendCooldown > 0}
+                    style={loginStyles.resendButton}
+                  >
+                    {resendCooldown > 0 ? `Resend code in ${resendCooldown}s` : "Resend verification code"}
+                  </button>
+                  <br />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setStep("login");
+                      setOtpDigits(["", "", "", "", "", ""]);
+                      setOtpError("");
+                      generateCaptcha();
+                    }}
+                    style={{ ...loginStyles.resendButton, color: "#94a3b8", marginTop: "6px" }}
+                  >
+                    ← Back to login
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* STEP 3: FORGOT KEY RECOVERY */}
+            {step === "forgot" && (
+              <form onSubmit={handleRecoverKey} style={loginStyles.form}>
+                <div style={{ textAlign: "center", marginBottom: "4px" }}>
+                  <div style={{ ...loginStyles.otpIconWrap, background: "#eff6ff" }}>
+                    <i className="fas fa-key" style={{ color: "#2563eb", fontSize: "24px" }}></i>
+                  </div>
+                </div>
+
+                <div style={{ textAlign: "center", marginBottom: "4px" }}>
+                  <p style={loginStyles.otpTitle}>Recover Admin Access Key</p>
+                  <p style={loginStyles.otpSub}>
+                    Enter your registered administrator email address. Your Master Access Key will be dispatched directly to your inbox.
+                  </p>
+                </div>
+
+                {recoveryError && (
+                  <div style={loginStyles.errorAlert}>
+                    <i className="fas fa-exclamation-circle" style={{ flexShrink: 0, fontSize: "14px" }}></i>
+                    <span>{recoveryError}</span>
+                  </div>
+                )}
+                {recoverySuccess && (
+                  <div style={{ ...loginStyles.successAlert, display: "block", textAlign: "left" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
+                      <i className="fas fa-check-circle" style={{ flexShrink: 0, fontSize: "15px" }}></i>
+                      <strong style={{ fontSize: "13px" }}>Master Access Key Dispatched!</strong>
+                    </div>
+                    <p style={{ margin: "0 0 8px 0", fontSize: "12px", color: "#166534", lineHeight: "1.4" }}>
+                      Please check your registered inbox (including Spam / Updates) for your key, then return to sign in.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStep("login");
+                        setRecoveryError("");
+                        setRecoverySuccess(false);
+                        setRecoveryEmail("");
+                        generateCaptcha();
+                      }}
+                      style={{
+                        background: "#16a34a",
+                        color: "#ffffff",
+                        border: "none",
+                        padding: "6px 14px",
+                        borderRadius: "6px",
+                        fontSize: "12px",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Return to Login →
+                    </button>
+                  </div>
+                )}
+
+                {/* Admin Email */}
+                <div style={loginStyles.inputGroup}>
+                  <label htmlFor="recoveryEmail" style={loginStyles.label}>Administrator Email</label>
+                  <div style={loginStyles.inputWrapper}>
+                    <i className="fas fa-envelope" style={loginStyles.inputIcon}></i>
+                    <input
+                      id="recoveryEmail"
+                      type="email"
+                      required
+                      value={recoveryEmail}
+                      onChange={(e) => {
+                        setRecoveryEmail(e.target.value);
+                        setRecoveryError("");
+                      }}
+                      placeholder="Enter registered admin email"
+                      style={{ ...loginStyles.input, paddingLeft: "40px" }}
+                      autoFocus
+                    />
+                  </div>
+                </div>
+
+                {/* Security Verification (CAPTCHA) */}
+                <div style={loginStyles.inputGroup}>
+                  <label htmlFor="recoveryCaptcha" style={loginStyles.label}>Human Verification</label>
+                  <div style={loginStyles.captchaRow}>
+                    <div style={loginStyles.captchaBox}>{captchaCode}</div>
+                    <button
+                      type="button"
+                      onClick={generateCaptcha}
+                      style={loginStyles.refreshButton}
+                      title="Refresh Captcha"
+                    >
+                      <i className="fas fa-sync-alt" style={{ fontSize: "13px" }}></i>
+                    </button>
+                    <input
+                      id="recoveryCaptcha"
+                      type="text"
+                      required
+                      value={captchaInput}
+                      onChange={(e) => setCaptchaInput(e.target.value)}
+                      placeholder="Enter code"
+                      style={{ ...loginStyles.input, flex: 1, paddingLeft: "12px" }}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={recoveryLoading}
+                  style={{
+                    ...loginStyles.submitButton,
+                    ...(recoveryLoading ? loginStyles.submitButtonDisabled : {}),
+                  }}
+                >
+                  {recoveryLoading ? (
+                    <span style={loginStyles.spinner} />
+                  ) : (
+                    "Send Master Key"
+                  )}
+                </button>
+
+                <div style={{ textAlign: "center", marginTop: "10px" }}>
                   <button
                     type="button"
                     onClick={() => {
                       setStep("login");
                       setRecoveryError("");
                       setRecoverySuccess(false);
-                      setRecoveryEmail("");
                       generateCaptcha();
                     }}
-                    style={{
-                      background: "#16a34a",
-                      color: "#ffffff",
-                      border: "none",
-                      padding: "6px 14px",
-                      borderRadius: "6px",
-                      fontSize: "12px",
-                      fontWeight: 700,
-                      cursor: "pointer",
-                    }}
+                    style={{ ...loginStyles.resendButton, color: "#94a3b8" }}
                   >
-                    Return to Login →
+                    ← Back to login
                   </button>
                 </div>
-              )}
+              </form>
+            )}
 
-              {/* Admin Email */}
-              <div style={loginStyles.inputGroup}>
-                <label htmlFor="recoveryEmail" style={loginStyles.label}>Administrator Email</label>
-                <div style={loginStyles.inputWrapper}>
-                  <i className="fas fa-envelope" style={loginStyles.inputIcon}></i>
-                  <input
-                    id="recoveryEmail"
-                    type="email"
-                    required
-                    value={recoveryEmail}
-                    onChange={(e) => {
-                      setRecoveryEmail(e.target.value);
-                      setRecoveryError("");
-                    }}
-                    placeholder="Enter registered admin email"
-                    style={{ ...loginStyles.input, paddingLeft: "40px" }}
-                    autoFocus
-                  />
-                </div>
-              </div>
+          </div>
 
-              {/* Security Verification (CAPTCHA) */}
-              <div style={loginStyles.inputGroup}>
-                <label htmlFor="recoveryCaptcha" style={loginStyles.label}>Security Verification</label>
-                <div style={loginStyles.captchaRow}>
-                  <div style={loginStyles.captchaBox}>{captchaCode}</div>
-                  <button
-                    type="button"
-                    onClick={generateCaptcha}
-                    style={loginStyles.refreshButton}
-                    title="Refresh Captcha"
-                  >
-                    <i className="fas fa-sync-alt" style={{ fontSize: "13px" }}></i>
-                  </button>
-                  <input
-                    id="recoveryCaptcha"
-                    type="text"
-                    required
-                    value={captchaInput}
-                    onChange={(e) => setCaptchaInput(e.target.value)}
-                    placeholder="Enter code"
-                    style={{ ...loginStyles.input, flex: 1, paddingLeft: "12px" }}
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={recoveryLoading}
-                style={{
-                  ...loginStyles.submitButton,
-                  ...(recoveryLoading ? loginStyles.submitButtonDisabled : {}),
-                }}
-              >
-                {recoveryLoading ? (
-                  <span style={loginStyles.spinner} />
-                ) : (
-                  "Send Master Key"
-                )}
-              </button>
-
-              <div style={{ textAlign: "center", marginTop: "10px" }}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setStep("login");
-                    setRecoveryError("");
-                    setRecoverySuccess(false);
-                    generateCaptcha();
-                  }}
-                  style={{ ...loginStyles.resendButton, color: "#94a3b8" }}
-                >
-                  ← Back to login
-                </button>
-              </div>
-            </form>
-          )}
-
-          <div style={loginStyles.footer}>
-            <p style={loginStyles.footerText}>Secure Admin Access Panel</p>
-            <p style={loginStyles.footerSubText}>
-              Managed &amp; protected by{" "}
-              <span style={{ color: "#2563eb", fontWeight: "600" }}>ChittorTech</span>
-            </p>
+          {/* Simple Bottom Brand Line */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #f1f5f9", paddingTop: "clamp(8px, 1.2vh, 12px)", flexShrink: 0, color: "#94a3b8", fontSize: "clamp(0.7rem, 0.78vw, 0.76rem)", fontWeight: 500 }}>
+            <span>Protected &amp; Managed by ChittorTech™</span>
+            <span>Official Admin Gateway</span>
           </div>
         </div>
 
         <style>{`
           @keyframes spin { to { transform: rotate(360deg); } }
+          .ct-admin-showcase-col {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            flex: 1 1 50% !important;
+            width: 50% !important;
+            max-width: 50% !important;
+            box-sizing: border-box !important;
+          }
+          .ct-admin-panel-col {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: stretch !important;
+            flex: 1 1 50% !important;
+            width: 50% !important;
+            max-width: 50% !important;
+            box-sizing: border-box !important;
+          }
+          .ct-admin-showcase-col::-webkit-scrollbar,
+          .ct-admin-panel-col::-webkit-scrollbar {
+            display: none;
+          }
+          @media (max-width: 992px) {
+            .ct-admin-split-container {
+              flex-direction: column !important;
+              overflow-y: auto !important;
+              height: auto !important;
+              min-height: 100vh !important;
+              max-height: none !important;
+            }
+            .ct-admin-showcase-col {
+              display: none !important;
+            }
+            .ct-admin-panel-col {
+              flex: 1 1 100% !important;
+              width: 100% !important;
+              max-width: 100% !important;
+              min-height: 100vh !important;
+              padding: 24px 16px !important;
+            }
+            .ct-badge-hide-mobile {
+              display: none !important;
+            }
+          }
+          @media (max-height: 720px) {
+            .ct-badge-hide-mobile {
+              display: none !important;
+            }
+          }
         `}</style>
       </div>
     );
@@ -1032,56 +1569,120 @@ export default function AdminLeadsPage() {
           </div>
 
           {/* KPI Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "16px" }}>
-            {/* Total */}
-            <div style={{ background: "#ffffff", padding: "20px", borderRadius: "16px", border: "1px solid #e2e8f0", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "18px" }}>
+            {/* Total Leads */}
+            <div
+              style={{
+                background: "linear-gradient(145deg, #ffffff 0%, #f8fafc 100%)",
+                padding: "22px 20px",
+                borderRadius: "18px",
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.03)",
+                position: "relative",
+                overflow: "hidden",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+              }}
+            >
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "4px", background: "linear-gradient(90deg, #3b82f6, #6366f1)" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ color: "#64748b", fontSize: "0.82rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px" }}>Total Leads</span>
-                <span style={{ width: "36px", height: "36px", borderRadius: "10px", background: "#f0fdf4", color: "#16a34a", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{ color: "#64748b", fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.6px" }}>Total Inquiries</span>
+                <span style={{ width: "40px", height: "40px", borderRadius: "12px", background: "linear-gradient(135deg, #eff6ff, #dbeafe)", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(37,99,235,0.15)" }}>
                   <i className="fas fa-inbox"></i>
                 </span>
               </div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "#0f172a", marginTop: "10px" }}>
+              <div style={{ fontSize: "2.1rem", fontWeight: 800, color: "#0f172a", marginTop: "10px", letterSpacing: "-0.5px" }}>
                 {stats.total}
+              </div>
+              <div style={{ marginTop: "6px", display: "flex", alignItems: "center", gap: "6px", fontSize: "0.75rem", color: "#2563eb", fontWeight: 600 }}>
+                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2563eb" }}></span>
+                Live Database Stream
               </div>
             </div>
 
             {/* New / Action Required */}
-            <div style={{ background: "#ffffff", padding: "20px", borderRadius: "16px", border: "1px solid #fef08a", boxShadow: "0 2px 8px rgba(234,179,8,0.08)" }}>
+            <div
+              style={{
+                background: "linear-gradient(145deg, #ffffff 0%, #fffbeb 100%)",
+                padding: "22px 20px",
+                borderRadius: "18px",
+                border: "1px solid #fde68a",
+                boxShadow: "0 4px 16px rgba(245,158,11,0.08)",
+                position: "relative",
+                overflow: "hidden",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+              }}
+            >
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "4px", background: "linear-gradient(90deg, #f59e0b, #ea580c)" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ color: "#854d0e", fontSize: "0.82rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px" }}>New (Action Required)</span>
-                <span style={{ width: "36px", height: "36px", borderRadius: "10px", background: "#fef9c3", color: "#ca8a04", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{ color: "#854d0e", fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.6px" }}>New (Action Required)</span>
+                <span style={{ width: "40px", height: "40px", borderRadius: "12px", background: "linear-gradient(135deg, #fef3c7, #fde68a)", color: "#d97706", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(217,119,6,0.18)" }}>
                   <i className="fas fa-bell"></i>
                 </span>
               </div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "#a16207", marginTop: "10px" }}>
+              <div style={{ fontSize: "2.1rem", fontWeight: 800, color: "#a16207", marginTop: "10px", letterSpacing: "-0.5px" }}>
                 {stats.newCount}
+              </div>
+              <div style={{ marginTop: "6px", display: "flex", alignItems: "center", gap: "6px", fontSize: "0.75rem", color: "#d97706", fontWeight: 600 }}>
+                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#f59e0b", animation: "pulse 1.5s infinite" }}></span>
+                Pending Review
               </div>
             </div>
 
             {/* Contacted */}
-            <div style={{ background: "#ffffff", padding: "20px", borderRadius: "16px", border: "1px solid #e2e8f0", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
+            <div
+              style={{
+                background: "linear-gradient(145deg, #ffffff 0%, #f5f3ff 100%)",
+                padding: "22px 20px",
+                borderRadius: "18px",
+                border: "1px solid #e0e7ff",
+                boxShadow: "0 4px 16px rgba(99,102,241,0.05)",
+                position: "relative",
+                overflow: "hidden",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+              }}
+            >
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "4px", background: "linear-gradient(90deg, #8b5cf6, #6366f1)" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ color: "#64748b", fontSize: "0.82rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px" }}>Contacted</span>
-                <span style={{ width: "36px", height: "36px", borderRadius: "10px", background: "#e0e7ff", color: "#4338ca", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{ color: "#4338ca", fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.6px" }}>Contacted Pipeline</span>
+                <span style={{ width: "40px", height: "40px", borderRadius: "12px", background: "linear-gradient(135deg, #ede9fe, #ddd6fe)", color: "#6d28d9", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(109,40,217,0.15)" }}>
                   <i className="fas fa-phone-alt"></i>
                 </span>
               </div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "#0f172a", marginTop: "10px" }}>
+              <div style={{ fontSize: "2.1rem", fontWeight: 800, color: "#4338ca", marginTop: "10px", letterSpacing: "-0.5px" }}>
                 {stats.contacted}
+              </div>
+              <div style={{ marginTop: "6px", display: "flex", alignItems: "center", gap: "6px", fontSize: "0.75rem", color: "#6d28d9", fontWeight: 600 }}>
+                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#8b5cf6" }}></span>
+                Discussions in Progress
               </div>
             </div>
 
             {/* Converted */}
-            <div style={{ background: "#ffffff", padding: "20px", borderRadius: "16px", border: "1px solid #e2e8f0", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
+            <div
+              style={{
+                background: "linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%)",
+                padding: "22px 20px",
+                borderRadius: "18px",
+                border: "1px solid #bbf7d0",
+                boxShadow: "0 4px 16px rgba(34,197,94,0.06)",
+                position: "relative",
+                overflow: "hidden",
+                transition: "transform 0.2s ease, box-shadow 0.2s ease",
+              }}
+            >
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "4px", background: "linear-gradient(90deg, #10b981, #059669)" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ color: "#64748b", fontSize: "0.82rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.5px" }}>Converted Deals</span>
-                <span style={{ width: "36px", height: "36px", borderRadius: "10px", background: "#dcfce7", color: "#15803d", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{ color: "#166534", fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.6px" }}>Converted Deals</span>
+                <span style={{ width: "40px", height: "40px", borderRadius: "12px", background: "linear-gradient(135deg, #dcfce7, #bbf7d0)", color: "#15803d", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(22,101,52,0.15)" }}>
                   <i className="fas fa-check-double"></i>
                 </span>
               </div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "#15803d", marginTop: "10px" }}>
+              <div style={{ fontSize: "2.1rem", fontWeight: 800, color: "#15803d", marginTop: "10px", letterSpacing: "-0.5px" }}>
                 {stats.converted}
+              </div>
+              <div style={{ marginTop: "6px", display: "flex", alignItems: "center", gap: "6px", fontSize: "0.75rem", color: "#16a34a", fontWeight: 600 }}>
+                <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e" }}></span>
+                Closed Revenue Deals
               </div>
             </div>
           </div>
@@ -1538,71 +2139,123 @@ const loginStyles = {
     zIndex: 9999999,
     width: "100vw",
     height: "100vh",
+    maxHeight: "100vh",
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "#ffffff",
-    fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-    padding: "20px",
+    backgroundColor: "#ffffff",
+    fontFamily: "'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif",
+    overflow: "hidden",
+  },
+  showcaseCol: {
+    flex: "1 1 50%",
+    width: "50%",
+    maxWidth: "50%",
+    backgroundColor: "#ffffff",
+    borderRight: "2px solid #cbd5e1",
+    boxShadow: "6px 0 24px -4px rgba(15, 23, 42, 0.07)",
+    padding: "clamp(16px, 2.4vh, 28px) clamp(22px, 3vw, 42px)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: "100%",
+    maxHeight: "100vh",
+    boxSizing: "border-box",
+    position: "relative",
     overflowY: "auto",
+    zIndex: 2,
+  },
+  panelCol: {
+    flex: "1 1 50%",
+    width: "50%",
+    maxWidth: "50%",
+    backgroundColor: "#ffffff",
+    padding: "clamp(16px, 2.4vh, 28px) clamp(22px, 3vw, 42px)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "stretch",
+    height: "100%",
+    maxHeight: "100vh",
+    boxSizing: "border-box",
+    overflowY: "auto",
+    position: "relative",
   },
   card: {
     width: "100%",
-    maxWidth: "400px",
-    background: "#f8fafc",
-    border: "1px solid #e2e8f0",
-    borderRadius: "20px",
-    padding: "36px 30px",
-    boxShadow: "0 8px 30px rgba(0, 0, 0, 0.06)",
+    maxWidth: "460px",
+    backgroundColor: "transparent",
+    border: "none",
+    borderRadius: "0",
+    padding: "clamp(10px, 1.5vh, 18px) 0",
     display: "flex",
     flexDirection: "column",
-    gap: "24px",
+    gap: "clamp(10px, 1.4vh, 14px)",
     margin: "auto",
+    boxShadow: "none",
+    boxSizing: "border-box",
+    position: "relative",
   },
   header: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
+    alignItems: "flex-start",
+    textAlign: "left",
   },
   logoContainer: {
-    width: "56px",
-    height: "56px",
-    background: "#ffffff",
-    border: "1px solid #e2e8f0",
-    borderRadius: "14px",
+    width: "38px",
+    height: "38px",
+    background: "linear-gradient(135deg, #eff6ff, #dbeafe)",
+    border: "1px solid #bfdbfe",
+    borderRadius: "10px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: "12px",
-    boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+    boxShadow: "0 2px 6px rgba(37, 99, 235, 0.12)",
   },
-  logo: { width: "32px", height: "32px", objectFit: "contain" },
-  title: { fontSize: "24px", fontWeight: "800", color: "#0f172a", margin: "0 0 2px 0", letterSpacing: "-0.03em" },
-  subtitle: { fontSize: "10px", fontWeight: "800", color: "#2563eb", letterSpacing: "2.5px", textTransform: "uppercase" },
-  form: { display: "flex", flexDirection: "column", gap: "16px" },
+  logo: { width: "24px", height: "24px", objectFit: "contain" },
+  title: {
+    fontSize: "clamp(19px, 2vw, 23px)",
+    fontWeight: "800",
+    color: "#0f172a",
+    margin: "0 0 2px 0",
+    letterSpacing: "-0.03em",
+  },
+  subtitle: {
+    fontSize: "9px",
+    fontWeight: "800",
+    color: "#2563eb",
+    backgroundColor: "#eff6ff",
+    border: "1px solid #dbeafe",
+    padding: "2px 8px",
+    borderRadius: "20px",
+    letterSpacing: "1.2px",
+    textTransform: "uppercase",
+  },
+  form: { display: "flex", flexDirection: "column", gap: "clamp(8px, 1.1vh, 11px)" },
   errorAlert: {
-    background: "#fef2f2",
+    backgroundColor: "#fef2f2",
     border: "1px solid #fee2e2",
     borderRadius: "10px",
-    padding: "10px 14px",
+    padding: "9px 12px",
     color: "#991b1b",
-    fontSize: "12.5px",
+    fontSize: "12px",
     fontWeight: "500",
     display: "flex",
     alignItems: "center",
     gap: "8px",
     lineHeight: "1.4",
   },
-  inputGroup: { display: "flex", flexDirection: "column", gap: "6px" },
-  label: { fontSize: "12px", fontWeight: "600", color: "#475569", paddingLeft: "2px" },
+  inputGroup: { display: "flex", flexDirection: "column", gap: "5px" },
+  label: { fontSize: "12px", fontWeight: "700", color: "#1e293b", paddingLeft: "2px" },
   captchaRow: { display: "flex", alignItems: "center", gap: "8px" },
   captchaBox: {
-    background: "#f1f5f9",
-    border: "1px dashed #cbd5e1",
+    backgroundColor: "#f1f5f9",
+    border: "1.5px dashed #94a3b8",
     borderRadius: "10px",
-    padding: "10px 16px",
-    fontSize: "18px",
+    paddingTop: "8px",
+    paddingBottom: "8px",
+    paddingLeft: "14px",
+    paddingRight: "14px",
+    fontSize: "17px",
     fontWeight: "bold",
     letterSpacing: "4px",
     fontFamily: "monospace",
@@ -1610,12 +2263,10 @@ const loginStyles = {
     textDecoration: "line-through",
     userSelect: "none",
     fontStyle: "italic",
-    backgroundImage: "radial-gradient(circle, #e2e8f0 10%, transparent 11%), radial-gradient(circle, #e2e8f0 10%, transparent 11%)",
-    backgroundSize: "8px 8px",
-    backgroundPosition: "0 0, 4px 4px",
+    boxShadow: "inset 0 1px 3px rgba(0,0,0,0.04)",
   },
   refreshButton: {
-    background: "#ffffff",
+    backgroundColor: "#f8fafc",
     border: "1px solid #cbd5e1",
     borderRadius: "10px",
     width: "38px",
@@ -1623,24 +2274,29 @@ const loginStyles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "#64748b",
+    color: "#475569",
     cursor: "pointer",
     flexShrink: 0,
     outline: "none",
+    transition: "all 0.15s ease",
   },
   inputWrapper: { position: "relative", display: "flex", alignItems: "center" },
-  inputIcon: { position: "absolute", left: "12px", color: "#94a3b8", pointerEvents: "none" },
+  inputIcon: { position: "absolute", left: "14px", color: "#2563eb", pointerEvents: "none", fontSize: "13px" },
   input: {
     width: "100%",
-    background: "#ffffff",
-    border: "1px solid #cbd5e1",
+    backgroundColor: "#ffffff",
+    border: "1.5px solid #cbd5e1",
     borderRadius: "10px",
-    padding: "10px 12px 10px 38px",
+    paddingTop: "10px",
+    paddingBottom: "10px",
+    paddingLeft: "38px",
+    paddingRight: "14px",
     color: "#0f172a",
-    fontSize: "13.5px",
+    fontSize: "13px",
     outline: "none",
-    transition: "all 0.15s ease",
+    transition: "border-color 0.15s ease, box-shadow 0.15s ease",
     fontFamily: "inherit",
+    boxSizing: "border-box",
   },
   eyeButton: {
     position: "absolute",
@@ -1658,76 +2314,92 @@ const loginStyles = {
     outline: "none",
   },
   submitButton: {
-    background: "#0f172a",
+    background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%)",
     border: "none",
     borderRadius: "10px",
-    padding: "12px",
+    paddingTop: "11px",
+    paddingBottom: "11px",
+    paddingLeft: "16px",
+    paddingRight: "16px",
     color: "#ffffff",
-    fontSize: "14px",
+    fontSize: "13.5px",
     fontWeight: "700",
     cursor: "pointer",
     transition: "all 0.15s ease",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "6px",
+    marginTop: "4px",
     fontFamily: "inherit",
+    boxShadow: "0 4px 14px rgba(37, 99, 235, 0.3)",
   },
-  submitButtonDisabled: { background: "#94a3b8", cursor: "not-allowed" },
+  submitButtonDisabled: {
+    background: "#94a3b8",
+    color: "#ffffff",
+    cursor: "not-allowed",
+    boxShadow: "none",
+  },
   spinner: {
     width: "18px",
     height: "18px",
-    border: "2px solid rgba(255,255,255,0.2)",
+    border: "2px solid rgba(255,255,255,0.3)",
     borderTopColor: "#ffffff",
     borderRadius: "50%",
     animation: "spin 0.6s linear infinite",
     display: "inline-block",
   },
-  footer: { textAlign: "center", borderTop: "1px solid #f1f5f9", paddingTop: "16px" },
+  footer: { textAlign: "center", borderTop: "1px solid #f1f5f9", paddingTop: "10px", marginTop: "2px" },
   footerText: { fontSize: "10px", color: "#94a3b8", margin: "0 0 2px 0", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.8px" },
   footerSubText: { fontSize: "9.5px", color: "#64748b", margin: 0, fontWeight: "500" },
   // 2FA OTP specific styles
   successAlert: {
-    background: "#ecfdf5",
+    backgroundColor: "#ecfdf5",
     border: "1px solid #d1fae5",
     borderRadius: "10px",
-    padding: "10px 14px",
+    paddingTop: "9px",
+    paddingBottom: "9px",
+    paddingLeft: "12px",
+    paddingRight: "12px",
     color: "#065f46",
-    fontSize: "12.5px",
+    fontSize: "12px",
     fontWeight: "500",
     display: "flex",
     alignItems: "center",
     gap: "8px",
   },
   otpIconWrap: {
-    width: "56px",
-    height: "56px",
-    background: "#ecfdf5",
+    width: "50px",
+    height: "50px",
+    backgroundColor: "#ecfdf5",
     border: "1px solid #d1fae5",
-    borderRadius: "16px",
+    borderRadius: "14px",
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    margin: "0 auto 8px",
+    margin: "0 auto 6px",
+    boxShadow: "0 2px 8px rgba(16, 185, 129, 0.15)",
   },
-  otpTitle: { fontSize: "17px", fontWeight: "800", color: "#0f172a", margin: "0 0 4px 0" },
-  otpSub: { fontSize: "12.5px", color: "#64748b", margin: "0 0 16px 0", lineHeight: "1.5" },
-  otpRow: { display: "flex", gap: "8px", justifyContent: "center", marginBottom: "16px" },
+  otpTitle: { fontSize: "17px", fontWeight: "800", color: "#0f172a", margin: "0 0 3px 0" },
+  otpSub: { fontSize: "12px", color: "#64748b", margin: "0 0 12px 0", lineHeight: "1.4" },
+  otpRow: { display: "flex", gap: "8px", justifyContent: "center", marginBottom: "12px" },
   otpDigitInput: {
     width: "42px",
-    height: "50px",
+    height: "48px",
     textAlign: "center",
-    fontSize: "20px",
+    fontSize: "19px",
     fontWeight: "800",
-    background: "#ffffff",
-    border: "2px solid #e2e8f0",
-    borderRadius: "12px",
+    backgroundColor: "#ffffff",
+    border: "2px solid #cbd5e1",
+    borderRadius: "10px",
     color: "#0f172a",
     outline: "none",
     fontFamily: "monospace",
     transition: "all 0.15s ease",
   },
-  otpDigitFilled: { border: "2px solid #2563eb", background: "#eff6ff" },
+  otpDigitFilled: {
+    border: "2px solid #2563eb",
+    backgroundColor: "#eff6ff",
+  },
   resendButton: {
     background: "none",
     border: "none",
@@ -1735,7 +2407,7 @@ const loginStyles = {
     fontSize: "12px",
     color: "#2563eb",
     fontWeight: "600",
-    padding: "4px 0",
+    padding: "3px 0",
   },
 };
 
