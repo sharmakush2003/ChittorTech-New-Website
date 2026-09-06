@@ -1,10 +1,32 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../../../public/assets/css/premium-products.css";
 
 export default function Page() {
   const [bookingForm, setBookingForm] = useState({ name: "", phone: "", roomType: "AC Deluxe Room", checkIn: "", checkOut: "", guests: 2 });
   const [submittedBooking, setSubmittedBooking] = useState(null);
+  const videoRef = useRef(null);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  const changeSpeed = (rate) => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = rate;
+      setPlaybackSpeed(rate);
+    }
+  };
 
   const handleBookingSubmit = (e) => {
     e.preventDefault();
@@ -225,9 +247,133 @@ export default function Page() {
                 </button>
               </div>
             </div>
-            <div className="col-lg-5 d-none d-lg-flex justify-content-center">
-              <div className="ds-gopuram-shape">
-                <i className="fa-solid fa-gopuram"></i>
+            <div className="col-lg-5 col-12 d-flex justify-content-center mt-4 mt-lg-0">
+              {/* Smartphone Mockup Frame (Vertical 9:16 — Zero Black Bars) */}
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: "270px",
+                  borderRadius: "36px",
+                  padding: "10px 8px 12px",
+                  background: "linear-gradient(135deg, #292524, #1c1917, #0c0a09)",
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(245, 158, 11, 0.5), 0 0 35px rgba(234, 88, 12, 0.25)",
+                  border: "4px solid #44403c",
+                }}
+              >
+                {/* Phone Speaker & Notch */}
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
+                  <div style={{ width: "36px", height: "4px", backgroundColor: "#57534e", borderRadius: "4px" }} />
+                  <div style={{ width: "5px", height: "5px", backgroundColor: "#292524", borderRadius: "50%", border: "1px solid #57534e" }} />
+                </div>
+
+                {/* Video Display Container (Edge-to-Edge 9:16) */}
+                <div
+                  style={{
+                    position: "relative",
+                    borderRadius: "24px",
+                    overflow: "hidden",
+                    aspectRatio: "9 / 16",
+                    backgroundColor: "#1c1917",
+                    boxShadow: "inset 0 0 10px rgba(0,0,0,0.8)",
+                  }}
+                >
+                  <video
+                    ref={videoRef}
+                    src="https://github.com/user-attachments/assets/4ba125d1-ce14-49d0-98f5-2bb0cef1ff53"
+                    poster="/images/dharamshala-video-poster.jpg"
+                    controls
+                    controlsList="nofullscreen nodownload"
+                    disablePictureInPicture
+                    playsInline
+                    preload="metadata"
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+
+                  {/* Play Button Overlay (Eliminates Initial Black Screen) */}
+                  {!isPlaying && (
+                    <div
+                      onClick={togglePlay}
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: "rgba(0, 0, 0, 0.15)",
+                        cursor: "pointer",
+                        zIndex: 3,
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "64px",
+                          height: "64px",
+                          borderRadius: "50%",
+                          background: "linear-gradient(135deg, #f59e0b, #ea580c)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          boxShadow: "0 10px 30px rgba(234, 88, 12, 0.65), 0 0 0 4px rgba(255, 255, 255, 0.35)",
+                        }}
+                      >
+                        <i className="fa-solid fa-play" style={{ color: "#fff", fontSize: "1.5rem", marginLeft: "4px" }}></i>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Quick Playback Speed Switcher */}
+                <div
+                  style={{
+                    marginTop: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "5px 8px",
+                    background: "rgba(255, 255, 255, 0.05)",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(254, 215, 170, 0.15)",
+                  }}
+                >
+                  <span style={{ fontSize: "0.68rem", color: "#fdba74", fontWeight: 700 }}>
+                    <i className="fa-solid fa-gauge-high me-1"></i> Speed:
+                  </span>
+                  <div style={{ display: "flex", gap: "4px" }}>
+                    {[1, 1.25, 1.5, 2].map((rate) => (
+                      <button
+                        key={rate}
+                        type="button"
+                        onClick={() => changeSpeed(rate)}
+                        style={{
+                          background: playbackSpeed === rate ? "#ea580c" : "rgba(255, 255, 255, 0.12)",
+                          color: "#fff",
+                          border: "none",
+                          borderRadius: "6px",
+                          padding: "2px 7px",
+                          fontSize: "0.68rem",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          transition: "all 0.15s ease",
+                        }}
+                      >
+                        {rate}x
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Home Indicator Bar */}
+                <div style={{ display: "flex", justifyContent: "center", marginTop: "8px" }}>
+                  <div style={{ width: "65px", height: "3px", backgroundColor: "#78716c", borderRadius: "3px" }} />
+                </div>
               </div>
             </div>
           </div>
