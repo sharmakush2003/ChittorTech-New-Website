@@ -5,6 +5,28 @@ import "../../../public/assets/css/premium-products.css";
 export default function GooglePlayPublishingPage() {
   const [activeFaq, setActiveFaq] = useState(null);
   const [activePolicy, setActivePolicy] = useState(null);
+  const videoRef = React.useRef(null);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  const changeSpeed = (rate) => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = rate;
+      setPlaybackSpeed(rate);
+    }
+  };
 
   const POLICY_DETAILS = {
     your_account: {
@@ -311,7 +333,7 @@ export default function GooglePlayPublishingPage() {
         <section className="gplay-hero">
           <div className="container" style={{ position: 'relative', zIndex: 2 }}>
             <div className="row align-items-center g-5">
-              <div className="col-lg-8">
+              <div className="col-lg-7">
                 <span className="badge bg-primary text-uppercase px-3 py-2 mb-3" style={{ fontSize: '0.75rem', letterSpacing: '1px', fontWeight: '800' }}>
                   <i className="fa-brands fa-google-play"></i> App Store Services
                 </span>
@@ -330,8 +352,125 @@ export default function GooglePlayPublishingPage() {
                   </a>
                 </div>
               </div>
-              <div className="col-lg-4 text-center d-none d-lg-block">
-                <i className="fa-brands fa-google-play" style={{ fontSize: '12rem', color: 'rgba(255,255,255,0.15)', filter: 'drop-shadow(0px 10px 40px rgba(59,130,246,0.3))' }}></i>
+
+              {/* Smartphone Mockup Frame */}
+              <div className="col-lg-5 col-12 d-flex justify-content-center mt-4 mt-lg-0">
+                <div
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    maxWidth: "270px",
+                    borderRadius: "36px",
+                    padding: "10px 8px 12px",
+                    background: "linear-gradient(135deg, #1e293b, #0f172a, #020617)",
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(59, 130, 246, 0.5), 0 0 35px rgba(37, 99, 235, 0.25)",
+                    border: "4px solid #334155",
+                  }}
+                >
+                  {/* Phone Speaker & Notch */}
+                  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "6px", marginBottom: "8px" }}>
+                    <div style={{ width: "36px", height: "4px", backgroundColor: "#64748b", borderRadius: "4px" }} />
+                    <div style={{ width: "5px", height: "5px", backgroundColor: "#0f172a", borderRadius: "50%", border: "1px solid #64748b" }} />
+                  </div>
+
+                  {/* Video Container (9:16) */}
+                  <div
+                    style={{
+                      position: "relative",
+                      borderRadius: "24px",
+                      overflow: "hidden",
+                      aspectRatio: "9 / 16",
+                      backgroundColor: "#020617",
+                    }}
+                  >
+                    <video
+                      ref={videoRef}
+                      src="https://github.com/user-attachments/assets/bcd3514f-b2fd-40aa-8b74-fb5e994dde3f"
+                      poster="/images/google-play-video-poster.jpg"
+                      controls
+                      controlsList="nofullscreen nodownload"
+                      disablePictureInPicture
+                      playsInline
+                      preload="metadata"
+                      onPlay={() => setIsPlaying(true)}
+                      onPause={() => setIsPlaying(false)}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+
+                    {!isPlaying && (
+                      <div
+                        onClick={togglePlay}
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: "rgba(0, 0, 0, 0.2)",
+                          cursor: "pointer",
+                          zIndex: 3,
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "64px",
+                            height: "64px",
+                            borderRadius: "50%",
+                            background: "linear-gradient(135deg, #3b82f6, #2563eb)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            boxShadow: "0 10px 30px rgba(37, 99, 235, 0.65), 0 0 0 4px rgba(255, 255, 255, 0.35)",
+                          }}
+                        >
+                          <i className="fa-solid fa-play" style={{ color: "#fff", fontSize: "1.5rem", marginLeft: "4px" }}></i>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Quick Playback Speed Switcher */}
+                  <div
+                    style={{
+                      marginTop: "10px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "5px 8px",
+                      background: "rgba(255, 255, 255, 0.05)",
+                      borderRadius: "10px",
+                      border: "1px solid rgba(255, 255, 255, 0.08)",
+                    }}
+                  >
+                    <span style={{ fontSize: "0.75rem", color: "#94a3b8", fontWeight: 600 }}>Speed:</span>
+                    <div style={{ display: "flex", gap: "4px" }}>
+                      {[1, 1.25, 1.5, 2].map((speed) => (
+                        <button
+                          key={speed}
+                          onClick={() => changeSpeed(speed)}
+                          style={{
+                            padding: "2px 6px",
+                            fontSize: "0.7rem",
+                            fontWeight: 700,
+                            borderRadius: "6px",
+                            border: "none",
+                            cursor: "pointer",
+                            background: playbackSpeed === speed ? "#3b82f6" : "transparent",
+                            color: playbackSpeed === speed ? "#ffffff" : "#94a3b8",
+                            transition: "all 0.2s",
+                          }}
+                        >
+                          {speed}x
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
