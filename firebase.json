@@ -7,6 +7,23 @@
       "**/node_modules/**"
     ],
     "cleanUrls": true,
+    "redirects": [
+      {
+        "source": "/affiliate-marketing-app-mewari-achaar",
+        "destination": "/blog",
+        "type": 301
+      },
+      {
+        "source": "/best-erp-software-advantages-in-india",
+        "destination": "/erp",
+        "type": 301
+      },
+      {
+        "source": "/pos_bill/lead/inquiry_form_justdial",
+        "destination": "/contact-us",
+        "type": 301
+      }
+    ],
     "headers": [
       {
         "source": "**",
