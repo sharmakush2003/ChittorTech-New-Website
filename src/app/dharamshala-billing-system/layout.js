@@ -29,5 +29,35 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return children;
+  const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Dharamshala Management System & Yatri Room Booking Software Overview",
+    "description": "Watch our 1-minute quick video overview on how ChittorTech Dharamshala Software simplifies pilgrim check-ins, advance bookings, donation receipts, and trust accounting.",
+    "thumbnailUrl": [
+      "https://chittortech.online/images/dharamshala-video-poster.jpg"
+    ],
+    "uploadDate": "2026-09-07T00:00:00+05:30",
+    "duration": "PT1M15S",
+    "contentUrl": "https://github.com/user-attachments/assets/4ba125d1-ce14-49d0-98f5-2bb0cef1ff53",
+    "embedUrl": "https://chittortech.online/dharamshala-billing-system",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ChittorTech",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://chittortech.online/favicon.png"
+      }
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+      />
+      {children}
+    </>
+  );
 }

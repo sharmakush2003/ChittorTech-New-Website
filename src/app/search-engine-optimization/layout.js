@@ -29,5 +29,35 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
-  return children;
+  const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "ChittorTech SEO Growth Services & Google #1 Ranking Overview",
+    "description": "Watch our 1-minute quick video overview on how ChittorTech ranks Indian business websites on Google Page #1 through Technical SEO and Local SEO.",
+    "thumbnailUrl": [
+      "https://chittortech.online/images/seo-growth-video-poster.jpg"
+    ],
+    "uploadDate": "2026-09-07T00:00:00+05:30",
+    "duration": "PT1M15S",
+    "contentUrl": "https://github.com/user-attachments/assets/5eabb4f4-efe2-4827-bf91-52fdfecbb78c",
+    "embedUrl": "https://chittortech.online/search-engine-optimization",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ChittorTech",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://chittortech.online/favicon.png"
+      }
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+      />
+      {children}
+    </>
+  );
 }
