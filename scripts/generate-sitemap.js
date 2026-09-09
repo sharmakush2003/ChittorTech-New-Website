@@ -60,7 +60,7 @@ const coreServices = new Set([
   'omnichannel', 'smart-retail', 'lead-management', 'logistics', 
   'web-development-services', 'search-engine-optimization', 'digital-marketing-services', 
   'custom-crm-solutions', 'e-commerce-website-development', 'android-application', 
-  'ai-solutions', 'ai-manufacturing', 'ai-chatbot-development'
+  'ai-solutions', 'ai-manufacturing', 'ai-chatbot-development', 'antigravity', 'render', 'cloudflare', 'vercel', 'groq'
 ]);
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

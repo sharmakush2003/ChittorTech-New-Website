@@ -5,9 +5,22 @@ import Image from "next/image";
 
 import technologies from "@/data/technologies.json";
 
-/* ── 2 Rows of Tech Stack Items from technologies.json (44 Total Technologies) ── */
-const TECH_ROW_1 = technologies.slice(0, 22);
-const TECH_ROW_2 = technologies.slice(22, 44);
+// Cleaned Tech Stack Marquee (No Vercel, No Google Cloud)
+const cleanTechnologies = technologies.filter(t => t.slug !== 'vercel' && t.slug !== 'google-cloud');
+
+const TECH_ROW_1 = [
+  { slug: "antigravity", name: "Antigravity IDE", icon: "fa-solid fa-bolt", color: "#a855f7", href: "/antigravity" },
+  { slug: "render", name: "Render Cloud", icon: "fa-solid fa-server", color: "#46e3b7", href: "/render" },
+  { slug: "groq", name: "Groq LPU", icon: "fa-solid fa-microchip", color: "#f43f5e", href: "/groq" },
+  { slug: "ga4", name: "Google Analytics 4", icon: "fa-solid fa-chart-pie", color: "#f59e0b", href: "/web-development-services" },
+  ...cleanTechnologies.slice(0, 20)
+];
+
+const TECH_ROW_2 = [
+  { slug: "cloudflare", name: "Cloudflare Pages", icon: "fa-brands fa-cloudflare", color: "#f6821f", href: "/cloudflare" },
+  { slug: "claude-ai", name: "Claude AI", icon: "fa-solid fa-brain", color: "#d97706", href: "/ai-solutions" },
+  ...cleanTechnologies.slice(20)
+];
 
 const FEATURES = [
   {
@@ -1126,7 +1139,7 @@ export default function HomePage() {
               {[...TECH_ROW_1, ...TECH_ROW_1].map((t, idx) => (
                 <Link
                   key={`r1-${t.slug}-${idx}`}
-                  href={`/technology/${t.slug}`}
+                  href={t.href || `/technology/${t.slug}`}
                   className="ct-tech-chip"
                   title={`Explore ${t.name} Development Services`}
                 >
@@ -1140,7 +1153,7 @@ export default function HomePage() {
               {[...TECH_ROW_2, ...TECH_ROW_2].map((t, idx) => (
                 <Link
                   key={`r2-${t.slug}-${idx}`}
-                  href={`/technology/${t.slug}`}
+                  href={t.href || `/technology/${t.slug}`}
                   className="ct-tech-chip"
                   title={`Explore ${t.name} Development Services`}
                 >
@@ -1155,8 +1168,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-
 
       {/* ── 5. PRODUCT TABS (DYNAMICALLY UPDATING) ── */}
       <section className="ct-bg-white" style={{ padding: "60px 0" }}>

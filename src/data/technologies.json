@@ -2224,8 +2224,8 @@
     "slug": "google-cloud",
     "name": "Google Cloud",
     "category": "Cloud & DevOps",
-    "icon": "fa-brands fa-google-cloud",
-    "color": "#4285f4",
+    "icon": "fa-brands fa-google",
+    "color": "#4285F4",
     "tagline": "Cutting-Edge AI Infrastructure, Big Data Analytics & Kubernetes",
     "executiveSummary": "undefined At ChittorTech, our senior engineering practice deploys Google Cloud to build scalable, high-throughput enterprise systems. We evaluate runtime performance, memory consumption, concurrency boundaries, and integration pipelines to ensure every Google Cloud implementation delivers measurable ROI and sub-second user responsiveness.",
     "architectureDeepDive": {
@@ -2651,7 +2651,7 @@
     "name": "Vercel",
     "category": "Cloud & DevOps",
     "icon": "fa-solid fa-play",
-    "color": "#0f172a",
+    "color": "#ffffff",
     "tagline": "The Native Global Edge Platform for Next.js & Serverless Web",
     "executiveSummary": "undefined At ChittorTech, our senior engineering practice deploys Vercel to build scalable, high-throughput enterprise systems. We evaluate runtime performance, memory consumption, concurrency boundaries, and integration pipelines to ensure every Vercel implementation delivers measurable ROI and sub-second user responsiveness.",
     "architectureDeepDive": {
