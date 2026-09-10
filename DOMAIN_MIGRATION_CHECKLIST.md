@@ -7,42 +7,29 @@
 
 ---
 
-## 1. 🌐 Cloudflare & DNS Configuration
-- [ ] **DNS Records for `chittortech.in`:**
-  - [ ] Point `A` / `CNAME` records to Hosting server (Firebase / Vercel / VPS).
-  - [ ] Add **SPF Record** (`TXT`):
-    - **Name:** `@`
-    - **Content:** `v=spf1 include:secureserver.net -all`
-    - **TTL:** `Auto`
-  - [ ] Add **DKIM Records** (`CNAME`):
-    - **Host 1:** `s1._domainkey` (from GoDaddy)
-    - **Target 1:** (from GoDaddy)
-    - **Proxy status:** ⚠️ **DNS Only (Grey Cloud ☁️)** — DO NOT proxy!
-    - **Host 2:** `s2._domainkey` (from GoDaddy)
-    - **Target 2:** (from GoDaddy)
-    - **Proxy status:** ⚠️ **DNS Only (Grey Cloud ☁️)**
-  - [ ] Add **MX Records** for GoDaddy Email if not already configured.
-- [ ] **Permanent 301 Redirect (Old Domain ➔ New Domain):**
-  - [ ] In Cloudflare under `chittortech.online` domain settings:
-    - Go to **Rules** ➔ **Redirect Rules** (or Page Rules).
-    - Rule: When URL matches `*chittortech.online/*` ➔ Dynamic redirect to `https://chittortech.in/${1}` with status **301 (Moved Permanently)**.
-    - *Crucial for passing SEO authority, backlinks, and existing visitor bookmarks!*
+## 1. 🌐 Cloudflare & DNS Configuration ✅ (COMPLETED)
+- [x] **DNS Records for `chittortech.in`:**
+  - [x] Point `A` record (`199.36.158.100`) to Firebase Hosting.
+  - [x] Add **SPF Record** (`TXT`): `v=spf1 include:secureserver.net -all` (Verified in GoDaddy ✅).
+  - [x] Add **DKIM Records** (`CNAME`):
+    - `secureserver1._domainkey` ➔ `s1.dkim.chittortech_in.56c.onsecureserver.net` (DNS only) ✅
+    - `secureserver2._domainkey` ➔ `s2.dkim.chittortech_in.56c.onsecureserver.net` (DNS only) ✅
+  - [x] Add **MX Records** for GoDaddy Email (`smtp.secureserver.net`, `mailstore1.secureserver.net`).
+- [ ] **Old Domain (`chittortech.online`) Action:**
+  - [ ] Option A: Delete site from Cloudflare (if abandoning `.online` cleanly).
+  - [ ] Option B: Set 301 Redirect Rule to `chittortech.in` (if maintaining traffic bridge).
 
 ---
 
-## 2. 🔥 Firebase Hosting & Authentication
-- [ ] **Firebase Hosting:**
-  - [ ] Open Firebase Console ➔ Select Project.
-  - [ ] Go to **Hosting** ➔ **Add Custom Domain**.
-  - [ ] Enter `chittortech.in` (and also check "Redirect `www.chittortech.in` to `chittortech.in`").
-  - [ ] Add the verification TXT/A records provided by Firebase into Cloudflare DNS.
-  - [ ] Wait until SSL status shows *Active*.
-- [ ] **Firebase Authentication (Authorized Domains):**
-  - [ ] Go to **Authentication** ➔ **Settings** ➔ **Authorized domains**.
-  - [ ] Click **Add domain** and enter `chittortech.in`.
-  - [ ] *(Prevents OAuth/Google sign-in/Phone authentication failure).*
-- [ ] **Backend CORS & Security Rules:**
-  - [ ] Update allowed origin header in Node/Cloud Functions from `https://chittortech.online` to `https://chittortech.in`.
+## 2. 🔥 Firebase Hosting & Authentication ✅ (COMPLETED)
+- [x] **Firebase Hosting:**
+  - [x] Custom domain `chittortech.in` added and verified.
+  - [x] SSL Certificate minted and live (HTTP 200 OK).
+- [x] **Firebase Authentication (Authorized Domains):**
+  - [x] `chittortech.in` added to Authorised Domains.
+- [ ] **Old Domain Cleanup:**
+  - [ ] Delete `chittortech.online` from Firebase Hosting custom domains list.
+  - [ ] Delete `chittortech.online` from Firebase Auth Authorised domains list.
 
 ---
 
