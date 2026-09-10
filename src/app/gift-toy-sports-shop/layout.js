@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Gift, Toy & Sports Shop POS | ChittorTech",
   description: "Boost your sales with the best gift toy & sports shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/gift-toy-sports-shop",
+    canonical: "https://chittortech.in/gift-toy-sports-shop",
   },
   openGraph: {
     title: "Best Gift, Toy & Sports Shop POS | ChittorTech",
     description: "Boost your sales with the best gift toy & sports shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/gift-toy-sports-shop",
+    url: "https://chittortech.in/gift-toy-sports-shop",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Employee Background Verification | ChittorTech",
   description: "Streamline operations with the best employee background verification in India. Fast billing, inventory tracking, GST invoice generator, and smart...",
   alternates: {
-    canonical: "https://chittortech.online/employee-background-verification",
+    canonical: "https://chittortech.in/employee-background-verification",
   },
   openGraph: {
     title: "Best Employee Background Verification | ChittorTech",
     description: "Streamline operations with the best employee background verification in India. Fast billing, inventory tracking, GST invoice generator, and smart...",
-    url: "https://chittortech.online/employee-background-verification",
+    url: "https://chittortech.in/employee-background-verification",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Imitation Jewellery POS | ChittorTech",
   description: "Boost your sales with the best imitation jewellery software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/imitation-jewellery",
+    canonical: "https://chittortech.in/imitation-jewellery",
   },
   openGraph: {
     title: "Best Imitation Jewellery POS | ChittorTech",
     description: "Boost your sales with the best imitation jewellery software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/imitation-jewellery",
+    url: "https://chittortech.in/imitation-jewellery",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

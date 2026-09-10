@@ -1,22 +1,25 @@
 # 🎬 ChittorTech Video Overviews & CDN Media Tracker
 
-This document tracks all video overviews generated via NotebookLM / AI engines, their direct CDN hosting links (GitHub Releases / S3), associated poster images, and integration status across the website.
+> **Current Status:** ⚪ **FRESH START (0/9 Completed)**  
+> **Target Domain:** `chittortech.in`  
+> **Last Reset Date:** September 10, 2026  
+> **Overview:** This document tracks all video overviews generated via NotebookLM / AI engines, their direct CDN hosting links (GitHub Releases / S3), associated poster images, and integration status across the new domain `chittortech.in`.
 
 ---
 
-## 📊 Summary of Video Integrations
+## 📊 Summary of Video Integrations (0/9 Active)
 
 | # | Service Name | Live URL Route | GitHub CDN Video Link | Poster Image Path | Status |
 |---|---|---|---|---|---|
-| **1** | **Dharamshala Management System** | [`/dharamshala-billing-system`](/dharamshala-billing-system) | `https://github.com/user-attachments/assets/4ba125d1-ce14-49d0-98f5-2bb0cef1ff53` | `/images/dharamshala-video-poster.jpg` | 🟢 **LIVE & CONNECTED** |
-| **2** | **SEO Growth Services** | [`/search-engine-optimization`](/search-engine-optimization) | `https://github.com/user-attachments/assets/5eabb4f4-efe2-4827-bf91-52fdfecbb78c` | `/images/seo-growth-video-poster.jpg` | 🟢 **LIVE & CONNECTED** |
-| **3** | **Google Play Publishing** | [`/google-play-publishing`](/google-play-publishing) | `https://github.com/user-attachments/assets/bcd3514f-b2fd-40aa-8b74-fb5e994dde3f` | `/images/google-play-video-poster.jpg` | 🟢 **LIVE & CONNECTED** |
-| **4** | **Website Development** | [`/web-development-services`](/web-development-services) | `https://github.com/user-attachments/assets/9d6d0723-cc44-4d1b-a611-b4efcf6fe354` | `/images/web-dev-video-poster.jpg` | 🟢 **LIVE & CONNECTED** |
-| **5** | **Custom Enterprise Portals** | [`/custom-crm-solutions`](/custom-crm-solutions) | *Pending Video Link* | `/images/custom-software-video-poster.jpg` | 🟡 **UI READY (Awaiting Link)** |
-| **6** | **Android Mobile Apps** | [`/android-application`](/android-application) | *Upcoming* | *Pending Generation* | ⚪ **QUEUED** |
-| **7** | **E-Commerce Solutions** | [`/e-commerce-website-development`](/e-commerce-website-development) | *Upcoming* | *Pending Generation* | ⚪ **QUEUED** |
-| **8** | **Digital Marketing** | [`/digital-marketing-services`](/digital-marketing-services) | *Upcoming* | *Pending Generation* | ⚪ **QUEUED** |
-| **9** | **Social Media (SMO)** | [`/social-media-optimization`](/social-media-optimization) | *Upcoming* | *Pending Generation* | ⚪ **QUEUED** |
+| **1** | **Dharamshala Management System** | [`/dharamshala-billing-system`](/dharamshala-billing-system) | `https://github.com/user-attachments/assets/4ba125d1-ce14-49d0-98f5-2bb0cef1ff53` | `/images/dharamshala-video-poster.jpg` | ⚪ **PENDING / QUEUED** |
+| **2** | **SEO Growth Services** | [`/search-engine-optimization`](/search-engine-optimization) | `https://github.com/user-attachments/assets/5eabb4f4-efe2-4827-bf91-52fdfecbb78c` | `/images/seo-growth-video-poster.jpg` | ⚪ **PENDING / QUEUED** |
+| **3** | **Google Play Publishing** | [`/google-play-publishing`](/google-play-publishing) | `https://github.com/user-attachments/assets/bcd3514f-b2fd-40aa-8b74-fb5e994dde3f` | `/images/google-play-video-poster.jpg` | ⚪ **PENDING / QUEUED** |
+| **4** | **Website Development** | [`/web-development-services`](/web-development-services) | `https://github.com/user-attachments/assets/9d6d0723-cc44-4d1b-a611-b4efcf6fe354` | `/images/web-dev-video-poster.jpg` | ⚪ **PENDING / QUEUED** |
+| **5** | **Custom Enterprise Portals** | [`/custom-crm-solutions`](/custom-crm-solutions) | *Pending Video Link* | `/images/custom-software-video-poster.jpg` | ⚪ **PENDING / QUEUED** |
+| **6** | **Android Mobile Apps** | [`/android-application`](/android-application) | *Upcoming* | *Pending Generation* | ⚪ **PENDING / QUEUED** |
+| **7** | **E-Commerce Solutions** | [`/e-commerce-website-development`](/e-commerce-website-development) | *Upcoming* | *Pending Generation* | ⚪ **PENDING / QUEUED** |
+| **8** | **Digital Marketing** | [`/digital-marketing-services`](/digital-marketing-services) | *Upcoming* | *Pending Generation* | ⚪ **PENDING / QUEUED** |
+| **9** | **Social Media (SMO)** | [`/social-media-optimization`](/social-media-optimization) | *Upcoming* | *Pending Generation* | ⚪ **PENDING / QUEUED** |
 
 ---
 

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Sports Shop Billing Software | ChittorTech",
   description: "Boost your sales with the best sports shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/sports-shop",
+    canonical: "https://chittortech.in/sports-shop",
   },
   openGraph: {
     title: "Best Sports Shop Billing Software | ChittorTech",
     description: "Boost your sales with the best sports shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/sports-shop",
+    url: "https://chittortech.in/sports-shop",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

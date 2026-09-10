@@ -24,3 +24,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ─── Global Print Engine Hardening ─── */
+@media print {
+  header,
+  footer,
+  .ct-header,
+  .ct-footer-wrap,
+  .ct-mobile-drawer,
+  .ct-strip,
+  .ct-float-wa,
+  .ct-float-contact,
+  .chatbot-container,
+  .chatbot-toggle,
+  .whatsapp-icon,
+  .contact-floating,
+  .chat-floating,
+  .chat-popup,
+  #trialModal,
+  .modal,
+  .modal-backdrop {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    top: -99999px !important;
+    left: -99999px !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+  }
+}

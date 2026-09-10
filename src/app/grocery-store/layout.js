@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Grocery Store Billing Software | ChittorTech",
   description: "Boost your sales with the best grocery store management software in India. Real-time stock control, barcode billing, GST compliance, and daily sales...",
   alternates: {
-    canonical: "https://chittortech.online/grocery-store",
+    canonical: "https://chittortech.in/grocery-store",
   },
   openGraph: {
     title: "Best Grocery Store Billing Software | ChittorTech",
     description: "Boost your sales with the best grocery store management software in India. Real-time stock control, barcode billing, GST compliance, and daily sales...",
-    url: "https://chittortech.online/grocery-store",
+    url: "https://chittortech.in/grocery-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

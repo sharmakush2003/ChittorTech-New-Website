@@ -15,12 +15,12 @@ export const metadata = {
     "ChittorTech Vercel guide"
   ],
   alternates: {
-    canonical: "https://chittortech.online/vercel",
+    canonical: "https://chittortech.in/vercel",
   },
   openGraph: {
     title: "Vercel Free Hosting & Next.js Masterclass: Deployments & APIs (2026) | ChittorTech",
     description: "Step-by-step developer walkthrough to deploy Next.js and React apps on Vercel for free. Zero-config CI/CD, custom domains, and serverless functions.",
-    url: "https://chittortech.online/vercel",
+    url: "https://chittortech.in/vercel",
     siteName: "ChittorTech",
     locale: "en_US",
     type: "article",
@@ -74,19 +74,19 @@ export default function Layout({ children }) {
         "author": {
           "@type": "Organization",
           "name": "ChittorTech",
-          "url": "https://chittortech.online"
+          "url": "https://chittortech.in"
         },
         "publisher": {
           "@type": "Organization",
           "name": "ChittorTech",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://chittortech.online/favicon.png"
+            "url": "https://chittortech.in/favicon.png"
           }
         },
         "datePublished": "2026-09-09T00:00:00+05:30",
         "dateModified": "2026-09-09T16:50:00+05:30",
-        "mainEntityOfPage": "https://chittortech.online/vercel"
+        "mainEntityOfPage": "https://chittortech.in/vercel"
       },
       {
         "@type": "HowTo",
@@ -164,13 +164,13 @@ export default function Layout({ children }) {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://chittortech.online"
+            "item": "https://chittortech.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Vercel Guide",
-            "item": "https://chittortech.online/vercel"
+            "item": "https://chittortech.in/vercel"
           }
         ]
       }

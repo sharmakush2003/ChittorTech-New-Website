@@ -538,9 +538,9 @@ export default function Footer() {
                   <div className="ct-footer-contact-icon"><i className="fa-solid fa-envelope"></i></div>
                   <div className="ct-footer-contact-text">
                     <div className="ct-footer-contact-label">Business Inquiries</div>
-                    <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:business@chittortech.online" rel="nofollow">business@chittortech.online</a><!--/email_off-->' }} />
+                    <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:business@chittortech.in" rel="nofollow">business@chittortech.in</a><!--/email_off-->' }} />
                     <div className="ct-footer-contact-label" style={{ marginTop: '6px' }}>General Inquiries</div>
-                    <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:contact@chittortech.online" rel="nofollow">contact@chittortech.online</a><!--/email_off-->' }} />
+                    <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:contact@chittortech.in" rel="nofollow">contact@chittortech.in</a><!--/email_off-->' }} />
                   </div>
                 </div>
 
@@ -739,6 +739,8 @@ export default function Footer() {
               <a href="/privacy-policy">Privacy Policy</a>
               <span className="sep">·</span>
               <a href="/terms">Terms of Service</a>
+              <span className="sep">·</span>
+              <a href="/payment-terms">Payment &amp; Refund Terms</a>
               <span className="sep">·</span>
               <a href="/blog">Blog</a>
               <span className="sep">·</span>

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Website Developer & Custom Web Development Services India | ChittorTech",
   description: "Searching for the best website developer near you? ChittorTech delivers custom responsive web design, robust web development, and secure cloud web hosting in India. Get a free quote!",
   alternates: {
-    canonical: "https://chittortech.online/web-development-services",
+    canonical: "https://chittortech.in/web-development-services",
   },
   openGraph: {
     title: "Website Developer & Custom Web Development Services India | ChittorTech",
     description: "Searching for the best website developer near you? ChittorTech delivers custom responsive web design, robust web development, and secure cloud web hosting in India. Get a free quote!",
-    url: "https://chittortech.online/web-development-services",
+    url: "https://chittortech.in/web-development-services",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",
@@ -35,18 +35,18 @@ export default function Layout({ children }) {
     "name": "ChittorTech Website Development & Next.js Architecture Overview",
     "description": "Watch our 1-minute quick video overview on how ChittorTech engineers high-performance, SEO-ranked, and lightning-fast Next.js websites.",
     "thumbnailUrl": [
-      "https://chittortech.online/images/web-dev-video-poster.jpg"
+      "https://chittortech.in/images/web-dev-video-poster.jpg"
     ],
     "uploadDate": "2026-09-07T00:00:00+05:30",
     "duration": "PT1M15S",
     "contentUrl": "https://github.com/user-attachments/assets/9d6d0723-cc44-4d1b-a611-b4efcf6fe354",
-    "embedUrl": "https://chittortech.online/web-development-services",
+    "embedUrl": "https://chittortech.in/web-development-services",
     "publisher": {
       "@type": "Organization",
       "name": "ChittorTech",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://chittortech.online/favicon.png"
+        "url": "https://chittortech.in/favicon.png"
       }
     }
   };

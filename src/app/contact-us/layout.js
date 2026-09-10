@@ -2,12 +2,12 @@ export const metadata = {
   title: "Contact Us | ChittorTech",
   description: "Contact ChittorTech for ERP, CRM, POS, hotel management, SEO, and custom software development. Get a free demo or consultation today. Call or WhatsApp us now.",
   alternates: {
-    canonical: "https://chittortech.online/contact-us",
+    canonical: "https://chittortech.in/contact-us",
   },
   openGraph: {
     title: "Contact Us | ChittorTech",
     description: "Contact ChittorTech for ERP, CRM, POS, hotel management, SEO, and custom software development. Get a free demo or consultation today. Call or WhatsApp us now.",
-    url: "https://chittortech.online/contact-us",
+    url: "https://chittortech.in/contact-us",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

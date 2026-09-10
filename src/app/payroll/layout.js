@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Payroll & HR Software India | ChittorTech",
   description: "Streamline operations with the best payroll software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/payroll",
+    canonical: "https://chittortech.in/payroll",
   },
   openGraph: {
     title: "Best Payroll & HR Software India | ChittorTech",
     description: "Streamline operations with the best payroll software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/payroll",
+    url: "https://chittortech.in/payroll",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

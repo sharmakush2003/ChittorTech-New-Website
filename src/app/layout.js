@@ -16,7 +16,7 @@ import TrialModal from "@/components/TrialModal";
 import SliderInitializer from "@/components/SliderInitializer";
 
 export const metadata = {
-  metadataBase: new URL("https://chittortech.online"),
+  metadataBase: new URL("https://chittortech.in"),
   title: {
     default: "ChittorTech™ | Leading IT Services, Mobile App & Web Development Company",
     template: "%s | ChittorTech",
@@ -28,7 +28,7 @@ export const metadata = {
   openGraph: {
     title: "ChittorTech™ | Leading IT Services, Mobile App & Web Development Company",
     description: "ChittorTech is a premier IT & Software company in India specializing in custom Mobile App Development, Web Development, Cloud PMS, Temple Management Systems, and Enterprise AI Solutions.",
-    url: "https://chittortech.online",
+    url: "https://chittortech.in",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",
@@ -122,8 +122,8 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "ChittorTech",
-              "url": "https://chittortech.online",
-              "logo": "https://chittortech.online/favicon.png",
+              "url": "https://chittortech.in",
+              "logo": "https://chittortech.in/favicon.png",
               "description": "Transforming businesses through innovative, cloud-based software solutions. AI & IT Solutions, AI Knowledge Base, AI Support Chatbot and website development.",
               "address": {
                 "@type": "PostalAddress",

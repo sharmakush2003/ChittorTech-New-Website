@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Departmental Store Software | ChittorTech",
   description: "Boost your sales with the best departmental store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/departmental-store",
+    canonical: "https://chittortech.in/departmental-store",
   },
   openGraph: {
     title: "Best Departmental Store Software | ChittorTech",
     description: "Boost your sales with the best departmental store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/departmental-store",
+    url: "https://chittortech.in/departmental-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

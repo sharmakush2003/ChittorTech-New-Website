@@ -2,12 +2,12 @@ export const metadata = {
   title: "About Us | ChittorTech — India",
   description: "Learn about ChittorTech — a Rajasthan-based IT company delivering AI-powered software, ERP, CRM, POS, and digital solutions to businesses across...",
   alternates: {
-    canonical: "https://chittortech.online/about-us",
+    canonical: "https://chittortech.in/about-us",
   },
   openGraph: {
     title: "About Us | ChittorTech — India",
     description: "Learn about ChittorTech — a Rajasthan-based IT company delivering AI-powered software, ERP, CRM, POS, and digital solutions to businesses across...",
-    url: "https://chittortech.online/about-us",
+    url: "https://chittortech.in/about-us",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

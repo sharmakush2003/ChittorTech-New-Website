@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Gift Shop Billing Software | ChittorTech",
   description: "Boost your sales with the best gift shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/gift-shop",
+    canonical: "https://chittortech.in/gift-shop",
   },
   openGraph: {
     title: "Best Gift Shop Billing Software | ChittorTech",
     description: "Boost your sales with the best gift shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/gift-shop",
+    url: "https://chittortech.in/gift-shop",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

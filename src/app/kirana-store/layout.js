@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Kirana Store Billing Software | ChittorTech",
   description: "Boost your sales with the best kirana store billing software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/kirana-store",
+    canonical: "https://chittortech.in/kirana-store",
   },
   openGraph: {
     title: "Best Kirana Store Billing Software | ChittorTech",
     description: "Boost your sales with the best kirana store billing software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/kirana-store",
+    url: "https://chittortech.in/kirana-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Dharamshala Management System | ChittorTech",
   description: "Manage check-ins, advance bookings, donation receipts, and inventory with the best Dharamshala billing software in India.",
   alternates: {
-    canonical: "https://chittortech.online/dharamshala-billing-system",
+    canonical: "https://chittortech.in/dharamshala-billing-system",
   },
   openGraph: {
     title: "Best Dharamshala Management System | ChittorTech",
     description: "Manage check-ins, advance bookings, donation receipts, and inventory with the best Dharamshala billing software in India.",
-    url: "https://chittortech.online/dharamshala-billing-system",
+    url: "https://chittortech.in/dharamshala-billing-system",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",
@@ -35,18 +35,18 @@ export default function Layout({ children }) {
     "name": "Dharamshala Management System & Yatri Room Booking Software Overview",
     "description": "Watch our 1-minute quick video overview on how ChittorTech Dharamshala Software simplifies pilgrim check-ins, advance bookings, donation receipts, and trust accounting.",
     "thumbnailUrl": [
-      "https://chittortech.online/images/dharamshala-video-poster.jpg"
+      "https://chittortech.in/images/dharamshala-video-poster.jpg"
     ],
     "uploadDate": "2026-09-07T00:00:00+05:30",
     "duration": "PT1M15S",
     "contentUrl": "https://github.com/user-attachments/assets/4ba125d1-ce14-49d0-98f5-2bb0cef1ff53",
-    "embedUrl": "https://chittortech.online/dharamshala-billing-system",
+    "embedUrl": "https://chittortech.in/dharamshala-billing-system",
     "publisher": {
       "@type": "Organization",
       "name": "ChittorTech",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://chittortech.online/favicon.png"
+        "url": "https://chittortech.in/favicon.png"
       }
     }
   };

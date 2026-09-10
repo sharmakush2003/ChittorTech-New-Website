@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Resort & Guest House Software | ChittorTech",
   description: "Streamline operations with the best resort & guest house software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/resort-guest-house-software",
+    canonical: "https://chittortech.in/resort-guest-house-software",
   },
   openGraph: {
     title: "Best Resort & Guest House Software | ChittorTech",
     description: "Streamline operations with the best resort & guest house software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/resort-guest-house-software",
+    url: "https://chittortech.in/resort-guest-house-software",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

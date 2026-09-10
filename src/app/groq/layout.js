@@ -15,12 +15,12 @@ export const metadata = {
     "ChittorTech Groq guide"
   ],
   alternates: {
-    canonical: "https://chittortech.online/groq",
+    canonical: "https://chittortech.in/groq",
   },
   openGraph: {
     title: "Groq LPU Masterclass: Free Fast AI API & Llama 3 (2026) | ChittorTech",
     description: "Build ultra-fast AI apps with Groq LPU inference. 500+ tokens/second, free API tier, and instant Next.js/Python code examples.",
-    url: "https://chittortech.online/groq",
+    url: "https://chittortech.in/groq",
     siteName: "ChittorTech",
     locale: "en_US",
     type: "article",
@@ -74,19 +74,19 @@ export default function Layout({ children }) {
         "author": {
           "@type": "Organization",
           "name": "ChittorTech",
-          "url": "https://chittortech.online"
+          "url": "https://chittortech.in"
         },
         "publisher": {
           "@type": "Organization",
           "name": "ChittorTech",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://chittortech.online/favicon.png"
+            "url": "https://chittortech.in/favicon.png"
           }
         },
         "datePublished": "2026-09-09T00:00:00+05:30",
         "dateModified": "2026-09-09T16:55:00+05:30",
-        "mainEntityOfPage": "https://chittortech.online/groq"
+        "mainEntityOfPage": "https://chittortech.in/groq"
       },
       {
         "@type": "HowTo",
@@ -164,13 +164,13 @@ export default function Layout({ children }) {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://chittortech.online"
+            "item": "https://chittortech.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Groq Guide",
-            "item": "https://chittortech.online/groq"
+            "item": "https://chittortech.in/groq"
           }
         ]
       }

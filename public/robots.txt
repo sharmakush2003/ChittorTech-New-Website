@@ -27,4 +27,4 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap
-Sitemap: https://chittortech.online/sitemap.xml
+Sitemap: https://chittortech.in/sitemap.xml

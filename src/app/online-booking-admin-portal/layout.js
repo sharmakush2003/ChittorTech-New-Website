@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Online Booking Admin Portal | ChittorTech",
   description: "Streamline operations with the best online booking admin portal in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/online-booking-admin-portal",
+    canonical: "https://chittortech.in/online-booking-admin-portal",
   },
   openGraph: {
     title: "Best Online Booking Admin Portal | ChittorTech",
     description: "Streamline operations with the best online booking admin portal in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/online-booking-admin-portal",
+    url: "https://chittortech.in/online-booking-admin-portal",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

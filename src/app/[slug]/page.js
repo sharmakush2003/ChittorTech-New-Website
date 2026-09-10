@@ -34,12 +34,12 @@ export async function generateMetadata({ params }) {
       description: service.metaDescription,
       keywords: service.metaKeywords,
       alternates: {
-        canonical: `https://chittortech.online/${slug}`,
+        canonical: `https://chittortech.in/${slug}`,
       },
       openGraph: {
         title: service.metaTitle,
         description: service.metaDescription,
-        url: `https://chittortech.online/${slug}`,
+        url: `https://chittortech.in/${slug}`,
         siteName: "ChittorTech",
         locale: "en_IN",
         type: "website",
@@ -59,12 +59,12 @@ export async function generateMetadata({ params }) {
       title: `${blogPost.title} | ChittorTech`,
       description: blogPost.desc,
       alternates: {
-        canonical: `https://chittortech.online/${slug}`,
+        canonical: `https://chittortech.in/${slug}`,
       },
       openGraph: {
         title: `${blogPost.title} | ChittorTech`,
         description: blogPost.desc,
-        url: `https://chittortech.online/${slug}`,
+        url: `https://chittortech.in/${slug}`,
         siteName: "ChittorTech",
         locale: "en_IN",
         images: blogPost.image ? [{ url: blogPost.image }] : undefined,
@@ -83,12 +83,12 @@ export async function generateMetadata({ params }) {
     title: `${cleanTitle} | ChittorTech`,
     description: `Discover comprehensive solutions, features, and expert implementation for ${cleanTitle} by ChittorTech.`,
     alternates: {
-      canonical: `https://chittortech.online/${slug}`,
+      canonical: `https://chittortech.in/${slug}`,
     },
     openGraph: {
       title: `${cleanTitle} | ChittorTech`,
       description: `Discover comprehensive solutions, features, and expert implementation for ${cleanTitle} by ChittorTech.`,
-      url: `https://chittortech.online/${slug}`,
+      url: `https://chittortech.in/${slug}`,
       siteName: "ChittorTech",
       type: "article",
     },
@@ -195,7 +195,7 @@ export async function generateStaticParams() {
       }
 
       // Extract the slug after the domain
-      const slugPath = url.replace("https://chittortech.online/", "").replace(/^http:\/\/chittortech\.online\//, "").replace(/^\//, "");
+      const slugPath = url.replace("https://chittortech.in/", "").replace(/^http:\/\/chittortech\.online\//, "").replace(/^\//, "");
       
       // Skip empty, main routes, inquiry forms, and cities sub-routes
       if (!slugPath || skipRoutes.has(slugPath) || slugPath.startsWith("cities/") || slugPath.startsWith("pos_bill/") || slugPath.includes("<") || slugPath.includes(">")) {

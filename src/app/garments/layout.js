@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Garment Store POS Software | ChittorTech",
   description: "Boost your sales with the best garment store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/garments",
+    canonical: "https://chittortech.in/garments",
   },
   openGraph: {
     title: "Best Garment Store POS Software | ChittorTech",
     description: "Boost your sales with the best garment store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/garments",
+    url: "https://chittortech.in/garments",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

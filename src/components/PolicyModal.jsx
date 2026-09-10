@@ -67,8 +67,8 @@ const policyContent = {
         <h3>11. Contact Us</h3>
         <p>If you have any questions regarding this Privacy Policy, you may contact us at:</p>
         <ul>
-          <li><strong>General &amp; Privacy:</strong> contact@chittortech.online</li>
-          <li><strong>Business Enquiries:</strong> business@chittortech.online</li>
+          <li><strong>General &amp; Privacy:</strong> contact@chittortech.in</li>
+          <li><strong>Business Enquiries:</strong> business@chittortech.in</li>
           <li><strong>Website:</strong> ChittorTech</li>
         </ul>
       </>
@@ -158,8 +158,8 @@ const policyContent = {
         <h3>16. Contact Information</h3>
         <p>For any questions regarding these Terms & Conditions, you may contact:</p>
         <ul>
-          <li><strong>General Enquiry:</strong> contact@chittortech.online</li>
-          <li><strong>Business Enquiries:</strong> business@chittortech.online</li>
+          <li><strong>General Enquiry:</strong> contact@chittortech.in</li>
+          <li><strong>Business Enquiries:</strong> business@chittortech.in</li>
           <li><strong>Website:</strong> ChittorTech</li>
         </ul>
       </>
@@ -174,8 +174,8 @@ const policyContent = {
         <h3>1. Support Channels</h3>
         <p>For technical support, business inquiries, bug reports, or project discussions, you may contact us through our official channels:</p>
         <ul>
-          <li><strong>Business Enquiries:</strong> business@chittortech.online</li>
-          <li><strong>General &amp; Technical Support:</strong> contact@chittortech.online</li>
+          <li><strong>Business Enquiries:</strong> business@chittortech.in</li>
+          <li><strong>General &amp; Technical Support:</strong> contact@chittortech.in</li>
           <li><strong>Website:</strong> ChittorTech</li>
         </ul>
         
@@ -198,6 +198,30 @@ const policyContent = {
         
         <h3>5. Service Commitment</h3>
         <p>ChittorTech strives to provide professional, transparent, and timely support to all clients and users.</p>
+      </>
+    )
+  },
+  payments: {
+    title: "Payment Terms & Refund Policy",
+    content: (
+      <>
+        <p>ChittorTech maintains transparent commercial agreements with milestone billing and fair refund policies.</p>
+        
+        <h3>1. Milestone Billing Structure</h3>
+        <p>Standard software projects are structured across three transparent milestones: 30–40% Kickoff Deposit, 30–40% Beta Staging Demo Approval, and 20–30% Final Handover &amp; Source Code Transfer.</p>
+        
+        <h3>2. Approved Payment Methods</h3>
+        <p>Payments are accepted via NEFT/RTGS/IMPS direct bank transfers, UPI, credit/debit cards (via Razorpay/Stripe), and international SWIFT wire transfers.</p>
+        
+        <h3>3. Cancellation &amp; Refund Policy</h3>
+        <p>Pre-development cancellations within 24 hours of advance payment receive a 90% refund. Once active development or SRS scope approval has commenced, advance deposits are non-refundable as they compensate for allocated engineering hours.</p>
+        <p>Third-party fees (domains, cloud hosting servers, Google Play Console accounts, paid APIs) are 100% non-refundable.</p>
+        
+        <h3>4. Invoicing &amp; GST Compliance</h3>
+        <p>All domestic Indian invoices comply with 18% GST regulations. International clients receive zero-rated export invoices in USD, EUR, or GBP.</p>
+        
+        <h3>5. Billing Inquiries</h3>
+        <p>For invoice questions or receipt copies, contact <a href="mailto:business@chittortech.in">business@chittortech.in</a> or call +91 75974 51057.</p>
       </>
     )
   }

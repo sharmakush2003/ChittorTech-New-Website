@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Fruit & Vegetable Store POS | ChittorTech",
   description: "Boost your sales with the best fruits & vegetable shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales...",
   alternates: {
-    canonical: "https://chittortech.online/fruits-vegetable-shop",
+    canonical: "https://chittortech.in/fruits-vegetable-shop",
   },
   openGraph: {
     title: "Best Fruit & Vegetable Store POS | ChittorTech",
     description: "Boost your sales with the best fruits & vegetable shop software in India. Real-time stock control, barcode billing, GST compliance, and daily sales...",
-    url: "https://chittortech.online/fruits-vegetable-shop",
+    url: "https://chittortech.in/fruits-vegetable-shop",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

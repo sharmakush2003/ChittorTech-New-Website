@@ -268,7 +268,7 @@ export default function Chatbot() {
     // Send lead to Firestore and email alert in background
     const leadPayload = {
       name: name,
-      email: "chatbot-lead@chittortech.online",
+      email: "chatbot-lead@chittortech.in",
       contact: fullPhone,
       location: "Chatbot Lead Capture",
       industry: "AI Chatbot User",
@@ -336,8 +336,8 @@ RESPONSE FORMATTING RULES (CRITICAL):
 - Keep your answers clean, well-spaced, and nicely aligned.
 - When listing contact emails or points, ALWAYS use standard clean bullet points (- Item) without any tabs or leading indentation spaces.
 - For official emails, present them neatly:
-  - Business Enquiries: business@chittortech.online
-  - General Enquiries & Support: contact@chittortech.online
+  - Business Enquiries: business@chittortech.in
+  - General Enquiries & Support: contact@chittortech.in
 - Keep paragraphs short and concise.
 
 CHITTORTECH KNOWLEDGE BASE:
@@ -345,8 +345,8 @@ CHITTORTECH KNOWLEDGE BASE:
 - Location: Chittorgarh, Rajasthan, India (Office is located only in Chittorgarh, Rajasthan, but serving clients all over the world).
 - Founders: Kush Sharma (Founder) & Lav Sharma (Co-Founder).
 - Official Contact Emails:
-  - Business Enquiries: business@chittortech.online
-  - General Enquiries & Support: contact@chittortech.online
+  - Business Enquiries: business@chittortech.in
+  - General Enquiries & Support: contact@chittortech.in
 - Phone: +91 7597451057
 - Core Services & Products:
   1. Invoicing Software: Custom invoicing and billing software for retail shops, distributors, and service providers.
@@ -359,7 +359,7 @@ CHITTORTECH KNOWLEDGE BASE:
   3. Hospitality & Admin Hubs (https://dharamsala-admin-portal.vercel.app/)
   4. Shaadi Sutra Event SaaS (https://shaadi-sutra.vercel.app/)
   5. MailPulse Elite Bulk Email Engine
-- Contact Link: [Contact Us](https://chittortech.online/contact-us)
+- Contact Link: [Contact Us](https://chittortech.in/contact-us)
 - If users ask for pricing, contact info, or detailed technical support, you MUST append the exact text '[ACTION:CONTACT]' at the end of your response. If users ask for a demo, trial, or to see the software, you MUST append the exact text '[ACTION:DEMO]' at the end of your response.`
       };
 

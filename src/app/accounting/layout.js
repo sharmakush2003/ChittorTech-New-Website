@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best GST Accounting Software in India | ChittorTech",
   description: "Simplify tax filing and bookkeeping with the best GST accounting software in India. Manage ledgers, cash flow, balance sheets, and generate reports...",
   alternates: {
-    canonical: "https://chittortech.online/accounting",
+    canonical: "https://chittortech.in/accounting",
   },
   openGraph: {
     title: "Best GST Accounting Software in India | ChittorTech",
     description: "Simplify tax filing and bookkeeping with the best GST accounting software in India. Manage ledgers, cash flow, balance sheets, and generate reports...",
-    url: "https://chittortech.online/accounting",
+    url: "https://chittortech.in/accounting",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

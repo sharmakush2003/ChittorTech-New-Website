@@ -15,12 +15,12 @@ export const metadata = {
     "ChittorTech Cloudflare guide"
   ],
   alternates: {
-    canonical: "https://chittortech.online/cloudflare",
+    canonical: "https://chittortech.in/cloudflare",
   },
   openGraph: {
     title: "Cloudflare Free Hosting & Pages Masterclass: Unlimited Bandwidth & Edge Workers (2026) | ChittorTech",
     description: "Step-by-step student & developer blueprint for hosting React, Next.js, and static apps on Cloudflare Pages for free with unlimited bandwidth and 0ms cold starts.",
-    url: "https://chittortech.online/cloudflare",
+    url: "https://chittortech.in/cloudflare",
     siteName: "ChittorTech",
     locale: "en_US",
     type: "article",
@@ -74,19 +74,19 @@ export default function Layout({ children }) {
         "author": {
           "@type": "Organization",
           "name": "ChittorTech",
-          "url": "https://chittortech.online"
+          "url": "https://chittortech.in"
         },
         "publisher": {
           "@type": "Organization",
           "name": "ChittorTech",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://chittortech.online/favicon.png"
+            "url": "https://chittortech.in/favicon.png"
           }
         },
         "datePublished": "2026-09-09T00:00:00+05:30",
         "dateModified": "2026-09-09T16:50:00+05:30",
-        "mainEntityOfPage": "https://chittortech.online/cloudflare"
+        "mainEntityOfPage": "https://chittortech.in/cloudflare"
       },
       {
         "@type": "HowTo",
@@ -164,13 +164,13 @@ export default function Layout({ children }) {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://chittortech.online"
+            "item": "https://chittortech.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Cloudflare Guide",
-            "item": "https://chittortech.online/cloudflare"
+            "item": "https://chittortech.in/cloudflare"
           }
         ]
       }

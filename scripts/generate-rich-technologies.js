@@ -439,7 +439,7 @@ export async function generateMetadata({ params }) {
   const item = clientCatalog.find(i => i.slug === slug);
   return {
     title: \`\${item.title} | ChittorTech Solutions\`,
-    alternates: { canonical: \`https://chittortech.online/\${slug}\` }
+    alternates: { canonical: \`https://chittortech.in/\${slug}\` }
   };
 }`
     },
@@ -1453,7 +1453,7 @@ class OrderSyncManager(private val apiService: ApiService) {
 
 actor APIService {
     func fetchAnalytics() async throws -> DashboardData {
-        guard let url = URL(string: "https://api.chittortech.online/metrics") else {
+        guard let url = URL(string: "https://api.chittortech.in/metrics") else {
             throw URLError(.badURL)
         }
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -1593,7 +1593,7 @@ type Mutation {
 import { createAdapter } from '@socket.io/redis-adapter';
 import { createClient } from 'redis';
 
-const io = new Server(server, { cors: { origin: 'https://chittortech.online' } });
+const io = new Server(server, { cors: { origin: 'https://chittortech.in' } });
 const pubClient = createClient({ url: process.env.REDIS_URL });
 const subClient = pubClient.duplicate();
 

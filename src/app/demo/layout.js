@@ -2,12 +2,12 @@ export const metadata = {
   title: "Book a Free Software Demo | ChittorTech",
   description: "Schedule a live, customized demonstration of ChittorTech ERP, POS billing software, and custom AI solutions tailored for your business.",
   alternates: {
-    canonical: "https://chittortech.online/demo",
+    canonical: "https://chittortech.in/demo",
   },
   openGraph: {
     title: "Book a Free Software Demo | ChittorTech",
     description: "Schedule a live, customized demonstration of ChittorTech ERP, POS billing software, and custom AI solutions tailored for your business.",
-    url: "https://chittortech.online/demo",
+    url: "https://chittortech.in/demo",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

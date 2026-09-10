@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best GST Invoicing Billing Software | ChittorTech",
   description: "Generate professional, tax-compliant GST bills instantly with the best invoicing software in India. Send automatic payment reminders, manage accounts...",
   alternates: {
-    canonical: "https://chittortech.online/invoicing",
+    canonical: "https://chittortech.in/invoicing",
   },
   openGraph: {
     title: "Best GST Invoicing Billing Software | ChittorTech",
     description: "Generate professional, tax-compliant GST bills instantly with the best invoicing software in India. Send automatic payment reminders, manage accounts...",
-    url: "https://chittortech.online/invoicing",
+    url: "https://chittortech.in/invoicing",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

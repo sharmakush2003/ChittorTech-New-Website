@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Convenience Store POS Software | ChittorTech",
   description: "Boost your sales with the best convenience store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/convenience-store",
+    canonical: "https://chittortech.in/convenience-store",
   },
   openGraph: {
     title: "Best Convenience Store POS Software | ChittorTech",
     description: "Boost your sales with the best convenience store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/convenience-store",
+    url: "https://chittortech.in/convenience-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Logistics Management Software | ChittorTech",
   description: "Streamline operations with the best logistics management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/logistics",
+    canonical: "https://chittortech.in/logistics",
   },
   openGraph: {
     title: "Best Logistics Management Software | ChittorTech",
     description: "Streamline operations with the best logistics management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/logistics",
+    url: "https://chittortech.in/logistics",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

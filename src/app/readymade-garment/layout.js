@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Garment Retail Billing Software | ChittorTech",
   description: "Boost your sales with the best readymade garment software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/readymade-garment",
+    canonical: "https://chittortech.in/readymade-garment",
   },
   openGraph: {
     title: "Best Garment Retail Billing Software | ChittorTech",
     description: "Boost your sales with the best readymade garment software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/readymade-garment",
+    url: "https://chittortech.in/readymade-garment",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

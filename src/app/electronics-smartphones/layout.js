@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Electronics Store POS Software | ChittorTech",
   description: "Streamline operations with the best electronics & smartphone store software in India. Fast billing, inventory tracking, GST invoice generator, and...",
   alternates: {
-    canonical: "https://chittortech.online/electronics-smartphones",
+    canonical: "https://chittortech.in/electronics-smartphones",
   },
   openGraph: {
     title: "Best Electronics Store POS Software | ChittorTech",
     description: "Streamline operations with the best electronics & smartphone store software in India. Fast billing, inventory tracking, GST invoice generator, and...",
-    url: "https://chittortech.online/electronics-smartphones",
+    url: "https://chittortech.in/electronics-smartphones",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

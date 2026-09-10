@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best B2B Industrial Software | ChittorTech",
   description: "Streamline operations with the best industrial products software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/industrial-products",
+    canonical: "https://chittortech.in/industrial-products",
   },
   openGraph: {
     title: "Best B2B Industrial Software | ChittorTech",
     description: "Streamline operations with the best industrial products software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/industrial-products",
+    url: "https://chittortech.in/industrial-products",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

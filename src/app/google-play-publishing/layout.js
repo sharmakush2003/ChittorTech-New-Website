@@ -2,12 +2,12 @@ export const metadata = {
   title: "Google Play Store App Publishing & Testing Services | ChittorTech",
   description: "Struggling with the 20-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.",
   alternates: {
-    canonical: "https://chittortech.online/google-play-publishing",
+    canonical: "https://chittortech.in/google-play-publishing",
   },
   openGraph: {
     title: "Google Play Store App Publishing & Testing Services | ChittorTech",
     description: "Struggling with the 20-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.",
-    url: "https://chittortech.online/google-play-publishing",
+    url: "https://chittortech.in/google-play-publishing",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",
@@ -35,18 +35,18 @@ export default function Layout({ children }) {
     "name": "Google Play Store Publishing & Policy Compliance by ChittorTech",
     "description": "Watch our 1-minute quick video overview on how ChittorTech publishes and manages Android apps on Google Play Console safely without policy bans.",
     "thumbnailUrl": [
-      "https://chittortech.online/images/google-play-video-poster.jpg"
+      "https://chittortech.in/images/google-play-video-poster.jpg"
     ],
     "uploadDate": "2026-09-07T00:00:00+05:30",
     "duration": "PT1M15S",
     "contentUrl": "https://github.com/user-attachments/assets/bcd3514f-b2fd-40aa-8b74-fb5e994dde3f",
-    "embedUrl": "https://chittortech.online/google-play-publishing",
+    "embedUrl": "https://chittortech.in/google-play-publishing",
     "publisher": {
       "@type": "Organization",
       "name": "ChittorTech",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://chittortech.online/favicon.png"
+        "url": "https://chittortech.in/favicon.png"
       }
     }
   };

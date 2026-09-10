@@ -519,7 +519,7 @@
     "codeSnippet": {
       "language": "javascript",
       "title": "ChittorTech Pre-Rendered Dynamic Route Template",
-      "code": "// ChittorTech Next.js App Router Static Generation Pattern\nimport { notFound } from 'next/navigation';\nimport clientCatalog from '@/data/catalog.json';\n\nexport const dynamicParams = false; // Strictly prevent missing routes\n\nexport async function generateStaticParams() {\n  return clientCatalog.map((item) => ({ slug: item.slug }));\n}\n\nexport async function generateMetadata({ params }) {\n  const { slug } = await params;\n  const item = clientCatalog.find(i => i.slug === slug);\n  return {\n    title: `${item.title} | ChittorTech Solutions`,\n    alternates: { canonical: `https://chittortech.online/${slug}` }\n  };\n}"
+      "code": "// ChittorTech Next.js App Router Static Generation Pattern\nimport { notFound } from 'next/navigation';\nimport clientCatalog from '@/data/catalog.json';\n\nexport const dynamicParams = false; // Strictly prevent missing routes\n\nexport async function generateStaticParams() {\n  return clientCatalog.map((item) => ({ slug: item.slug }));\n}\n\nexport async function generateMetadata({ params }) {\n  const { slug } = await params;\n  const item = clientCatalog.find(i => i.slug === slug);\n  return {\n    title: `${item.title} | ChittorTech Solutions`,\n    alternates: { canonical: `https://chittortech.in/${slug}` }\n  };\n}"
     },
     "faqList": [
       {
@@ -1103,7 +1103,7 @@
     "codeSnippet": {
       "language": "swift",
       "title": "ChittorTech iOS SwiftUI Async Network Engine",
-      "code": "import SwiftUI\n\nactor APIService {\n    func fetchAnalytics() async throws -> DashboardData {\n        guard let url = URL(string: \"https://api.chittortech.online/metrics\") else {\n            throw URLError(.badURL)\n        }\n        let (data, _) = try await URLSession.shared.data(from: url)\n        return try JSONDecoder().decode(DashboardData.self, from: data)\n    }\n}"
+      "code": "import SwiftUI\n\nactor APIService {\n    func fetchAnalytics() async throws -> DashboardData {\n        guard let url = URL(string: \"https://api.chittortech.in/metrics\") else {\n            throw URLError(.badURL)\n        }\n        let (data, _) = try await URLSession.shared.data(from: url)\n        return try JSONDecoder().decode(DashboardData.self, from: data)\n    }\n}"
     },
     "faqList": [
       {
@@ -2113,7 +2113,7 @@
     "codeSnippet": {
       "language": "javascript",
       "title": "ChittorTech Real-Time WebSocket Channel Cluster",
-      "code": "import { Server } from 'socket.io';\nimport { createAdapter } from '@socket.io/redis-adapter';\nimport { createClient } from 'redis';\n\nconst io = new Server(server, { cors: { origin: 'https://chittortech.online' } });\nconst pubClient = createClient({ url: process.env.REDIS_URL });\nconst subClient = pubClient.duplicate();\n\nawait Promise.all([pubClient.connect(), subClient.connect()]);\nio.adapter(createAdapter(pubClient, subClient));"
+      "code": "import { Server } from 'socket.io';\nimport { createAdapter } from '@socket.io/redis-adapter';\nimport { createClient } from 'redis';\n\nconst io = new Server(server, { cors: { origin: 'https://chittortech.in' } });\nconst pubClient = createClient({ url: process.env.REDIS_URL });\nconst subClient = pubClient.duplicate();\n\nawait Promise.all([pubClient.connect(), subClient.connect()]);\nio.adapter(createAdapter(pubClient, subClient));"
     },
     "faqList": [
       {

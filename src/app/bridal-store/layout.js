@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Bridal Store Billing Software | ChittorTech",
   description: "Boost your sales with the best bridal store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/bridal-store",
+    canonical: "https://chittortech.in/bridal-store",
   },
   openGraph: {
     title: "Best Bridal Store Billing Software | ChittorTech",
     description: "Boost your sales with the best bridal store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/bridal-store",
+    url: "https://chittortech.in/bridal-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

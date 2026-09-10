@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Hospital Management Software | ChittorTech",
   description: "Streamline operations with the best hospital management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/hospitals",
+    canonical: "https://chittortech.in/hospitals",
   },
   openGraph: {
     title: "Best Hospital Management Software | ChittorTech",
     description: "Streamline operations with the best hospital management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/hospitals",
+    url: "https://chittortech.in/hospitals",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

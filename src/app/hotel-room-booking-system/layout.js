@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Hotel Room Booking System | ChittorTech",
   description: "Streamline operations with the best hotel room booking system in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/hotel-room-booking-system",
+    canonical: "https://chittortech.in/hotel-room-booking-system",
   },
   openGraph: {
     title: "Best Hotel Room Booking System | ChittorTech",
     description: "Streamline operations with the best hotel room booking system in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/hotel-room-booking-system",
+    url: "https://chittortech.in/hotel-room-booking-system",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

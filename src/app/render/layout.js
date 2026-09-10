@@ -16,12 +16,12 @@ export const metadata = {
     "ChittorTech render guide"
   ],
   alternates: {
-    canonical: "https://chittortech.online/render",
+    canonical: "https://chittortech.in/render",
   },
   openGraph: {
     title: "Render Free Hosting & Node.js Deployment Guide (2026) | ChittorTech",
     description: "Step-by-step developer tutorial to deploy full-stack apps on Render for free with custom domains and SSL. Overcome cold starts and sleep timeouts.",
-    url: "https://chittortech.online/render",
+    url: "https://chittortech.in/render",
     siteName: "ChittorTech",
     locale: "en_US",
     type: "article",
@@ -75,19 +75,19 @@ export default function Layout({ children }) {
         "author": {
           "@type": "Organization",
           "name": "ChittorTech",
-          "url": "https://chittortech.online"
+          "url": "https://chittortech.in"
         },
         "publisher": {
           "@type": "Organization",
           "name": "ChittorTech",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://chittortech.online/favicon.png"
+            "url": "https://chittortech.in/favicon.png"
           }
         },
         "datePublished": "2026-09-09T00:00:00+05:30",
         "dateModified": "2026-09-09T16:50:00+05:30",
-        "mainEntityOfPage": "https://chittortech.online/render"
+        "mainEntityOfPage": "https://chittortech.in/render"
       },
       {
         "@type": "HowTo",
@@ -165,13 +165,13 @@ export default function Layout({ children }) {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://chittortech.online"
+            "item": "https://chittortech.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Render Guide",
-            "item": "https://chittortech.online/render"
+            "item": "https://chittortech.in/render"
           }
         ]
       }

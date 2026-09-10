@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Hypermarket Billing Software | ChittorTech",
   description: "Boost your sales with the best hypermarket software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/hypermarket",
+    canonical: "https://chittortech.in/hypermarket",
   },
   openGraph: {
     title: "Best Hypermarket Billing Software | ChittorTech",
     description: "Boost your sales with the best hypermarket software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/hypermarket",
+    url: "https://chittortech.in/hypermarket",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

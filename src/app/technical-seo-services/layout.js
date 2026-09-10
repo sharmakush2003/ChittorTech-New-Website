@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Technical SEO Services India | ChittorTech",
   description: "Grow your business online with the best technical seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
   alternates: {
-    canonical: "https://chittortech.online/technical-seo-services",
+    canonical: "https://chittortech.in/technical-seo-services",
   },
   openGraph: {
     title: "Best Technical SEO Services India | ChittorTech",
     description: "Grow your business online with the best technical seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
-    url: "https://chittortech.online/technical-seo-services",
+    url: "https://chittortech.in/technical-seo-services",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Footwear Store Billing Software | ChittorTech",
   description: "Boost your sales with the best footwear store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/footwear-store",
+    canonical: "https://chittortech.in/footwear-store",
   },
   openGraph: {
     title: "Best Footwear Store Billing Software | ChittorTech",
     description: "Boost your sales with the best footwear store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/footwear-store",
+    url: "https://chittortech.in/footwear-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

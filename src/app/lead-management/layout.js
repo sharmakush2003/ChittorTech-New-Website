@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Lead Management System India | ChittorTech",
   description: "Streamline operations with the best lead management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/lead-management",
+    canonical: "https://chittortech.in/lead-management",
   },
   openGraph: {
     title: "Best Lead Management System India | ChittorTech",
     description: "Streamline operations with the best lead management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/lead-management",
+    url: "https://chittortech.in/lead-management",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

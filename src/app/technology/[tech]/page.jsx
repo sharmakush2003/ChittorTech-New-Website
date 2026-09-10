@@ -39,12 +39,12 @@ export async function generateMetadata({ params }) {
       "ChittorTech technology stack"
     ].join(", "),
     alternates: {
-      canonical: `https://chittortech.online/technology/${item.slug}`,
+      canonical: `https://chittortech.in/technology/${item.slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://chittortech.online/technology/${item.slug}`,
+      url: `https://chittortech.in/technology/${item.slug}`,
       siteName: "ChittorTech",
       locale: "en_IN",
       type: "article",
@@ -96,14 +96,14 @@ export default async function TechnologyPage({ params }) {
     "author": {
       "@type": "Organization",
       "name": "ChittorTech",
-      "url": "https://chittortech.online"
+      "url": "https://chittortech.in"
     },
     "publisher": {
       "@type": "Organization",
       "name": "ChittorTech",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://chittortech.online/logo.png"
+        "url": "https://chittortech.in/logo.png"
       }
     }
   };

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Hardware Shop Billing Software | ChittorTech",
   description: "Boost your sales with the best hardware store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/hardware-store",
+    canonical: "https://chittortech.in/hardware-store",
   },
   openGraph: {
     title: "Best Hardware Shop Billing Software | ChittorTech",
     description: "Boost your sales with the best hardware store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/hardware-store",
+    url: "https://chittortech.in/hardware-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

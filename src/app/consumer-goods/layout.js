@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best FMCG Distribution Software India | ChittorTech",
   description: "Streamline operations with the best consumer goods distribution software in India. Fast billing, inventory tracking, GST invoice generator, and smart...",
   alternates: {
-    canonical: "https://chittortech.online/consumer-goods",
+    canonical: "https://chittortech.in/consumer-goods",
   },
   openGraph: {
     title: "Best FMCG Distribution Software India | ChittorTech",
     description: "Streamline operations with the best consumer goods distribution software in India. Fast billing, inventory tracking, GST invoice generator, and smart...",
-    url: "https://chittortech.online/consumer-goods",
+    url: "https://chittortech.in/consumer-goods",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Retail POS Billing Software | ChittorTech",
   description: "Get the best Retail POS billing software in India. Perfect for retail stores, supermarkets & restaurants with barcode billing, inventory, GST...",
   alternates: {
-    canonical: "https://chittortech.online/pos",
+    canonical: "https://chittortech.in/pos",
   },
   openGraph: {
     title: "Best Retail POS Billing Software | ChittorTech",
     description: "Get the best Retail POS billing software in India. Perfect for retail stores, supermarkets & restaurants with barcode billing, inventory, GST...",
-    url: "https://chittortech.online/pos",
+    url: "https://chittortech.in/pos",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

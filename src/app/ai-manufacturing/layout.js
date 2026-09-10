@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best AI Manufacturing Software India | ChittorTech",
   description: "Streamline operations with the best ai manufacturing software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/ai-manufacturing",
+    canonical: "https://chittortech.in/ai-manufacturing",
   },
   openGraph: {
     title: "Best AI Manufacturing Software India | ChittorTech",
     description: "Streamline operations with the best ai manufacturing software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/ai-manufacturing",
+    url: "https://chittortech.in/ai-manufacturing",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

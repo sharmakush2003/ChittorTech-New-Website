@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Responsive Web Design India | ChittorTech",
   description: "Streamline operations with the best responsive website design in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/modern-responsive-website-design",
+    canonical: "https://chittortech.in/modern-responsive-website-design",
   },
   openGraph: {
     title: "Best Responsive Web Design India | ChittorTech",
     description: "Streamline operations with the best responsive website design in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/modern-responsive-website-design",
+    url: "https://chittortech.in/modern-responsive-website-design",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Social Media Optimization SMO | ChittorTech",
   description: "Grow your business online with the best social media optimization in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
   alternates: {
-    canonical: "https://chittortech.online/social-media-optimization",
+    canonical: "https://chittortech.in/social-media-optimization",
   },
   openGraph: {
     title: "Best Social Media Optimization SMO | ChittorTech",
     description: "Grow your business online with the best social media optimization in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
-    url: "https://chittortech.online/social-media-optimization",
+    url: "https://chittortech.in/social-media-optimization",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

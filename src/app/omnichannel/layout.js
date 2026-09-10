@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Omnichannel Retail Software | ChittorTech",
   description: "Streamline operations with the best omnichannel retail software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/omnichannel",
+    canonical: "https://chittortech.in/omnichannel",
   },
   openGraph: {
     title: "Best Omnichannel Retail Software | ChittorTech",
     description: "Streamline operations with the best omnichannel retail software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/omnichannel",
+    url: "https://chittortech.in/omnichannel",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

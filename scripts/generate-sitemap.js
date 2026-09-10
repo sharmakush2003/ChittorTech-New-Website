@@ -67,7 +67,7 @@ let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
 xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
 Array.from(allUniquePaths).sort().forEach(p => {
-  let url = p ? 'https://chittortech.online/' + p : 'https://chittortech.online/';
+  let url = p ? 'https://chittortech.in/' + p : 'https://chittortech.in/';
   let priority = '0.7';
   let changefreq = 'weekly';
 

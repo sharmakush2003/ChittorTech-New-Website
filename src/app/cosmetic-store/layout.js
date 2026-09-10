@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Cosmetic Store Billing Software | ChittorTech",
   description: "Boost your sales with the best cosmetic store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/cosmetic-store",
+    canonical: "https://chittortech.in/cosmetic-store",
   },
   openGraph: {
     title: "Best Cosmetic Store Billing Software | ChittorTech",
     description: "Boost your sales with the best cosmetic store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/cosmetic-store",
+    url: "https://chittortech.in/cosmetic-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

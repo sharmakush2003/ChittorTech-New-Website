@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Shopping Mall Software India | ChittorTech",
   description: "Boost your sales with the best shopping mall software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/shopping-mall",
+    canonical: "https://chittortech.in/shopping-mall",
   },
   openGraph: {
     title: "Best Shopping Mall Software India | ChittorTech",
     description: "Boost your sales with the best shopping mall software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/shopping-mall",
+    url: "https://chittortech.in/shopping-mall",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

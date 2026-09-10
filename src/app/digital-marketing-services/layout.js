@@ -2,12 +2,12 @@ export const metadata = {
   title: "Digital Marketing Agency in Chittorgarh & SEO Services India | ChittorTech",
   description: "Top-rated digital marketing agency in Chittorgarh and across India. 360° digital growth with SEO, Google Ads PPC, social media marketing, and lead generation. Free audit!",
   alternates: {
-    canonical: "https://chittortech.online/digital-marketing-services",
+    canonical: "https://chittortech.in/digital-marketing-services",
   },
   openGraph: {
     title: "Digital Marketing Agency in Chittorgarh & SEO Services India | ChittorTech",
     description: "Top-rated digital marketing agency in Chittorgarh and across India. 360° digital growth with SEO, Google Ads PPC, social media marketing, and lead generation. Free audit!",
-    url: "https://chittortech.online/digital-marketing-services",
+    url: "https://chittortech.in/digital-marketing-services",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

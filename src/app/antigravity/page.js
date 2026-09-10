@@ -7,7 +7,7 @@ const DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1hM0LK9K9Zmq2fB
 const BATCH_SCRIPT_CODE = `@echo off
 :: =======================================================
 ::  ChittorTech Antigravity Auto-Update Permanent Blocker
-::  Official Repository: https://chittortech.online/antigravity
+::  Official Repository: https://chittortech.in/antigravity
 ::  Compatibility: Windows 10 & 11 (x64)
 :: =======================================================
 
@@ -43,7 +43,7 @@ pause`;
 
 const POWERSHELL_CODE = `# =======================================================
 #  ChittorTech Antigravity Blocker (PowerShell Native)
-#  Official Repository: https://chittortech.online/antigravity
+#  Official Repository: https://chittortech.in/antigravity
 # =======================================================
 
 Write-Host "Closing running Antigravity IDE instances..." -ForegroundColor Cyan
@@ -98,7 +98,7 @@ export default function AntigravityWorldClassResponsive() {
     "C:\\Users\\Developer> Disable-Antigravity-Updates.bat",
     "=======================================================",
     "  ChittorTech Antigravity Auto-Update Permanent Blocker",
-    "  Official Repository: https://chittortech.online/antigravity",
+    "  Official Repository: https://chittortech.in/antigravity",
     "=======================================================",
     "[1/3] Closing running Antigravity IDE instances... [DONE]",
     "[2/3] Renaming inno_updater.exe -> inno_updater.exe.disabled... [SUCCESS]",
@@ -118,7 +118,7 @@ export default function AntigravityWorldClassResponsive() {
     const scriptOutput = [
       "=======================================================",
       "  ChittorTech Antigravity Auto-Update Permanent Blocker",
-      "  Official Repository: https://chittortech.online/antigravity",
+      "  Official Repository: https://chittortech.in/antigravity",
       "=======================================================",
       "[1/3] Closing running Antigravity IDE instances... [DONE]",
       "[2/3] Renaming inno_updater.exe -> inno_updater.exe.disabled... [SUCCESS]",

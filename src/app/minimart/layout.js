@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Minimart POS Billing Software | ChittorTech",
   description: "Streamline operations with the best minimart billing software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/minimart",
+    canonical: "https://chittortech.in/minimart",
   },
   openGraph: {
     title: "Best Minimart POS Billing Software | ChittorTech",
     description: "Streamline operations with the best minimart billing software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/minimart",
+    url: "https://chittortech.in/minimart",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

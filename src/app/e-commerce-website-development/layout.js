@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best E-Commerce Web Development | ChittorTech",
   description: "Streamline operations with the best e-commerce website development in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/e-commerce-website-development",
+    canonical: "https://chittortech.in/e-commerce-website-development",
   },
   openGraph: {
     title: "Best E-Commerce Web Development | ChittorTech",
     description: "Streamline operations with the best e-commerce website development in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/e-commerce-website-development",
+    url: "https://chittortech.in/e-commerce-website-development",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

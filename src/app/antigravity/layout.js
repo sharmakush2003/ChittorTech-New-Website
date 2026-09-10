@@ -16,12 +16,12 @@ export const metadata = {
     "ChittorTech Antigravity"
   ],
   alternates: {
-    canonical: "https://chittortech.online/antigravity",
+    canonical: "https://chittortech.in/antigravity",
   },
   openGraph: {
     title: "Google Antigravity IDE: Download Stable Build & Disable Auto-Updates Permanently",
     description: "The complete developer guide & verified package for Google Antigravity IDE on Windows. Stop forced auto-updates and keep your favorite dark UI forever.",
-    url: "https://chittortech.online/antigravity",
+    url: "https://chittortech.in/antigravity",
     siteName: "ChittorTech",
     locale: "en_US",
     type: "article",
@@ -83,19 +83,19 @@ export default function Layout({ children }) {
         "author": {
           "@type": "Organization",
           "name": "ChittorTech",
-          "url": "https://chittortech.online"
+          "url": "https://chittortech.in"
         },
         "publisher": {
           "@type": "Organization",
           "name": "ChittorTech",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://chittortech.online/favicon.png"
+            "url": "https://chittortech.in/favicon.png"
           }
         },
         "datePublished": "2026-09-09T00:00:00+05:30",
         "dateModified": "2026-09-09T16:25:00+05:30",
-        "mainEntityOfPage": "https://chittortech.online/antigravity"
+        "mainEntityOfPage": "https://chittortech.in/antigravity"
       },
       {
         "@type": "HowTo",
@@ -165,19 +165,19 @@ export default function Layout({ children }) {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://chittortech.online"
+            "item": "https://chittortech.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Developer Resources",
-            "item": "https://chittortech.online"
+            "item": "https://chittortech.in"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Google Antigravity IDE",
-            "item": "https://chittortech.online/antigravity"
+            "item": "https://chittortech.in/antigravity"
           }
         ]
       }

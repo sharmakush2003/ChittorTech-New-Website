@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Furniture & Home Decor POS | ChittorTech",
   description: "Streamline operations with the best home decor & furniture software in India. Fast billing, inventory tracking, GST invoice generator, and smart...",
   alternates: {
-    canonical: "https://chittortech.online/home-decor-furniture",
+    canonical: "https://chittortech.in/home-decor-furniture",
   },
   openGraph: {
     title: "Best Furniture & Home Decor POS | ChittorTech",
     description: "Streamline operations with the best home decor & furniture software in India. Fast billing, inventory tracking, GST invoice generator, and smart...",
-    url: "https://chittortech.online/home-decor-furniture",
+    url: "https://chittortech.in/home-decor-furniture",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

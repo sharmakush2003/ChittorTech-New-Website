@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Pharma Billing & POS Software | ChittorTech",
   description: "Boost your sales with the best pharma distribution software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/pharma",
+    canonical: "https://chittortech.in/pharma",
   },
   openGraph: {
     title: "Best Pharma Billing & POS Software | ChittorTech",
     description: "Boost your sales with the best pharma distribution software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/pharma",
+    url: "https://chittortech.in/pharma",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Hypermarket & Departmental POS | ChittorTech",
   description: "Boost your sales with the best departmental hypermarket software in India. Real-time stock control, barcode billing, GST compliance, and daily sales...",
   alternates: {
-    canonical: "https://chittortech.online/departmental-hypermarket-store",
+    canonical: "https://chittortech.in/departmental-hypermarket-store",
   },
   openGraph: {
     title: "Best Hypermarket & Departmental POS | ChittorTech",
     description: "Boost your sales with the best departmental hypermarket software in India. Real-time stock control, barcode billing, GST compliance, and daily sales...",
-    url: "https://chittortech.online/departmental-hypermarket-store",
+    url: "https://chittortech.in/departmental-hypermarket-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Liquor Store Billing Software | ChittorTech",
   description: "Boost your sales with the best liquor store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/liquor-store",
+    canonical: "https://chittortech.in/liquor-store",
   },
   openGraph: {
     title: "Best Liquor Store Billing Software | ChittorTech",
     description: "Boost your sales with the best liquor store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/liquor-store",
+    url: "https://chittortech.in/liquor-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Live PMS & Hotel Management System Software (HMS) | ChittorTech",
   description: "Cloud Live PMS & all-in-one hotel room management system software in India. Automate reservations, instant check-in/out, GST billing POS, and housekeeping.",
   alternates: {
-    canonical: "https://chittortech.online/hotel-management-system",
+    canonical: "https://chittortech.in/hotel-management-system",
   },
   openGraph: {
     title: "Live PMS & Hotel Management System Software (HMS) | ChittorTech",
     description: "Cloud Live PMS & all-in-one hotel room management system software in India. Automate reservations, instant check-in/out, GST billing POS, and housekeeping.",
-    url: "https://chittortech.online/hotel-management-system",
+    url: "https://chittortech.in/hotel-management-system",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best SEO Company & Growth Services | ChittorTech",
   description: "Grow your business online with the best seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
   alternates: {
-    canonical: "https://chittortech.online/search-engine-optimization",
+    canonical: "https://chittortech.in/search-engine-optimization",
   },
   openGraph: {
     title: "Best SEO Company & Growth Services | ChittorTech",
     description: "Grow your business online with the best seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
-    url: "https://chittortech.online/search-engine-optimization",
+    url: "https://chittortech.in/search-engine-optimization",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",
@@ -35,18 +35,18 @@ export default function Layout({ children }) {
     "name": "ChittorTech SEO Growth Services & Google #1 Ranking Overview",
     "description": "Watch our 1-minute quick video overview on how ChittorTech ranks Indian business websites on Google Page #1 through Technical SEO and Local SEO.",
     "thumbnailUrl": [
-      "https://chittortech.online/images/seo-growth-video-poster.jpg"
+      "https://chittortech.in/images/seo-growth-video-poster.jpg"
     ],
     "uploadDate": "2026-09-07T00:00:00+05:30",
     "duration": "PT1M15S",
     "contentUrl": "https://github.com/user-attachments/assets/5eabb4f4-efe2-4827-bf91-52fdfecbb78c",
-    "embedUrl": "https://chittortech.online/search-engine-optimization",
+    "embedUrl": "https://chittortech.in/search-engine-optimization",
     "publisher": {
       "@type": "Organization",
       "name": "ChittorTech",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://chittortech.online/favicon.png"
+        "url": "https://chittortech.in/favicon.png"
       }
     }
   };

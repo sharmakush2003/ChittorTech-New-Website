@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best On-Page SEO Services India | ChittorTech",
   description: "Grow your business online with the best on-page seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
   alternates: {
-    canonical: "https://chittortech.online/on-page-seo-services",
+    canonical: "https://chittortech.in/on-page-seo-services",
   },
   openGraph: {
     title: "Best On-Page SEO Services India | ChittorTech",
     description: "Grow your business online with the best on-page seo services in India. Custom responsive strategies, proven ROI, and expert execution by ChittorTech.",
-    url: "https://chittortech.online/on-page-seo-services",
+    url: "https://chittortech.in/on-page-seo-services",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

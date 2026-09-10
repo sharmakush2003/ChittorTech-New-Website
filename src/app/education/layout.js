@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best EdTech & Education ERP Software | ChittorTech",
   description: "Streamline operations with the best education management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/education",
+    canonical: "https://chittortech.in/education",
   },
   openGraph: {
     title: "Best EdTech & Education ERP Software | ChittorTech",
     description: "Streamline operations with the best education management software in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/education",
+    url: "https://chittortech.in/education",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

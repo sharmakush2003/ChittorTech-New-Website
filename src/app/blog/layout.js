@@ -2,12 +2,12 @@ export const metadata = {
   title: "Blog | ChittorTech",
   description: "Read ChittorTech",
   alternates: {
-    canonical: "https://chittortech.online/blog",
+    canonical: "https://chittortech.in/blog",
   },
   openGraph: {
     title: "Blog | ChittorTech",
     description: "Read ChittorTech",
-    url: "https://chittortech.online/blog",
+    url: "https://chittortech.in/blog",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

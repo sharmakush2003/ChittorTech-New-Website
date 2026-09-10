@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
       title: "Best AI & IT Solutions in India | ChittorTech",
       description: "Cloud-based AI & IT Solutions, Retail AI Automation, and billing software across India by ChittorTech.",
       alternates: {
-        canonical: `https://chittortech.online/cities/${city}`,
+        canonical: `https://chittortech.in/cities/${city}`,
       },
     };
   }
@@ -39,12 +39,12 @@ export async function generateMetadata({ params }) {
     description,
     keywords: cityData.pageKeywords,
     alternates: {
-      canonical: `https://chittortech.online/cities/${city.toLowerCase()}`,
+      canonical: `https://chittortech.in/cities/${city.toLowerCase()}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://chittortech.online/cities/${city.toLowerCase()}`,
+      url: `https://chittortech.in/cities/${city.toLowerCase()}`,
       siteName: "ChittorTech",
       locale: "en_IN",
       type: "website",

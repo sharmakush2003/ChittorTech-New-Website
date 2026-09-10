@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Custom CRM Solutions in India | ChittorTech",
   description: "Streamline operations with the best custom crm solutions in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
   alternates: {
-    canonical: "https://chittortech.online/custom-crm-solutions",
+    canonical: "https://chittortech.in/custom-crm-solutions",
   },
   openGraph: {
     title: "Best Custom CRM Solutions in India | ChittorTech",
     description: "Streamline operations with the best custom crm solutions in India. Fast billing, inventory tracking, GST invoice generator, and smart accounting.",
-    url: "https://chittortech.online/custom-crm-solutions",
+    url: "https://chittortech.in/custom-crm-solutions",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

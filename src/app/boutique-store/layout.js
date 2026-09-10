@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Boutique Store Software in India | ChittorTech",
   description: "Boost your sales with the best boutique store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/boutique-store",
+    canonical: "https://chittortech.in/boutique-store",
   },
   openGraph: {
     title: "Best Boutique Store Software in India | ChittorTech",
     description: "Boost your sales with the best boutique store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/boutique-store",
+    url: "https://chittortech.in/boutique-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

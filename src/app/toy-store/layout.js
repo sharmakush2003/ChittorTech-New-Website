@@ -2,12 +2,12 @@ export const metadata = {
   title: "Best Toy Store Billing Software | ChittorTech",
   description: "Boost your sales with the best toy store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
   alternates: {
-    canonical: "https://chittortech.online/toy-store",
+    canonical: "https://chittortech.in/toy-store",
   },
   openGraph: {
     title: "Best Toy Store Billing Software | ChittorTech",
     description: "Boost your sales with the best toy store software in India. Real-time stock control, barcode billing, GST compliance, and daily sales reports.",
-    url: "https://chittortech.online/toy-store",
+    url: "https://chittortech.in/toy-store",
     siteName: "ChittorTech",
     locale: "en_IN",
     type: "website",

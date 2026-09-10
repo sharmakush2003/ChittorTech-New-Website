@@ -395,9 +395,9 @@ export default function Page() {
                       <div className="info-content">
                         <h5>Direct Email</h5>
                         <div className="small text-muted mb-1" style={{ fontSize: "11px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.5px" }}>Business Enquiries</div>
-                        <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:business@chittortech.online" rel="nofollow" className="fw-bold text-dark d-block">business@chittortech.online</a><!--/email_off-->' }} />
+                        <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:business@chittortech.in" rel="nofollow" className="fw-bold text-dark d-block">business@chittortech.in</a><!--/email_off-->' }} />
                         <div className="small text-muted mt-2 mb-1" style={{ fontSize: "11px", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.5px" }}>General Enquiry</div>
-                        <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:contact@chittortech.online" rel="nofollow" className="fw-bold text-dark d-block">contact@chittortech.online</a><!--/email_off-->' }} />
+                        <span dangerouslySetInnerHTML={{ __html: '<!--email_off--><a href="mailto:contact@chittortech.in" rel="nofollow" className="fw-bold text-dark d-block">contact@chittortech.in</a><!--/email_off-->' }} />
                       </div>
                     </div>
                   </div>
