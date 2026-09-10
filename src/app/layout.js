@@ -1,6 +1,6 @@
 // ─── Google Analytics 4 — ChittorTech ────────────────────────────────────────
-// Property: ChittorTech Website | Measurement ID: G-G9QX6M81EL
-const GA4_ID = "G-G9QX6M81EL";
+// Property: ChittorTech (.in) | Measurement ID: G-CYREXRYVLN
+const GA4_ID = "G-CYREXRYVLN";
 // ─────────────────────────────────────────────────────────────────────────────
 
 import "../../public/assets/css/style.css";

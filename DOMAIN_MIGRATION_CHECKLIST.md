@@ -67,14 +67,13 @@ Naye domain ke liye zero se fresh setup:
 - [x] **2. Bing Webmaster Tools (Nayi Site):**
   - [x] Added `https://chittortech.in` via 1-Click Google Search Console Import (Verified).
   - [ ] Submit sitemap: `https://chittortech.in/sitemap.xml`
-- [ ] **3. Yandex Webmaster (Nayi Site):**
-  - [ ] Add site: `https://chittortech.in`
+- [x] **3. Yandex Webmaster (Nayi Site):**
+  - [x] Added & verified `https://chittortech.in` via Meta tag (`495c64862381b7b9`).
   - [ ] Submit sitemap: `https://chittortech.in/sitemap.xml`
-- [ ] **4. Google Analytics 4 (Nayi Fresh Property):**
-  - [ ] GA4 me **Create Property** karein: `ChittorTech (.in)`.
-  - [ ] Platform: **Web** ➔ URL: `https://chittortech.in`.
-  - [ ] Naya **Measurement ID** copy karein (`G-XXXXXXXXXX`).
-  - [ ] Code file `src/app/layout.js` line 3 me update karein: `const GA4_ID = "G-XXXXXXXXXX";`
+- [x] **4. Google Analytics 4 (Nayi Fresh Property):**
+  - [x] GA4 me fresh property create ki: `ChittorTech (.in)`.
+  - [x] Web Stream URL: `https://chittortech.in`.
+  - [x] Naya Measurement ID connect kiya: `G-CYREXRYVLN` in `src/app/layout.js`.
 
 ---
 
