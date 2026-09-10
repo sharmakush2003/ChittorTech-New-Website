@@ -195,7 +195,7 @@ export async function generateStaticParams() {
       }
 
       // Extract the slug after the domain
-      const slugPath = url.replace("https://chittortech.in/", "").replace(/^http:\/\/chittortech\.online\//, "").replace(/^\//, "");
+      const slugPath = url.replace("https://chittortech.in/", "").replace(/^\//, "");
       
       // Skip empty, main routes, inquiry forms, and cities sub-routes
       if (!slugPath || skipRoutes.has(slugPath) || slugPath.startsWith("cities/") || slugPath.startsWith("pos_bill/") || slugPath.includes("<") || slugPath.includes(">")) {

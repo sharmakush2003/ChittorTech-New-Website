@@ -143,7 +143,7 @@ export default function VercelMasterclassPage() {
     "    ✓ Generating static pages (SSG) [4/4]",
     "    ✓ Finalizing page optimization...",
     "==> Production: https://student-project.vercel.app [copied to clipboard]",
-    "==> Aliased to custom domain: https://studentportfolio.online 🎉"
+    "==> Aliased to custom domain: https://studentportfolio.in 🎉"
   ]);
 
   const runDeploymentSim = () => {

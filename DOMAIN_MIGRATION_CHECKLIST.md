@@ -40,20 +40,17 @@ Aapko purana sara data aur properties band karni hain taaki naya system clean ra
 
 - [x] **1. Google Search Console (Purani Property Band karein):**
   - [x] Search Console me `https://chittortech.online/` select karke remove kar diya.
-- [ ] **2. Bing Webmaster Tools (Purana Site Delete karein):**
-  - [ ] Bing Webmaster me `chittortech.online` select karein.
-  - [ ] Profile / Site Settings me jakar **"Delete site"** kar dein.
-- [ ] **3. Yandex Webmaster (Purana Site Delete karein):**
-  - [ ] Yandex Webmaster me `chittortech.online` par jayein.
-  - [ ] Settings me jakar **"Delete site"** kar dein.
-- [ ] **4. Google Analytics 4 (Purani Property Trash karein):**
-  - [ ] GA4 open karein ➔ Left bottom me **Admin ⚙️** par click karein.
-  - [ ] **Property Details** par jayein ➔ Top right me **"Move to Trash Can"** par click karein.
+- [x] **2. Bing Webmaster Tools (Purana Site Delete karein):**
+  - [x] Bing Webmaster me purana domain removed; sirf `chittortech.in/` active hai.
+- [x] **3. Yandex Webmaster (Purana Site Delete karein):**
+  - [x] Purana `.online` unverified / disconnected; naya `chittortech.in` 100% active hai.
+- [x] **4. Google Analytics 4 (Purani Property Trash karein):**
+  - [x] Naya fresh account aur stream banaya (`ChittorTech.in Website` / `G-CYREXRYVLN`).
 - [ ] **5. Firebase Console (`Chittor-Tech`):**
   - [ ] **Hosting:** Custom Domains list me `chittortech.online` aur `www.chittortech.online` ke 3 dots par click karke **"Delete domain"** kar dein.
   - [ ] **Authentication:** Settings ➔ **Authorised domains** me se `chittortech.online` ko remove kar dein.
-- [ ] **6. Cloudflare (Optional):**
-  - [ ] `chittortech.online` select karein ➔ Overview ➔ Scroll down ➔ **"Remove Site from Cloudflare"** kar sakte hain.
+- [x] **6. Cloudflare:**
+  - [x] `chittortech.online` removed from active domains list; `chittortech.in` active.
 
 ---
 
