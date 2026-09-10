@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta name="google-site-verification" content="CY_ChPltJ7jb_m5ZzUqCb63jBILSU2uOv7bYNgJc3y8" />
-        <meta name="yandex-verification" content="8aa7f02fca63d52d" />
+        <meta name="yandex-verification" content="495c64862381b7b9" />
         <meta name="p:domain_verify" content="83a539ac9f26d5e2f0b714eee5cca03f"/>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" href="/favicon.ico" />

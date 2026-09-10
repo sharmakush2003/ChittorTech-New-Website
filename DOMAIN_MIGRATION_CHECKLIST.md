@@ -1,106 +1,103 @@
-# 🚀 Domain Migration Checklist: chittortech.online ➔ chittortech.in
+# 🚀 ChittorTech Domain Migration & Clean Slate Guide
 
-> **Target Domain:** `chittortech.in`  
-> **Previous Domain:** `chittortech.online`  
-> **Date Initiated:** 10 September 2026  
-> **Objective:** Zero traffic drop, seamless SEO transition, active business email delivery, and flawless authentication.
-
----
-
-## 1. 🌐 Cloudflare & DNS Configuration ✅ (COMPLETED)
-- [x] **DNS Records for `chittortech.in`:**
-  - [x] Point `A` record (`199.36.158.100`) to Firebase Hosting.
-  - [x] Add **SPF Record** (`TXT`): `v=spf1 include:secureserver.net -all` (Verified in GoDaddy ✅).
-  - [x] Add **DKIM Records** (`CNAME`):
-    - `secureserver1._domainkey` ➔ `s1.dkim.chittortech_in.56c.onsecureserver.net` (DNS only) ✅
-    - `secureserver2._domainkey` ➔ `s2.dkim.chittortech_in.56c.onsecureserver.net` (DNS only) ✅
-  - [x] Add **MX Records** for GoDaddy Email (`smtp.secureserver.net`, `mailstore1.secureserver.net`).
-- [ ] **Old Domain (`chittortech.online`) Action:**
-  - [ ] Option A: Delete site from Cloudflare (if abandoning `.online` cleanly).
-  - [ ] Option B: Set 301 Redirect Rule to `chittortech.in` (if maintaining traffic bridge).
+> **New Primary Domain:** `chittortech.in` (100% LIVE)  
+> **Previous Domain:** `chittortech.online` (Decommissioning / Shutting Down)  
+> **Strategy:** 100% Clean Slate & Fresh Start (No 301 baggage, fresh indexing, fresh analytics)  
+> **Date:** September 10, 2026  
 
 ---
 
-## 2. 🔥 Firebase Hosting & Authentication ✅ (COMPLETED)
-- [x] **Firebase Hosting:**
-  - [x] Custom domain `chittortech.in` added and verified.
-  - [x] SSL Certificate minted and live (HTTP 200 OK).
-- [x] **Firebase Authentication (Authorized Domains):**
-  - [x] `chittortech.in` added to Authorised Domains.
-- [ ] **Old Domain Cleanup:**
-  - [ ] Delete `chittortech.online` from Firebase Hosting custom domains list.
-  - [ ] Delete `chittortech.online` from Firebase Auth Authorised domains list.
+## ✅ PHASE 1: COMPLETED SETUPS (100% DONE)
+
+- [x] **Cloudflare DNS Management (`chittortech.in`):**
+  - [x] GoDaddy Nameservers pointed to Cloudflare (`leonidas.ns.cloudflare.com`, `nova.ns.cloudflare.com`).
+  - [x] Apex `A` record (`199.36.158.100`) pointed to Firebase Hosting.
+  - [x] SSL/TLS mode set to Full with Always Use HTTPS.
+- [ ] **Cloudflare Cache & Settings Match (Pending Review):**
+  - [ ] Purane Cloudflare account (`chittortech.online`) ki Caching settings, Page Rules aur Tiered Cache rules dekh kar naye Cloudflare account (`chittortech.in`) se match karni hain.
+- [x] **GoDaddy Professional Email Authentication:**
+  - [x] SPF Record (`TXT`) added & verified (`v=spf1 include:secureserver.net -all`).
+  - [x] DKIM Record 1 (`CNAME`) added & verified (`secureserver1._domainkey` ➔ `s1.dkim.chittortech_in.56c.onsecureserver.net`).
+  - [x] DKIM Record 2 (`CNAME`) added & verified (`secureserver2._domainkey` ➔ `s2.dkim.chittortech_in.56c.onsecureserver.net`).
+  - [x] DMARC & MX records active (`smtp.secureserver.net`, `mailstore1.secureserver.net`).
+  - [x] All GoDaddy red warning banners completely resolved.
+- [x] **Firebase Hosting & Authentication:**
+  - [x] Custom domain `chittortech.in` connected and verified.
+  - [x] Google SSL Certificate minted & active (`HTTP 200 OK`).
+  - [x] `chittortech.in` added to Firebase Auth Authorised Domains.
+- [x] **Next.js Codebase Deep Migration:**
+  - [x] All 104 files & 4,381 occurrences replaced from `.online` to `.in`.
+  - [x] AI Chatbot lead emails and knowledge prompt updated.
+  - [x] Contact page, Footer, Legal & Payment policy emails updated (`contact@chittortech.in`, `business@chittortech.in`).
+  - [x] `public/sitemap.xml` regenerated with 837 clean `.in` URLs.
+  - [x] `public/robots.txt` pointing to `https://chittortech.in/sitemap.xml`.
 
 ---
 
-## 3. 🔍 Search Engines & Webmaster Tools (SEO Transfer)
-- [ ] **Google Search Console (GSC):**
-  - [ ] Add property for `https://chittortech.in` (Domain or URL Prefix).
-  - [ ] Verify ownership (DNS TXT in Cloudflare or HTML tag).
-  - [ ] Submit sitemap: `https://chittortech.in/sitemap.xml`.
-  - [ ] In old property `chittortech.online` ➔ Go to **Settings** ➔ **Change of Address** tool ➔ Select `chittortech.in` to notify Google of site move.
-- [ ] **Bing Webmaster Tools:**
-  - [ ] Add & verify `https://chittortech.in` (or import directly from GSC).
-  - [ ] Submit sitemap URL.
-  - [ ] Use **Diagnostics & Tools** ➔ **Site Move** feature to inform Bing.
-- [ ] **Yandex Webmaster:**
-  - [ ] Add `chittortech.in` and submit sitemap.
-  - [ ] Go to **Indexing** ➔ **Site Relocation** to transfer indexation.
+## 🛑 PHASE 2: PURANA `.online` BAND / DECOMMISSIONING (Raat ko karein)
+
+Aapko purana sara data aur properties band karni hain taaki naya system clean rahe:
+
+- [x] **1. Google Search Console (Purani Property Band karein):**
+  - [x] Search Console me `https://chittortech.online/` select karke remove kar diya.
+- [ ] **2. Bing Webmaster Tools (Purana Site Delete karein):**
+  - [ ] Bing Webmaster me `chittortech.online` select karein.
+  - [ ] Profile / Site Settings me jakar **"Delete site"** kar dein.
+- [ ] **3. Yandex Webmaster (Purana Site Delete karein):**
+  - [ ] Yandex Webmaster me `chittortech.online` par jayein.
+  - [ ] Settings me jakar **"Delete site"** kar dein.
+- [ ] **4. Google Analytics 4 (Purani Property Trash karein):**
+  - [ ] GA4 open karein ➔ Left bottom me **Admin ⚙️** par click karein.
+  - [ ] **Property Details** par jayein ➔ Top right me **"Move to Trash Can"** par click karein.
+- [ ] **5. Firebase Console (`Chittor-Tech`):**
+  - [ ] **Hosting:** Custom Domains list me `chittortech.online` aur `www.chittortech.online` ke 3 dots par click karke **"Delete domain"** kar dein.
+  - [ ] **Authentication:** Settings ➔ **Authorised domains** me se `chittortech.online` ko remove kar dein.
+- [ ] **6. Cloudflare (Optional):**
+  - [ ] `chittortech.online` select karein ➔ Overview ➔ Scroll down ➔ **"Remove Site from Cloudflare"** kar sakte hain.
 
 ---
 
-## 4. 📍 Google Business Profile (Google My Business) & Local Citations
-- [ ] **Website URL:** Edit profile ➔ change website to `https://chittortech.in`.
-- [ ] **Contact Email:** Update business email to `@chittortech.in`.
-- [ ] **Map Links / Services:** Verify booking/landing page links point to `.in`.
-- [ ] **Local Directories (JustDial, IndiaMART, Sulekha, etc.):** Update company website URL.
+## 🌟 PHASE 3: NAYA FRESH START (`chittortech.in`)
+
+Naye domain ke liye zero se fresh setup:
+
+- [x] **1. Google Search Console (Nayi Property):**
+  - [x] Domain property `chittortech.in` added & verified via Cloudflare DNS.
+  - [x] `public/sitemap.xml` audited with zero 404s (836 clean 200 OK URLs).
+- [x] **2. Bing Webmaster Tools (Nayi Site):**
+  - [x] Added `https://chittortech.in` via 1-Click Google Search Console Import (Verified).
+  - [ ] Submit sitemap: `https://chittortech.in/sitemap.xml`
+- [ ] **3. Yandex Webmaster (Nayi Site):**
+  - [ ] Add site: `https://chittortech.in`
+  - [ ] Submit sitemap: `https://chittortech.in/sitemap.xml`
+- [ ] **4. Google Analytics 4 (Nayi Fresh Property):**
+  - [ ] GA4 me **Create Property** karein: `ChittorTech (.in)`.
+  - [ ] Platform: **Web** ➔ URL: `https://chittortech.in`.
+  - [ ] Naya **Measurement ID** copy karein (`G-XXXXXXXXXX`).
+  - [ ] Code file `src/app/layout.js` line 3 me update karein: `const GA4_ID = "G-XXXXXXXXXX";`
 
 ---
 
-## 5. 💻 Next.js Codebase & Asset References ✅ (DONE)
-- [x] **Canonical URLs & Metadata:**
-  - [x] Changed all occurrences of `https://chittortech.online` to `https://chittortech.in` across all pages and layouts.
-  - [x] Updated OpenGraph (`og:url`, `og:image`) and Twitter Card links.
-- [x] **Structured Data (Schema Markup):**
-  - [x] Updated JSON-LD `Organization` schema (`url`, `logo`, `sameAs`).
-- [x] **Public Sitemaps & Robots:**
-  - [x] Updated `public/sitemap.xml` and generators to emit `https://chittortech.in/...`.
-  - [x] Updated `public/robots.txt` Sitemap reference line.
-- [x] **UI Emails & Contact Info:**
-  - [x] Updated `business@chittortech.online` ➔ `business@chittortech.in`.
-  - [x] Updated `contact@chittortech.online` ➔ `contact@chittortech.in`.
-  - [x] Updated Footer (`src/components/Footer.jsx`).
-  - [x] Updated Legal Pages (`LegalPageLayout.jsx`, `PolicyModal.jsx`, `PrintContractView.jsx`, `payment-terms`).
-  - [x] Updated Chatbot system prompt & fallback (`src/components/Chatbot.jsx`).
-  - [x] Updated Search engine indexing tracker (`SEARCH_ENGINE_INDEXING_TRACKER.md`).
+## 🏢 PHASE 4: BUSINESS PORTALS & SOCIAL PROFILES
 
----
-
-## 6. 🏛️ Business Portals, Cloud Services & Analytics
-- [ ] **Supabase:**
+- [ ] **Supabase (Database & Auth):**
   - [ ] Project Settings ➔ **Authentication** ➔ **URL Configuration**:
-  - [ ] **Site URL:** Update to `https://chittortech.in`
-  - [ ] **Redirect URLs:** Add `https://chittortech.in/**`
-- [ ] **Google Analytics 4 (GA4):**
-  - [ ] Admin ➔ **Data Streams** ➔ Web Stream:
-  - [ ] Update **Stream URL** to `https://chittortech.in`
-  - [ ] Update Stream Name if needed.
-- [ ] **Vercel (if deployed):**
-  - [ ] Project Settings ➔ **Domains** ➔ Add `chittortech.in`.
-- [ ] **GitHub Repository:**
-  - [ ] Repo main page ➔ About (gear icon) ➔ Update Website URL to `https://chittortech.in`.
+  - [ ] **Site URL:** `https://chittortech.in`
+  - [ ] **Redirect URLs:** Purana hata kar `https://chittortech.in/**` save karein.
+- [ ] **Google Business Profile (Google My Business / Maps):**
+  - [ ] Edit Profile ➔ Contact:
+  - [ ] **Website:** `https://chittortech.in`
+  - [ ] **Email:** `contact@chittortech.in`
 - [ ] **iStart Rajasthan Portal:**
-  - [ ] Log in to iStart profile ➔ Startup Profile ➔ Update Company Website to `https://chittortech.in`.
-
----
-
-## 7. 💳 Payment Gateways & Social Media Profiles
-- [ ] **Payment Gateway Portals (Razorpay, Stripe, Cashfree, etc.):**
-  - [ ] Update Registered Business Website URL to `https://chittortech.in`.
-  - [ ] Update Webhook notification endpoints to `.in` domain if using server webhooks.
-- [ ] **LinkedIn:**
-  - [ ] ChittorTech Company Page ➔ Edit Page ➔ Overview ➔ Update Website URL to `https://chittortech.in`.
-- [ ] **Other Social Profiles:**
-  - [ ] Instagram Bio website link.
-  - [ ] Facebook Page, YouTube About, and Twitter profile link.
-  - [ ] WhatsApp Business Catalog & profile link.
+  - [ ] Startup Dashboard ➔ Profile Details:
+  - [ ] **Website:** `https://chittortech.in`
+  - [ ] **Email:** `business@chittortech.in`
+- [ ] **GitHub Repository:**
+  - [ ] Repo main page ➔ About (gear icon) ➔ Website URL: `https://chittortech.in`
+- [ ] **Payment Gateways (Razorpay / Stripe / Cashfree):**
+  - [ ] Profile Settings ➔ Business Website URL: `https://chittortech.in`
+- [ ] **Social Media Profiles:**
+  - [ ] **LinkedIn Company Page:** Edit ➔ Website: `https://chittortech.in`
+  - [ ] **Instagram Bio:** Link: `https://chittortech.in`
+  - [ ] **WhatsApp Business Profile:** Website: `https://chittortech.in`
+  - [ ] **Facebook & YouTube:** About links update karein.

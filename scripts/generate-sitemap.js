@@ -50,8 +50,8 @@ cityServiceSlugs.forEach(s => allUniquePaths.add(s));
 blogSlugs.forEach(b => allUniquePaths.add(b));
 techSlugs.forEach(t => allUniquePaths.add(t));
 
-// Delete any known bad paths
-['404', 'city', 'blog-details', 'blog-master', 'undefined', 'null'].forEach(bad => allUniquePaths.delete(bad));
+// Delete any known bad paths or redirected paths (to ensure 100% 200 OK in GSC)
+['404', 'city', 'blog-details', 'blog-master', 'undefined', 'null', 'affiliate-marketing-app-mewari-achaar'].forEach(bad => allUniquePaths.delete(bad));
 
 const today = new Date().toISOString().split('T')[0];
 
