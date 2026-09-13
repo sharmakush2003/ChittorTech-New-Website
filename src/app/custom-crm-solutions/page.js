@@ -263,7 +263,7 @@ export default function Page() {
                           <h5>Automate, Optimize, and Strengthen Your Customer Relationships</h5>
                           <p>
   At ChittorTech, we provide the 
-  <a href="/custom-ai-knowledge-solutions" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>
+  <a href="/crm" style={{ "all": "unset", "cursor": "pointer", "textDecoration": "underline", "fontWeight": "bold" }}>
     best Customer Relationship Management (AI Knowledge Base) Services in India
   </a> 
   to help businesses streamline marketing, sales, and customer service processes. Our custom AI Knowledge Base solutions enable seamless management of customer data, interaction tracking, purchase history, and contact management — all designed to boost efficiency, sales, and customer satisfaction.

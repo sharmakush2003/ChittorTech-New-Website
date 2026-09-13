@@ -224,73 +224,13 @@ export default function Footer() {
           margin-bottom: 2px;
         }
 
-        /* ─── Divider ─── */
-        .ct-footer-divider {
-          border: none; border-top: 1px solid #e2e8f0; margin: 0;
-          position: relative; z-index: 1;
-        }
-
-        /* ─── Bottom Bar ─── */
-        .ct-footer-bottom {
-          position: relative; z-index: 1;
-          padding: 22px 0;
-          display: flex; align-items: center; justify-content: space-between;
-          flex-wrap: wrap; gap: 12px;
-        }
-        .ct-footer-copy {
-          font-size: 0.8rem; color: #94a3b8;
-        }
-        .ct-footer-copy a {
-          color: #64748b; text-decoration: none;
-          transition: color 0.2s;
-        }
-        .ct-footer-copy a:hover { color: #291fbc; }
-        .ct-footer-copy .sep { margin: 0 8px; opacity: 0.4; }
-        .ct-footer-bottom-right {
-          display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-        }
-        .ct-footer-badge-pill {
-          display: inline-flex; align-items: center; gap: 5px;
-          padding: 4px 10px; border-radius: 50px;
-          background: #fff;
-          border: 1px solid #e2e8f0;
-          font-size: 0.7rem; font-weight: 600;
-          color: #64748b; letter-spacing: 0.3px;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-        .ct-footer-badge-pill i { font-size: 0.68rem; }
-        .ct-footer-badge-pill.ssl i { color: #10b981; }
-        .ct-footer-badge-pill.ai i { color: #f59e0b; }
-        .ct-footer-badge-pill.india i { color: #ef4444; }
-
-        /* ─── Responsive ─── */
-        @media (max-width: 1100px) {
-          .ct-footer-grid { grid-template-columns: 1.8fr 1fr 1fr; gap: 36px; }
-          .ct-footer-grid > div:last-child { grid-column: span 3; }
-        }
-        @media (max-width: 768px) {
-          .ct-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-          .ct-footer-grid > div:first-child { grid-column: span 2; }
-          .ct-footer-grid > div:last-child { grid-column: span 2; }
-          .ct-footer-cta-inner { flex-direction: column; text-align: center; }
-          .ct-footer-cta-btns { justify-content: center; }
-          .ct-footer-main { padding: 48px 0 40px; }
-          .ct-footer-cta { padding: 36px 0; }
-        }
-        @media (max-width: 480px) {
-          .ct-footer-grid { grid-template-columns: 1fr; gap: 28px; }
-          .ct-footer-grid > div:first-child,
-          .ct-footer-grid > div:last-child { grid-column: span 1; }
-          .ct-footer-bottom { flex-direction: column; text-align: center; }
-          .ct-footer-bottom-right { justify-content: center; }
-          .ct-footer-cta-text h3 { font-size: 1.25rem; }
-        }
-
         /* ─── Tabular Card Directory Architecture ─── */
         .ct-footer-directory {
           background: #f8fafc;
           border-top: 1px solid #e2e8f0;
-          padding: 32px 0 28px;
+          padding: 36px 0 32px;
+          position: relative;
+          z-index: 1;
         }
         .ct-dir-top {
           display: flex;
@@ -301,17 +241,18 @@ export default function Footer() {
           gap: 8px;
         }
         .ct-dir-heading {
-          font-size: 0.94rem;
-          font-weight: 700;
+          font-size: 0.96rem;
+          font-weight: 800;
+          font-family: 'Plus Jakarta Sans', sans-serif;
           color: #0f172a;
           display: flex;
           align-items: center;
           gap: 8px;
           letter-spacing: -0.2px;
         }
-        .ct-dir-heading i { color: #2563eb; font-size: 0.88rem; }
+        .ct-dir-heading i { color: #2563eb; font-size: 0.9rem; }
         .ct-dir-subhead {
-          font-size: 0.76rem;
+          font-size: 0.78rem;
           color: #64748b;
         }
         .ct-dir-card {
@@ -327,7 +268,7 @@ export default function Footer() {
         }
         .ct-dir-card:hover {
           border-color: #cbd5e1;
-          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+          box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
         }
         .ct-dir-card-head {
           display: flex;
@@ -350,7 +291,7 @@ export default function Footer() {
         .ct-dir-card-badge {
           font-size: 0.66rem;
           font-weight: 700;
-          padding: 2px 7px;
+          padding: 2px 8px;
           border-radius: 20px;
           background: #f1f5f9;
           color: #475569;
@@ -425,6 +366,70 @@ export default function Footer() {
             margin-bottom: 14px;
           }
         }
+
+        /* ─── Divider ─── */
+        .ct-footer-divider {
+          border: none; border-top: 1px solid #e2e8f0; margin: 0;
+          position: relative; z-index: 1;
+        }
+
+        /* ─── Bottom Bar ─── */
+        .ct-footer-bottom {
+          position: relative; z-index: 1;
+          padding: 22px 0;
+          display: flex; align-items: center; justify-content: space-between;
+          flex-wrap: wrap; gap: 12px;
+        }
+        .ct-footer-copy {
+          font-size: 0.8rem; color: #94a3b8;
+        }
+        .ct-footer-copy a {
+          color: #64748b; text-decoration: none;
+          transition: color 0.2s;
+        }
+        .ct-footer-copy a:hover { color: #291fbc; }
+        .ct-footer-copy .sep { margin: 0 8px; opacity: 0.4; }
+        .ct-footer-bottom-right {
+          display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .ct-footer-badge-pill {
+          display: inline-flex; align-items: center; gap: 5px;
+          padding: 4px 10px; border-radius: 50px;
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          font-size: 0.7rem; font-weight: 600;
+          color: #64748b; letter-spacing: 0.3px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .ct-footer-badge-pill i { font-size: 0.68rem; }
+        .ct-footer-badge-pill.ssl i { color: #10b981; }
+        .ct-footer-badge-pill.ai i { color: #f59e0b; }
+        .ct-footer-badge-pill.india i { color: #ef4444; }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 1100px) {
+          .ct-footer-grid { grid-template-columns: 1.8fr 1fr 1fr; gap: 36px; }
+          .ct-footer-grid > div:last-child { grid-column: span 3; }
+        }
+        @media (max-width: 768px) {
+          .ct-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+          .ct-footer-grid > div:first-child { grid-column: span 2; }
+          .ct-footer-grid > div:last-child { grid-column: span 2; }
+          .ct-footer-cta-inner { flex-direction: column; text-align: center; }
+          .ct-footer-cta-btns { justify-content: center; }
+          .ct-footer-main { padding: 48px 0 40px; }
+          .ct-footer-cta { padding: 36px 0; }
+        }
+        @media (max-width: 480px) {
+          .ct-footer-grid { grid-template-columns: 1fr; gap: 28px; }
+          .ct-footer-grid > div:first-child,
+          .ct-footer-grid > div:last-child { grid-column: span 1; }
+          .ct-footer-bottom { flex-direction: column; text-align: center; }
+          .ct-footer-bottom-right { justify-content: center; }
+          .ct-footer-cta-text h3 { font-size: 1.25rem; }
+        }
+
+
       `}</style>
 
       <footer className="ct-footer-wrap">
@@ -458,7 +463,7 @@ export default function Footer() {
               <div>
                 <img src="/assets/images/ct-logo.png" alt="ChittorTech" className="ct-footer-brand-logo" />
                 <p className="ct-footer-tagline">
-                  Empowering Indian businesses with cutting-edge AI Solutions, Custom LLMs, Enterprise Automation, POS &amp; ERP Systems, and Digital Growth Services.
+                  Empowering global enterprises, startups, and growing businesses with cutting-edge AI Solutions, Custom LLMs, Enterprise Cloud Systems, Dedicated Tech Teams, and Digital Growth Services.
                 </p>
                 <div className="ct-footer-trust-row">
                   <span className="ct-footer-trust-chip"><i className="fa-solid fa-shield-halved"></i> SSL Secured</span>
@@ -564,48 +569,48 @@ export default function Footer() {
           <div className="container">
             <div className="ct-dir-top">
               <div className="ct-dir-heading">
-                <i className="fa-solid fa-layer-group"></i> Solutions &amp; City Hubs Directory
+                <i className="fa-solid fa-layer-group"></i> Solutions &amp; Global Hubs Directory
               </div>
               <div className="ct-dir-subhead">
-                Explore ChittorTech's complete ecosystem of enterprise software, POS systems, and regional deployment hubs.
+                Explore ChittorTech's complete ecosystem of enterprise software, global offshore hubs, and regional deployment networks.
               </div>
             </div>
 
             <div className="row g-3 text-start">
               
-              {/* Industry POS & Retail Billing */}
+              {/* Global Markets & Offshore Exposure */}
               <div className="col-lg-3 col-md-6">
                 <div className="ct-dir-card">
                   <div className="ct-dir-card-head">
                     <div className="ct-dir-card-title">
-                      <i className="fa-solid fa-cash-register text-primary"></i> Retail &amp; POS
+                      <i className="fa-solid fa-earth-americas text-primary"></i> Global Hubs
                     </div>
-                    <span className="ct-dir-card-badge">22 Apps</span>
+                    <span className="ct-dir-card-badge" style={{ background: '#ecfdf5', color: '#059669', borderColor: '#a7f3d0' }}>22 Markets</span>
                   </div>
                   <div className="ct-dir-pills-wrap">
                     {[
-                      { href: "/pos", label: "Retail POS Software" },
-                      { href: "/supermarket", label: "Supermarket POS" },
-                      { href: "/hypermarket", label: "Hypermarket Billing" },
-                      { href: "/departmental-store", label: "Departmental Store" },
-                      { href: "/grocery-store", label: "Grocery Billing" },
-                      { href: "/kirana-store", label: "Kirana Store POS" },
-                      { href: "/garments", label: "Garment Store POS" },
-                      { href: "/footwear-store", label: "Footwear Billing" },
-                      { href: "/boutique-store", label: "Boutique POS" },
-                      { href: "/bridal-store", label: "Bridal Store" },
-                      { href: "/textile", label: "Textile Billing" },
-                      { href: "/readymade-garment", label: "Readymade Garments" },
-                      { href: "/pharma", label: "Pharma Distribution" },
-                      { href: "/cosmetic-store", label: "Cosmetic Store" },
-                      { href: "/imitation-jewellery", label: "Jewellery Billing" },
-                      { href: "/hardware-store", label: "Hardware Store" },
-                      { href: "/home-decor-furniture", label: "Furniture POS" },
-                      { href: "/pet-shop", label: "Pet Shop POS" },
-                      { href: "/book-store", label: "Book Store POS" },
-                      { href: "/gift-shop", label: "Gift Shop POS" },
-                      { href: "/fruits-vegetable-shop", label: "Fruits & Veg" },
-                      { href: "/liquor-store", label: "Liquor Store POS" },
+                      { href: "/united-states", label: "United States (USA)" },
+                      { href: "/silicon-valley", label: "Silicon Valley (CA)" },
+                      { href: "/austin-tech-hub", label: "Austin Tech Hub (TX)" },
+                      { href: "/new-york-city", label: "New York City (NY)" },
+                      { href: "/miami-florida", label: "Miami & Florida" },
+                      { href: "/united-kingdom", label: "United Kingdom (UK)" },
+                      { href: "/london-tech-city", label: "London Tech City" },
+                      { href: "/manchester-uk", label: "Manchester (UK)" },
+                      { href: "/dubai", label: "Dubai (UAE)" },
+                      { href: "/abu-dhabi", label: "Abu Dhabi (UAE)" },
+                      { href: "/saudi-arabia", label: "Saudi Arabia (KSA)" },
+                      { href: "/turkey-eurasia", label: "Turkey & Eurasia" },
+                      { href: "/germany-berlin", label: "Germany (Berlin)" },
+                      { href: "/netherlands-amsterdam", label: "Netherlands (AMS)" },
+                      { href: "/toronto-canada", label: "Toronto (Canada)" },
+                      { href: "/sydney-australia", label: "Sydney (Australia)" },
+                      { href: "/melbourne-australia", label: "Melbourne (AU)" },
+                      { href: "/singapore-hub", label: "Singapore Hub" },
+                      { href: "/dedicated-tech-teams", label: "Dedicated Tech Teams" },
+                      { href: "/4-week-saas-mvp", label: "4-Week SaaS MVP" },
+                      { href: "/enterprise-ai-agents", label: "Enterprise AI Agents" },
+                      { href: "/timezone-overlap", label: "Timezone Overlap" },
                     ].map((item, idx) => (
                       <Link key={idx} href={item.href} className="ct-dir-pill">
                         {item.label}
@@ -638,10 +643,10 @@ export default function Footer() {
                       { href: "/smart-retail", label: "Smart Retail" },
                       { href: "/custom-crm-solutions", label: "Custom CRM" },
                       { href: "/industrial-products", label: "Industrial Wholesale" },
-                      { href: "/consumer-goods", label: "FMCG Distribution" },
                       { href: "/trading-overview", label: "Trading ERP" },
                       { href: "/after-sale-service", label: "Service & Warranty" },
                       { href: "/employee-background-verification", label: "Employee BGV" },
+                      { href: "/electronics-smartphones", label: "Electronics POS" },
                     ].map((item, idx) => (
                       <Link key={idx} href={item.href} className="ct-dir-pill">
                         {item.label}

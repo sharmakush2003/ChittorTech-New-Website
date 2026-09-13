@@ -7,11 +7,32 @@ const getDirectories = srcPath => fs.readdirSync(srcPath, { withFileTypes: true 
   .map(dirent => dirent.name);
 
 // Exclude internal routing helpers and non-page folders
+// Exclude internal routing helpers, admin, and non-indexable folders
 const excludeFolders = new Set([
-  'api', 'cities', 'city', '[slug]', 'pos_bill', '404', 'blog-details', 'blog-master', '.system_generated'
+  'api', 'admin', 'cities', 'city', '[slug]', 'pos_bill', '404', 'blog-details', 'blog-master', '.system_generated'
 ]);
 
-const staticPages = getDirectories(appDir).filter(f => !excludeFolders.has(f) && fs.existsSync(path.join(appDir, f, 'page.js') || path.join(appDir, f, 'page.jsx')));
+const staticPages = getDirectories(appDir).filter(f => {
+  if (excludeFolders.has(f)) return false;
+  return fs.existsSync(path.join(appDir, f, 'page.js')) || fs.existsSync(path.join(appDir, f, 'page.jsx'));
+});
+
+// Blocked Retail/POS slugs to never include
+const blockedRetailSlugs = new Set([
+  'pos', 'supermarket', 'hypermarket', 'departmental-store', 'departmental-hypermarket-store',
+  'grocery-store', 'kirana-store', 'garments', 'footwear-store', 'boutique-store', 'bridal-store',
+  'textile', 'readymade-garment', 'pharma', 'cosmetic-store', 'imitation-jewellery', 'hardware-store',
+  'hardware-shopping-store', 'home-decor-furniture', 'pet-shop', 'book-store', 'gift-shop',
+  'gift-toy-sports-shop', 'toy-store', 'sports-shop', 'fruits-vegetable-shop', 'liquor-store',
+  'convenience-store', 'minimart', 'retaile-store', 'shopping-mall', 'stationery-store', 'consumer-goods'
+]);
+
+const isBlockedSlug = (s) => {
+  if (!s) return false;
+  if (blockedRetailSlugs.has(s)) return true;
+  if (s.includes('pos-billing') || s.includes('supermarket-grocery') || s.includes('garment-textile')) return true;
+  return false;
+};
 
 // City dynamic pages
 let citySlugs = [];
@@ -24,14 +45,14 @@ if (fs.existsSync('src/data/cities.json')) {
 let cityServiceSlugs = [];
 if (fs.existsSync('src/data/cityServices.json')) {
   const servicesData = JSON.parse(fs.readFileSync('src/data/cityServices.json', 'utf8'));
-  cityServiceSlugs = Object.keys(servicesData);
+  cityServiceSlugs = Object.keys(servicesData).filter(s => !isBlockedSlug(s));
 }
 
 // Blog Posts Slugs
 let blogSlugs = [];
 if (fs.existsSync('src/data/blogPosts.json')) {
   const blogsData = JSON.parse(fs.readFileSync('src/data/blogPosts.json', 'utf8'));
-  blogSlugs = blogsData.map(b => b.link ? b.link.replace(/^\//, '') : '').filter(Boolean);
+  blogSlugs = blogsData.map(b => b.link ? b.link.replace(/^\//, '') : '').filter(Boolean).filter(s => !isBlockedSlug(s));
 }
 
 // Technology Slugs (44 Pages)
@@ -51,16 +72,17 @@ blogSlugs.forEach(b => allUniquePaths.add(b));
 techSlugs.forEach(t => allUniquePaths.add(t));
 
 // Delete any known bad paths or redirected paths (to ensure 100% 200 OK in GSC)
-['404', 'city', 'blog-details', 'blog-master', 'undefined', 'null', 'affiliate-marketing-app-mewari-achaar'].forEach(bad => allUniquePaths.delete(bad));
+['404', 'admin', 'city', 'blog-details', 'blog-master', 'undefined', 'null', 'affiliate-marketing-app-mewari-achaar'].forEach(bad => allUniquePaths.delete(bad));
 
 const today = new Date().toISOString().split('T')[0];
 
 const coreServices = new Set([
-  'erp', 'pos', 'crm', 'accounting', 'inventory', 'payroll', 'invoicing', 
+  'erp', 'crm', 'accounting', 'inventory', 'payroll', 'invoicing', 
   'omnichannel', 'smart-retail', 'lead-management', 'logistics', 
   'web-development-services', 'search-engine-optimization', 'digital-marketing-services', 
   'custom-crm-solutions', 'e-commerce-website-development', 'android-application', 
-  'ai-solutions', 'ai-manufacturing', 'ai-chatbot-development', 'antigravity', 'render', 'cloudflare', 'vercel', 'groq'
+  'ai-solutions', 'ai-manufacturing', 'ai-chatbot-development', 'antigravity', 'render', 'cloudflare', 'vercel', 'groq',
+  'enterprise-ai-agents', 'dedicated-tech-teams', '4-week-saas-mvp', 'timezone-overlap'
 ]);
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

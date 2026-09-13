@@ -1170,7 +1170,7 @@ export default function VercelMasterclassPage() {
             ChittorTech delivers production-grade engineering.
           </p>
           <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" className="vercel-btn-primary">
+            <Link href="/contact-us" className="vercel-btn-primary">
               Book a Free Developer Consultation &rarr;
             </Link>
             <Link href="/" className="vercel-btn-secondary">

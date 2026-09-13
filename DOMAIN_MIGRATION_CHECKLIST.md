@@ -1,7 +1,7 @@
 # 🚀 ChittorTech Domain Migration & Clean Slate Guide
 
 > **New Primary Domain:** `chittortech.in` (100% LIVE)  
-> **Previous Domain:** `chittortech.online` (Decommissioning / Shutting Down)  
+> **Previous Domain:** `chittortech.in` (Decommissioning / Shutting Down)  
 > **Strategy:** 100% Clean Slate & Fresh Start (No 301 baggage, fresh indexing, fresh analytics)  
 > **Date:** September 10, 2026  
 
@@ -14,7 +14,7 @@
   - [x] Apex `A` record (`199.36.158.100`) pointed to Firebase Hosting.
   - [x] SSL/TLS mode set to Full with Always Use HTTPS.
 - [ ] **Cloudflare Cache & Settings Match (Pending Review):**
-  - [ ] Purane Cloudflare account (`chittortech.online`) ki Caching settings, Page Rules aur Tiered Cache rules dekh kar naye Cloudflare account (`chittortech.in`) se match karni hain.
+  - [ ] Purane Cloudflare account (`chittortech.in`) ki Caching settings, Page Rules aur Tiered Cache rules dekh kar naye Cloudflare account (`chittortech.in`) se match karni hain.
 - [x] **GoDaddy Professional Email Authentication:**
   - [x] SPF Record (`TXT`) added & verified (`v=spf1 include:secureserver.net -all`).
   - [x] DKIM Record 1 (`CNAME`) added & verified (`secureserver1._domainkey` ➔ `s1.dkim.chittortech_in.56c.onsecureserver.net`).
@@ -39,7 +39,7 @@
 Aapko purana sara data aur properties band karni hain taaki naya system clean rahe:
 
 - [x] **1. Google Search Console (Purani Property Band karein):**
-  - [x] Search Console me `https://chittortech.online/` select karke remove kar diya.
+  - [x] Search Console me `https://chittortech.in/` select karke remove kar diya.
 - [x] **2. Bing Webmaster Tools (Purana Site Delete karein):**
   - [x] Bing Webmaster me purana domain removed; sirf `chittortech.in/` active hai.
 - [x] **3. Yandex Webmaster (Purana Site Delete karein):**
@@ -47,10 +47,10 @@ Aapko purana sara data aur properties band karni hain taaki naya system clean ra
 - [x] **4. Google Analytics 4 (Purani Property Trash karein):**
   - [x] Naya fresh account aur stream banaya (`ChittorTech.in Website` / `G-CYREXRYVLN`).
 - [ ] **5. Firebase Console (`Chittor-Tech`):**
-  - [ ] **Hosting:** Custom Domains list me `chittortech.online` aur `www.chittortech.online` ke 3 dots par click karke **"Delete domain"** kar dein.
-  - [ ] **Authentication:** Settings ➔ **Authorised domains** me se `chittortech.online` ko remove kar dein.
+  - [ ] **Hosting:** Custom Domains list me `chittortech.in` aur `www.chittortech.in` ke 3 dots par click karke **"Delete domain"** kar dein.
+  - [ ] **Authentication:** Settings ➔ **Authorised domains** me se `chittortech.in` ko remove kar dein.
 - [x] **6. Cloudflare:**
-  - [x] `chittortech.online` removed from active domains list; `chittortech.in` active.
+  - [x] `chittortech.in` removed from active domains list; `chittortech.in` active.
 
 ---
 

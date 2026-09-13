@@ -1130,7 +1130,7 @@ export default function CloudflareMasterclassPage() {
             ChittorTech engineers your cloud deployment with unmatched performance.
           </p>
           <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" className="cf-btn-primary">
+            <Link href="/contact-us" className="cf-btn-primary">
               Book a Free Architecture Consultation &rarr;
             </Link>
             <Link href="/" className="cf-btn-secondary">

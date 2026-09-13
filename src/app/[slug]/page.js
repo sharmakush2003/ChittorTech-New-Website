@@ -4,8 +4,25 @@ import path from "path";
 import DynamicBlogClient from "./DynamicBlogClient";
 import cityServices from "@/data/cityServices.json";
 import blogPosts from "@/data/blogPosts.json";
+import { notFound } from "next/navigation";
 
 export const dynamicParams = false;
+
+const blockedRetailSlugs = new Set([
+  'pos', 'supermarket', 'hypermarket', 'departmental-store', 'departmental-hypermarket-store',
+  'grocery-store', 'kirana-store', 'garments', 'footwear-store', 'boutique-store', 'bridal-store',
+  'textile', 'readymade-garment', 'pharma', 'cosmetic-store', 'imitation-jewellery', 'hardware-store',
+  'hardware-shopping-store', 'home-decor-furniture', 'pet-shop', 'book-store', 'gift-shop',
+  'gift-toy-sports-shop', 'toy-store', 'sports-shop', 'fruits-vegetable-shop', 'liquor-store',
+  'convenience-store', 'minimart', 'retaile-store', 'shopping-mall', 'stationery-store', 'consumer-goods'
+]);
+
+const isBlockedSlug = (s) => {
+  if (!s) return true;
+  if (blockedRetailSlugs.has(s)) return true;
+  if (s.includes('pos-billing') || s.includes('supermarket-grocery') || s.includes('garment-textile')) return true;
+  return false;
+};
 
 // Helper to convert slug to clean title
 const getCleanTitle = (s) => {
@@ -26,6 +43,9 @@ const getCleanTitle = (s) => {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+  if (isBlockedSlug(slug)) {
+    notFound();
+  }
   const service = cityServices[slug];
 
   if (service) {
@@ -197,8 +217,8 @@ export async function generateStaticParams() {
       // Extract the slug after the domain
       const slugPath = url.replace("https://chittortech.in/", "").replace(/^\//, "");
       
-      // Skip empty, main routes, inquiry forms, and cities sub-routes
-      if (!slugPath || skipRoutes.has(slugPath) || slugPath.startsWith("cities/") || slugPath.startsWith("pos_bill/") || slugPath.includes("<") || slugPath.includes(">")) {
+      // Skip empty, blocked retail/pos, main routes, inquiry forms, and cities sub-routes
+      if (!slugPath || isBlockedSlug(slugPath) || skipRoutes.has(slugPath) || slugPath.startsWith("cities/") || slugPath.startsWith("pos_bill/") || slugPath.includes("<") || slugPath.includes(">")) {
         continue;
       }
 
@@ -214,6 +234,9 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const { slug } = await params;
+  if (isBlockedSlug(slug)) {
+    notFound();
+  }
   const cleanTitle = getCleanTitle(slug);
 
   return <DynamicBlogClient slug={slug} cleanTitle={cleanTitle} />;

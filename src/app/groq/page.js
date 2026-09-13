@@ -1143,10 +1143,10 @@ export default function GroqMasterclassPage() {
             and enterprise RAG systems tailored to your business goals.
           </p>
           <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" className="groq-btn-primary">
+            <Link href="/contact-us" className="groq-btn-primary">
               Book a Free AI Consultation &rarr;
             </Link>
-            <Link href="/ai-solutions" className="groq-btn-secondary">
+            <Link href="/ai-chatbot-development" className="groq-btn-secondary">
               Explore Enterprise AI Solutions
             </Link>
           </div>
