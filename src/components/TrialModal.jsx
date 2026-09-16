@@ -58,39 +58,89 @@ export default function TrialModal() {
     const trialModalEl = document.getElementById("trialModal");
     if (!trialModalEl) return;
 
-    // Check if submitted (session storage or local storage)
-    const wasSubmitted = 
-      sessionStorage.getItem("trial_modal_submitted") === "true" || 
-      localStorage.getItem("trial_modal_submitted_at") ||
-      isSubmitted;
-    if (wasSubmitted) {
-      return; // Do absolutely nothing if already submitted
-    }
-
-    let popupCount = parseInt(localStorage.getItem("trial_popup_count")) || 0;
     const maxPopups = 3;
     let timerId = null;
     let startTime = null;
     let remainingTime = 0;
 
+    function getAutoPopupCount() {
+      try {
+        const local = parseInt(localStorage.getItem("trial_popup_count"), 10) || 0;
+        const session = parseInt(sessionStorage.getItem("trial_popup_count"), 10) || 0;
+        return Math.max(local, session);
+      } catch (e) {
+        return 0;
+      }
+    }
+
+    function recordAutoPopupShow() {
+      try {
+        const nextCount = getAutoPopupCount() + 1;
+        localStorage.setItem("trial_popup_count", nextCount.toString());
+        sessionStorage.setItem("trial_popup_count", nextCount.toString());
+        if (nextCount >= maxPopups) {
+          localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
+          sessionStorage.setItem("trial_modal_max_reached", "true");
+        }
+        return nextCount;
+      } catch (e) {
+        return 1;
+      }
+    }
+
     function shouldShowModal() {
-      if (
-        sessionStorage.getItem("trial_modal_submitted") === "true" || 
-        localStorage.getItem("trial_modal_submitted_at") ||
-        isSubmitted
-      ) return false;
-      const lastDismissed = localStorage.getItem("trial_modal_dismissed_v2_at");
-      if (!lastDismissed) return true;
-      const twoDaysInMs = 2 * 24 * 60 * 60 * 1000;
-      return Date.now() - parseInt(lastDismissed) > twoDaysInMs;
+      try {
+        // 1. If form was submitted in session or past 7 days -> NEVER show
+        if (
+          sessionStorage.getItem("trial_modal_submitted") === "true" || 
+          isSubmitted
+        ) return false;
+
+        const subAt = localStorage.getItem("trial_modal_submitted_at");
+        if (subAt && Date.now() - parseInt(subAt, 10) <= 7 * 24 * 60 * 60 * 1000) {
+          return false;
+        }
+
+        // 2. If max popups reached in session -> NEVER show
+        if (sessionStorage.getItem("trial_modal_max_reached") === "true") {
+          return false;
+        }
+
+        // 3. If popup count is already 3 or more -> NEVER show
+        const count = getAutoPopupCount();
+        if (count >= maxPopups) {
+          return false;
+        }
+
+        // 4. If dismissed recently (checkbox or 3-count max) -> 2 days silence
+        const lastDismissed = localStorage.getItem("trial_modal_dismissed_v2_at");
+        if (lastDismissed) {
+          const twoDaysInMs = 2 * 24 * 60 * 60 * 1000;
+          if (Date.now() - parseInt(lastDismissed, 10) <= twoDaysInMs) {
+            return false;
+          } else {
+            // 2 days have elapsed since dismissal -> reset counter for fresh cycle
+            localStorage.removeItem("trial_modal_dismissed_v2_at");
+            localStorage.setItem("trial_popup_count", "0");
+            sessionStorage.removeItem("trial_popup_count");
+            sessionStorage.removeItem("trial_modal_max_reached");
+          }
+        }
+
+        // 5. Short cool-down so route navigation right after closing doesn't trigger immediate popup
+        const lastClosedAt = sessionStorage.getItem("trial_modal_last_closed_at");
+        if (lastClosedAt && Date.now() - parseInt(lastClosedAt, 10) < 8000) {
+          return false;
+        }
+
+        return true;
+      } catch (e) {
+        return false;
+      }
     }
 
     function showModal(isAuto = false) {
-      if (
-        sessionStorage.getItem("trial_modal_submitted") === "true" || 
-        localStorage.getItem("trial_modal_submitted_at") ||
-        isSubmitted
-      ) return;
+      if (!shouldShowModal() && isAuto) return;
 
       const triggerShow = () => {
         if (window.bootstrap && window.bootstrap.Modal) {
@@ -116,44 +166,32 @@ export default function TrialModal() {
       }
     }
 
+    function isInteractingWithNav() {
+      return !!document.querySelector('.ct-drop.open, .ct-nav-btn.open, .ct-mobile-drawer.open, .dropdown-menu.show');
+    }
+
     function startTimer(delay) {
       clearTimer();
       startTime = Date.now();
       remainingTime = delay;
 
       timerId = setTimeout(() => {
+        timerId = null;
+        if (typeof document !== "undefined" && document.hidden) {
+          // Tab is currently in background; do not fire in background
+          return;
+        }
+        if (isInteractingWithNav()) {
+          // User is exploring header dropdowns (AI Solutions, etc.); postpone by 6 seconds
+          startTimer(6000);
+          return;
+        }
         const isAnyModalShow = document.querySelector(".modal.show");
         if (!isAnyModalShow && shouldShowModal()) {
           showModal(true);
-          popupCount++;
-          localStorage.setItem("trial_popup_count", popupCount.toString());
+          recordAutoPopupShow();
         }
-        timerId = null;
       }, remainingTime);
-    }
-
-    function pauseTimer() {
-      if (timerId) {
-        clearTimeout(timerId);
-        timerId = null;
-        remainingTime -= Date.now() - startTime;
-        if (remainingTime < 0) remainingTime = 0;
-      }
-    }
-
-    function resumeTimer() {
-      if (remainingTime > 0 && !timerId) {
-        startTime = Date.now();
-        timerId = setTimeout(() => {
-          const isAnyModalShow = document.querySelector(".modal.show");
-          if (!isAnyModalShow && shouldShowModal()) {
-            showModal(true);
-            popupCount++;
-            localStorage.setItem("trial_popup_count", popupCount.toString());
-          }
-          timerId = null;
-        }, remainingTime);
-      }
     }
 
     function clearTimer() {
@@ -165,19 +203,24 @@ export default function TrialModal() {
     }
 
     function scheduleNext() {
-      if (
-        popupCount >= maxPopups || 
-        sessionStorage.getItem("trial_modal_submitted") === "true" || 
-        localStorage.getItem("trial_modal_submitted_at") ||
-        isSubmitted || 
-        !shouldShowModal()
-      ) return;
+      if (!shouldShowModal()) return;
+
+      const currentCount = getAutoPopupCount();
+      if (currentCount >= maxPopups) {
+        clearTimer();
+        return;
+      }
       
-      let delay = 2500; // 2.5s delay + 2.5s PageSpeed mount delay = 5 seconds total from page load
-      if (popupCount === 1) {
-        delay = 10000; // 10 seconds after 1st close
-      } else if (popupCount === 2) {
-        delay = 15000; // 15 seconds after 2nd close
+      // Delay intervals as requested:
+      // Show 1 (count 0): 5 seconds after page load
+      // Show 2 (count 1): 10 seconds after 1st close
+      // Show 3 (count 2): 15 seconds after 2nd close
+      // Show 4+ (count 3+): NEVER
+      let delay = 5000;
+      if (currentCount === 1) {
+        delay = 10000;
+      } else if (currentCount === 2) {
+        delay = 15000;
       }
 
       startTimer(delay);
@@ -189,9 +232,13 @@ export default function TrialModal() {
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        pauseTimer();
+        // Clear active timers when switching away to prevent background accumulation
+        clearTimer();
       } else {
-        resumeTimer();
+        // Tab restored: if popups are not exhausted and user hasn't dismissed, give an 8s calm buffer
+        if (shouldShowModal() && getAutoPopupCount() < maxPopups) {
+          startTimer(8000);
+        }
       }
     };
 
@@ -200,24 +247,35 @@ export default function TrialModal() {
     const onHideModal = () => {
       const isChecked = document.getElementById("dontShowTrial")?.checked;
       if (isChecked) {
-        localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
+        try {
+          localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
+          sessionStorage.setItem("trial_modal_max_reached", "true");
+        } catch (e) {}
         clearTimer();
       }
     };
 
     const onHiddenModal = () => {
       setDontShow(false);
-      if (
-        sessionStorage.getItem("trial_modal_submitted") === "true" || 
-        localStorage.getItem("trial_modal_submitted_at") ||
-        isSubmitted
-      ) {
+      try {
+        sessionStorage.setItem("trial_modal_last_closed_at", Date.now().toString());
+      } catch (e) {}
+
+      const wasAuto = trialModalEl.getAttribute("data-auto-opened") === "true";
+      trialModalEl.removeAttribute("data-auto-opened");
+
+      const currentCount = getAutoPopupCount();
+      // If reached maximum of 3 popups, automatically silence for 2 days
+      if (currentCount >= maxPopups) {
+        try {
+          localStorage.setItem("trial_modal_dismissed_v2_at", Date.now().toString());
+          sessionStorage.setItem("trial_modal_max_reached", "true");
+        } catch (e) {}
         clearTimer();
         return;
       }
-      const wasAuto = trialModalEl.getAttribute("data-auto-opened") === "true";
-      trialModalEl.removeAttribute("data-auto-opened");
-      if (wasAuto) {
+
+      if (wasAuto && shouldShowModal()) {
         scheduleNext();
       }
     };
