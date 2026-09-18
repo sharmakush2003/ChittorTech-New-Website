@@ -8,6 +8,7 @@
 - **Headquarters**: Chittorgarh, Rajasthan, India
 - **Recognition**: Recognized by iStart Rajasthan (Department of Information Technology & Communication, Govt. of Rajasthan)
 - **Primary Domain**: Information Technology Services, Custom Software Development, Web & Mobile Engineering, Cloud Solutions
+- **Wikidata Entity**: https://www.wikidata.org/wiki/Q141496655
 
 ## Core Competencies & Services
 - **Custom Web Development**: High-performance, SEO-optimized web applications built with Next.js, React, Node.js, and modern full-stack architectures.

@@ -224,6 +224,7 @@ export default function RootLayout({ children }) {
                 ]
               },
               "sameAs": [
+                "https://www.wikidata.org/wiki/Q141496655",
                 "https://www.linkedin.com/company/chittortech",
                 "https://maps.google.com/?q=ChittorTech+Chittorgarh",
                 "https://istart.rajasthan.gov.in/profile/11478/startups",
