@@ -31,7 +31,18 @@
 
 ---
 
+## 📦 Daily URL Submission Batches Tracked
+
+| Batch Date | URLs Count | Protocol | File / Reference | Remaining to Submit |
+| :--- | :---: | :---: | :--- | :---: |
+| **18-Sep-2026** | 100 | `https://` | [bing_100_urls.txt](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/bing_100_urls.txt) | 661 |
+
+> **Master JSON Tracker:** [SEO-History/submitted_history.json](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/SEO-History/submitted_history.json) (Ensures 0 duplicate submissions on future runs).
+
+---
+
 ## 📈 Next Review Check (48 to 72 Hours)
 - [ ] Check Bing URL Inspection for `https://chittortech.in/` (Indexed status).
 - [ ] Test on Bing Search: `site:chittortech.in`
 - [ ] Verify Bing IndexNow activation.
+

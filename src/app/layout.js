@@ -115,34 +115,111 @@ export default function RootLayout({ children }) {
           }
           .sub-menu, .mega-menu { z-index: 10000 !important; }
         `}</style>
-        {/* B2B Generative Engine Optimization (GEO) Schema Markup */}
+        {/* B2B Generative Engine Optimization (GEO) & AEO Schema Markup */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": ["Organization", "ITService", "ProfessionalService"],
               "name": "ChittorTech",
+              "legalName": "ChittorTech",
               "url": "https://chittortech.in",
               "logo": "https://chittortech.in/favicon.png",
-              "description": "Transforming businesses through innovative, cloud-based software solutions. AI & IT Solutions, AI Knowledge Base, AI Support Chatbot and website development.",
+              "image": "https://chittortech.in/favicon.png",
+              "description": "ChittorTech is a premier IT services, mobile app and custom software development company based in Chittorgarh, Rajasthan, India, delivering high-performance Next.js web applications, enterprise cloud ERPs, and AI solutions to clients across India and globally including the United States.",
               "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Chittorgarh",
                 "addressLocality": "Chittorgarh",
                 "addressRegion": "Rajasthan",
+                "postalCode": "312001",
                 "addressCountry": "IN"
               },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+91-7597451057",
-                "contactType": "sales",
-                "areaServed": "IN",
-                "availableLanguage": ["en", "hi"]
+              "telephone": "+91-7597451057",
+              "email": "info@chittortech.in",
+              "priceRange": "$$",
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-7597451057",
+                  "contactType": "sales",
+                  "areaServed": ["IN", "US", "GB", "AE", "Global"],
+                  "availableLanguage": ["en", "hi"]
+                },
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-7597451057",
+                  "contactType": "customer support",
+                  "areaServed": ["IN", "US", "GB", "AE", "Global"],
+                  "availableLanguage": ["en", "hi"]
+                }
+              ],
+              "areaServed": [
+                { "@type": "AdministrativeArea", "name": "Rajasthan" },
+                { "@type": "Country", "name": "India" },
+                { "@type": "Country", "name": "United States" },
+                { "@type": "Country", "name": "United Kingdom" },
+                { "@type": "Country", "name": "United Arab Emirates" }
+              ],
+              "knowsAbout": [
+                "Custom Software Development",
+                "Web Application Development",
+                "Mobile App Development",
+                "Next.js Development",
+                "React Development",
+                "Full Stack Development",
+                "Cloud Solutions",
+                "Enterprise ERP & CRM Software",
+                "Property Management Systems (PMS)",
+                "Temple Management Systems",
+                "Artificial Intelligence Chatbots & Automation",
+                "IT Consulting & Offshore Software Development",
+                "Top IT Companies in Rajasthan"
+              ],
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "ChittorTech IT Services",
+                "itemListElement": [
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Custom Web Development",
+                      "description": "High-speed, scalable web applications built with Next.js, React, and Node.js."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Mobile Application Development",
+                      "description": "Cross-platform and native mobile apps for iOS and Android using Flutter and React Native."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Enterprise Cloud Software & ERP",
+                      "description": "Bespoke business software including Hotel PMS, Temple ERP, and CRM solutions."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "AI & Chatbot Engineering",
+                      "description": "Custom conversational AI, intelligent support agents, and workflow automation."
+                    }
+                  }
+                ]
               },
               "sameAs": [
                 "https://www.linkedin.com/company/chittortech",
                 "https://maps.google.com/?q=ChittorTech+Chittorgarh",
-                "https://istart.rajasthan.gov.in/profile/11478/startups"
+                "https://istart.rajasthan.gov.in/profile/11478/startups",
+                "https://github.com/sharmakush2003"
               ]
             })
           }}

@@ -1,0 +1,50 @@
+# ChittorTech
+
+> ChittorTech (https://chittortech.in) is a premier IT services, software engineering, and digital solutions company based in Chittorgarh, Rajasthan, India. We design, build, and deploy custom web applications, mobile apps, enterprise cloud software, and AI-driven business tools for startups, mid-market businesses, and enterprises worldwide, with special focus on clients across India, the United States, the UK, and the Middle East.
+
+## Company Overview
+- **Legal Name**: ChittorTech
+- **Website**: https://chittortech.in
+- **Headquarters**: Chittorgarh, Rajasthan, India
+- **Recognition**: Recognized by iStart Rajasthan (Department of Information Technology & Communication, Govt. of Rajasthan)
+- **Primary Domain**: Information Technology Services, Custom Software Development, Web & Mobile Engineering, Cloud Solutions
+
+## Core Competencies & Services
+- **Custom Web Development**: High-performance, SEO-optimized web applications built with Next.js, React, Node.js, and modern full-stack architectures.
+- **Mobile Application Development**: Native and cross-platform iOS and Android apps using Flutter and React Native.
+- **Enterprise Software & ERP**: Scalable cloud ERPs, CRM platforms, accounting software, and workflow automation.
+- **Specialized Industry Solutions**:
+  - Cloud Property Management Systems (PMS) & Hotel Management Software
+  - Temple Management Systems & Religious Trust Administrative ERPs
+  - Educational Institute & School Management Portals
+  - E-commerce & Multi-vendor Marketplace Platforms
+- **AI & Intelligent Automation**: Enterprise AI support chatbots, conversational knowledge bases, automated customer support workflows, and predictive analytics.
+- **UI/UX Engineering**: User-centric product design, design systems, modern responsive interfaces, and interactive dashboards.
+
+## Target Audience & Geographic Reach
+- **Headquarters & Local Hub**: Chittorgarh, Udaipur, Jaipur, Bhilwara, Kota, Jodhpur, and across Rajasthan, India.
+- **National Delivery**: Pan-India technology partner for businesses modernizing their digital infrastructure.
+- **Global / Offshore Outsourcing**: Trusted offshore engineering partner for clients in the United States (US), United Kingdom (UK), Canada, Australia, and the UAE seeking high-quality, cost-effective engineering talent.
+
+## Technology Stack
+- **Frontend**: Next.js, React.js, Tailwind CSS, TypeScript, HTML5/CSS3, GSAP.
+- **Backend & APIs**: Node.js, Express, Python, Django, REST APIs, GraphQL.
+- **Databases**: PostgreSQL, MySQL, MongoDB, Firebase Firestore, Redis.
+- **Cloud & DevOps**: AWS, Google Cloud Platform (GCP), Vercel, Firebase Hosting, CI/CD pipelines.
+- **Mobile**: Flutter, React Native, iOS (Swift), Android (Kotlin).
+
+## Key Links & Resources
+- **Homepage**: https://chittortech.in
+- **Web Development Services**: https://chittortech.in/web-development-services
+- **Mobile App Development**: https://chittortech.in/mobile-application-development
+- **Custom Software Development**: https://chittortech.in/custom-software-development
+- **Cloud PMS & Hotel ERP**: https://chittortech.in/property-management-system
+- **Temple Management System**: https://chittortech.in/temple-management-system
+- **Accounting & Billing Software**: https://chittortech.in/accounting
+- **CRM Software Solutions**: https://chittortech.in/crm
+- **Contact & Project Inquiries**: https://chittortech.in/contact
+
+## Contact Information
+- **Phone / WhatsApp**: +91-7597451057
+- **Email**: info@chittortech.in
+- **Address**: Chittorgarh, Rajasthan, 312001, India

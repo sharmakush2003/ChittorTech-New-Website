@@ -44,4 +44,18 @@ scratch/
 *.bat
 htdocs.lnk
 WHATSAPP_META_API_ROADMAP.md
+CHITTORTECH_API_TRACKER.md
 
+# local batch and indexing files
+/*_urls.txt
+/*_batch.txt
+yandex_*.txt
+bing_*.txt
+
+# local utility scripts (keep generate-sitemap.js and ensure-dual-routes.js for CI/CD build)
+scripts/generate-daily-indexing-batch.js
+scripts/build-and-verify-sitemap.js
+scripts/build-indexing-tracker.js
+scripts/generate-rich-technologies.js
+scripts/generate-technologies-data.js
+scripts/local-*

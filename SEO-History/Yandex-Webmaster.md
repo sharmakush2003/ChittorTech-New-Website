@@ -31,7 +31,19 @@
 
 ---
 
+## 📦 Daily Reindex Batches Tracked
+
+| Batch Date | URLs Count | Protocol | File / Reference | Remaining to Submit |
+| :--- | :---: | :---: | :--- | :---: |
+| **17-Sep-2026** | 3 | `http://` | Initial test queue (Dausa, Jhalawar, Jodhpur) | 758 |
+| **18-Sep-2026** | 150 | `http://` | [yandex_150_urls.txt](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/yandex_150_urls.txt) | 608 |
+
+> **Master JSON Tracker:** [SEO-History/submitted_history.json](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/SEO-History/submitted_history.json) (Ensures 0 duplicate submissions on future runs).
+
+---
+
 ## 📈 Next Review Check (48 to 72 Hours)
 - [ ] Check Indexing ➔ Searchable pages in Yandex Webmaster.
 - [ ] Test on Yandex: `site:chittortech.in`
 - [ ] Record date when SQI (Site Quality Index) begins calculating.
+
