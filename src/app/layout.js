@@ -143,12 +143,13 @@ export default function RootLayout({ children }) {
                 "addressCountry": "IN"
               },
               "telephone": "+91-7597451057",
-              "email": "info@chittortech.in",
+              "email": "contact@chittortech.in",
               "priceRange": "$$",
               "contactPoint": [
                 {
                   "@type": "ContactPoint",
                   "telephone": "+91-7597451057",
+                  "email": "business@chittortech.in",
                   "contactType": "sales",
                   "areaServed": ["IN", "US", "GB", "AE", "Global"],
                   "availableLanguage": ["en", "hi"]
@@ -156,6 +157,7 @@ export default function RootLayout({ children }) {
                 {
                   "@type": "ContactPoint",
                   "telephone": "+91-7597451057",
+                  "email": "contact@chittortech.in",
                   "contactType": "customer support",
                   "areaServed": ["IN", "US", "GB", "AE", "Global"],
                   "availableLanguage": ["en", "hi"]
