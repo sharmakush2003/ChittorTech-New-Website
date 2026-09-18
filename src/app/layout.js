@@ -18,16 +18,16 @@ import SliderInitializer from "@/components/SliderInitializer";
 export const metadata = {
   metadataBase: new URL("https://chittortech.in"),
   title: {
-    default: "ChittorTech™ | Leading IT Services, Mobile App & Web Development Company",
+    default: "ChittorTech | IT Services, Web & Mobile App Development",
     template: "%s | ChittorTech",
   },
-  description: "ChittorTech is a premier IT & Software company in India specializing in custom Mobile App Development, Web Development, Cloud PMS, Temple Management Systems, and Enterprise AI Solutions.",
+  description: "ChittorTech is a premier IT company in India specializing in custom mobile apps, web development, cloud ERP, and enterprise AI software solutions.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "ChittorTech™ | Leading IT Services, Mobile App & Web Development Company",
-    description: "ChittorTech is a premier IT & Software company in India specializing in custom Mobile App Development, Web Development, Cloud PMS, Temple Management Systems, and Enterprise AI Solutions.",
+    title: "ChittorTech | IT Services, Web & Mobile App Development",
+    description: "ChittorTech is a premier IT company in India specializing in custom mobile apps, web development, cloud ERP, and enterprise AI software solutions.",
     url: "https://chittortech.in",
     siteName: "ChittorTech",
     locale: "en_IN",
@@ -43,8 +43,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ChittorTech™ | Leading IT Services, Mobile App & Web Development Company",
-    description: "ChittorTech is a premier IT & Software company in India specializing in custom Mobile App Development, Web Development, Cloud PMS, Temple Management Systems, and Enterprise AI Solutions.",
+    title: "ChittorTech | IT Services, Web & Mobile App Development",
+    description: "ChittorTech is a premier IT company in India specializing in custom mobile apps, web development, cloud ERP, and enterprise AI software solutions.",
     images: ["/favicon.png"],
   },
   robots: {
