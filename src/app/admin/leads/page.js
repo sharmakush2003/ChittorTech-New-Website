@@ -106,12 +106,35 @@ export default function AdminLeadsPage() {
   const [leadNotes, setLeadNotes] = useState("");
   const [savingNotes, setSavingNotes] = useState(false);
 
-  // Check auth from session: tab close terminates sessionStorage, but reload preserves it
+  // Security Lockout states (Stored in sessionStorage to prevent refresh bypass)
+  const [lockoutMsg, setLockoutMsg] = useState("");
+
+  const checkSecurityLockout = () => {
+    try {
+      const lockUntil = sessionStorage.getItem("ct_sec_lockout_until");
+      if (lockUntil && Number(lockUntil) > Date.now()) {
+        const remainingSec = Math.ceil((Number(lockUntil) - Date.now()) / 1000);
+        const remainingMin = Math.ceil(remainingSec / 60);
+        return `Security Lockout Active: Too many failed attempts. Please wait ${remainingMin} minute(s).`;
+      }
+    } catch (e) {}
+    return "";
+  };
+
+  // Check auth from session: tab close terminates sessionStorage, max 8-hour session lifetime
   useEffect(() => {
     try {
-      const authSession = sessionStorage.getItem("chittortech_admin_auth");
-      if (authSession === "true" || (authSession && authSession.length > 5)) {
+      const token = sessionStorage.getItem("chittortech_admin_auth");
+      const authTime = sessionStorage.getItem("chittortech_admin_auth_time");
+      const maxAgeMs = 8 * 60 * 60 * 1000; // 8 hours session expiry
+
+      if (token && authTime && (Date.now() - Number(authTime) < maxAgeMs)) {
         setIsAuthenticated(true);
+      } else if (token) {
+        // Expired or invalid session
+        sessionStorage.removeItem("chittortech_admin_auth");
+        sessionStorage.removeItem("chittortech_admin_auth_time");
+        setIsAuthenticated(false);
       }
     } catch (e) {
       console.warn("Session check error:", e);
@@ -120,12 +143,18 @@ export default function AdminLeadsPage() {
     }
   }, []);
 
-  // Step 1: Validate Access Key & Captcha, then trigger server-side 2FA OTP
-  // (Zero OTP or email leakage in client inspect / console / network)
+  // Step 1: Validate Access Key & Captcha, with Brute-Force Lockout (5 failed attempts = 10m lock)
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoginLoading(true);
     setLoginError("");
+
+    const activeLockout = checkSecurityLockout();
+    if (activeLockout) {
+      setLoginError(activeLockout);
+      setLoginLoading(false);
+      return;
+    }
 
     if (captchaInput.trim().toUpperCase() !== captchaCode) {
       setLoginError("Verification code (CAPTCHA) is incorrect. Please try again.");
@@ -136,6 +165,11 @@ export default function AdminLeadsPage() {
 
     const correctKey = process.env.NEXT_PUBLIC_ADMIN_ACCESS_KEY || "255856";
     if (passcode.trim() === correctKey) {
+      // Reset failed key attempts on success
+      try {
+        sessionStorage.removeItem("ct_key_failed_count");
+      } catch (e) {}
+
       try {
         if (SCRIPT_URL) {
           await fetch(SCRIPT_URL, {
@@ -157,7 +191,21 @@ export default function AdminLeadsPage() {
         setTimeout(() => otpRefs.current[0]?.focus(), 150);
       }
     } else {
-      setLoginError("Incorrect access key. Please verify your credentials.");
+      // Brute-force rate limiting: 5 failed attempts locks for 10 minutes
+      let count = 1;
+      try {
+        count = Number(sessionStorage.getItem("ct_key_failed_count") || 0) + 1;
+        sessionStorage.setItem("ct_key_failed_count", count.toString());
+        if (count >= 5) {
+          sessionStorage.setItem("ct_sec_lockout_until", (Date.now() + 10 * 60 * 1000).toString());
+          setLoginError("Security Alert: 5 incorrect access key attempts. Terminal locked for 10 minutes.");
+          generateCaptcha();
+          setLoginLoading(false);
+          return;
+        }
+      } catch (e) {}
+
+      setLoginError(`Incorrect access key. (${5 - count} attempt(s) remaining before security lockout).`);
       generateCaptcha();
       setLoginLoading(false);
     }
@@ -229,6 +277,12 @@ export default function AdminLeadsPage() {
 
   // Validate OTP securely via Google Apps Script (Zero client-side OTP storage)
   const handleVerifyOtp = async () => {
+    const activeLockout = checkSecurityLockout();
+    if (activeLockout) {
+      setOtpError(activeLockout);
+      return;
+    }
+
     const code = otpDigits.join("");
     if (code.length < 6) {
       setOtpError("Please enter the complete 6-digit verification code.");
@@ -249,13 +303,31 @@ export default function AdminLeadsPage() {
       const data = await res.json();
       if (data && data.verified === true) {
         setOtpSuccess(true);
-        sessionStorage.setItem("chittortech_admin_auth", data.token || "true");
+        try {
+          sessionStorage.removeItem("ct_otp_failed_count");
+          sessionStorage.removeItem("ct_sec_lockout_until");
+        } catch (e) {}
+        sessionStorage.setItem("chittortech_admin_auth", data.token || "ct_auth_" + Date.now());
+        sessionStorage.setItem("chittortech_admin_auth_time", Date.now().toString());
         setTimeout(() => {
           setIsAuthenticated(true);
           setOtpLoading(false);
         }, 700);
       } else {
-        setOtpError(data?.msg || "Incorrect verification code. Please check your email and try again.");
+        let count = 1;
+        try {
+          count = Number(sessionStorage.getItem("ct_otp_failed_count") || 0) + 1;
+          sessionStorage.setItem("ct_otp_failed_count", count.toString());
+          if (count >= 3) {
+            sessionStorage.setItem("ct_sec_lockout_until", (Date.now() + 10 * 60 * 1000).toString());
+            setOtpError("Security Lockout: 3 incorrect verification attempts. Terminal locked for 10 minutes.");
+            setOtpDigits(["", "", "", "", "", ""]);
+            setOtpLoading(false);
+            return;
+          }
+        } catch (e) {}
+
+        setOtpError(`Incorrect verification code. (${3 - count} attempt(s) remaining before security lockout).`);
         setOtpDigits(["", "", "", "", "", ""]);
         setOtpLoading(false);
         otpRefs.current[0]?.focus();
@@ -547,67 +619,88 @@ export default function AdminLeadsPage() {
   if (!isAuthenticated) {
     return (
       <div className="ct-admin-split-container" style={loginStyles.container}>
-        {/* LEFT COLUMN: Colorful ChittorTech Showcase & Live Data (Rich & Comprehensive) */}
+        {/* LEFT COLUMN: Executive IT Enterprise Operations Overview (Authoritative, Professional & Clean) */}
         <div className="ct-admin-showcase-col" style={loginStyles.showcaseCol}>
-          {/* Top Brand Header, Live IST Clock & Badges */}
+          {/* Top Brand Header & Enclave Badge */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", flexShrink: 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <div
                 style={{
                   width: "40px",
                   height: "40px",
-                  borderRadius: "12px",
-                  background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+                  borderRadius: "10px",
+                  background: "linear-gradient(135deg, #1e293b, #0f172a)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  boxShadow: "0 4px 12px rgba(37, 99, 235, 0.25)",
+                  boxShadow: "0 4px 12px rgba(15, 23, 42, 0.25)",
                   padding: "2px",
+                  border: "1px solid #334155",
                   flexShrink: 0,
                 }}
               >
                 <img
                   src="/favicon.png"
                   alt="ChittorTech Logo"
-                  style={{ width: "30px", height: "30px", borderRadius: "8px" }}
+                  style={{ width: "26px", height: "26px", borderRadius: "6px" }}
                 />
               </div>
               <div>
-                <div style={{ fontSize: "1.2rem", fontWeight: 800, color: "#0f172a", letterSpacing: "-0.4px", lineHeight: "1.2" }}>
-                  ChittorTech<span style={{ color: "#2563eb" }}>™</span> CRM
+                <div style={{ fontSize: "1.15rem", fontWeight: 800, color: "#0f172a", letterSpacing: "-0.3px", lineHeight: "1.2" }}>
+                  ChittorTech<span style={{ color: "#2563eb" }}>™</span> Systems
                 </div>
                 <div style={{ fontSize: "0.68rem", fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "1px" }}>
-                  Enterprise Pipeline Operations
+                  Enterprise Administration Portal
                 </div>
               </div>
             </div>
 
-            {/* Enterprise Security Badge */}
+            {/* Restricted Enclave Badge */}
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <div
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "6px",
-                  background: "rgba(37, 99, 235, 0.08)",
-                  color: "#1d4ed8",
-                  fontSize: "0.72rem",
+                  background: "#f8fafc",
+                  color: "#334155",
+                  fontSize: "0.7rem",
                   fontWeight: 700,
                   padding: "5px 12px",
-                  borderRadius: "20px",
-                  border: "1px solid rgba(37, 99, 235, 0.2)",
-                  letterSpacing: "0.5px",
+                  borderRadius: "8px",
+                  border: "1px solid #cbd5e1",
+                  letterSpacing: "0.4px",
                 }}
               >
-                <i className="fas fa-shield-alt" style={{ fontSize: "10px" }}></i>
-                ENTERPRISE CONSOLE
+                <i className="fas fa-lock" style={{ fontSize: "10px", color: "#2563eb" }}></i>
+                INTERNAL ACCESS ONLY
               </div>
             </div>
           </div>
 
-          {/* Center Content: Rich Headline & Comprehensive Data Widgets */}
-          <div style={{ margin: "clamp(6px, 1.2vh, 12px) 0", flex: "1 1 auto", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div style={{ marginBottom: "clamp(6px, 1vh, 10px)" }}>
+          {/* Center Content: Authoritative Enterprise IT Operations */}
+          <div style={{ margin: "clamp(8px, 1.4vh, 14px) 0", flex: "1 1 auto", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div style={{ marginBottom: "clamp(8px, 1.2vh, 12px)" }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  background: "#eff6ff",
+                  border: "1px solid #dbeafe",
+                  color: "#1d4ed8",
+                  padding: "3px 9px",
+                  borderRadius: "6px",
+                  fontSize: "0.68rem",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.6px",
+                  marginBottom: "8px",
+                }}
+              >
+                <i className="fas fa-server" style={{ fontSize: "10px" }}></i>
+                Centralized Operations &amp; System Management
+              </div>
               <h2
                 style={{
                   fontSize: "clamp(1.2rem, 1.6vw, 1.55rem)",
@@ -615,225 +708,173 @@ export default function AdminLeadsPage() {
                   color: "#0f172a",
                   lineHeight: "1.25",
                   letterSpacing: "-0.5px",
-                  margin: "0 0 4px 0",
+                  margin: "0 0 5px 0",
                 }}
               >
-                Command Center for Customer Growth &amp; Pipeline.
+                IT Systems &amp; Client Inquiries Console.
               </h2>
-              <p style={{ color: "#64748b", fontSize: "clamp(0.74rem, 0.85vw, 0.82rem)", lineHeight: "1.4", margin: 0 }}>
-                Unified real-time multichannel ecosystem streaming customer inquiries from Web Forms, WhatsApp, Custom Software, and Marketing Campaigns.
+              <p style={{ color: "#64748b", fontSize: "clamp(0.74rem, 0.85vw, 0.82rem)", lineHeight: "1.45", margin: 0 }}>
+                Unified internal gateway for managing enterprise software consultations, client inquiries, certificate issuance, and real-time cloud data telemetry.
               </p>
             </div>
 
-            {/* 4 Colorful Data Metric Cards (2x2 Grid) */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "clamp(6px, 1vh, 10px)" }}>
-              {/* Card 1: Total Inquiries (Blue) */}
+            {/* 4 Clean Enterprise IT Operations Cards (2x2 Grid) */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "9px", marginBottom: "clamp(8px, 1.2vh, 12px)" }}>
+              {/* Card 1: Client Inquiries Stream */}
               <div
                 style={{
                   background: "#ffffff",
-                  border: "1px solid #bfdbfe",
+                  border: "1px solid #e2e8f0",
                   borderRadius: "12px",
-                  padding: "clamp(7px, 1vh, 10px) 12px",
-                  boxShadow: "0 2px 6px rgba(37,99,235,0.06)",
+                  padding: "clamp(9px, 1.2vh, 12px) 14px",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
                   position: "relative",
                   overflow: "hidden",
                 }}
               >
-                <div style={{ position: "absolute", top: 0, left: 0, width: "3.5px", height: "100%", background: "#2563eb" }} />
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
-                  <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#1e40af", textTransform: "uppercase", letterSpacing: "0.4px" }}>Total Inquiries</span>
-                  <span style={{ width: "24px", height: "24px", borderRadius: "6px", background: "#eff6ff", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <i className="fas fa-users" style={{ fontSize: "10px" }}></i>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
+                  <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#1e293b" }}>Inquiry Gateway</span>
+                  <span style={{ width: "26px", height: "26px", borderRadius: "8px", background: "#eff6ff", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <i className="fas fa-inbox" style={{ fontSize: "11px" }}></i>
                   </span>
                 </div>
-                <div style={{ fontSize: "clamp(1.15rem, 1.35vw, 1.35rem)", fontWeight: 800, color: "#0f172a", lineHeight: "1.1", marginBottom: "2px" }}>
-                  2,840+
+                <div style={{ fontSize: "0.68rem", color: "#64748b", lineHeight: "1.35", marginBottom: "6px" }}>
+                  Captures consultation requests, custom software quotes, and contact leads.
                 </div>
-                <div style={{ fontSize: "0.66rem", color: "#16a34a", fontWeight: 700, display: "flex", alignItems: "center", gap: "4px" }}>
-                  <i className="fas fa-arrow-up" style={{ fontSize: "8px" }}></i> 38.4% MoM Growth
+                <div style={{ fontSize: "0.66rem", color: "#1d4ed8", fontWeight: 700, display: "flex", alignItems: "center", gap: "5px" }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#2563eb" }} />
+                  Live Ingestion Active
                 </div>
               </div>
 
-              {/* Card 2: Deal Pipeline (Emerald) */}
+              {/* Card 2: Credential & Certificate Engine */}
               <div
                 style={{
                   background: "#ffffff",
-                  border: "1px solid #a7f3d0",
+                  border: "1px solid #e2e8f0",
                   borderRadius: "12px",
-                  padding: "clamp(7px, 1vh, 10px) 12px",
-                  boxShadow: "0 2px 6px rgba(16,185,129,0.06)",
+                  padding: "clamp(9px, 1.2vh, 12px) 14px",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
                   position: "relative",
                   overflow: "hidden",
                 }}
               >
-                <div style={{ position: "absolute", top: 0, left: 0, width: "3.5px", height: "100%", background: "#10b981" }} />
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
-                  <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#065f46", textTransform: "uppercase", letterSpacing: "0.4px" }}>Pipeline Volume</span>
-                  <span style={{ width: "24px", height: "24px", borderRadius: "6px", background: "#ecfdf5", color: "#059669", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <i className="fas fa-chart-line" style={{ fontSize: "10px" }}></i>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
+                  <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#1e293b" }}>Credential Engine</span>
+                  <span style={{ width: "26px", height: "26px", borderRadius: "8px", background: "#ecfdf5", color: "#059669", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <i className="fas fa-award" style={{ fontSize: "11px" }}></i>
                   </span>
                 </div>
-                <div style={{ fontSize: "clamp(1.15rem, 1.35vw, 1.35rem)", fontWeight: 800, color: "#0f172a", lineHeight: "1.1", marginBottom: "2px" }}>
-                  ₹4.82 Cr+
+                <div style={{ fontSize: "0.68rem", color: "#64748b", lineHeight: "1.35", marginBottom: "6px" }}>
+                  Administrative management and issuance of official training certificates.
                 </div>
-                <div style={{ fontSize: "0.66rem", color: "#059669", fontWeight: 700 }}>
-                  Active High-Intent Deals
+                <div style={{ fontSize: "0.66rem", color: "#059669", fontWeight: 700, display: "flex", alignItems: "center", gap: "5px" }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#10b981" }} />
+                  Engine Operational
                 </div>
               </div>
 
-              {/* Card 3: Speed-to-Lead (Purple) */}
+              {/* Card 3: Cloud Database Sync */}
               <div
                 style={{
                   background: "#ffffff",
-                  border: "1px solid #ddd6fe",
+                  border: "1px solid #e2e8f0",
                   borderRadius: "12px",
-                  padding: "clamp(7px, 1vh, 10px) 12px",
-                  boxShadow: "0 2px 6px rgba(124,58,237,0.06)",
+                  padding: "clamp(9px, 1.2vh, 12px) 14px",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
                   position: "relative",
                   overflow: "hidden",
                 }}
               >
-                <div style={{ position: "absolute", top: 0, left: 0, width: "3.5px", height: "100%", background: "#7c3aed" }} />
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
-                  <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#5b21b6", textTransform: "uppercase", letterSpacing: "0.4px" }}>Response Velocity</span>
-                  <span style={{ width: "24px", height: "24px", borderRadius: "6px", background: "#f5f3ff", color: "#7c3aed", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <i className="fas fa-bolt" style={{ fontSize: "10px" }}></i>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
+                  <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#1e293b" }}>Firestore Cloud Sync</span>
+                  <span style={{ width: "26px", height: "26px", borderRadius: "8px", background: "#f5f3ff", color: "#7c3aed", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <i className="fas fa-database" style={{ fontSize: "11px" }}></i>
                   </span>
                 </div>
-                <div style={{ fontSize: "clamp(1.15rem, 1.35vw, 1.35rem)", fontWeight: 800, color: "#0f172a", lineHeight: "1.1", marginBottom: "2px" }}>
-                  &lt; 12 Mins
+                <div style={{ fontSize: "0.68rem", color: "#64748b", lineHeight: "1.35", marginBottom: "6px" }}>
+                  Low-latency real-time synchronization with audit trail and CSV exports.
                 </div>
-                <div style={{ fontSize: "0.66rem", color: "#7c3aed", fontWeight: 700 }}>
-                  WhatsApp Auto-Routing
+                <div style={{ fontSize: "0.66rem", color: "#7c3aed", fontWeight: 700, display: "flex", alignItems: "center", gap: "5px" }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#8b5cf6" }} />
+                  Live Data Stream
                 </div>
               </div>
 
-              {/* Card 4: Conversion Ratio (Amber) */}
+              {/* Card 4: Zero-Trust Security */}
               <div
                 style={{
                   background: "#ffffff",
-                  border: "1px solid #fed7aa",
+                  border: "1px solid #e2e8f0",
                   borderRadius: "12px",
-                  padding: "clamp(7px, 1vh, 10px) 12px",
-                  boxShadow: "0 2px 6px rgba(245,158,11,0.06)",
+                  padding: "clamp(9px, 1.2vh, 12px) 14px",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
                   position: "relative",
                   overflow: "hidden",
                 }}
               >
-                <div style={{ position: "absolute", top: 0, left: 0, width: "3.5px", height: "100%", background: "#f59e0b" }} />
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2px" }}>
-                  <span style={{ fontSize: "0.66rem", fontWeight: 700, color: "#9a3412", textTransform: "uppercase", letterSpacing: "0.4px" }}>Win Conversion</span>
-                  <span style={{ width: "24px", height: "24px", borderRadius: "6px", background: "#fff7ed", color: "#ea580c", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <i className="fas fa-check-double" style={{ fontSize: "10px" }}></i>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "4px" }}>
+                  <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#1e293b" }}>Zero-Trust Enclave</span>
+                  <span style={{ width: "26px", height: "26px", borderRadius: "8px", background: "#fff7ed", color: "#c2410c", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <i className="fas fa-shield-alt" style={{ fontSize: "11px" }}></i>
                   </span>
                 </div>
-                <div style={{ fontSize: "clamp(1.15rem, 1.35vw, 1.35rem)", fontWeight: 800, color: "#0f172a", lineHeight: "1.1", marginBottom: "2px" }}>
-                  84.6%
+                <div style={{ fontSize: "0.68rem", color: "#64748b", lineHeight: "1.35", marginBottom: "6px" }}>
+                  Enforced dual-factor verification (2FA), encrypted sessions, and access audits.
                 </div>
-                <div style={{ fontSize: "0.66rem", color: "#c2410c", fontWeight: 700 }}>
-                  Qualified Deals Won
+                <div style={{ fontSize: "0.66rem", color: "#c2410c", fontWeight: 700, display: "flex", alignItems: "center", gap: "5px" }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#ea580c" }} />
+                  2FA Protocol Enforced
                 </div>
               </div>
             </div>
 
-            {/* ENTERPRISE CRM WORKFLOW ENGINE (Clean, Modern & Prestigious) */}
+            {/* REAL SYSTEM INFRASTRUCTURE STATUS (Authoritative IT Health Monitor) */}
             <div
               style={{
-                backgroundColor: "#ffffff",
+                backgroundColor: "#f8fafc",
                 border: "1px solid #e2e8f0",
                 borderRadius: "12px",
                 padding: "clamp(8px, 1.2vh, 12px) 14px",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.02)",
                 marginBottom: "clamp(6px, 1vh, 10px)",
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
-                <span style={{ fontSize: "0.68rem", fontWeight: 800, color: "#1e293b", textTransform: "uppercase", letterSpacing: "0.6px", display: "flex", alignItems: "center", gap: "6px" }}>
-                  <i className="fas fa-layer-group" style={{ color: "#2563eb", fontSize: "11px" }}></i>
-                  Enterprise CRM Pipeline Automation
+                <span style={{ fontSize: "0.68rem", fontWeight: 800, color: "#334155", textTransform: "uppercase", letterSpacing: "0.6px", display: "flex", alignItems: "center", gap: "6px" }}>
+                  <i className="fas fa-network-wired" style={{ color: "#2563eb", fontSize: "11px" }}></i>
+                  System Infrastructure Health
                 </span>
-                <span style={{ fontSize: "0.65rem", color: "#059669", fontWeight: 700, backgroundColor: "#ecfdf5", border: "1px solid #a7f3d0", padding: "2px 7px", borderRadius: "4px" }}>
-                  ✓ Sub-15m Routing
+                <span style={{ fontSize: "0.65rem", color: "#059669", fontWeight: 700, backgroundColor: "#ecfdf5", border: "1px solid #a7f3d0", padding: "2px 8px", borderRadius: "4px", display: "flex", alignItems: "center", gap: "4px" }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#10b981" }} />
+                  All Systems Operational
                 </span>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px" }}>
-                {/* Module 1 */}
-                <div style={{ backgroundColor: "#f8fafc", border: "1px solid #f1f5f9", borderRadius: "10px", padding: "8px 10px" }}>
-                  <div style={{ width: "24px", height: "24px", borderRadius: "6px", backgroundColor: "#eff6ff", color: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "5px" }}>
-                    <i className="fas fa-bolt" style={{ fontSize: "11px" }}></i>
-                  </div>
-                  <div style={{ fontSize: "0.74rem", fontWeight: 700, color: "#0f172a", marginBottom: "2px" }}>Instant Auto-Push</div>
-                  <div style={{ fontSize: "0.65rem", color: "#64748b", lineHeight: "1.3" }}>Real-time alerts to WhatsApp &amp; sales desks</div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px" }}>
+                <div style={{ backgroundColor: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "8px", padding: "6px 10px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: "0.68rem", color: "#64748b", fontWeight: 600 }}>Web Ingestion Services</span>
+                  <span style={{ fontSize: "0.66rem", color: "#059669", fontWeight: 700 }}>99.98% SLA</span>
                 </div>
-
-                {/* Module 2 */}
-                <div style={{ backgroundColor: "#f8fafc", border: "1px solid #f1f5f9", borderRadius: "10px", padding: "8px 10px" }}>
-                  <div style={{ width: "24px", height: "24px", borderRadius: "6px", backgroundColor: "#ecfdf5", color: "#10b981", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "5px" }}>
-                    <i className="fas fa-filter" style={{ fontSize: "11px" }}></i>
-                  </div>
-                  <div style={{ fontSize: "0.74rem", fontWeight: 700, color: "#0f172a", marginBottom: "2px" }}>Smart Qualifying</div>
-                  <div style={{ fontSize: "0.65rem", color: "#64748b", lineHeight: "1.3" }}>Lead scoring &amp; automated stage progression</div>
+                <div style={{ backgroundColor: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "8px", padding: "6px 10px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: "0.68rem", color: "#64748b", fontWeight: 600 }}>Database Sync Layer</span>
+                  <span style={{ fontSize: "0.66rem", color: "#2563eb", fontWeight: 700 }}>Active Listener</span>
                 </div>
-
-                {/* Module 3 */}
-                <div style={{ backgroundColor: "#f8fafc", border: "1px solid #f1f5f9", borderRadius: "10px", padding: "8px 10px" }}>
-                  <div style={{ width: "24px", height: "24px", borderRadius: "6px", backgroundColor: "#f5f3ff", color: "#7c3aed", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "5px" }}>
-                    <i className="fas fa-shield-alt" style={{ fontSize: "11px" }}></i>
-                  </div>
-                  <div style={{ fontSize: "0.74rem", fontWeight: 700, color: "#0f172a", marginBottom: "2px" }}>Zero-Trust Enclave</div>
-                  <div style={{ fontSize: "0.65rem", color: "#64748b", lineHeight: "1.3" }}>256-bit encryption &amp; audit access logging</div>
+                <div style={{ backgroundColor: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "8px", padding: "6px 10px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: "0.68rem", color: "#64748b", fontWeight: 600 }}>Notification API</span>
+                  <span style={{ fontSize: "0.66rem", color: "#059669", fontWeight: 700 }}>Online (Apps Script)</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Visual Multi-Channel Lead Distribution Progress Bar Widget */}
-            <div
-              style={{
-                background: "#ffffff",
-                border: "1px solid #e2e8f0",
-                borderRadius: "12px",
-                padding: "clamp(7px, 1vh, 10px) 12px",
-                boxShadow: "0 2px 6px rgba(0,0,0,0.02)",
-                marginBottom: "clamp(6px, 1vh, 10px)",
-              }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "5px" }}>
-                <span style={{ fontSize: "0.68rem", fontWeight: 700, color: "#334155", textTransform: "uppercase", letterSpacing: "0.5px" }}>
-                  <i className="fas fa-chart-pie" style={{ color: "#2563eb", marginRight: "5px" }}></i>
-                  Multi-Channel Inbound Mix
-                </span>
-                <span style={{ fontSize: "0.65rem", color: "#64748b", fontWeight: 600 }}>Active Channels</span>
-              </div>
-              {/* Segmented Color Bar */}
-              <div style={{ width: "100%", height: "6px", borderRadius: "3px", display: "flex", overflow: "hidden", marginBottom: "5px", background: "#f1f5f9" }}>
-                <div style={{ width: "42%", background: "#2563eb" }} title="Web Portals: 42%" />
-                <div style={{ width: "36%", background: "#10b981" }} title="WhatsApp: 36%" />
-                <div style={{ width: "14%", background: "#8b5cf6" }} title="Custom Software: 14%" />
-                <div style={{ width: "8%", background: "#f59e0b" }} title="Direct / Inbound: 8%" />
-              </div>
-              {/* Channel Legends */}
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.66rem", color: "#475569", fontWeight: 600, flexWrap: "wrap", gap: "4px" }}>
-                <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2563eb" }} /> Web (42%)
-                </span>
-                <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10b981" }} /> WhatsApp (36%)
-                </span>
-                <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#8b5cf6" }} /> Software (14%)
-                </span>
-                <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#f59e0b" }} /> Direct (8%)
-                </span>
+                <div style={{ backgroundColor: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "8px", padding: "6px 10px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: "0.68rem", color: "#64748b", fontWeight: 600 }}>Security Protocol</span>
+                  <span style={{ fontSize: "0.66rem", color: "#475569", fontWeight: 700 }}>TLS 1.3 / AES-256</span>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Simple Bottom Brand Line */}
+          {/* Bottom Compliance & Brand Line */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #f1f5f9", paddingTop: "clamp(8px, 1.2vh, 12px)", flexShrink: 0, color: "#94a3b8", fontSize: "clamp(0.7rem, 0.78vw, 0.76rem)", fontWeight: 500 }}>
-            <span>© {new Date().getFullYear()} ChittorTech™. All rights reserved.</span>
-            <span>Enterprise Pipeline Console</span>
+            <span>© {new Date().getFullYear()} ChittorTech Systems &amp; Solutions Pvt. Ltd.</span>
+            <span>Internal IT Administration Console</span>
           </div>
         </div>
 
@@ -844,7 +885,7 @@ export default function AdminLeadsPage() {
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 6px #22c55e" }} />
               <span style={{ fontSize: "0.82rem", fontWeight: 800, color: "#0f172a", letterSpacing: "-0.2px" }}>
-                ChittorTech™ Enclave Gateway
+                ChittorTech™ Secure Enclave
               </span>
             </div>
 
@@ -924,10 +965,9 @@ export default function AdminLeadsPage() {
           </div>
 
           <div style={loginStyles.card}>
-
             {/* Header */}
             <div style={loginStyles.header}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: "8px" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", marginBottom: "10px" }}>
                 <div style={loginStyles.logoContainer}>
                   <img src="/favicon.png" alt="ChittorTech Logo" style={loginStyles.logo} />
                 </div>
@@ -936,28 +976,29 @@ export default function AdminLeadsPage() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "6px",
-                    background: "rgba(37, 99, 235, 0.08)",
-                    color: "#2563eb",
+                    background: "#eff6ff",
+                    color: "#1d4ed8",
                     fontSize: "0.68rem",
                     fontWeight: 700,
                     padding: "4px 10px",
-                    borderRadius: "20px",
-                    border: "1px solid rgba(37, 99, 235, 0.2)",
+                    borderRadius: "6px",
+                    border: "1px solid #bfdbfe",
+                    letterSpacing: "0.5px",
                   }}
                 >
-                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 5px #22c55e" }} />
-                  RESTRICTED ENCLAVE
+                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2563eb" }} />
+                  SECURE ADMIN GATEWAY
                 </span>
               </div>
               <h1 style={loginStyles.title}>
-                {step === "otp" ? "Security Verification" : step === "forgot" ? "Master Key Recovery" : "Executive Sign In"}
+                {step === "otp" ? "Security Verification" : step === "forgot" ? "Master Key Recovery" : "Administrator Sign In"}
               </h1>
-              <p style={{ color: "#64748b", fontSize: "0.78rem", margin: "3px 0 0 0", lineHeight: "1.4" }}>
+              <p style={{ color: "#64748b", fontSize: "0.8rem", margin: "3px 0 0 0", lineHeight: "1.45" }}>
                 {step === "otp"
                   ? "Enter the 6-digit cryptographic verification token dispatched to your device."
                   : step === "forgot"
                   ? "Enter registered administrator email address to receive your master access key."
-                  : "Enter authorized master credentials to access the CRM console."}
+                  : "Authenticate with your master access key to enter the internal management console."}
               </p>
             </div>
 
@@ -972,15 +1013,15 @@ export default function AdminLeadsPage() {
                     gap: "8px",
                     background: "#f0fdf4",
                     border: "1px solid #bbf7d0",
-                    borderRadius: "10px",
+                    borderRadius: "8px",
                     padding: "8px 12px",
                     fontSize: "0.74rem",
                     color: "#166534",
-                    fontWeight: 500,
+                    fontWeight: 600,
                   }}
                 >
                   <i className="fas fa-shield-alt" style={{ color: "#16a34a", fontSize: "12px", flexShrink: 0 }}></i>
-                  <span>End-to-End Encrypted Session with Dual 2FA Verification.</span>
+                  <span>End-to-End Encrypted • Dual 2FA Verification</span>
                 </div>
 
                 {loginError && (
@@ -992,32 +1033,11 @@ export default function AdminLeadsPage() {
 
                 {/* Access Key */}
                 <div style={loginStyles.inputGroup}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <label htmlFor="passcode" style={loginStyles.label}>Admin Access Key</label>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setStep("forgot");
-                        setRecoveryError("");
-                        setRecoverySuccess(false);
-                        setRecoveryEmail("");
-                        generateCaptcha();
-                      }}
-                      style={{
-                        background: "transparent",
-                        border: "none",
-                        color: "#2563eb",
-                        fontSize: "0.76rem",
-                        fontWeight: 600,
-                        cursor: "pointer",
-                        padding: 0,
-                      }}
-                    >
-                      Forgot Key?
-                    </button>
-                  </div>
+                  <label htmlFor="passcode" style={loginStyles.label}>
+                    <i className="fas fa-key" style={{ color: "#2563eb", marginRight: "6px", fontSize: "11px" }}></i>
+                    Admin Access Key
+                  </label>
                   <div style={loginStyles.inputWrapper}>
-                    <i className="fas fa-key" style={loginStyles.inputIcon}></i>
                     <input
                       id="passcode"
                       type={showPassword ? "text" : "password"}
@@ -1028,7 +1048,7 @@ export default function AdminLeadsPage() {
                         setLoginError("");
                       }}
                       placeholder="Enter master access key..."
-                      style={{ ...loginStyles.input, paddingRight: "40px" }}
+                      style={{ ...loginStyles.input, paddingLeft: "14px", paddingRight: "40px" }}
                       autoFocus
                     />
                     <button
@@ -1044,14 +1064,17 @@ export default function AdminLeadsPage() {
 
                 {/* Security Verification (CAPTCHA) */}
                 <div style={loginStyles.inputGroup}>
-                  <label htmlFor="captcha" style={loginStyles.label}>Human Verification</label>
+                  <label htmlFor="captcha" style={loginStyles.label}>
+                    <i className="fas fa-shield-check" style={{ color: "#10b981", marginRight: "6px", fontSize: "11px" }}></i>
+                    Security Verification (CAPTCHA)
+                  </label>
                   <div style={loginStyles.captchaRow}>
                     <div style={loginStyles.captchaBox}>{captchaCode}</div>
                     <button
                       type="button"
                       onClick={generateCaptcha}
                       style={loginStyles.refreshButton}
-                      title="Refresh Captcha"
+                      title="Generate new captcha code"
                     >
                       <i className="fas fa-sync-alt" style={{ fontSize: "13px" }}></i>
                     </button>
@@ -1061,8 +1084,8 @@ export default function AdminLeadsPage() {
                       required
                       value={captchaInput}
                       onChange={(e) => setCaptchaInput(e.target.value)}
-                      placeholder="Enter code"
-                      style={{ ...loginStyles.input, flex: 1, paddingLeft: "12px" }}
+                      placeholder="Enter verification code"
+                      style={{ ...loginStyles.input, flex: 1, paddingLeft: "14px", letterSpacing: "1.5px", textTransform: "uppercase" }}
                     />
                   </div>
                 </div>
@@ -1084,7 +1107,7 @@ export default function AdminLeadsPage() {
                   )}
                 </button>
 
-                <div style={{ textAlign: "center", marginTop: "10px", paddingTop: "10px", borderTop: "1px solid #f1f5f9" }}>
+                <div style={{ textAlign: "center", marginTop: "6px", paddingTop: "8px", borderTop: "1px solid #f1f5f9" }}>
                   <button
                     type="button"
                     id="forgot-admin-access-key-btn"
@@ -1099,7 +1122,7 @@ export default function AdminLeadsPage() {
                       background: "transparent",
                       border: "none",
                       color: "#2563eb",
-                      fontSize: "0.82rem",
+                      fontSize: "0.8rem",
                       fontWeight: 600,
                       cursor: "pointer",
                       padding: "4px 8px",
@@ -1110,7 +1133,7 @@ export default function AdminLeadsPage() {
                     }}
                   >
                     <i className="fas fa-unlock-alt" style={{ fontSize: "11px", color: "#2563eb" }}></i>
-                    <span>Forgot Admin Access Key?</span>
+                    <span>Forgot your Master Access Key? Recover via Email →</span>
                   </button>
                 </div>
               </form>
@@ -1441,7 +1464,7 @@ export default function AdminLeadsPage() {
                 style={{ width: "32px", height: "32px", borderRadius: "8px" }}
               />
               <span style={{ color: "#ffffff", fontWeight: 800, fontSize: "1.15rem", letterSpacing: "-0.3px" }}>
-                ChittorTech<span style={{ color: "#38bdf8" }}>™</span> CRM
+                ChittorTech<span style={{ color: "#38bdf8" }}>™</span> Admin Console
               </span>
             </Link>
             <span
@@ -1537,10 +1560,10 @@ export default function AdminLeadsPage() {
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", marginBottom: "24px" }}>
             <div>
               <h1 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#0f172a", margin: "0 0 4px 0", letterSpacing: "-0.5px" }}>
-                Lead Inquiries &amp; Pipeline
+                Client Inquiries &amp; Project Pipeline
               </h1>
               <p style={{ margin: 0, color: "#64748b", fontSize: "0.9rem" }}>
-                All leads received via Website Popups, Demo Requests, Chatbot, and Contact Forms.
+                Central management of enterprise client leads, software consultations, and inbound service requests.
               </p>
             </div>
             <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
@@ -2167,8 +2190,8 @@ const loginStyles = {
     flex: "1 1 50%",
     width: "50%",
     maxWidth: "50%",
-    backgroundColor: "#ffffff",
-    padding: "clamp(16px, 2.4vh, 28px) clamp(22px, 3vw, 42px)",
+    backgroundColor: "#f8fafc",
+    padding: "clamp(16px, 2.4vh, 28px) clamp(20px, 3vw, 42px)",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -2181,16 +2204,16 @@ const loginStyles = {
   },
   card: {
     width: "100%",
-    maxWidth: "460px",
-    backgroundColor: "transparent",
-    border: "none",
-    borderRadius: "0",
-    padding: "clamp(10px, 1.5vh, 18px) 0",
+    maxWidth: "440px",
+    backgroundColor: "#ffffff",
+    border: "1px solid #e2e8f0",
+    borderRadius: "16px",
+    padding: "clamp(22px, 3vh, 32px) clamp(22px, 2.5vw, 32px)",
     display: "flex",
     flexDirection: "column",
-    gap: "clamp(10px, 1.4vh, 14px)",
+    gap: "clamp(12px, 1.6vh, 16px)",
     margin: "auto",
-    boxShadow: "none",
+    boxShadow: "0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03)",
     boxSizing: "border-box",
     position: "relative",
   },
@@ -2201,19 +2224,19 @@ const loginStyles = {
     textAlign: "left",
   },
   logoContainer: {
-    width: "38px",
-    height: "38px",
-    background: "linear-gradient(135deg, #eff6ff, #dbeafe)",
-    border: "1px solid #bfdbfe",
+    width: "40px",
+    height: "40px",
+    background: "linear-gradient(135deg, #1e293b, #0f172a)",
+    border: "1px solid #334155",
     borderRadius: "10px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: "0 2px 6px rgba(37, 99, 235, 0.12)",
+    boxShadow: "0 4px 10px rgba(15, 23, 42, 0.2)",
   },
   logo: { width: "24px", height: "24px", objectFit: "contain" },
   title: {
-    fontSize: "clamp(19px, 2vw, 23px)",
+    fontSize: "clamp(19px, 2vw, 22px)",
     fontWeight: "800",
     color: "#0f172a",
     margin: "0 0 2px 0",
@@ -2230,7 +2253,7 @@ const loginStyles = {
     letterSpacing: "1.2px",
     textTransform: "uppercase",
   },
-  form: { display: "flex", flexDirection: "column", gap: "clamp(8px, 1.1vh, 11px)" },
+  form: { display: "flex", flexDirection: "column", gap: "clamp(10px, 1.3vh, 13px)" },
   errorAlert: {
     backgroundColor: "#fef2f2",
     border: "1px solid #fee2e2",
@@ -2248,29 +2271,30 @@ const loginStyles = {
   label: { fontSize: "12px", fontWeight: "700", color: "#1e293b", paddingLeft: "2px" },
   captchaRow: { display: "flex", alignItems: "center", gap: "8px" },
   captchaBox: {
-    backgroundColor: "#f1f5f9",
-    border: "1.5px dashed #94a3b8",
+    backgroundColor: "#0f172a",
+    border: "1.5px solid #1e293b",
     borderRadius: "10px",
-    paddingTop: "8px",
-    paddingBottom: "8px",
-    paddingLeft: "14px",
-    paddingRight: "14px",
-    fontSize: "17px",
-    fontWeight: "bold",
-    letterSpacing: "4px",
-    fontFamily: "monospace",
-    color: "#0f172a",
-    textDecoration: "line-through",
+    paddingTop: "9px",
+    paddingBottom: "9px",
+    paddingLeft: "16px",
+    paddingRight: "16px",
+    fontSize: "18px",
+    fontWeight: "800",
+    letterSpacing: "6px",
+    fontFamily: "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace",
+    color: "#38bdf8",
     userSelect: "none",
-    fontStyle: "italic",
-    boxShadow: "inset 0 1px 3px rgba(0,0,0,0.04)",
+    boxShadow: "inset 0 2px 4px rgba(0,0,0,0.3)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   refreshButton: {
-    backgroundColor: "#f8fafc",
-    border: "1px solid #cbd5e1",
+    backgroundColor: "#ffffff",
+    border: "1.5px solid #cbd5e1",
     borderRadius: "10px",
-    width: "38px",
-    height: "38px",
+    width: "40px",
+    height: "40px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -2287,12 +2311,12 @@ const loginStyles = {
     backgroundColor: "#ffffff",
     border: "1.5px solid #cbd5e1",
     borderRadius: "10px",
-    paddingTop: "10px",
-    paddingBottom: "10px",
-    paddingLeft: "38px",
+    paddingTop: "11px",
+    paddingBottom: "11px",
+    paddingLeft: "14px",
     paddingRight: "14px",
     color: "#0f172a",
-    fontSize: "13px",
+    fontSize: "13.5px",
     outline: "none",
     transition: "border-color 0.15s ease, box-shadow 0.15s ease",
     fontFamily: "inherit",
@@ -2314,24 +2338,24 @@ const loginStyles = {
     outline: "none",
   },
   submitButton: {
-    background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%)",
+    background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%)",
     border: "none",
     borderRadius: "10px",
-    paddingTop: "11px",
-    paddingBottom: "11px",
-    paddingLeft: "16px",
-    paddingRight: "16px",
+    paddingTop: "12px",
+    paddingBottom: "12px",
+    paddingLeft: "18px",
+    paddingRight: "18px",
     color: "#ffffff",
-    fontSize: "13.5px",
+    fontSize: "14px",
     fontWeight: "700",
     cursor: "pointer",
     transition: "all 0.15s ease",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "4px",
+    marginTop: "6px",
     fontFamily: "inherit",
-    boxShadow: "0 4px 14px rgba(37, 99, 235, 0.3)",
+    boxShadow: "0 4px 14px rgba(37, 99, 235, 0.28)",
   },
   submitButtonDisabled: {
     background: "#94a3b8",

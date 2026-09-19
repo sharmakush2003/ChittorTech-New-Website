@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Admin Dashboard | ChittorTech™ CRM",
+  title: "Admin Portal | ChittorTech™ IT Systems",
   robots: {
     index: false,
     follow: false,
