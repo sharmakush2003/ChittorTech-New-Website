@@ -58,7 +58,9 @@ export default function TrialModal() {
     const trialModalEl = document.getElementById("trialModal");
     if (!trialModalEl) return;
 
-    const maxPopups = 3;
+    // Smart mobile detection to prevent high bounce rates on iOS Safari and mobile screens
+    const isMobile = typeof window !== "undefined" && (window.innerWidth < 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
+    const maxPopups = isMobile ? 1 : 3;
     let timerId = null;
     let startTime = null;
     let remainingTime = 0;
@@ -211,16 +213,14 @@ export default function TrialModal() {
         return;
       }
       
-      // Delay intervals as requested:
-      // Show 1 (count 0): 5 seconds after page load
-      // Show 2 (count 1): 10 seconds after 1st close
-      // Show 3 (count 2): 15 seconds after 2nd close
-      // Show 4+ (count 3+): NEVER
-      let delay = 5000;
+      // Non-intrusive mobile delay to eliminate 1-sec bounce on iPhone/Safari:
+      // Mobile users get 35s of uninterrupted reading before any prompt.
+      // Desktop users get 15s.
+      let delay = isMobile ? 35000 : 15000;
       if (currentCount === 1) {
-        delay = 10000;
+        delay = isMobile ? 45000 : 25000;
       } else if (currentCount === 2) {
-        delay = 15000;
+        delay = isMobile ? 60000 : 35000;
       }
 
       startTimer(delay);
@@ -235,9 +235,9 @@ export default function TrialModal() {
         // Clear active timers when switching away to prevent background accumulation
         clearTimer();
       } else {
-        // Tab restored: if popups are not exhausted and user hasn't dismissed, give an 8s calm buffer
+        // Tab restored: give comfortable buffer before any popup
         if (shouldShowModal() && getAutoPopupCount() < maxPopups) {
-          startTimer(8000);
+          startTimer(isMobile ? 20000 : 8000);
         }
       }
     };
@@ -291,6 +291,24 @@ export default function TrialModal() {
       clearTimer();
     };
   }, [isSubmitted, mounted]);
+
+  const handleManualClose = () => {
+    const trialModalEl = document.getElementById("trialModal");
+    if (trialModalEl) {
+      if (typeof window !== "undefined" && window.bootstrap && window.bootstrap.Modal) {
+        const modalInstance = window.bootstrap.Modal.getInstance(trialModalEl);
+        if (modalInstance) {
+          modalInstance.hide();
+        }
+      }
+      trialModalEl.classList.remove("show");
+      trialModalEl.style.display = "none";
+      document.body.classList.remove("modal-open");
+      if (typeof document !== "undefined") {
+        document.querySelectorAll(".modal-backdrop").forEach((b) => b.remove());
+      }
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -758,14 +776,29 @@ export default function TrialModal() {
         }
 
         @media (max-width: 767px) {
+          #trialModal .modal-dialog {
+            width: 92% !important;
+            margin: 1.25rem auto !important;
+            padding-bottom: env(safe-area-inset-bottom, 20px) !important;
+          }
           .trial-flex {
-            flex-direction: column;
+            flex-direction: column !important;
           }
           .trial-banner {
-            display: none;
+            display: none !important;
           }
           .trial-form-side {
-            padding: 28px 22px;
+            padding: 24px 18px !important;
+          }
+          .close-modal-custom {
+            width: 44px !important;
+            height: 44px !important;
+            min-width: 44px !important;
+            min-height: 44px !important;
+            top: 10px !important;
+            right: 10px !important;
+            font-size: 1.15rem !important;
+            touch-action: manipulation !important;
           }
         }
       `}</style>
@@ -773,7 +806,14 @@ export default function TrialModal() {
       <div className="modal fade" id="trialModal" tabIndex="-1" aria-hidden="true" data-bs-focus="false">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content border-0">
-            <div className="close-modal-custom" data-bs-dismiss="modal">
+            <div
+              className="close-modal-custom"
+              data-bs-dismiss="modal"
+              onClick={handleManualClose}
+              onTouchEnd={handleManualClose}
+              role="button"
+              aria-label="Close modal"
+            >
               <i className="bi bi-x-lg"></i>
             </div>
             <div className="modal-body">
