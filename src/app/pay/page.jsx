@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Script from 'next/script';
 
 export default function CashfreePartnerPage() {
   const [calculatorAmount, setCalculatorAmount] = useState('50000');
@@ -9,6 +10,88 @@ export default function CashfreePartnerPage() {
   const [consultPhone, setConsultPhone] = useState('');
   const [consultWebsite, setConsultWebsite] = useState('');
   const [consultSubmitted, setConsultSubmitted] = useState(false);
+
+  // Live Checkout State
+  const [payAmount, setPayAmount] = useState('22500');
+  const [clientName, setClientName] = useState('');
+  const [clientPhone, setClientPhone] = useState('');
+  const [clientEmail, setClientEmail] = useState('');
+  const [payPurpose, setPayPurpose] = useState('Google Play Console Setup & Android App Deployment');
+  const [isPaying, setIsPaying] = useState(false);
+  const [payError, setPayError] = useState('');
+
+  const handleProceedToPay = async (e) => {
+    e.preventDefault();
+    setPayError('');
+    setIsPaying(true);
+
+    try {
+      let orderResponseData = null;
+
+      // 1. Try local/server Next.js API route first
+      try {
+        const res = await fetch('/api/payments/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: payAmount,
+            customerName: clientName,
+            customerPhone: clientPhone,
+            customerEmail: clientEmail,
+            purpose: payPurpose
+          })
+        });
+
+        if (res.ok) {
+          const d = await res.json();
+          if (d && d.success && d.payment_session_id) {
+            orderResponseData = d;
+          }
+        }
+      } catch (apiErr) {
+        console.warn('Local Next.js API failed or unavailable, trying Google Cloud bridge:', apiErr);
+      }
+
+      // 2. If API route unavailable (static Firebase Hosting), fallback to Google Apps Script
+      if (!orderResponseData || !orderResponseData.payment_session_id) {
+        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbzqxCCQ-V3XJvM8CRj7DQkC5d0ivAkYbY2OJ8_11WnOjauVFaIHmigCfeHUdHknRV5v/exec";
+        const gasRes = await fetch(gasUrl, {
+          method: 'POST',
+          body: JSON.stringify({
+            action: 'create_cashfree_order',
+            amount: payAmount,
+            customerName: clientName,
+            customerPhone: clientPhone,
+            customerEmail: clientEmail,
+            purpose: payPurpose
+          })
+        });
+        const gasData = await gasRes.json();
+        if (gasData && (gasData.success || gasData.status === 'success') && gasData.payment_session_id) {
+          orderResponseData = gasData;
+        } else {
+          throw new Error(gasData?.msg || 'Unable to create payment session with Cashfree.');
+        }
+      }
+
+      // 3. Launch Cashfree Drop-in Checkout
+      if (typeof window !== 'undefined' && window.Cashfree) {
+        const cashfree = window.Cashfree({
+          mode: 'production'
+        });
+        cashfree.checkout({
+          paymentSessionId: orderResponseData.payment_session_id,
+          redirectTarget: '_self'
+        });
+      } else {
+        throw new Error('Cashfree payment SDK is loading. Please click pay again in a second.');
+      }
+    } catch (err) {
+      console.error('Payment checkout error:', err);
+      setPayError(err.message || 'Payment initiation failed.');
+      setIsPaying(false);
+    }
+  };
 
   // Financial Savings Calculation
   const numAmount = parseFloat(calculatorAmount) || 0;
@@ -184,16 +267,16 @@ export default function CashfreePartnerPage() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              padding: '8px 18px',
-              background: 'linear-gradient(90deg, rgba(234, 179, 8, 0.15), rgba(249, 115, 22, 0.15))',
-              border: '1px solid rgba(234, 179, 8, 0.45)',
+              padding: '8px 20px',
+              background: 'linear-gradient(90deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.15))',
+              border: '1px solid rgba(34, 197, 94, 0.45)',
               borderRadius: '999px',
-              color: '#fde047',
+              color: '#4ade80',
               fontSize: 'clamp(10px, 2.8vw, 12px)',
               fontWeight: '800',
               letterSpacing: '0.04em',
               textTransform: 'uppercase',
-              boxShadow: '0 0 20px rgba(234, 179, 8, 0.2)',
+              boxShadow: '0 0 20px rgba(34, 197, 94, 0.25)',
               maxWidth: '100%',
               wordBreak: 'break-word',
               textAlign: 'center'
@@ -202,11 +285,11 @@ export default function CashfreePartnerPage() {
                 width: '8px',
                 height: '8px',
                 borderRadius: '50%',
-                background: '#eab308',
-                boxShadow: '0 0 10px #eab308',
+                background: '#22c55e',
+                boxShadow: '0 0 10px #22c55e',
                 flexShrink: 0
               }} />
-              OFFICIAL STRATEGIC COLLABORATION • COMING SOON
+              OFFICIAL RBI-LICENSED PAYMENT RAIL • LIVE &amp; ACTIVE
             </div>
           </div>
 
@@ -336,6 +419,280 @@ export default function CashfreePartnerPage() {
 
           </div>
 
+          {/* ─── LIVE INSTANT CLIENT CHECKOUT CARD ─── */}
+          <div id="quick-pay" className="ct-card" style={{
+            background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 27, 75, 0.9) 100%)',
+            border: '2px solid rgba(56, 189, 248, 0.4)',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.2)',
+            marginBottom: '48px',
+            position: 'relative'
+          }}>
+            <Script src="https://sdk.cashfree.com/js/v3/cashfree.js" strategy="lazyOnload" />
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginBottom: '24px' }}>
+              <div>
+                <div style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '4px 12px',
+                  background: 'rgba(74, 222, 128, 0.15)',
+                  border: '1px solid #4ade80',
+                  borderRadius: '999px',
+                  color: '#4ade80',
+                  fontSize: '11px',
+                  fontWeight: '800',
+                  textTransform: 'uppercase',
+                  marginBottom: '8px'
+                }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80' }} />
+                  Cashfree PG v2023 Live
+                </div>
+                <h2 style={{ fontSize: 'clamp(20px, 4.5vw, 28px)', fontWeight: '900', color: '#ffffff', margin: 0 }}>
+                  Pay ChittorTech Online — Instant Invoice &amp; Project Advance
+                </h2>
+                <p style={{ color: '#94a3b8', fontSize: '13px', margin: '4px 0 0 0' }}>
+                  Settle milestone bills instantly via Google Pay, PhonePe, Paytm, Cards, NetBanking, or EMI.
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+                <span style={{ fontSize: '11px', color: '#94a3b8', background: 'rgba(255,255,255,0.06)', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  🔒 256-Bit Bank Grade SSL
+                </span>
+                <span style={{ fontSize: '11px', color: '#4ade80', background: 'rgba(74,222,128,0.1)', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(74,222,128,0.3)' }}>
+                  ✓ Instant Receipt
+                </span>
+              </div>
+            </div>
+
+            {payError && (
+              <div style={{
+                background: 'rgba(239, 68, 68, 0.15)',
+                border: '1px solid #ef4444',
+                color: '#fca5a5',
+                padding: '12px 16px',
+                borderRadius: '12px',
+                fontSize: '13px',
+                marginBottom: '20px'
+              }}>
+                ⚠️ {payError}
+              </div>
+            )}
+
+            <form onSubmit={handleProceedToPay}>
+              {/* Quick Amount Presets */}
+              <div style={{ marginBottom: '16px' }}>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#cbd5e1', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  Quick Amount Select:
+                </label>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {[
+                    { label: '₹1 (Live Verification)', val: '1' },
+                    { label: '₹5,000 (Sprint)', val: '5000' },
+                    { label: '₹10,000 (Milestone)', val: '10000' },
+                    { label: '₹22,500 (TWA & Play Console)', val: '22500' }
+                  ].map((p, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setPayAmount(p.val)}
+                      style={{
+                        padding: '8px 14px',
+                        borderRadius: '10px',
+                        background: payAmount === p.val ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'rgba(255,255,255,0.06)',
+                        border: `1px solid ${payAmount === p.val ? '#38bdf8' : 'rgba(255,255,255,0.12)'}`,
+                        color: '#ffffff',
+                        fontSize: '12px',
+                        fontWeight: '700',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      {p.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Input Fields Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px', marginBottom: '16px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#cbd5e1', marginBottom: '6px' }}>
+                    Amount (INR) *
+                  </label>
+                  <div style={{ position: 'relative' }}>
+                    <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#38bdf8', fontWeight: '800' }}>₹</span>
+                    <input
+                      type="number"
+                      required
+                      min="1"
+                      value={payAmount}
+                      onChange={(e) => setPayAmount(e.target.value)}
+                      placeholder="e.g. 22500"
+                      style={{
+                        width: '100%',
+                        padding: '12px 14px 12px 32px',
+                        borderRadius: '12px',
+                        background: 'rgba(15, 23, 42, 0.8)',
+                        border: '1px solid rgba(56, 189, 248, 0.4)',
+                        color: '#ffffff',
+                        fontSize: '16px',
+                        fontWeight: '800',
+                        outline: 'none',
+                        boxSizing: 'border-box'
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#cbd5e1', marginBottom: '6px' }}>
+                    Your Name / Company Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
+                    placeholder="e.g. Vikram Roy"
+                    style={{
+                      width: '100%',
+                      padding: '12px 14px',
+                      borderRadius: '12px',
+                      background: 'rgba(15, 23, 42, 0.8)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#cbd5e1', marginBottom: '6px' }}>
+                    WhatsApp Mobile Number *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={clientPhone}
+                    onChange={(e) => setClientPhone(e.target.value)}
+                    placeholder="10-digit mobile (e.g. 9876543210)"
+                    style={{
+                      width: '100%',
+                      padding: '12px 14px',
+                      borderRadius: '12px',
+                      background: 'rgba(15, 23, 42, 0.8)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#cbd5e1', marginBottom: '6px' }}>
+                    Email ID (Optional for Invoice PDF)
+                  </label>
+                  <input
+                    type="email"
+                    value={clientEmail}
+                    onChange={(e) => setClientEmail(e.target.value)}
+                    placeholder="client@example.com"
+                    style={{
+                      width: '100%',
+                      padding: '12px 14px',
+                      borderRadius: '12px',
+                      background: 'rgba(15, 23, 42, 0.8)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Purpose */}
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#cbd5e1', marginBottom: '6px' }}>
+                  Project / Service Note:
+                </label>
+                <input
+                  type="text"
+                  value={payPurpose}
+                  onChange={(e) => setPayPurpose(e.target.value)}
+                  placeholder="e.g. Google Play Console Setup & Android App Deployment"
+                  style={{
+                    width: '100%',
+                    padding: '12px 14px',
+                    borderRadius: '12px',
+                    background: 'rgba(15, 23, 42, 0.8)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: '#ffffff',
+                    fontSize: '14px',
+                    outline: 'none',
+                    boxSizing: 'border-box'
+                  }}
+                />
+              </div>
+
+              {/* Submit Pay Button */}
+              <button
+                type="submit"
+                disabled={isPaying}
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  borderRadius: '14px',
+                  background: isPaying
+                    ? '#475569'
+                    : 'linear-gradient(135deg, #10b981 0%, #0284c7 50%, #2563eb 100%)',
+                  color: '#ffffff',
+                  fontSize: 'clamp(14px, 3.5vw, 17px)',
+                  fontWeight: '900',
+                  border: 'none',
+                  cursor: isPaying ? 'not-allowed' : 'pointer',
+                  boxShadow: '0 10px 25px -5px rgba(2, 132, 199, 0.5)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {isPaying ? (
+                  <>
+                    <span style={{
+                      width: '18px',
+                      height: '18px',
+                      border: '2px solid rgba(255,255,255,0.3)',
+                      borderTopColor: '#ffffff',
+                      borderRadius: '50%',
+                      display: 'inline-block',
+                      animation: 'spin 1s linear infinite'
+                    }} />
+                    <span>Connecting Secure Cashfree Checkout...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>⚡</span>
+                    <span>Pay ₹{Number(payAmount || 0).toLocaleString('en-IN')} Securely with Cashfree (UPI / Cards / NetBanking) ➔</span>
+                  </>
+                )}
+              </button>
+
+              <div style={{ textAlign: 'center', marginTop: '12px', fontSize: '11px', color: '#94a3b8' }}>
+                💳 Supports Google Pay, PhonePe, Paytm QR, Visa, MasterCard, RuPay, NetBanking &amp; EMI
+              </div>
+            </form>
+          </div>
+
           {/* ─── ROADMAP TRACKER ─── */}
           <div className="ct-card" style={{ marginBottom: '48px' }}>
             <div style={{
@@ -356,14 +713,14 @@ export default function CashfreePartnerPage() {
               </div>
               <div style={{
                 padding: '4px 14px',
-                background: 'rgba(234, 179, 8, 0.15)',
-                border: '1px solid rgba(234, 179, 8, 0.4)',
+                background: 'rgba(34, 197, 94, 0.15)',
+                border: '1px solid rgba(34, 197, 94, 0.4)',
                 borderRadius: '999px',
-                color: '#fde047',
+                color: '#4ade80',
                 fontSize: '12px',
                 fontWeight: '700'
               }}>
-                ⏳ Phase 3: Banking KYC Under Review
+                ✅ Phase 4: Production Gateway Live &amp; Active
               </div>
             </div>
 
@@ -371,8 +728,8 @@ export default function CashfreePartnerPage() {
               {[
                 { step: '01', title: 'Technical Architecture', desc: 'Next.js SDK & webhook infrastructure completed', status: 'Completed', color: '#4ade80' },
                 { step: '02', title: 'Sandbox Verification', desc: 'Tested simulated orders and multi-counter room sync', status: 'Completed', color: '#4ade80' },
-                { step: '03', title: 'Merchant Activation', desc: 'Assigned to Account Manager Swarnim Sahu', status: 'In Review', color: '#facc15' },
-                { step: '04', title: 'Public Gateway Launch', desc: 'Live payments enabled with 0% fee on ChittorTech', status: 'Coming Soon', color: '#38bdf8' },
+                { step: '03', title: 'Merchant Activation', desc: 'Production account approved & 46+ payment modes enabled', status: 'Completed', color: '#4ade80' },
+                { step: '04', title: 'Public Gateway Launch', desc: 'Live payments enabled with 0% fee on ChittorTech', status: 'Live Now', color: '#4ade80' },
               ].map((item, idx) => (
                 <div key={idx} style={{
                   background: 'rgba(255, 255, 255, 0.03)',

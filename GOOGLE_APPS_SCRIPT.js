@@ -35,8 +35,18 @@ function doPost(e) {
     if (data.action === "chat") {
       return handleChat(data.messages);
     }
+
+    // 5. Cashfree Create Payment Order
+    if (data.action === "create_cashfree_order") {
+      return handleCreateCashfreeOrder(data);
+    }
+
+    // 6. Cashfree Verify Payment Order
+    if (data.action === "verify_cashfree_order") {
+      return handleVerifyCashfreeOrder(data);
+    }
     
-    // 4. Otherwise, handle as a lead submission
+    // Otherwise, handle as a lead submission
     return handleLead(data);
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ status: "error", msg: error.toString() }))
@@ -442,4 +452,125 @@ function testAuthorization() {
     // Ignore error, we only want the trigger
   }
   Logger.log("Authorization Successful! External fetch and email sending are now enabled.");
+}
+
+/**
+ * Cashfree Production Payment Gateway Integration Handlers
+ */
+function handleCreateCashfreeOrder(data) {
+  try {
+    const appId = PropertiesService.getScriptProperties().getProperty("CASHFREE_APP_ID") || "YOUR_CASHFREE_APP_ID";
+    const secretKey = PropertiesService.getScriptProperties().getProperty("CASHFREE_SECRET_KEY") || "YOUR_CASHFREE_SECRET_KEY";
+    const endpoint = "https://api.cashfree.com/pg/orders";
+
+    const numAmount = parseFloat(data.amount) || 1;
+    const cleanPhone = String(data.customerPhone || "7597451057").replace(/\D/g, '').slice(-10);
+    const orderId = "CT_" + new Date().getTime() + "_" + Math.floor(100 + Math.random() * 900);
+
+    const payload = {
+      order_id: orderId,
+      order_amount: Math.round(numAmount * 100) / 100,
+      order_currency: "INR",
+      customer_details: {
+        customer_id: "cust_" + cleanPhone,
+        customer_name: (data.customerName || "ChittorTech Client").trim(),
+        customer_email: (data.customerEmail || "client@chittortech.in").trim(),
+        customer_phone: cleanPhone
+      },
+      order_meta: {
+        return_url: "https://chittortech.in/pay/status?order_id={order_id}"
+      },
+      order_note: (data.purpose || "ChittorTech Software Services").substring(0, 100)
+    };
+
+    const options = {
+      method: "post",
+      contentType: "application/json",
+      headers: {
+        "x-api-version": "2023-08-01",
+        "x-client-id": appId,
+        "x-client-secret": secretKey
+      },
+      payload: JSON.stringify(payload),
+      muteHttpExceptions: true
+    };
+
+    const res = UrlFetchApp.fetch(endpoint, options);
+    const resJson = JSON.parse(res.getContentText());
+
+    if (res.getResponseCode() !== 200 || !resJson.payment_session_id) {
+      return ContentService.createTextOutput(JSON.stringify({
+        status: "error",
+        success: false,
+        msg: resJson.message || "Cashfree order creation failed",
+        raw: resJson
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "success",
+      success: true,
+      order_id: resJson.order_id,
+      payment_session_id: resJson.payment_session_id,
+      cf_order_id: resJson.cf_order_id,
+      environment: "production"
+    })).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      success: false,
+      msg: err.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function handleVerifyCashfreeOrder(data) {
+  try {
+    const appId = PropertiesService.getScriptProperties().getProperty("CASHFREE_APP_ID") || "YOUR_CASHFREE_APP_ID";
+    const secretKey = PropertiesService.getScriptProperties().getProperty("CASHFREE_SECRET_KEY") || "YOUR_CASHFREE_SECRET_KEY";
+    const orderId = data.order_id;
+
+    if (!orderId) {
+      return ContentService.createTextOutput(JSON.stringify({ status: "error", success: false, msg: "order_id required" })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    const endpoint = "https://api.cashfree.com/pg/orders/" + encodeURIComponent(orderId);
+    const options = {
+      method: "get",
+      headers: {
+        "x-api-version": "2023-08-01",
+        "x-client-id": appId,
+        "x-client-secret": secretKey
+      },
+      muteHttpExceptions: true
+    };
+
+    const res = UrlFetchApp.fetch(endpoint, options);
+    const orderData = JSON.parse(res.getContentText());
+
+    let paymentDetails = null;
+    try {
+      const payRes = UrlFetchApp.fetch(endpoint + "/payments", options);
+      const payList = JSON.parse(payRes.getContentText());
+      if (Array.isArray(payList) && payList.length > 0) {
+        paymentDetails = payList[payList.length - 1];
+      }
+    } catch (e) {}
+
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "success",
+      success: true,
+      order_status: orderData.order_status,
+      order: orderData,
+      payment: paymentDetails
+    })).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: "error",
+      success: false,
+      msg: err.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
 }
