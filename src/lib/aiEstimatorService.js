@@ -44,9 +44,9 @@ export const COUNTRIES = [
 
 const FALLBACK_MODELS = [
   "openrouter/free",
-  "google/gemma-4-31b-it:free",
-  "nvidia/nemotron-3-super-120b-a12b:free",
-  "qwen/qwen3.8-27b:free"
+  "qwen/qwen3.8-27b:free",
+  "nvidia/nemotron-3.5-lightning:free",
+  "liquid/lfm-2.5-2.6b:free"
 ];
 
 export function formatCurrencyValue(num, currencyCode, symbol) {
