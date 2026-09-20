@@ -26,61 +26,41 @@ export default function CashfreePartnerPage() {
     setIsPaying(true);
 
     try {
-      let orderResponseData = null;
+      const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz3n1PLnpquUYngOnqqqlwYD4xtYBipBna3aJW821BY7IbY4vM3ZEuxM4ok61I-Vpgk/exec";
+      
+      const res = await fetch(gasUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          action: 'create_cashfree_order',
+          amount: payAmount,
+          customerName: clientName,
+          customerPhone: clientPhone,
+          customerEmail: clientEmail,
+          purpose: payPurpose
+        })
+      });
 
-      // 1. Try local/server Next.js API route first
+      const rawText = await res.text();
+      let data;
       try {
-        const res = await fetch('/api/payments/create-order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            amount: payAmount,
-            customerName: clientName,
-            customerPhone: clientPhone,
-            customerEmail: clientEmail,
-            purpose: payPurpose
-          })
-        });
-
-        if (res.ok) {
-          const d = await res.json();
-          if (d && d.success && d.payment_session_id) {
-            orderResponseData = d;
-          }
-        }
-      } catch (apiErr) {
-        console.warn('Local Next.js API failed or unavailable, trying Google Cloud bridge:', apiErr);
+        data = JSON.parse(rawText);
+      } catch (parseErr) {
+        console.error('Server non-JSON response:', rawText);
+        throw new Error('Payment gateway bridge returned an invalid response. Please try again.');
       }
 
-      // 2. If API route unavailable (static Firebase Hosting), fallback to Google Apps Script
-      if (!orderResponseData || !orderResponseData.payment_session_id) {
-        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz3n1PLnpquUYngOnqqqlwYD4xtYBipBna3aJW821BY7IbY4vM3ZEuxM4ok61I-Vpgk/exec";
-        const gasRes = await fetch(gasUrl, {
-          method: 'POST',
-          body: JSON.stringify({
-            action: 'create_cashfree_order',
-            amount: payAmount,
-            customerName: clientName,
-            customerPhone: clientPhone,
-            customerEmail: clientEmail,
-            purpose: payPurpose
-          })
-        });
-        const gasData = await gasRes.json();
-        if (gasData && (gasData.success || gasData.status === 'success') && gasData.payment_session_id) {
-          orderResponseData = gasData;
-        } else {
-          throw new Error(gasData?.msg || 'Unable to create payment session with Cashfree.');
-        }
+      if (!data || (!data.success && data.status !== 'success') || !data.payment_session_id) {
+        throw new Error(data?.msg || data?.message || 'Unable to initialize Cashfree payment session.');
       }
 
-      // 3. Launch Cashfree Drop-in Checkout
+      // Launch Cashfree Drop-in Checkout
       if (typeof window !== 'undefined' && window.Cashfree) {
         const cashfree = window.Cashfree({
           mode: 'production'
         });
         cashfree.checkout({
-          paymentSessionId: orderResponseData.payment_session_id,
+          paymentSessionId: data.payment_session_id,
           redirectTarget: '_self'
         });
       } else {

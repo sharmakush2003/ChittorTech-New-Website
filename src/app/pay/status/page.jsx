@@ -23,44 +23,33 @@ function PaymentStatusContent() {
 
     async function checkStatus() {
       try {
-        let data = null;
-
-        // 1. Try local/server Next.js API route first
+        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz3n1PLnpquUYngOnqqqlwYD4xtYBipBna3aJW821BY7IbY4vM3ZEuxM4ok61I-Vpgk/exec";
+        const gasRes = await fetch(gasUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'verify_cashfree_order',
+            order_id: orderId
+          })
+        });
+        const rawText = await gasRes.text();
+        let gasJson;
         try {
-          const res = await fetch('/api/payments/verify-order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ order_id: orderId })
-          });
-          if (res.ok) {
-            const d = await res.json();
-            if (d && (d.success || d.status)) data = d;
-          }
-        } catch (apiErr) {
-          console.warn('Next.js verify route unavailable, trying Google Cloud bridge:', apiErr);
+          gasJson = JSON.parse(rawText);
+        } catch (parseErr) {
+          console.error('Server non-JSON response:', rawText);
+          throw new Error('Payment status verification returned an invalid response.');
         }
 
-        // 2. If API route unavailable (static hosting), fallback to Google Apps Script
-        if (!data) {
-          const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz3n1PLnpquUYngOnqqqlwYD4xtYBipBna3aJW821BY7IbY4vM3ZEuxM4ok61I-Vpgk/exec";
-          const gasRes = await fetch(gasUrl, {
-            method: 'POST',
-            body: JSON.stringify({
-              action: 'verify_cashfree_order',
-              order_id: orderId
-            })
-          });
-          const gasJson = await gasRes.json();
-          if (gasJson && (gasJson.success || gasJson.status === 'success')) {
-            data = {
-              success: true,
-              status: gasJson.order_status || gasJson.order?.order_status,
-              order: gasJson.order,
-              payment: gasJson.payment
-            };
-          } else {
-            setError(gasJson?.msg || 'Failed to verify transaction status.');
-          }
+        if (gasJson && (gasJson.success || gasJson.status === 'success')) {
+          data = {
+            success: true,
+            status: gasJson.order_status || gasJson.order?.order_status,
+            order: gasJson.order,
+            payment: gasJson.payment
+          };
+        } else {
+          setError(gasJson?.msg || 'Failed to verify transaction status.');
         }
 
         if (data && (data.success || data.status)) {
