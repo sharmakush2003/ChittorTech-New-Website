@@ -42,7 +42,7 @@ function PaymentStatusContent() {
 
         // 2. If API route unavailable (static hosting), fallback to Google Apps Script
         if (!data) {
-          const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbzqxCCQ-V3XJvM8CRj7DQkC5d0ivAkYbY2OJ8_11WnOjauVFaIHmigCfeHUdHknRV5v/exec";
+          const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz3n1PLnpquUYngOnqqqlwYD4xtYBipBna3aJW821BY7IbY4vM3ZEuxM4ok61I-Vpgk/exec";
           const gasRes = await fetch(gasUrl, {
             method: 'POST',
             body: JSON.stringify({
