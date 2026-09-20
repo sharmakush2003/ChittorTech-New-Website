@@ -95,7 +95,8 @@ export default function TrialModal() {
         // 1. If form was submitted in session or past 7 days -> NEVER show
         if (
           sessionStorage.getItem("trial_modal_submitted") === "true" || 
-          isSubmitted
+          isSubmitted ||
+          pathname?.includes("project-estimator")
         ) return false;
 
         const subAt = localStorage.getItem("trial_modal_submitted_at");

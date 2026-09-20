@@ -20,6 +20,7 @@ jobs:
       - run: npm install --legacy-peer-deps && npm run build
         env:
           NEXT_PUBLIC_GOOGLE_SCRIPT_URL: ${{ vars.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }}
+          NEXT_PUBLIC_OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}

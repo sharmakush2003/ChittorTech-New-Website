@@ -163,6 +163,8 @@ export async function submitLead(formData) {
     try {
       fetch(scriptUrl, {
         method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           firestoreId: firestoreDocId,
