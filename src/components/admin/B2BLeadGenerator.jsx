@@ -153,36 +153,32 @@ ${E.map} Udaipur • Chittorgarh`
     );
   }
 
+
   if (niche === "textile") {
     return (
 `*Namaste ${name}* ${E.namaste}
 
-Main *ChittorTech* se connect kar raha hoon.
+Main *ChittorTech* (Mewar) se connect kar raha hoon.
 
-Aapka textile enterprise Bhilwara fabric industry me well-established hai. Hum textile manufacturers ke liye all-India buyers se direct bulk business generate karne aur operations aasan banane ke tech solutions develop karte hain:
+Aapka textile enterprise Bhilwara textile hub me well-established hai. Hum textile manufacturers aur exporters ke operations streamline aur sales expand karne ke liye custom digital platforms build karte hain:
 
-${E.sparkle} *Textile Industry Solutions:*
-${E.reach} *Pan-India Audience Reach* — Website aur digital showcase se pure Bharat ke outstation wholesale dealers tak direct reach badhegi.
-${E.target} *Direct Bulk Order Lead Generation* — Digital sample book link se all-India fabric dealers direct bulk meterage enquiries place karenge.
-${E.money} *Higher Profits & Zero Middlemen* — Direct dealer connect se brokerage bachegi aur aapka sales turnover bohot tezi se grow hoga.
-${E.app} *Custom Mobile App & Digital Fabric Showcase* — Suiting, shirting, denim aur yarn collections ka private digital catalogue har dealer ke mobile par.
-${E.erp} *Factory ERP & Inventory System* — Weaving, processing, grey/finished stock lots, GST invoices aur dispatch tracking.
-${E.lock} *Simple & 100% Secure Operations* — Factory aur accounts ka sensitive data cloud par secure aur 1-click me accessible.
-${E.crm} *Dealer Order & CRM Portal* — Dealers repeat orders direct place kar sakein aur automated WhatsApp updates receive karein.
-${E.map} *Google Business Growth* — Fabric manufacturers search karne par Google par top position.
+${E.sparkle} *Humari Textile Solutions:*
+${E.web} *B2B Digital Fabric Catalogue* — Pan-India dealers ke liye live stock, weave, GSM aur shade card digital portfolio.
+${E.erp} *Yarn-to-Fabric Production & Inventory ERP* — Loom production, grey fabric, processing, packing aur dispatch tracking.
+${E.crm} *Dealer Order Portal* — Dealers directly mobile se order place karein, real-time dispatch status dekhein.
+${E.map} *Pan-India Google B2B Visibility* — Wholesale buyers directly aapki factory se bulk orders connect karein.
 
-${hasWeb ? 
-`${E.bulb} *Upgrade:* Hum aapki website ko modern B2B fabric showcase, high speed aur dealer order portal ke sath upgrade kar sakte hain.`
-:
-`${E.bulb} *Bulk Enquiries:* Ek digital showcase aur corporate website se all-India dealers bina middlemen ke direct bulk enquiry bhejte hain.`}
+${E.bulb} Digital system se order execution speed badhti hai aur outstation buyer network expand hota hai.
 
-Kya hum 2 minute connect karke ek brief sample preview share kar sakte hain?
+Kya hum is hafte 2-minute quick call ya WhatsApp par demo share kar sakte hain?
+
+Aapke response ka intezaar rahega.
 
 Warm regards,
 *ChittorTech*
 ${E.web} https://chittortech.in
 ${E.phone} +91 75974 51057
-${E.map} Bhilwara • Chittorgarh`
+${E.map} Chittorgarh • Bhilwara • Udaipur`
     );
   }
 
@@ -205,10 +201,7 @@ ${E.lock} *Simple & 100% Secure Operations* — Cloud database, user roles aur d
 ${E.crm} *Business CRM & WhatsApp Automation* — Lead management, client follow-ups aur quotation tracking system.
 ${E.map} *Google Search & SEO Growth* — Google par top positioning taaki outstation & local buyers seedha aapko call karein.
 
-${hasWeb ? 
-`${E.bulb} *Digital Upgrade:* Hum aapki current website ko modern UI/UX, superfast speed aur custom CRM/billing software ke sath upgrade kar sakte hain.`
-:
-`${E.bulb} *Direct Reach:* Ek professional corporate website aur Google positioning ke sath outstation clients aur bulk buyers directly aap tak pahunchte hain.`}
+${E.bulb} *Direct Reach:* Ek professional corporate website aur Google positioning ke sath outstation clients aur bulk buyers directly aap tak pahunchte hain.
 
 Kya hum is hafte 2-minute quick call ya WhatsApp par humara portfolio share kar sakte hain?
 
@@ -223,53 +216,52 @@ ${E.map} Chittorgarh • Bhilwara • Udaipur`
 }
 
 function generateEmailPitch(lead) {
-  const name = (lead?.name || "").trim() || "Sir / Management";
   const niche = detectNiche(lead);
-
-  if (niche === "marble") {
-    return {
-      subject: `Export Website, Digital Stone Catalogue & ERP Proposal for ${name} | ChittorTech`,
-      body: `Respected Management (${name}),
-
-Greetings from ChittorTech (Chittorgarh & Bhilwara).
-
-We specialize in developing Export-Ready Digital Stone Catalogues, High-Performance Portals, and Custom ERP Billing Solutions for Marble & Granite manufacturers across Rajasthan.
-
-How ChittorTech Elevates Your Marble Business:
-1. 3x Faster Inquiries: Outstation & overseas buyers browse live slab varieties and digital catalogues instantly on mobile or desktop without waiting for WhatsApp photos.
-2. Global B2B Corporate Website: Modern, SSL-secured corporate web presence tailored to impress overseas importers.
-3. Custom Factory ERP & Billing: Block cutting, slab inventory, GST billing, dispatch, and payment balance tracking.
-4. Google Search Authority: Top ranking on Google search to acquire direct industrial clients.
-
-Would you be open to a brief 5-minute preview or phone consultation this week?
-
-Warm regards,
-ChittorTech
-Phone: +91 75974 51057
-Website: https://chittortech.in
-Chittorgarh • Bhilwara, Rajasthan`,
-    };
-  }
+  const name = (lead?.name || "Business Management").trim();
 
   if (niche === "dharamshala") {
     return {
-      subject: `Online Room Booking & Automated Receipts Management System for ${name} | ChittorTech`,
-      body: `Respected Trustee / Management (${name}),
+      subject: `Automated Room Booking, Billing & Trust Management Portal for ${name}`,
+      body: `Dear Management of ${name},
 
-Greetings from ChittorTech.
+Greetings from ChittorTech, Mewar's premier software & digital engineering firm.
 
-We provide specialized Online Room Booking, Automated Digital Receipts, and Yatri Advance Reservation Management Systems for religious trusts and dharamshalas across Mewar and Rajasthan.
+We design automated room reservation portals, donation management systems, and computerized counter billing software for prominent pilgrimage trusts and dharamshalas across Rajasthan.
 
-Key Benefits:
-- Advance online room booking for yatris
-- Instant SMS/WhatsApp booking confirmation and donation receipts
-- 100% transparent audit and occupancy records
-- Official Trust information portal
+Key Solutions:
+1. Online Room Reservation Website (Direct guest booking without middlemen)
+2. Fast Front-Desk Slip & Room Availability Management
+3. Digital Donation (Daan) & Automated 80G Tax Receipt Portal
+4. Complete Trust Auditing, Accounts & Expense Register
 
-May we present a 5-minute demo preview for your management board?
+Could we connect for a brief 2-minute discussion this week to show you how our system simplifies daily administration?
 
-Respectfully,
-ChittorTech
+Best regards,
+ChittorTech Team
+Website: https://chittortech.in
+Contact: +91 75974 51057`,
+    };
+  }
+
+  if (niche === "marble") {
+    return {
+      subject: `B2B Digital Catalogue, Factory ERP & Export Growth for ${name}`,
+      body: `Dear Management of ${name},
+
+Greetings from ChittorTech, Mewar's premier technology solutions provider.
+
+We partner with leading stone, marble, and granite manufacturers in Bhilwara & Rajasthan to modernize their business infrastructure and drive export-grade sales.
+
+Our Specialized Marble Industry Suite:
+1. Modern B2B Corporate Website (Mobile-first, international buyer ready)
+2. Live Digital Stone Catalogue (Share high-res slabs and live stock in 1 link)
+3. Custom Factory ERP (Block cutting, inventory, GST billing & dispatch)
+4. High Google Search Ranking for Pan-India & Overseas buyers
+
+Could we schedule a quick 2-minute call to demonstrate how our platform can elevate ${name}'s digital presence?
+
+Warm regards,
+ChittorTech Team
 Website: https://chittortech.in
 Contact: +91 75974 51057`,
     };
@@ -277,23 +269,23 @@ Contact: +91 75974 51057`,
 
   if (niche === "hotel") {
     return {
-      subject: `Direct Booking Engine & Zero Commission Website for ${name} | ChittorTech`,
+      subject: `Direct Booking Engine & 0% Commission Website for ${name}`,
       body: `Hello Team (${name}),
 
 Greetings from ChittorTech.
 
-We develop custom Direct Hotel Booking Engine Websites for boutique hotels and luxury resorts in Udaipur & Rajasthan, saving up to 25% in OTA commissions (MakeMyTrip, Booking.com, Goibibo).
+We engineer direct hotel booking websites and property management systems (PMS) for luxury resorts and boutique hotels in Udaipur & Rajasthan, helping you eliminate 20-25% OTA commissions.
 
-Features:
-- 100% direct instant bank payments without commission
-- High-resolution luxury visual gallery & room tour
-- Integrated Guest CRM & automated WhatsApp notifications
-- Google Hotel search positioning
+Key Solutions:
+- 0% Commission Direct Booking Engine
+- Front-Desk PMS & Restaurant KOT Billing
+- Guest CRM & Automated WhatsApp Communication
+- High-Impact Google Local Ranking
 
-Could we share a 5-minute live preview with your general manager?
+Would you be open to a 5-minute live preview this week?
 
 Best regards,
-ChittorTech
+ChittorTech Team
 Website: https://chittortech.in
 Contact: +91 75974 51057`,
     };
@@ -301,23 +293,23 @@ Contact: +91 75974 51057`,
 
   if (niche === "textile") {
     return {
-      subject: `B2B Wholesale Digital Showcase Portal & ERP for ${name} | ChittorTech`,
+      subject: `B2B Digital Fabric Catalogue & Factory ERP for ${name}`,
       body: `Respected Management (${name}),
 
 Greetings from ChittorTech.
 
-We build high-converting B2B wholesale product showcase portals and factory inventory ERPs for Bhilwara textile & garment manufacturers, enabling buyers across India to view fabric catalogues and submit bulk inquiries 24/7.
+We build high-converting B2B wholesale fabric catalogues and production inventory ERPs for Bhilwara textile manufacturers, enabling all-India dealers to place bulk orders 24/7.
 
 Key Capabilities:
-- Private Digital Sample Book for All-India Dealers
-- Dealer Repeat Order & Dispatch Tracking Portal
-- Custom ERP for Production, Weaving & Inventory
-- High-Speed B2B Corporate Website
+- Private Digital Sample Book for Dealers
+- Yarn-to-Fabric Production & Inventory ERP
+- Dealer Order & Dispatch Tracking Portal
+- Pan-India Google B2B Visibility
 
 Would you be open to a quick 5-minute preview call?
 
 Warm regards,
-ChittorTech
+ChittorTech Team
 Website: https://chittortech.in
 Contact: +91 75974 51057`,
     };
@@ -384,7 +376,8 @@ const SCRAPER_CODE = `(async function scrapeGoogleMaps() {
   else if (qLower.includes("hotel") || qLower.includes("resort") || qLower.includes("palace") || qLower.includes("stay") || qLower.includes("inn") || qLower.includes("haveli")) defaultCategory = "Hotels & Resorts";
   else if (qLower.includes("textile") || qLower.includes("spin") || qLower.includes("suit") || qLower.includes("fabric") || qLower.includes("yarn")) defaultCategory = "Textile & Manufacturing";
 
-  console.log("⚡ [ChittorTech Scraper] Searching for:", searchInput, "| Detected City:", defaultCity, "| Category:", defaultCategory);
+  console.log("⚡ [ChittorTech Scraper] Searching for:", searchInput, "| City:", defaultCity, "| Category:", defaultCategory);
+  console.log("⚡ [1/2] Scrolling to load all listings...");
 
   // Scroll to load listings
   let prev = 0;
@@ -396,18 +389,57 @@ const SCRAPER_CODE = `(async function scrapeGoogleMaps() {
     prev = n;
   }
 
+  const cards = Array.from(feed.querySelectorAll('div[role="article"], div.Nv2PK'));
+  console.log(\`⚡ [2/2] Extracting verified details (Phones & Websites) from \${cards.length} listings...\`);
+
   const results = [];
-  feed.querySelectorAll('div[role="article"], div.Nv2PK').forEach(el => {
-    const nameEl = el.querySelector('.fontHeadlineSmall') || el.querySelector('a.hfpxzc');
+  for (let i = 0; i < cards.length; i++) {
+    const el = cards[i];
+    const nameEl = el.querySelector('.fontHeadlineSmall') || el.querySelector('a.hfpxzc') || el.querySelector('div.qBF1Pd');
     const name = (nameEl ? (nameEl.getAttribute('aria-label') || nameEl.innerText) : "").trim();
-    if (!name) return;
-    const webEl = el.querySelector('a[data-value="Website"], a[aria-label*="website" i]');
-    const website = webEl ? webEl.href : "";
+    if (!name) continue;
+
     const text = el.innerText || "";
-    const ph = text.match(/(?:\\+91[\\s-]?)?[0]?[6-9]\\d{4}[\\s-]?\\d{5}|\\b0\\d{2,4}[\\s-]?\\d{6,8}\\b/);
-    const phone = ph ? ph[0].replace(/\\s+/g,'') : "";
-    const rEl = el.querySelector('span[aria-hidden="true"]');
-    
+
+    // 1. Try card for website
+    let webEl = el.querySelector('a[data-value="Website"], a[aria-label*="website" i], a[href*="http"]:not([href*="google.com"]):not([href*="goo.gl"])');
+    let website = webEl ? webEl.href : "";
+
+    // 2. Try card text for phone
+    let ph = text.match(/(?:\\+91[\\s-]?)?[0]?[6-9]\\d{4}[\\s-]?\\d{5}|\\b0\\d{2,4}[\\s-]?\\d{6,8}\\b/);
+    let phone = ph ? ph[0].replace(/[\\s-]/g, '') : "";
+
+    // 3. Deep Extraction: If phone or website is missing (e.g. Hotels/Dharamshalas where Google hides them):
+    // Click listing to read from Google Maps details panel!
+    if (!phone || !website) {
+      try {
+        const clickTarget = el.querySelector('a.hfpxzc') || nameEl || el;
+        clickTarget.click();
+        await new Promise(r => setTimeout(r, 450));
+
+        // Read phone from details pane
+        if (!phone) {
+          const phoneBtn = document.querySelector('button[data-item-id^="phone:tel:"], button[data-tooltip*="phone" i], button[aria-label*="Phone" i], [data-item-id*="phone"]');
+          if (phoneBtn) {
+            const rawPhone = phoneBtn.getAttribute('data-item-id') || phoneBtn.getAttribute('aria-label') || phoneBtn.innerText || "";
+            const m = rawPhone.match(/(?:\\+91[\\s-]?)?[0]?[6-9]\\d{4}[\\s-]?\\d{5}|\\b0\\d{2,4}[\\s-]?\\d{6,8}\\b/);
+            if (m) phone = m[0].replace(/[\\s-]/g, '');
+          }
+        }
+
+        // Read website from details pane
+        if (!website) {
+          const webBtn = document.querySelector('a[data-item-id="authority"], a[data-tooltip*="website" i], a[aria-label*="Website" i], a[data-value="Website"]');
+          if (webBtn && webBtn.href && !webBtn.href.includes('google.com')) {
+            website = webBtn.href;
+          }
+        }
+      } catch (err) {}
+    }
+
+    const rEl = el.querySelector('span[aria-hidden="true"], span.MW4etd');
+    const rating = rEl ? rEl.innerText : "";
+
     // Per-lead City check
     const tLower = (text + " " + name).toLowerCase();
     let city = defaultCity;
@@ -423,8 +455,9 @@ const SCRAPER_CODE = `(async function scrapeGoogleMaps() {
     else if (tLower.includes("marble") || tLower.includes("granite") || tLower.includes("stone") || tLower.includes("marmo")) category = "Marble & Granite";
     else if (tLower.includes("hotel") || tLower.includes("resort") || tLower.includes("palace") || tLower.includes("haveli")) category = "Hotels & Resorts";
 
-    results.push({ Name: name, Phone: phone, Website: website, Rating: rEl ? rEl.innerText : "", City: city, Category: category });
-  });
+    console.log(\`[\${i + 1}/\${cards.length}] \${name} | Phone: \${phone || "No phone"} | Web: \${website || "No website"}\`);
+    results.push({ Name: name, Phone: phone, Website: website, Rating: rating, City: city, Category: category });
+  }
 
   if (!results.length) { alert("No results found!"); return; }
 
@@ -441,7 +474,7 @@ const SCRAPER_CODE = `(async function scrapeGoogleMaps() {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  console.log("✅ " + results.length + " leads downloaded as " + a.download);
+  console.log("✅ DONE: " + results.length + " leads downloaded as " + a.download);
 })();`;
 
 const STATUS_CONFIG = {
