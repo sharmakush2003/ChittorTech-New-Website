@@ -13,7 +13,7 @@ const SCRIPT_URL =
   process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL &&
   !process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL.includes("AKfycbzpTM2VcC")
     ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
-    : "https://script.google.com/macros/s/AKfycbxvugG18chqy4LxZuzjYUiLMHi8CzXns3PVIUtHqqNmW6rmL1dNKMBpWhrqSHJJfSVV/exec";
+    : "https://script.google.com/macros/s/AKfycbxbWvxG81_lwfFh0sIqGhQnJnHwPwC0TxBnmiPq_DFxfFp7OnxNY1XC60nmFZxABve8/exec";
 
 export default function AdminLeadsPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

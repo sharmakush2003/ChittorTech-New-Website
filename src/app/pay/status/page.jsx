@@ -23,7 +23,7 @@ function PaymentStatusContent() {
 
     async function checkStatus() {
       try {
-        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxvugG18chqy4LxZuzjYUiLMHi8CzXns3PVIUtHqqNmW6rmL1dNKMBpWhrqSHJJfSVV/exec";
+        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxbWvxG81_lwfFh0sIqGhQnJnHwPwC0TxBnmiPq_DFxfFp7OnxNY1XC60nmFZxABve8/exec";
         const gasRes = await fetch(gasUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
