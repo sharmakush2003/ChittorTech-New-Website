@@ -54,7 +54,8 @@ export async function POST(req) {
       },
       order_meta: {
         return_url: returnUrl,
-        notify_url: `${cleanOrigin}/api/payments/webhook`
+        notify_url: `${cleanOrigin}/api/payments/webhook`,
+        payment_methods: 'upi'
       },
       order_note: cleanPurpose
     };

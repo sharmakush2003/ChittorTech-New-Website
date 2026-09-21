@@ -492,7 +492,8 @@ function handleCreateCashfreeOrder(data) {
         customer_phone: cleanPhone
       },
       order_meta: {
-        return_url: "https://chittortech.in/pay/status?order_id={order_id}"
+        return_url: "https://chittortech.in/pay/status?order_id={order_id}",
+        payment_methods: "upi"
       },
       order_note: (data.purpose || "ChittorTech Software Services").substring(0, 100)
     };
