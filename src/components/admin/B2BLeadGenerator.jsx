@@ -385,6 +385,15 @@ const STATUS_CONFIG = {
   lost:      { label: "Not Interested",   dot: "#94a3b8", bg: "rgba(148,163,184,0.08)",border: "rgba(148,163,184,0.22)",text: "#64748b" },
 };
 
+// Priority sorting hierarchy: Dispatched & active leads stay at the top; untouched new leads below
+const STATUS_PRIORITY = {
+  interested: 1, // In Negotiation (active hot discussion)
+  contacted:  2, // Pitch Dispatched (reached out, active outreach)
+  converted:  3, // Closed Deal ✓
+  new:        4, // New Lead (untouched prospects)
+  lost:       5, // Not Interested
+};
+
 /* ─────────────────────────────────────────────────────────────
    INLINE STYLES — DESIGN SYSTEM (Light / White Theme)
 ───────────────────────────────────────────────────────────── */
@@ -722,18 +731,40 @@ export default function B2BLeadGenerator() {
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
   };
 
-  // ── Filtered Leads ──
-  const filtered = useMemo(() => leads.filter(l => {
-    if (search.trim()) {
-      const q = search.toLowerCase();
-      if (![(l.name||""),(l.phone||""),(l.website||""),(l.notes||"")].some(v=>v.toLowerCase().includes(q))) return false;
+  // ── Contact Action (Trigger Outreach & Auto-Mark Contacted) ──
+  const onContactClick = (lead, type) => {
+    setToast({ leadId: lead.id, name: lead.name, type });
+    if (!lead.status || lead.status === "new") {
+      updateStatus(lead.id, "contacted");
     }
-    if (cityF !== "all" && l.city !== cityF) return false;
-    if (statusF !== "all" && (l.status||"new") !== statusF) return false;
-    if (webF === "no_web" && l.website?.trim()) return false;
-    if (webF === "has_web" && !l.website?.trim()) return false;
-    return true;
-  }), [leads, search, cityF, statusF, webF]);
+  };
+
+  // ── Filtered & Prioritized Leads ──
+  // Dispatched ("Pitch Dispatched", "In Negotiation") float to the top; untouched new leads stay below.
+  const filtered = useMemo(() => {
+    const list = leads.filter(l => {
+      if (search.trim()) {
+        const q = search.toLowerCase();
+        if (![(l.name||""),(l.phone||""),(l.website||""),(l.notes||"")].some(v=>v.toLowerCase().includes(q))) return false;
+      }
+      if (cityF !== "all" && l.city !== cityF) return false;
+      if (statusF !== "all" && (l.status||"new") !== statusF) return false;
+      if (webF === "no_web" && l.website?.trim()) return false;
+      if (webF === "has_web" && !l.website?.trim()) return false;
+      return true;
+    });
+
+    return list.sort((a, b) => {
+      const pA = STATUS_PRIORITY[a.status] || STATUS_PRIORITY.new;
+      const pB = STATUS_PRIORITY[b.status] || STATUS_PRIORITY.new;
+      if (pA !== pB) return pA - pB;
+
+      // Within same status tier: Most recent activity / update or import at top
+      const timeA = a.updatedAtDate?.getTime?.() || (a.updatedAt?.toMillis ? a.updatedAt.toMillis() : (a.importedAtDate?.getTime?.() || 0));
+      const timeB = b.updatedAtDate?.getTime?.() || (b.updatedAt?.toMillis ? b.updatedAt.toMillis() : (b.importedAtDate?.getTime?.() || 0));
+      return timeB - timeA;
+    });
+  }, [leads, search, cityF, statusF, webF]);
 
   // ── Stats ──
   const stats = useMemo(() => ({
@@ -743,9 +774,8 @@ export default function B2BLeadGenerator() {
     contacted: leads.filter(l => l.status === "contacted").length,
     interested:leads.filter(l => l.status === "interested").length,
     converted: leads.filter(l => l.status === "converted").length,
+    lost:      leads.filter(l => l.status === "lost").length,
   }), [leads]);
-
-  const estPipeline = (stats.noWeb * 15000 + stats.hasWeb * 8000) / 1000;
 
   /* ─────────────────────── RENDER ─────────────────────── */
   return (
@@ -753,6 +783,7 @@ export default function B2BLeadGenerator() {
       <style>{`
         @keyframes b2bFadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
         @keyframes pulseGlow { 0%,100% { opacity:1; } 50% { opacity:0.35; } }
+        @keyframes toastSlideDown { from { transform: translate(-50%, -36px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
         .b2b-row:hover { background: #f8fafc !important; }
         .b2b-action-btn:hover { opacity: 0.88; transform: translateY(-1px); }
         .b2b-chip:hover { background: rgba(99,102,241,0.08) !important; border-color: rgba(99,102,241,0.3) !important; color: #6366f1 !important; transform: translateY(-1px); }
@@ -768,43 +799,59 @@ export default function B2BLeadGenerator() {
       `}</style>
 
       {/* ══════════════════════════════════════════
-          OUTREACH NOTIFICATION BANNER
+          FLOATING TOP TOAST NOTIFICATION
       ══════════════════════════════════════════ */}
       {toast && (
         <div style={{
-          background: "linear-gradient(135deg, #f0fdf4, #ecfdf5)",
-          border: "1px solid #86efac",
-          borderRadius: "12px",
+          position: "fixed",
+          top: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 999999,
+          width: "calc(100% - 32px)",
+          maxWidth: "740px",
+          background: "#ffffff",
+          border: "1.5px solid rgba(34, 197, 94, 0.35)",
+          borderRadius: "16px",
           padding: "12px 18px",
-          marginBottom: "16px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           flexWrap: "wrap",
           gap: "12px",
-          boxShadow: "0 4px 14px rgba(22,163,74,0.12)",
-          animation: "b2bFadeIn 0.2s ease",
+          boxShadow: "0 20px 50px rgba(15, 23, 42, 0.22), 0 4px 14px rgba(22, 163, 74, 0.16)",
+          animation: "toastSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1)",
+          backdropFilter: "blur(12px)",
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#22c55e", color: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "14px", flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <span style={{
+              width: "36px", height: "36px", borderRadius: "10px",
+              background: "linear-gradient(135deg, #22c55e, #16a34a)",
+              color: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: "16px", flexShrink: 0,
+              boxShadow: "0 4px 12px rgba(34, 197, 94, 0.35)",
+            }}>
               <i className={toast.type === "whatsapp" ? "fab fa-whatsapp" : "fas fa-envelope"}></i>
             </span>
             <div>
-              <div style={{ fontSize: "0.85rem", fontWeight: 800, color: "#14532d" }}>
-                {toast.type === "whatsapp" ? "WhatsApp Pitch Sent" : "Email Pitch Sent"} — "{toast.name}"
+              <div style={{ fontSize: "0.86rem", fontWeight: 800, color: "#0f172a", display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                <span>{toast.type === "whatsapp" ? "WhatsApp Pitch Sent" : "Email Sent"}</span>
+                <span style={{ fontSize: "0.74rem", fontWeight: 700, color: "#16a34a", background: "rgba(34, 197, 94, 0.12)", border: "1px solid rgba(34, 197, 94, 0.25)", padding: "1px 8px", borderRadius: "20px" }}>
+                  {toast.name}
+                </span>
               </div>
-              <div style={{ fontSize: "0.75rem", color: "#166534" }}>
-                Kya baat hui? Status manually set karein (Firestore Cloud par real-time save hoga):
+              <div style={{ fontSize: "0.74rem", color: "#64748b", marginTop: "1px" }}>
+                Outcome select karein (Firestore Cloud par real-time save hoga):
               </div>
             </div>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
             {[
-              { label: "Contacted", val: "contacted", bg: "#e0e7ff", color: "#3730a3" },
-              { label: "Interested", val: "interested", bg: "#fae8ff", color: "#86198f" },
-              { label: "Converted 🎉", val: "converted", bg: "#dcfce7", color: "#166534" },
-              { label: "Not Interested", val: "lost", bg: "#f1f5f9", color: "#475569" },
+              { label: "Contacted", val: "contacted", bg: "rgba(99,102,241,0.1)", color: "#4338ca", border: "rgba(99,102,241,0.25)" },
+              { label: "Interested", val: "interested", bg: "rgba(147,51,234,0.1)", color: "#7e22ce", border: "rgba(147,51,234,0.25)" },
+              { label: "Closed Deal ✓", val: "converted", bg: "rgba(34,197,94,0.12)", color: "#15803d", border: "rgba(34,197,94,0.3)" },
+              { label: "Not Interested", val: "lost", bg: "rgba(100,116,139,0.1)", color: "#475569", border: "rgba(100,116,139,0.2)" },
             ].map(opt => (
               <button
                 key={opt.val}
@@ -814,14 +861,14 @@ export default function B2BLeadGenerator() {
                 }}
                 style={{
                   padding: "6px 12px",
-                  borderRadius: "7px",
-                  border: "none",
+                  borderRadius: "8px",
+                  border: `1px solid ${opt.border}`,
                   background: opt.bg,
                   color: opt.color,
                   fontSize: "0.76rem",
                   fontWeight: 800,
                   cursor: "pointer",
-                  transition: "transform 0.1s ease",
+                  transition: "all 0.15s ease",
                 }}
               >
                 Mark {opt.label}
@@ -830,13 +877,19 @@ export default function B2BLeadGenerator() {
             <button
               onClick={() => setToast(null)}
               style={{
-                background: "none",
+                background: "rgba(15,23,42,0.06)",
                 border: "none",
-                color: "#166534",
-                fontSize: "14px",
+                color: "#64748b",
+                width: "28px",
+                height: "28px",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "13px",
                 cursor: "pointer",
-                padding: "4px 8px",
-                fontWeight: 800,
+                marginLeft: "2px",
+                fontWeight: 700,
               }}
               title="Close notification"
             >
@@ -941,12 +994,12 @@ export default function B2BLeadGenerator() {
           2. KPI STAT STRIP
       ══════════════════════════════════════════ */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(175px, 1fr))", gap: "10px", marginBottom: "16px" }}>
-        <KpiCard label="Total Prospects" value={stats.total} sub="Saved in engine" accent={DS.accentPrimary} icon="fa-database" />
-        <KpiCard label="🔥 No Website" value={stats.noWeb} sub="Prime web dev targets" accent={DS.accentAmber} icon="fa-fire" glow />
-        <KpiCard label="Has Website" value={stats.hasWeb} sub="SEO & Redesign targets" accent={DS.accentBlue} icon="fa-globe" />
+        <KpiCard label="Saved in Engine" value={stats.total} sub="Total prospects" accent={DS.accentPrimary} icon="fa-database" />
+        <KpiCard label="🔥 No Website" value={stats.noWeb} sub="Needs web presence" accent={DS.accentAmber} icon="fa-fire" glow />
+        <KpiCard label="Has Website" value={stats.hasWeb} sub="SEO & Redesign" accent={DS.accentBlue} icon="fa-globe" />
         <KpiCard label="Pitch Dispatched" value={stats.contacted} sub="Messages sent" accent={DS.accentPrimary} icon="fa-paper-plane" />
-        <KpiCard label="In Pipeline" value={stats.interested + stats.converted} sub={`${stats.converted} closed`} accent={DS.accentGreen} icon="fa-handshake" glow />
-        <KpiCard label="Est. Pipeline" value={`₹${estPipeline.toFixed(0)}k`} sub="Conservative estimate" accent={DS.accentAmber} icon="fa-indian-rupee-sign" />
+        <KpiCard label="Interested" value={stats.interested} sub="In active discussion" accent={DS.accentGreen} icon="fa-handshake" glow />
+        <KpiCard label="Not Interested" value={stats.lost} sub="Cold / dropped leads" accent="#64748b" icon="fa-ban" />
       </div>
 
       {/* Hidden file input triggered by fileRef */}
@@ -1113,9 +1166,19 @@ export default function B2BLeadGenerator() {
                   const wa = waLink(lead);
                   const isEditing = editingId === lead.id;
                   const cfg = STATUS_CONFIG[lead.status] || STATUS_CONFIG.new;
+                  const isPitched = lead.status === "contacted" || lead.status === "interested";
 
                   return (
-                    <tr key={lead.id} className="b2b-row" style={{ borderBottom: `1px solid ${DS.surfaceBorder}`, transition: "background 0.12s" }}>
+                    <tr
+                      key={lead.id}
+                      className="b2b-row"
+                      style={{
+                        borderBottom: `1px solid ${DS.surfaceBorder}`,
+                        borderLeft: isPitched ? `3px solid ${lead.status === "interested" ? "#9333ea" : "#6366f1"}` : "3px solid transparent",
+                        background: isPitched ? (lead.status === "interested" ? "rgba(147,51,234,0.025)" : "rgba(99,102,241,0.02)") : "transparent",
+                        transition: "all 0.12s ease",
+                      }}
+                    >
                       {/* Entity */}
                       <td style={{ padding: "12px 14px", maxWidth: "240px" }}>
                         <div style={{ fontWeight: 700, color: DS.textPrimary, marginBottom: "3px", lineHeight: 1.3 }}>{lead.name}</div>
@@ -1152,7 +1215,7 @@ export default function B2BLeadGenerator() {
                           {lead.phone && (
                             <>
                               <a href={wa} target="_blank" rel="noopener noreferrer"
-                                onClick={() => setToast({ leadId: lead.id, name: lead.name, type: "whatsapp" })}
+                                onClick={() => onContactClick(lead, "whatsapp")}
                                 className="b2b-wa-btn"
                                 style={{
                                   display: "inline-flex", alignItems: "center", gap: "5px",
@@ -1189,7 +1252,7 @@ export default function B2BLeadGenerator() {
                           {lead.email && (
                             <a
                               href={emailLink(lead)}
-                              onClick={() => setToast({ leadId: lead.id, name: lead.name, type: "email" })}
+                              onClick={() => onContactClick(lead, "email")}
                               title={`Send Pre-filled Pitch Email to ${lead.email}`}
                               style={{
                                 display: "inline-flex", alignItems: "center", gap: "4px",
@@ -1230,7 +1293,6 @@ export default function B2BLeadGenerator() {
                             }}>
                               🔥 NO WEBSITE
                             </span>
-                            <div style={{ fontSize: "0.65rem", color: DS.accentAmber, marginTop: "3px", fontWeight: 700, opacity: 0.75 }}>Prime ₹15k Lead</div>
                           </div>
                         )}
                       </td>
@@ -1297,16 +1359,19 @@ export default function B2BLeadGenerator() {
           {filtered.map(lead => {
             const hasWeb = Boolean(lead.website?.trim());
             const wa = waLink(lead);
+            const isPitched = lead.status === "contacted" || lead.status === "interested";
             return (
               <div
                 key={lead.id}
                 style={{
-                  background: DS.surfacePrimary,
-                  border: `1px solid ${hasWeb ? DS.surfaceBorder : DS.accentAmberBorder}`,
+                  background: isPitched ? (lead.status === "interested" ? "rgba(147,51,234,0.02)" : "rgba(99,102,241,0.02)") : DS.surfacePrimary,
+                  border: isPitched
+                    ? `1.5px solid ${lead.status === "interested" ? "rgba(147,51,234,0.35)" : "rgba(99,102,241,0.35)"}`
+                    : `1px solid ${hasWeb ? DS.surfaceBorder : DS.accentAmberBorder}`,
                   borderRadius: "12px", padding: "16px",
                   display: "flex", flexDirection: "column", gap: "10px",
                   transition: "all 0.15s ease",
-                  boxShadow: hasWeb ? "none" : "0 0 18px rgba(245,158,11,0.06)",
+                  boxShadow: isPitched ? "0 4px 16px rgba(99,102,241,0.08)" : (hasWeb ? "none" : "0 0 18px rgba(245,158,11,0.06)"),
                 }}
               >
                 {/* Header */}
@@ -1334,7 +1399,7 @@ export default function B2BLeadGenerator() {
                   </div>
                 ) : (
                   <div style={{ padding: "7px 10px", borderRadius: "7px", background: DS.accentAmberBg, border: `1px solid ${DS.accentAmberBorder}`, display: "flex", alignItems: "center", gap: "7px", boxShadow: "0 0 14px rgba(245,158,11,0.08)" }}>
-                    <span style={{ fontSize: "0.75rem", fontWeight: 800, color: DS.accentAmber }}>🔥 NO WEBSITE — Prime Web Dev Lead</span>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 800, color: DS.accentAmber }}>🔥 NO WEBSITE</span>
                   </div>
                 )}
 
@@ -1354,7 +1419,7 @@ export default function B2BLeadGenerator() {
                   <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
                     {lead.phone && (
                       <>
-                        <a href={wa} target="_blank" rel="noopener noreferrer" onClick={()=>setToast({ leadId: lead.id, name: lead.name, type: "whatsapp" })} className="b2b-wa-btn" style={{ display:"inline-flex",alignItems:"center",gap:"5px",padding:"5px 10px",borderRadius:"7px",background:DS.accentGreenBg,border:`1px solid ${DS.accentGreenBorder}`,color:DS.accentGreen,fontSize:"0.74rem",fontWeight:700,textDecoration:"none",transition:"all 0.15s ease" }}>
+                        <a href={wa} target="_blank" rel="noopener noreferrer" onClick={()=>onContactClick(lead, "whatsapp")} className="b2b-wa-btn" style={{ display:"inline-flex",alignItems:"center",gap:"5px",padding:"5px 10px",borderRadius:"7px",background:DS.accentGreenBg,border:`1px solid ${DS.accentGreenBorder}`,color:DS.accentGreen,fontSize:"0.74rem",fontWeight:700,textDecoration:"none",transition:"all 0.15s ease" }}>
                           <i className="fab fa-whatsapp" style={{fontSize:"12px"}}></i> WhatsApp
                         </a>
                         <button
@@ -1380,7 +1445,7 @@ export default function B2BLeadGenerator() {
                       </>
                     )}
                     {lead.email && (
-                      <a href={emailLink(lead)} onClick={()=>setToast({ leadId: lead.id, name: lead.name, type: "email" })} title={`Send Pre-filled Pitch Email to ${lead.email}`} style={{ display:"inline-flex",alignItems:"center",gap:"4px",padding:"5px 9px",borderRadius:"7px",background:"rgba(37,99,235,0.08)",border:`1px solid ${DS.accentBlueBorder}`,color:DS.accentBlue,fontSize:"0.74rem",fontWeight:700,textDecoration:"none" }}>
+                      <a href={emailLink(lead)} onClick={()=>onContactClick(lead, "email")} title={`Send Pre-filled Pitch Email to ${lead.email}`} style={{ display:"inline-flex",alignItems:"center",gap:"4px",padding:"5px 9px",borderRadius:"7px",background:"rgba(37,99,235,0.08)",border:`1px solid ${DS.accentBlueBorder}`,color:DS.accentBlue,fontSize:"0.74rem",fontWeight:700,textDecoration:"none" }}>
                         <i className="fas fa-envelope" style={{fontSize:"11px"}}></i> Email
                       </a>
                     )}

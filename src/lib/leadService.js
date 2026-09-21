@@ -351,10 +351,12 @@ export function subscribeToB2BLeads(onData, onError) {
         const leads = snapshot.docs.map((d) => {
           const data = d.data();
           const importedDate = data.importedAt?.toDate ? data.importedAt.toDate() : (data.createdAt ? new Date(data.createdAt) : new Date());
+          const updatedDate = data.updatedAt?.toDate ? data.updatedAt.toDate() : (data.updatedAt ? new Date(data.updatedAt) : null);
           return {
             id: d.id,
             ...data,
             importedAtDate: importedDate,
+            updatedAtDate: updatedDate,
           };
         });
         // Sort descending by imported date in memory
