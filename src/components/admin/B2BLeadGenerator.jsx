@@ -731,12 +731,9 @@ export default function B2BLeadGenerator() {
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
   };
 
-  // ── Contact Action (Trigger Outreach & Auto-Mark Contacted) ──
+  // ── Contact Action (Trigger Outreach & Open Outcome Toast) ──
   const onContactClick = (lead, type) => {
     setToast({ leadId: lead.id, name: lead.name, type });
-    if (!lead.status || lead.status === "new") {
-      updateStatus(lead.id, "contacted");
-    }
   };
 
   // ── Filtered & Prioritized Leads ──
@@ -848,7 +845,7 @@ export default function B2BLeadGenerator() {
 
           <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
             {[
-              { label: "Contacted", val: "contacted", bg: "rgba(99,102,241,0.1)", color: "#4338ca", border: "rgba(99,102,241,0.25)" },
+              { label: "Pitch Dispatched", val: "contacted", bg: "rgba(99,102,241,0.1)", color: "#4338ca", border: "rgba(99,102,241,0.25)" },
               { label: "Interested", val: "interested", bg: "rgba(147,51,234,0.1)", color: "#7e22ce", border: "rgba(147,51,234,0.25)" },
               { label: "Closed Deal ✓", val: "converted", bg: "rgba(34,197,94,0.12)", color: "#15803d", border: "rgba(34,197,94,0.3)" },
               { label: "Not Interested", val: "lost", bg: "rgba(100,116,139,0.1)", color: "#475569", border: "rgba(100,116,139,0.2)" },
