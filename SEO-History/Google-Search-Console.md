@@ -31,10 +31,10 @@
 
 ---
 
-## 📊 Live Indexing Status (19-Sep-2026)
-- **Total Valid Pages in Sitemap:** 761
-- **Confirmed Indexed Pages in Google:** 156 pages (Drilldown: `ALL_URLS`)
-- **Remaining Unindexed Pages:** 605 pages
+## 📊 Live Indexing Status (21-Sep-2026 / GSC Data as of 18-Sep-2026)
+- **Total Valid Pages in Sitemap:** 763
+- **Confirmed Indexed Pages in Google:** 184 pages (+28 gained from 156 on 16-Sep)
+- **Remaining Unindexed Pages:** 589 pages
 
 ---
 

@@ -60,7 +60,7 @@ export async function flushBufferedLeads() {
     process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL &&
     !process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL.includes("AKfycbzpTM2VcC")
       ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
-      : "https://script.google.com/macros/s/AKfycbz3n1PLnpquUYngOnqqqlwYD4xtYBipBna3aJW821BY7IbY4vM3ZEuxM4ok61I-Vpgk/exec";
+      : "https://script.google.com/macros/s/AKfycbxvugG18chqy4LxZuzjYUiLMHi8CzXns3PVIUtHqqNmW6rmL1dNKMBpWhrqSHJJfSVV/exec";
 
   for (const item of list) {
     try {
@@ -158,7 +158,7 @@ export async function submitLead(formData) {
     process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL &&
     !process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL.includes("AKfycbzpTM2VcC")
       ? process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
-      : "https://script.google.com/macros/s/AKfycbz3n1PLnpquUYngOnqqqlwYD4xtYBipBna3aJW821BY7IbY4vM3ZEuxM4ok61I-Vpgk/exec";
+      : "https://script.google.com/macros/s/AKfycbxvugG18chqy4LxZuzjYUiLMHi8CzXns3PVIUtHqqNmW6rmL1dNKMBpWhrqSHJJfSVV/exec";
   if (scriptUrl) {
     try {
       fetch(scriptUrl, {

@@ -38,7 +38,8 @@
 | **17-Sep-2026** | 3 | `http://` | Initial test queue (Dausa, Jhalawar, Jodhpur) | 758 |
 | **18-Sep-2026** | 150 | `http://` | Batch 1 (`yandex_150_urls.txt`) | 608 |
 | **19-Sep-2026** | 150 | `http://` | Batch 2 (`yandex_150_urls.txt`) | 458 |
-| **20-Sep-2026** | 150 | `http://` | Batch 3 ([yandex_150_urls.txt](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/yandex_150_urls.txt)) — *includes `/pay` & `/payment-terms` at top* | 308 |
+| **20-Sep-2026** | 150 | `http://` | Batch 3 (`yandex_150_urls.txt`) — *includes `/pay` & `/payment-terms` at top* | 308 |
+| **21-Sep-2026** | 150 | `http://` | Batch 4 ([yandex_150_urls.txt](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/yandex_150_urls.txt)) — *includes `/project-estimator` at top* | 160 |
 
 > **Master JSON Tracker:** [SEO-History/submitted_history.json](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/SEO-History/submitted_history.json) (Ensures 0 duplicate submissions on future runs).
 

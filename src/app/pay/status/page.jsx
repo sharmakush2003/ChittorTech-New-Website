@@ -23,7 +23,7 @@ function PaymentStatusContent() {
 
     async function checkStatus() {
       try {
-        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbz3n1PLnpquUYngOnqqqlwYD4xtYBipBna3aJW821BY7IbY4vM3ZEuxM4ok61I-Vpgk/exec";
+        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxvugG18chqy4LxZuzjYUiLMHi8CzXns3PVIUtHqqNmW6rmL1dNKMBpWhrqSHJJfSVV/exec";
         const gasRes = await fetch(gasUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -41,8 +41,9 @@ function PaymentStatusContent() {
           throw new Error('Payment status verification returned an invalid response.');
         }
 
+        let verifiedData = null;
         if (gasJson && (gasJson.success || gasJson.status === 'success')) {
-          data = {
+          verifiedData = {
             success: true,
             status: gasJson.order_status || gasJson.order?.order_status,
             order: gasJson.order,
@@ -52,35 +53,40 @@ function PaymentStatusContent() {
           setError(gasJson?.msg || 'Failed to verify transaction status.');
         }
 
-        if (data && (data.success || data.status)) {
-          setOrderData(data);
+        if (verifiedData && (verifiedData.success || verifiedData.status)) {
+          setOrderData(verifiedData);
 
           // If paid, ensure record is synced to Firestore
-          if (data.status === 'PAID' || data.order?.order_status === 'PAID') {
+          if (verifiedData.status === 'PAID' || verifiedData.order?.order_status === 'PAID') {
             try {
+              const custDetails = verifiedData.order?.customer_details || {};
               await setDoc(doc(db, 'payments', orderId), {
                 orderId: orderId,
-                amount: data.order?.order_amount || 0,
-                currency: data.order?.order_currency || 'INR',
+                cfOrderId: verifiedData.order?.cf_order_id || '',
+                amount: verifiedData.order?.order_amount || 0,
+                currency: verifiedData.order?.order_currency || 'INR',
                 status: 'PAID',
-                customerName: data.order?.customer_details?.customer_name || data.order?.customer_name || 'Anonymous',
-                customerPhone: data.order?.customer_details?.customer_phone || data.order?.customer_phone || '',
-                customerEmail: data.order?.customer_details?.customer_email || data.order?.customer_email || '',
-                purpose: data.order?.order_note || 'Software Services',
-                paymentMethod: data.payment?.payment_method || 'Online',
-                cfPaymentId: data.payment?.cf_payment_id || '',
-                bankReference: data.payment?.bank_reference || '',
+                customerName: custDetails.customer_name || verifiedData.order?.customer_name || 'Anonymous',
+                customerPhone: custDetails.customer_phone || verifiedData.order?.customer_phone || '',
+                customerEmail: custDetails.customer_email || verifiedData.order?.customer_email || '',
+                purpose: verifiedData.order?.order_note || 'Software Services',
+                paymentMethod: verifiedData.payment?.payment_method?.upi ? 'UPI' : (typeof verifiedData.payment?.payment_method === 'string' ? verifiedData.payment?.payment_method : 'Online'),
+                cfPaymentId: verifiedData.payment?.cf_payment_id || '',
+                bankReference: verifiedData.payment?.bank_reference || '',
+                paymentTime: verifiedData.payment?.payment_completion_time || verifiedData.payment?.payment_time || new Date().toISOString(),
                 verifiedAt: serverTimestamp()
               }, { merge: true });
+              console.info('✅ Payment record successfully synced to Firestore:', orderId);
             } catch (dbErr) {
-              console.warn('Client Firestore save warning:', dbErr);
+              console.warn('Client Firestore save warning (check Firestore security rules):', dbErr);
             }
           }
-        } else if (!error) {
+        } else if (!gasJson?.msg) {
           setError('Failed to verify transaction status with payment gateway.');
         }
       } catch (err) {
-        setError('Network error while verifying transaction.');
+        console.error('Verification error:', err);
+        setError(err.message || 'Network error while verifying transaction.');
       } finally {
         setLoading(false);
       }
@@ -223,12 +229,18 @@ function PaymentStatusContent() {
               </div>
               <div>
                 <span style={{ color: '#94a3b8' }}>Client Name:</span>
-                <div style={{ fontWeight: '700', color: '#f8fafc' }}>{order.customer_name || 'N/A'}</div>
+                <div style={{ fontWeight: '700', color: '#f8fafc' }}>{order.customer_details?.customer_name || order.customer_name || 'Valued Client'}</div>
               </div>
               <div>
                 <span style={{ color: '#94a3b8' }}>Mobile Phone:</span>
-                <div style={{ fontWeight: '700', color: '#f8fafc' }}>+91 {order.customer_phone || 'N/A'}</div>
+                <div style={{ fontWeight: '700', color: '#f8fafc' }}>+91 {order.customer_details?.customer_phone || order.customer_phone || 'N/A'}</div>
               </div>
+              {(order.customer_details?.customer_email || order.customer_email) && (
+                <div>
+                  <span style={{ color: '#94a3b8' }}>Email ID:</span>
+                  <div style={{ fontWeight: '700', color: '#f8fafc' }}>{order.customer_details?.customer_email || order.customer_email}</div>
+                </div>
+              )}
               <div>
                 <span style={{ color: '#94a3b8' }}>Service Purpose:</span>
                 <div style={{ fontWeight: '700', color: '#f8fafc' }}>{order.order_note || 'Software Engineering'}</div>

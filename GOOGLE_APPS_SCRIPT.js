@@ -12,6 +12,20 @@
  * 4. Click Deploy > Manage Deployments > Edit (Pencil Icon) > Version: New Version > Deploy.
  */
 
+function doGet(e) {
+  try {
+    const params = (e && e.parameter) || {};
+    if (params.action === "verify_cashfree_order" && params.order_id) {
+      return handleVerifyCashfreeOrder({ order_id: params.order_id });
+    }
+    return ContentService.createTextOutput(JSON.stringify({ status: "success", msg: "ChittorTech Google Apps Script API Rail is active." }))
+                         .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ status: "error", msg: err.toString() }))
+                         .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
@@ -557,6 +571,65 @@ function handleVerifyCashfreeOrder(data) {
         paymentDetails = payList[payList.length - 1];
       }
     } catch (e) {}
+
+    // Send immediate email alert to admins on successful PAID payment
+    if (orderData && orderData.order_status === "PAID") {
+      try {
+        const cache = CacheService.getScriptCache();
+        const alertKey = "cf_paid_alert_" + orderId;
+        if (!cache.get(alertKey)) {
+          cache.put(alertKey, "sent", 86400); // Prevent duplicate emails for 24h
+          const cust = orderData.customer_details || {};
+          const clientName = cust.customer_name || "Valued Client";
+          const clientPhone = cust.customer_phone || "N/A";
+          const clientEmail = cust.customer_email || "N/A";
+          const payAmt = orderData.order_amount;
+          const utr = (paymentDetails && paymentDetails.bank_reference) || "N/A";
+          const cfPayId = (paymentDetails && paymentDetails.cf_payment_id) || "N/A";
+          const payNote = orderData.order_note || "Software Services";
+
+          const htmlBody = `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: 'Inter', Helvetica, Arial, sans-serif; background: #0b0f19; margin: 0; padding: 20px; color: #f8fafc; }
+    .card { max-width: 520px; margin: 0 auto; background: #0f172a; border-radius: 16px; border: 1px solid rgba(74,222,128,0.4); padding: 28px; }
+    .badge { display: inline-block; background: rgba(74,222,128,0.15); color: #4ade80; font-weight: 800; font-size: 11px; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; border: 1px solid #4ade80; }
+    .amount { font-size: 34px; font-weight: 900; color: #4ade80; margin: 6px 0 20px 0; }
+    .row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 13px; }
+    .label { color: #94a3b8; }
+    .val { color: #ffffff; font-weight: 700; text-align: right; }
+    .footer { margin-top: 20px; font-size: 11px; color: #64748b; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">Payment Verified (Cashfree Live)</div>
+    <div style="color:#94a3b8; font-size:12px; text-transform:uppercase;">Amount Settled</div>
+    <div class="amount">₹${Number(payAmt).toLocaleString('en-IN')}</div>
+    <div class="row"><span class="label">Order ID:</span><span class="val">${orderId}</span></div>
+    <div class="row"><span class="label">Client Name:</span><span class="val">${clientName}</span></div>
+    <div class="row"><span class="label">Client Phone:</span><span class="val">+91 ${clientPhone}</span></div>
+    <div class="row"><span class="label">Client Email:</span><span class="val">${clientEmail}</span></div>
+    <div class="row"><span class="label">Purpose / Note:</span><span class="val">${payNote}</span></div>
+    <div class="row"><span class="label">Bank UTR:</span><span class="val" style="color:#4ade80;">${utr}</span></div>
+    <div class="row"><span class="label">Cashfree Pay ID:</span><span class="val" style="color:#38bdf8;">${cfPayId}</span></div>
+    <div class="footer">Automated Financial Rail • ChittorTech Enterprise Solutions</div>
+  </div>
+</body>
+</html>`;
+
+          MailApp.sendEmail({
+            to: "kushsharma.cor@gmail.com",
+            cc: "lavsharma.cor@gmail.com",
+            subject: `🎉 Payment Received: ₹${payAmt} from ${clientName} (${orderId})`,
+            htmlBody: htmlBody
+          });
+        }
+      } catch (mailErr) {
+        Logger.log("Mail alert error: " + mailErr);
+      }
+    }
 
     return ContentService.createTextOutput(JSON.stringify({
       status: "success",
