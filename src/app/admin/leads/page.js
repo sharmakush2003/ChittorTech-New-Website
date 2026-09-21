@@ -2,11 +2,16 @@
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
+import B2BLeadGenerator from "@/components/admin/B2BLeadGenerator";
 import {
   subscribeToLeads,
   updateLeadStatus,
   updateLeadNotes,
   deleteLead,
+  subscribeToB2BLeads,
+  updateB2BLeadStatus,
+  updateB2BLeadNotes,
+  deleteB2BLead,
 } from "@/lib/leadService";
 
 const SCRIPT_URL =
@@ -16,6 +21,7 @@ const SCRIPT_URL =
     : "https://script.google.com/macros/s/AKfycbxbWvxG81_lwfFh0sIqGhQnJnHwPwC0TxBnmiPq_DFxfFp7OnxNY1XC60nmFZxABve8/exec";
 
 export default function AdminLeadsPage() {
+  const [adminPipelineTab, setAdminPipelineTab] = useState("b2b_outbound"); // "b2b_outbound" | "inbound" | "how_to_use"
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [passcode, setPasscode] = useState("");
@@ -105,6 +111,16 @@ export default function AdminLeadsPage() {
   const [selectedLead, setSelectedLead] = useState(null);
   const [leadNotes, setLeadNotes] = useState("");
   const [savingNotes, setSavingNotes] = useState(false);
+
+  // B2B Leads Database (Firestore collection: b2b_leads)
+  const [b2bLeads, setB2bLeads] = useState([]);
+  const [b2bLoading, setB2bLoading] = useState(true);
+  const [b2bSearch, setB2bSearch] = useState("");
+  const [b2bStatusF, setB2bStatusF] = useState("all");
+  const [b2bCityF, setB2bCityF] = useState("all");
+  const [b2bWebF, setB2bWebF] = useState("all");
+  const [b2bEditingId, setB2bEditingId] = useState(null);
+  const [b2bNotesDraft, setB2bNotesDraft] = useState("");
 
   // Security Lockout states (Stored in sessionStorage to prevent refresh bypass)
   const [lockoutMsg, setLockoutMsg] = useState("");
@@ -397,6 +413,17 @@ export default function AdminLeadsPage() {
     return () => unsubscribe && unsubscribe();
   }, [isAuthenticated]);
 
+  // Real-time subscription for B2B Outbound Leads
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const unsub = subscribeToB2BLeads(
+      (data) => { setB2bLeads(data); setB2bLoading(false); },
+      () => setB2bLoading(false)
+    );
+    return () => unsub && unsub();
+  }, [isAuthenticated]);
+
+
   // Sync selected lead notes
   useEffect(() => {
     if (selectedLead) {
@@ -511,11 +538,11 @@ export default function AdminLeadsPage() {
   const renderStatusBadge = (status) => {
     const s = status || "new";
     const styles = {
-      new: { bg: "rgba(245, 158, 11, 0.12)", text: "#fbbf24", border: "rgba(245, 158, 11, 0.3)", label: "New Lead", dot: "#f59e0b" },
-      contacted: { bg: "rgba(99, 102, 241, 0.14)", text: "#818cf8", border: "rgba(99, 102, 241, 0.3)", label: "Contacted", dot: "#6366f1" },
-      qualified: { bg: "rgba(168, 85, 247, 0.14)", text: "#c084fc", border: "rgba(168, 85, 247, 0.3)", label: "Qualified", dot: "#a855f7" },
-      converted: { bg: "rgba(34, 197, 94, 0.14)", text: "#4ade80", border: "rgba(34, 197, 94, 0.3)", label: "Converted", dot: "#22c55e" },
-      lost: { bg: "rgba(148, 163, 184, 0.12)", text: "#94a3b8", border: "rgba(148, 163, 184, 0.25)", label: "Lost / Closed", dot: "#94a3b8" },
+      new:       { bg: "rgba(217,119,6,0.08)",   text: "#92400e", border: "rgba(217,119,6,0.22)",   label: "New Lead",      dot: "#d97706" },
+      contacted: { bg: "rgba(99,102,241,0.08)",  text: "#4338ca", border: "rgba(99,102,241,0.22)", label: "Contacted",     dot: "#6366f1" },
+      qualified: { bg: "rgba(147,51,234,0.08)",  text: "#7e22ce", border: "rgba(147,51,234,0.22)", label: "Qualified",     dot: "#9333ea" },
+      converted: { bg: "rgba(22,163,74,0.08)",   text: "#14532d", border: "rgba(22,163,74,0.22)",  label: "Converted",     dot: "#16a34a" },
+      lost:      { bg: "rgba(148,163,184,0.08)", text: "#475569", border: "rgba(148,163,184,0.22)",label: "Lost / Closed",  dot: "#94a3b8" },
     };
     const current = styles[s] || styles.new;
     return (
@@ -546,6 +573,71 @@ export default function AdminLeadsPage() {
         {current.label}
       </span>
     );
+  };
+
+  // ── B2B CRM Helpers & Realtime Stats ──
+  const b2bStats = useMemo(() => ({
+    total:     b2bLeads.length,
+    noWeb:     b2bLeads.filter((l) => !l.website?.trim()).length,
+    contacted: b2bLeads.filter((l) => l.status === "contacted").length,
+    converted: b2bLeads.filter((l) => l.status === "converted").length,
+  }), [b2bLeads]);
+
+  const b2bCities = useMemo(() => {
+    return ["all", ...Array.from(new Set(b2bLeads.map((l) => l.city).filter(Boolean)))];
+  }, [b2bLeads]);
+
+  const filteredB2B = useMemo(() => {
+    return b2bLeads.filter((lead) => {
+      if (b2bSearch.trim()) {
+        const q = b2bSearch.toLowerCase();
+        const match = [lead.name, lead.phone, lead.website, lead.city, lead.category, lead.notes]
+          .some((v) => (v || "").toLowerCase().includes(q));
+        if (!match) return false;
+      }
+      if (b2bCityF !== "all" && lead.city !== b2bCityF) return false;
+      if (b2bStatusF !== "all" && (lead.status || "new") !== b2bStatusF) return false;
+      if (b2bWebF === "no_web" && lead.website?.trim()) return false;
+      if (b2bWebF === "has_web" && !lead.website?.trim()) return false;
+      return true;
+    });
+  }, [b2bLeads, b2bSearch, b2bCityF, b2bStatusF, b2bWebF]);
+
+  const handleExportB2BCSV = () => {
+    if (filteredB2B.length === 0) return;
+    const headers = ["Business Name", "Phone", "Website", "Rating", "City", "Category", "Status", "Notes", "Imported Date"];
+    const rows = filteredB2B.map((l) => [
+      `"${(l.name || "").replace(/"/g, '""')}"`,
+      `"${(l.phone || "").replace(/"/g, '""')}"`,
+      `"${(l.website || "").replace(/"/g, '""')}"`,
+      `"${(l.rating || "").replace(/"/g, '""')}"`,
+      `"${(l.city || "").replace(/"/g, '""')}"`,
+      `"${(l.category || "").replace(/"/g, '""')}"`,
+      `"${l.status || "new"}"`,
+      `"${(l.notes || "").replace(/"/g, '""')}"`,
+      `"${l.createdDate ? new Date(l.createdDate).toLocaleString("en-IN") : ""}"`,
+    ]);
+    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
+    const link = document.createElement("a");
+    link.href = encodeURI(csvContent);
+    link.download = `chittortech_b2b_leads_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const getB2BWaLink = (lead) => {
+    let ph = lead.phone?.replace(/\D/g, "") || "";
+    if (ph.length === 10) ph = "91" + ph;
+    if (ph.length === 11 && ph[0] === "0") ph = "91" + ph.slice(1);
+    if (!ph) return "";
+    const name = lead.name || "Sir";
+    const cat = (lead.category || "").toLowerCase();
+    let msg = `Namaste ${name} 🙏\n\nChittorTech IT Systems se contact kar rahe hain. Hum ${lead.city || "Rajasthan"} ke businesses ke liye high-converting corporate websites, Google Business ranking aur billing software develop karte hain.\n\nKya hum aapke digital growth par quick 2-minute connect kar sakte hain?\n\nDhanyawad,\nChittorTech IT Systems\nhttps://chittortech.in`;
+    if (cat.includes("marble") || cat.includes("granite")) {
+      msg = `Namaste ${name} 🙏\n\nChittorTech IT Systems se. Hum Bhilwara & Rajasthan ki marble & granite units ke liye *Digital Stone Catalogues* aur export-ready B2B websites develop karte hain.\n\nAapke outstation buyers ko instant digital catalogue link bhej sakte hain. Kya hum demo preview share karein?\n\nhttps://chittortech.in`;
+    }
+    return `https://wa.me/${ph}?text=${encodeURIComponent(msg)}`;
   };
 
   // Checking active session (preserves dashboard on reload, forces login on tab close)
@@ -1446,13 +1538,14 @@ export default function AdminLeadsPage() {
       <nav
         id="admin-top-nav"
         style={{
-          background: "#0f172a",
-          borderBottom: "1px solid #1e293b",
-          color: "#ffffff",
-          padding: "14px 32px",
+          background: "#ffffff",
+          borderBottom: "1px solid #e2e8f0",
+          color: "#0f172a",
+          padding: "12px 32px",
           position: "sticky",
           top: 0,
           zIndex: 100,
+          boxShadow: "0 1px 4px rgba(15,23,42,0.06)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -1463,8 +1556,8 @@ export default function AdminLeadsPage() {
                 alt="ChittorTech"
                 style={{ width: "32px", height: "32px", borderRadius: "8px" }}
               />
-              <span style={{ color: "#ffffff", fontWeight: 800, fontSize: "1.15rem", letterSpacing: "-0.3px" }}>
-                ChittorTech<span style={{ color: "#38bdf8" }}>™</span> Admin Console
+              <span style={{ color: "#0f172a", fontWeight: 800, fontSize: "1.15rem", letterSpacing: "-0.3px" }}>
+                ChittorTech<span style={{ color: "#6366f1" }}>™</span> Admin Console
               </span>
             </Link>
             <span
@@ -1472,16 +1565,16 @@ export default function AdminLeadsPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "6px",
-                background: "rgba(34, 197, 94, 0.15)",
-                color: "#4ade80",
+                background: "rgba(22, 163, 74, 0.10)",
+                color: "#166534",
                 fontSize: "0.75rem",
                 fontWeight: 700,
                 padding: "3px 10px",
                 borderRadius: "20px",
-                border: "1px solid rgba(34, 197, 94, 0.3)",
+                border: "1px solid rgba(22, 163, 74, 0.25)",
               }}
             >
-              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#4ade80" }} />
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e" }} />
               Live Firestore Sync
             </span>
           </div>
@@ -1512,7 +1605,7 @@ export default function AdminLeadsPage() {
               href="/"
               target="_blank"
               style={{
-                color: "#94a3b8",
+                color: "#475569",
                 fontSize: "0.85rem",
                 textDecoration: "none",
                 fontWeight: 600,
@@ -1521,7 +1614,8 @@ export default function AdminLeadsPage() {
                 gap: "6px",
                 padding: "6px 12px",
                 borderRadius: "8px",
-                background: "rgba(255,255,255,0.05)",
+                background: "#f1f5f9",
+                border: "1px solid #e2e8f0",
               }}
             >
               <i className="fas fa-external-link-alt"></i> View Website
@@ -1555,8 +1649,235 @@ export default function AdminLeadsPage() {
 
       {/* Main Container */}
       <main style={{ maxWidth: "1440px", margin: "0 auto", padding: "28px 24px" }}>
-        {/* Title Bar & Stats */}
-        <div style={{ marginBottom: "28px" }}>
+        {/* TOP LEVEL DUAL-PIPELINE SELECTOR */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "12px",
+            background: "#ffffff",
+            padding: "8px 12px",
+            borderRadius: "14px",
+            border: "1.5px solid #e2e8f0",
+            marginBottom: "24px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+            <button
+              onClick={() => setAdminPipelineTab("b2b_outbound")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "10px 20px",
+                borderRadius: "10px",
+                fontSize: "0.88rem",
+                fontWeight: 800,
+                cursor: "pointer",
+                border: "none",
+                transition: "all 0.15s ease",
+                background: adminPipelineTab === "b2b_outbound" ? "linear-gradient(135deg, #6366f1, #4f46e5)" : "transparent",
+                color: adminPipelineTab === "b2b_outbound" ? "#ffffff" : "#64748b",
+                boxShadow: adminPipelineTab === "b2b_outbound" ? "0 4px 12px rgba(99, 102, 241, 0.25)" : "none",
+              }}
+            >
+              <i className="fas fa-satellite-dish" style={{ color: adminPipelineTab === "b2b_outbound" ? "#c7d2fe" : "#94a3b8" }}></i>
+              <span>Generate Leads</span>
+              <span
+                style={{
+                  background: adminPipelineTab === "b2b_outbound" ? "rgba(199, 210, 254, 0.25)" : "#f1f5f9",
+                  color: adminPipelineTab === "b2b_outbound" ? "#c7d2fe" : "#64748b",
+                  padding: "2px 8px",
+                  borderRadius: "20px",
+                  fontSize: "0.72rem",
+                  fontWeight: 800,
+                }}
+              >
+                {b2bLeads.length} Leads
+              </span>
+            </button>
+
+            <button
+              onClick={() => setAdminPipelineTab("inbound")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "10px 20px",
+                borderRadius: "10px",
+                fontSize: "0.88rem",
+                fontWeight: 800,
+                cursor: "pointer",
+                border: "none",
+                transition: "all 0.15s ease",
+                background: adminPipelineTab === "inbound" ? "linear-gradient(135deg, #2563eb, #1d4ed8)" : "transparent",
+                color: adminPipelineTab === "inbound" ? "#ffffff" : "#64748b",
+                boxShadow: adminPipelineTab === "inbound" ? "0 4px 12px rgba(37, 99, 235, 0.25)" : "none",
+              }}
+            >
+              <i className="fas fa-inbox" style={{ color: adminPipelineTab === "inbound" ? "#ffffff" : "#94a3b8" }}></i>
+              <span>Incoming Leads</span>
+              <span
+                style={{
+                  background: adminPipelineTab === "inbound" ? "rgba(255, 255, 255, 0.25)" : "#f1f5f9",
+                  color: adminPipelineTab === "inbound" ? "#ffffff" : "#64748b",
+                  padding: "2px 8px",
+                  borderRadius: "20px",
+                  fontSize: "0.72rem",
+                  fontWeight: 800,
+                }}
+              >
+                {stats.total} Live
+              </span>
+            </button>
+
+            {/* Tab 3: How to Use */}
+            <button
+              onClick={() => setAdminPipelineTab("how_to_use")}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "10px 20px",
+                borderRadius: "10px",
+                fontSize: "0.88rem",
+                fontWeight: 800,
+                cursor: "pointer",
+                border: "none",
+                transition: "all 0.15s ease",
+                background: adminPipelineTab === "how_to_use" ? "linear-gradient(135deg, #059669, #047857)" : "transparent",
+                color: adminPipelineTab === "how_to_use" ? "#ffffff" : "#64748b",
+                boxShadow: adminPipelineTab === "how_to_use" ? "0 4px 12px rgba(5, 150, 105, 0.25)" : "none",
+              }}
+            >
+              <i className="fas fa-book-open" style={{ color: adminPipelineTab === "how_to_use" ? "#a7f3d0" : "#94a3b8" }}></i>
+              <span>How to Use</span>
+              <span
+                style={{
+                  background: adminPipelineTab === "how_to_use" ? "rgba(167, 243, 208, 0.25)" : "#f1f5f9",
+                  color: adminPipelineTab === "how_to_use" ? "#a7f3d0" : "#64748b",
+                  padding: "2px 8px",
+                  borderRadius: "20px",
+                  fontSize: "0.72rem",
+                  fontWeight: 800,
+                }}
+              >
+                Guide
+              </span>
+            </button>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.75rem", color: "#64748b", fontWeight: 600, paddingRight: "8px" }}>
+            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#22c55e" }} />
+            <span>ChittorTech Multi-Pipeline Active</span>
+          </div>
+        </div>
+
+        {adminPipelineTab === "b2b_outbound" ? (
+          <B2BLeadGenerator />
+        ) : adminPipelineTab === "how_to_use" ? (
+          /* ── HOW TO USE TAB ── */
+          <div style={{ fontFamily: "'Inter', sans-serif" }}>
+            {/* Header */}
+            <div style={{ marginBottom: "28px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
+                <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "linear-gradient(135deg, #059669, #047857)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(5,150,105,0.25)" }}>
+                  <i className="fas fa-book-open" style={{ color: "#ffffff", fontSize: "18px" }}></i>
+                </div>
+                <div>
+                  <h1 style={{ fontSize: "1.6rem", fontWeight: 800, color: "#0f172a", margin: 0, letterSpacing: "-0.4px" }}>How to Use — B2B Lead Engine</h1>
+                  <p style={{ margin: 0, color: "#64748b", fontSize: "0.88rem" }}>Google Maps se leads nikalo, pitch karo aur deals close karo — step by step guide</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Infographic */}
+            <div style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "20px", overflow: "hidden", marginBottom: "28px", boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
+              <img
+                src="/b2b-guide-infographic.jpg"
+                alt="B2B Lead Generator — Complete Workflow Guide"
+                style={{ width: "100%", display: "block", borderRadius: "20px" }}
+              />
+            </div>
+
+            {/* Quick Steps Grid */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "16px", marginBottom: "28px" }}>
+              {[
+                { num: "1", icon: "fa-map-marker-alt", color: "#6366f1", bg: "#eff6ff", border: "#dbeafe", title: "Scraper Hub Kholo", desc: "Admin Panel mein 'Scraper Hub' button click karo. Target city choose karo — Bhilwara Marble, Udaipur Hotels, Chittorgarh Dharamshalas etc." },
+                { num: "2", icon: "fa-terminal", color: "#7c3aed", bg: "#f5f3ff", border: "#ede9fe", title: "Console Script Run Karo", desc: "Google Maps khulega. F12 → Console tab → 'Copy Scraper Code' click karo → Paste karo → Enter dabaao. CSV auto-download hogi!" },
+                { num: "3", icon: "fa-file-upload", color: "#0891b2", bg: "#ecfeff", border: "#cffafe", title: "CSV Upload Karo", desc: "Downloaded CSV ko Drop Zone pe chod do ya 'Upload CSV' click karo. Data auto-import hoga with city & category detection." },
+                { num: "4", icon: "fa-fire", color: "#d97706", bg: "#fffbeb", border: "#fef3c7", title: "No Website Filter Lagao", desc: "'🔥 No Website' filter se prime targets dekho — yeh log turat web development ke candidates hain. ₹15k package offer karo." },
+                { num: "5", icon: "fa-whatsapp fab", color: "#16a34a", bg: "#f0fdf4", border: "#dcfce7", title: "WhatsApp Pitch Bhejo", desc: "WhatsApp button click karo — auto pre-written pitch message open hoga. Category ke hisaab se pitch auto-select hoti hai." },
+                { num: "6", icon: "fa-tags", color: "#9333ea", bg: "#fdf4ff", border: "#f3e8ff", title: "Status Track Karo", desc: "Status pill click karo: New → Contacted → In Negotiation → Converted. Pipeline track hota rehta hai automatically." },
+              ].map(({ num, icon, color, bg, border, title, desc }) => (
+                <div key={num} style={{ background: "#ffffff", border: `1px solid #e2e8f0`, borderRadius: "16px", padding: "20px", boxShadow: "0 2px 8px rgba(0,0,0,0.03)", position: "relative", overflow: "hidden" }}>
+                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: color }} />
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+                    <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: bg, border: `1px solid ${border}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <i className={`fas ${icon}`} style={{ color, fontSize: "16px" }}></i>
+                    </div>
+                    <div>
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
+                        <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: color, color: "#fff", fontSize: "0.72rem", fontWeight: 800, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{num}</span>
+                        <span style={{ fontSize: "0.9rem", fontWeight: 800, color: "#0f172a" }}>{title}</span>
+                      </div>
+                      <p style={{ margin: 0, fontSize: "0.82rem", color: "#64748b", lineHeight: 1.55 }}>{desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Status Meaning Table */}
+            <div style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "16px", padding: "22px 24px", marginBottom: "20px", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
+              <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#0f172a", margin: "0 0 16px 0", display: "flex", alignItems: "center", gap: "8px" }}>
+                <i className="fas fa-tags" style={{ color: "#6366f1" }}></i> Status Pills — Matlab Kya Hai?
+              </h3>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                {[
+                  { label: "New Lead", dot: "#d97706", bg: "rgba(217,119,6,0.08)", border: "rgba(217,119,6,0.22)", text: "#92400e", desc: "Naya contact, abhi kuch nahi kiya" },
+                  { label: "Pitch Dispatched", dot: "#6366f1", bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.22)", text: "#4338ca", desc: "WhatsApp/call kar diya" },
+                  { label: "In Negotiation", dot: "#9333ea", bg: "rgba(147,51,234,0.08)", border: "rgba(147,51,234,0.22)", text: "#7e22ce", desc: "Interested hai, baat chal rahi" },
+                  { label: "Closed Deal ✓", dot: "#16a34a", bg: "rgba(22,163,74,0.08)", border: "rgba(22,163,74,0.22)", text: "#14532d", desc: "Deal ho gayi! 🎉" },
+                  { label: "Not Interested", dot: "#94a3b8", bg: "rgba(148,163,184,0.08)", border: "rgba(148,163,184,0.22)", text: "#475569", desc: "Nahi maana, skip karo" },
+                ].map(({ label, dot, bg, border, text, desc }) => (
+                  <div key={label} style={{ display: "flex", alignItems: "center", gap: "10px", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "10px", padding: "10px 14px", minWidth: "200px" }}>
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "3px 8px", borderRadius: "20px", background: bg, border: `1px solid ${border}`, color: text, fontSize: "0.75rem", fontWeight: 700, whiteSpace: "nowrap" }}>
+                      <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: dot, flexShrink: 0 }} />
+                      {label}
+                    </span>
+                    <span style={{ fontSize: "0.78rem", color: "#64748b" }}>{desc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pro Tips */}
+            <div style={{ background: "linear-gradient(135deg, #f0fdf4, #ecfdf5)", border: "1px solid #bbf7d0", borderRadius: "16px", padding: "20px 24px" }}>
+              <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#14532d", margin: "0 0 12px 0", display: "flex", alignItems: "center", gap: "8px" }}>
+                <i className="fas fa-lightbulb" style={{ color: "#16a34a" }}></i> Pro Tips
+              </h3>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "8px" }}>
+                {[
+                  "🔥 No Website filter = Prime web dev leads. ₹15k package instantly offer karo",
+                  "📱 WhatsApp button = auto pitch + status 'Contacted' ek click mein",
+                  "💾 Data Firestore cloud mein save rehta hai — refresh pe bhi nahi jaata",
+                  "🔄 Same phone number do baar import nahi hogi — auto-dedup",
+                  "⚡ Google Maps Scraper se CSV download karke direct upload karo",
+                  "📤 Din ke end mein Export CSV karo — backup ke liye",
+                ].map((tip, i) => (
+                  <div key={i} style={{ fontSize: "0.82rem", color: "#166534", background: "rgba(255,255,255,0.7)", border: "1px solid rgba(22,163,74,0.15)", borderRadius: "8px", padding: "8px 12px", lineHeight: 1.5 }}>{tip}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            {/* Title Bar & Stats */}
+            <div style={{ marginBottom: "28px" }}>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", marginBottom: "24px" }}>
             <div>
               <h1 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#0f172a", margin: "0 0 4px 0", letterSpacing: "-0.5px" }}>
@@ -2150,6 +2471,8 @@ export default function AdminLeadsPage() {
             </div>
           )}
         </div>
+          </>
+        )}
       </main>
     </div>
   );

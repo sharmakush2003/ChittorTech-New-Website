@@ -10,6 +10,8 @@ import {
   limit,
   onSnapshot,
   serverTimestamp,
+  getDocs,
+  writeBatch,
 } from "firebase/firestore";
 
 const PENDING_LEADS_KEY = "chittortech_pending_leads_buffer";
@@ -272,3 +274,142 @@ export async function deleteLead(leadId) {
     return false;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   B2B OUTBOUND LEADS — Firestore Collection: `b2b_leads`
+   Used by B2BLeadGenerator component (Google Maps CSV imports)
+═══════════════════════════════════════════════════════════════ */
+
+/**
+ * Bulk-insert a batch of B2B leads scraped from Google Maps CSV.
+ * Returns { added, skipped } counts.
+ */
+export async function addB2BLeads(batch) {
+  if (!batch || batch.length === 0) return { added: 0, skipped: 0 };
+  try {
+    // Fetch existing phone numbers to deduplicate
+    const existing = await getDocs(collection(db, "b2b_leads"));
+    const existingPhones = new Set(
+      existing.docs.map((d) => (d.data().phone || "").replace(/\D/g, "")).filter(Boolean)
+    );
+
+    let added = 0;
+    let skipped = 0;
+    const CHUNK_SIZE = 400;
+    let wb = writeBatch(db);
+    let currentBatchCount = 0;
+
+    for (const lead of batch) {
+      const cleanPh = (lead.phone || "").replace(/\D/g, "");
+      if (cleanPh && existingPhones.has(cleanPh)) { skipped++; continue; }
+      if (cleanPh) existingPhones.add(cleanPh);
+      const ref = doc(collection(db, "b2b_leads"));
+      wb.set(ref, {
+        name:       lead.name?.trim()     || "",
+        phone:      lead.phone?.trim()    || "",
+        website:    lead.website?.trim()  || "",
+        rating:     lead.rating?.trim()   || "",
+        city:       lead.city             || "Bhilwara",
+        category:   lead.category         || "General",
+        status:     "new",
+        notes:      lead.notes?.trim()    || "",
+        importedAt: serverTimestamp(),
+        updatedAt:  serverTimestamp(),
+      });
+      added++;
+      currentBatchCount++;
+
+      if (currentBatchCount >= CHUNK_SIZE) {
+        await wb.commit();
+        wb = writeBatch(db);
+        currentBatchCount = 0;
+      }
+    }
+
+    if (currentBatchCount > 0) {
+      await wb.commit();
+    }
+    return { added, skipped };
+  } catch (err) {
+    console.error("addB2BLeads error:", err);
+    throw err;
+  }
+}
+
+/**
+ * Real-time listener for B2B Leads (admin dashboard).
+ */
+export function subscribeToB2BLeads(onData, onError) {
+  try {
+    const q = query(
+      collection(db, "b2b_leads"),
+      limit(500)
+    );
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const leads = snapshot.docs.map((d) => {
+          const data = d.data();
+          const importedDate = data.importedAt?.toDate ? data.importedAt.toDate() : (data.createdAt ? new Date(data.createdAt) : new Date());
+          return {
+            id: d.id,
+            ...data,
+            importedAtDate: importedDate,
+          };
+        });
+        // Sort descending by imported date in memory
+        leads.sort((a, b) => (b.importedAtDate || 0) - (a.importedAtDate || 0));
+        onData(leads);
+      },
+      (err) => {
+        console.warn("subscribeToB2BLeads warning (verify Firestore rules):", err);
+        if (onError) onError(err);
+      }
+    );
+    return unsubscribe;
+  } catch (err) {
+    console.warn("Failed to setup b2b_leads listener:", err);
+    if (onError) onError(err);
+    return () => {};
+  }
+}
+
+/** Update B2B lead status */
+export async function updateB2BLeadStatus(leadId, newStatus) {
+  try {
+    await updateDoc(doc(db, "b2b_leads", leadId), {
+      status: newStatus,
+      updatedAt: serverTimestamp(),
+    });
+    return true;
+  } catch (err) {
+    console.error("updateB2BLeadStatus error:", err);
+    return false;
+  }
+}
+
+/** Update B2B lead notes */
+export async function updateB2BLeadNotes(leadId, notes) {
+  try {
+    await updateDoc(doc(db, "b2b_leads", leadId), {
+      notes,
+      updatedAt: serverTimestamp(),
+    });
+    return true;
+  } catch (err) {
+    console.error("updateB2BLeadNotes error:", err);
+    return false;
+  }
+}
+
+/** Delete a B2B lead */
+export async function deleteB2BLead(leadId) {
+  try {
+    await deleteDoc(doc(db, "b2b_leads", leadId));
+    return true;
+  } catch (err) {
+    console.error("deleteB2BLead error:", err);
+    return false;
+  }
+}
+
