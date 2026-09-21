@@ -6,6 +6,7 @@ import {
   subscribeToB2BLeads,
   updateB2BLeadStatus,
   updateB2BLeadNotes,
+  updateB2BLeadCity,
   deleteB2BLead,
 } from "@/lib/leadService";
 
@@ -16,6 +17,7 @@ import {
 const TARGET_PRESETS = [
   { id: "marble_bhilwara", label: "Bhilwara Marble & Granite", icon: "fa-cubes", query: "Marble factory Bhilwara", city: "Bhilwara", category: "Marble & Granite", pitchType: "marble", color: "#6366f1" },
   { id: "dharamshala_chittor", label: "Chittorgarh Dharamshalas", icon: "fa-gopuram", query: "Dharamshala Chittorgarh", city: "Chittorgarh", category: "Dharamshala & Trusts", pitchType: "dharamshala", color: "#f59e0b" },
+  { id: "khatu_shyam", label: "Khatu Shyam Ji Hotels & Trusts", icon: "fa-om", query: "Hotels dharamshala Khatu Shyam Ji", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", pitchType: "dharamshala", color: "#ec4899" },
   { id: "resorts_udaipur", label: "Udaipur Luxury Resorts", icon: "fa-umbrella-beach", query: "Boutique hotels resorts Udaipur", city: "Udaipur", category: "Hotels & Resorts", pitchType: "hotel", color: "#06b6d4" },
   { id: "textile_bhilwara", label: "Bhilwara Textiles", icon: "fa-tshirt", query: "Textile manufacturers Bhilwara", city: "Bhilwara", category: "Textile & Manufacturing", pitchType: "textile", color: "#10b981" },
   { id: "industrial_chittor", label: "Mewar Industrial", icon: "fa-industry", query: "Transport companies Chittorgarh", city: "Chittorgarh", category: "Industrial", pitchType: "general", color: "#8b5cf6" },
@@ -347,15 +349,53 @@ Phone: +91 75974 51057`,
 
 const SCRAPER_CODE = `(async function scrapeGoogleMaps() {
   const feed = document.querySelector('div[role="feed"]');
-  if (!feed) { alert("Sidebar feed not found!"); return; }
+  if (!feed) { alert("Sidebar feed not found! Make sure Google Maps search results are visible in the left panel."); return; }
+  
+  // 1. Detect exact search query & location from Google Maps
+  const searchInput = (
+    document.querySelector('#searchboxinput')?.value ||
+    document.querySelector('input[name="q"]')?.value ||
+    (window.location.href.includes('/search/') ? decodeURIComponent(window.location.href.split('/search/')[1].split('/')[0].split('?')[0]) : '') ||
+    document.title.replace(/ - Google Maps/i, '').replace(/Google Maps/i, '').trim() ||
+    "Leads"
+  ).trim();
+
+  const qLower = searchInput.toLowerCase();
+
+  // Detect City from Search Query
+  let defaultCity = "Bhilwara";
+  if (qLower.includes("khatu shyam") || qLower.includes("khatushyam") || qLower.includes("khatu")) defaultCity = "Khatu Shyam Ji";
+  else if (qLower.includes("chittor") || qLower.includes("sanwaliya") || qLower.includes("nimbahera") || qLower.includes("kapasan")) defaultCity = "Chittorgarh";
+  else if (qLower.includes("udaipur")) defaultCity = "Udaipur";
+  else if (qLower.includes("jaipur")) defaultCity = "Jaipur";
+  else if (qLower.includes("jodhpur")) defaultCity = "Jodhpur";
+  else if (qLower.includes("kota")) defaultCity = "Kota";
+  else if (qLower.includes("ajmer") || qLower.includes("pushkar")) defaultCity = "Ajmer";
+  else if (qLower.includes("bhilwara")) defaultCity = "Bhilwara";
+  else if (searchInput) {
+    const parts = searchInput.split(' ');
+    defaultCity = parts[parts.length - 1];
+  }
+
+  // Detect Category from Search Query
+  let defaultCategory = "General";
+  if (qLower.includes("dharamshala") || qLower.includes("dharmashala") || qLower.includes("dharmsala") || qLower.includes("trust") || qLower.includes("mandir") || qLower.includes("temple")) defaultCategory = "Dharamshala & Trusts";
+  else if (qLower.includes("marble") || qLower.includes("granite") || qLower.includes("stone") || qLower.includes("quartz") || qLower.includes("mines") || qLower.includes("marmo")) defaultCategory = "Marble & Granite";
+  else if (qLower.includes("hotel") || qLower.includes("resort") || qLower.includes("palace") || qLower.includes("stay") || qLower.includes("inn") || qLower.includes("haveli")) defaultCategory = "Hotels & Resorts";
+  else if (qLower.includes("textile") || qLower.includes("spin") || qLower.includes("suit") || qLower.includes("fabric") || qLower.includes("yarn")) defaultCategory = "Textile & Manufacturing";
+
+  console.log("⚡ [ChittorTech Scraper] Searching for:", searchInput, "| Detected City:", defaultCity, "| Category:", defaultCategory);
+
+  // Scroll to load listings
   let prev = 0;
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 20; i++) {
     feed.scrollTop = feed.scrollHeight;
     await new Promise(r => setTimeout(r, 1200));
     const n = feed.querySelectorAll('div[role="article"], div.Nv2PK').length;
     if (n === prev && i > 4) break;
     prev = n;
   }
+
   const results = [];
   feed.querySelectorAll('div[role="article"], div.Nv2PK').forEach(el => {
     const nameEl = el.querySelector('.fontHeadlineSmall') || el.querySelector('a.hfpxzc');
@@ -367,14 +407,41 @@ const SCRAPER_CODE = `(async function scrapeGoogleMaps() {
     const ph = text.match(/(?:\\+91[\\s-]?)?[0]?[6-9]\\d{4}[\\s-]?\\d{5}|\\b0\\d{2,4}[\\s-]?\\d{6,8}\\b/);
     const phone = ph ? ph[0].replace(/\\s+/g,'') : "";
     const rEl = el.querySelector('span[aria-hidden="true"]');
-    results.push({ Name: name, Phone: phone, Website: website, Rating: rEl ? rEl.innerText : "" });
+    
+    // Per-lead City check
+    const tLower = (text + " " + name).toLowerCase();
+    let city = defaultCity;
+    if (tLower.includes("khatu shyam") || tLower.includes("khatushyam")) city = "Khatu Shyam Ji";
+    else if (tLower.includes("chittorgarh") || tLower.includes("chittor") || tLower.includes("sanwaliya")) city = "Chittorgarh";
+    else if (tLower.includes("udaipur")) city = "Udaipur";
+    else if (tLower.includes("jaipur")) city = "Jaipur";
+    else if (tLower.includes("bhilwara")) city = "Bhilwara";
+
+    // Per-lead Category check
+    let category = defaultCategory;
+    if (tLower.includes("dharamshala") || tLower.includes("dharmashala") || tLower.includes("dharmsala") || tLower.includes("trust") || tLower.includes("dadawadi") || tLower.includes("ashram")) category = "Dharamshala & Trusts";
+    else if (tLower.includes("marble") || tLower.includes("granite") || tLower.includes("stone") || tLower.includes("marmo")) category = "Marble & Granite";
+    else if (tLower.includes("hotel") || tLower.includes("resort") || tLower.includes("palace") || tLower.includes("haveli")) category = "Hotels & Resorts";
+
+    results.push({ Name: name, Phone: phone, Website: website, Rating: rEl ? rEl.innerText : "", City: city, Category: category });
   });
+
   if (!results.length) { alert("No results found!"); return; }
-  const csv = "data:text/csv;charset=utf-8," + encodeURI(["Business Name,Phone,Website,Rating",...results.map(r=>\`"\${r.Name}","\${r.Phone}","\${r.Website}","\${r.Rating}"\`)].join("\\n"));
+
+  // Generate CSV with City and Category columns
+  const header = "Business Name,Phone,Website,Rating,City,Category";
+  const rows = results.map(r => \`"\${r.Name.replace(/"/g, '""')}","\${r.Phone}","\${r.Website}","\${r.Rating}","\${r.City}","\${r.Category}"\`);
+  const csv = "data:text/csv;charset=utf-8," + encodeURI([header, ...rows].join("\\n"));
+
+  // Dynamic file name based on actual search location
+  const cleanName = searchInput.replace(/[^a-zA-Z0-9\\s]/g, ' ').trim().replace(/\\s+/g, '_') || "Mewar_Leads";
   const a = document.createElement("a");
-  a.href = csv; a.download = "Bhilwara_Leads.csv";
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  console.log("✅ " + results.length + " leads downloaded!");
+  a.href = csv;
+  a.download = \`\${cleanName}_Leads.csv\`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  console.log("✅ " + results.length + " leads downloaded as " + a.download);
 })();`;
 
 const STATUS_CONFIG = {
@@ -505,6 +572,91 @@ function StatusPill({ status, onChange }) {
   );
 }
 
+function CityPill({ city, onChange, availableCities }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const h = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, []);
+
+  const citiesList = Array.from(new Set([
+    "Bhilwara", "Chittorgarh", "Khatu Shyam Ji", "Udaipur", "Jaipur", "Jodhpur", "Kota", "Ajmer",
+    ...(availableCities || [])
+  ])).filter(Boolean);
+
+  return (
+    <div ref={ref} style={{ position: "relative", display: "inline-block" }}>
+      <button
+        type="button"
+        onClick={() => setOpen(v => !v)}
+        title="Click to edit location"
+        style={{
+          display: "inline-flex", alignItems: "center", gap: "5px",
+          padding: "3px 8px 3px 6px", borderRadius: "6px",
+          background: "rgba(15,23,42,0.04)", border: `1px solid ${DS.surfaceBorder}`,
+          color: DS.textSecondary, fontSize: "0.74rem", fontWeight: 600,
+          cursor: "pointer", letterSpacing: "0.2px", whiteSpace: "nowrap",
+          transition: "all 0.15s ease",
+        }}
+      >
+        <i className="fas fa-location-dot" style={{ color: DS.accentRed, fontSize: "9px" }}></i>
+        <span>{city || "Set City"}</span>
+        <i className="fas fa-chevron-down" style={{ fontSize: "7px", opacity: 0.6 }}></i>
+      </button>
+      {open && (
+        <div style={{
+          position: "absolute", top: "calc(100% + 4px)", left: 0, zIndex: 500,
+          background: DS.surfacePrimary, border: `1px solid ${DS.surfaceBorder}`,
+          borderRadius: "8px", padding: "4px", minWidth: "150px",
+          boxShadow: "0 12px 30px rgba(15,23,42,0.15)",
+        }}>
+          <div style={{ maxHeight: "200px", overflowY: "auto" }}>
+            {citiesList.map(c => (
+              <button
+                key={c}
+                type="button"
+                onClick={() => { onChange(c); setOpen(false); }}
+                style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  width: "100%", padding: "6px 8px", borderRadius: "5px",
+                  background: city === c ? "rgba(99,102,241,0.08)" : "transparent",
+                  border: "none", color: city === c ? DS.accentPrimary : DS.textSecondary,
+                  fontSize: "0.74rem", fontWeight: city === c ? 700 : 500, cursor: "pointer",
+                  textAlign: "left",
+                }}
+              >
+                <span>{c}</span>
+                {city === c && <i className="fas fa-check" style={{ fontSize: "8px", color: DS.accentPrimary }}></i>}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              const custom = prompt("Enter new city name:", city);
+              if (custom && custom.trim()) {
+                onChange(custom.trim());
+                setOpen(false);
+              }
+            }}
+            style={{
+              width: "100%", padding: "6px 8px", borderRadius: "5px",
+              background: "transparent", border: "none", borderTop: `1px solid ${DS.surfaceBorder}`,
+              color: DS.accentPrimary, fontSize: "0.72rem", fontWeight: 700,
+              cursor: "pointer", textAlign: "left", marginTop: "3px",
+            }}
+          >
+            + Other City...
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function StarRating({ rating }) {
   const num = parseFloat(rating) || 0;
   if (!num) return null;
@@ -614,13 +766,34 @@ export default function B2BLeadGenerator() {
     const emailI = idx(["email","mail"]);
     const webI   = idx(["web","url","site","link"]);
     const rateI  = idx(["rate","star","score"]);
+    const cityI  = idx(["city","location","place","town","district"]);
+    const catI   = idx(["category","niche","industry","type"]);
 
     const fn = (fileName || "").toLowerCase();
-    const city = fn.includes("udaipur") ? "Udaipur" : fn.includes("chittor") ? "Chittorgarh" : "Bhilwara";
-    const cat  = fn.includes("marble") || fn.includes("granite") ? "Marble & Granite"
-               : fn.includes("dharamshala") || fn.includes("trust") ? "Dharamshala & Trusts"
-               : fn.includes("hotel") || fn.includes("resort") ? "Hotels & Resorts"
-               : fn.includes("textile") ? "Textile & Manufacturing" : "General";
+    
+    // File level default city
+    let defaultCity = "Bhilwara";
+    if (fn.includes("khatu shyam") || fn.includes("khatushyam") || fn.includes("khatu")) defaultCity = "Khatu Shyam Ji";
+    else if (fn.includes("chittor") || fn.includes("sanwaliya")) defaultCity = "Chittorgarh";
+    else if (fn.includes("udaipur")) defaultCity = "Udaipur";
+    else if (fn.includes("jaipur")) defaultCity = "Jaipur";
+    else if (fn.includes("jodhpur")) defaultCity = "Jodhpur";
+    else if (fn.includes("kota")) defaultCity = "Kota";
+    else if (fn.includes("ajmer")) defaultCity = "Ajmer";
+    else if (fn.includes("bhilwara")) defaultCity = "Bhilwara";
+    else {
+      const cleanFn = (fileName || "").replace(/\.csv$/i, "").replace(/_leads$/i, "").replace(/leads/i, "").replace(/_/g, " ").trim();
+      if (cleanFn && cleanFn.length > 2) {
+        defaultCity = cleanFn.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+      }
+    }
+
+    // File level default category
+    let defaultCat = "General";
+    if (fn.includes("marble") || fn.includes("granite") || fn.includes("stone")) defaultCat = "Marble & Granite";
+    else if (fn.includes("dharamshala") || fn.includes("dharmashala") || fn.includes("trust") || fn.includes("mandir")) defaultCat = "Dharamshala & Trusts";
+    else if (fn.includes("hotel") || fn.includes("resort")) defaultCat = "Hotels & Resorts";
+    else if (fn.includes("textile")) defaultCat = "Textile & Manufacturing";
 
     const batch = [];
 
@@ -632,14 +805,40 @@ export default function B2BLeadGenerator() {
       const email = (emailI !== -1 ? cols[emailI] : "") || "";
       const website = (webI !== -1 ? cols[webI] : cols[2]) || "";
       const rating = (rateI !== -1 ? cols[rateI] : cols[3]) || "";
+
+      // City detection: Column -> Name/Address text -> File Name default
+      let rowCity = (cityI !== -1 ? cols[cityI] : "")?.trim();
+      if (!rowCity) {
+        const t = (name + " " + (cols[4] || "") + " " + fileName).toLowerCase();
+        if (t.includes("khatu shyam") || t.includes("khatushyam") || t.includes("khatu")) rowCity = "Khatu Shyam Ji";
+        else if (t.includes("chittor") || t.includes("sanwaliya") || t.includes("nimbahera") || t.includes("kapasan") || t.includes("bassi")) rowCity = "Chittorgarh";
+        else if (t.includes("udaipur") || t.includes("sukhadia") || t.includes("fateh sagar")) rowCity = "Udaipur";
+        else if (t.includes("jaipur")) rowCity = "Jaipur";
+        else if (t.includes("jodhpur")) rowCity = "Jodhpur";
+        else if (t.includes("kota")) rowCity = "Kota";
+        else if (t.includes("bhilwara")) rowCity = "Bhilwara";
+        else rowCity = defaultCity;
+      }
+
+      // Category detection: Column -> Name -> File Name default
+      let rowCat = (catI !== -1 ? cols[catI] : "")?.trim();
+      if (!rowCat || rowCat.toLowerCase() === "general") {
+        const t = (name + " " + fileName).toLowerCase();
+        if (t.includes("dharamshala") || t.includes("dharmashala") || t.includes("dharmsala") || t.includes("dharmshala") || t.includes("trust") || t.includes("mandir") || t.includes("temple") || t.includes("dadawadi") || t.includes("ashram")) rowCat = "Dharamshala & Trusts";
+        else if (t.includes("marble") || t.includes("granite") || t.includes("stone") || t.includes("mines") || t.includes("quartz") || t.includes("marmo")) rowCat = "Marble & Granite";
+        else if (t.includes("hotel") || t.includes("resort") || t.includes("palace") || t.includes("stay") || t.includes("inn") || t.includes("haveli")) rowCat = "Hotels & Resorts";
+        else if (t.includes("textile") || t.includes("spin") || t.includes("suit") || t.includes("fabric") || t.includes("garment") || t.includes("yarn") || t.includes("mill") || t.includes("synthetics")) rowCat = "Textile & Manufacturing";
+        else rowCat = defaultCat;
+      }
+
       batch.push({
         name: name.trim(),
         phone: phone.trim(),
         email: email.trim(),
         website: website.trim(),
         rating: rating.trim(),
-        city,
-        category: cat,
+        city: rowCity,
+        category: rowCat,
         notes: !website.trim() ? "NO WEBSITE — Prime outreach target." : "",
       });
     });
@@ -677,6 +876,7 @@ export default function B2BLeadGenerator() {
 
   // ── Lead Operations (Firestore) ──
   const updateStatus = (id, s) => updateB2BLeadStatus(id, s);
+  const updateCity = (id, c) => updateB2BLeadCity(id, c);
   const saveNotes = (id, notes) => { updateB2BLeadNotes(id, notes); setEditingId(null); };
   const deleteLead = (id, name) => {
     if (window.confirm(`Delete "${name}"?`)) deleteB2BLead(id);
@@ -735,6 +935,13 @@ export default function B2BLeadGenerator() {
   const onContactClick = (lead, type) => {
     setToast({ leadId: lead.id, name: lead.name, type });
   };
+
+  // ── Unique Available Cities ──
+  const availableCities = useMemo(() => {
+    const base = ["Bhilwara", "Chittorgarh", "Khatu Shyam Ji", "Udaipur", "Jaipur", "Jodhpur", "Kota", "Ajmer"];
+    const fromLeads = leads.map(l => l.city).filter(Boolean);
+    return Array.from(new Set([...base, ...fromLeads])).sort();
+  }, [leads]);
 
   // ── Filtered & Prioritized Leads ──
   // Dispatched ("Pitch Dispatched", "In Negotiation") float to the top; untouched new leads stay below.
@@ -1084,9 +1291,7 @@ export default function B2BLeadGenerator() {
         {/* City */}
         <select value={cityF} onChange={e => setCityF(e.target.value)} style={{ padding: "7px 10px", background: DS.surfacePrimary, border: `1px solid ${DS.surfaceBorder}`, borderRadius: "8px", color: DS.textSecondary, fontSize: "0.78rem", cursor: "pointer" }}>
           <option value="all">All Cities</option>
-          <option value="Bhilwara">Bhilwara</option>
-          <option value="Chittorgarh">Chittorgarh</option>
-          <option value="Udaipur">Udaipur</option>
+          {availableCities.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
 
         {/* Web status */}
@@ -1189,10 +1394,7 @@ export default function B2BLeadGenerator() {
 
                       {/* City */}
                       <td style={{ padding: "12px 14px", whiteSpace: "nowrap" }}>
-                        <span style={{ fontSize: "0.76rem", color: DS.textSecondary, fontWeight: 600 }}>
-                          <i className="fas fa-location-dot" style={{ color: DS.accentRed, marginRight: "5px", fontSize: "10px" }}></i>
-                          {lead.city}
-                        </span>
+                        <CityPill city={lead.city} onChange={c => updateCity(lead.id, c)} availableCities={availableCities} />
                       </td>
 
                       {/* Contact & Outreach (WhatsApp + Email) */}
@@ -1377,7 +1579,7 @@ export default function B2BLeadGenerator() {
                     <div style={{ fontWeight: 800, color: DS.textPrimary, fontSize: "0.9rem", lineHeight: 1.3, marginBottom: "4px" }}>{lead.name}</div>
                     <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
                       <span style={{ fontSize: "0.65rem", color: DS.textTertiary, background: "rgba(255,255,255,0.05)", padding: "1px 7px", borderRadius: "4px", fontWeight: 600 }}>{lead.category}</span>
-                      <span style={{ fontSize: "0.72rem", color: DS.textTertiary }}>📍 {lead.city}</span>
+                      <CityPill city={lead.city} onChange={c => updateCity(lead.id, c)} availableCities={availableCities} />
                       <StarRating rating={lead.rating} />
                     </div>
                   </div>

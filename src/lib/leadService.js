@@ -404,6 +404,34 @@ export async function updateB2BLeadNotes(leadId, notes) {
   }
 }
 
+/** Update B2B lead city */
+export async function updateB2BLeadCity(leadId, city) {
+  try {
+    await updateDoc(doc(db, "b2b_leads", leadId), {
+      city,
+      updatedAt: serverTimestamp(),
+    });
+    return true;
+  } catch (err) {
+    console.error("updateB2BLeadCity error:", err);
+    return false;
+  }
+}
+
+/** Update B2B lead category */
+export async function updateB2BLeadCategory(leadId, category) {
+  try {
+    await updateDoc(doc(db, "b2b_leads", leadId), {
+      category,
+      updatedAt: serverTimestamp(),
+    });
+    return true;
+  } catch (err) {
+    console.error("updateB2BLeadCategory error:", err);
+    return false;
+  }
+}
+
 /** Delete a B2B lead */
 export async function deleteB2BLead(leadId) {
   try {
