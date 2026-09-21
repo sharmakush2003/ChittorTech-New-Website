@@ -262,44 +262,52 @@ function PaymentStatusContent() {
         )}
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', justifyContent: 'center' }}>
           {isPaid ? (
             <>
-              <button
-                onClick={() => window.print()}
-                style={{
-                  flex: '1 1 200px',
-                  padding: '14px',
-                  borderRadius: '12px',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  color: '#ffffff',
-                  fontWeight: '700',
-                  cursor: 'pointer',
-                  fontSize: '14px'
-                }}
-              >
-                🖨️ Print / Save PDF Receipt
-              </button>
               <a
                 href={`https://wa.me/917597451057?text=Hi%20ChittorTech!%20I%20just%20completed%20payment%20of%20₹${order?.order_amount}%20for%20Order%20ID:%20${order?.order_id}`}
                 target="_blank"
                 rel="noreferrer"
                 style={{
-                  flex: '1 1 200px',
-                  padding: '14px',
-                  borderRadius: '12px',
+                  flex: '1 1 260px',
+                  padding: '16px 28px',
+                  borderRadius: '14px',
                   background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
                   color: '#ffffff',
-                  fontWeight: '700',
+                  fontWeight: '800',
                   textAlign: 'center',
                   textDecoration: 'none',
-                  fontSize: '14px',
-                  boxShadow: '0 8px 20px -4px rgba(16, 185, 129, 0.5)'
+                  fontSize: '15px',
+                  boxShadow: '0 8px 25px -4px rgba(16, 185, 129, 0.5)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
                 }}
               >
                 💬 Notify on WhatsApp ➔
               </a>
+              <Link
+                href="/"
+                style={{
+                  flex: '1 1 180px',
+                  padding: '16px 20px',
+                  borderRadius: '14px',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.18)',
+                  color: '#ffffff',
+                  fontWeight: '700',
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                  fontSize: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                🏠 Return Home
+              </Link>
             </>
           ) : (
             <Link
