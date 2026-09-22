@@ -305,6 +305,7 @@ export default function Footer() {
         .ct-dir-pill {
           display: inline-flex;
           align-items: center;
+          gap: 6px;
           font-size: 0.74rem;
           font-weight: 500;
           color: #475569;
@@ -315,6 +316,15 @@ export default function Footer() {
           border-radius: 6px;
           transition: all 0.15s ease;
           line-height: 1.4;
+        }
+        .ct-dir-flag-img {
+          width: 17px;
+          height: 12px;
+          object-fit: cover;
+          border-radius: 2px;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.12);
+          flex-shrink: 0;
+          display: inline-block;
         }
         .ct-dir-pill:hover {
           background: #eff6ff;
@@ -589,31 +599,42 @@ export default function Footer() {
                   </div>
                   <div className="ct-dir-pills-wrap">
                     {[
-                      { href: "/united-states", label: "United States (USA)" },
-                      { href: "/silicon-valley", label: "Silicon Valley (CA)" },
-                      { href: "/austin-tech-hub", label: "Austin Tech Hub (TX)" },
-                      { href: "/new-york-city", label: "New York City (NY)" },
-                      { href: "/miami-florida", label: "Miami & Florida" },
-                      { href: "/united-kingdom", label: "United Kingdom (UK)" },
-                      { href: "/london-tech-city", label: "London Tech City" },
-                      { href: "/manchester-uk", label: "Manchester (UK)" },
-                      { href: "/dubai", label: "Dubai (UAE)" },
-                      { href: "/abu-dhabi", label: "Abu Dhabi (UAE)" },
-                      { href: "/saudi-arabia", label: "Saudi Arabia (KSA)" },
-                      { href: "/turkey-eurasia", label: "Turkey & Eurasia" },
-                      { href: "/germany-berlin", label: "Germany (Berlin)" },
-                      { href: "/netherlands-amsterdam", label: "Netherlands (AMS)" },
-                      { href: "/toronto-canada", label: "Toronto (Canada)" },
-                      { href: "/sydney-australia", label: "Sydney (Australia)" },
-                      { href: "/melbourne-australia", label: "Melbourne (AU)" },
-                      { href: "/singapore-hub", label: "Singapore Hub" },
-                      { href: "/dedicated-tech-teams", label: "Dedicated Tech Teams" },
-                      { href: "/4-week-saas-mvp", label: "4-Week SaaS MVP" },
-                      { href: "/enterprise-ai-agents", label: "Enterprise AI Agents" },
-                      { href: "/timezone-overlap", label: "Timezone Overlap" },
+                      { href: "/united-states", label: "United States (USA)", countryCode: "us" },
+                      { href: "/silicon-valley", label: "Silicon Valley (CA)", countryCode: "us" },
+                      { href: "/austin-tech-hub", label: "Austin Tech Hub (TX)", countryCode: "us" },
+                      { href: "/new-york-city", label: "New York City (NY)", countryCode: "us" },
+                      { href: "/miami-florida", label: "Miami & Florida", countryCode: "us" },
+                      { href: "/united-kingdom", label: "United Kingdom (UK)", countryCode: "gb" },
+                      { href: "/london-tech-city", label: "London Tech City", countryCode: "gb" },
+                      { href: "/manchester-uk", label: "Manchester (UK)", countryCode: "gb" },
+                      { href: "/dubai", label: "Dubai (UAE)", countryCode: "ae" },
+                      { href: "/abu-dhabi", label: "Abu Dhabi (UAE)", countryCode: "ae" },
+                      { href: "/saudi-arabia", label: "Saudi Arabia (KSA)", countryCode: "sa" },
+                      { href: "/turkey-eurasia", label: "Turkey & Eurasia", countryCode: "tr" },
+                      { href: "/germany-berlin", label: "Germany (Berlin)", countryCode: "de" },
+                      { href: "/netherlands-amsterdam", label: "Netherlands (AMS)", countryCode: "nl" },
+                      { href: "/toronto-canada", label: "Toronto (Canada)", countryCode: "ca" },
+                      { href: "/sydney-australia", label: "Sydney (Australia)", countryCode: "au" },
+                      { href: "/melbourne-australia", label: "Melbourne (AU)", countryCode: "au" },
+                      { href: "/singapore-hub", label: "Singapore Hub", countryCode: "sg" },
+                      { href: "/dedicated-tech-teams", label: "Dedicated Tech Teams", icon: "fa-solid fa-users", iconColor: "#2563eb" },
+                      { href: "/4-week-saas-mvp", label: "4-Week SaaS MVP", icon: "fa-solid fa-rocket", iconColor: "#f59e0b" },
+                      { href: "/enterprise-ai-agents", label: "Enterprise AI Agents", icon: "fa-solid fa-robot", iconColor: "#8b5cf6" },
+                      { href: "/timezone-overlap", label: "Timezone Overlap", icon: "fa-solid fa-clock", iconColor: "#06b6d4" },
                     ].map((item, idx) => (
                       <Link key={idx} href={item.href} className="ct-dir-pill">
-                        {item.label}
+                        {item.countryCode ? (
+                          <img
+                            src={`https://flagcdn.com/w40/${item.countryCode}.png`}
+                            srcSet={`https://flagcdn.com/w80/${item.countryCode}.png 2x`}
+                            alt={`${item.label} flag`}
+                            className="ct-dir-flag-img"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <i className={item.icon} style={{ color: item.iconColor, fontSize: '0.78rem' }}></i>
+                        )}
+                        <span>{item.label}</span>
                       </Link>
                     ))}
                   </div>
