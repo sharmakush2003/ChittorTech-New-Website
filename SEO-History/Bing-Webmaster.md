@@ -39,6 +39,7 @@
 | **19-Sep-2026** | 100 | `https://` | Batch 2 (`bing_100_urls.txt`) | 561 |
 | **20-Sep-2026** | 100 | `https://` | Batch 3 (`bing_100_urls.txt`) — *includes `/pay` & `/payment-terms` at top* | 462 |
 | **21-Sep-2026** | 100 | `https://` | Batch 4 ([bing_100_urls.txt](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/bing_100_urls.txt)) — *includes `/project-estimator` at top* | 363 |
+| **22-Sep-2026** | 100 | `https://` | Batch 5 ([bing_100_urls.txt](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/bing_100_urls.txt)) | 263 |
 
 > **Master JSON Tracker:** [SEO-History/submitted_history.json](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/SEO-History/submitted_history.json) (Ensures 0 duplicate submissions on future runs).
 
