@@ -186,25 +186,21 @@ export default function AdminLeadsPage() {
         sessionStorage.removeItem("ct_key_failed_count");
       } catch (e) {}
 
-      try {
-        if (SCRIPT_URL) {
-          await fetch(SCRIPT_URL, {
-            method: "POST",
-            body: JSON.stringify({
-              action: "admin_request_otp",
-              authGate: "CT_ADMIN_GATEWAY_2026",
-            }),
-          });
-        }
-        setStep("otp");
-        setResendCooldown(30);
-        setLoginLoading(false);
-        setTimeout(() => otpRefs.current[0]?.focus(), 150);
-      } catch (err) {
-        setStep("otp");
-        setResendCooldown(30);
-        setLoginLoading(false);
-        setTimeout(() => otpRefs.current[0]?.focus(), 150);
+      // Optimistic Instant UI Transition (< 50ms)
+      setStep("otp");
+      setResendCooldown(30);
+      setLoginLoading(false);
+      setTimeout(() => otpRefs.current[0]?.focus(), 100);
+
+      // Dispatch OTP email asynchronously in background
+      if (SCRIPT_URL) {
+        fetch(SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify({
+            action: "admin_request_otp",
+            authGate: "CT_ADMIN_GATEWAY_2026",
+          }),
+        }).catch((err) => console.warn("Background OTP dispatch notice:", err));
       }
     } else {
       // Brute-force rate limiting: 5 failed attempts locks for 10 minutes
