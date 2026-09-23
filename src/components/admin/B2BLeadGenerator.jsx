@@ -1644,27 +1644,8 @@ export default function B2BLeadGenerator() {
             </div>
           )}
 
-          {/* Action Buttons: Load Verified Directory + Scraper Toggle + Upload CSV + Copy Script */}
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
-            <button
-              type="button"
-              onClick={handleLoadPreloadedDharamshalas}
-              disabled={isImporting}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: "6px",
-                padding: "6px 12px", borderRadius: "8px",
-                background: "linear-gradient(135deg, rgba(236,72,153,0.12), rgba(244,63,94,0.12))",
-                border: "1px solid rgba(236,72,153,0.35)",
-                color: "#db2777",
-                fontSize: "0.76rem", fontWeight: 800, cursor: isImporting ? "wait" : "pointer",
-                transition: "all 0.15s ease",
-              }}
-              title="Load 50+ pre-verified Dharamshalas and Pilgrimage Trusts across Rajasthan & India directly into Firestore"
-            >
-              <i className="fas fa-om" style={{ fontSize: "12px", color: "#ec4899" }}></i>
-              <span>🛕 Load 50+ Dharamshalas</span>
-            </button>
-
+          {/* Action Buttons: Scraper Toggle + Upload CSV + Copy Script */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
             <button
               type="button"
               onClick={() => setShowScraperEngine(v => !v)}
