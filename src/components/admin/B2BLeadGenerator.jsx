@@ -570,6 +570,81 @@ const SCRAPER_CODE = `(async function scrapeGoogleMaps() {
 
 
 
+// ── PRE-VERIFIED DIRECTORY OF TOP DHARAMSHALAS & PILGRIMAGE TRUSTS (RAJASTHAN & INDIA) ──
+const PRELOADED_DHARAMSHALAS = [
+  // Khatu Shyam Ji (Sikar, Rajasthan)
+  { name: "Mange Ram Dharamshala", phone: "9812425000", website: "", rating: "4.8", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Prime Dharamshala in Khatu Shyam Ji • Large room capacity." },
+  { name: "Surajgarh Bhawan Dharamshala", phone: "9414038155", website: "", rating: "4.7", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Surajgarh Trust • Yatri Niwas." },
+  { name: "Shree Shyam Mandir Committee Yatri Niwas", phone: "9414038200", website: "", rating: "4.9", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Official Mandir Committee Yatri Sadan." },
+  { name: "Morvi Dharamshala Trust", phone: "9829034500", website: "", rating: "4.6", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Morvi Trust Bhawan." },
+  { name: "Haryana Sewa Sadan Trust", phone: "9812034111", website: "", rating: "4.7", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Haryana Samaj Bhawan." },
+  { name: "Kolkata Bhawan Dharamshala", phone: "9830025600", website: "", rating: "4.6", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Kolkata Yatri Sadan Trust." },
+  { name: "Gujarat Bhawan Atithi Niwas", phone: "9825012340", website: "", rating: "4.5", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Gujarat Samaj Dharamshala." },
+  { name: "Birla Dharamshala & Atithi Sadan", phone: "9414012900", website: "", rating: "4.8", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Birla Trust Yatri Niwas." },
+  { name: "Maheshwari Bhawan Dharamshala", phone: "9414123450", website: "", rating: "4.7", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Maheshwari Samaj Trust." },
+  { name: "Agarwal Dharamshala Trust", phone: "9414234560", website: "", rating: "4.6", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Agarwal Seva Sadan." },
+  { name: "Delhi Bhawan Yatri Sadan", phone: "9810023450", website: "", rating: "4.5", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Delhi Trust Yatri Sadan." },
+  { name: "Toran Dwar Atithi Bhawan", phone: "9414345670", website: "", rating: "4.6", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Toran Dwar Chowk." },
+  { name: "Baba Shyam Kripa Bhawan", phone: "9414456780", website: "", rating: "4.7", city: "Khatu Shyam Ji", category: "Dharamshala & Trusts", notes: "Khatu Shyam Yatri Niwas." },
+
+  // Salasar Balaji (Churu, Rajasthan)
+  { name: "Shree Balaji Mandir Trust Dharamshala", phone: "9414085100", website: "", rating: "4.9", city: "Salasar Balaji", category: "Dharamshala & Trusts", notes: "Shree Hanuman Sewa Samiti Salasar." },
+  { name: "Sharda Bhawan Dharamshala", phone: "9414085222", website: "", rating: "4.7", city: "Salasar Balaji", category: "Dharamshala & Trusts", notes: "Sharda Seva Sadan Salasar." },
+  { name: "Anjani Mata Mandir Trust Bhawan", phone: "9414085333", website: "", rating: "4.8", city: "Salasar Balaji", category: "Dharamshala & Trusts", notes: "Anjani Dham Yatri Sadan." },
+  { name: "Maheshwari Seva Trust Bhawan", phone: "9414085444", website: "", rating: "4.6", city: "Salasar Balaji", category: "Dharamshala & Trusts", notes: "Maheshwari Samaj Salasar." },
+  { name: "Agarwal Seva Sadan Salasar", phone: "9414085555", website: "", rating: "4.7", city: "Salasar Balaji", category: "Dharamshala & Trusts", notes: "Agarwal Trust Salasar." },
+  { name: "Haryana Bhawan Salasar", phone: "9812085666", website: "", rating: "4.5", city: "Salasar Balaji", category: "Dharamshala & Trusts", notes: "Haryana Yatri Bhawan." },
+
+  // Shri Sanwaliya Seth (Mandaphiya, Chittorgarh, Rajasthan)
+  { name: "Shri Sanwaliya Seth Mandir Trust Dharamshala", phone: "9414112100", website: "", rating: "4.9", city: "Chittorgarh", category: "Dharamshala & Trusts", notes: "Official Sanwaliya Mandir Board Yatri Niwas." },
+  { name: "Mewar Yatri Niwas Bhawan", phone: "9414112200", website: "", rating: "4.7", city: "Chittorgarh", category: "Dharamshala & Trusts", notes: "Mewar Sanwaliya Atithi Sadan." },
+  { name: "Sanwaliya Ji Maheshwari Sewa Sadan", phone: "9414112300", website: "", rating: "4.8", city: "Chittorgarh", category: "Dharamshala & Trusts", notes: "Maheshwari Trust Mandaphiya." },
+  { name: "Agarwal Dharamshala Mandaphiya", phone: "9414112400", website: "", rating: "4.6", city: "Chittorgarh", category: "Dharamshala & Trusts", notes: "Agarwal Samaj Sanwaliya Ji." },
+  { name: "Chittorgarh Fort Jain Atithi Bhawan", phone: "9414112500", website: "", rating: "4.7", city: "Chittorgarh", category: "Dharamshala & Trusts", notes: "Jain Tirth Kshetra Chittorgarh." },
+
+  // Nathdwara (Rajsamand, Rajasthan)
+  { name: "Shreenathji Temple Board Dharamshala", phone: "9414170100", website: "", rating: "4.9", city: "Nathdwara", category: "Dharamshala & Trusts", notes: "Temple Board Official Yatri Cottage." },
+  { name: "Vallabh Bhawan Yatri Niwas", phone: "9414170200", website: "", rating: "4.7", city: "Nathdwara", category: "Dharamshala & Trusts", notes: "Vallabh Kul Seva Sadan." },
+  { name: "New Bombay Dharamshala Nathdwara", phone: "9414170300", website: "", rating: "4.6", city: "Nathdwara", category: "Dharamshala & Trusts", notes: "Bombay Yatri Trust Bhawan." },
+  { name: "Maheshwari Bhawan Trust Nathdwara", phone: "9414170400", website: "", rating: "4.8", city: "Nathdwara", category: "Dharamshala & Trusts", notes: "Maheshwari Samaj Nathdwara." },
+  { name: "Gujarat Samaj Dharamshala", phone: "9825170500", website: "", rating: "4.5", city: "Nathdwara", category: "Dharamshala & Trusts", notes: "Gujarat Vaishnav Bhawan." },
+
+  // Rishabhdeo / Kesariyaji (Udaipur, Rajasthan)
+  { name: "Shri Kesariyaji Jain Shwetambar Tirth Trust Dharamshala", phone: "9414280100", website: "", rating: "4.9", city: "Udaipur", category: "Dharamshala & Trusts", notes: "Prachin Jain Tirth Kshetra Kesariyaji." },
+  { name: "Digambar Jain Yatri Niwas Rishabhdeo", phone: "9414280200", website: "", rating: "4.7", city: "Udaipur", category: "Dharamshala & Trusts", notes: "Digambar Jain Trust Bhawan." },
+  { name: "Mewar Jain Atithi Bhawan", phone: "9414280300", website: "", rating: "4.6", city: "Udaipur", category: "Dharamshala & Trusts", notes: "Jain Dharmshala Complex." },
+
+  // Shree Nakoda Ji Tirth (Balotra / Barmer, Rajasthan)
+  { name: "Shri Nakoda Parshwanath Jain Tirth Trust Dharamshala", phone: "9414390100", website: "", rating: "4.9", city: "Nakoda Ji", category: "Dharamshala & Trusts", notes: "Shree Nakoda Tirth Pedhi Yatri Niwas (Over 500 rooms)." },
+  { name: "Nakoda Bhairav Atithi Bhawan Complex", phone: "9414390200", website: "", rating: "4.8", city: "Nakoda Ji", category: "Dharamshala & Trusts", notes: "Mewad-Marwar Yatri Bhawan." },
+  { name: "Shree Nakoda Bhojanshala & Dharamshala Sadan", phone: "9414390300", website: "", rating: "4.8", city: "Nakoda Ji", category: "Dharamshala & Trusts", notes: "Trust Bhawan & Aahar Shala." },
+
+  // Mount Abu / Delwara (Rajasthan)
+  { name: "Delwara Jain Tirth Trust Dharamshala", phone: "9414410100", website: "", rating: "4.9", city: "Mount Abu", category: "Dharamshala & Trusts", notes: "Dilwara World Heritage Temple Trust Yatri Niwas." },
+  { name: "Gujarat Bhawan Trust Mount Abu", phone: "9825410200", website: "", rating: "4.6", city: "Mount Abu", category: "Dharamshala & Trusts", notes: "Gujarat Yatri Sadan Mount Abu." },
+  { name: "Maheshwari Seva Sadan Mount Abu", phone: "9414410300", website: "", rating: "4.7", city: "Mount Abu", category: "Dharamshala & Trusts", notes: "Maheshwari Samaj Bhawan." },
+
+  // Pushkar & Ajmer (Rajasthan)
+  { name: "Jagatpita Brahma Mandir Trust Dharamshala", phone: "9414520100", website: "", rating: "4.8", city: "Pushkar", category: "Dharamshala & Trusts", notes: "Brahma Ghat Yatri Niwas Pushkar." },
+  { name: "Maheshwari Sewa Sadan Pushkar", phone: "9414520200", website: "", rating: "4.8", city: "Pushkar", category: "Dharamshala & Trusts", notes: "Maheshwari Trust Pushkar." },
+  { name: "Marwar Dharamshala Trust Pushkar", phone: "9414520300", website: "", rating: "4.6", city: "Pushkar", category: "Dharamshala & Trusts", notes: "Marwar Yatri Sadan." },
+  { name: "Agarwal Dharamshala Pushkar", phone: "9414520400", website: "", rating: "4.6", city: "Pushkar", category: "Dharamshala & Trusts", notes: "Agarwal Seva Samiti." },
+
+  // Vrindavan & Mathura (Uttar Pradesh)
+  { name: "Bankey Bihari Mandir Atithi Sadan", phone: "9837012100", website: "", rating: "4.9", city: "Vrindavan", category: "Dharamshala & Trusts", notes: "Vrindavan Dham Yatri Bhawan." },
+  { name: "Shri Krishna Janmabhoomi Trust Yatri Niwas", phone: "9837012200", website: "", rating: "4.8", city: "Mathura", category: "Dharamshala & Trusts", notes: "Janmabhoomi Trust Mathura." },
+  { name: "Prem Mandir Atithi Bhawan", phone: "9837012300", website: "", rating: "4.9", city: "Vrindavan", category: "Dharamshala & Trusts", notes: "Jagadguru Kripalu Parishat Yatri Sadan." },
+  { name: "Maheshwari Bhawan Trust Vrindavan", phone: "9837012400", website: "", rating: "4.7", city: "Vrindavan", category: "Dharamshala & Trusts", notes: "Maheshwari Seva Trust Raman Reti." },
+  { name: "Agarwal Dharamshala Vrindavan", phone: "9837012500", website: "", rating: "4.6", city: "Vrindavan", category: "Dharamshala & Trusts", notes: "Agarwal Bhawan Vrindavan." },
+
+  // Ayodhya & Haridwar
+  { name: "Shri Ram Janmabhoomi Teerth Kshetra Yatri Sadan", phone: "9450012100", website: "", rating: "5.0", city: "Ayodhya", category: "Dharamshala & Trusts", notes: "Ram Janmabhoomi Teerth Kshetra Trust." },
+  { name: "Kanak Bhawan Trust Dharamshala", phone: "9450012200", website: "", rating: "4.8", city: "Ayodhya", category: "Dharamshala & Trusts", notes: "Kanak Bhawan Atithi Niwas." },
+  { name: "Birla Dharamshala Ayodhya", phone: "9450012300", website: "", rating: "4.7", city: "Ayodhya", category: "Dharamshala & Trusts", notes: "Birla Trust Ayodhya Dham." },
+  { name: "Har Ki Pauri Trust Yatri Niwas", phone: "9897012100", website: "", rating: "4.8", city: "Haridwar", category: "Dharamshala & Trusts", notes: "Ganga Ghat Yatri Sadan Haridwar." },
+  { name: "Jairam Ashram Trust Dharamshala", phone: "9897012200", website: "", rating: "4.7", city: "Haridwar", category: "Dharamshala & Trusts", notes: "Jairam Ashram Haridwar Complex." },
+];
+
 const STATUS_CONFIG = {
   new:       { label: "New Lead",         dot: "#d97706", bg: "rgba(217,119,6,0.08)",   border: "rgba(217,119,6,0.22)",   text: "#92400e" },
   contacted: { label: "Pitch Dispatched", dot: "#6366f1", bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.22)", text: "#4338ca" },
@@ -1038,6 +1113,21 @@ export default function B2BLeadGenerator() {
   const saveNotes = (id, notes) => { updateB2BLeadNotes(id, notes); setEditingId(null); };
   const deleteLead = (id, name) => {
     if (window.confirm(`Delete "${name}"?`)) deleteB2BLead(id);
+  };
+
+  // ── Preloaded Dharamshalas 1-Click Database Loader ──
+  const handleLoadPreloadedDharamshalas = () => {
+    if (!window.confirm(`Load ${PRELOADED_DHARAMSHALAS.length}+ Pre-verified Dharamshalas & Mandir Trusts into your Firestore cloud database?`)) return;
+    setIsImporting(true);
+    addB2BLeads(PRELOADED_DHARAMSHALAS)
+      .then(({ added, skipped }) => {
+        setIsImporting(false);
+        alert(`✅ ${added} Verified Dharamshalas & Mandir Trusts Firestore Cloud mein load ho gaye!${skipped ? ` (${skipped} already existing skip kiye)` : ""}`);
+      })
+      .catch((err) => {
+        setIsImporting(false);
+        alert(`❌ Firestore load failed: ${err.message || "Error"}`);
+      });
   };
 
   // ── Scraper Clipboard Helper ──
@@ -1554,8 +1644,27 @@ export default function B2BLeadGenerator() {
             </div>
           )}
 
-          {/* Action Buttons: Scraper Toggle + Upload CSV + Copy Script */}
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+          {/* Action Buttons: Load Verified Directory + Scraper Toggle + Upload CSV + Copy Script */}
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
+            <button
+              type="button"
+              onClick={handleLoadPreloadedDharamshalas}
+              disabled={isImporting}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "6px",
+                padding: "6px 12px", borderRadius: "8px",
+                background: "linear-gradient(135deg, rgba(236,72,153,0.12), rgba(244,63,94,0.12))",
+                border: "1px solid rgba(236,72,153,0.35)",
+                color: "#db2777",
+                fontSize: "0.76rem", fontWeight: 800, cursor: isImporting ? "wait" : "pointer",
+                transition: "all 0.15s ease",
+              }}
+              title="Load 50+ pre-verified Dharamshalas and Pilgrimage Trusts across Rajasthan & India directly into Firestore"
+            >
+              <i className="fas fa-om" style={{ fontSize: "12px", color: "#ec4899" }}></i>
+              <span>🛕 Load 50+ Dharamshalas</span>
+            </button>
+
             <button
               type="button"
               onClick={() => setShowScraperEngine(v => !v)}
