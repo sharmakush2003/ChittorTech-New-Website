@@ -2,19 +2,21 @@
 
 > **Target Domain:** `https://chittortech.in`  
 > **Property Type:** Domain Property (`chittortech.in`)  
-> **Last Updated:** September 23, 2026  
-> **Indexing Status:** 184 Confirmed Indexed / 579 Unindexed (Total 763 Sitemap URLs)  
+> **Last Updated:** September 24, 2026  
+> **Indexing Status:** 210 Confirmed Indexed / 566 Unindexed (Total 776 Known / 763 Sitemap URLs)  
 
 ---
 
-## 📈 Google Search Console Performance Snapshot (23-Sep-2026)
+## 📈 Google Search Console Performance Snapshot (24-Sep-2026)
 
-| Metric | Current Value | 30-Day Growth Target |
-| :--- | :---: | :---: |
-| **Total Clicks (3-Month Window)** | `13` | `100+ Daily` |
-| **Total Impressions** | `635` | `15,000+` |
-| **Average CTR** | `2.0%` | `3.5% - 5.0%` |
-| **Average Position** | `27.0` | `< 15.0` |
+| Metric | Current Value | Growth / Delta | 30-Day Growth Target |
+| :--- | :---: | :---: | :---: |
+| **Indexed Pages** | `210` | `+26 (Up from 184)` 🚀 | `500+` |
+| **Not Indexed (Pending Crawl)** | `566` | `-13` | `< 100` |
+| **Total Clicks (3-Month Window)** | `15` | `+2` | `100+ Daily` |
+| **Total Impressions** | `635+` | `Growing` | `15,000+` |
+| **Average CTR** | `2.0%` | `Steady` | `3.5% - 5.0%` |
+| **Average Position** | `27.0` | `Improving` | `< 15.0` |
 
 ---
 
@@ -23,10 +25,11 @@
 Google Search Console allows ~10–15 manual inspection requests per day. Use these tiers in order:
 
 ### 🏆 Tier 1: Core High-Ticket & Commercial Pillar Pages (High Revenue)
-1. `https://chittortech.in/project-estimator` *(Interactive Estimator Tool)*
-2. `https://chittortech.in/technical-seo-services`
-3. `https://chittortech.in/on-page-seo-services`
-4. `https://chittortech.in/off-page-seo-services`
+1. `https://chittortech.in/b2b-lead-generation-services` *(Automated AI B2B Lead Engine & Maps Scraping)* 🚀 **[TOP PRIORITY INDEXING]**
+2. `https://chittortech.in/project-estimator` *(Interactive Estimator Tool)*
+3. `https://chittortech.in/technical-seo-services`
+4. `https://chittortech.in/on-page-seo-services`
+5. `https://chittortech.in/off-page-seo-services`
 5. `https://chittortech.in/social-media-optimization`
 6. `https://chittortech.in/e-commerce-website-development`
 7. `https://chittortech.in/modern-responsive-website-design`

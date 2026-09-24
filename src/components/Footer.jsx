@@ -519,8 +519,7 @@ export default function Footer() {
                   { href: "/google-play-publishing", label: "Google Play Publishing" },
                   { href: "/search-engine-optimization", label: "SEO Services" },
                   { href: "/digital-marketing-services", label: "Digital Marketing" },
-                  { href: "/social-media-optimization", label: "Social Media (SMO)" },
-                  { href: "/web-development-services", label: "Custom Portals" },
+                  { href: "/b2b-lead-generation-services", label: "B2B Lead Generation" },
                 ].map((l) => (
                   <Link key={l.label} href={l.href} className="ct-footer-nav-link">
                     <i className="fa-solid fa-chevron-right"></i>
