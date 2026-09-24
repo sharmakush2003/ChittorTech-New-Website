@@ -121,14 +121,14 @@ export async function submitLead(formData) {
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "";
   
   const leadPayload = {
-    name: formData.name?.trim() || "",
-    email: formData.email?.trim() || "",
-    contact: formData.contact?.trim() || formData.phone?.trim() || "",
-    company: formData.company?.trim() || "",
-    industry: formData.industry?.trim() || "",
-    firm: formData.firm?.trim() || "",
-    location: formData.location?.trim() || "",
-    message: formData.message?.trim() || "",
+    name: formData.name?.trim() || "N/A",
+    email: formData.email?.trim() || "N/A",
+    contact: formData.contact?.trim() || formData.phone?.trim() || "N/A",
+    company: formData.company?.trim() || "N/A",
+    industry: formData.industry?.trim() || "N/A",
+    firm: formData.firm?.trim() || "N/A",
+    location: formData.location?.trim() || "N/A",
+    message: formData.message?.trim() || "No details provided.",
     service: formData.service?.trim() || "",
     source: formData.source || currentPath || "Direct Website Form",
     status: "new", // "new" | "contacted" | "qualified" | "converted" | "lost"
@@ -168,7 +168,14 @@ export async function submitLead(formData) {
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
+          name: leadPayload.name,
+          email: leadPayload.email,
+          contact: leadPayload.contact,
+          company: leadPayload.company,
+          industry: leadPayload.industry,
+          firm: leadPayload.firm,
+          location: leadPayload.location,
+          message: leadPayload.message,
           firestoreId: firestoreDocId,
           source: leadPayload.source,
         }),

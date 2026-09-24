@@ -56,3 +56,21 @@ body {
     overflow: hidden !important;
   }
 }
+
+/* ─── Global Modern Date Picker Polish ─── */
+input[type="date"] {
+  font-family: inherit;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 3px;
+  opacity: 0.85;
+  transition: all 0.2s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}

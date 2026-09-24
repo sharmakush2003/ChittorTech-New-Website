@@ -1,8 +1,129 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { submitLead } from "@/lib/leadService";
+
+function getPageAwareDetails(pathname, userName = "") {
+  const nameGreeting = userName ? ` ${userName}` : "";
+  const nameHindi = userName ? ` ${userName} जी` : "";
+
+  if (pathname === "/dharamshala-billing-system") {
+    return {
+      greeting: `सादर प्रणाम${nameHindi}! 🙏 क्या आप अपने तीर्थ ट्रस्ट या धर्मशाला के लिए कमरा बुकिंग, भोजनशाला कूपन व दान रसीद सॉफ्टवेयर का लाइव डेमो देखना चाहते हैं?`,
+      suggestions: [
+        "कमरा बुकिंग लाइव डेमो",
+        "दान एवं चंदा रसीद सिस्टम",
+        "भोजनशाला थाली कूपन",
+        "ट्रस्ट सॉफ्टवेयर प्राइजिंग"
+      ],
+      contextPrompt: "The visitor is on the Dharamshala Billing & Pilgrimage Trust Management page (/dharamshala-billing-system). Answer queries related to room reservations, 2-way check-in/out slips, digital daan/donation receipts, and bhojanshala coupon software in respectful Hindi or English. Avoid repetitive technical tax jargon like '80G' unless specifically asked."
+    };
+  }
+
+  if (pathname === "/b2b-lead-generation-services") {
+    return {
+      greeting: `Welcome${nameGreeting}! 🚀 Want to see how our AI extracts verified B2B leads from Google Maps for your industry?`,
+      suggestions: [
+        "Google Maps Scraping Demo",
+        "Marble Industry Leads",
+        "Textile Wholesale Buyers",
+        "Lead Gen Pricing & ROI"
+      ],
+      contextPrompt: "The visitor is on the B2B Lead Generation Services page (/b2b-lead-generation-services). Explain how ChittorTech extracts authentic Google Maps business data, generates AI hyper-personalized WhatsApp & cold email pitches, and powers automated client acquisition."
+    };
+  }
+
+  if (pathname === "/project-estimator") {
+    return {
+      greeting: `Need help estimating the cost of your web app or ERP? I can guide you!${nameGreeting ? " (" + nameGreeting.trim() + ")" : ""}`,
+      suggestions: [
+        "Estimate Web App Cost",
+        "Mobile App Timeline",
+        "Custom ERP Estimate",
+        "Talk to Lav Sharma"
+      ],
+      contextPrompt: "The visitor is on the Interactive Project Estimator page (/project-estimator). Assist them in calculating development costs, choosing the right tech stack, and understanding delivery timelines."
+    };
+  }
+
+  if (pathname?.includes("hotel") || pathname?.includes("resort")) {
+    return {
+      greeting: `Hello${nameGreeting}! 🏨 Looking for a 0% commission direct hotel booking engine or resort management system?`,
+      suggestions: [
+        "Direct Booking Engine Demo",
+        "Save 20% OTA Commission",
+        "Hotel PMS & KOT Billing",
+        "Schedule Demo"
+      ],
+      contextPrompt: "The visitor is exploring Hospitality & Hotel Management solutions. Focus on 0% OTA commission direct booking engines, WhatsApp check-in slips, and hotel PMS software."
+    };
+  }
+
+  if (pathname?.includes("crm") || pathname?.includes("lead-management")) {
+    return {
+      greeting: `Hello${nameGreeting}! 📊 Looking to build a custom CRM with automated WhatsApp follow-ups and lead tracking for your sales team?`,
+      suggestions: [
+        "Custom CRM Features",
+        "WhatsApp Automation",
+        "Lead Pipeline Demo",
+        "Get Custom Quote"
+      ],
+      contextPrompt: "The visitor is exploring Custom CRM Solutions & Lead Management software. Highlight custom pipeline stages, automated client follow-ups, and role-based access."
+    };
+  }
+
+  if (pathname?.includes("enterprise-ai") || pathname?.includes("ai-chatbot")) {
+    return {
+      greeting: `Hello${nameGreeting}! 🤖 Welcome to ChittorTech Enterprise AI. Looking to deploy private RAG knowledge retrieval, voice AI, or autonomous workflow agents?`,
+      suggestions: [
+        "Enterprise RAG Vector Search",
+        "WhatsApp Conversational AI",
+        "Custom LLM Fine-Tuning",
+        "AI Architecture Call"
+      ],
+      contextPrompt: "The visitor is exploring Enterprise AI Agents & AI Chatbots. Highlight private document RAG, sub-second Groq LPUs, WhatsApp voice AI, and custom AI engineering."
+    };
+  }
+
+  if (pathname?.includes("android") || pathname?.includes("google-play")) {
+    return {
+      greeting: `Hello${nameGreeting}! 📱 Need high-performance mobile app development (Android & iOS) or Google Play 20-tester verification & publishing?`,
+      suggestions: [
+        "Android App Quote",
+        "Google Play 20-Tester Verification",
+        "React Native Mobile App",
+        "Publish My App"
+      ],
+      contextPrompt: "The visitor is exploring Mobile App Development & Google Play Publishing Services."
+    };
+  }
+
+  if (pathname?.includes("e-commerce")) {
+    return {
+      greeting: `Hello${nameGreeting}! 🛒 Planning to launch a custom e-commerce store with high speed, payment gateways, and WhatsApp order alerts?`,
+      suggestions: [
+        "E-Commerce Storefront Quote",
+        "Payment Gateway Setup",
+        "Custom Order Management",
+        "View E-Commerce Portfolio"
+      ],
+      contextPrompt: "The visitor is exploring E-Commerce Website Development."
+    };
+  }
+
+  // Default Fallback
+  return {
+    greeting: `Hello${nameGreeting}! I'm Kaira, ChittorTech's official AI Assistant. How can I assist your business growth or engineering today?`,
+    suggestions: [
+      "What is ChittorTech?",
+      "View Core Services",
+      "B2B Lead Generation Engine",
+      "Contact Support Team"
+    ],
+    contextPrompt: "The visitor is exploring ChittorTech's website. Answer questions politely and guide them to relevant software solutions, lead generation tools, or contact info."
+  };
+}
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,14 +140,44 @@ export default function Chatbot() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [validationError, setValidationError] = useState("");
 
-  const defaultGreeting = "Hello! I'm the Chittortech AI Assistant. How can I help you today?";
-  const suggestions = ["What is Chittortech?", "View Services", "Contact Support"];
+  // Embedded Meeting Scheduler state
+  const [showMeetingScheduler, setShowMeetingScheduler] = useState(false);
+  const [meetingService, setMeetingService] = useState("B2B Lead Generation Engine");
+  const [meetingDate, setMeetingDate] = useState(() => new Date().toISOString().split("T")[0]);
+  const [meetingSlot, setMeetingSlot] = useState("11:00 AM - 12:00 PM");
+  const [meetingNote, setMeetingNote] = useState("");
+  const [isSubmittingMeeting, setIsSubmittingMeeting] = useState(false);
+
+  // Quick upcoming date chips for easy 1-click scheduling
+  const upcomingDateOptions = useMemo(() => {
+    const list = [];
+    const today = new Date();
+    for (let i = 0; i < 4; i++) {
+      const d = new Date();
+      d.setDate(today.getDate() + i);
+      const iso = d.toISOString().split("T")[0];
+      const dayName = i === 0 ? "Today" : i === 1 ? "Tomorrow" : d.toLocaleDateString("en-IN", { weekday: "short" });
+      const dateStr = d.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+      list.push({ iso, dayName, dateStr });
+    }
+    return list;
+  }, []);
+
+  const TIME_SLOTS = useMemo(() => [
+    { value: "11:00 AM - 12:00 PM", label: "11:00 AM", period: "Morning", icon: "fa-sun" },
+    { value: "02:00 PM - 03:00 PM", label: "02:00 PM", period: "Afternoon", icon: "fa-cloud-sun" },
+    { value: "04:00 PM - 05:00 PM", label: "04:00 PM", period: "Evening", icon: "fa-coffee" },
+    { value: "06:30 PM - 07:30 PM", label: "06:30 PM", period: "Late Eve", icon: "fa-moon" },
+  ], []);
+
+  const activeContext = getPageAwareDetails(pathname, userName);
+  const suggestions = activeContext.suggestions;
 
   // Initialize chatbot messages and user registration from localStorage
   useEffect(() => {
     const savedUserInfo = localStorage.getItem("chittortech_user_info");
-    let isUserRegistered = false;
-    let registeredName = "there";
+    let isUserReg = false;
+    let registeredName = "";
     if (savedUserInfo) {
       try {
         const userInfo = JSON.parse(savedUserInfo);
@@ -41,7 +192,7 @@ export default function Chatbot() {
             setPhoneNumber(userInfo.phone);
           }
           setIsRegistered(true);
-          isUserRegistered = true;
+          isUserReg = true;
         }
       } catch (e) {
         console.error("Failed to parse user info:", e);
@@ -61,11 +212,12 @@ export default function Chatbot() {
       }
     }
 
-    if (isUserRegistered) {
+    if (isUserReg) {
+      const pageInfo = getPageAwareDetails(pathname, registeredName);
       setMessages([
         {
           role: "ai",
-          content: `Hello ${registeredName}! How can I assist you today? If you have any questions or need help, just let me know.`,
+          content: pageInfo.greeting,
           isSystem: true,
           timestamp: new Date().toISOString(),
         },
@@ -73,7 +225,7 @@ export default function Chatbot() {
     } else {
       setMessages([]);
     }
-  }, []);
+  }, [pathname]);
 
   // Save messages to localstorage whenever they change
   useEffect(() => {
@@ -85,7 +237,7 @@ export default function Chatbot() {
   // Scroll to bottom on updates
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isLoading]);
+  }, [messages, isLoading, showMeetingScheduler]);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -95,6 +247,62 @@ export default function Chatbot() {
     localStorage.removeItem("chittortech_chat_history");
     setIsRegistered(false);
     setMessages([]);
+    setShowMeetingScheduler(false);
+  };
+
+  // 1-Click WhatsApp Sync with Pre-filled Chat Summary
+  const handleWhatsAppSync = () => {
+    const userMsgs = messages.filter((m) => m.role === "user" && !m.content.startsWith("Name :"));
+    const lastUserQuery = userMsgs.length > 0 ? userMsgs[userMsgs.length - 1].content : "Exploring ChittorTech services";
+    const name = userName ? userName : "Visitor";
+    const phone = phoneNumber ? `${countryCode} ${phoneNumber}` : "";
+    
+    const summaryText = `*Namaste Lav Sir!*\n\nI am chatting with *Kaira* on chittortech.in (${pathname}).\n\n• *My Inquiry:* "${lastUserQuery.slice(0, 160)}"\n• *Name:* ${name}\n• *Phone:* ${phone}\n\nCan we discuss this further?`;
+    
+    window.open(`https://api.whatsapp.com/send?phone=917597451057&text=${encodeURIComponent(summaryText)}`, "_blank");
+  };
+
+  // Embedded Meeting Form Submit Handler
+  const handleScheduleSubmit = async (e) => {
+    e.preventDefault();
+    if (!meetingDate) {
+      alert("Please select a date for the meeting.");
+      return;
+    }
+    setIsSubmittingMeeting(true);
+
+    const fullPhone = `${countryCode} ${phoneNumber}`.trim();
+    const meetingPayload = {
+      name: userName || "Visitor",
+      email: "N/A",
+      contact: fullPhone,
+      location: "Chatbot Meeting Scheduler",
+      industry: meetingService,
+      service: meetingService,
+      date: meetingDate,
+      slot: meetingSlot,
+      notes: meetingNote || "None",
+      message: `Meeting Request: Service: ${meetingService} | Date: ${meetingDate} (${meetingSlot}) | Phone: ${fullPhone} | Notes: ${meetingNote || "None"}`,
+      company: "N/A",
+      firm: "N/A",
+      source: "Chatbot Meeting Scheduler",
+    };
+
+    try {
+      await submitLead(meetingPayload);
+    } catch (err) {
+      console.error("Meeting lead submission error:", err);
+    }
+
+    setIsSubmittingMeeting(false);
+    setShowMeetingScheduler(false);
+
+    const confMsg = {
+      role: "ai",
+      content: `🎉 **Meeting Request Received!**\n\n- **Service:** ${meetingService}\n- **Date:** ${meetingDate}\n- **Time Slot:** ${meetingSlot}\n\nThank you **${userName || "Valued Partner"}**! We have received your strategy call request. Our team will revert back to you shortly on your registered number (**${fullPhone}**).\n\nYou can also chat directly on WhatsApp with founder **Lav Sharma**: [ACTION:WHATSAPP]`,
+      timestamp: new Date().toISOString(),
+    };
+    setMessages((prev) => [...prev, confMsg]);
   };
 
   const formatTime = (isoString) => {
@@ -137,11 +345,19 @@ export default function Chatbot() {
     // 5. Action button triggers
     content = content.replace(
       /\[ACTION:CONTACT\]/g,
-      '<div class="chat-action-wrapper"><a href="/contact-us" class="message-action-btn">Contact Us <i class="fas fa-arrow-right ms-2"></i></a></div>'
+      '<div class="chat-action-wrapper"><a href="/contact-us" class="message-action-btn"><i class="fas fa-envelope"></i> Contact Us</a></div>'
     );
     content = content.replace(
       /\[ACTION:DEMO\]/g,
-      '<div class="chat-action-wrapper"><a href="#" data-bs-toggle="modal" data-bs-target="#trialModal" class="message-action-btn">Request a Demo <i class="fas fa-laptop ms-2"></i></a></div>'
+      '<div class="chat-action-wrapper"><a href="#" data-bs-toggle="modal" data-bs-target="#trialModal" class="message-action-btn"><i class="fas fa-laptop"></i> Request a Demo</a></div>'
+    );
+    content = content.replace(
+      /\[ACTION:SCHEDULE\]/g,
+      '<div class="chat-action-wrapper"><a href="/contact-us" class="message-action-btn"><i class="fas fa-calendar-check"></i> Book Strategy Meeting</a></div>'
+    );
+    content = content.replace(
+      /\[ACTION:WHATSAPP\]/g,
+      '<div class="chat-action-wrapper"><a href="https://wa.me/917597451057?text=Namaste%20Lav%20Sir!%20I%20want%20to%20discuss%20a%20project%20with%20ChittorTech." target="_blank" rel="noopener noreferrer" class="message-action-btn wa-btn"><i class="fab fa-whatsapp"></i> Chat with Lav Sharma</a></div>'
     );
 
     // 6. Auto-link Email Addresses with email badge (only match raw emails, avoid href attributes)
@@ -272,7 +488,7 @@ export default function Chatbot() {
       contact: fullPhone,
       location: "Chatbot Lead Capture",
       industry: "AI Chatbot User",
-      message: "User initiated a chat session with the ChittorTech AI Assistant.",
+      message: `User initiated a chat session on ${pathname}.`,
       company: "N/A",
       firm: "N/A",
       source: "ChittorTech AI Chatbot",
@@ -291,7 +507,8 @@ export default function Chatbot() {
     };
 
     setMessages((prev) => [...prev, regMsg]);
-    const welcomeText = `Hello ${name}! How can I assist you today? If you have any questions or need help, just let me know.`;
+    const pageInfo = getPageAwareDetails(pathname, name);
+    const welcomeText = pageInfo.greeting;
     typeMessage(welcomeText);
   };
 
@@ -322,45 +539,73 @@ export default function Chatbot() {
       const p1 = "gsk_IDpObGXNtTE7zv7";
       const p2 = "LfuheWGdyb3FYRbWozDPnaLnySa7YtfpM0maO";
       const groqKey = p1 + p2;
+      const pageInfo = getPageAwareDetails(pathname, userName);
       const systemPrompt = {
         role: "system",
-        content: `You are Kaira, the official Customer Support Executive and AI Assistant for ChittorTech.
- 
+        content: `You are Kaira, the elite Customer Support Executive and AI Assistant for ChittorTech.
+
+CURRENT ACTIVE VISITOR CONTEXT:
+- Active Page: ${pathname}
+- Page Focus: ${pageInfo.contextPrompt}
+- Dynamically tailor your answers to highlight what the visitor is exploring right now.
+
 STRICT BOUNDARY & RESTRICTION RULE:
-- You MUST ONLY answer questions strictly related to ChittorTech company, its web & mobile services, invoicing software, digital products, portfolio projects, founders (Kush Sharma & Lav Sharma), contact information, and pricing.
-- If the user asks ANY general knowledge, general coding, politics, math, jokes, or unrelated off-topic questions (e.g. "Who is the Prime Minister?", "Write Python code for snake game"), politely decline by stating: "I am ChittorTech's official AI assistant. I can only assist you with questions regarding ChittorTech services, invoicing software, portfolio projects, and founder inquiries. How can I help you with ChittorTech today?"
-- NEVER break character. Maintain an elite, polite, and helpful tone.
+- You MUST ONLY answer questions strictly related to ChittorTech company, its software products, lead generation engine, web & mobile engineering, portfolio, founders (Lav Sharma & Kush Sharma), contact information, and pricing.
+- If the user asks ANY unrelated questions (e.g. general coding, politics, math, jokes), politely decline by stating: "I am ChittorTech's official AI assistant. I can only assist you with questions regarding ChittorTech services, invoicing software, lead generation, portfolio, and founder inquiries. How can I help you today?"
+- NEVER break character. Maintain a warm, elite, professional, and helpful tone.
 - Do NOT mention "DigiFy" or "DigiFy Soft Solutions" under any circumstances. Always refer to the company as ChittorTech.
 
-RESPONSE FORMATTING RULES (CRITICAL):
-- Keep your answers clean, well-spaced, and nicely aligned.
-- When listing contact emails or points, ALWAYS use standard clean bullet points (- Item) without any tabs or leading indentation spaces.
-- For official emails, present them neatly:
-  - Business Enquiries: business@chittortech.in
-  - General Enquiries & Support: contact@chittortech.in
-- Keep paragraphs short and concise.
+RESPONSE FORMATTING RULES:
+- Keep your answers clean, structured, and easy to read.
+- Use standard clean bullet points (- Item) without irregular indents.
+- For official emails:
+  - Business Inquiries: business@chittortech.in
+  - General Support: contact@chittortech.in
+- Official Phone / WhatsApp: +91 75974 51057 (Lav Sharma, Founder)
 
-CHITTORTECH KNOWLEDGE BASE:
-- Company Name: ChittorTech (Premier IT Startup & Digital Product Engineering Agency).
-- Location: Chittorgarh, Rajasthan, India (Office is located only in Chittorgarh, Rajasthan, but serving clients all over the world).
-- Founders: Kush Sharma (Founder) & Lav Sharma (Co-Founder).
-- Official Contact Emails:
-  - Business Enquiries: business@chittortech.in
-  - General Enquiries & Support: contact@chittortech.in
-- Phone: +91 7597451057
-- Core Services & Products:
-  1. Invoicing Software: Custom invoicing and billing software for retail shops, distributors, and service providers.
-  2. Web Development: Custom high-performance web applications using Next.js, React, Node.js, and SaaS platforms.
-  3. Mobile App Development: Android and iOS applications using React Native.
-  4. Custom AI Solutions: Custom AI chatbots, RAG vector document search, and bilingual WhatsApp AI assistants.
-- Key Projects: 
-  1. AI Content & NotebookLLM Systems
-  2. Mewari Achar E-Commerce (https://www.mewari-achar.shop/)
-  3. Hospitality & Admin Hubs (https://dharamsala-admin-portal.vercel.app/)
-  4. Shaadi Sutra Event SaaS (https://shaadi-sutra.vercel.app/)
-  5. MailPulse Elite Bulk Email Engine
-- Contact Link: [Contact Us](https://chittortech.in/contact-us)
-- If users ask for pricing, contact info, or detailed technical support, you MUST append the exact text '[ACTION:CONTACT]' at the end of your response. If users ask for a demo, trial, or to see the software, you MUST append the exact text '[ACTION:DEMO]' at the end of your response.`
+COMPREHENSIVE CHITTORTECH KNOWLEDGE BASE:
+- Company: ChittorTech (Premier Technology Firm & Digital Product Engineering Agency).
+- Headquarters: Collectorate Circle, Chittorgarh, Rajasthan, India (Serving clients worldwide across India, USA, UK, UAE, Australia, Canada, Germany).
+- Founders: Lav Sharma (Founder & Tech Lead, +91 75974 51057) & Kush Sharma (Co-Founder).
+
+FLAGSHIP SERVICES & PRODUCTS:
+1. B2B Lead Generation Engine (/b2b-lead-generation-services):
+   - Extracts 100% verified, active business contacts directly from Google Maps (phone, website, ratings, location).
+   - Generates hyper-personalized AI value pitches in natural Hindi & English for Marble Manufacturers, Dharamshala Trusts, Hotels/Resorts, Textile Mills, Transport Fleets.
+   - 1-Click WhatsApp outreach & Firestore cloud CRM lead pipeline.
+2. Dharamshala & Pilgrimage Trust Billing System (/dharamshala-billing-system):
+   - Real-time room occupancy dashboard, 2-way check-in/out slips with instant WhatsApp receipts.
+   - Bhojanshala thali coupons, automated Daan & Chanda donation management with instant WhatsApp & thermal receipts, zero cash leakage.
+3. Interactive Project Estimator (/project-estimator):
+   - Real-time web app, mobile app, and ERP cost & timeline calculator.
+4. Custom CRM Solutions (/custom-crm-solutions):
+   - Inbound & outbound sales pipelines, WhatsApp follow-up automation, quotation builder.
+5. Enterprise AI Agents (/enterprise-ai-agents):
+   - Air-gapped private RAG vector search, sub-second Groq LPUs, WhatsApp voice conversational agents.
+6. Hotel & Resort Management (/hotel-management-system):
+   - 0% OTA commission direct booking engine (save 20-25% from MakeMyTrip/Booking.com), hotel PMS, multi-counter restaurant KOT billing.
+7. Mobile App Engineering (/android-application & /google-play-publishing):
+   - React Native iOS & Android apps, 20-tester closed testing verification, and guaranteed Play Store publishing.
+8. 4-Week SaaS MVP (/4-week-saas-mvp):
+   - Next.js 15, React 19, Supabase, Tailwind CSS, high performance with 100/100 Core Web Vitals.
+
+PRICING & TIMELINE GUIDELINES:
+- Custom High-Converting Websites / Landing Pages: ₹15,000 – ₹35,000 (1-2 weeks).
+- Dharamshala / Hotel Booking Engines: ₹25,000 – ₹65,000 (2-3 weeks).
+- Custom CRM / B2B Lead Engines / Factory ERP: ₹50,000 – ₹2,50,000+ (3-6 weeks).
+- AI Chatbots & RAG Vector Systems: ₹35,000 – ₹1,50,000.
+
+PORTFOLIO & LIVE HUBS:
+- Mewari Achar E-Commerce: https://www.mewari-achar.shop/
+- Dharamshala Admin Portal: https://dharamsala-admin-portal.vercel.app/
+- Shaadi Sutra Event SaaS: https://shaadi-sutra.vercel.app/
+- MailPulse Bulk Email Engine
+
+ACTION TRIGGERS:
+- If user asks for pricing, contact info, or quote, append '[ACTION:CONTACT]'.
+- If user asks for a demo or trial, append '[ACTION:DEMO]'.
+- If user wants to schedule a meeting, call, or discussion, append '[ACTION:SCHEDULE]'.
+- If user wants to talk on WhatsApp with founder Lav Sharma, append '[ACTION:WHATSAPP]'.`
       };
 
       const finalMessages = [systemPrompt, ...chatHistory];
@@ -375,7 +620,7 @@ CHITTORTECH KNOWLEDGE BASE:
           model: "openai/gpt-oss-120b",
           messages: finalMessages,
           temperature: 0.7,
-          max_tokens: 500
+          max_tokens: 1500
         }),
       });
 
@@ -425,8 +670,8 @@ CHITTORTECH KNOWLEDGE BASE:
         />
       )}
 
-      <div className="chatbot-container">
-        {/* FAB Button */}
+      {/* FAB Floating Button */}
+      <div className="chatbot-fab-wrap">
         <button 
           id="chatbot-fab" 
           className={`chatbot-fab ${isOpen ? "active" : ""}`} 
@@ -435,61 +680,79 @@ CHITTORTECH KNOWLEDGE BASE:
           title="Talk to AI"
         >
           {isOpen ? (
-            <i className="fa-solid fa-chevron-down"></i>
+            <i className="fa-solid fa-times"></i>
           ) : (
             <i className="fa-solid fa-comments"></i>
           )}
           <div className="pulse-ring"></div>
         </button>
+      </div>
 
-        {/* Chat Window */}
-        <div id="chatbot-window" className={`chatbot-window ${isOpen ? "open" : ""}`}>
-          <div className="chatbot-header">
-            <div className="chatbot-header-info">
-              <div className="chatbot-avatar" style={{ position: "relative" }}>
-                <img src="/assets/images/chatbot-kaira.webp" alt="Logo" style={{ width: "40px", height: "40px", objectFit: "cover", borderRadius: "50%", background: "#fff" }} />
-                <span style={{ position: "absolute", bottom: "-2px", right: "-2px", width: "10px", height: "10px", background: "#10b981", border: "2px solid #fff", borderRadius: "50%", boxShadow: "0 0 8px rgba(16, 185, 129, 0.6)" }}></span>
-              </div>
-              <div className="chatbot-header-text">
-                <h4>Kaira</h4>
-                <span style={{ color: "#64748b", fontWeight: "500", fontSize: "0.7rem", textTransform: "none", letterSpacing: 0 }}>Customer Support Executive</span>
-              </div>
+      {/* Chat Window */}
+      <div id="chatbot-window" className={`chatbot-window ${isOpen ? "open" : ""}`}>
+        <div className="chatbot-header">
+          <div className="chatbot-header-info">
+            <div className="chatbot-avatar">
+              <img src="/assets/images/chatbot-kaira.webp" alt="Kaira" />
             </div>
-            <div className="chatbot-header-actions">
-              {isRegistered && (
-                <button onClick={resetChat} className="chatbot-reset-btn" title="Clear Chat">
-                  <i className="fas fa-trash-alt"></i>
-                </button>
-              )}
-              <button onClick={toggleChat} className="chatbot-close-btn" title="Close Chat">
-                <i className="fas fa-chevron-down"></i>
-              </button>
+            <div className="chatbot-header-text">
+              <h4>Kaira</h4>
+              <span>Online • AI Assistant</span>
             </div>
           </div>
+          <div className="chatbot-header-actions">
+            {isRegistered && (
+              <button onClick={resetChat} className="chatbot-reset-btn" title="Clear Chat">
+                <i className="fas fa-trash-alt"></i>
+              </button>
+            )}
+            <button onClick={toggleChat} className="chatbot-close-btn" title="Close Chat">
+              <i className="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
 
           {!isRegistered ? (
             <div className="chatbot-reg-container">
-              <div className="chatbot-reg-welcome">
-                <i className="fas fa-robot"></i>
-                <h3>Start ChittorTech AI Chat</h3>
-                <p>Please enter your name and phone number to start a conversation with our AI Assistant.</p>
+              <div className="chatbot-3d-hero">
+                <div className="ai-3d-orb-wrap">
+                  <div className="ai-3d-orb-glow"></div>
+                  <div className="ai-3d-avatar-container">
+                    <img src="/assets/images/chatbot-kaira.webp" alt="Kaira AI" className="ai-3d-avatar-img" />
+                    <span className="ai-live-pulse-badge">
+                      <span className="live-dot"></span> Neural AI
+                    </span>
+                  </div>
+                </div>
+                <div className="chatbot-reg-welcome-text">
+                  <h3>ChittorTech AI Studio</h3>
+                  <p>Chat with <strong>Kaira</strong> for instant solution architecture, lead generator demos & custom pricing.</p>
+                </div>
+                <div className="ai-capabilities-pill-strip">
+                  <span><i className="fas fa-bolt"></i> Instant Answers</span>
+                  <span><i className="fas fa-shield-alt"></i> Verified Tech</span>
+                  <span><i className="fas fa-calendar-check"></i> Book a Demo</span>
+                </div>
               </div>
 
               <form onSubmit={handleRegister} className="chatbot-reg-form">
                 <div className="chatbot-reg-group">
-                  <label className="chatbot-reg-label">Name</label>
-                  <input
-                    type="text"
-                    className="chatbot-reg-input"
-                    placeholder="Enter your name"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    required
-                  />
+                  <label className="chatbot-reg-label">Your Full Name</label>
+                  <div className="chatbot-input-with-icon">
+                    <i className="fas fa-user-circle input-inner-icon"></i>
+                    <input
+                      type="text"
+                      className="chatbot-reg-input with-icon"
+                      placeholder="e.g. Lav Sharma"
+                      value={userName}
+                      onChange={(e) => setUserName(e.target.value)}
+                      required
+                    />
+                  </div>
                 </div>
 
                 <div className="chatbot-reg-group">
-                  <label className="chatbot-reg-label">Phone Number</label>
+                  <label className="chatbot-reg-label">WhatsApp / Phone Number</label>
                   <div className="chatbot-phone-wrapper">
                     <select
                       className="chatbot-country-select"
@@ -502,15 +765,17 @@ CHITTORTECH KNOWLEDGE BASE:
                       <option value="+971">🇦🇪 +971</option>
                       <option value="+61">🇦🇺 +61</option>
                     </select>
-                    <input
-                      type="tel"
-                      className="chatbot-reg-input"
-                      style={{ flex: 1 }}
-                      placeholder="Enter mobile number"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
-                      required
-                    />
+                    <div className="chatbot-input-with-icon" style={{ flex: 1 }}>
+                      <i className="fas fa-phone-alt input-inner-icon"></i>
+                      <input
+                        type="tel"
+                        className="chatbot-reg-input with-icon"
+                        placeholder="Mobile number"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -519,13 +784,193 @@ CHITTORTECH KNOWLEDGE BASE:
                 )}
 
                 <button type="submit" className="chatbot-reg-btn">
-                  <span>Start Chat</span>
-                  <i className="fas fa-paper-plane"></i>
+                  <span>Launch AI Conversation</span>
+                  <i className="fas fa-arrow-right"></i>
                 </button>
               </form>
             </div>
           ) : (
             <>
+              {/* Quick Action Bar */}
+              <div className="chatbot-action-bar">
+                <button 
+                  type="button" 
+                  className={`chat-quick-pill schedule-pill ${showMeetingScheduler ? 'active' : ''}`}
+                  onClick={() => setShowMeetingScheduler(!showMeetingScheduler)}
+                >
+                  <i className="fas fa-calendar-alt"></i>
+                  <span>Book Call</span>
+                </button>
+                <button 
+                  type="button" 
+                  className="chat-quick-pill whatsapp-pill"
+                  onClick={handleWhatsAppSync}
+                  title="Connect directly with Lav Sharma on WhatsApp"
+                >
+                  <i className="fab fa-whatsapp"></i>
+                  <span>WhatsApp Lav</span>
+                </button>
+              </div>
+
+              {/* Embedded Meeting Scheduler Card */}
+              {showMeetingScheduler && (
+                <div className="chatbot-scheduler-card">
+                  <div className="scheduler-header">
+                    <div className="scheduler-title-wrap">
+                      <div className="scheduler-header-badge">
+                        <i className="fas fa-calendar-check"></i>
+                      </div>
+                      <div>
+                        <h4 className="scheduler-title-text">Book Strategy Call</h4>
+                        <p className="scheduler-sub-text">Direct 1-on-1 consultation with Lav Sharma</p>
+                      </div>
+                    </div>
+                    <button 
+                      type="button" 
+                      className="scheduler-close-btn"
+                      onClick={() => setShowMeetingScheduler(false)}
+                      aria-label="Close scheduler"
+                    >
+                      <i className="fas fa-times"></i>
+                    </button>
+                  </div>
+
+                  <form onSubmit={handleScheduleSubmit} className="scheduler-form">
+                    {/* Focus Area */}
+                    <div className="scheduler-field">
+                      <label className="scheduler-field-label">
+                        <i className="fas fa-layer-group"></i>
+                        <span>Focus Area / Service</span>
+                      </label>
+                      <div className="scheduler-select-wrap">
+                        <select 
+                          value={meetingService} 
+                          onChange={(e) => setMeetingService(e.target.value)}
+                          className="scheduler-select"
+                        >
+                          <option value="B2B Lead Generation Engine">B2B Lead Gen & Google Maps Scraping</option>
+                          <option value="Dharamshala Billing & Trust System">Dharamshala & Pilgrimage Billing System</option>
+                          <option value="Custom CRM & ERP Architecture">Custom CRM & ERP Architecture</option>
+                          <option value="Enterprise AI Agent & RAG Vector">Enterprise AI Agent & RAG Vector</option>
+                          <option value="Mobile App (Android/iOS) & Play Store">Mobile App & Google Play Publishing</option>
+                          <option value="Custom Website / SaaS MVP">Custom Website / 4-Week SaaS MVP</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Preferred Date & Calendar */}
+                    <div className="scheduler-field">
+                      <div className="scheduler-label-row">
+                        <label className="scheduler-field-label">
+                          <i className="fas fa-calendar-alt"></i>
+                          <span>Preferred Date</span>
+                        </label>
+                        {meetingDate && (
+                          <span className="scheduler-selected-tag">
+                            <i className="fas fa-check"></i>
+                            {new Date(meetingDate + "T00:00:00").toLocaleDateString("en-IN", { weekday: 'short', day: 'numeric', month: 'short' })}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Quick Date Chips */}
+                      <div className="scheduler-date-chips">
+                        {upcomingDateOptions.map((opt) => (
+                          <button
+                            type="button"
+                            key={opt.iso}
+                            className={`date-chip ${meetingDate === opt.iso ? "active" : ""}`}
+                            onClick={() => setMeetingDate(opt.iso)}
+                          >
+                            <span className="chip-day">{opt.dayName}</span>
+                            <span className="chip-date">{opt.dateStr}</span>
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* Custom Date Input for custom pick */}
+                      <div className="scheduler-input-with-icon">
+                        <i className="fas fa-calendar-day input-icon"></i>
+                        <input 
+                          type="date" 
+                          className="scheduler-input date-input"
+                          value={meetingDate}
+                          min={new Date().toISOString().split("T")[0]}
+                          onChange={(e) => setMeetingDate(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    {/* Preferred Slot */}
+                    <div className="scheduler-field">
+                      <label className="scheduler-field-label">
+                        <i className="fas fa-clock"></i>
+                        <span>Select Time Slot</span>
+                      </label>
+                      <div className="scheduler-slot-grid">
+                        {TIME_SLOTS.map((slot) => {
+                          const isSelected = meetingSlot === slot.value;
+                          return (
+                            <button
+                              type="button"
+                              key={slot.value}
+                              className={`slot-chip ${isSelected ? "active" : ""}`}
+                              onClick={() => setMeetingSlot(slot.value)}
+                            >
+                              <i className={`fas ${slot.icon} slot-icon`}></i>
+                              <div className="slot-info">
+                                <span className="slot-time">{slot.label}</span>
+                                <span className="slot-period">{slot.period}</span>
+                              </div>
+                              {isSelected && (
+                                <i className="fas fa-check-circle slot-check"></i>
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Project Scope / Note */}
+                    <div className="scheduler-field">
+                      <label className="scheduler-field-label">
+                        <i className="fas fa-comment-dots"></i>
+                        <span>Project Scope / Note (Optional)</span>
+                      </label>
+                      <div className="scheduler-input-with-icon">
+                        <i className="fas fa-pen input-icon"></i>
+                        <input 
+                          type="text" 
+                          className="scheduler-input"
+                          placeholder="e.g. Need lead scraper for marble dealers..."
+                          value={meetingNote}
+                          onChange={(e) => setMeetingNote(e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="scheduler-actions">
+                      <button 
+                        type="submit" 
+                        className="scheduler-submit-btn"
+                        disabled={isSubmittingMeeting}
+                      >
+                        {isSubmittingMeeting ? (
+                          <span><i className="fas fa-spinner fa-spin"></i> Booking Call...</span>
+                        ) : (
+                          <span><i className="fas fa-check-circle"></i> Confirm Strategy Call</span>
+                        )}
+                      </button>
+                      <div className="scheduler-guarantee-note">
+                        <i className="fas fa-shield-alt"></i> 100% Free Consultation • No Obligation
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              )}
+
               <div id="chatbot-messages" className="chatbot-messages">
                 {messages.map((msg, idx) => (
                   <div key={idx} className={`message-wrapper ${msg.role}`}>
@@ -585,25 +1030,30 @@ CHITTORTECH KNOWLEDGE BASE:
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Render Suggestions */}
-              {messages.length <= 1 && (
-                <div id="chatbot-suggestions" className="suggestion-vertical-menu" style={{ display: "flex", padding: "0 20px" }}>
+              {/* Render Sleek Horizontal Suggestion Chips */}
+              {messages.length <= 2 && suggestions && suggestions.length > 0 && (
+                <div 
+                  id="chatbot-suggestions" 
+                  className="chatbot-suggestions-chips"
+                  onWheel={(e) => {
+                    if (e.deltaY !== 0) {
+                      e.currentTarget.scrollLeft += e.deltaY;
+                    }
+                  }}
+                >
                   {suggestions.map((s, i) => (
                     <button 
                       key={i} 
-                      className="suggestion-btn"
+                      type="button"
+                      className="suggestion-chip"
                       onClick={() => handleSend(s)}
                     >
-                      {s} <i className="fas fa-chevron-right"></i>
+                      <span>{s}</span>
+                      <i className="fas fa-arrow-right"></i>
                     </button>
                   ))}
                 </div>
               )}
-
-              <div className="chatbot-disclaimer">
-                <i className="fas fa-shield-alt"></i>
-                <span>This AI bot can make mistakes. Please double-check information.</span>
-              </div>
 
               <div className="chatbot-input-area">
                 <input 
@@ -627,7 +1077,6 @@ CHITTORTECH KNOWLEDGE BASE:
             </>
           )}
         </div>
-      </div>
     </>
   );
 }
