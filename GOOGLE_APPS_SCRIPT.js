@@ -263,7 +263,7 @@ function handleChat(messages) {
     model: "llama-3.3-70b-versatile",
     messages: finalMessages,
     temperature: 0.7,
-    max_tokens: 500
+    max_tokens: 4096
   };
 
   const options = {

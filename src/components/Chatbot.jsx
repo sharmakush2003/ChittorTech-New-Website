@@ -136,6 +136,7 @@ export default function Chatbot() {
   // Pre-chat Registration states
   const [isRegistered, setIsRegistered] = useState(false);
   const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [countryCode, setCountryCode] = useState("+91");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [validationError, setValidationError] = useState("");
@@ -181,15 +182,18 @@ export default function Chatbot() {
     if (savedUserInfo) {
       try {
         const userInfo = JSON.parse(savedUserInfo);
-        if (userInfo.name && userInfo.phone) {
+        if (userInfo.name) {
           setUserName(userInfo.name);
+          if (userInfo.email) setUserEmail(userInfo.email);
           registeredName = userInfo.name;
-          const parts = userInfo.phone.split(" ");
-          if (parts.length > 1) {
-            setCountryCode(parts[0]);
-            setPhoneNumber(parts.slice(1).join(" "));
-          } else {
-            setPhoneNumber(userInfo.phone);
+          if (userInfo.phone) {
+            const parts = userInfo.phone.split(" ");
+            if (parts.length > 1) {
+              setCountryCode(parts[0]);
+              setPhoneNumber(parts.slice(1).join(" "));
+            } else {
+              setPhoneNumber(userInfo.phone);
+            }
           }
           setIsRegistered(true);
           isUserReg = true;
@@ -359,6 +363,10 @@ export default function Chatbot() {
       /\[ACTION:WHATSAPP\]/g,
       '<div class="chat-action-wrapper"><a href="https://wa.me/917597451057?text=Namaste%20Lav%20Sir!%20I%20want%20to%20discuss%20a%20project%20with%20ChittorTech." target="_blank" rel="noopener noreferrer" class="message-action-btn wa-btn"><i class="fab fa-whatsapp"></i> Chat with Lav Sharma</a></div>'
     );
+    content = content.replace(
+      /\[ACTION:ESTIMATOR\]/g,
+      '<div class="chat-action-wrapper"><a href="https://chittortech.in/project-estimator" target="_blank" rel="noopener noreferrer" class="message-action-btn estimator-btn"><i class="fas fa-calculator"></i> Calculate Instant Project Quote</a></div>'
+    );
 
     // 6. Auto-link Email Addresses with email badge (only match raw emails, avoid href attributes)
     content = content.replace(
@@ -461,6 +469,7 @@ export default function Chatbot() {
   const handleRegister = (e) => {
     e.preventDefault();
     const name = userName.trim();
+    const email = userEmail.trim();
     const phone = phoneNumber.trim();
 
     if (!name || name.length < 2) {
@@ -468,23 +477,19 @@ export default function Chatbot() {
       return;
     }
 
-    if (!phone || phone.length < 8) {
-      setValidationError("Please enter a valid phone number.");
-      return;
-    }
-
     setValidationError("");
-    const fullPhone = `${countryCode} ${phone}`;
+    const fullPhone = phone ? `${countryCode} ${phone}` : "N/A";
+    const finalEmail = email || "chatbot-lead@chittortech.in";
 
     localStorage.setItem(
       "chittortech_user_info",
-      JSON.stringify({ name, phone: fullPhone })
+      JSON.stringify({ name, email: finalEmail, phone: fullPhone })
     );
 
     // Send lead to Firestore and email alert in background
     const leadPayload = {
       name: name,
-      email: "chatbot-lead@chittortech.in",
+      email: finalEmail,
       contact: fullPhone,
       location: "Chatbot Lead Capture",
       industry: "AI Chatbot User",
@@ -502,7 +507,7 @@ export default function Chatbot() {
 
     const regMsg = {
       role: "user",
-      content: `Name : ${name}\nPhone : ${fullPhone}`,
+      content: `Name : ${name}${email ? `\nEmail : ${email}` : ""}${phone ? `\nPhone : ${fullPhone}` : ""}`,
       timestamp: new Date().toISOString(),
     };
 
@@ -602,7 +607,8 @@ PORTFOLIO & LIVE HUBS:
 - MailPulse Bulk Email Engine
 
 ACTION TRIGGERS:
-- If user asks for pricing, contact info, or quote, append '[ACTION:CONTACT]'.
+- If user asks for project cost, pricing, budget, or estimates, guide them to our Interactive Project Estimator (https://chittortech.in/project-estimator) and append '[ACTION:ESTIMATOR]'.
+- If user asks for contact info or general inquiry, append '[ACTION:CONTACT]'.
 - If user asks for a demo or trial, append '[ACTION:DEMO]'.
 - If user wants to schedule a meeting, call, or discussion, append '[ACTION:SCHEDULE]'.
 - If user wants to talk on WhatsApp with founder Lav Sharma, append '[ACTION:WHATSAPP]'.`
@@ -620,7 +626,7 @@ ACTION TRIGGERS:
           model: "openai/gpt-oss-120b",
           messages: finalMessages,
           temperature: 0.7,
-          max_tokens: 1500
+          max_tokens: 4096
         }),
       });
 
@@ -737,13 +743,13 @@ ACTION TRIGGERS:
 
               <form onSubmit={handleRegister} className="chatbot-reg-form">
                 <div className="chatbot-reg-group">
-                  <label className="chatbot-reg-label">Your Full Name</label>
+                  <label className="chatbot-reg-label">Your Full Name <span style={{ color: "#ef4444" }}>*</span></label>
                   <div className="chatbot-input-with-icon">
                     <i className="fas fa-user-circle input-inner-icon"></i>
                     <input
                       type="text"
                       className="chatbot-reg-input with-icon"
-                      placeholder="e.g. Lav Sharma"
+                      placeholder="e.g. Rajesh Sharma"
                       value={userName}
                       onChange={(e) => setUserName(e.target.value)}
                       required
@@ -752,7 +758,24 @@ ACTION TRIGGERS:
                 </div>
 
                 <div className="chatbot-reg-group">
-                  <label className="chatbot-reg-label">WhatsApp / Phone Number</label>
+                  <label className="chatbot-reg-label">Email Address <span style={{ fontWeight: "normal", color: "#64748b", fontSize: "11px" }}>(Optional)</span></label>
+                  <div className="chatbot-input-with-icon">
+                    <i className="fas fa-envelope input-inner-icon"></i>
+                    <input
+                      type="email"
+                      className="chatbot-reg-input with-icon"
+                      placeholder="e.g. name@company.com"
+                      value={userEmail}
+                      onChange={(e) => setUserEmail(e.target.value)}
+                    />
+                  </div>
+                  <span style={{ fontSize: "11px", color: "#64748b", marginTop: "4px", display: "block", lineHeight: "1.3" }}>
+                    💡 Providing a valid email ID helps us send direct proposals & instant project estimates.
+                  </span>
+                </div>
+
+                <div className="chatbot-reg-group">
+                  <label className="chatbot-reg-label">WhatsApp / Phone Number <span style={{ fontWeight: "normal", color: "#64748b", fontSize: "11px" }}>(Optional)</span></label>
                   <div className="chatbot-phone-wrapper">
                     <select
                       className="chatbot-country-select"
@@ -773,7 +796,6 @@ ACTION TRIGGERS:
                         placeholder="Mobile number"
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
-                        required
                       />
                     </div>
                   </div>
@@ -793,6 +815,16 @@ ACTION TRIGGERS:
             <>
               {/* Quick Action Bar */}
               <div className="chatbot-action-bar">
+                <a 
+                  href="https://chittortech.in/project-estimator"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="chat-quick-pill estimator-pill"
+                  title="Calculate instant project quote"
+                >
+                  <i className="fas fa-calculator"></i>
+                  <span>Estimate Cost</span>
+                </a>
                 <button 
                   type="button" 
                   className={`chat-quick-pill schedule-pill ${showMeetingScheduler ? 'active' : ''}`}
@@ -800,15 +832,6 @@ ACTION TRIGGERS:
                 >
                   <i className="fas fa-calendar-alt"></i>
                   <span>Book Call</span>
-                </button>
-                <button 
-                  type="button" 
-                  className="chat-quick-pill whatsapp-pill"
-                  onClick={handleWhatsAppSync}
-                  title="Connect directly with Lav Sharma on WhatsApp"
-                >
-                  <i className="fab fa-whatsapp"></i>
-                  <span>WhatsApp Lav</span>
                 </button>
               </div>
 
