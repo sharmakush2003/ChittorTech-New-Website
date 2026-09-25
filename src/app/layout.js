@@ -80,6 +80,9 @@ export default function RootLayout({ children }) {
         <meta name="yandex-verification" content="495c64862381b7b9" />
         <meta name="p:domain_verify" content="83a539ac9f26d5e2f0b714eee5cca03f"/>
         <meta name="facebook-domain-verification" content="opaaiyfyje7nkw6e2xqtbk7cz4llul" />
+        <meta name="geo.region" content="IN-RJ" />
+        <meta name="geo.placename" content="Chittorgarh" />
+        <meta name="ICBM" content="24.8887, 74.6269" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -163,7 +166,68 @@ export default function RootLayout({ children }) {
                   "availableLanguage": ["en", "hi"]
                 }
               ],
+              "award": [
+                "Government of Rajasthan iStart Qrate 32 Recognized Startup",
+                "Government of India MSME Registered IT Enterprise"
+              ],
+              "hasCredential": [
+                {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "iStart Rajasthan Govt Recognized Startup (Qrate 32)"
+                },
+                {
+                  "@type": "EducationalOccupationalCredential",
+                  "name": "Government of India MSME Registered Entity"
+                }
+              ],
+              "alternateName": [
+                "ChittorTech Rajasthan",
+                "ChittorTech IT Services",
+                "ChittorTech iStart Startup",
+                "ChittorTech MSME",
+                "ChittorTech Chittorgarh"
+              ],
               "areaServed": [
+                { "@type": "City", "name": "Chittorgarh" },
+                { "@type": "City", "name": "Bhilwara" },
+                { "@type": "City", "name": "Jaipur" },
+                { "@type": "City", "name": "Udaipur" },
+                { "@type": "City", "name": "Hanumangarh" },
+                { "@type": "City", "name": "Sikar" },
+                { "@type": "City", "name": "Churu" },
+                { "@type": "City", "name": "Banswara" },
+                { "@type": "City", "name": "Jhunjhunu" },
+                { "@type": "City", "name": "Sri Ganganagar" },
+                { "@type": "City", "name": "Dausa" },
+                { "@type": "City", "name": "Tonk" },
+                { "@type": "City", "name": "Ajmer" },
+                { "@type": "City", "name": "Alwar" },
+                { "@type": "City", "name": "Barmer" },
+                { "@type": "City", "name": "Bharatpur" },
+                { "@type": "City", "name": "Bundi" },
+                { "@type": "City", "name": "Jhalawar" },
+                { "@type": "City", "name": "Jodhpur" },
+                { "@type": "City", "name": "Nagaur" },
+                { "@type": "City", "name": "Pali" },
+                { "@type": "City", "name": "Pratapgarh" },
+                { "@type": "City", "name": "Rajsamand" },
+                { "@type": "City", "name": "Sawai Madhopur" },
+                { "@type": "City", "name": "Bikaner" },
+                { "@type": "City", "name": "Jaisalmer" },
+                { "@type": "City", "name": "Jalor" },
+                { "@type": "City", "name": "Dungarpur" },
+                { "@type": "City", "name": "Sirohi" },
+                { "@type": "City", "name": "Kota" },
+                { "@type": "City", "name": "Karauli" },
+                { "@type": "City", "name": "Dholpur" },
+                { "@type": "City", "name": "Shahpura" },
+                { "@type": "City", "name": "Nimbahera" },
+                { "@type": "City", "name": "Pune" },
+                { "@type": "City", "name": "Mumbai" },
+                { "@type": "City", "name": "Delhi" },
+                { "@type": "City", "name": "Bangalore" },
+                { "@type": "City", "name": "Hyderabad" },
+                { "@type": "City", "name": "Ahmedabad" },
                 { "@type": "AdministrativeArea", "name": "Rajasthan" },
                 { "@type": "Country", "name": "India" },
                 { "@type": "Country", "name": "United States" },
