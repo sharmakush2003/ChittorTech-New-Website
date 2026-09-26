@@ -579,7 +579,7 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
 
       const finalMessages = [systemPrompt, ...chatHistory];
 
-      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      let response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${groqKey}`,
@@ -589,9 +589,26 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
           model: "openai/gpt-oss-120b",
           messages: finalMessages,
           temperature: 0.7,
-          max_tokens: 4096
+          max_tokens: 2048
         }),
       });
+
+      if (!response.ok) {
+        // Fallback to secondary fast model if 120b model rate limits
+        response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${groqKey}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            model: "openai/gpt-oss-20b",
+            messages: finalMessages,
+            temperature: 0.7,
+            max_tokens: 2048
+          }),
+        });
+      }
 
       if (!response.ok) throw new Error("API Error");
 
@@ -603,7 +620,7 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
       typeMessage(reply);
     } catch (e) {
       console.error(e);
-      typeMessage("Sorry, I am facing some network issues right now. Please call us at +91 7597451057 for assistance.");
+      typeMessage("Thank you for reaching out to ChittorTech! Please contact our team directly via Phone/WhatsApp at +91 7597451057 or email business@chittortech.in for instant assistance.");
     }
   };
 
