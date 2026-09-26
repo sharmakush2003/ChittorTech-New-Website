@@ -23,66 +23,52 @@ function PaymentStatusContent() {
 
     async function checkStatus() {
       try {
-        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxbWvxG81_lwfFh0sIqGhQnJnHwPwC0TxBnmiPq_DFxfFp7OnxNY1XC60nmFZxABve8/exec";
-        const gasRes = await fetch(gasUrl, {
+        const res = await fetch('/api/payments/verify-order', {
           method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            action: 'verify_cashfree_order',
             order_id: orderId
           })
         });
-        const rawText = await gasRes.text();
-        let gasJson;
-        try {
-          gasJson = JSON.parse(rawText);
-        } catch (parseErr) {
-          console.error('Server non-JSON response:', rawText);
-          throw new Error('Payment status verification returned an invalid response.');
-        }
 
-        let verifiedData = null;
-        if (gasJson && (gasJson.success || gasJson.status === 'success')) {
-          verifiedData = {
+        const json = await res.json();
+
+        if (res.ok && json.success) {
+          const status = json.status || json.order?.order_status;
+          setOrderData({
             success: true,
-            status: gasJson.order_status || gasJson.order?.order_status,
-            order: gasJson.order,
-            payment: gasJson.payment
-          };
-        } else {
-          setError(gasJson?.msg || 'Failed to verify transaction status.');
-        }
-
-        if (verifiedData && (verifiedData.success || verifiedData.status)) {
-          setOrderData(verifiedData);
+            status: status,
+            order: json.order,
+            payment: json.payment
+          });
 
           // If paid, ensure record is synced to Firestore
-          if (verifiedData.status === 'PAID' || verifiedData.order?.order_status === 'PAID') {
+          if (status === 'PAID') {
             try {
-              const custDetails = verifiedData.order?.customer_details || {};
+              const custDetails = json.order?.customer_details || {};
               await setDoc(doc(db, 'payments', orderId), {
                 orderId: orderId,
-                cfOrderId: verifiedData.order?.cf_order_id || '',
-                amount: verifiedData.order?.order_amount || 0,
-                currency: verifiedData.order?.order_currency || 'INR',
+                cfOrderId: json.order?.cf_order_id || '',
+                amount: json.order?.order_amount || 0,
+                currency: json.order?.order_currency || 'INR',
                 status: 'PAID',
-                customerName: custDetails.customer_name || verifiedData.order?.customer_name || 'Anonymous',
-                customerPhone: custDetails.customer_phone || verifiedData.order?.customer_phone || '',
-                customerEmail: custDetails.customer_email || verifiedData.order?.customer_email || '',
-                purpose: verifiedData.order?.order_note || 'Software Services',
-                paymentMethod: verifiedData.payment?.payment_method?.upi ? 'UPI' : (typeof verifiedData.payment?.payment_method === 'string' ? verifiedData.payment?.payment_method : 'Online'),
-                cfPaymentId: verifiedData.payment?.cf_payment_id || '',
-                bankReference: verifiedData.payment?.bank_reference || '',
-                paymentTime: verifiedData.payment?.payment_completion_time || verifiedData.payment?.payment_time || new Date().toISOString(),
+                customerName: custDetails.customer_name || json.order?.customer_name || 'Anonymous',
+                customerPhone: custDetails.customer_phone || json.order?.customer_phone || '',
+                customerEmail: custDetails.customer_email || json.order?.customer_email || '',
+                purpose: json.order?.order_note || 'Software Services',
+                paymentMethod: json.payment?.payment_method?.upi ? 'UPI' : (typeof json.payment?.payment_method === 'string' ? json.payment?.payment_method : 'Online'),
+                cfPaymentId: json.payment?.cf_payment_id || '',
+                bankReference: json.payment?.bank_reference || '',
+                paymentTime: json.payment?.payment_completion_time || json.payment?.payment_time || new Date().toISOString(),
                 verifiedAt: serverTimestamp()
               }, { merge: true });
               console.info('✅ Payment record successfully synced to Firestore:', orderId);
             } catch (dbErr) {
-              console.warn('Client Firestore save warning (check Firestore security rules):', dbErr);
+              console.warn('Client Firestore save warning:', dbErr);
             }
           }
-        } else if (!gasJson?.msg) {
-          setError('Failed to verify transaction status with payment gateway.');
+        } else {
+          setError(json?.error || json?.message || 'Failed to verify transaction status with payment gateway.');
         }
       } catch (err) {
         console.error('Verification error:', err);

@@ -20,19 +20,37 @@ export default function CashfreePartnerPage() {
   const [isPaying, setIsPaying] = useState(false);
   const [payError, setPayError] = useState('');
 
+  const loadCashfreeSdk = () => {
+    if (typeof window === 'undefined') return Promise.resolve(null);
+    if (window.Cashfree) return Promise.resolve(window.Cashfree);
+
+    return new Promise((resolve, reject) => {
+      const existingScript = document.getElementById('cashfree-js-sdk');
+      if (existingScript) {
+        if (window.Cashfree) return resolve(window.Cashfree);
+        existingScript.addEventListener('load', () => resolve(window.Cashfree));
+        existingScript.addEventListener('error', () => reject(new Error('Failed to load Cashfree Payment SDK.')));
+        return;
+      }
+      const script = document.createElement('script');
+      script.id = 'cashfree-js-sdk';
+      script.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
+      script.onload = () => resolve(window.Cashfree);
+      script.onerror = () => reject(new Error('Failed to load Cashfree Payment SDK.'));
+      document.body.appendChild(script);
+    });
+  };
+
   const handleProceedToPay = async (e) => {
     e.preventDefault();
     setPayError('');
     setIsPaying(true);
 
     try {
-      const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxbWvxG81_lwfFh0sIqGhQnJnHwPwC0TxBnmiPq_DFxfFp7OnxNY1XC60nmFZxABve8/exec";
-      
-      const res = await fetch(gasUrl, {
+      const res = await fetch('/api/payments/create-order', {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: 'create_cashfree_order',
           amount: payAmount,
           customerName: clientName,
           customerPhone: clientPhone,
@@ -41,31 +59,25 @@ export default function CashfreePartnerPage() {
         })
       });
 
-      const rawText = await res.text();
-      let data;
-      try {
-        data = JSON.parse(rawText);
-      } catch (parseErr) {
-        console.error('Server non-JSON response:', rawText);
-        throw new Error('Payment gateway bridge returned an invalid response. Please try again.');
+      const data = await res.json();
+
+      if (!res.ok || !data.success || !data.payment_session_id) {
+        throw new Error(data?.error || data?.message || 'Unable to initialize Cashfree payment session.');
       }
 
-      if (!data || (!data.success && data.status !== 'success') || !data.payment_session_id) {
-        throw new Error(data?.msg || data?.message || 'Unable to initialize Cashfree payment session.');
+      const CashfreeSDK = await loadCashfreeSdk();
+      if (!CashfreeSDK) {
+        throw new Error('Cashfree payment SDK is loading. Please try again in a moment.');
       }
 
-      // Launch Cashfree Drop-in Checkout
-      if (typeof window !== 'undefined' && window.Cashfree) {
-        const cashfree = window.Cashfree({
-          mode: 'production'
-        });
-        cashfree.checkout({
-          paymentSessionId: data.payment_session_id,
-          redirectTarget: '_self'
-        });
-      } else {
-        throw new Error('Cashfree payment SDK is loading. Please click pay again in a second.');
-      }
+      const cashfree = CashfreeSDK({
+        mode: data.environment || 'production'
+      });
+
+      cashfree.checkout({
+        paymentSessionId: data.payment_session_id,
+        redirectTarget: '_self'
+      });
     } catch (err) {
       console.error('Payment checkout error:', err);
       setPayError(err.message || 'Payment initiation failed.');
