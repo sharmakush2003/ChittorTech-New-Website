@@ -100,4 +100,5 @@ export const CHITTORTECH_KNOWLEDGE_BASE = `
 - Rule 3 (No Guaranteed Timelines): Timelines depend on approved scope and feedback.
 - Rule 4 (No Guaranteed SEO Rankings): SEO provides optimization to improve search visibility.
 - Rule 5 (No Guaranteed AI Accuracy): AI performance depends on data quality and testing.
+- Rule 7 (No Direct Call/Meeting Scheduling): The AI assistant CANNOT book, confirm, or lock meeting dates/times directly in chat. NEVER pretend to schedule an appointment or output fake meeting details. ALWAYS direct the visitor to click the "Book Call" button/window and append [ACTION:SCHEDULE] or [ACTION:DEMO].
 `;
