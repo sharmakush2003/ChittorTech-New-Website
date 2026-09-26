@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { submitLead } from "@/lib/leadService";
+import { CHITTORTECH_KNOWLEDGE_BASE } from "@/data/chittortechKnowledgeBase";
 
 function getPageAwareDetails(pathname, userName = "") {
   const nameGreeting = userName ? ` ${userName}` : "";
@@ -346,26 +347,37 @@ export default function Chatbot() {
       '<a href="$2" target="_blank" rel="noopener noreferrer" class="chat-markdown-link">$1 <i class="fas fa-external-link-alt" style="font-size: 0.72em; margin-left: 2px;"></i></a>'
     );
 
-    // 5. Action button triggers
+    // 5. Action button triggers (robust regex with space tolerance, case-insensitivity & catch-all fallback)
     content = content.replace(
-      /\[ACTION:CONTACT\]/g,
+      /\[\s*ACTION\s*:\s*CONTACT\s*\]/gi,
       '<div class="chat-action-wrapper"><a href="/contact-us" class="message-action-btn"><i class="fas fa-envelope"></i> Contact Us</a></div>'
     );
     content = content.replace(
-      /\[ACTION:DEMO\]/g,
+      /\[\s*ACTION\s*:\s*DEMO\s*\]/gi,
       '<div class="chat-action-wrapper"><a href="#" data-bs-toggle="modal" data-bs-target="#trialModal" class="message-action-btn"><i class="fas fa-laptop"></i> Request a Demo</a></div>'
     );
     content = content.replace(
-      /\[ACTION:SCHEDULE\]/g,
+      /\[\s*ACTION\s*:\s*SCHEDULE\s*\]/gi,
       '<div class="chat-action-wrapper"><a href="/contact-us" class="message-action-btn"><i class="fas fa-calendar-check"></i> Book Strategy Meeting</a></div>'
     );
     content = content.replace(
-      /\[ACTION:WHATSAPP\]/g,
+      /\[\s*ACTION\s*:\s*WHATSAPP\s*\]/gi,
       '<div class="chat-action-wrapper"><a href="https://wa.me/917597451057?text=Namaste%20Lav%20Sir!%20I%20want%20to%20discuss%20a%20project%20with%20ChittorTech." target="_blank" rel="noopener noreferrer" class="message-action-btn wa-btn"><i class="fab fa-whatsapp"></i> Chat with Lav Sharma</a></div>'
     );
     content = content.replace(
-      /\[ACTION:ESTIMATOR\]/g,
+      /\[\s*ACTION\s*:\s*ESTIMATOR\s*\]/gi,
       '<div class="chat-action-wrapper"><a href="https://chittortech.in/project-estimator" target="_blank" rel="noopener noreferrer" class="message-action-btn estimator-btn"><i class="fas fa-calculator"></i> Calculate Instant Project Quote</a></div>'
+    );
+    // Catch-all fallback for any other variations of [ACTION: ...] so raw tags never leak as text
+    content = content.replace(
+      /\[\s*ACTION\s*:\s*([^\]]+)\]/gi,
+      (match, actionTarget) => {
+        const cleanTarget = actionTarget.trim();
+        if (cleanTarget.startsWith("http://") || cleanTarget.startsWith("https://") || cleanTarget.startsWith("/")) {
+          return `<div class="chat-action-wrapper"><a href="${cleanTarget}" target="_blank" rel="noopener noreferrer" class="message-action-btn"><i class="fas fa-external-link-alt"></i> ${cleanTarget}</a></div>`;
+        }
+        return `<div class="chat-action-wrapper"><a href="/contact-us" class="message-action-btn"><i class="fas fa-envelope"></i> Contact Us</a></div>`;
+      }
     );
 
     // 6. Auto-link Email Addresses with email badge (only match raw emails, avoid href attributes)
@@ -547,71 +559,22 @@ export default function Chatbot() {
       const pageInfo = getPageAwareDetails(pathname, userName);
       const systemPrompt = {
         role: "system",
-        content: `You are Kaira, the elite Customer Support Executive and AI Assistant for ChittorTech.
+        content: `You are Kaira, the official AI assistant and Customer Support Executive for ChittorTech.
 
 CURRENT ACTIVE VISITOR CONTEXT:
 - Active Page: ${pathname}
 - Page Focus: ${pageInfo.contextPrompt}
 - Dynamically tailor your answers to highlight what the visitor is exploring right now.
 
-STRICT BOUNDARY & RESTRICTION RULE:
-- You MUST ONLY answer questions strictly related to ChittorTech company, its software products, lead generation engine, web & mobile engineering, portfolio, founders (Lav Sharma & Kush Sharma), contact information, and pricing.
-- If the user asks ANY unrelated questions (e.g. general coding, politics, math, jokes), politely decline by stating: "I am ChittorTech's official AI assistant. I can only assist you with questions regarding ChittorTech services, invoicing software, lead generation, portfolio, and founder inquiries. How can I help you today?"
-- NEVER break character. Maintain a warm, elite, professional, and helpful tone.
-- Do NOT mention "DigiFy" or "DigiFy Soft Solutions" under any circumstances. Always refer to the company as ChittorTech.
-
-RESPONSE FORMATTING RULES:
-- Keep your answers clean, structured, and easy to read.
-- Use standard clean bullet points (- Item) without irregular indents.
-- For official emails:
-  - Business Inquiries: business@chittortech.in
-  - General Support: contact@chittortech.in
-- Official Phone / WhatsApp: +91 75974 51057 (Lav Sharma, Founder)
-
-COMPREHENSIVE CHITTORTECH KNOWLEDGE BASE:
-- Company: ChittorTech (Premier Technology Firm & Digital Product Engineering Agency).
-- Headquarters: Collectorate Circle, Chittorgarh, Rajasthan, India (Serving clients worldwide across India, USA, UK, UAE, Australia, Canada, Germany).
-- Founders: Lav Sharma (Founder & Tech Lead, +91 75974 51057) & Kush Sharma (Co-Founder).
-
-FLAGSHIP SERVICES & PRODUCTS:
-1. B2B Lead Generation Engine (/b2b-lead-generation-services):
-   - Extracts 100% verified, active business contacts directly from Google Maps (phone, website, ratings, location).
-   - Generates hyper-personalized AI value pitches in natural Hindi & English for Marble Manufacturers, Dharamshala Trusts, Hotels/Resorts, Textile Mills, Transport Fleets.
-   - 1-Click WhatsApp outreach & Firestore cloud CRM lead pipeline.
-2. Dharamshala & Pilgrimage Trust Billing System (/dharamshala-billing-system):
-   - Real-time room occupancy dashboard, 2-way check-in/out slips with instant WhatsApp receipts.
-   - Bhojanshala thali coupons, automated Daan & Chanda donation management with instant WhatsApp & thermal receipts, zero cash leakage.
-3. Interactive Project Estimator (/project-estimator):
-   - Real-time web app, mobile app, and ERP cost & timeline calculator.
-4. Custom CRM Solutions (/custom-crm-solutions):
-   - Inbound & outbound sales pipelines, WhatsApp follow-up automation, quotation builder.
-5. Enterprise AI Agents (/enterprise-ai-agents):
-   - Air-gapped private RAG vector search, sub-second Groq LPUs, WhatsApp voice conversational agents.
-6. Hotel & Resort Management (/hotel-management-system):
-   - 0% OTA commission direct booking engine (save 20-25% from MakeMyTrip/Booking.com), hotel PMS, multi-counter restaurant KOT billing.
-7. Mobile App Engineering (/android-application & /google-play-publishing):
-   - React Native iOS & Android apps, 20-tester closed testing verification, and guaranteed Play Store publishing.
-8. 4-Week SaaS MVP (/4-week-saas-mvp):
-   - Next.js 15, React 19, Supabase, Tailwind CSS, high performance with 100/100 Core Web Vitals.
-
-PRICING & TIMELINE GUIDELINES:
-- Custom High-Converting Websites / Landing Pages: ₹15,000 – ₹35,000 (1-2 weeks).
-- Dharamshala / Hotel Booking Engines: ₹25,000 – ₹65,000 (2-3 weeks).
-- Custom CRM / B2B Lead Engines / Factory ERP: ₹50,000 – ₹2,50,000+ (3-6 weeks).
-- AI Chatbots & RAG Vector Systems: ₹35,000 – ₹1,50,000.
-
-PORTFOLIO & LIVE HUBS:
-- Mewari Achar E-Commerce: https://www.mewari-achar.shop/
-- Dharamshala Admin Portal: https://dharamsala-admin-portal.vercel.app/
-- Shaadi Sutra Event SaaS: https://shaadi-sutra.vercel.app/
-- MailPulse Bulk Email Engine
-
-ACTION TRIGGERS:
+ACTION TRIGGERS (ALWAYS APPEND WHEN RELEVANT):
 - If user asks for project cost, pricing, budget, or estimates, guide them to our Interactive Project Estimator (https://chittortech.in/project-estimator) and append '[ACTION:ESTIMATOR]'.
 - If user asks for contact info or general inquiry, append '[ACTION:CONTACT]'.
 - If user asks for a demo or trial, append '[ACTION:DEMO]'.
 - If user wants to schedule a meeting, call, or discussion, append '[ACTION:SCHEDULE]'.
-- If user wants to talk on WhatsApp with founder Lav Sharma, append '[ACTION:WHATSAPP]'.`
+- If user wants to talk on WhatsApp with founder Lav Sharma (+91 7597451057), append '[ACTION:WHATSAPP]'.
+
+OFFICIAL COMPREHENSIVE CHITTORTECH KNOWLEDGE BASE (SOURCE OF TRUTH):
+${CHITTORTECH_KNOWLEDGE_BASE}`
       };
 
       const finalMessages = [systemPrompt, ...chatHistory];
