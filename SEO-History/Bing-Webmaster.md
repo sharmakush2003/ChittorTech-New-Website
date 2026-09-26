@@ -17,6 +17,7 @@
 | **21-Sep-2026** | 100 | `https://` | Batch 4 — *includes `/project-estimator`* | 400 | 363 |
 | **22-Sep-2026** | 100 | `https://` | Batch 5 | 500 | 263 |
 | **24-Sep-2026** | 100 | `https://` | Batch 6 | 600 | 163 |
+| **26-Sep-2026** | 100 | `https://` | Batch 7 | 700 | 64 |
 
 > **Master JSON Tracker:** [SEO-History/submitted_history.json](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/SEO-History/submitted_history.json) (Ensures 0 duplicate submissions on future runs).
 

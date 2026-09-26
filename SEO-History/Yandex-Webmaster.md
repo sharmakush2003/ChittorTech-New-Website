@@ -18,6 +18,7 @@
 | **21-Sep-2026** | 150 | `http://` | Batch 4 | 603 | 160 | Done |
 | **22-Sep-2026** | 150 | `https://` | Batch 5 (Main Mirror) | 753 | 10 | Done |
 | **24-Sep-2026** | 10 | `https://` | Batch 6 (Main Mirror) | 763 | **0** | **🎉 100% COMPLETE** |
+| **26-Sep-2026** | 150 | `https://` | Priority Re-index Queue Batch | 764 | 0 | In Progress |
 
 > **Master JSON Tracker:** [SEO-History/submitted_history.json](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/SEO-History/submitted_history.json) (All 763 URLs from sitemap have now been successfully queued in Yandex).
 
