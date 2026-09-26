@@ -4,23 +4,10 @@
  * 1. Secure Admin 2FA OTP Generation & Verification (Server-Side Cached, Zero-Leakage)
  * 2. Client-side Lead alerts (formats into a premium, logo-free HTML template with optimized spacing)
  * 3. Chatbot requests (proxies messages to the Groq API)
- *
- * Deployment instructions:
- * 1. Go to https://script.google.com
- * 2. Paste this complete code into the editor.
- * 3. Replace 'YOUR_GROQ_API_KEY' with your actual Groq API key (on line 145).
- * 4. Click Deploy > Manage Deployments > Edit (Pencil Icon) > Version: New Version > Deploy.
  */
 
 function doGet(e) {
   try {
-    const params = (e && e.parameter) || {};
-    if (params.action === "create_cashfree_order") {
-      return handleCreateCashfreeOrder(params);
-    }
-    if (params.action === "verify_cashfree_order" && params.order_id) {
-      return handleVerifyCashfreeOrder({ order_id: params.order_id });
-    }
     return ContentService.createTextOutput(JSON.stringify({ status: "success", msg: "ChittorTech Google Apps Script API Rail is active." }))
                          .setMimeType(ContentService.MimeType.JSON);
   } catch (err) {
@@ -51,16 +38,6 @@ function doPost(e) {
     // 4. Chatbot request
     if (data.action === "chat") {
       return handleChat(data.messages);
-    }
-
-    // 5. Cashfree Create Payment Order
-    if (data.action === "create_cashfree_order") {
-      return handleCreateCashfreeOrder(data);
-    }
-
-    // 6. Cashfree Verify Payment Order
-    if (data.action === "verify_cashfree_order") {
-      return handleVerifyCashfreeOrder(data);
     }
     
     // Otherwise, handle as a lead submission
@@ -459,194 +436,11 @@ function handleLead(data) {
 }
 
 function testAuthorization() {
-  // Call UrlFetchApp.fetch to force Google to request external request scope authorization
   try {
     UrlFetchApp.fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "post",
       muteHttpExceptions: true
     });
-  } catch (e) {
-    // Ignore error, we only want the trigger
-  }
-  Logger.log("Authorization Successful! External fetch and email sending are now enabled.");
-}
-
-/**
- * Cashfree Production Payment Gateway Integration Handlers
- */
-function handleCreateCashfreeOrder(data) {
-  try {
-    const appId = PropertiesService.getScriptProperties().getProperty("CASHFREE_APP_ID") || "1433173495a967cdf03d26cdfe13713341";
-    const secretKey = PropertiesService.getScriptProperties().getProperty("CASHFREE_SECRET_KEY") || ["cfsk_ma_prod_", "e96e5023649c6b84d8cb7f9d5a20db4a_", "4efc835f"].join("");
-    const endpoint = "https://api.cashfree.com/pg/orders";
-
-    const numAmount = parseFloat(data.amount) || 1;
-    const cleanPhone = String(data.customerPhone || "7597451057").replace(/\D/g, '').slice(-10);
-    const orderId = "CT_" + new Date().getTime() + "_" + Math.floor(100 + Math.random() * 900);
-
-    const payload = {
-      order_id: orderId,
-      order_amount: Math.round(numAmount * 100) / 100,
-      order_currency: "INR",
-      customer_details: {
-        customer_id: "cust_" + cleanPhone,
-        customer_name: (data.customerName || "ChittorTech Client").trim(),
-        customer_email: (data.customerEmail || "client@chittortech.in").trim(),
-        customer_phone: cleanPhone
-      },
-      order_meta: {
-        return_url: "https://chittortech.in/pay/status?order_id={order_id}"
-      },
-      order_note: (data.purpose || "ChittorTech Software Services").substring(0, 100)
-    };
-
-    const options = {
-      method: "post",
-      contentType: "application/json",
-      headers: {
-        "x-api-version": "2023-08-01",
-        "x-client-id": appId,
-        "x-client-secret": secretKey
-      },
-      payload: JSON.stringify(payload),
-      muteHttpExceptions: true
-    };
-
-    const res = UrlFetchApp.fetch(endpoint, options);
-    const resJson = JSON.parse(res.getContentText());
-
-    if (res.getResponseCode() !== 200 || !resJson.payment_session_id) {
-      return ContentService.createTextOutput(JSON.stringify({
-        status: "error",
-        success: false,
-        msg: resJson.message || "Cashfree order creation failed",
-        raw: resJson
-      })).setMimeType(ContentService.MimeType.JSON);
-    }
-
-    return ContentService.createTextOutput(JSON.stringify({
-      status: "success",
-      success: true,
-      order_id: resJson.order_id,
-      payment_session_id: resJson.payment_session_id,
-      cf_order_id: resJson.cf_order_id,
-      environment: "production"
-    })).setMimeType(ContentService.MimeType.JSON);
-
-  } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({
-      status: "error",
-      success: false,
-      msg: err.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
-function handleVerifyCashfreeOrder(data) {
-  try {
-    const appId = PropertiesService.getScriptProperties().getProperty("CASHFREE_APP_ID") || "1433173495a967cdf03d26cdfe13713341";
-    const secretKey = PropertiesService.getScriptProperties().getProperty("CASHFREE_SECRET_KEY") || ["cfsk_ma_prod_", "e96e5023649c6b84d8cb7f9d5a20db4a_", "4efc835f"].join("");
-    const orderId = data.order_id;
-
-    if (!orderId) {
-      return ContentService.createTextOutput(JSON.stringify({ status: "error", success: false, msg: "order_id required" })).setMimeType(ContentService.MimeType.JSON);
-    }
-
-    const endpoint = "https://api.cashfree.com/pg/orders/" + encodeURIComponent(orderId);
-    const options = {
-      method: "get",
-      headers: {
-        "x-api-version": "2023-08-01",
-        "x-client-id": appId,
-        "x-client-secret": secretKey
-      },
-      muteHttpExceptions: true
-    };
-
-    const res = UrlFetchApp.fetch(endpoint, options);
-    const orderData = JSON.parse(res.getContentText());
-
-    let paymentDetails = null;
-    try {
-      const payRes = UrlFetchApp.fetch(endpoint + "/payments", options);
-      const payList = JSON.parse(payRes.getContentText());
-      if (Array.isArray(payList) && payList.length > 0) {
-        paymentDetails = payList[payList.length - 1];
-      }
-    } catch (e) {}
-
-    // Send immediate email alert to admins on successful PAID payment
-    if (orderData && orderData.order_status === "PAID") {
-      try {
-        const cache = CacheService.getScriptCache();
-        const alertKey = "cf_paid_alert_" + orderId;
-        if (!cache.get(alertKey)) {
-          cache.put(alertKey, "sent", 86400); // Prevent duplicate emails for 24h
-          const cust = orderData.customer_details || {};
-          const clientName = cust.customer_name || "Valued Client";
-          const clientPhone = cust.customer_phone || "N/A";
-          const clientEmail = cust.customer_email || "N/A";
-          const payAmt = orderData.order_amount;
-          const utr = (paymentDetails && paymentDetails.bank_reference) || "N/A";
-          const cfPayId = (paymentDetails && paymentDetails.cf_payment_id) || "N/A";
-          const payNote = orderData.order_note || "Software Services";
-
-          const htmlBody = `<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body { font-family: 'Inter', Helvetica, Arial, sans-serif; background: #0b0f19; margin: 0; padding: 20px; color: #f8fafc; }
-    .card { max-width: 520px; margin: 0 auto; background: #0f172a; border-radius: 16px; border: 1px solid rgba(74,222,128,0.4); padding: 28px; }
-    .badge { display: inline-block; background: rgba(74,222,128,0.15); color: #4ade80; font-weight: 800; font-size: 11px; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; border: 1px solid #4ade80; }
-    .amount { font-size: 34px; font-weight: 900; color: #4ade80; margin: 6px 0 20px 0; }
-    .row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 13px; }
-    .label { color: #94a3b8; }
-    .val { color: #ffffff; font-weight: 700; text-align: right; }
-    .footer { margin-top: 20px; font-size: 11px; color: #64748b; text-align: center; }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <div class="badge">Payment Verified (Cashfree Live)</div>
-    <div style="color:#94a3b8; font-size:12px; text-transform:uppercase;">Amount Settled</div>
-    <div class="amount">₹${Number(payAmt).toLocaleString('en-IN')}</div>
-    <div class="row"><span class="label">Order ID:</span><span class="val">${orderId}</span></div>
-    <div class="row"><span class="label">Client Name:</span><span class="val">${clientName}</span></div>
-    <div class="row"><span class="label">Client Phone:</span><span class="val">+91 ${clientPhone}</span></div>
-    <div class="row"><span class="label">Client Email:</span><span class="val">${clientEmail}</span></div>
-    <div class="row"><span class="label">Purpose / Note:</span><span class="val">${payNote}</span></div>
-    <div class="row"><span class="label">Bank UTR:</span><span class="val" style="color:#4ade80;">${utr}</span></div>
-    <div class="row"><span class="label">Cashfree Pay ID:</span><span class="val" style="color:#38bdf8;">${cfPayId}</span></div>
-    <div class="footer">Automated Financial Rail • ChittorTech Enterprise Solutions</div>
-  </div>
-</body>
-</html>`;
-
-          MailApp.sendEmail({
-            to: "kushsharma.cor@gmail.com",
-            cc: "lavsharma.cor@gmail.com",
-            subject: `🎉 Payment Received: ₹${payAmt} from ${clientName} (${orderId})`,
-            htmlBody: htmlBody
-          });
-        }
-      } catch (mailErr) {
-        Logger.log("Mail alert error: " + mailErr);
-      }
-    }
-
-    return ContentService.createTextOutput(JSON.stringify({
-      status: "success",
-      success: true,
-      order_status: orderData.order_status,
-      order: orderData,
-      payment: paymentDetails
-    })).setMimeType(ContentService.MimeType.JSON);
-
-  } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({
-      status: "error",
-      success: false,
-      msg: err.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
-  }
+  } catch (e) {}
+  Logger.log("Authorization Successful!");
 }
