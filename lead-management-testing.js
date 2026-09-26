@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxbWvxG81_lwfFh0sIqGhQnJnHwPwC0TxBnmiPq_DFxfFp7OnxNY1XC60nmFZxABve8/exec";
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbw3HX0WJnCd93uFc3j8dxdH0g4h1HCOTgUwumb0akAUYjx211OalMmOl9Al96kV6OEU/exec";
 
 const testLeads = [
   {
@@ -297,6 +297,9 @@ async function runTests() {
       firestoreSuccess,
       emailSuccess
     });
+
+    // Pause 1.5 seconds between dispatches to allow Gmail/GAS rate limits to reset cleanly
+    await new Promise(r => setTimeout(r, 1500));
   }
 
   console.log(`\n======================================================`);

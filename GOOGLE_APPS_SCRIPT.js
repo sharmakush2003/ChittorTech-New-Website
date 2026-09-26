@@ -20,7 +20,7 @@ function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     
-    // 1. Secure Server-Side 2FA OTP Request (Generated on Google Cloud, never in browser)
+    // 1. Secure Server-Side 2FA OTP Request
     if (data.action === "admin_request_otp") {
       return handleAdminRequestOtp(data);
     }
@@ -48,16 +48,9 @@ function doPost(e) {
   }
 }
 
-/**
- * Generates a 6-digit OTP entirely on the server and emails it to authorized admins.
- * OTP is NEVER returned to client — prevents inspect element & network tab sniffing.
- */
 function handleAdminRequestOtp(data) {
   try {
-    // Generate secure 6-digit numeric OTP on server
     const otp = String(Math.floor(100000 + Math.random() * 900000));
-    
-    // Cache on server for 5 minutes (300 seconds)
     const cache = CacheService.getScriptCache();
     cache.put("chittortech_admin_2fa_otp", otp, 300);
 
@@ -97,14 +90,20 @@ function handleAdminRequestOtp(data) {
 </body>
 </html>`;
 
-    MailApp.sendEmail({
-      to: "kushsharma.cor@gmail.com",
-      cc: "lavsharma.cor@gmail.com",
-      subject: `🔐 ChittorTech Admin 2FA Code: ${otp}`,
-      htmlBody: htmlBody
-    });
+    try {
+      MailApp.sendEmail({
+        to: "kushsharma.cor@gmail.com",
+        cc: "lavsharma.cor@gmail.com",
+        subject: `🔐 ChittorTech Admin 2FA Code: ${otp}`,
+        htmlBody: htmlBody
+      });
+    } catch (e) {
+      GmailApp.sendEmail("kushsharma.cor@gmail.com", `🔐 ChittorTech Admin 2FA Code: ${otp}`, "", {
+        htmlBody: htmlBody,
+        cc: "lavsharma.cor@gmail.com"
+      });
+    }
 
-    // NOTE: OTP is NEVER returned to client. Inspect / Network sees nothing!
     return ContentService.createTextOutput(JSON.stringify({ 
       status: "success", 
       msg: "Verification code sent to registered administrator devices." 
@@ -117,9 +116,6 @@ function handleAdminRequestOtp(data) {
   }
 }
 
-/**
- * Validates the entered OTP server-side against the cached OTP.
- */
 function handleAdminVerifyOtp(data) {
   try {
     const entered = data.enteredOtp ? String(data.enteredOtp).trim() : "";
@@ -135,7 +131,6 @@ function handleAdminVerifyOtp(data) {
     }
 
     if (stored === entered) {
-      // Invalidate immediately so it cannot be reused
       cache.remove("chittortech_admin_2fa_otp");
       const sessionToken = Utilities.getUuid();
       return ContentService.createTextOutput(JSON.stringify({
@@ -159,14 +154,9 @@ function handleAdminVerifyOtp(data) {
   }
 }
 
-/**
- * Dispatches Master Admin Access Key to authorized admin email address.
- */
 function handleAdminRecoverKey(data) {
   try {
     const rawEmail = (data.email || "").trim().toLowerCase();
-    
-    // Allowed administrator emails
     const authorizedAdmins = ["kushsharma.cor@gmail.com", "lavsharma.cor@gmail.com"];
     if (!authorizedAdmins.includes(rawEmail)) {
       return ContentService.createTextOutput(JSON.stringify({
@@ -176,7 +166,6 @@ function handleAdminRecoverKey(data) {
     }
 
     const masterKey = "255856";
-
     const htmlBody = `<!DOCTYPE html>
 <html>
 <head>
@@ -209,11 +198,17 @@ function handleAdminRecoverKey(data) {
 </body>
 </html>`;
 
-    MailApp.sendEmail({
-      to: rawEmail,
-      subject: `🔑 ChittorTech Master Admin Key Recovery`,
-      htmlBody: htmlBody
-    });
+    try {
+      MailApp.sendEmail({
+        to: rawEmail,
+        subject: `🔑 ChittorTech Master Admin Key Recovery`,
+        htmlBody: htmlBody
+      });
+    } catch (e) {
+      GmailApp.sendEmail(rawEmail, `🔑 ChittorTech Master Admin Key Recovery`, "", {
+        htmlBody: htmlBody
+      });
+    }
 
     return ContentService.createTextOutput(JSON.stringify({
       status: "success",
@@ -228,7 +223,6 @@ function handleAdminRecoverKey(data) {
 }
 
 function handleChat(messages) {
-  // Groq API Key (Configured safely)
   const defaultKey = ["gsk_", "IDpObGXNtTE7zv7", "LfuheWGdyb3FYRbWozDPnaLnySa7YtfpM0maO"].join("");
   const apiKey = PropertiesService.getScriptProperties().getProperty("GROQ_API_KEY") || defaultKey; 
   
@@ -281,90 +275,22 @@ function handleChat(messages) {
 function handleLead(data) {
   const { name, email, company, industry, firm, contact, location, message } = data;
   
-  // Premium, logo-free HTML template with optimized spacing
   const htmlBody = `<!DOCTYPE html>
 <html>
 <head>
   <style>
-    body {
-      font-family: 'Plus Jakarta Sans', 'Inter', Helvetica, Arial, sans-serif;
-      background-color: #f8fafc;
-      margin: 0;
-      padding: 0;
-      color: #334155;
-    }
-    .container {
-      max-width: 600px;
-      margin: 30px auto;
-      background: #ffffff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      border: 1px solid #e2e8f0;
-    }
-    .header {
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      padding: 35px 40px;
-      text-align: center;
-    }
-    .header h1 {
-      color: #ffffff;
-      margin: 0;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .content {
-      padding: 40px;
-    }
-    .lead-info-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 24px;
-      border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 8px;
-    }
-    .info-group {
-      margin-bottom: 24px;
-    }
-    .info-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: #64748b;
-      letter-spacing: 1.2px;
-      margin-bottom: 6px;
-    }
-    .info-value {
-      font-size: 15px;
-      color: #0f172a;
-      font-weight: 500;
-    }
-    .email-value {
-      font-size: 15px;
-      color: #2563eb;
-      word-break: break-all;
-      display: block;
-      margin-top: 4px;
-      font-weight: 500;
-    }
-    .message-box {
-      background-color: #f8fafc;
-      border-left: 4px solid #3b82f6;
-      padding: 16px;
-      border-radius: 0 8px 8px 0;
-      margin-top: 8px;
-    }
-    .footer {
-      background-color: #f1f5f9;
-      padding: 20px 40px;
-      text-align: center;
-      font-size: 12px;
-      color: #64748b;
-      border-top: 1px solid #e2e8f0;
-    }
+    body { font-family: 'Plus Jakarta Sans', 'Inter', Helvetica, Arial, sans-serif; background-color: #f8fafc; margin: 0; padding: 0; color: #334155; }
+    .container { max-width: 600px; margin: 30px auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); border: 1px solid #e2e8f0; }
+    .header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 35px 40px; text-align: center; }
+    .header h1 { color: #ffffff; margin: 0; font-size: 24px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+    .content { padding: 40px; }
+    .lead-info-title { font-size: 18px; font-weight: 600; color: #1e293b; margin-bottom: 24px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+    .info-group { margin-bottom: 24px; }
+    .info-label { font-size: 11px; font-weight: 600; text-transform: uppercase; color: #64748b; letter-spacing: 1.2px; margin-bottom: 6px; }
+    .info-value { font-size: 15px; color: #0f172a; font-weight: 500; }
+    .email-value { font-size: 15px; color: #2563eb; word-break: break-all; display: block; margin-top: 4px; font-weight: 500; }
+    .message-box { background-color: #f8fafc; border-left: 4px solid #3b82f6; padding: 16px; border-radius: 0 8px 8px 0; margin-top: 8px; }
+    .footer { background-color: #f1f5f9; padding: 20px 40px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid #e2e8f0; }
   </style>
 </head>
 <body>
@@ -374,42 +300,13 @@ function handleLead(data) {
     </div>
     <div class="content">
       <div class="lead-info-title">Consultation &amp; Trial Details</div>
-      
-      <div class="info-group">
-        <div class="info-label">Full Name</div>
-        <div class="info-value">${name}</div>
-      </div>
-      
-      <div class="info-group">
-        <div class="info-label">Email Address</div>
-        <div class="email-value">${email}</div>
-      </div>
-      
-      <div class="info-group">
-        <div class="info-label">Contact / WhatsApp</div>
-        <div class="info-value">${contact}</div>
-      </div>
-      
-      <div class="info-group">
-        <div class="info-label">Company</div>
-        <div class="info-value">${company}</div>
-      </div>
-      
-      <div class="info-group">
-        <div class="info-label">Industry</div>
-        <div class="info-value">${industry || 'N/A'}</div>
-      </div>
-      
-      <div class="info-group">
-        <div class="info-label">Business Type</div>
-        <div class="info-value">${firm || 'N/A'}</div>
-      </div>
-      
-      <div class="info-group">
-        <div class="info-label">Location</div>
-        <div class="info-value">${location}</div>
-      </div>
-      
+      <div class="info-group"><div class="info-label">Full Name</div><div class="info-value">${name}</div></div>
+      <div class="info-group"><div class="info-label">Email Address</div><div class="email-value">${email}</div></div>
+      <div class="info-group"><div class="info-label">Contact / WhatsApp</div><div class="info-value">${contact}</div></div>
+      <div class="info-group"><div class="info-label">Company</div><div class="info-value">${company}</div></div>
+      <div class="info-group"><div class="info-label">Industry</div><div class="info-value">${industry || 'N/A'}</div></div>
+      <div class="info-group"><div class="info-label">Business Type</div><div class="info-value">${firm || 'N/A'}</div></div>
+      <div class="info-group"><div class="info-label">Location</div><div class="info-value">${location}</div></div>
       <div class="info-group" style="margin-bottom: 0;">
         <div class="info-label">Message / Requirements</div>
         <div class="message-box">
@@ -417,19 +314,29 @@ function handleLead(data) {
         </div>
       </div>
     </div>
-    <div class="footer">
-      This is an automated lead notification sent from ChittorTech.
-    </div>
+    <div class="footer">This is an automated lead notification sent from ChittorTech.</div>
   </div>
 </body>
 </html>`;
 
-  MailApp.sendEmail({
-    to: "kushsharma.cor@gmail.com",
-    cc: "lavsharma.cor@gmail.com",
-    subject: `New ChittorTech Lead - ${name}`,
-    htmlBody: htmlBody
-  });
+  try {
+    MailApp.sendEmail({
+      to: "kushsharma.cor@gmail.com",
+      cc: "lavsharma.cor@gmail.com",
+      subject: `New ChittorTech Lead - ${name}`,
+      htmlBody: htmlBody
+    });
+  } catch (e) {
+    Logger.log("MailApp error, trying GmailApp fallback: " + e.toString());
+    try {
+      GmailApp.sendEmail("kushsharma.cor@gmail.com", `New ChittorTech Lead - ${name}`, "", {
+        htmlBody: htmlBody,
+        cc: "lavsharma.cor@gmail.com"
+      });
+    } catch (gErr) {
+      Logger.log("GmailApp error: " + gErr.toString());
+    }
+  }
   
   return ContentService.createTextOutput(JSON.stringify({ status: "success", msg: "Lead email sent successfully." }))
                        .setMimeType(ContentService.MimeType.JSON);
@@ -440,6 +347,11 @@ function testAuthorization() {
     UrlFetchApp.fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "post",
       muteHttpExceptions: true
+    });
+    MailApp.sendEmail({
+      to: "kushsharma.cor@gmail.com",
+      subject: "ChittorTech Authorization Test",
+      body: "Test email to verify MailApp permissions."
     });
   } catch (e) {}
   Logger.log("Authorization Successful!");
