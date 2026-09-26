@@ -30,7 +30,7 @@ const blockedRetailSlugs = new Set([
 const isBlockedSlug = (s) => {
   if (!s) return false;
   if (blockedRetailSlugs.has(s)) return true;
-  if (s.includes('pos-billing') || s.includes('supermarket-grocery') || s.includes('garment-textile')) return true;
+  if (s.includes('pos-billing') || s.includes('supermarket-grocery') || s.includes('garment-textile') || s.includes('jewellery-store') || s.includes('omnichannel')) return true;
   return false;
 };
 
@@ -72,13 +72,13 @@ blogSlugs.forEach(b => allUniquePaths.add(b));
 techSlugs.forEach(t => allUniquePaths.add(t));
 
 // Delete any known bad paths or redirected paths (to ensure 100% 200 OK in GSC)
-['404', 'admin', 'city', 'blog-details', 'blog-master', 'undefined', 'null', 'affiliate-marketing-app-mewari-achaar'].forEach(bad => allUniquePaths.delete(bad));
+['404', 'admin', 'city', 'blog-details', 'blog-master', 'undefined', 'null', 'affiliate-marketing-app-mewari-achaar', 'omnichannel'].forEach(bad => allUniquePaths.delete(bad));
 
 const today = new Date().toISOString().split('T')[0];
 
 const coreServices = new Set([
   'erp', 'crm', 'accounting', 'inventory', 'payroll', 'invoicing', 
-  'omnichannel', 'smart-retail', 'lead-management', 'logistics', 
+  'smart-retail', 'lead-management', 'logistics', 
   'web-development-services', 'search-engine-optimization', 'digital-marketing-services', 
   'custom-crm-solutions', 'e-commerce-website-development', 'android-application', 
   'ai-solutions', 'ai-manufacturing', 'ai-chatbot-development', 'antigravity', 'render', 'cloudflare', 'vercel', 'groq',

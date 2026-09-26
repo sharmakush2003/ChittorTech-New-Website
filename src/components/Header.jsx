@@ -16,19 +16,19 @@ const NAV_ITEMS = {
     { href: "/ai-manufacturing",         icon: "fa-eye",             label: "Computer Vision AI",        desc: "Image & defect detection" },
   ],
   industries: {
-    retail: [
-      { href: "/supermarket",           icon: "fa-store",          label: "Supermarkets & Retail Chains" },
-      { href: "/kirana-store",          icon: "fa-shop",           label: "Kirana & General Stores" },
-      { href: "/grocery-store",         icon: "fa-apple-whole",    label: "Grocery & FMCG Merchants" },
-      { href: "/convenience-store",     icon: "fa-basket-shopping",label: "Convenience Stores" },
-      { href: "/fruits-vegetable-shop", icon: "fa-leaf",           label: "Fresh Food & Agri Tech" },
+    solutions: [
+      { href: "/erp",                        icon: "fa-cubes",          label: "Enterprise ERP Systems" },
+      { href: "/crm",                        icon: "fa-users-gear",     label: "AI CRM & Sales Funnel" },
+      { href: "/custom-crm-solutions",       icon: "fa-user-check",     label: "Custom CRM Solutions" },
+      { href: "/lead-management",            icon: "fa-filter-circle-dollar", label: "Lead Management System" },
+      { href: "/smart-retail",               icon: "fa-store",          label: "Smart Retail Solutions" },
     ],
-    fashion: [
-      { href: "/garments",              icon: "fa-vest",            label: "Apparel & Garment Brands" },
-      { href: "/boutique-store",        icon: "fa-tag",             label: "Fashion Boutiques & Labels" },
-      { href: "/footwear-store",        icon: "fa-socks",           label: "Footwear & Shoe Chains" },
-      { href: "/bridal-store",          icon: "fa-crown",           label: "Bridal & Luxury Stores" },
-      { href: "/textile",               icon: "fa-swatchbook",      label: "Textile Mills & Fabrics" },
+    operations: [
+      { href: "/inventory",                  icon: "fa-boxes-stacked",  label: "Inventory & Stock Sync" },
+      { href: "/accounting",                 icon: "fa-file-invoice-dollar", label: "GST Accounting Software" },
+      { href: "/payroll",                    icon: "fa-money-bill-wave",label: "Payroll & HRMS System" },
+      { href: "/invoicing",                  icon: "fa-receipt",        label: "Invoicing & Billing Engine" },
+      { href: "/trading-overview",           icon: "fa-chart-line",     label: "Trading & Wholesale ERP" },
     ],
     hospitality: [
       { href: "/dharamshala-billing-system",  icon: "fa-torii-gate",    label: "Dharamshala Management" },
@@ -751,16 +751,16 @@ export default function Header() {
                     </div>
                     <div className="ct-mega-grid">
                       <div className="ct-mega-col ct-mega-col--retail">
-                        <div className="ct-mega-col-head"><i className="fa-solid fa-store"></i> Retail & FMCG</div>
-                        {NAV_ITEMS.industries.retail.map((l) => (
+                        <div className="ct-mega-col-head"><i className="fa-solid fa-cubes"></i> Core Solutions</div>
+                        {NAV_ITEMS.industries.solutions.map((l) => (
                           <Link key={l.href} href={l.href} className="ct-mega-link" onClick={() => setActiveDropdown(null)}>
                             <i className={`fa-solid ${l.icon}`}></i>{l.label}
                           </Link>
                         ))}
                       </div>
                       <div className="ct-mega-col ct-mega-col--fashion">
-                        <div className="ct-mega-col-head"><i className="fa-solid fa-wand-magic-sparkles"></i> Style & Apparel</div>
-                        {NAV_ITEMS.industries.fashion.map((l) => (
+                        <div className="ct-mega-col-head"><i className="fa-solid fa-gears"></i> Operations & ERP</div>
+                        {NAV_ITEMS.industries.operations.map((l) => (
                           <Link key={l.href} href={l.href} className="ct-mega-link" onClick={() => setActiveDropdown(null)}>
                             <i className={`fa-solid ${l.icon}`}></i>{l.label}
                           </Link>
@@ -884,12 +884,12 @@ export default function Header() {
             <i className="fa-solid fa-chevron-down chevron"></i>
           </button>
           <div className={`ct-mobile-sub ${mobileExpanded === "industries" ? "open" : ""}`}>
-            <div className="ct-mobile-sub-head">Retail & FMCG</div>
-            {NAV_ITEMS.industries.retail.map((l) => (
+            <div className="ct-mobile-sub-head">Core Solutions</div>
+            {NAV_ITEMS.industries.solutions.map((l) => (
               <Link key={l.href} href={l.href} className="ct-mobile-sub-link">{l.label}</Link>
             ))}
-            <div className="ct-mobile-sub-head">Fashion & Apparel</div>
-            {NAV_ITEMS.industries.fashion.map((l) => (
+            <div className="ct-mobile-sub-head">Operations & ERP</div>
+            {NAV_ITEMS.industries.operations.map((l) => (
               <Link key={l.href} href={l.href} className="ct-mobile-sub-link">{l.label}</Link>
             ))}
             <div className="ct-mobile-sub-head">Hospitality</div>

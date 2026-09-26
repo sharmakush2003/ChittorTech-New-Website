@@ -659,7 +659,6 @@ export default function Footer() {
                       { href: "/invoicing", label: "GST Invoicing" },
                       { href: "/lead-management", label: "Sales Lead Tracking" },
                       { href: "/logistics", label: "Logistics & Transport" },
-                      { href: "/omnichannel", label: "Omnichannel POS" },
                       { href: "/smart-retail", label: "Smart Retail" },
                       { href: "/custom-crm-solutions", label: "Custom CRM" },
                       { href: "/industrial-products", label: "Industrial Wholesale" },

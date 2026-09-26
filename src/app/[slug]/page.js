@@ -20,7 +20,7 @@ const blockedRetailSlugs = new Set([
 const isBlockedSlug = (s) => {
   if (!s) return true;
   if (blockedRetailSlugs.has(s)) return true;
-  if (s.includes('pos-billing') || s.includes('supermarket-grocery') || s.includes('garment-textile')) return true;
+  if (s.includes('pos-billing') || s.includes('supermarket-grocery') || s.includes('garment-textile') || s.includes('jewellery-store') || s.includes('omnichannel')) return true;
   return false;
 };
 

@@ -2453,3 +2453,227 @@ img { max-width: 100%; }
     z-index: 99999 !important;
   }
 }
+
+/* ============================================================
+   ChittorTech Universal Legacy & Core Section Component Styles
+   Fixes layout, unstyled images, contrast, & banner cards globally
+   ============================================================ */
+
+/* Global Image Safety Constraint */
+.holds-box figure img,
+.holds-box img,
+.marketing-services-box figure img,
+.website-development-img figure img,
+.solutions-holds-box img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  height: auto !important;
+}
+
+/* ── Universal Banner Cards (.bridal-store / .hardware-store) ── */
+.bridal-store-sec, .hardware-store-sec {
+  margin: 36px 0 !important;
+  position: relative !important;
+}
+
+.bridal-store, .hardware-store {
+  background: linear-gradient(135deg, #1e1b4b 0%, #291fbc 60%, #0e7490 100%) !important;
+  padding: 48px 40px !important;
+  border-radius: 24px !important;
+  color: #ffffff !important;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.25) !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.bridal-store h2, .bridal-store-sec h2,
+.hardware-store h2, .hardware-store-sec h2 {
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem) !important;
+  font-weight: 800 !important;
+  margin-bottom: 22px !important;
+  line-height: 1.4 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.bridal-store p, .bridal-store-sec p,
+.hardware-store p, .hardware-store-sec p {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-size: 1.02rem !important;
+  line-height: 1.75 !important;
+  max-width: 920px !important;
+  margin: 0 auto 16px !important;
+}
+
+.bridal-store ul, .hardware-store ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 20px auto 0 !important;
+  max-width: 860px !important;
+  text-align: left !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 12px 24px !important;
+}
+
+.bridal-store ul li, .hardware-store ul li {
+  position: relative !important;
+  padding-left: 26px !important;
+  font-size: 0.96rem !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  line-height: 1.6 !important;
+}
+
+.bridal-store ul li::before, .hardware-store ul li::before {
+  content: "✓" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  color: #38bdf8 !important;
+  font-weight: 900 !important;
+  font-size: 1rem !important;
+}
+
+/* ── Universal Grid & Holds Box Cards ── */
+.solutions-holds-box {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 24px !important;
+  margin-top: 36px !important;
+}
+
+.holds-box {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 30px 26px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.holds-box:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 45px rgba(41, 31, 188, 0.12) !important;
+  border-color: rgba(41, 31, 188, 0.25) !important;
+}
+
+.holds-box figure {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 0 22px 0 !important;
+  padding: 14px !important;
+  border: 1px solid #bfdbfe !important;
+}
+
+.holds-box h3, .holds-box h3 a {
+  color: #1e1b4b !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 16px !important;
+  line-height: 1.35 !important;
+  text-decoration: none !important;
+}
+
+.holds-box ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  flex-grow: 1 !important;
+}
+
+.holds-box ul li {
+  position: relative !important;
+  padding-left: 24px !important;
+  font-size: 0.93rem !important;
+  color: #334155 !important;
+  margin-bottom: 10px !important;
+  line-height: 1.6 !important;
+}
+
+.holds-box ul li::before {
+  content: "✓" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  color: #3b82f6 !important;
+  font-weight: 900 !important;
+  font-size: 0.95rem !important;
+}
+
+/* ── Universal Marketing Services & Timeline Boxes ── */
+.marketing-services-box {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 32px 28px !important;
+  height: 100% !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03) !important;
+}
+
+.marketing-services-box h3 {
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  color: #1e1b4b !important;
+  margin-bottom: 16px !important;
+  border-left: 4px solid #291fbc !important;
+  padding-left: 14px !important;
+}
+
+.marketing-services-box p, .marketing-services-box ul li {
+  color: #334155 !important;
+}
+
+.choose-box {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 24px 20px !important;
+  text-align: center !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03) !important;
+}
+
+.choose-box h5 {
+  font-size: 1.4rem !important;
+  font-weight: 900 !important;
+  background: linear-gradient(135deg, #291fbc, #06b6d4) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.choose-box p {
+  color: #475569 !important;
+  font-size: 0.92rem !important;
+  margin: 0 !important;
+}
+
+.rank-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 26px 22px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03) !important;
+}
+
+.rank-title {
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  color: #1e1b4b !important;
+}
+
+.rank-content {
+  font-size: 0.92rem !important;
+  color: #475569 !important;
+}
+
