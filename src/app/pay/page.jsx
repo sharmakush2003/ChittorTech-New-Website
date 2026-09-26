@@ -47,10 +47,13 @@ export default function CashfreePartnerPage() {
     setIsPaying(true);
 
     try {
-      const res = await fetch('/api/payments/create-order', {
+      const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || "https://script.google.com/macros/s/AKfycbxbWvxG81_lwfFh0sIqGhQnJnHwPwC0TxBnmiPq_DFxfFp7OnxNY1XC60nmFZxABve8/exec";
+      
+      const res = await fetch(gasUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({
+          action: 'create_cashfree_order',
           amount: payAmount,
           customerName: clientName,
           customerPhone: clientPhone,
@@ -59,10 +62,17 @@ export default function CashfreePartnerPage() {
         })
       });
 
-      const data = await res.json();
+      const rawText = await res.text();
+      let data;
+      try {
+        data = JSON.parse(rawText);
+      } catch (parseErr) {
+        console.error('Server response parsing error:', rawText);
+        throw new Error('Payment gateway bridge returned an invalid response. Please try again.');
+      }
 
-      if (!res.ok || !data.success || !data.payment_session_id) {
-        throw new Error(data?.error || data?.message || 'Unable to initialize Cashfree payment session.');
+      if (!data || (!data.success && data.status !== 'success') || !data.payment_session_id) {
+        throw new Error(data?.msg || data?.message || 'Unable to initialize Cashfree payment session.');
       }
 
       const CashfreeSDK = await loadCashfreeSdk();

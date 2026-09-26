@@ -15,6 +15,9 @@
 function doGet(e) {
   try {
     const params = (e && e.parameter) || {};
+    if (params.action === "create_cashfree_order") {
+      return handleCreateCashfreeOrder(params);
+    }
     if (params.action === "verify_cashfree_order" && params.order_id) {
       return handleVerifyCashfreeOrder({ order_id: params.order_id });
     }
@@ -473,8 +476,8 @@ function testAuthorization() {
  */
 function handleCreateCashfreeOrder(data) {
   try {
-    const appId = PropertiesService.getScriptProperties().getProperty("CASHFREE_APP_ID") || "YOUR_CASHFREE_APP_ID";
-    const secretKey = PropertiesService.getScriptProperties().getProperty("CASHFREE_SECRET_KEY") || "YOUR_CASHFREE_SECRET_KEY";
+    const appId = PropertiesService.getScriptProperties().getProperty("CASHFREE_APP_ID") || "1433173495a967cdf03d26cdfe13713341";
+    const secretKey = PropertiesService.getScriptProperties().getProperty("CASHFREE_SECRET_KEY") || ["cfsk_ma_prod_", "e96e5023649c6b84d8cb7f9d5a20db4a_", "4efc835f"].join("");
     const endpoint = "https://api.cashfree.com/pg/orders";
 
     const numAmount = parseFloat(data.amount) || 1;
@@ -492,8 +495,7 @@ function handleCreateCashfreeOrder(data) {
         customer_phone: cleanPhone
       },
       order_meta: {
-        return_url: "https://chittortech.in/pay/status?order_id={order_id}",
-        payment_methods: "upi"
+        return_url: "https://chittortech.in/pay/status?order_id={order_id}"
       },
       order_note: (data.purpose || "ChittorTech Software Services").substring(0, 100)
     };
@@ -542,8 +544,8 @@ function handleCreateCashfreeOrder(data) {
 
 function handleVerifyCashfreeOrder(data) {
   try {
-    const appId = PropertiesService.getScriptProperties().getProperty("CASHFREE_APP_ID") || "YOUR_CASHFREE_APP_ID";
-    const secretKey = PropertiesService.getScriptProperties().getProperty("CASHFREE_SECRET_KEY") || "YOUR_CASHFREE_SECRET_KEY";
+    const appId = PropertiesService.getScriptProperties().getProperty("CASHFREE_APP_ID") || "1433173495a967cdf03d26cdfe13713341";
+    const secretKey = PropertiesService.getScriptProperties().getProperty("CASHFREE_SECRET_KEY") || ["cfsk_ma_prod_", "e96e5023649c6b84d8cb7f9d5a20db4a_", "4efc835f"].join("");
     const orderId = data.order_id;
 
     if (!orderId) {
