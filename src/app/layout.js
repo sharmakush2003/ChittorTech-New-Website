@@ -235,54 +235,77 @@ export default function RootLayout({ children }) {
                 { "@type": "Country", "name": "United Arab Emirates" }
               ],
               "knowsAbout": [
-                "Custom Software Development",
-                "Web Application Development",
-                "Mobile App Development",
-                "Next.js Development",
-                "React Development",
-                "Full Stack Development",
-                "Cloud Solutions",
-                "Enterprise ERP & CRM Software",
-                "Property Management Systems (PMS)",
-                "Temple Management Systems",
-                "Artificial Intelligence Chatbots & Automation",
-                "IT Consulting & Offshore Software Development",
-                "Top IT Companies in Rajasthan"
+                "Artificial Intelligence & Generative AI",
+                "Custom LLM Solutions & Fine-Tuning",
+                "Retrieval-Augmented Generation (RAG) Systems",
+                "Autonomous AI Agents & Business Workflow Automation",
+                "OCR & Document AI Processing",
+                "Computer Vision & Predictive Analytics",
+                "Custom Software Development & SaaS Platform Engineering",
+                "Web Application Development (Next.js, React, Node.js)",
+                "Mobile App Development (Flutter, React Native, iOS, Android)",
+                "Enterprise ERP & Custom CRM Solutions",
+                "Accounting, Invoicing & GST Software",
+                "Inventory & Supply Chain Management",
+                "Cloud PMS & Hotel Management Software",
+                "Dharamshala Billing & Temple Trust Management ERP",
+                "E-Commerce Platform Development (Shopify, WooCommerce, Custom)",
+                "Google Play Store Publishing & ASO Compliance",
+                "Search Engine Optimization (On-Page, Technical, Off-Page, Local)",
+                "Digital Marketing & Social Media Management",
+                "Dedicated Development Pods & Engineering Teams",
+                "Top IT Companies in Rajasthan, India"
               ],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "ChittorTech IT Services",
+                "name": "ChittorTech Comprehensive IT & AI Services Catalog",
                 "itemListElement": [
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Custom Web Development",
-                      "description": "High-speed, scalable web applications built with Next.js, React, and Node.js."
+                      "name": "AI & Generative AI Engineering",
+                      "description": "Custom LLM solutions, RAG knowledge engines, autonomous agents, OCR document AI, and computer vision."
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Mobile Application Development",
-                      "description": "Cross-platform and native mobile apps for iOS and Android using Flutter and React Native."
+                      "name": "Custom Web & Mobile Development",
+                      "description": "High-performance Next.js web applications and cross-platform mobile apps for iOS and Android using Flutter & React Native."
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Enterprise Cloud Software & ERP",
-                      "description": "Bespoke business software including Hotel PMS, Temple ERP, and CRM solutions."
+                      "name": "Enterprise ERP & Custom CRM Systems",
+                      "description": "Bespoke SaaS, Dharamshala Billing ERP, Temple Trust software, Hotel PMS, inventory, and GST accounting platforms."
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "AI & Chatbot Engineering",
-                      "description": "Custom conversational AI, intelligent support agents, and workflow automation."
+                      "name": "Google Play Publishing & App Compliance",
+                      "description": "Google Play Console setup, AAB/APK verification, 20-tester testing compliance, store listing, and ASO."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "SEO & Digital Marketing Services",
+                      "description": "Technical SEO audits, Core Web Vitals optimization, Google Ads, local SEO, and social media management."
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Dedicated Engineering Teams",
+                      "description": "Pre-vetted offshore developer pods with 100% IP transfer, agile sprints, and timezone overlap."
                     }
                   }
                 ]
@@ -290,6 +313,10 @@ export default function RootLayout({ children }) {
               "sameAs": [
                 "https://www.wikidata.org/wiki/Q141496655",
                 "https://www.linkedin.com/company/chittortech",
+                "https://clutch.co/profile/chittortech",
+                "https://crunchbase.com/organization/chittortech",
+                "https://www.goodfirms.co/company/chittortech",
+                "https://www.sortlist.com/agency/chittortech",
                 "https://maps.google.com/?q=ChittorTech+Chittorgarh",
                 "https://istart.rajasthan.gov.in/profile/11478/startups",
                 "https://github.com/sharmakush2003"

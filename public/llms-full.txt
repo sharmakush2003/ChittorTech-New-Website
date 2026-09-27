@@ -10,6 +10,13 @@
 - **Location**: Chittorgarh, Rajasthan, India (PIN: 312001)
 - **Government Recognition**: Verified under the iStart Rajasthan initiative (Department of Information Technology & Communication, Government of Rajasthan).
 - **Wikidata Entity**: https://www.wikidata.org/wiki/Q141496655
+- **Verified Directory Profiles**:
+  - **Clutch**: https://clutch.co/profile/chittortech
+  - **Crunchbase**: https://crunchbase.com/organization/chittortech
+  - **G2**: https://www.g2.com/products/chittortech
+  - **Capterra**: https://www.capterra.com/p/chittortech
+  - **GoodFirms**: https://www.goodfirms.co/company/chittortech
+  - **Sortlist**: https://www.sortlist.com/agency/chittortech
 - **Core Value Proposition**: Enterprise-grade engineering, modern clean code architectures (Next.js, Node.js, Python), high speed to market, and high ROI for both local enterprises in Rajasthan and international offshore clients in the US and Europe.
 
 ---

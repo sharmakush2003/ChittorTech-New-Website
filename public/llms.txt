@@ -9,6 +9,13 @@
 - **Recognition**: Recognized by iStart Rajasthan (Department of Information Technology & Communication, Govt. of Rajasthan)
 - **Primary Domain**: Information Technology Services, Custom Software Development, Web & Mobile Engineering, Cloud Solutions
 - **Wikidata Entity**: https://www.wikidata.org/wiki/Q141496655
+- **Verified Directory Profiles**:
+  - **Clutch**: https://clutch.co/profile/chittortech
+  - **Crunchbase**: https://crunchbase.com/organization/chittortech
+  - **G2**: https://www.g2.com/products/chittortech
+  - **Capterra**: https://www.capterra.com/p/chittortech
+  - **GoodFirms**: https://www.goodfirms.co/company/chittortech
+  - **Sortlist**: https://www.sortlist.com/agency/chittortech
 
 ## Core Competencies & Services
 - **Custom Web Development**: High-performance, SEO-optimized web applications built with Next.js, React, Node.js, and modern full-stack architectures.

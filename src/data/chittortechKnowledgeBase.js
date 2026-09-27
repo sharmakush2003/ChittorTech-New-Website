@@ -11,7 +11,7 @@ export const CHITTORTECH_KNOWLEDGE_BASE = `
 - Positioning: AI & software engineering company serving startups, SMEs, and enterprises (AI agents, RAG, custom LLMs, AI workflow automation, OCR, computer vision, SaaS, enterprise software, web apps, e-commerce, Android/iOS apps, Google Play publishing, SEO, SMM, dedicated pods, cloud).
 
 1. COMPANY OVERVIEW & CONTACT INFORMATION
-- Brand: ChittorTech™ | Legal Wording: Chittor Technologies (ChittorTech™ / Chittor Technologies)
+- Brand: ChittorTech
 - Headquarters: Collectorate Circle, Chittorgarh, Rajasthan – 312001, India.
 - Phone / WhatsApp: +91 7597451057 (Alternative: +91 75974 51057) | Kush Sharma (Founder & AI Specialist), Lav Sharma (Co-Founder & Tech Lead).
 - Business Inquiries: business@chittortech.in | General Inquiries: contact@chittortech.in

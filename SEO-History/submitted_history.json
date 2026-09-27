@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-26",
+  "lastUpdated": "2026-09-27",
   "stats": {
     "totalSitemapUrls": 763,
     "googleIndexedCount": 210,
@@ -12,8 +12,8 @@
     },
     "yandexSubmittedCount": 764,
     "yandexRemainingCount": 0,
-    "bingSubmittedCount": 700,
-    "bingRemainingCount": 163
+    "bingSubmittedCount": 764,
+    "bingRemainingCount": 0
   },
   "yandex": {
     "batches": [
@@ -61,6 +61,11 @@
         "date": "2026-09-26",
         "count": 1,
         "notes": "Auto-generated Batch (1 URLs)"
+      },
+      {
+        "date": "2026-09-27",
+        "count": 150,
+        "notes": "Batch 7 Priority Re-crawl (150 URLs)"
       }
     ],
     "submitted": [
@@ -871,6 +876,11 @@
         "date": "2026-09-26",
         "count": 100,
         "notes": "Auto-generated Batch (100 URLs)"
+      },
+      {
+        "date": "2026-09-27",
+        "count": 100,
+        "notes": "Batch 8 (64 new + 36 priority refresh URLs)"
       }
     ],
     "submitted": [
@@ -1573,7 +1583,71 @@
       "https://chittortech.in/technology/mongodb",
       "https://chittortech.in/technology/mysql",
       "https://chittortech.in/technology/nextjs",
-      "https://chittortech.in/technology/nodejs"
+      "https://chittortech.in/technology/nodejs",
+      "https://chittortech.in/technology/openai-gpt4",
+      "https://chittortech.in/technology/php",
+      "https://chittortech.in/technology/pinecone-vector-db",
+      "https://chittortech.in/technology/postgresql",
+      "https://chittortech.in/technology/postman",
+      "https://chittortech.in/technology/python",
+      "https://chittortech.in/technology/pytorch",
+      "https://chittortech.in/technology/react",
+      "https://chittortech.in/technology/react-native",
+      "https://chittortech.in/technology/redis",
+      "https://chittortech.in/technology/socket-io",
+      "https://chittortech.in/technology/swift-ios",
+      "https://chittortech.in/technology/tailwind-css",
+      "https://chittortech.in/technology/tensorflow",
+      "https://chittortech.in/technology/typescript",
+      "https://chittortech.in/technology/vercel",
+      "https://chittortech.in/technology/vs-code",
+      "https://chittortech.in/technology/vuejs",
+      "https://chittortech.in/terms",
+      "https://chittortech.in/trading-overview",
+      "https://chittortech.in/ui-ux-design-services-in-ajmer",
+      "https://chittortech.in/ui-ux-design-services-in-alwar",
+      "https://chittortech.in/ui-ux-design-services-in-banswara",
+      "https://chittortech.in/ui-ux-design-services-in-barmer",
+      "https://chittortech.in/ui-ux-design-services-in-bharatpur",
+      "https://chittortech.in/ui-ux-design-services-in-bhilwara",
+      "https://chittortech.in/ui-ux-design-services-in-bundi",
+      "https://chittortech.in/ui-ux-design-services-in-chittorgarh",
+      "https://chittortech.in/ui-ux-design-services-in-churu",
+      "https://chittortech.in/ui-ux-design-services-in-dausa",
+      "https://chittortech.in/ui-ux-design-services-in-hanumangarh",
+      "https://chittortech.in/ui-ux-design-services-in-jhalawar",
+      "https://chittortech.in/ui-ux-design-services-in-jodhpur",
+      "https://chittortech.in/ui-ux-design-services-in-nagaur",
+      "https://chittortech.in/ui-ux-design-services-in-pali",
+      "https://chittortech.in/ui-ux-design-services-in-pratapgarh",
+      "https://chittortech.in/ui-ux-design-services-in-rajsamand",
+      "https://chittortech.in/ui-ux-design-services-in-sawai-madhopur",
+      "https://chittortech.in/ui-ux-design-services-in-sikar",
+      "https://chittortech.in/ui-ux-design-services-in-sri-ganganagar",
+      "https://chittortech.in/ui-ux-design-services-in-tonk",
+      "https://chittortech.in/visit-chittorgarh-app-tourism",
+      "https://chittortech.in/web-development-company-in-ajmer",
+      "https://chittortech.in/web-development-company-in-alwar",
+      "https://chittortech.in/web-development-company-in-banswara",
+      "https://chittortech.in/web-development-company-in-barmer",
+      "https://chittortech.in/web-development-company-in-bharatpur",
+      "https://chittortech.in/web-development-company-in-bhilwara",
+      "https://chittortech.in/web-development-company-in-bundi",
+      "https://chittortech.in/web-development-company-in-chittorgarh",
+      "https://chittortech.in/web-development-company-in-churu",
+      "https://chittortech.in/web-development-company-in-dausa",
+      "https://chittortech.in/web-development-company-in-hanumangarh",
+      "https://chittortech.in/web-development-company-in-jhalawar",
+      "https://chittortech.in/web-development-company-in-jodhpur",
+      "https://chittortech.in/web-development-company-in-nagaur",
+      "https://chittortech.in/web-development-company-in-pali",
+      "https://chittortech.in/web-development-company-in-pratapgarh",
+      "https://chittortech.in/web-development-company-in-rajsamand",
+      "https://chittortech.in/web-development-company-in-sawai-madhopur",
+      "https://chittortech.in/web-development-company-in-sikar",
+      "https://chittortech.in/web-development-company-in-sri-ganganagar",
+      "https://chittortech.in/web-development-company-in-tonk",
+      "https://chittortech.in/web-development-services"
     ]
   },
   "google": {
