@@ -920,15 +920,64 @@ section.overview-section .features-list ul li {
         margin-bottom: 20px;
     }
 
-    /* Floating action buttons push up to prevent viewport overlap on mobile */
-    .whatsapp-icon {
-        bottom: 85px !important;
+    /* ── Mobile Alternating Dock Animation (4s Side Icons <-> 4s Center Instant Quote) ── */
+    .ct-float-wa,
+    .chatbot-fab-wrap {
+        animation: mobileDockSides 8s ease-in-out infinite !important;
     }
-    .chatbot-container {
-        bottom: 85px !important;
-        right: 20px !important;
+
+    .whatsapp-floating-container {
+        animation: mobileDockCenter 8s ease-in-out infinite !important;
     }
-    .contact-floating {
-        bottom: 85px !important;
+
+    /* Pause animation if Chatbot is open or focused */
+    .chatbot-fab-wrap:has(.active) {
+        animation: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
     }
 }
+
+@keyframes mobileDockSides {
+    0%, 44% {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        pointer-events: auto;
+    }
+    48%, 94% {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.82);
+        pointer-events: none;
+    }
+    98%, 100% {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        pointer-events: auto;
+    }
+}
+
+@keyframes mobileDockCenter {
+    0%, 44% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-50%) scale(0.82);
+        pointer-events: none;
+    }
+    48%, 94% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) scale(1);
+        pointer-events: auto;
+    }
+    98%, 100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-50%) scale(0.82);
+        pointer-events: none;
+    }
+}
+
