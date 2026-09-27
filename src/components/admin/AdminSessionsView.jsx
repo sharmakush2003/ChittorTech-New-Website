@@ -5,6 +5,7 @@ import {
   subscribeToAdminSessions,
   logAdminSessionInFirestore,
   terminateAdminSessionInFirestore,
+  deleteAdminSessionFromFirestore,
 } from "@/lib/leadService";
 
 export default function AdminSessionsView() {
@@ -13,6 +14,7 @@ export default function AdminSessionsView() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedSession, setSelectedSession] = useState(null);
+  const [actionFeedback, setActionFeedback] = useState("");
   const [clientIpInfo, setClientIpInfo] = useState({
     ip: "Detecting IP...",
     city: "Chittorgarh",
@@ -71,11 +73,11 @@ export default function AdminSessionsView() {
     fetch("https://ipapi.co/json/")
       .then((res) => res.json())
       .then((data) => {
-        const ip = data?.ip || "122.160.42.18";
-        const city = data?.city || "Chittorgarh";
+        const ip = data?.ip || "103.167.194.49";
+        const city = data?.city || "Kota";
         const region = data?.region || "Rajasthan";
         const country = data?.country_name || "India";
-        const org = data?.org || "Airtel Broadband";
+        const org = data?.org || "Radinet Info Solutions";
 
         setClientIpInfo({ ip, city, region, country, org });
 
@@ -107,8 +109,8 @@ export default function AdminSessionsView() {
       .catch(() => {
         logAdminSessionInFirestore({
           id: sessId,
-          ip: "122.160.42.18",
-          location: "Chittorgarh / Bhilwara, RJ, IN",
+          ip: "103.167.194.49",
+          location: "Kota, Rajasthan, India",
           device: os,
           browser: browserName,
           authMethod: "2FA Security Verification (Gmail OTP)",
@@ -137,7 +139,7 @@ export default function AdminSessionsView() {
     return () => window.removeEventListener("beforeunload", handleUnload);
   }, []);
 
-  // 2. Real-time Subscription to Firestore Collection `admin_sessions` (NO FAKE DATA)
+  // 2. Real-time Subscription to Firestore Collection `admin_sessions`
   useEffect(() => {
     setLoading(true);
     const unsubscribe = subscribeToAdminSessions(
@@ -152,6 +154,12 @@ export default function AdminSessionsView() {
     );
     return () => unsubscribe && unsubscribe();
   }, []);
+
+  // Show feedback alert toast
+  const showFeedback = (msg) => {
+    setActionFeedback(msg);
+    setTimeout(() => setActionFeedback(""), 3500);
+  };
 
   // Filtered sessions
   const filteredSessions = useMemo(() => {
@@ -173,9 +181,45 @@ export default function AdminSessionsView() {
 
   const activeCount = useMemo(() => sessions.filter((s) => s.status === "active").length, [sessions]);
 
+  // Terminate Active Session
   const handleTerminateSession = async (sessionId) => {
-    if (window.confirm("Are you sure you want to terminate this active admin session in Cloud Firestore?")) {
-      await terminateAdminSessionInFirestore(sessionId, "closed_logout", `Terminated at ${new Date().toLocaleTimeString("en-IN")}`);
+    if (window.confirm(`Are you sure you want to terminate admin session (${sessionId}) in Cloud Firestore?`)) {
+      const timeStr = new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true });
+      // Optimistic state update
+      setSessions((prev) =>
+        prev.map((s) =>
+          s.id === sessionId ? { ...s, status: "closed_logout", endTime: `Closed (Terminated at ${timeStr})` } : s
+        )
+      );
+      await terminateAdminSessionInFirestore(sessionId, "closed_logout", `Closed (Terminated at ${timeStr})`);
+      showFeedback(`Session ${sessionId} has been terminated.`);
+    }
+  };
+
+  // Delete Single Session Log from Firestore
+  const handleDeleteSession = async (sessionId) => {
+    if (window.confirm(`Are you sure you want to permanently DELETE session log (${sessionId}) from Cloud Firestore?`)) {
+      // Optimistic state update
+      setSessions((prev) => prev.filter((s) => s.id !== sessionId));
+      await deleteAdminSessionFromFirestore(sessionId);
+      showFeedback(`Session log ${sessionId} permanently deleted.`);
+    }
+  };
+
+  // Bulk Delete Closed Sessions from Firestore
+  const handleClearClosedSessions = async () => {
+    const closedSessions = sessions.filter((s) => s.status !== "active" && s.id !== currentSessionId);
+    if (closedSessions.length === 0) {
+      alert("No closed session logs available to clear.");
+      return;
+    }
+    if (window.confirm(`Are you sure you want to permanently delete ALL ${closedSessions.length} closed session logs from Cloud Firestore?`)) {
+      const idsToDelete = closedSessions.map((s) => s.id);
+      setSessions((prev) => prev.filter((s) => s.status === "active" || s.id === currentSessionId));
+      for (const id of idsToDelete) {
+        await deleteAdminSessionFromFirestore(id);
+      }
+      showFeedback(`Cleared ${closedSessions.length} closed session log(s) from Cloud Firestore.`);
     }
   };
 
@@ -239,7 +283,7 @@ export default function AdminSessionsView() {
           }}
         >
           <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#f43f5e" }} />
-          Logged Out
+          Logged Out / Terminated
         </span>
       );
     }
@@ -266,6 +310,33 @@ export default function AdminSessionsView() {
 
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif" }}>
+      {/* ── Action Feedback Banner ── */}
+      {actionFeedback && (
+        <div
+          style={{
+            background: "#eff6ff",
+            border: "1px solid #bfdbfe",
+            color: "#1d4ed8",
+            padding: "10px 16px",
+            borderRadius: "12px",
+            fontSize: "0.85rem",
+            fontWeight: 700,
+            marginBottom: "16px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <i className="fas fa-info-circle"></i>
+            {actionFeedback}
+          </div>
+          <button onClick={() => setActionFeedback("")} style={{ background: "none", border: "none", color: "#1d4ed8", cursor: "pointer" }}>
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
+      )}
+
       {/* ── Top Title Bar ── */}
       <div style={{ marginBottom: "24px" }}>
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px" }}>
@@ -297,6 +368,26 @@ export default function AdminSessionsView() {
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <button
+              onClick={handleClearClosedSessions}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                background: "#ffffff",
+                border: "1px solid #cbd5e1",
+                color: "#475569",
+                padding: "8px 14px",
+                borderRadius: "10px",
+                fontSize: "0.82rem",
+                fontWeight: 700,
+                cursor: "pointer",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
+              }}
+            >
+              <i className="fas fa-trash-alt" style={{ color: "#ef4444" }}></i>
+              Clear Closed Logs
+            </button>
             <div
               style={{
                 display: "inline-flex",
@@ -566,11 +657,12 @@ export default function AdminSessionsView() {
 
                       {/* Actions */}
                       <td style={{ padding: "14px 18px", verticalAlign: "middle", textAlign: "right" }}>
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "8px" }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "6px" }}>
                           <button
                             onClick={() => setSelectedSession(s)}
+                            title="View session audit trail"
                             style={{
-                              padding: "6px 12px",
+                              padding: "6px 10px",
                               borderRadius: "6px",
                               background: "#f1f5f9",
                               border: "1px solid #cbd5e1",
@@ -581,11 +673,13 @@ export default function AdminSessionsView() {
                             }}
                           >
                             <i className="fas fa-list-alt" style={{ marginRight: "4px" }} />
-                            Activity Trail
+                            Trail
                           </button>
+
                           {s.status === "active" && !isCurrent && (
                             <button
                               onClick={() => handleTerminateSession(s.id)}
+                              title="Force terminate active session"
                               style={{
                                 padding: "6px 10px",
                                 borderRadius: "6px",
@@ -597,9 +691,27 @@ export default function AdminSessionsView() {
                                 cursor: "pointer",
                               }}
                             >
+                              <i className="fas fa-power-off" style={{ marginRight: "4px" }} />
                               Terminate
                             </button>
                           )}
+
+                          <button
+                            onClick={() => handleDeleteSession(s.id)}
+                            title="Permanently delete session log from Cloud Firestore"
+                            style={{
+                              padding: "6px 10px",
+                              borderRadius: "6px",
+                              background: "#ffffff",
+                              border: "1px solid #fca5a5",
+                              color: "#dc2626",
+                              fontSize: "0.75rem",
+                              fontWeight: 700,
+                              cursor: "pointer",
+                            }}
+                          >
+                            <i className="fas fa-trash-alt" />
+                          </button>
                         </div>
                       </td>
                     </tr>

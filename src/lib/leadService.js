@@ -539,21 +539,39 @@ export async function addAdminSessionActivityInFirestore(sessionId, activityObj)
 }
 
 /**
- * Terminate an admin session in Firestore (e.g. Tab Closed / Explicit Logout).
+ * Terminate an admin session in Firestore (e.g. Tab Closed / Explicit Logout / Admin Kill).
  */
-export async function terminateAdminSessionInFirestore(sessionId, statusType = "closed_tab", endTimeMsg = "Closed (Tab Closed)") {
+export async function terminateAdminSessionInFirestore(sessionId, statusType = "closed_logout", endTimeMsg = "Closed (Terminated by Admin)") {
   if (!sessionId) return false;
   try {
     const sessionRef = doc(db, "admin_sessions", sessionId);
-    await updateDoc(sessionRef, {
-      status: statusType,
-      endTime: endTimeMsg,
-      lastActive: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }),
-      updatedAt: serverTimestamp(),
-    });
+    await setDoc(
+      sessionRef,
+      {
+        status: statusType,
+        endTime: endTimeMsg,
+        lastActive: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }),
+        updatedAt: serverTimestamp(),
+      },
+      { merge: true }
+    );
     return true;
   } catch (err) {
     console.error("terminateAdminSessionInFirestore error:", err);
+    return false;
+  }
+}
+
+/**
+ * Delete a session log document from Firestore.
+ */
+export async function deleteAdminSessionFromFirestore(sessionId) {
+  if (!sessionId) return false;
+  try {
+    await deleteDoc(doc(db, "admin_sessions", sessionId));
+    return true;
+  } catch (err) {
+    console.error("deleteAdminSessionFromFirestore error:", err);
     return false;
   }
 }
