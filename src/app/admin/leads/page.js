@@ -15,6 +15,7 @@ import {
   deleteB2BLead,
   addAdminSessionActivityInFirestore,
   terminateAdminSessionInFirestore,
+  subscribeToAdminSessions,
 } from "@/lib/leadService";
 
 const SCRIPT_URL =
@@ -428,6 +429,28 @@ export default function AdminLeadsPage() {
       (data) => { setB2bLeads(data); setB2bLoading(false); },
       () => setB2bLoading(false)
     );
+    return () => unsub && unsub();
+  }, [isAuthenticated]);
+
+  // Real-time Remote Session Kill Listener (Kicks terminated sessions back to login screen instantly)
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const currentSessId = typeof window !== "undefined" ? sessionStorage.getItem("ct_current_session_id") : null;
+    if (!currentSessId) return;
+
+    const unsub = subscribeToAdminSessions((allSessions) => {
+      const mySession = allSessions.find((s) => s.id === currentSessId);
+      if (mySession && (mySession.status === "closed_logout" || mySession.status === "closed_tab")) {
+        // Remote Kill Signal Received from another Admin Terminal!
+        try {
+          sessionStorage.clear();
+        } catch (e) {}
+        setIsAuthenticated(false);
+        setStep("login");
+        setLoginError("Security Alert: Your active admin session was remotely terminated by an authorized administrator.");
+      }
+    });
+
     return () => unsub && unsub();
   }, [isAuthenticated]);
 
