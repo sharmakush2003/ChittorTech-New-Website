@@ -941,9 +941,6 @@ export default function Header() {
       <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer" className="ct-float-wa" title="Chat on WhatsApp">
         <i className="fa-brands fa-whatsapp"></i>
       </a>
-      <button type="button" data-bs-toggle="modal" data-bs-target="#trialModal" className="ct-float-contact" title="Get Free Consultation" aria-label="Get Free Consultation">
-        <i className="fa-solid fa-file-signature"></i>
-      </button>
     </>
   );
 }

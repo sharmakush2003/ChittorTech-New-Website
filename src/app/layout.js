@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import TrialModal from "@/components/TrialModal";
 import SliderInitializer from "@/components/SliderInitializer";
+import WhatsAppFloatingWidget from "@/components/WhatsAppFloatingWidget";
 
 export const metadata = {
   metadataBase: new URL("https://chittortech.in"),
@@ -332,6 +333,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <Chatbot />
         <TrialModal />
+        <WhatsAppFloatingWidget />
 
         {/* ── Google Analytics GA4 ── */}
         <Script
