@@ -13,7 +13,6 @@ export default function AdminSessionsView() {
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedSession, setSelectedSession] = useState(null);
   const [actionFeedback, setActionFeedback] = useState("");
   const [clientIpInfo, setClientIpInfo] = useState({
     ip: "Detecting IP...",
@@ -94,16 +93,6 @@ export default function AdminSessionsView() {
           endTime: "Active Terminal",
           duration: "In Progress",
           status: "active",
-          activities: [
-            {
-              time: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true }),
-              desc: "Logged into ChittorTech Admin Enclave via 2FA Verification",
-            },
-            {
-              time: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true }),
-              desc: "Terminal active & synchronized with Cloud Firestore",
-            },
-          ],
         });
       })
       .catch(() => {
@@ -119,12 +108,6 @@ export default function AdminSessionsView() {
           endTime: "Active Terminal",
           duration: "In Progress",
           status: "active",
-          activities: [
-            {
-              time: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true }),
-              desc: "Logged into ChittorTech Admin Enclave",
-            },
-          ],
         });
       });
 
@@ -359,11 +342,11 @@ export default function AdminSessionsView() {
                 <i className="fas fa-shield-alt"></i>
               </div>
               <h1 style={{ fontSize: "1.55rem", fontWeight: 800, color: "#0f172a", margin: 0, letterSpacing: "-0.4px" }}>
-                Admin Sessions &amp; Security Audit Logs
+                Admin Active Sessions &amp; Security Management
               </h1>
             </div>
             <p style={{ margin: 0, color: "#64748b", fontSize: "0.88rem" }}>
-              Real-time Firestore logging (`admin_sessions`) of authorized admin terminals, IP geolocation, session timestamps, and operational activity history.
+              Real-time Firestore tracking (`admin_sessions`) of authorized admin terminals, IP geolocation, session timestamps, and remote termination controls.
             </p>
           </div>
 
@@ -447,7 +430,7 @@ export default function AdminSessionsView() {
         >
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "#3b82f6" }} />
           <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "8px" }}>
-            Total Audit Sessions
+            Total Sessions
           </div>
           <div style={{ fontSize: "1.8rem", fontWeight: 800, color: "#0f172a", lineHeight: 1, marginBottom: "4px" }}>
             {sessions.length} <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "#3b82f6" }}>In Firestore</span>
@@ -491,12 +474,12 @@ export default function AdminSessionsView() {
         >
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "#f59e0b" }} />
           <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "8px" }}>
-            Session Policy
+            Remote Kill Engine
           </div>
           <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#0f172a", lineHeight: 1.2, marginBottom: "4px" }}>
-            Real-time Cloud Log
+            &lt; 100ms Instant Kill
           </div>
-          <div style={{ fontSize: "0.78rem", color: "#64748b" }}>Auto Tab Closure Tracking</div>
+          <div style={{ fontSize: "0.78rem", color: "#64748b" }}>Real-time Tab &amp; Remote Logout</div>
         </div>
       </div>
 
@@ -549,7 +532,7 @@ export default function AdminSessionsView() {
         {/* Status Filter Buttons */}
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           {[
-            { id: "all", label: `All Firestore Sessions (${sessions.length})` },
+            { id: "all", label: `All Sessions (${sessions.length})` },
             { id: "active", label: `🟢 Active (${activeCount})` },
             { id: "closed", label: `Closed / Terminated` },
           ].map((f) => (
@@ -658,28 +641,10 @@ export default function AdminSessionsView() {
                       {/* Actions */}
                       <td style={{ padding: "14px 18px", verticalAlign: "middle", textAlign: "right" }}>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "6px" }}>
-                          <button
-                            onClick={() => setSelectedSession(s)}
-                            title="View session audit trail"
-                            style={{
-                              padding: "6px 10px",
-                              borderRadius: "6px",
-                              background: "#f1f5f9",
-                              border: "1px solid #cbd5e1",
-                              color: "#334155",
-                              fontSize: "0.75rem",
-                              fontWeight: 700,
-                              cursor: "pointer",
-                            }}
-                          >
-                            <i className="fas fa-list-alt" style={{ marginRight: "4px" }} />
-                            Trail
-                          </button>
-
                           {s.status === "active" && !isCurrent && (
                             <button
                               onClick={() => handleTerminateSession(s.id)}
-                              title="Force terminate active session"
+                              title="Force terminate active session (remotely logs out other terminal)"
                               style={{
                                 padding: "6px 10px",
                                 borderRadius: "6px",
@@ -710,7 +675,8 @@ export default function AdminSessionsView() {
                               cursor: "pointer",
                             }}
                           >
-                            <i className="fas fa-trash-alt" />
+                            <i className="fas fa-trash-alt" style={{ marginRight: "4px" }} />
+                            Delete
                           </button>
                         </div>
                       </td>
@@ -722,107 +688,6 @@ export default function AdminSessionsView() {
           </table>
         </div>
       </div>
-
-      {/* ── Activity Detail Modal ── */}
-      {selectedSession && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: "rgba(15, 23, 42, 0.65)",
-            backdropFilter: "blur(6px)",
-            zIndex: 999999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "20px",
-          }}
-          onClick={() => setSelectedSession(null)}
-        >
-          <div
-            style={{
-              background: "#ffffff",
-              borderRadius: "20px",
-              width: "100%",
-              maxWidth: "580px",
-              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-              overflow: "hidden",
-              border: "1px solid #e2e8f0",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div style={{ padding: "20px 24px", background: "#f8fafc", borderBottom: "1px solid #e2e8f0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <i className="fas fa-history" style={{ color: "#2563eb", fontSize: "18px" }} />
-                <div>
-                  <h3 style={{ margin: 0, fontSize: "1.1rem", fontWeight: 800, color: "#0f172a" }}>Firestore Audit Trail Log</h3>
-                  <div style={{ fontSize: "0.75rem", color: "#64748b", fontFamily: "monospace" }}>{selectedSession.id}</div>
-                </div>
-              </div>
-              <button
-                onClick={() => setSelectedSession(null)}
-                style={{ background: "none", border: "none", fontSize: "18px", color: "#64748b", cursor: "pointer" }}
-              >
-                <i className="fas fa-times" />
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div style={{ padding: "24px", maxHeight: "400px", overflowY: "auto" }}>
-              <div style={{ display: "flex", gap: "16px", marginBottom: "20px", background: "#f8fafc", padding: "12px 16px", borderRadius: "12px", border: "1px solid #e2e8f0", fontSize: "0.8rem" }}>
-                <div>
-                  <span style={{ color: "#64748b" }}>IP Address:</span> <strong>{selectedSession.ip}</strong>
-                </div>
-                <div>
-                  <span style={{ color: "#64748b" }}>Location:</span> <strong>{selectedSession.location}</strong>
-                </div>
-              </div>
-
-              <h4 style={{ fontSize: "0.85rem", fontWeight: 800, color: "#334155", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "14px" }}>
-                Recorded Actions ({selectedSession.activities?.length || 0} Actions)
-              </h4>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                {selectedSession.activities?.length > 0 ? (
-                  selectedSession.activities.map((act, idx) => (
-                    <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "12px", padding: "10px 14px", background: "#ffffff", border: "1px solid #f1f5f9", borderRadius: "10px" }}>
-                      <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#2563eb", background: "#eff6ff", padding: "3px 8px", borderRadius: "6px", whiteSpace: "nowrap" }}>
-                        {act.time}
-                      </span>
-                      <span style={{ fontSize: "0.82rem", color: "#1e293b", fontWeight: 600, lineHeight: 1.4 }}>{act.desc}</span>
-                    </div>
-                  ))
-                ) : (
-                  <div style={{ color: "#64748b", fontSize: "0.82rem" }}>No detailed activity recorded for this session.</div>
-                )}
-              </div>
-            </div>
-
-            {/* Modal Footer */}
-            <div style={{ padding: "16px 24px", background: "#f8fafc", borderTop: "1px solid #e2e8f0", textAlign: "right" }}>
-              <button
-                onClick={() => setSelectedSession(null)}
-                style={{
-                  padding: "8px 18px",
-                  borderRadius: "8px",
-                  background: "#0f172a",
-                  color: "#ffffff",
-                  fontWeight: 700,
-                  fontSize: "0.82rem",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                Close Audit View
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

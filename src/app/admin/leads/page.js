@@ -469,13 +469,6 @@ export default function AdminLeadsPage() {
       if (selectedLead && selectedLead.id === leadId) {
         setSelectedLead((prev) => ({ ...prev, status: newStatus }));
       }
-      const sessId = sessionStorage.getItem("ct_current_session_id");
-      if (sessId) {
-        addAdminSessionActivityInFirestore(sessId, {
-          time: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true }),
-          desc: `Updated Lead status to '${newStatus}' (ID: ${leadId.slice(0, 8)}...)`,
-        });
-      }
     } catch (err) {
       console.error("Status update error:", err);
     }
@@ -488,13 +481,6 @@ export default function AdminLeadsPage() {
     await updateLeadNotes(selectedLead.id, leadNotes);
     setSelectedLead((prev) => ({ ...prev, notes: leadNotes }));
     setSavingNotes(false);
-    const sessId = sessionStorage.getItem("ct_current_session_id");
-    if (sessId) {
-      addAdminSessionActivityInFirestore(sessId, {
-        time: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true }),
-        desc: `Updated notes for Lead ID: ${selectedLead.id.slice(0, 8)}...`,
-      });
-    }
   };
 
   // Handle delete
@@ -1800,7 +1786,7 @@ export default function AdminLeadsPage() {
               }}
             >
               <i className="fas fa-shield-alt" style={{ color: adminPipelineTab === "sessions" ? "#38bdf8" : "#94a3b8" }}></i>
-              <span>Sessions &amp; Audit Logs</span>
+              <span>Sessions &amp; Security</span>
               <span
                 style={{
                   background: adminPipelineTab === "sessions" ? "rgba(56, 189, 248, 0.2)" : "#f1f5f9",
@@ -1811,7 +1797,7 @@ export default function AdminLeadsPage() {
                   fontWeight: 800,
                 }}
               >
-                Live Audit
+                Live Sessions
               </span>
             </button>
           </div>
