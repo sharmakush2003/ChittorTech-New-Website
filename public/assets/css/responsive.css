@@ -920,14 +920,14 @@ section.overview-section .features-list ul li {
         margin-bottom: 20px;
     }
 
-    /* ── Mobile Alternating Dock Animation (4s Side Icons <-> 4s Center Instant Quote) ── */
+    /* ── Mobile Alternating Dock Animation (5.5s Side Icons <-> 5.5s Center Instant Quote) ── */
     .ct-float-wa,
     .chatbot-fab-wrap {
-        animation: mobileDockSides 8s ease-in-out infinite !important;
+        animation: mobileDockSides 12s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
     }
 
     .whatsapp-floating-container {
-        animation: mobileDockCenter 8s ease-in-out infinite !important;
+        animation: mobileDockCenter 12s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
     }
 
     /* Pause animation if Chatbot is open or focused */
@@ -940,19 +940,19 @@ section.overview-section .features-list ul li {
 }
 
 @keyframes mobileDockSides {
-    0%, 44% {
+    0%, 46% {
         opacity: 1;
         visibility: visible;
         transform: scale(1);
         pointer-events: auto;
     }
-    48%, 94% {
+    49%, 96% {
         opacity: 0;
         visibility: hidden;
-        transform: scale(0.82);
+        transform: scale(0.8);
         pointer-events: none;
     }
-    98%, 100% {
+    99%, 100% {
         opacity: 1;
         visibility: visible;
         transform: scale(1);
@@ -961,23 +961,24 @@ section.overview-section .features-list ul li {
 }
 
 @keyframes mobileDockCenter {
-    0%, 44% {
+    0%, 46% {
         opacity: 0;
         visibility: hidden;
-        transform: translateX(-50%) scale(0.82);
+        transform: translateX(-50%) scale(0.8);
         pointer-events: none;
     }
-    48%, 94% {
+    49%, 96% {
         opacity: 1;
         visibility: visible;
         transform: translateX(-50%) scale(1);
         pointer-events: auto;
     }
-    98%, 100% {
+    99%, 100% {
         opacity: 0;
         visibility: hidden;
-        transform: translateX(-50%) scale(0.82);
+        transform: translateX(-50%) scale(0.8);
         pointer-events: none;
     }
 }
+
 

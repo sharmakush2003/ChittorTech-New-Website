@@ -598,6 +598,29 @@ export default function Header() {
         .ct-mobile-cta-secondary:hover { border-color: #ffffff; color: #ffffff !important; background: rgba(255,255,255,0.06); }
 
         /* ─── Floating Buttons ─── */
+        .ct-float-left-brand {
+          position: fixed; bottom: 25px; left: 25px; z-index: 999999;
+          width: 58px; height: 58px; border-radius: 50%;
+          background: #ffffff; border: 2px solid #e2e8f0;
+          display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 8px 25px rgba(41, 31, 188, 0.22), 0 3px 10px rgba(0, 0, 0, 0.08);
+          cursor: pointer; padding: 7px;
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          animation: ct-brand-pop-pulse 3.5s ease-in-out infinite;
+        }
+        .ct-float-left-brand:hover {
+          transform: scale(1.12) translateY(-2px);
+          box-shadow: 0 14px 35px rgba(37, 99, 235, 0.38);
+          border-color: #2563eb;
+        }
+        .ct-brand-float-img {
+          width: 100%; height: 100%; object-fit: contain;
+        }
+        @keyframes ct-brand-pop-pulse {
+          0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(41, 31, 188, 0.22); }
+          50% { transform: scale(1.08); box-shadow: 0 12px 32px rgba(37, 99, 235, 0.42); }
+        }
+
         .ct-float-wa {
           position: fixed; bottom: 30px; left: 30px; z-index: 999999;
           width: 62px; height: 62px; border-radius: 50%;
@@ -614,22 +637,14 @@ export default function Header() {
           100% { box-shadow: 0 6px 20px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0); }
         }
         .ct-float-wa:hover { transform: scale(1.12); color: #fff; animation: none; }
-        .ct-float-contact {
-          position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-          z-index: 999999; 
-          cursor: pointer;
-          width: 62px; height: 62px; border-radius: 50%;
-          background: linear-gradient(135deg, #291fbc, #06b6d4);
-          color: #fff !important; font-size: 1.5rem;
-          display: flex; align-items: center; justify-content: center;
-          text-decoration: none; box-shadow: 0 8px 24px rgba(41,31,188,0.38);
-          transition: all 0.25s ease;
-          border: 1px solid rgba(255,255,255,0.15);
+
+        @media (min-width: 769px) {
+          .ct-float-wa { display: none !important; }
+          .ct-float-left-brand { display: flex !important; }
         }
-        .ct-float-contact:hover {
-          transform: translateX(-50%) scale(1.12);
-          box-shadow: 0 14px 36px rgba(41,31,188,0.48);
-          color: #fff !important;
+        @media (max-width: 768px) {
+          .ct-float-left-brand { display: none !important; }
+          .ct-float-wa { display: flex !important; bottom: 20px !important; left: 20px !important; width: 54px !important; height: 54px !important; font-size: 1.45rem !important; }
         }
 
         /* ─── Responsive ─── */
@@ -938,6 +953,16 @@ export default function Header() {
       </div>
 
       {/* ── Floating Buttons ── */}
+      <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#trialModal"
+        className="ct-float-left-brand"
+        title="ChittorTech — Request Demo & Free AI Consultation"
+        aria-label="Request AI Consultation & Free Demo"
+      >
+        <img src="/assets/images/ct-logo.png" alt="ChittorTech Logo" className="ct-brand-float-img" />
+      </button>
       <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer" className="ct-float-wa" title="Chat on WhatsApp">
         <i className="fa-brands fa-whatsapp"></i>
       </a>
