@@ -325,8 +325,11 @@ export default function AdminLeadsPage() {
           sessionStorage.removeItem("ct_otp_failed_count");
           sessionStorage.removeItem("ct_sec_lockout_until");
         } catch (e) {}
+        const freshSessId = "sess_ct_" + Date.now().toString(36) + "_" + Math.random().toString(36).substring(2, 6);
+        sessionStorage.setItem("ct_current_session_id", freshSessId);
         sessionStorage.setItem("chittortech_admin_auth", data.token || "ct_auth_" + Date.now());
         sessionStorage.setItem("chittortech_admin_auth_time", Date.now().toString());
+        setLoginError("");
         setTimeout(() => {
           setIsAuthenticated(true);
           setOtpLoading(false);
