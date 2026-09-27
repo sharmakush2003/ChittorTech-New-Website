@@ -621,22 +621,7 @@ export default function Header() {
           50% { transform: scale(1.08); box-shadow: 0 12px 32px rgba(37, 99, 235, 0.42); }
         }
 
-        .ct-float-wa {
-          position: fixed; bottom: 30px; left: 30px; z-index: 999999;
-          width: 62px; height: 62px; border-radius: 50%;
-          background: #25d366; color: #fff; font-size: 1.625rem;
-          display: flex; align-items: center; justify-content: center;
-          text-decoration: none;
-          box-shadow: 0 6px 20px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.4);
-          transition: all 0.25s ease;
-          animation: ct-wa-pulse 2.5s ease-in-out infinite;
-        }
-        @keyframes ct-wa-pulse {
-          0%   { box-shadow: 0 6px 20px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.4); }
-          70%  { box-shadow: 0 6px 20px rgba(37,211,102,0.45), 0 0 0 12px rgba(37,211,102,0); }
-          100% { box-shadow: 0 6px 20px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0); }
-        }
-        .ct-float-wa:hover { transform: scale(1.12); color: #fff; animation: none; }
+        .ct-float-wa { display: none !important; }
 
         @media (min-width: 769px) {
           .ct-float-wa { display: none !important; }
@@ -644,7 +629,7 @@ export default function Header() {
         }
         @media (max-width: 768px) {
           .ct-float-left-brand { display: none !important; }
-          .ct-float-wa { display: flex !important; bottom: 20px !important; left: 20px !important; width: 54px !important; height: 54px !important; font-size: 1.45rem !important; }
+          .ct-float-wa { display: none !important; }
         }
 
         /* ─── Responsive ─── */
@@ -663,13 +648,7 @@ export default function Header() {
             display: flex !important;
           }
           .ct-float-wa {
-            bottom: 20px !important;
-            left: 20px !important;
-            width: 54px !important;
-            height: 54px !important;
-            font-size: 1.45rem !important;
-            z-index: 9999 !important;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4) !important;
+            display: none !important;
           }
           .ct-header {
             padding: 0 !important;
