@@ -13,6 +13,8 @@ import {
   updateB2BLeadStatus,
   updateB2BLeadNotes,
   deleteB2BLead,
+  addAdminSessionActivityInFirestore,
+  terminateAdminSessionInFirestore,
 } from "@/lib/leadService";
 
 const SCRIPT_URL =
@@ -380,6 +382,10 @@ export default function AdminLeadsPage() {
   };
 
   const handleLogout = () => {
+    const currentSessId = sessionStorage.getItem("ct_current_session_id");
+    if (currentSessId) {
+      terminateAdminSessionInFirestore(currentSessId, "closed_logout", "Closed (Explicit Logout)");
+    }
     try {
       sessionStorage.removeItem("chittortech_admin_auth");
       sessionStorage.clear();
@@ -441,6 +447,13 @@ export default function AdminLeadsPage() {
       if (selectedLead && selectedLead.id === leadId) {
         setSelectedLead((prev) => ({ ...prev, status: newStatus }));
       }
+      const sessId = sessionStorage.getItem("ct_current_session_id");
+      if (sessId) {
+        addAdminSessionActivityInFirestore(sessId, {
+          time: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true }),
+          desc: `Updated Lead status to '${newStatus}' (ID: ${leadId.slice(0, 8)}...)`,
+        });
+      }
     } catch (err) {
       console.error("Status update error:", err);
     }
@@ -453,6 +466,13 @@ export default function AdminLeadsPage() {
     await updateLeadNotes(selectedLead.id, leadNotes);
     setSelectedLead((prev) => ({ ...prev, notes: leadNotes }));
     setSavingNotes(false);
+    const sessId = sessionStorage.getItem("ct_current_session_id");
+    if (sessId) {
+      addAdminSessionActivityInFirestore(sessId, {
+        time: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", hour12: true }),
+        desc: `Updated notes for Lead ID: ${selectedLead.id.slice(0, 8)}...`,
+      });
+    }
   };
 
   // Handle delete
