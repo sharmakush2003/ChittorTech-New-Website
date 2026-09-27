@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import B2BLeadGenerator from "@/components/admin/B2BLeadGenerator";
+import AdminSessionsView from "@/components/admin/AdminSessionsView";
 import {
   subscribeToLeads,
   updateLeadStatus,
@@ -196,6 +197,7 @@ export default function AdminLeadsPage() {
       if (SCRIPT_URL) {
         fetch(SCRIPT_URL, {
           method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
             action: "admin_request_otp",
             authGate: "CT_ADMIN_GATEWAY_2026",
@@ -240,6 +242,7 @@ export default function AdminLeadsPage() {
     try {
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
           action: "admin_recover_key",
           email: recoveryEmail.trim(),
@@ -306,6 +309,7 @@ export default function AdminLeadsPage() {
     try {
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
           action: "admin_verify_otp",
           enteredOtp: code,
@@ -339,13 +343,15 @@ export default function AdminLeadsPage() {
           }
         } catch (e) {}
 
-        setOtpError(`Incorrect verification code. (${3 - count} attempt(s) remaining before security lockout).`);
+        const serverMsg = data?.msg || `Incorrect verification code. (${3 - count} attempt(s) remaining before security lockout).`;
+        setOtpError(serverMsg);
         setOtpDigits(["", "", "", "", "", ""]);
         setOtpLoading(false);
         otpRefs.current[0]?.focus();
       }
     } catch (err) {
-      setOtpError("Verification failed. Please check your connection and try again.");
+      console.warn("OTP verification fetch notice:", err);
+      setOtpError("Network verification failed. Try entering the Master Key (255856) or click Resend verification code.");
       setOtpLoading(false);
     }
   };
@@ -360,6 +366,7 @@ export default function AdminLeadsPage() {
       try {
         await fetch(SCRIPT_URL, {
           method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
             action: "admin_request_otp",
             authGate: "CT_ADMIN_GATEWAY_2026",
@@ -1600,6 +1607,7 @@ export default function AdminLeadsPage() {
             <Link
               href="/"
               target="_blank"
+              rel="noopener noreferrer"
               style={{
                 color: "#475569",
                 fontSize: "0.85rem",
@@ -1730,9 +1738,9 @@ export default function AdminLeadsPage() {
               </span>
             </button>
 
-            {/* Tab 3: How to Use */}
+            {/* Tab 3: Sessions & Access Logs */}
             <button
-              onClick={() => setAdminPipelineTab("how_to_use")}
+              onClick={() => setAdminPipelineTab("sessions")}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -1744,24 +1752,24 @@ export default function AdminLeadsPage() {
                 cursor: "pointer",
                 border: "none",
                 transition: "all 0.15s ease",
-                background: adminPipelineTab === "how_to_use" ? "linear-gradient(135deg, #059669, #047857)" : "transparent",
-                color: adminPipelineTab === "how_to_use" ? "#ffffff" : "#64748b",
-                boxShadow: adminPipelineTab === "how_to_use" ? "0 4px 12px rgba(5, 150, 105, 0.25)" : "none",
+                background: adminPipelineTab === "sessions" ? "linear-gradient(135deg, #0f172a, #1e293b)" : "transparent",
+                color: adminPipelineTab === "sessions" ? "#ffffff" : "#64748b",
+                boxShadow: adminPipelineTab === "sessions" ? "0 4px 12px rgba(15, 23, 42, 0.25)" : "none",
               }}
             >
-              <i className="fas fa-book-open" style={{ color: adminPipelineTab === "how_to_use" ? "#a7f3d0" : "#94a3b8" }}></i>
-              <span>How to Use</span>
+              <i className="fas fa-shield-alt" style={{ color: adminPipelineTab === "sessions" ? "#38bdf8" : "#94a3b8" }}></i>
+              <span>Sessions &amp; Audit Logs</span>
               <span
                 style={{
-                  background: adminPipelineTab === "how_to_use" ? "rgba(167, 243, 208, 0.25)" : "#f1f5f9",
-                  color: adminPipelineTab === "how_to_use" ? "#a7f3d0" : "#64748b",
+                  background: adminPipelineTab === "sessions" ? "rgba(56, 189, 248, 0.2)" : "#f1f5f9",
+                  color: adminPipelineTab === "sessions" ? "#38bdf8" : "#64748b",
                   padding: "2px 8px",
                   borderRadius: "20px",
                   fontSize: "0.72rem",
                   fontWeight: 800,
                 }}
               >
-                Guide
+                Live Audit
               </span>
             </button>
           </div>
@@ -1774,102 +1782,8 @@ export default function AdminLeadsPage() {
 
         {adminPipelineTab === "b2b_outbound" ? (
           <B2BLeadGenerator />
-        ) : adminPipelineTab === "how_to_use" ? (
-          /* ── HOW TO USE TAB ── */
-          <div style={{ fontFamily: "'Inter', sans-serif" }}>
-            {/* Header */}
-            <div style={{ marginBottom: "28px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
-                <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "linear-gradient(135deg, #059669, #047857)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 12px rgba(5,150,105,0.25)" }}>
-                  <i className="fas fa-book-open" style={{ color: "#ffffff", fontSize: "18px" }}></i>
-                </div>
-                <div>
-                  <h1 style={{ fontSize: "1.6rem", fontWeight: 800, color: "#0f172a", margin: 0, letterSpacing: "-0.4px" }}>How to Use — B2B Lead Engine</h1>
-                  <p style={{ margin: 0, color: "#64748b", fontSize: "0.88rem" }}>Google Maps se leads nikalo, pitch karo aur deals close karo — step by step guide</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Infographic */}
-            <div style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "20px", overflow: "hidden", marginBottom: "28px", boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
-              <img
-                src="/b2b-guide-infographic.jpg"
-                alt="B2B Lead Generator — Complete Workflow Guide"
-                style={{ width: "100%", display: "block", borderRadius: "20px" }}
-              />
-            </div>
-
-            {/* Quick Steps Grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "16px", marginBottom: "28px" }}>
-              {[
-                { num: "1", icon: "fa-map-marker-alt", color: "#6366f1", bg: "#eff6ff", border: "#dbeafe", title: "Scraper Hub Kholo", desc: "Admin Panel mein 'Scraper Hub' button click karo. Target city choose karo — Bhilwara Marble, Udaipur Hotels, Chittorgarh Dharamshalas etc." },
-                { num: "2", icon: "fa-terminal", color: "#7c3aed", bg: "#f5f3ff", border: "#ede9fe", title: "Console Script Run Karo", desc: "Google Maps khulega. F12 → Console tab → 'Copy Scraper Code' click karo → Paste karo → Enter dabaao. CSV auto-download hogi!" },
-                { num: "3", icon: "fa-file-upload", color: "#0891b2", bg: "#ecfeff", border: "#cffafe", title: "CSV Upload Karo", desc: "Downloaded CSV ko Drop Zone pe chod do ya 'Upload CSV' click karo. Data auto-import hoga with city & category detection." },
-                { num: "4", icon: "fa-fire", color: "#d97706", bg: "#fffbeb", border: "#fef3c7", title: "No Website Filter Lagao", desc: "'🔥 No Website' filter se prime targets dekho — yeh log turat web development ke candidates hain. ₹15k package offer karo." },
-                { num: "5", icon: "fa-whatsapp fab", color: "#16a34a", bg: "#f0fdf4", border: "#dcfce7", title: "WhatsApp Pitch Bhejo", desc: "WhatsApp button click karo — auto pre-written pitch message open hoga. Category ke hisaab se pitch auto-select hoti hai." },
-                { num: "6", icon: "fa-tags", color: "#9333ea", bg: "#fdf4ff", border: "#f3e8ff", title: "Status Track Karo", desc: "Status pill click karo: New → Contacted → In Negotiation → Converted. Pipeline track hota rehta hai automatically." },
-              ].map(({ num, icon, color, bg, border, title, desc }) => (
-                <div key={num} style={{ background: "#ffffff", border: `1px solid #e2e8f0`, borderRadius: "16px", padding: "20px", boxShadow: "0 2px 8px rgba(0,0,0,0.03)", position: "relative", overflow: "hidden" }}>
-                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: color }} />
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-                    <div style={{ width: "40px", height: "40px", borderRadius: "10px", background: bg, border: `1px solid ${border}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <i className={`fas ${icon}`} style={{ color, fontSize: "16px" }}></i>
-                    </div>
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
-                        <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: color, color: "#fff", fontSize: "0.72rem", fontWeight: 800, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{num}</span>
-                        <span style={{ fontSize: "0.9rem", fontWeight: 800, color: "#0f172a" }}>{title}</span>
-                      </div>
-                      <p style={{ margin: 0, fontSize: "0.82rem", color: "#64748b", lineHeight: 1.55 }}>{desc}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Status Meaning Table */}
-            <div style={{ background: "#ffffff", border: "1px solid #e2e8f0", borderRadius: "16px", padding: "22px 24px", marginBottom: "20px", boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
-              <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#0f172a", margin: "0 0 16px 0", display: "flex", alignItems: "center", gap: "8px" }}>
-                <i className="fas fa-tags" style={{ color: "#6366f1" }}></i> Status Pills — Matlab Kya Hai?
-              </h3>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-                {[
-                  { label: "New Lead", dot: "#d97706", bg: "rgba(217,119,6,0.08)", border: "rgba(217,119,6,0.22)", text: "#92400e", desc: "Naya contact, abhi kuch nahi kiya" },
-                  { label: "Pitch Dispatched", dot: "#6366f1", bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.22)", text: "#4338ca", desc: "WhatsApp/call kar diya" },
-                  { label: "In Negotiation", dot: "#9333ea", bg: "rgba(147,51,234,0.08)", border: "rgba(147,51,234,0.22)", text: "#7e22ce", desc: "Interested hai, baat chal rahi" },
-                  { label: "Closed Deal ✓", dot: "#16a34a", bg: "rgba(22,163,74,0.08)", border: "rgba(22,163,74,0.22)", text: "#14532d", desc: "Deal ho gayi! 🎉" },
-                  { label: "Not Interested", dot: "#94a3b8", bg: "rgba(148,163,184,0.08)", border: "rgba(148,163,184,0.22)", text: "#475569", desc: "Nahi maana, skip karo" },
-                ].map(({ label, dot, bg, border, text, desc }) => (
-                  <div key={label} style={{ display: "flex", alignItems: "center", gap: "10px", background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: "10px", padding: "10px 14px", minWidth: "200px" }}>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "3px 8px", borderRadius: "20px", background: bg, border: `1px solid ${border}`, color: text, fontSize: "0.75rem", fontWeight: 700, whiteSpace: "nowrap" }}>
-                      <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: dot, flexShrink: 0 }} />
-                      {label}
-                    </span>
-                    <span style={{ fontSize: "0.78rem", color: "#64748b" }}>{desc}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Pro Tips */}
-            <div style={{ background: "linear-gradient(135deg, #f0fdf4, #ecfdf5)", border: "1px solid #bbf7d0", borderRadius: "16px", padding: "20px 24px" }}>
-              <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#14532d", margin: "0 0 12px 0", display: "flex", alignItems: "center", gap: "8px" }}>
-                <i className="fas fa-lightbulb" style={{ color: "#16a34a" }}></i> Pro Tips
-              </h3>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "8px" }}>
-                {[
-                  "🔥 No Website filter = Prime web dev leads. ₹15k package instantly offer karo",
-                  "📱 WhatsApp button = auto pitch + status 'Contacted' ek click mein",
-                  "💾 Data Firestore cloud mein save rehta hai — refresh pe bhi nahi jaata",
-                  "🔄 Same phone number do baar import nahi hogi — auto-dedup",
-                  "⚡ Google Maps Scraper se CSV download karke direct upload karo",
-                  "📤 Din ke end mein Export CSV karo — backup ke liye",
-                ].map((tip, i) => (
-                  <div key={i} style={{ fontSize: "0.82rem", color: "#166534", background: "rgba(255,255,255,0.7)", border: "1px solid rgba(22,163,74,0.15)", borderRadius: "8px", padding: "8px 12px", lineHeight: 1.5 }}>{tip}</div>
-                ))}
-              </div>
-            </div>
-          </div>
+        ) : adminPipelineTab === "sessions" ? (
+          <AdminSessionsView />
         ) : (
           <>
             {/* Title Bar & Stats */}

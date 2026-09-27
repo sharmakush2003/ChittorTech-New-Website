@@ -1,9 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function WhatsAppFloatingWidget() {
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
+
+  if (pathname && pathname.startsWith("/admin")) {
+    return null;
+  }
   // activeMode for mobile: 'corners' (7s) vs 'island' (7s)
   const [activeMode, setActiveMode] = useState("corners");
   const [isMobile, setIsMobile] = useState(false);

@@ -2,6 +2,7 @@ import { db } from "./firebase";
 import {
   collection,
   addDoc,
+  setDoc,
   updateDoc,
   deleteDoc,
   doc,
@@ -12,6 +13,7 @@ import {
   serverTimestamp,
   getDocs,
   writeBatch,
+  arrayUnion,
 } from "firebase/firestore";
 
 const PENDING_LEADS_KEY = "chittortech_pending_leads_buffer";
@@ -446,6 +448,112 @@ export async function deleteB2BLead(leadId) {
     return true;
   } catch (err) {
     console.error("deleteB2BLead error:", err);
+    return false;
+  }
+}
+
+/**
+ * ── ADMIN SESSIONS REAL-TIME FIRESTORE SERVICES ──
+ * Collection: `admin_sessions`
+ */
+
+/**
+ * Real-time listener for Admin Sessions stored in Firestore (`admin_sessions`).
+ */
+export function subscribeToAdminSessions(onData, onError) {
+  try {
+    const q = query(collection(db, "admin_sessions"), limit(100));
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const sessions = snapshot.docs.map((d) => {
+          const data = d.data();
+          const createdDate = data.createdTimestamp?.toDate
+            ? data.createdTimestamp.toDate()
+            : data.startTime
+            ? new Date(data.startTime)
+            : new Date();
+          return {
+            id: d.id,
+            ...data,
+            createdDate,
+          };
+        });
+        // Sort descending by created timestamp
+        sessions.sort((a, b) => (b.createdDate || 0) - (a.createdDate || 0));
+        onData(sessions);
+      },
+      (err) => {
+        console.warn("subscribeToAdminSessions warning:", err);
+        if (onError) onError(err);
+      }
+    );
+    return unsubscribe;
+  } catch (err) {
+    console.warn("Failed to setup admin_sessions listener:", err);
+    if (onError) onError(err);
+    return () => {};
+  }
+}
+
+/**
+ * Log or update an Admin Session directly in Firestore collection `admin_sessions`.
+ */
+export async function logAdminSessionInFirestore(sessionData) {
+  if (!sessionData || !sessionData.id) return false;
+  try {
+    const sessionRef = doc(db, "admin_sessions", sessionData.id);
+    await setDoc(
+      sessionRef,
+      {
+        ...sessionData,
+        updatedAt: serverTimestamp(),
+        createdTimestamp: sessionData.createdTimestamp || serverTimestamp(),
+      },
+      { merge: true }
+    );
+    return true;
+  } catch (err) {
+    console.error("logAdminSessionInFirestore error:", err);
+    return false;
+  }
+}
+
+/**
+ * Update activity trail for an active session in Firestore.
+ */
+export async function addAdminSessionActivityInFirestore(sessionId, activityObj) {
+  if (!sessionId) return false;
+  try {
+    const sessionRef = doc(db, "admin_sessions", sessionId);
+    await updateDoc(sessionRef, {
+      activities: arrayUnion(activityObj),
+      lastActive: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }),
+      updatedAt: serverTimestamp(),
+    });
+    return true;
+  } catch (err) {
+    console.error("addAdminSessionActivityInFirestore error:", err);
+    return false;
+  }
+}
+
+/**
+ * Terminate an admin session in Firestore (e.g. Tab Closed / Explicit Logout).
+ */
+export async function terminateAdminSessionInFirestore(sessionId, statusType = "closed_tab", endTimeMsg = "Closed (Tab Closed)") {
+  if (!sessionId) return false;
+  try {
+    const sessionRef = doc(db, "admin_sessions", sessionId);
+    await updateDoc(sessionRef, {
+      status: statusType,
+      endTime: endTimeMsg,
+      lastActive: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: true }),
+      updatedAt: serverTimestamp(),
+    });
+    return true;
+  } catch (err) {
+    console.error("terminateAdminSessionInFirestore error:", err);
     return false;
   }
 }
