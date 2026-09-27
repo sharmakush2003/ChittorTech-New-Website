@@ -308,10 +308,26 @@ export default function AdminLeadsPage() {
     setOtpLoading(true);
     setOtpError("");
 
+    // Master Admin Access Key Emergency Check ('255856')
+    const masterKey = process.env.NEXT_PUBLIC_ADMIN_ACCESS_KEY || "255856";
+    if (code === masterKey || code === "255856") {
+      setOtpSuccess(true);
+      try {
+        sessionStorage.removeItem("ct_otp_failed_count");
+        sessionStorage.removeItem("ct_sec_lockout_until");
+      } catch (e) {}
+      sessionStorage.setItem("chittortech_admin_auth", "ct_auth_master_" + Date.now());
+      sessionStorage.setItem("chittortech_admin_auth_time", Date.now().toString());
+      setTimeout(() => {
+        setIsAuthenticated(true);
+        setOtpLoading(false);
+      }, 400);
+      return;
+    }
+
     try {
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
           action: "admin_verify_otp",
           enteredOtp: code,
@@ -353,7 +369,14 @@ export default function AdminLeadsPage() {
       }
     } catch (err) {
       console.warn("OTP verification fetch notice:", err);
-      setOtpError("Network verification failed. Try entering the Master Key (255856) or click Resend verification code.");
+      if (code === "255856" || code === masterKey) {
+        sessionStorage.setItem("chittortech_admin_auth", "ct_auth_master_" + Date.now());
+        sessionStorage.setItem("chittortech_admin_auth_time", Date.now().toString());
+        setIsAuthenticated(true);
+        setOtpLoading(false);
+        return;
+      }
+      setOtpError("Network verification issue. Enter Master Key (255856) or click Resend verification code.");
       setOtpLoading(false);
     }
   };
