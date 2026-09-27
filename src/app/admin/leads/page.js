@@ -443,9 +443,12 @@ export default function AdminLeadsPage() {
 
     const unsub = subscribeToAdminSessions((allSessions) => {
       const mySession = allSessions.find((s) => s.id === currentSessId);
-      if (mySession && (mySession.status === "closed_logout" || mySession.status === "closed_tab")) {
+      if (mySession && mySession.status === "closed_logout") {
         // Remote Kill Signal Received from another Admin Terminal!
         try {
+          sessionStorage.removeItem("ct_current_session_id");
+          sessionStorage.removeItem("chittortech_admin_auth");
+          sessionStorage.removeItem("chittortech_admin_auth_time");
           sessionStorage.clear();
         } catch (e) {}
         setIsAuthenticated(false);

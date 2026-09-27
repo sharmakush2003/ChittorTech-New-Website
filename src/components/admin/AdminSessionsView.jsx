@@ -110,16 +110,6 @@ export default function AdminSessionsView() {
           status: "active",
         });
       });
-
-    // Listen for tab close / window unload to mark session closed in Firestore
-    const handleUnload = () => {
-      if (sessId) {
-        terminateAdminSessionInFirestore(sessId, "closed_tab", "Closed (Tab Closed)");
-      }
-    };
-
-    window.addEventListener("beforeunload", handleUnload);
-    return () => window.removeEventListener("beforeunload", handleUnload);
   }, []);
 
   // 2. Real-time Subscription to Firestore Collection `admin_sessions`
