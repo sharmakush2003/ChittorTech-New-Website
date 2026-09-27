@@ -651,6 +651,18 @@ export default function Header() {
             display: none !important;
           }
           .ct-header {
+            position: sticky !important;
+            top: 0 !important;
+            padding: 0 !important;
+            z-index: 1000 !important;
+          }
+          .ct-header-bar {
+            background: rgba(255,255,255,0.98) !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
+            border-bottom: 1px solid rgba(226,232,240,0.9) !important;
+            border-radius: 0 !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
             padding: 0 !important;
           }
           .ct-header-inner {
@@ -659,6 +671,28 @@ export default function Header() {
           }
           .ct-logo img {
             height: 40px !important;
+            filter: invert(1) sepia(1) saturate(8) hue-rotate(200deg) brightness(0.75) !important;
+          }
+          .ct-logo-text {
+            color: #0f172a !important;
+            font-size: 1.3rem !important;
+            font-weight: 800 !important;
+            margin-left: 10px !important;
+          }
+          .ct-mobile-capsule-cta {
+            display: none !important;
+          }
+          .ct-hamburger {
+            width: 36px !important;
+            height: 36px !important;
+            background: transparent !important;
+            border: none !important;
+            display: flex !important;
+          }
+          .ct-hamburger span {
+            background: #000000 !important;
+            height: 3px !important;
+            width: 24px !important;
           }
           main {
             padding-bottom: 40px !important;

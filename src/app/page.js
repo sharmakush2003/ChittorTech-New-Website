@@ -249,60 +249,161 @@ const PROCESS_STEPS = [
   { num: "04", title: "Deployment & Scaling", desc: "Seamless launch on enterprise cloud infra with 24/7 monitoring.", color: "#f59e0b" },
 ];
 
+/* ── 7 High-Converting Hero Slider Banners ── */
+const HERO_SLIDES = [
+  {
+    id: 1,
+    badge: "Web & Mobile Engineering",
+    badgeIcon: "fa-mobile-screen-button",
+    badgeColor: "#38bdf8",
+    title: "Next-Gen Web & Mobile Apps Built for Scale",
+    sub: "High-converting Web Applications, React Native & Native Android/iOS Apps engineered with sub-second speed.",
+    ctaPrimary: { text: "Explore Apps & Web Dev", href: "/web-development-services", icon: "fa-arrow-right" },
+    ctaSecondary: { text: "Free Consultation", targetModal: true, icon: "fa-calendar-check" },
+    pills: ["Next.js 16", "React Native", "Android & iOS", "Cloudflare Edge"],
+    image: "/assets/images/hero-slider/banner1-web-mobile.jpg",
+    alt: "ChittorTech Enterprise Web and Mobile App Development"
+  },
+  {
+    id: 2,
+    badge: "Enterprise AI & Automation",
+    badgeIcon: "fa-brain",
+    badgeColor: "#a855f7",
+    title: "Autonomous AI Agents & Intelligent Customer Support",
+    sub: "Deploy 24/7 bilingual AI chatbots, RAG vector search, and custom LLM workflows for automated growth.",
+    ctaPrimary: { text: "Request AI Demo", href: "/crm", icon: "fa-robot" },
+    ctaSecondary: { text: "Explore AI Solutions", href: "/erp", icon: "fa-microchip" },
+    pills: ["AI Chatbots", "RAG Vector Search", "Custom LLMs", "Groq LPU Speed"],
+    image: "/assets/images/hero-slider/banner2-ai-agents.jpg",
+    alt: "ChittorTech AI Support Chatbots and LLM Workflows"
+  },
+  {
+    id: 3,
+    badge: "Mobile App Publishing",
+    badgeIcon: "fa-google-play",
+    badgeColor: "#34d399",
+    title: "Google Play Store Publishing & Policy Compliance",
+    sub: "14-day 20-tester testing verification, policy compliance audit & hassle-free Google Play Store launch.",
+    ctaPrimary: { text: "Publish App Now", href: "/google-play-publishing", icon: "fa-upload" },
+    ctaSecondary: { text: "Free App Audit", targetModal: true, icon: "fa-circle-check" },
+    pills: ["20-Tester Closed Track", "Policy Audit", "Console Setup", "Fast Launch"],
+    image: "/assets/images/hero-slider/banner3-play-store.jpg",
+    alt: "ChittorTech Google Play Store Publishing Service"
+  },
+  {
+    id: 4,
+    badge: "Hospitality ERP Software",
+    badgeIcon: "fa-torii-gate",
+    badgeColor: "#f59e0b",
+    title: "All-in-One Dharamshala & Pilgrimage Trust ERP",
+    sub: "Automate online room booking, receipt printing, GST billing & temple trust guest management smoothly.",
+    ctaPrimary: { text: "View Dharamshala Demo", href: "/dharamshala-billing-system", icon: "fa-building-columns" },
+    ctaSecondary: { text: "Call +91 75974 51057", href: "tel:+917597451057", icon: "fa-phone" },
+    pills: ["Room Allocation", "GST Billing", "Temple Receipts", "Cloud Sync"],
+    image: "/assets/images/hero-slider/banner4-dharamshala.jpg",
+    alt: "ChittorTech Dharamshala Management System and Room Booking"
+  },
+  {
+    id: 5,
+    badge: "Sales & Lead Automation",
+    badgeIcon: "fa-location-dot",
+    badgeColor: "#ec4899",
+    title: "Automated B2B Google Maps Lead Generation Engine",
+    sub: "Extract targeted B2B contact info, phone numbers & verified email databases with 99% accuracy.",
+    ctaPrimary: { text: "Start Lead Extraction", href: "/b2b-lead-generation-services", icon: "fa-bullseye" },
+    ctaSecondary: { text: "View Features", href: "/lead-management", icon: "fa-filter" },
+    pills: ["Google Maps Extraction", "Verified B2B Emails", "CSV Export", "Instant Setup"],
+    image: "/assets/images/hero-slider/banner5-lead-gen.jpg",
+    alt: "ChittorTech B2B Google Maps Lead Generation Software"
+  },
+  {
+    id: 6,
+    badge: "Direct Booking Engine",
+    badgeIcon: "fa-hotel",
+    badgeColor: "#10b981",
+    title: "0% OTA Commission Direct Hotel & Resort Booking Engine",
+    sub: "Keep 100% of your room revenues with instant UPI & card payment gateway integrations.",
+    ctaPrimary: { text: "Explore Hotel Engine", href: "/hotel-room-booking-system", icon: "fa-bed" },
+    ctaSecondary: { text: "See Live Demo", href: "/hotel-management-system", icon: "fa-laptop" },
+    pills: ["0% OTA Commission", "Direct Payments", "Mobile Friendly", "Instant Confirmation"],
+    image: "/assets/images/hero-slider/banner6-hotel-booking.jpg",
+    alt: "ChittorTech Hotel Room Booking Engine with 0% OTA Commission"
+  },
+  {
+    id: 7,
+    badge: "Cloud & SaaS Architecture",
+    badgeIcon: "fa-cloud-arrow-up",
+    badgeColor: "#6366f1",
+    title: "Scalable Next.js 16 & Enterprise Cloud Infrastructure",
+    sub: "High-performance microservices, serverless APIs & modern SaaS products built for growth.",
+    ctaPrimary: { text: "Build SaaS MVP", href: "/4-week-saas-mvp", icon: "fa-rocket" },
+    ctaSecondary: { text: "Talk to Architect", href: "/contact-us", icon: "fa-comments" },
+    pills: ["Sub-second Speed", "Render & Cloudflare", "Firebase Realtime", "Custom SaaS"],
+    image: "/assets/images/hero-slider/banner7-cloud-saas.jpg",
+    alt: "ChittorTech Custom SaaS Development and Cloud Architecture"
+  }
+];
+
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState("chatbots");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   const tab = TABS.find((t) => t.key === activeTab) || TABS[0];
+  const slide = HERO_SLIDES[currentSlide];
+
+  // Auto-play slider loop (6 seconds per slide)
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  // Touch Swipe Handlers for Mobile
+  const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 50) {
+      // Swipe left -> Next slide
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    } else if (distance < -50) {
+      // Swipe right -> Prev slide
+      setCurrentSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1));
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
 
 
   return (
     <>
       <style>{`
-        /* ── Modern Hero Section ── */
+        /* ── Modern White Hero Section (Desktop & Mobile) ── */
         .ct-hp-hero {
-          background: linear-gradient(180deg, #090d16 0%, #0f172a 100%);
+          background: #ffffff;
           position: relative;
           overflow: hidden;
-          padding: 52px 0 46px;
-          color: #fff;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 48px 0 42px;
+          color: #0f172a;
+          border-bottom: 1px solid #e2e8f0;
         }
-        .ct-hp-hero-glow-1 {
-          position: absolute;
-          top: -120px;
-          left: 20%;
-          width: 440px;
-          height: 440px;
-          background: radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, rgba(139, 92, 246, 0) 70%);
-          pointer-events: none;
-          filter: blur(45px);
-        }
-        .ct-hp-hero-glow-2 {
-          position: absolute;
-          bottom: -120px;
-          right: 15%;
-          width: 400px;
-          height: 400px;
-          background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, rgba(6, 182, 212, 0) 70%);
-          pointer-events: none;
-          filter: blur(45px);
-        }
-        .ct-hp-hero-grid {
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-          background-size: 26px 26px;
-          opacity: 0.45;
-          pointer-events: none;
+        .ct-hp-hero-glow-1, .ct-hp-hero-glow-2, .ct-hp-hero-grid {
+          display: none;
         }
         .ct-hp-hero-badge {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          backdrop-filter: blur(12px);
-          color: #cbd5e1;
+          background: #f1f5f9;
+          border: 1px solid #cbd5e1;
+          color: #1e293b;
           font-size: 0.78rem;
           font-weight: 600;
           letter-spacing: 0.4px;
@@ -310,36 +411,24 @@ export default function HomePage() {
           border-radius: 50px;
           margin-bottom: 16px;
         }
-        .ct-hp-hero-badge .dot {
-          width: 7px;
-          height: 7px;
-          border-radius: 50%;
-          background: #10b981;
-          box-shadow: 0 0 8px #10b981;
-          animation: pulse-emerald 2s infinite;
-        }
-        @keyframes pulse-emerald {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.3); }
-        }
         .ct-hp-hero h1 {
           font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: clamp(2rem, 3.5vw, 2.9rem);
+          font-size: clamp(2rem, 3.5vw, 2.8rem);
           font-weight: 800;
-          color: #ffffff;
-          line-height: 1.16;
+          color: #0f172a;
+          line-height: 1.18;
           margin-bottom: 14px;
           letter-spacing: -0.4px;
         }
         .ct-hp-hero h1 .gradient-text {
-          background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 50%, #34d399 100%);
+          background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #06b6d4 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
         .ct-hp-hero-sub {
           font-size: 0.96rem;
-          color: #94a3b8;
+          color: #475569;
           line-height: 1.65;
           max-width: 520px;
           margin-bottom: 22px;
@@ -354,11 +443,11 @@ export default function HomePage() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: #cbd5e1;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          color: #334155;
           font-size: 0.78rem;
-          font-weight: 500;
+          font-weight: 600;
           padding: 5px 14px;
           border-radius: 50px;
         }
@@ -1066,62 +1155,419 @@ export default function HomePage() {
           .ct-tab-visual-title { font-size: 0.82rem; }
           .ct-tab-visual-sub { font-size: 0.65rem; }
         }
+        /* ── Dynamic 7-Slide Hero Slider ── */
+        .ct-hero-slider-viewport {
+          overflow: hidden;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        .ct-hero-slider-track {
+          display: flex;
+          width: 100%;
+          will-change: transform;
+        }
+        .ct-hero-slide-item {
+          min-width: 100%;
+          width: 100%;
+          max-width: 100%;
+          flex-shrink: 0;
+          box-sizing: border-box;
+          padding: 0 4px;
+          overflow: hidden;
+        }
+        .ct-hero-slide-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 36px;
+          align-items: center;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        @media (max-width: 991px) {
+          .ct-hp-hero {
+            background: #ffffff !important;
+            color: #0f172a !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+            padding: 24px 0 32px !important;
+          }
+          .ct-hp-hero-glow-1, .ct-hp-hero-glow-2, .ct-hp-hero-grid {
+            display: none !important;
+          }
+          .ct-hero-slide-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+        .ct-slide-col-left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          min-width: 0;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        @media (max-width: 991px) {
+          .ct-slide-col-left {
+            align-items: center;
+            text-align: center;
+          }
+          .ct-hp-hero h1 {
+            color: #0f172a !important;
+            font-size: clamp(1.25rem, 4.5vw, 1.6rem) !important;
+            line-height: 1.25 !important;
+            word-break: break-word !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin-bottom: 8px !important;
+          }
+          .ct-hp-hero-sub {
+            color: #475569 !important;
+            font-size: 0.84rem !important;
+            line-height: 1.45 !important;
+            word-break: break-word !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin-bottom: 12px !important;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 2 !important;
+            -webkit-box-orient: vertical !important;
+            overflow: hidden !important;
+          }
+          .ct-hp-hero-pills {
+            justify-content: center !important;
+            width: 100% !important;
+            gap: 6px !important;
+            margin-bottom: 12px !important;
+          }
+          .ct-hp-hero-pills span:nth-child(n+3) {
+            display: none !important;
+          }
+          .ct-hp-pill {
+            background: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            color: #334155 !important;
+            font-size: 0.7rem !important;
+            padding: 3px 9px !important;
+            word-break: break-word !important;
+          }
+          .ct-hp-hero-ctas {
+            flex-direction: column !important;
+            width: 100% !important;
+            gap: 6px !important;
+          }
+          .ct-hp-hero-ctas a, .ct-hp-hero-ctas button {
+            width: 100% !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+            text-align: center !important;
+            padding: 9px 14px !important;
+            font-size: 0.85rem !important;
+          }
+        .ct-btn-ghost {
+          color: #1e293b !important;
+          border: 1.5px solid #cbd5e1 !important;
+          background: #ffffff !important;
+        }
+        .ct-btn-ghost:hover {
+          background: #f8fafc !important;
+          border-color: #94a3b8 !important;
+          color: #0f172a !important;
+        }
+        .ct-slide-col-right {
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        .ct-slider-card {
+          background: #ffffff;
+          border-radius: 20px;
+          padding: 10px;
+          box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+          border: 1px solid #e2e8f0;
+          overflow: hidden;
+          transition: all 0.5s ease-in-out;
+          position: relative;
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+        @media (max-width: 991px) {
+          .ct-slider-card {
+            padding: 6px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+            border: 1px solid #e2e8f0 !important;
+          }
+        }
+        .ct-slider-img {
+          width: 100%;
+          height: auto;
+          max-height: 380px;
+          object-fit: cover;
+          border-radius: 14px;
+          display: block;
+          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @media (max-width: 768px) {
+          .ct-slider-img {
+            max-height: 185px !important;
+          }
+        }
+        .ct-slider-card:hover .ct-slider-img {
+          transform: scale(1.02);
+        }
+        .ct-slider-controls {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          margin: 28px auto 0 !important;
+          gap: 16px !important;
+          width: 100% !important;
+          text-align: center !important;
+          position: relative !important;
+          z-index: 10 !important;
+        }
+        .ct-slider-arrow {
+          width: 44px !important;
+          height: 44px !important;
+          border-radius: 50% !important;
+          background: #ffffff !important;
+          border: 1.5px solid #cbd5e1 !important;
+          color: #0f172a !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          cursor: pointer !important;
+          transition: all 0.25s ease !important;
+          box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+          outline: none !important;
+          padding: 0 !important;
+        }
+        .ct-slider-arrow:hover {
+          background: #2563eb !important;
+          border-color: #2563eb !important;
+          color: #ffffff !important;
+          transform: translateY(-2px) scale(1.06) !important;
+          box-shadow: 0 8px 22px rgba(37, 99, 235, 0.3) !important;
+        }
+        .ct-slider-dots {
+          display: inline-flex !important;
+          align-items: center !important;
+          gap: 8px !important;
+        }
+        .ct-slider-dot {
+          width: 10px !important;
+          height: 10px !important;
+          border-radius: 50% !important;
+          background: #cbd5e1 !important;
+          border: none !important;
+          padding: 0 !important;
+          cursor: pointer !important;
+          transition: all 0.3s ease !important;
+        }
+        .ct-slider-dot.active {
+          width: 28px !important;
+          border-radius: 20px !important;
+          background: #2563eb !important;
+        }
       `}</style>
 
-      {/* ── 1. MODERN HERO SECTION ── */}
-      <section className="ct-hp-hero">
+      {/* ── 1. MODERN 7-SLIDE DYNAMIC HERO CAROUSEL ── */}
+      <section
+        className="ct-hp-hero"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="ct-hp-hero-glow-1"></div>
         <div className="ct-hp-hero-glow-2"></div>
         <div className="ct-hp-hero-grid"></div>
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <div className="row align-items-center g-4">
-            <div className="col-lg-6 text-center text-lg-start">
 
-              <h1>
-                ChittorTech: Leading Web &<br />
-                <span className="gradient-text">Mobile App Development Company.</span>
-              </h1>
-              <p className="ct-hp-hero-sub">
-                From high-converting web development and native mobile apps to AI software and <Link href="/google-play-publishing" style={{ color: '#60a5fa', textDecoration: 'underline', fontWeight: 600 }}>Google Play Store publishing</Link> — ChittorTech delivers custom IT solutions that drive exponential business growth.
-              </p>
-              <div className="ct-hp-hero-pills">
-                <span className="ct-hp-pill"><i className="fa-solid fa-robot" style={{ color: "#8b5cf6" }}></i> AI Agents</span>
-                <span className="ct-hp-pill"><i className="fa-solid fa-brain" style={{ color: "#06b6d4" }}></i> RAG & LLMs</span>
-                <span className="ct-hp-pill"><i className="fa-solid fa-code" style={{ color: "#10b981" }}></i> Next.js / SaaS</span>
-                <span className="ct-hp-pill"><i className="fa-solid fa-chart-line" style={{ color: "#f59e0b" }}></i> SEO Growth</span>
-                <Link href="/google-play-publishing" className="ct-hp-pill text-decoration-none" style={{ cursor: 'pointer', color: '#cbd5e1' }}>
-                  <i className="fa-brands fa-google-play" style={{ color: "#60a5fa" }}></i> Play Store Publishing
-                </Link>
-              </div>
-              <div className="ct-hp-hero-ctas justify-content-center justify-content-lg-start">
-                <button
-                  className="ct-btn ct-btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#trialModal"
-                  style={{ background: "linear-gradient(135deg, #7c3aed, #4f46e5)", border: "none", padding: "11px 24px", fontSize: "0.92rem" }}
-                >
-                  <i className="fa-solid fa-calendar-check"></i> Request AI Consultation
-                </button>
-                <Link href="/web-development-services" className="ct-btn ct-btn-ghost" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.2)", padding: "11px 24px", fontSize: "0.92rem" }}>
-                  Explore Services <i className="fa-solid fa-arrow-right"></i>
-                </Link>
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="ct-hero-card-wrap">
-                <div className="ct-hero-glass-card">
-                  <Image
-                    src="/assets/images/ct-dashboard-hero.png"
-                    alt="ChittorTech AI Analytics & Automation Dashboard"
-                    className="ct-hero-card-img"
-                    width={800}
-                    height={500}
-                    priority={true}
-                  />
+          {/* Smooth Horizontal Sliding Viewport */}
+          <div className="ct-hero-slider-viewport">
+            <div
+              className="ct-hero-slider-track"
+              style={{
+                transform: `translateX(-${currentSlide * 100}%)`,
+                transition: "transform 0.85s cubic-bezier(0.25, 1, 0.5, 1)"
+              }}
+            >
+              {HERO_SLIDES.map((slideItem) => (
+                <div className="ct-hero-slide-item" key={slideItem.id}>
+                  <div className="ct-hero-slide-grid">
+
+                    {/* Left Content Column */}
+                    <div className="ct-slide-col-left">
+                      <div className="ct-hp-hero-badge" style={{ borderColor: `${slideItem.badgeColor}40` }}>
+                        <i className={`fa-solid ${slideItem.badgeIcon}`} style={{ color: slideItem.badgeColor }}></i>
+                        <span style={{ color: slideItem.badgeColor, fontWeight: 700 }}>{slideItem.badge}</span>
+                      </div>
+
+                      <h1>{slideItem.title}</h1>
+                      <p className="ct-hp-hero-sub">{slideItem.sub}</p>
+
+                      <div className="ct-hp-hero-pills">
+                        {slideItem.pills.map((pill, idx) => (
+                          <span key={idx} className="ct-hp-pill">
+                            <i className="fa-solid fa-check" style={{ color: slideItem.badgeColor }}></i> {pill}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="ct-hp-hero-ctas justify-content-center justify-content-lg-start">
+                        <Link
+                          href={slideItem.ctaPrimary.href}
+                          className="ct-btn ct-btn-primary"
+                          style={{
+                            background: `linear-gradient(135deg, ${slideItem.badgeColor} 0%, #291fbc 100%)`,
+                            border: "none",
+                            padding: "11px 24px",
+                            fontSize: "0.92rem"
+                          }}
+                        >
+                          <i className={`fa-solid ${slideItem.ctaPrimary.icon}`}></i> {slideItem.ctaPrimary.text}
+                        </Link>
+
+                        {slideItem.ctaSecondary.targetModal ? (
+                          <button
+                            className="ct-btn ct-btn-ghost"
+                            data-bs-toggle="modal"
+                            data-bs-target="#trialModal"
+                            style={{ padding: "11px 24px", fontSize: "0.92rem" }}
+                          >
+                            <i className={`fa-solid ${slideItem.ctaSecondary.icon}`}></i> {slideItem.ctaSecondary.text}
+                          </button>
+                        ) : (
+                          <Link
+                            href={slideItem.ctaSecondary.href}
+                            className="ct-btn ct-btn-ghost"
+                            style={{ padding: "11px 24px", fontSize: "0.92rem" }}
+                          >
+                            <i className={`fa-solid ${slideItem.ctaSecondary.icon}`}></i> {slideItem.ctaSecondary.text}
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Right Visual Card Column */}
+                    <div className="ct-slide-col-right">
+                      <div className="ct-slider-card">
+                        <Image
+                          src={slideItem.image}
+                          alt={slideItem.alt}
+                          className="ct-slider-img"
+                          width={800}
+                          height={450}
+                          priority={true}
+                        />
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
+
+          {/* Centered Controls Bar (Inline Styled for Zero CSS Cascade Overrides) */}
+          <div
+            className="ct-slider-controls"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "16px",
+              marginTop: "24px",
+              width: "100%",
+              position: "relative",
+              zIndex: 10
+            }}
+          >
+            <button
+              type="button"
+              className="ct-slider-arrow"
+              onClick={() => setCurrentSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1))}
+              title="Previous Slide"
+              aria-label="Previous Slide"
+              style={{
+                width: "44px",
+                height: "44px",
+                borderRadius: "50%",
+                backgroundColor: "#ffffff",
+                border: "1.5px solid #cbd5e1",
+                color: "#0f172a",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                boxShadow: "0 4px 12px rgba(15, 23, 42, 0.08)",
+                outline: "none",
+                padding: 0
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              {HERO_SLIDES.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  className={`ct-slider-dot ${currentSlide === idx ? "active" : ""}`}
+                  onClick={() => setCurrentSlide(idx)}
+                  title={`Go to slide ${idx + 1}`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  style={{
+                    width: currentSlide === idx ? "28px" : "10px",
+                    height: "10px",
+                    borderRadius: currentSlide === idx ? "20px" : "50%",
+                    backgroundColor: currentSlide === idx ? "#2563eb" : "#cbd5e1",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer",
+                    transition: "all 0.3s ease"
+                  }}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              className="ct-slider-arrow"
+              onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
+              title="Next Slide"
+              aria-label="Next Slide"
+              style={{
+                width: "44px",
+                height: "44px",
+                borderRadius: "50%",
+                backgroundColor: "#ffffff",
+                border: "1.5px solid #cbd5e1",
+                color: "#0f172a",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                boxShadow: "0 4px 12px rgba(15, 23, 42, 0.08)",
+                outline: "none",
+                padding: 0
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
         </div>
       </section>
 
