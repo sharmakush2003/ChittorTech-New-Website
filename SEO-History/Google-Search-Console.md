@@ -25,9 +25,15 @@
 Google Search Console allows ~10–15 manual inspection requests per day. Use these tiers in order:
 
 ### 🏆 Tier 1: Core High-Ticket & Commercial Pillar Pages (High Revenue)
-1. `https://chittortech.in/b2b-lead-generation-services` *(Automated AI B2B Lead Engine & Maps Scraping)* 🚀 **[TOP PRIORITY INDEXING]**
-2. `https://chittortech.in/project-estimator` *(Interactive Estimator Tool)*
-3. `https://chittortech.in/technical-seo-services`
+1. `https://chittortech.in/email-deliverability-services` *(Fix Spam & Inbox Landing)* 🚀 **[TOP PRIORITY INDEXING]**
+2. `https://chittortech.in/dmarc-dkim-spf-setup` *(DMARC, DKIM & SPF Authentication)* 🚀 **[TOP PRIORITY INDEXING]**
+3. `https://chittortech.in/business-email-branding-bimi` *(BIMI & Gmail/Apple Verified Blue Checkmark)* 🚀 **[TOP PRIORITY INDEXING]**
+4. `https://chittortech.in/dns-cloudflare-management` *(Enterprise DNS & Zero-Downtime Migration)* 🚀 **[TOP PRIORITY INDEXING]**
+5. `https://chittortech.in/email-blacklist-removal` *(Spamhaus, Barracuda & Reputation Recovery)* 🚀 **[TOP PRIORITY INDEXING]**
+6. `https://chittortech.in/cloud-hosting-deployment` *(Cloud Hosting, AWS/GCP/Azure/Docker/Vercel & DevOps)* 🚀 **[TOP PRIORITY INDEXING]**
+7. `https://chittortech.in/b2b-lead-generation-services` *(Automated AI B2B Lead Engine & Maps Scraping)* 🚀 **[TOP PRIORITY INDEXING]**
+8. `https://chittortech.in/project-estimator` *(Interactive Estimator Tool)*
+9. `https://chittortech.in/technical-seo-services`
 4. `https://chittortech.in/on-page-seo-services`
 5. `https://chittortech.in/off-page-seo-services`
 5. `https://chittortech.in/social-media-optimization`

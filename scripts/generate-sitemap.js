@@ -82,7 +82,9 @@ const coreServices = new Set([
   'web-development-services', 'search-engine-optimization', 'digital-marketing-services', 
   'custom-crm-solutions', 'e-commerce-website-development', 'android-application', 
   'ai-solutions', 'ai-manufacturing', 'ai-chatbot-development', 'antigravity', 'render', 'cloudflare', 'vercel', 'groq',
-  'enterprise-ai-agents', 'dedicated-tech-teams', '4-week-saas-mvp', 'timezone-overlap', 'b2b-lead-generation-services'
+  'enterprise-ai-agents', 'dedicated-tech-teams', '4-week-saas-mvp', 'timezone-overlap', 'b2b-lead-generation-services',
+  'email-deliverability-services', 'dmarc-dkim-spf-setup', 'business-email-branding-bimi',
+  'dns-cloudflare-management', 'email-blacklist-removal', 'cloud-hosting-deployment'
 ]);
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

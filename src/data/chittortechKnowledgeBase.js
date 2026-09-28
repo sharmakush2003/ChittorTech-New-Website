@@ -101,4 +101,12 @@ export const CHITTORTECH_KNOWLEDGE_BASE = `
 - Rule 4 (No Guaranteed SEO Rankings): SEO provides optimization to improve search visibility.
 - Rule 5 (No Guaranteed AI Accuracy): AI performance depends on data quality and testing.
 - Rule 7 (No Direct Call/Meeting Scheduling): The AI assistant CANNOT book, confirm, or lock meeting dates/times directly in chat. NEVER pretend to schedule an appointment or output fake meeting details. ALWAYS direct the visitor to click the "Book Call" button/window and append [ACTION:SCHEDULE] or [ACTION:DEMO].
+
+31. EMAIL DELIVERABILITY & CLOUD INFRASTRUCTURE SERVICES
+- Email Deliverability Services (/email-deliverability-services): Google & Yahoo sender compliance, SPF, DKIM, DMARC alignment, Google Postmaster Tools & Microsoft SNDS reputation healing, spam-trap elimination, dedicated IP warmup, inbox placement optimization.
+- DMARC, DKIM & SPF Setup (/dmarc-dkim-spf-setup): 2048-bit DKIM private/public key configuration, SPF 10 DNS lookup limit resolution (SPF flattening), strict DMARC p=reject anti-spoofing policy rollout, RUA/RUF reporting.
+- BIMI & Verified Email Branding (/business-email-branding-bimi): Verified brand logo display in supported Gmail, Apple Mail, and Yahoo inboxes; SVG Tiny-PS vector formatting, VMC / CMC certificate authority coordination, and blue checkmark eligibility.
+- Enterprise DNS & Cloudflare Management (/dns-cloudflare-management): Zero-downtime nameserver migration, DNSSEC signing, custom WAF firewall rules, DDoS mitigation, edge caching, and proxy mail-routing isolation (Orange Cloud vs Grey Cloud).
+- Email Blacklist Removal & Reputation Recovery (/email-blacklist-removal): Multi-RBL investigation (Spamhaus SBL/CSS/DBL, Barracuda BRBL, SpamCop, Invaluement), compromised account & malicious script containment, Microsoft SNDS 550 5.7.1 triage, and Google Postmaster recovery.
+- Cloud Hosting & Production Deployment (/cloud-hosting-deployment): AWS (EC2/ECS/RDS), Google Cloud (Cloud Run/SQL), Microsoft Azure, Vercel & Next.js production hosting, multi-stage Docker containerization, GitHub Actions CI/CD pipelines, database connection pooling (PgBouncer), SSL/TLS, Linux security hardening, and zero-downtime cloud migration.
 `;

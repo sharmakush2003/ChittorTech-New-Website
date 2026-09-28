@@ -19,7 +19,16 @@
 | **22-Sep-2026** | 150 | `https://` | Batch 5 (Main Mirror) | 753 | 10 | Done |
 | **24-Sep-2026** | 10 | `https://` | Batch 6 (Main Mirror) | 763 | **0** | **🎉 100% COMPLETE** |
 | **26-Sep-2026** | 150 | `https://` | Priority Re-index Queue Batch | 764 | 0 | Done |
-| **27-Sep-2026** | 150 | `https://` | Daily Priority Re-index Batch 7 | 764 | 0 | In Progress |
+| **27-Sep-2026** | 150 | `https://` | Daily Priority Re-index Batch 7 | 764 | 0 | Done |
+| **29-Sep-2026** | 6 | `https://` | **Batch 8 (Top Priority):** Email Deliverability, DMARC, BIMI, DNS, Blacklist Removal, Cloud Hosting | 770 | 0 | **Ready for Morning Submission** |
+
+### 🚀 Immediate Morning Priority Queue (Yandex Re-crawl Queue)
+1. `https://chittortech.in/email-deliverability-services`
+2. `https://chittortech.in/dmarc-dkim-spf-setup`
+3. `https://chittortech.in/business-email-branding-bimi`
+4. `https://chittortech.in/dns-cloudflare-management`
+5. `https://chittortech.in/email-blacklist-removal`
+6. `https://chittortech.in/cloud-hosting-deployment`
 
 > **Master JSON Tracker:** [SEO-History/submitted_history.json](file:///c:/Users/kushs/OneDrive/Documents/Web%20Development/Chittortech-Website/SEO-History/submitted_history.json) (All 763 URLs from sitemap have now been successfully queued in Yandex).
 

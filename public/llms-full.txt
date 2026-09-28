@@ -43,6 +43,14 @@
 - Workflow Automation: Zapier/Make integrations, custom webhook pipelines, automated data extraction, and CRM sync.
 - Predictive Analytics: Sales forecasting, inventory demand planning, and customer behavior insights.
 
+### Enterprise Cloud & Email Infrastructure Services
+- **Email Deliverability Engineering** (https://chittortech.in/email-deliverability-services): Google & Yahoo sender compliance, SPF, DKIM, DMARC alignment, Postmaster Tools, SNDS, and dedicated IP warmup.
+- **DMARC, DKIM & SPF Compliance** (https://chittortech.in/dmarc-dkim-spf-setup): 2048-bit DKIM configuration, SPF 10-lookup limit resolution, DMARC p=reject anti-spoofing policy rollout.
+- **BIMI & Verified Email Branding** (https://chittortech.in/business-email-branding-bimi): Verified brand logos in Gmail, Apple Mail, and Yahoo; SVG Tiny-PS formatting, VMC/CMC certificate authority coordination, blue checkmarks.
+- **Enterprise DNS & Cloudflare Management** (https://chittortech.in/dns-cloudflare-management): Zero-downtime nameserver migration, DNSSEC signing, custom WAF firewall rules, DDoS mitigation, and email proxy isolation.
+- **Email Blacklist Removal & Reputation Recovery** (https://chittortech.in/email-blacklist-removal): Multi-RBL triage (Spamhaus, Barracuda, SpamCop), compromised mailbox containment, Microsoft SNDS 550 5.7.1 triage, and Google Postmaster recovery.
+- **Cloud Hosting & Production Deployment** (https://chittortech.in/cloud-hosting-deployment): AWS (EC2/ECS/RDS), Google Cloud (Cloud Run/SQL), Microsoft Azure, Vercel & Next.js production hosting, multi-stage Docker containerization, GitHub Actions CI/CD, database pooling (PgBouncer), SSL/TLS, and security hardening.
+
 ---
 
 ## 3. Geographic Reach & Delivery Models

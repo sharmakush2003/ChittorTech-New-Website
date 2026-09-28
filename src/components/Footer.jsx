@@ -514,6 +514,12 @@ export default function Footer() {
                 <div className="ct-footer-col-head">IT & Growth</div>
                 {[
                   { href: "/web-development-services", label: "Web Development" },
+                  { href: "/cloud-hosting-deployment", label: "Cloud Hosting & DevOps" },
+                  { href: "/dns-cloudflare-management", label: "DNS & Cloudflare" },
+                  { href: "/email-deliverability-services", label: "Email Deliverability" },
+                  { href: "/dmarc-dkim-spf-setup", label: "DMARC & DKIM Setup" },
+                  { href: "/business-email-branding-bimi", label: "BIMI Email Branding" },
+                  { href: "/email-blacklist-removal", label: "Blacklist Removal" },
                   { href: "/e-commerce-website-development", label: "E-Commerce Solutions" },
                   { href: "/android-application", label: "Android Mobile Apps" },
                   { href: "/google-play-publishing", label: "Google Play Publishing" },

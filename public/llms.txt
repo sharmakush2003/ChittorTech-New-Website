@@ -27,6 +27,13 @@
   - Educational Institute & School Management Portals
   - E-commerce & Multi-vendor Marketplace Platforms
 - **AI & Intelligent Automation**: Enterprise AI support chatbots, conversational knowledge bases, automated customer support workflows, and predictive analytics.
+- **Enterprise Cloud & Email Infrastructure**:
+  - Email Deliverability Engineering & Inbox Placement (https://chittortech.in/email-deliverability-services)
+  - DMARC, DKIM & SPF Compliance Setup (https://chittortech.in/dmarc-dkim-spf-setup)
+  - BIMI & Verified Email Branding (https://chittortech.in/business-email-branding-bimi)
+  - Enterprise DNS & Cloudflare Management (https://chittortech.in/dns-cloudflare-management)
+  - Email Blacklist Removal & Reputation Recovery (https://chittortech.in/email-blacklist-removal)
+  - Cloud Hosting & Production Deployment (https://chittortech.in/cloud-hosting-deployment)
 - **UI/UX Engineering**: User-centric product design, design systems, modern responsive interfaces, and interactive dashboards.
 
 ## Target Audience & Geographic Reach
@@ -38,19 +45,21 @@
 - **Frontend**: Next.js, React.js, Tailwind CSS, TypeScript, HTML5/CSS3, GSAP.
 - **Backend & APIs**: Node.js, Express, Python, Django, REST APIs, GraphQL.
 - **Databases**: PostgreSQL, MySQL, MongoDB, Firebase Firestore, Redis.
-- **Cloud & DevOps**: AWS, Google Cloud Platform (GCP), Vercel, Firebase Hosting, CI/CD pipelines.
+- **Cloud & DevOps**: AWS, Google Cloud Platform (GCP), Vercel, Firebase Hosting, Docker, GitHub Actions CI/CD.
 - **Mobile**: Flutter, React Native, iOS (Swift), Android (Kotlin).
 
 ## Key Links & Resources
 - **Homepage**: https://chittortech.in
+- **Email Deliverability Services**: https://chittortech.in/email-deliverability-services
+- **DMARC, DKIM & SPF Setup**: https://chittortech.in/dmarc-dkim-spf-setup
+- **BIMI Email Branding**: https://chittortech.in/business-email-branding-bimi
+- **DNS & Cloudflare Management**: https://chittortech.in/dns-cloudflare-management
+- **Email Blacklist Removal**: https://chittortech.in/email-blacklist-removal
+- **Cloud Hosting & Deployment**: https://chittortech.in/cloud-hosting-deployment
 - **Web Development Services**: https://chittortech.in/web-development-services
-- **Mobile App Development**: https://chittortech.in/mobile-application-development
-- **Custom Software Development**: https://chittortech.in/custom-software-development
-- **Cloud PMS & Hotel ERP**: https://chittortech.in/property-management-system
-- **Temple Management System**: https://chittortech.in/temple-management-system
 - **Accounting & Billing Software**: https://chittortech.in/accounting
 - **CRM Software Solutions**: https://chittortech.in/crm
-- **Contact & Project Inquiries**: https://chittortech.in/contact
+- **Contact & Project Inquiries**: https://chittortech.in/contact-us
 
 ## Contact Information
 - **Phone / WhatsApp**: +91-7597451057

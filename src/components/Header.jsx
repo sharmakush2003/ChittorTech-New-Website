@@ -46,13 +46,19 @@ const NAV_ITEMS = {
     ],
   },
   services: [
-    { href: "/web-development-services",       icon: "fa-code",             label: "Web Development",          desc: "Next.js, React, Node.js" },
-    { href: "/e-commerce-website-development", icon: "fa-cart-shopping",    label: "E-Commerce Solutions",     desc: "Full-stack storefronts" },
-    { href: "/android-application",            icon: "fa-android",          label: "Android Mobile Apps",      desc: "Native & cross-platform" },
-    { href: "/google-play-publishing",         icon: "fa-upload",           label: "Google Play Publishing",   desc: "Verify & publish your apps" },
-    { href: "/search-engine-optimization",     icon: "fa-magnifying-glass", label: "SEO Growth Services",      desc: "Rank #1 on Google" },
-    { href: "/digital-marketing-services",     icon: "fa-bullhorn",         label: "Digital Marketing",        desc: "Ads, leads, ROI" },
-    { href: "/b2b-lead-generation-services",   icon: "fa-bullseye",         label: "B2B Lead Generation",      desc: "Automated B2B sales engine" },
+    { href: "/web-development-services",       icon: "fa-code",                  label: "Web Development",          desc: "Next.js, React, Node.js" },
+    { href: "/cloud-hosting-deployment",       icon: "fa-cloud",                 label: "Cloud Hosting & DevOps",   desc: "AWS, Azure, GCP & Docker" },
+    { href: "/dns-cloudflare-management",      icon: "fa-network-wired",         label: "DNS & Cloudflare Setup",   desc: "Zero-downtime DNS & WAF" },
+    { href: "/email-deliverability-services",  icon: "fa-envelope-circle-check", label: "Email Deliverability",    desc: "Fix spam & land in inbox" },
+    { href: "/dmarc-dkim-spf-setup",           icon: "fa-shield-halved",         label: "DMARC, DKIM & SPF",        desc: "Email security & auth" },
+    { href: "/business-email-branding-bimi",   icon: "fa-certificate",           label: "BIMI Verified Branding",   desc: "Gmail & Apple checkmark" },
+    { href: "/email-blacklist-removal",        icon: "fa-triangle-exclamation",  label: "Blacklist Removal",        desc: "Spamhaus & IP recovery" },
+    { href: "/e-commerce-website-development", icon: "fa-cart-shopping",         label: "E-Commerce Solutions",     desc: "Full-stack storefronts" },
+    { href: "/android-application",            icon: "fa-android",               label: "Android Mobile Apps",      desc: "Native & cross-platform" },
+    { href: "/google-play-publishing",         icon: "fa-upload",                label: "Google Play Publishing",   desc: "Verify & publish your apps" },
+    { href: "/search-engine-optimization",     icon: "fa-magnifying-glass",      label: "SEO Growth Services",      desc: "Rank #1 on Google" },
+    { href: "/digital-marketing-services",     icon: "fa-bullhorn",              label: "Digital Marketing",        desc: "Ads, leads, ROI" },
+    { href: "/b2b-lead-generation-services",   icon: "fa-bullseye",              label: "B2B Lead Generation",      desc: "Automated B2B sales engine" },
   ],
 };
 
@@ -825,10 +831,10 @@ export default function Header() {
                   </button>
                   <div
                     className={`ct-drop ${activeDropdown === "services" ? "open" : ""}`}
-                    style={{ minWidth: "540px" }}
+                    style={{ minWidth: "620px", maxHeight: "88vh", overflowY: "auto" }}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    <div className="ct-drop-grid" style={{ gridTemplateColumns: "1fr 1fr", gap: "3px" }}>
+                    <div className="ct-drop-grid" style={{ gridTemplateColumns: "1fr 1fr", gap: "4px" }}>
                       {NAV_ITEMS.services.map((item) => (
                         <Link key={item.label} href={item.href} className="ct-drop-item" onClick={() => setActiveDropdown(null)}>
                           <div className="ct-drop-icon"><i className={`fa-solid ${item.icon}`}></i></div>
