@@ -7,6 +7,7 @@ import {
   updateB2BLeadStatus,
   updateB2BLeadNotes,
   updateB2BLeadCity,
+  updateB2BLeadCategory,
   deleteB2BLead,
 } from "@/lib/leadService";
 
@@ -47,12 +48,95 @@ const QUICK_LOCATIONS = [
   { name: "Jodhpur, Rajasthan", label: "Jodhpur", color: "#0284c7" },
 ];
 
+export const NICHE_CONFIG = {
+  marble: {
+    id: "marble",
+    label: "Marble & Granite",
+    icon: "fa-cubes",
+    color: "#8b5cf6",
+    bg: "rgba(139, 92, 246, 0.12)",
+    border: "rgba(139, 92, 246, 0.35)",
+    text: "#7c3aed",
+    categoryName: "Marble & Granite",
+    badge: "💎 Marble",
+  },
+  textile: {
+    id: "textile",
+    label: "Textiles & Garments",
+    icon: "fa-tshirt",
+    color: "#10b981",
+    bg: "rgba(16, 185, 129, 0.12)",
+    border: "rgba(16, 185, 129, 0.35)",
+    text: "#059669",
+    categoryName: "Textile & Manufacturing",
+    badge: "🧵 Textile",
+  },
+  school: {
+    id: "school",
+    label: "Schools & Colleges",
+    icon: "fa-graduation-cap",
+    color: "#f59e0b",
+    bg: "rgba(245, 158, 11, 0.12)",
+    border: "rgba(245, 158, 11, 0.35)",
+    text: "#d97706",
+    categoryName: "Schools & Colleges",
+    badge: "🏫 Education",
+  },
+  transport: {
+    id: "transport",
+    label: "Transport & Logistics",
+    icon: "fa-truck",
+    color: "#ef4444",
+    bg: "rgba(239, 68, 68, 0.12)",
+    border: "rgba(239, 68, 68, 0.35)",
+    text: "#dc2626",
+    categoryName: "Transport & Logistics",
+    badge: "🚚 Transport",
+  },
+  dharamshala: {
+    id: "dharamshala",
+    label: "Dharamshala & Trusts",
+    icon: "fa-om",
+    color: "#ec4899",
+    bg: "rgba(236, 72, 153, 0.12)",
+    border: "rgba(236, 72, 153, 0.35)",
+    text: "#db2777",
+    categoryName: "Dharamshala & Trusts",
+    badge: "🛕 Dharamshala",
+  },
+  hotel: {
+    id: "hotel",
+    label: "Hotels & Resorts",
+    icon: "fa-hotel",
+    color: "#06b6d4",
+    bg: "rgba(6, 182, 212, 0.12)",
+    border: "rgba(6, 182, 212, 0.35)",
+    text: "#0891b2",
+    categoryName: "Hotels & Resorts",
+    badge: "🏨 Hotel",
+  },
+  general: {
+    id: "general",
+    label: "Business & IT Services",
+    icon: "fa-briefcase",
+    color: "#6366f1",
+    bg: "rgba(99, 102, 241, 0.12)",
+    border: "rgba(99, 102, 241, 0.35)",
+    text: "#4f46e5",
+    categoryName: "General Business",
+    badge: "💼 Business",
+  }
+};
+
 function detectNiche(lead) {
-  const combined = `${lead?.name || ""} ${lead?.category || ""} ${lead?.notes || ""}`.toLowerCase();
+  if (lead?.pitchType && NICHE_CONFIG[lead.pitchType]) return lead.pitchType;
+  const combined = `${lead?.category || ""} ${lead?.name || ""} ${lead?.notes || ""}`.toLowerCase();
   if (combined.includes("marble") || combined.includes("granite") || combined.includes("stone") || combined.includes("mines") || combined.includes("quartz") || combined.includes("marmo")) return "marble";
-  if (combined.includes("dharamshala") || combined.includes("trust") || combined.includes("mandir") || combined.includes("ashram") || combined.includes("sansthan")) return "dharamshala";
-  if (combined.includes("hotel") || combined.includes("resort") || combined.includes("palace") || combined.includes("stay") || combined.includes("inn") || combined.includes("haveli")) return "hotel";
   if (combined.includes("textile") || combined.includes("spin") || combined.includes("suit") || combined.includes("fabric") || combined.includes("garment") || combined.includes("yarn") || combined.includes("mill") || combined.includes("synthetics")) return "textile";
+  if (combined.includes("school") || combined.includes("college") || combined.includes("coaching") || combined.includes("institute") || combined.includes("education") || combined.includes("shiksha")) return "school";
+  if (combined.includes("transport") || combined.includes("logistic") || combined.includes("fleet") || combined.includes("truck") || combined.includes("cargo") || combined.includes("carrier") || combined.includes("mover")) return "transport";
+  if (combined.includes("dharamshala") || combined.includes("dharmashala") || combined.includes("trust") || combined.includes("mandir") || combined.includes("ashram") || combined.includes("sansthan") || combined.includes("yatri")) return "dharamshala";
+  if (combined.includes("hotel") || combined.includes("resort") || combined.includes("palace") || combined.includes("stay") || combined.includes("inn") || combined.includes("haveli")) return "hotel";
   return "general";
 }
 
@@ -75,6 +159,8 @@ const E = {
   hotel:   "\u{1F3E8}",  // 🏨 Hotel & Resort
   receipt: "\u{1F9FE}",  // 🧾 Digital Receipt
   fabric:  "\u{1F9F5}",  // 🧵 Textile
+  school:  "\u{1F3EB}",  // 🏫 School
+  truck:   "\u{1F69A}",  // 🚚 Truck
 };
 
 function generateWhatsAppPitch(lead) {
@@ -206,6 +292,62 @@ ${E.map} Chittorgarh • Bhilwara • Udaipur`
     );
   }
 
+  if (niche === "school") {
+    return (
+`*Namaste Management (${name})* ${E.namaste}
+
+Main *ChittorTech* se connect kar raha hoon.
+
+Aapka educational institution ${city} me vidyarthiyo ko shreshth shiksha pradan kar raha hai. Hum schools, colleges aur coaching institutes ke administrative operations aur admissions ko automate karne ke liye custom tech suite build karte hain:
+
+${E.sparkle} *Humari Education & Campus Solutions:*
+${E.web} *High-Impact Admission Website* — Modern, mobile-first website jisse naye session me admissions aur student inquiries 3x badhti hain.
+${E.app} *School / College Mobile App* — Parents aur students ke liye daily attendance, homework, circulars aur exam result portal.
+${E.erp} *Automated Fee Collection & Online Gateway* — Zero fee delay; parents seedha UPI/Card se fee jama karein aur WhatsApp par instant digital fee receipt mile.
+${E.crm} *Admission Enquiry CRM* — Phone aur website leads par automatic follow-up system taaki inquiry miss na ho.
+${E.lock} *Staff Payroll & Biometric Attendance* — Teachers aur staff ka attendance, salary slip aur leave management.
+${E.map} *Google Maps & Local Search Ranking* — "${city} ke top schools/institutes" me Google par #1 ranking taaki parents seedha aapko call karein.
+
+Kya hum is hafte 2-minute quick call ya WhatsApp par live demo share kar sakte hain?
+
+Aapke response ka intezaar rahega.
+
+Warm regards,
+*ChittorTech*
+${E.web} https://chittortech.in
+${E.phone} +91 75974 51057
+${E.map} Chittorgarh • Bhilwara • Udaipur • Rajasthan`
+    );
+  }
+
+  if (niche === "transport") {
+    return (
+`*Namaste Management (${name})* ${E.namaste}
+
+Main *ChittorTech* (Mewar) se connect kar raha hoon.
+
+Aapki transport & logistics company ${city}/Rajasthan me fleet aur goods movement me established hai. Hum transport enterprises ke freight billing aur customer acquisition ko digitalize karte hain:
+
+${E.sparkle} *Humari Logistics & Fleet Tech Solutions:*
+${E.erp} *Bilty / LR (Lorry Receipt) & GST Billing ERP* — LR generation, freight invoices, advance/diesel slips aur balance settlement ka simple software.
+${E.web} *Corporate Logistics Website* — Pan-India industrial clients aur factories direct corporate bookings ke liye aapko contact karein.
+${E.target} *Direct Factory & Shipper Leads* — Middlemen aur commission agents ki zarurat nahi, companies seedha aapke portal par load tender karein.
+${E.lock} *Vehicle Maintenance & Driver Ledger* — Truck maintenance, tyre tracking, driver trip accounts aur expense control.
+${E.crm} *Consignment Tracking & WhatsApp Updates* — Dispatch se delivery tak client ko WhatsApp par automated status update.
+${E.map} *Google Search & SEO Ranking* — Top Google positioning taaki manufacturers aur traders direct aapko transport order dein.
+
+Kya hum is hafte 2-minute quick call ya WhatsApp par live demo share kar sakte hain?
+
+Aapke response ka intezaar rahega.
+
+Warm regards,
+*ChittorTech*
+${E.web} https://chittortech.in
+${E.phone} +91 75974 51057
+${E.map} Chittorgarh • Bhilwara • Udaipur • Rajasthan`
+    );
+  }
+
   // General B2B / Manufacturing / Corporate
   return (
 `*Namaste ${name}* ${E.namaste}
@@ -334,6 +476,58 @@ Key Capabilities:
 - Pan-India Google B2B Visibility
 
 Would you be open to a quick 5-minute preview call?
+
+Warm regards,
+ChittorTech Team
+Website: https://chittortech.in
+Email: business@chittortech.in
+Contact: +91 75974 51057`,
+    };
+  }
+
+  if (niche === "school") {
+    return {
+      subject: `Automated Admission Website, Mobile App & Fee Management Portal for ${name}`,
+      body: `Dear Management (${name}),
+
+Greetings from ChittorTech.
+
+We engineer modern institutional websites, campus mobile apps, and automated fee collection ERP portals for prominent schools, colleges, and coaching institutes across Rajasthan.
+
+Key Solutions:
+1. High-Converting Admission Portal (Mobile-friendly, online inquiries)
+2. Student & Parent Mobile App (Daily attendance, notices, results & homework)
+3. Direct Fee Collection & Online Gateway (Instant receipts, zero fee delay)
+4. Staff Payroll & Biometric Attendance Integration
+5. Top Google Maps & Search Ranking in ${lead?.city || "Rajasthan"}
+
+Could we schedule a quick 2-minute introductory call or live demo this week?
+
+Warm regards,
+ChittorTech Team
+Website: https://chittortech.in
+Email: business@chittortech.in
+Contact: +91 75974 51057`,
+    };
+  }
+
+  if (niche === "transport") {
+    return {
+      subject: `Bilty (LR) Software, Freight Billing ERP & Corporate Logistics Portal for ${name}`,
+      body: `Dear Management (${name}),
+
+Greetings from ChittorTech.
+
+We build modern logistics portals, Bilty/LR generation software, and fleet expense ERPs for transport and freight carriers across Rajasthan.
+
+Key Solutions:
+1. Bilty / LR (Lorry Receipt) Generation & Fast GST Billing ERP
+2. Corporate Logistics Website (Direct factory and industrial consignments)
+3. Fleet Maintenance, Diesel Slips & Driver Expense Tracking
+4. Consignment Tracking & Automated WhatsApp Updates
+5. Pan-India Google Search & B2B Visibility
+
+Could we schedule a brief 2-minute call to demonstrate how our platform streamlines fleet operations?
 
 Warm regards,
 ChittorTech Team
@@ -858,6 +1052,151 @@ function CityPill({ city, onChange, availableCities }) {
   );
 }
 
+function NichePill({ lead, onChange, nicheStats }) {
+  const [open, setOpen] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const currentNiche = detectNiche(lead);
+  const currentCfg = NICHE_CONFIG[currentNiche] || NICHE_CONFIG.general;
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const h = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+        setShowAll(false);
+      }
+    };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, []);
+
+  // Filter dynamic niche list based on user's exact rule:
+  // - If pending leads exist: only show niches that still have pending leads to send (plus current lead's niche)
+  // - If all leads dispatched: show only niches that exist in the database (total > 0)
+  // - Audio 2: "Agar marbles ka khatam ho gaya bhejte-bhejte, toh marbles hat jana chahiye dropdown se fir wahi dono bache rehne chahiye"
+  const visibleNiches = useMemo(() => {
+    if (showAll) return Object.entries(NICHE_CONFIG);
+
+    const entries = Object.entries(NICHE_CONFIG).filter(([key]) => {
+      // Always include current lead's assigned niche so user sees the active selection
+      if (key === currentNiche) return true;
+
+      const stat = nicheStats?.map?.[key];
+      if (!stat) return false;
+
+      if (nicheStats?.anyPending) {
+        // As user sends leads, if all marbles dispatched (pending === 0), marble disappears!
+        return stat.pending > 0;
+      }
+
+      // If no pending leads left, only show niches that actually exist in leads
+      return stat.total > 0;
+    });
+
+    return entries.length > 0 ? entries : Object.entries(NICHE_CONFIG);
+  }, [currentNiche, nicheStats, showAll]);
+
+  return (
+    <div ref={ref} style={{ position: "relative", display: "inline-block" }}>
+      <button
+        type="button"
+        onClick={() => setOpen(v => !v)}
+        title="Select business industry / niche to auto-tailor WhatsApp pitch"
+        style={{
+          display: "inline-flex", alignItems: "center", gap: "5px",
+          padding: "3px 8px 3px 6px", borderRadius: "6px",
+          background: currentCfg.bg, border: `1px solid ${currentCfg.border}`,
+          color: currentCfg.text, fontSize: "0.74rem", fontWeight: 700,
+          cursor: "pointer", letterSpacing: "0.2px", whiteSpace: "nowrap",
+          transition: "all 0.15s ease",
+        }}
+      >
+        <i className={`fas ${currentCfg.icon}`} style={{ color: currentCfg.color, fontSize: "10px" }}></i>
+        <span>{currentCfg.badge || currentCfg.label}</span>
+        <i className="fas fa-chevron-down" style={{ fontSize: "7px", opacity: 0.6 }}></i>
+      </button>
+
+      {open && (
+        <div style={{
+          position: "absolute", top: "calc(100% + 4px)", left: 0, zIndex: 600,
+          background: DS.surfacePrimary, border: `1px solid ${DS.surfaceBorder}`,
+          borderRadius: "9px", padding: "6px", minWidth: "215px",
+          boxShadow: "0 14px 35px rgba(15,23,42,0.18)",
+        }}>
+          <div style={{
+            fontSize: "0.64rem", fontWeight: 700, color: DS.textTertiary,
+            padding: "3px 8px 5px", textTransform: "uppercase", letterSpacing: "0.5px",
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+          }}>
+            <span>Select Pitch Template</span>
+            <span style={{ fontSize: "0.6rem", color: DS.accentPrimary, fontWeight: 700 }}>
+              {nicheStats?.anyPending ? "Active to send" : "Detected"}
+            </span>
+          </div>
+
+          {visibleNiches.map(([key, cfg]) => {
+            const isSelected = currentNiche === key;
+            const stat = nicheStats?.map?.[key];
+            const countLabel = nicheStats?.anyPending
+              ? (stat?.pending > 0 ? `${stat.pending} left` : "")
+              : (stat?.total > 0 ? `${stat.total}` : "");
+
+            return (
+              <button
+                key={key}
+                type="button"
+                onClick={() => {
+                  onChange(key, cfg.categoryName);
+                  setOpen(false);
+                  setShowAll(false);
+                }}
+                style={{
+                  display: "flex", alignItems: "center", gap: "8px",
+                  width: "100%", padding: "6px 8px", borderRadius: "6px",
+                  background: isSelected ? cfg.bg : "transparent",
+                  border: isSelected ? `1px solid ${cfg.border}` : "1px solid transparent",
+                  color: isSelected ? cfg.text : DS.textSecondary,
+                  fontSize: "0.74rem", fontWeight: isSelected ? 700 : 500, cursor: "pointer",
+                  textAlign: "left", transition: "all 0.1s ease",
+                  marginBottom: "2px",
+                }}
+                onMouseOver={e => { if (!isSelected) e.currentTarget.style.background = "rgba(15,23,42,0.04)"; }}
+                onMouseOut={e => { if (!isSelected) e.currentTarget.style.background = "transparent"; }}
+              >
+                <i className={`fas ${cfg.icon}`} style={{ fontSize: "11px", color: cfg.color, width: "14px", textAlign: "center" }}></i>
+                <span style={{ flex: 1 }}>{cfg.label}</span>
+                {countLabel && (
+                  <span style={{ fontSize: "0.64rem", fontWeight: 700, opacity: 0.75, padding: "1px 6px", borderRadius: "4px", background: "rgba(0,0,0,0.05)" }}>
+                    {countLabel}
+                  </span>
+                )}
+                {isSelected && <i className="fas fa-check" style={{ fontSize: "8px", color: cfg.color, marginLeft: "4px" }}></i>}
+              </button>
+            );
+          })}
+
+          {/* Toggle to view all templates if needed */}
+          <div style={{ borderTop: `1px solid ${DS.surfaceBorder}`, marginTop: "4px", paddingTop: "4px" }}>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setShowAll(v => !v); }}
+              style={{
+                background: "none", border: "none", color: DS.accentPrimary,
+                fontSize: "0.68rem", fontWeight: 700, cursor: "pointer",
+                padding: "3px 8px", width: "100%", textAlign: "left",
+                display: "flex", alignItems: "center", justifyContent: "space-between",
+              }}
+            >
+              <span>{showAll ? "✕ Show Only Active" : "+ Show all categories"}</span>
+              <span style={{ opacity: 0.6 }}>{showAll ? "▲" : "▼"}</span>
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function StarRating({ rating }) {
   const num = parseFloat(rating) || 0;
   if (!num) return null;
@@ -925,6 +1264,7 @@ export default function B2BLeadGenerator() {
   });
   const [webF, setWebF] = useState("all");
   const [statusF, setStatusF] = useState("all");
+  const [nicheF, setNicheF] = useState("all");
 
   const handleCityFilterChange = (val) => {
     setCityF(val);
@@ -1110,6 +1450,10 @@ export default function B2BLeadGenerator() {
   // ── Lead Operations (Firestore) ──
   const updateStatus = (id, s) => updateB2BLeadStatus(id, s);
   const updateCity = (id, c) => updateB2BLeadCity(id, c);
+  const updateCategory = (id, pitchType, categoryName) => {
+    setLeads(prev => prev.map(l => l.id === id ? { ...l, pitchType, category: categoryName } : l));
+    updateB2BLeadCategory(id, categoryName, pitchType);
+  };
   const saveNotes = (id, notes) => { updateB2BLeadNotes(id, notes); setEditingId(null); };
   const deleteLead = (id, name) => {
     if (window.confirm(`Delete "${name}"?`)) deleteB2BLead(id);
@@ -1179,10 +1523,33 @@ export default function B2BLeadGenerator() {
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
   };
 
-  // ── Contact Action (Trigger Outreach & Open Outcome Toast) ──
+  // ── Contact Action (Trigger Outreach & Show Outcome Confirmation Popup) ──
   const onContactClick = (lead, type) => {
+    // Show top floating confirmation prompt to allow user to choose the outcome
     setToast({ leadId: lead.id, name: lead.name, type });
   };
+
+  // ── Dynamic Niche Breakdown & Pending Outbound Counts ──
+  // Audio instructions:
+  // 1. "business me apne aap upar se lena chahiye matlab ye dekh lega ki kon-kon se abhi tak types businesses ke hain, wahi dikhayega agar transport and logistics nahi hai toh wo nahi dikhana chahiye taaki confusion nahi ho"
+  // 2. "aur maan lijiye kisi ke lead send karte-karte, teen hai: transport, education, marbles. Agar marbles ka khatam ho gaya bhejte-bhejte, toh marbles hat jana chahiye dropdown se fir wahi dono bache rehne chahiye"
+  const nicheStats = useMemo(() => {
+    const map = {};
+    Object.keys(NICHE_CONFIG).forEach(k => {
+      map[k] = { total: 0, pending: 0 };
+    });
+
+    leads.forEach(l => {
+      const n = detectNiche(l);
+      if (!map[n]) map[n] = { total: 0, pending: 0 };
+      map[n].total += 1;
+      const isPending = !l.status || l.status === "new";
+      if (isPending) map[n].pending += 1;
+    });
+
+    const anyPending = Object.values(map).some(v => v.pending > 0);
+    return { map, anyPending };
+  }, [leads]);
 
   // ── Unique Available Cities (Strictly dynamic from existing leads only) ──
   const availableCities = useMemo(() => {
@@ -1204,6 +1571,7 @@ export default function B2BLeadGenerator() {
       if (statusF !== "all" && (l.status||"new") !== statusF) return false;
       if (webF === "no_web" && l.website?.trim()) return false;
       if (webF === "has_web" && !l.website?.trim()) return false;
+      if (nicheF !== "all" && detectNiche(l) !== nicheF) return false;
       return true;
     });
 
@@ -1217,7 +1585,7 @@ export default function B2BLeadGenerator() {
       const timeB = b.updatedAtDate?.getTime?.() || (b.updatedAt?.toMillis ? b.updatedAt.toMillis() : (b.importedAtDate?.getTime?.() || 0));
       return timeB - timeA;
     });
-  }, [leads, search, cityF, statusF, webF]);
+  }, [leads, search, cityF, statusF, webF, nicheF]);
 
   // ── Stats ──
   const stats = useMemo(() => ({
@@ -1312,7 +1680,6 @@ export default function B2BLeadGenerator() {
 
     // Mark status in cloud Firestore
     updateStatus(currentLead.id, statusOutcome);
-    onContactClick(currentLead, "whatsapp");
 
     // Advance to next lead in queue or finish
     if (campaignIndex < selectedQueue.length - 1) {
@@ -2121,6 +2488,40 @@ export default function B2BLeadGenerator() {
           })}
         </select>
 
+        {/* Niche / Target Industry Filter */}
+        <select
+          value={nicheF}
+          onChange={e => setNicheF(e.target.value)}
+          style={{
+            padding: "7px 10px",
+            background: DS.surfacePrimary,
+            border: `1px solid ${nicheF !== "all" ? DS.accentPrimary : DS.surfaceBorder}`,
+            borderRadius: "8px",
+            color: nicheF !== "all" ? DS.accentPrimary : DS.textSecondary,
+            fontSize: "0.78rem",
+            fontWeight: nicheF !== "all" ? 700 : 500,
+            cursor: "pointer",
+          }}
+        >
+          <option value="all">All Industries ({leads.length})</option>
+          {Object.entries(NICHE_CONFIG)
+            .filter(([k]) => {
+              const stat = nicheStats?.map?.[k];
+              if (!stat) return false;
+              if (statusF === "new") return stat.pending > 0;
+              return stat.total > 0;
+            })
+            .map(([k, cfg]) => {
+              const stat = nicheStats?.map?.[k];
+              const count = statusF === "new" ? stat?.pending : stat?.total;
+              return (
+                <option key={k} value={k}>
+                  {cfg.badge || cfg.label} ({count})
+                </option>
+              );
+            })}
+        </select>
+
         {/* Web status */}
         <select value={webF} onChange={e => setWebF(e.target.value)} style={{ padding: "7px 10px", background: DS.surfacePrimary, border: `1px solid ${DS.surfaceBorder}`, borderRadius: "8px", color: DS.textSecondary, fontSize: "0.78rem", cursor: "pointer" }}>
           <option value="all">All Targets</option>
@@ -2171,7 +2572,7 @@ export default function B2BLeadGenerator() {
           <i className="fas fa-inbox" style={{ fontSize: "2rem", color: DS.textTertiary, marginBottom: "12px", display: "block" }}></i>
           <div style={{ fontSize: "0.95rem", fontWeight: 700, color: DS.textSecondary, marginBottom: "6px" }}>No leads match your filters</div>
           <div style={{ fontSize: "0.8rem", color: DS.textTertiary, marginBottom: "18px" }}>Upload a Google Maps CSV or adjust the filters above</div>
-          <button onClick={() => { setSearch(""); setCityF("all"); setWebF("all"); setStatusF("all"); }} style={{ background: DS.accentPrimary, color: "#09090b", border: "none", padding: "8px 16px", borderRadius: "8px", fontWeight: 800, fontSize: "0.82rem", cursor: "pointer" }}>
+          <button onClick={() => { setSearch(""); setCityF("all"); setNicheF("all"); setWebF("all"); setStatusF("all"); }} style={{ background: DS.accentPrimary, color: "#09090b", border: "none", padding: "8px 16px", borderRadius: "8px", fontWeight: 800, fontSize: "0.82rem", cursor: "pointer" }}>
             Clear All Filters
           </button>
         </div>
@@ -2191,7 +2592,7 @@ export default function B2BLeadGenerator() {
                       style={{ width: "16px", height: "16px", cursor: "pointer", accentColor: "#16a34a" }}
                     />
                   </th>
-                  {["Business Entity","City","Contact & Outreach","Opportunity","Status","Notes","—"].map((h, i) => (
+                  {["Business Entity","City","Contact & Outreach","Opportunity","Status","Target Niche & Notes","—"].map((h, i) => (
                     <th key={i} style={{ padding: "10px 14px", textAlign: "left", fontWeight: 700, fontSize: "0.65rem", color: DS.textTertiary, textTransform: "uppercase", letterSpacing: "0.8px", whiteSpace: "nowrap", background: "#f8fafc" }}>
                       {h}
                     </th>
@@ -2350,37 +2751,46 @@ export default function B2BLeadGenerator() {
                         <StatusPill status={lead.status || "new"} onChange={s => updateStatus(lead.id, s)} />
                       </td>
 
-                      {/* Inline Notes */}
-                      <td style={{ padding: "12px 14px", minWidth: "200px", maxWidth: "280px" }}>
-                        {isEditing ? (
-                          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-                            <input
-                              className="b2b-note-input"
-                              autoFocus
-                              type="text"
-                              value={notesDraft}
-                              onChange={e => setNotesDraft(e.target.value)}
-                              onKeyDown={e => { if (e.key === "Enter") saveNotes(lead.id, notesDraft); if (e.key === "Escape") setEditingId(null); }}
-                              placeholder="Add follow-up note..."
-                              style={{
-                                flex: 1, padding: "5px 9px", borderRadius: "6px",
-                                background: DS.surfaceRaised, border: `1px solid ${DS.surfaceBorder}`,
-                                color: DS.textPrimary, fontSize: "0.78rem",
-                                fontFamily: "inherit", transition: "border-color 0.15s ease, box-shadow 0.15s ease",
-                              }}
+                      {/* Target Niche & Inline Notes */}
+                      <td style={{ padding: "12px 14px", minWidth: "215px", maxWidth: "290px" }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                          <div>
+                            <NichePill
+                              lead={lead}
+                              onChange={(pitchType, catName) => updateCategory(lead.id, pitchType, catName)}
+                              nicheStats={nicheStats}
                             />
-                            <button onClick={() => saveNotes(lead.id, notesDraft)} style={{ background: DS.accentPrimary, border: "none", color: "#09090b", padding: "5px 9px", borderRadius: "6px", cursor: "pointer", fontWeight: 800, fontSize: "12px" }}>✓</button>
-                            <button onClick={() => setEditingId(null)} style={{ background: "none", border: "none", color: DS.textTertiary, cursor: "pointer", fontSize: "12px" }}>✕</button>
                           </div>
-                        ) : (
-                          <div
-                            onClick={() => { setEditingId(lead.id); setNotesDraft(lead.notes || ""); }}
-                            style={{ cursor: "text", fontSize: "0.76rem", color: lead.notes ? DS.textSecondary : DS.textTertiary, fontStyle: lead.notes ? "normal" : "italic", lineHeight: 1.45, padding: "3px 0" }}
-                            title="Click to edit"
-                          >
-                            {lead.notes || "+ Add note"}
-                          </div>
-                        )}
+                          {isEditing ? (
+                            <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+                              <input
+                                className="b2b-note-input"
+                                autoFocus
+                                type="text"
+                                value={notesDraft}
+                                onChange={e => setNotesDraft(e.target.value)}
+                                onKeyDown={e => { if (e.key === "Enter") saveNotes(lead.id, notesDraft); if (e.key === "Escape") setEditingId(null); }}
+                                placeholder="Add follow-up note..."
+                                style={{
+                                  flex: 1, padding: "5px 9px", borderRadius: "6px",
+                                  background: DS.surfaceRaised, border: `1px solid ${DS.surfaceBorder}`,
+                                  color: DS.textPrimary, fontSize: "0.78rem",
+                                  fontFamily: "inherit", transition: "border-color 0.15s ease, box-shadow 0.15s ease",
+                                }}
+                              />
+                              <button onClick={() => saveNotes(lead.id, notesDraft)} style={{ background: DS.accentPrimary, border: "none", color: "#09090b", padding: "5px 9px", borderRadius: "6px", cursor: "pointer", fontWeight: 800, fontSize: "12px" }}>✓</button>
+                              <button onClick={() => setEditingId(null)} style={{ background: "none", border: "none", color: DS.textTertiary, cursor: "pointer", fontSize: "12px" }}>✕</button>
+                            </div>
+                          ) : (
+                            <div
+                              onClick={() => { setEditingId(lead.id); setNotesDraft(lead.notes || ""); }}
+                              style={{ cursor: "text", fontSize: "0.76rem", color: lead.notes ? DS.textSecondary : DS.textTertiary, fontStyle: lead.notes ? "normal" : "italic", lineHeight: 1.45, padding: "2px 0" }}
+                              title="Click to edit note"
+                            >
+                              {lead.notes || "+ Add note"}
+                            </div>
+                          )}
+                        </div>
                       </td>
 
                       {/* Delete */}
@@ -2439,7 +2849,7 @@ export default function B2BLeadGenerator() {
                     <div>
                       <div style={{ fontWeight: 800, color: DS.textPrimary, fontSize: "0.9rem", lineHeight: 1.3, marginBottom: "4px" }}>{lead.name}</div>
                       <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", alignItems: "center" }}>
-                        <span style={{ fontSize: "0.65rem", color: DS.textTertiary, background: "rgba(255,255,255,0.05)", padding: "1px 7px", borderRadius: "4px", fontWeight: 600 }}>{lead.category}</span>
+                        <NichePill lead={lead} onChange={(pitchType, catName) => updateCategory(lead.id, pitchType, catName)} nicheStats={nicheStats} />
                         <CityPill city={lead.city} onChange={c => updateCity(lead.id, c)} availableCities={availableCities} />
                         <StarRating rating={lead.rating} />
                       </div>

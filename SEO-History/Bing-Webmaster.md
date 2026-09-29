@@ -19,7 +19,7 @@
 | **24-Sep-2026** | 100 | `https://` | Batch 6 | 600 | 163 |
 | **26-Sep-2026** | 100 | `https://` | Batch 7 | 700 | 64 |
 | **27-Sep-2026** | 100 | `https://` | Batch 8 (64 unsubmitted + 36 priority) | 720 | 0 |
-| **29-Sep-2026** | 6 | `https://` | **Batch 9 (Top Priority):** Email Deliverability, DMARC, BIMI, DNS, Blacklist Removal, Cloud Hosting | 726 | **0 (Ready for Morning Manual Submission)** |
+| **29-Sep-2026** | 100 | `https://` | **Batch 9:** 6 Fresh High-Ticket Service Pages + 94 Priority Re-crawl URLs | 726 | **0 (Sitemap 100% Submitted)** |
 
 ### 🚀 Immediate Morning Priority Queue (Bing URL Submission)
 1. `https://chittortech.in/email-deliverability-services`

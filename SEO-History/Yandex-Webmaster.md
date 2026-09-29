@@ -20,7 +20,7 @@
 | **24-Sep-2026** | 10 | `https://` | Batch 6 (Main Mirror) | 763 | **0** | **🎉 100% COMPLETE** |
 | **26-Sep-2026** | 150 | `https://` | Priority Re-index Queue Batch | 764 | 0 | Done |
 | **27-Sep-2026** | 150 | `https://` | Daily Priority Re-index Batch 7 | 764 | 0 | Done |
-| **29-Sep-2026** | 6 | `https://` | **Batch 8 (Top Priority):** Email Deliverability, DMARC, BIMI, DNS, Blacklist Removal, Cloud Hosting | 770 | 0 | **Ready for Morning Submission** |
+| **29-Sep-2026** | 150 | `https://` | **Batch 8:** 6 Fresh High-Ticket Service Pages + 144 Priority Re-crawl URLs | 726 | 0 | **Ready for Morning Submission** |
 
 ### 🚀 Immediate Morning Priority Queue (Yandex Re-crawl Queue)
 1. `https://chittortech.in/email-deliverability-services`

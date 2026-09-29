@@ -1612,7 +1612,7 @@ export default function AdminLeadsPage() {
               }}
             >
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22c55e" }} />
-              Live Firestore Sync
+              Database Connected
             </span>
           </div>
 
@@ -1806,11 +1806,6 @@ export default function AdminLeadsPage() {
                 Live Sessions
               </span>
             </button>
-          </div>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.75rem", color: "#64748b", fontWeight: 600, paddingRight: "8px" }}>
-            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#22c55e" }} />
-            <span>ChittorTech Multi-Pipeline Active</span>
           </div>
         </div>
 

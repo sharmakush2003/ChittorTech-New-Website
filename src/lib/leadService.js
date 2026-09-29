@@ -427,13 +427,15 @@ export async function updateB2BLeadCity(leadId, city) {
   }
 }
 
-/** Update B2B lead category */
-export async function updateB2BLeadCategory(leadId, category) {
+/** Update B2B lead category & pitch type */
+export async function updateB2BLeadCategory(leadId, category, pitchType) {
   try {
-    await updateDoc(doc(db, "b2b_leads", leadId), {
+    const payload = {
       category,
       updatedAt: serverTimestamp(),
-    });
+    };
+    if (pitchType) payload.pitchType = pitchType;
+    await updateDoc(doc(db, "b2b_leads", leadId), payload);
     return true;
   } catch (err) {
     console.error("updateB2BLeadCategory error:", err);

@@ -53,6 +53,7 @@ yandex_*.txt
 bing_*.txt
 
 # local utility scripts (keep generate-sitemap.js and ensure-dual-routes.js for CI/CD build)
+lead-audit-generator.js
 scripts/generate-daily-indexing-batch.js
 scripts/build-and-verify-sitemap.js
 scripts/build-indexing-tracker.js
