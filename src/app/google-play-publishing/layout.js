@@ -1,12 +1,12 @@
 export const metadata = {
   title: "Google Play Store App Publishing & Testing Services | ChittorTech",
-  description: "Struggling with the 20-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.",
+  description: "Struggling with the 12-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.",
   alternates: {
     canonical: "https://chittortech.in/google-play-publishing",
   },
   openGraph: {
     title: "Google Play Store App Publishing & Testing Services | ChittorTech",
-    description: "Struggling with the 20-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.",
+    description: "Struggling with the 12-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.",
     url: "https://chittortech.in/google-play-publishing",
     siteName: "ChittorTech",
     locale: "en_IN",
@@ -23,7 +23,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Google Play Store App Publishing & Testing Services | ChittorTech",
-    description: "Struggling with the 20-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.",
+    description: "Struggling with the 12-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.",
     images: ["/favicon.png"],
   },
 };

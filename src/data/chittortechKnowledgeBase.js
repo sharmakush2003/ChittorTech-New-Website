@@ -24,7 +24,8 @@ export const CHITTORTECH_KNOWLEDGE_BASE = `
 - RULE: NEVER PROVIDE STATIC OR FIXED PRICES FOR WEB/SOFTWARE/IT SOLUTIONS.
 - Whenever asked: "How much does a website cost?", "What is the price?", "How much for an app?", "ERP price?", "Software cost?", "SEO charges?", "Give me a quotation.", "Fixed price?"
 - MANDATORY RESPONSE: "Our web development, software, and IT solutions at Chittortech are fully customized based on your project requirements and scope. Please contact the Chittortech team directly via phone/WhatsApp (+91 7597451057) or email (business@chittortech.in) to get a personalized price quote and consultation."
-- Third-Party Fee Exception: For external platform fees (e.g. Google Play $25 fee), clarify: "This is the third-party/platform fee, not ChittorTech's development fee."
+- Third-Party Fee Exception: For external platform fees (e.g. Google Play $25 one-time registration fee), clarify: "This is the third-party/platform fee, not ChittorTech's fee."
+- Transparent Package Exception for Google Play Publishing: Unlike custom development, Google Play Store Publishing has transparent fixed public packages: 1. Publish on Your Account (₹10,299 / $129 USD), 2. Publish on ChittorTech Verified Organization Account (₹25,999 / $299 USD), 3. Full Account Setup & Launch (₹29,499 / $339 USD). When visitors ask for Google Play publishing prices, provide these exact packages.
 
 3. CORE AI SOLUTIONS
 - AI Chatbots & Support Agents: Conversational AI, lead qualification, FAQ automation, WhatsApp AI, multilingual (English, Hindi, Hinglish, regional), CRM/API triggers.
@@ -56,9 +57,21 @@ export const CHITTORTECH_KNOWLEDGE_BASE = `
 - Accounting / GST: GST billing, E-invoices, E-way bills, P&L, Cash flow, Tally sync.
 - Inventory Management: Real-time stock tracking, stock alerts, demand forecasting, multi-location sync, warehouse mgmt.
 
-8. GOOGLE PLAY STORE PUBLISHING
-- Services: Play Console setup, app submission, APK/AAB checks, privacy policy, store listing, ASO, closed testing (20 testers / 14 days), crash monitoring, D-U-N-S verification.
-- Excluded Categories: Real-money gambling, illegal loan apps, plagiarized/cloned apps, dating/spam/malware, copyright downloaders.
+8. GOOGLE PLAY STORE PUBLISHING & APP STORE COMPLIANCE (/google-play-publishing)
+- Official Google 12-Tester Rule Compliance: Flawlessly satisfy Google's mandatory 12-tester policy for personal developer accounts (at least 12 opted-in testers for 14 continuous days). ChittorTech manages 100% verified real human testers with daily opt-in telemetry, feedback logging, and complete questionnaire responses for production review access. (Updated from the obsolete 20-tester rule).
+- Milestone: 50+ Android apps successfully tested, published, and managed globally (across India, USA, Europe, Turkey, Middle East) within 6 months of launching our publishing division, with a 100% first-attempt approval track record.
+- Strict Client Privacy & NDA Policy: Client apps and proprietary software IP are treated under ironclad confidentiality. Due to strict NDA agreements, client apps are never publicly showcased without explicit written permission.
+- Showcased & Reference Apps:
+  1. künh (tech.kunh.app) — Client App (Turkey / Global): Production Access Granted after ChittorTech managed closed testing.
+  2. Reward Club (com.rewardclub.app) — In-House App: Active Closed Testing track with 15 active testers.
+  3. Visit Chittorgarh (com.kushsharma.visitchittorgarh) — Client App (Tourism & Heritage): Live on Google Play Store.
+  4. Mewari Achaar (com.mewari.achaar) — In-House Brand App (E-Commerce): Live on Google Play Store.
+- Free 15-Minute Policy & Target SDK Audit: Complimentary pre-submission code & APK/AAB review assessing target SDK 34+/35 compliance, 64-bit architecture, background location/SMS permissions, and privacy policy match before Google review.
+- Packages & Pricing:
+  1. "Publish on Your Account" (₹10,299 INR / $129 USD one-time): Play Console audit, 12 opt-in testers for 14 continuous days, privacy policy generation, ASO keyword optimization, target SDK 34+ check, and release submission.
+  2. "Publish on ChittorTech Account" (₹25,999 INR / $299 USD one-time): Client needs NO developer console account. Published under ChittorTech's verified Organization Console. Enterprise signing keys, lifetime publishing support, review triage, policy maintenance included.
+  3. "Full Account Setup & Launch" (₹29,499 INR / $339 USD one-time): Complete setup of client's own Google Play Developer Console (Personal or Organization with D-U-N-S verification guidance), followed by the complete 12-tester closed testing cycle and live production launch.
+- Excluded Categories: Real-money gambling, predatory loan apps, plagiarized/cloned apps, malware/spam, copyright downloaders.
 
 9. SEO & DIGITAL MARKETING
 - SEO: On-page SEO, Technical SEO (Core Web Vitals, Schema, Indexing), Off-page SEO (Backlinks, Outreach), Local SEO (Google Maps), E-commerce SEO.
@@ -91,7 +104,7 @@ export const CHITTORTECH_KNOWLEDGE_BASE = `
 - Response: "Thank you. Our team can review these requirements and provide a customized technical recommendation and quotation. You can contact ChittorTech directly on WhatsApp/phone at +91 7597451057 or email business@chittortech.in."
 
 20-29. FAQS, PORTFOLIO & TESTIMONIALS
-- Flagship Portfolio: Mewari Achaar (e-commerce app/web: https://www.mewari-achar.shop/), Shaadi Sutra (wedding SaaS: https://shaadi-sutra.vercel.app/), Chittorgarh Tourism Platform, Dharamshala Admin Portal (https://dharamsala-admin-portal.vercel.app/).
+- Flagship Portfolio & Live Apps: Mewari Achaar (e-commerce app/web: https://www.mewari-achar.shop/ & Google Play: com.mewari.achaar), künh (tech.kunh.app - Global/Turkey client app, production access granted), Visit Chittorgarh (com.kushsharma.visitchittorgarh - live tourism app), Reward Club (com.rewardclub.app - closed testing), Shaadi Sutra (wedding SaaS: https://shaadi-sutra.vercel.app/), Dharamshala Admin Portal (https://dharamsala-admin-portal.vercel.app/).
 - Client Testimonials: Vijay Laxmi Sharma (Mewari Achaar), Kush (Shaadi Sutra), Ayush Sharma (AI PM, BrowserStack), Nisha Singh, Muskan Falwaria, Priyanka Vyas.
 
 30. CHATBOT RESPONSE RULES

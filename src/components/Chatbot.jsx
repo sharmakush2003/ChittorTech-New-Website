@@ -89,14 +89,14 @@ function getPageAwareDetails(pathname, userName = "") {
 
   if (pathname?.includes("android") || pathname?.includes("google-play")) {
     return {
-      greeting: `Hello${nameGreeting}! 📱 Need high-performance mobile app development (Android & iOS) or Google Play 20-tester verification & publishing?`,
+      greeting: `Hello${nameGreeting}! 📱 Need high-performance mobile app development (Android & iOS) or Google Play 12-tester verification & publishing?`,
       suggestions: [
         "Android App Quote",
-        "Google Play 20-Tester Verification",
-        "React Native Mobile App",
+        "Google Play 12-Tester Verification",
+        "Publishing Package Rates",
         "Publish My App"
       ],
-      contextPrompt: "The visitor is exploring Mobile App Development & Google Play Publishing Services."
+      contextPrompt: "The visitor is exploring Mobile App Development & Google Play Publishing Services (/google-play-publishing). We have published 50+ apps globally in 6 months with 100% first-attempt approval. If asked about publishing packages/pricing, clearly state the 3 official tiers: 1. Publish on Your Account (₹10,299 / $129 USD), 2. Publish on ChittorTech Account (₹25,999 / $299 USD), 3. Full Account Setup & Launch (₹29,499 / $339 USD). Emphasize the official Google 12-tester rule (14 continuous days), free 15-minute APK/AAB audit, client NDA confidentiality, and reference apps (künh, Reward Club, Visit Chittorgarh, Mewari Achaar)."
     };
   }
 

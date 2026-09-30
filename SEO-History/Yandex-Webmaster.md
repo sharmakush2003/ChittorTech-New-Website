@@ -20,7 +20,8 @@
 | **24-Sep-2026** | 10 | `https://` | Batch 6 (Main Mirror) | 763 | **0** | **🎉 100% COMPLETE** |
 | **26-Sep-2026** | 150 | `https://` | Priority Re-index Queue Batch | 764 | 0 | Done |
 | **27-Sep-2026** | 150 | `https://` | Daily Priority Re-index Batch 7 | 764 | 0 | Done |
-| **29-Sep-2026** | 150 | `https://` | **Batch 8:** 6 Fresh High-Ticket Service Pages + 144 Priority Re-crawl URLs | 726 | 0 | **Ready for Morning Submission** |
+| **29-Sep-2026** | 150 | `https://` | **Batch 8:** 6 Fresh High-Ticket Service Pages + 144 Priority Re-crawl URLs | 726 | 0 | Done |
+| **30-Sep-2026** | 150 | `https://` | **Batch 9:** Rotational Priority Re-crawl (150 URLs) | 726 | 0 | **Ready for Morning Submission** |
 
 ### 🚀 Immediate Morning Priority Queue (Yandex Re-crawl Queue)
 1. `https://chittortech.in/email-deliverability-services`

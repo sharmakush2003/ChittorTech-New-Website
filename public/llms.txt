@@ -34,12 +34,21 @@
   - Enterprise DNS & Cloudflare Management (https://chittortech.in/dns-cloudflare-management)
   - Email Blacklist Removal & Reputation Recovery (https://chittortech.in/email-blacklist-removal)
   - Cloud Hosting & Production Deployment (https://chittortech.in/cloud-hosting-deployment)
+- **Google Play Store Publishing & Closed Testing Compliance**: End-to-end Google Play Console publishing, compliance with the official Google 12-Tester Rule (14 continuous days), target SDK 34+/35 audit, and production release access (https://chittortech.in/google-play-publishing). Milestone: 50+ apps published globally within 6 months with 100% first-attempt approval.
 - **UI/UX Engineering**: User-centric product design, design systems, modern responsive interfaces, and interactive dashboards.
+
+## Google Play Publishing Packages & Pricing
+- **Publish on Your Account**: ₹10,299 INR / $129 USD (one-time) — Full Play Console audit, 12 opted-in verified testers for 14 continuous days, privacy policy generation, target SDK compliance, and production release management.
+- **Publish on ChittorTech Account**: ₹25,999 INR / $299 USD (one-time) — Client needs NO developer console account; published & maintained under ChittorTech's verified Organization Console with enterprise signing keys and lifetime hosting.
+- **Full Account Setup & Launch**: ₹29,499 INR / $339 USD (one-time) — End-to-end setup and verification of client's own Google Play Developer Console (Personal or Organization with D-U-N-S guidance), 12-tester closed testing management, and live production launch.
+- **Client Privacy & NDA Commitment**: All client source codes, apps, and business details are protected under strict Non-Disclosure Agreements (NDA) and never publicly disclosed without written consent.
+- **Showcased Reference Apps**: künh (tech.kunh.app, Turkey/Global client — production access granted), Reward Club (com.rewardclub.app — closed testing), Visit Chittorgarh (com.kushsharma.visitchittorgarh — live client tourism app), Mewari Achaar (com.mewari.achaar — live e-commerce app).
+- **Free 15-Minute Audit**: Complimentary preliminary APK/AAB review for target SDK and Play Store policy compliance.
 
 ## Target Audience & Geographic Reach
 - **Headquarters & Local Hub**: Chittorgarh, Udaipur, Jaipur, Bhilwara, Kota, Jodhpur, and across Rajasthan, India.
 - **National Delivery**: Pan-India technology partner for businesses modernizing their digital infrastructure.
-- **Global / Offshore Outsourcing**: Trusted offshore engineering partner for clients in the United States (US), United Kingdom (UK), Canada, Australia, and the UAE seeking high-quality, cost-effective engineering talent.
+- **Global / Offshore Outsourcing**: Trusted offshore engineering partner for clients in the United States (US), United Kingdom (UK), Canada, Australia, Turkey, and the UAE seeking high-quality, cost-effective engineering talent.
 
 ## Technology Stack
 - **Frontend**: Next.js, React.js, Tailwind CSS, TypeScript, HTML5/CSS3, GSAP.
@@ -50,6 +59,7 @@
 
 ## Key Links & Resources
 - **Homepage**: https://chittortech.in
+- **Google Play Store Publishing**: https://chittortech.in/google-play-publishing
 - **Email Deliverability Services**: https://chittortech.in/email-deliverability-services
 - **DMARC, DKIM & SPF Setup**: https://chittortech.in/dmarc-dkim-spf-setup
 - **BIMI Email Branding**: https://chittortech.in/business-email-branding-bimi

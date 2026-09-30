@@ -283,10 +283,10 @@ const HERO_SLIDES = [
     badgeIcon: "fa-google-play",
     badgeColor: "#34d399",
     title: "Google Play Store Publishing & Policy Compliance",
-    sub: "14-day 20-tester testing verification, policy compliance audit & hassle-free Google Play Store launch.",
+    sub: "14-day 12-tester testing verification, policy compliance audit & hassle-free Google Play Store launch.",
     ctaPrimary: { text: "Publish App Now", href: "/google-play-publishing", icon: "fa-upload" },
     ctaSecondary: { text: "Free App Audit", targetModal: true, icon: "fa-circle-check" },
-    pills: ["20-Tester Closed Track", "Policy Audit", "Console Setup", "Fast Launch"],
+    pills: ["12-Tester Closed Track", "Policy Audit", "Console Setup", "Fast Launch"],
     image: "/assets/images/hero-slider/banner3-play-store.jpg",
     alt: "ChittorTech Google Play Store Publishing Service"
   },

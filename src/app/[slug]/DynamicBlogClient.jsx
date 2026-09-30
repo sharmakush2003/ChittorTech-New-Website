@@ -7,12 +7,12 @@ import chittorgarhServices from "@/data/chittorgarhServices.json";
 const BLOG_CONTENT = {
   "google-play-store-publishing-guide-compliance-launch": {
     heading: "How to Safely Publish & Rank Your App on Google Play Store",
-    intro: "Google Play Console publishing has become highly strict in 2026. With the introduction of the mandatory 20-tester rule for 14 days, identity verification for organization accounts, and rigid policy audits, developers face constant rejection. This guide explains how ChittorTech solves these hurdles to ensure a 100% approval rate.",
+    intro: "Google Play Console publishing has become highly strict in 2026. With the introduction of the mandatory 12-tester rule for 14 days, identity verification for organization accounts, and rigid policy audits, developers face constant rejection. This guide explains how ChittorTech solves these hurdles to ensure a 100% approval rate.",
     capabilitiesTitle: "Our Google Play Publishing Solutions:",
     capabilities: [
       {
-        title: "20-Tester Compliance Management",
-        desc: "We provide 20 verified real tester accounts to run your app for 14 days continuously, meeting Google's strict feedback compliance."
+        title: "12-Tester Compliance Management",
+        desc: "We provide 12 verified real tester accounts to run your app for 14 days continuously, meeting Google's strict feedback compliance."
       },
       {
         title: "Verified Organization Console Hosting",

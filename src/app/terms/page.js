@@ -71,7 +71,7 @@ export default function TermsPage() {
           <ul>
             <li><strong>2.1 Custom Web Engineering:</strong> Full-stack applications (Next.js, React, Node.js), enterprise portals, cloud ERP/CRM platforms.</li>
             <li><strong>2.2 Mobile App Engineering:</strong> Native and cross-platform Android and iOS applications with cloud API integration.</li>
-            <li><strong>2.3 Google Play Console &amp; Launch:</strong> Turnkey deployment, organization verification, and 14-day 20-tester closed testing management.</li>
+            <li><strong>2.3 Google Play Console &amp; Launch:</strong> Turnkey deployment, organization verification, and 14-day 12-tester closed testing management.</li>
             <li><strong>2.4 Cloud Infrastructure &amp; Security:</strong> AWS, Google Cloud, Firebase, Cloudflare CDN, SSL hardening, and DevOps deployment.</li>
           </ul>
         </>
@@ -222,7 +222,7 @@ export default function TermsPage() {
             <strong>Mobile Application Engineering:</strong> Native and cross-platform Android and iOS mobile applications, API architectures, and cloud backend integrations.
           </li>
           <li>
-            <strong>Google Play Console &amp; Launch Services:</strong> End-to-end Google Play Console deployment, organization account verification guidance, 14-day 20-tester closed testing compliance, and production release management.
+            <strong>Google Play Console &amp; Launch Services:</strong> End-to-end Google Play Console deployment, organization account verification guidance, 14-day 12-tester closed testing compliance, and production release management.
           </li>
           <li>
             <strong>Cloud Infrastructure &amp; Security:</strong> Deployment on AWS, Google Cloud/Firebase, Cloudflare CDN configuration, SSL hardening, and automated CI/CD pipelines.

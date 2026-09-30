@@ -76,8 +76,8 @@ export default function GooglePlayPublishingPage() {
   const PACKAGES = [
     {
       title: "Publish on Your Account",
-      priceUSD: "$99",
-      priceINR: "₹8,299",
+      priceUSD: "$129",
+      priceINR: "₹10,299",
       popular: false,
       policyType: "your_account",
       desc: "Perfect for developers who already own a Google Play Console and want experts to handle compliance, asset setup, and submission.",
@@ -89,12 +89,12 @@ export default function GooglePlayPublishingPage() {
         "Review Process Management",
         "1 Free App Update (within 30 days)"
       ],
-      whatsappMsg: "Hi ChittorTech, I want to publish my app on my own Google Play Console ($99/₹8,299). I need help in publishing my app."
+      whatsappMsg: "Hi ChittorTech, I want to publish my app on my own Google Play Console ($129/₹10,299). I need help in publishing my app."
     },
     {
       title: "Publish on ChittorTech Account",
-      priceUSD: "$199",
-      priceINR: "₹16,599",
+      priceUSD: "$299",
+      priceINR: "₹25,999",
       popular: false,
       policyType: "chittortech_account",
       desc: "No developer account? No problem. Skip the $25 registration fee and identity verification. We publish your app on our verified organization console.",
@@ -106,12 +106,12 @@ export default function GooglePlayPublishingPage() {
         "Active Console Monitoring & Crash Alerts",
         "2 Free Updates per year"
       ],
-      whatsappMsg: "Hi ChittorTech, I want to publish my app on ChittorTech's Google Play Console ($199/₹16,599). I need help in publishing my app."
+      whatsappMsg: "Hi ChittorTech, I want to publish my app on ChittorTech's Google Play Console ($299/₹25,999). I need help in publishing my app."
     },
     {
       title: "Full Account Setup & Launch",
-      priceUSD: "$299",
-      priceINR: "₹25,499",
+      priceUSD: "$339",
+      priceINR: "₹29,499",
       popular: true,
       policyType: "full_setup",
       desc: "For businesses wanting their own dedicated developer console. We handle organization verification, setup, and publish the first app.",
@@ -123,7 +123,40 @@ export default function GooglePlayPublishingPage() {
         "First App Upload & Publishing Support",
         "1-Month Dedicated Account Support"
       ],
-      whatsappMsg: "Hi ChittorTech, I want a complete Google Play Console setup and launch service ($299/₹25,499). I need help in publishing my app."
+      whatsappMsg: "Hi ChittorTech, I want a complete Google Play Console setup and launch service ($339/₹29,499). I need help in publishing my app."
+    }
+  ];
+
+  const COMPARISON_ITEMS = [
+    {
+      feature: "12 Real Android Testers",
+      diy: "Begging 12 friends/family to install (high drop-out rate)",
+      ct: "12 Real, dedicated active Android devices with 100% retention"
+    },
+    {
+      feature: "14-Day Continuous Opt-in",
+      diy: "Risk of tester uninstalls resetting the 14-day clock",
+      ct: "Guaranteed uninterrupted 14-day continuous opt-in streak"
+    },
+    {
+      feature: "Production Access Application",
+      diy: "High rejection rate due to generic feedback answers",
+      ct: "Expert-crafted questionnaire responses proven to pass Google review"
+    },
+    {
+      feature: "Policy & Target SDK Audit",
+      diy: "Trial and error after multiple Google Play rejections",
+      ct: "Pre-submission compliance check (SDK 34/35, permissions, privacy)"
+    },
+    {
+      feature: "Organization & D-U-N-S Verification",
+      diy: "Months of paperwork, legal verification delays & confusion",
+      ct: "Guided setup or instant publishing on ChittorTech verified console"
+    },
+    {
+      feature: "Time to Live on Play Store",
+      diy: "45 to 60+ days with high uncertainty",
+      ct: "Fast-track 14 to 20 business days"
     }
   ];
 
@@ -133,8 +166,8 @@ export default function GooglePlayPublishingPage() {
       a: "Naye Google rules ke mutabik, app review hone me aamtaur par 3 se 7 din ka samay lagta hai. Agar aapka account naya hai toh kabhi-kabhi verification aur review me 10-14 days bhi lag sakte hain."
     },
     {
-      q: "What is Google's new 20-tester rule?",
-      a: "Google ke naye rule ke mutabik, 13 November 2023 ke baad bane sabhi personal developer accounts ko app public karne se pehle closed testing me kam se kam 20 testers se 14 days tak continuous app test karwana compulsory hai. ChittorTech is rule ko complete karne me aapki help karta hai."
+      q: "What is Google's 12-Tester Rule (Closed Testing)?",
+      a: "Google ke official update ke mutabik, personal developer accounts ko app public karne se pehle closed testing me kam se kam 12 testers se 14 days tak continuous app opt-in aur test karwana compulsory hai (Google ne ise 20 se reduce karke 12 testers kar diya hai). ChittorTech is requirement ko real devices ke saath 100% complete karwati hai."
     },
     {
       q: "Kya mera app suspend hone ka khatra hai?",
@@ -157,6 +190,8 @@ export default function GooglePlayPublishingPage() {
         .gplay-section {
           font-family: 'Inter', sans-serif;
           color: #1e293b;
+          overflow-x: hidden;
+          width: 100%;
         }
         .gplay-title {
           font-family: 'Plus Jakarta Sans', sans-serif;
@@ -326,6 +361,113 @@ export default function GooglePlayPublishingPage() {
           padding-bottom: 10px;
           transition: all 0.3s cubic-bezier(1, 0, 1, 0);
         }
+
+        /* Mobile View Optimizations: Clean, spacious design (Desktop untouched) */
+        @media (max-width: 768px) {
+          .gplay-hero {
+            padding: 45px 0 25px;
+          }
+          .gplay-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+            margin-bottom: 14px !important;
+          }
+          .gplay-card.popular {
+            margin-top: 24px !important;
+          }
+          .popular-badge {
+            top: -12px !important;
+            font-size: 0.68rem !important;
+            padding: 4px 12px !important;
+          }
+          .gplay-card .gplay-title {
+            font-size: 1.15rem !important;
+            margin-bottom: 2px !important;
+          }
+          .gplay-card .card-desc {
+            font-size: 0.78rem !important;
+            margin-bottom: 8px !important;
+            line-height: 1.35 !important;
+          }
+          .gplay-card .card-price-box {
+            margin-bottom: 10px !important;
+            padding-bottom: 6px !important;
+          }
+          .gplay-card .card-price-inr {
+            font-size: 1.65rem !important;
+          }
+          .gplay-card .card-price-usd {
+            font-size: 0.95rem !important;
+          }
+          .gplay-card .card-features-list {
+            margin-bottom: 12px !important;
+          }
+          .gplay-card .card-feature-item {
+            margin-bottom: 4px !important;
+            font-size: 0.78rem !important;
+            line-height: 1.3 !important;
+          }
+          .gplay-card .btn-gplay-whatsapp {
+            padding: 8px 14px !important;
+            font-size: 0.86rem !important;
+            border-radius: 8px !important;
+          }
+          .gplay-card .card-policy-btn {
+            margin-top: 4px !important;
+            padding-top: 4px !important;
+          }
+
+          /* TARGETED: Only reduce the excessive gaps between the 4 specific sections on mobile */
+          /* 1. Between Showcase and Harder-Than-Ever */
+          .gplay-intro-section {
+            padding-top: 1.75rem !important;
+          }
+          .gplay-intro-section > .container {
+            padding-top: 0 !important;
+          }
+
+          /* 2. Between Active Maintenance card and Choose Your Publishing Path */
+          .gplay-intro-section {
+            padding-bottom: 1.5rem !important;
+          }
+          .gplay-intro-section > .container {
+            padding-bottom: 0 !important;
+          }
+          #packages {
+            padding-top: 1.5rem !important;
+          }
+          #packages > .container {
+            padding-top: 0 !important;
+          }
+
+          /* 3. Between Free 15-Minute Audit (Blue Box) and How the Process Works */
+          #packages {
+            padding-bottom: 1.5rem !important;
+          }
+          #packages > .container {
+            padding-bottom: 0 !important;
+          }
+          .gplay-process-section {
+            padding-top: 1.5rem !important;
+          }
+          .gplay-process-section > .container {
+            padding-top: 0 !important;
+          }
+
+          /* 4. Between What We Do NOT Publish and Comparison */
+          .gplay-guidelines-section {
+            padding-bottom: 1.5rem !important;
+          }
+          .gplay-guidelines-section > .container {
+            padding-bottom: 0 !important;
+          }
+          .gplay-comparison-section {
+            padding-top: 1.5rem !important;
+          }
+          .gplay-comparison-section > .container {
+            padding-top: 0 !important;
+          }
+        }
       `}</style>
 
       <div className="gplay-section">
@@ -341,7 +483,7 @@ export default function GooglePlayPublishingPage() {
                   Google Play Store App <span style={{ color: '#60a5fa' }}>Publishing & Testing</span> Services
                 </h1>
                 <p className="lead mb-4" style={{ color: '#cbd5e1', fontSize: '1.15rem', lineHeight: 1.7, maxWidth: '650px' }}>
-                  Struggling with the 20-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.
+                  Struggling with the 12-tester rule, organization verification, or account suspensions? Let ChittorTech publish and manage your Android applications securely.
                 </p>
                 <div className="d-flex flex-wrap gap-3">
                   <a href="https://api.whatsapp.com/send?phone=917597451057&text=Hi%20ChittorTech,%20I%20am%20interested%20in%20your%20Google%20Play%20Publishing%20services.%20I%20need%20help%20in%20publishing%20my%20app." target="_blank" rel="noopener noreferrer" className="btn-gplay-whatsapp">
@@ -476,8 +618,354 @@ export default function GooglePlayPublishingPage() {
           </div>
         </section>
 
+        {/* Live Proof / Verified Production Approvals Showcase */}
+        <section className="py-5" style={{ background: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
+          <div className="container">
+            <div className="text-center mb-4">
+              <span className="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 text-uppercase fw-bold" style={{ fontSize: '0.78rem', letterSpacing: '1px' }}>
+                <i className="fa-brands fa-google-play me-1"></i> Rapid Execution Record
+              </span>
+              <h2 className="gplay-title mt-2 mb-2" style={{ fontSize: '2.1rem', fontWeight: 800 }}>
+                50+ Apps Published & Managed Globally Within 6 Months
+              </h2>
+              <p className="text-secondary mx-auto small" style={{ maxWidth: '750px', lineHeight: 1.7 }}>
+                Achieved over 50+ successful Android app deployments and active closed testing cycles within just 6 months of launching our specialized Play Store publishing infrastructure—supporting founders across India, USA, Turkey, UAE, and Europe.
+              </p>
+
+              {/* Stats Highlights Bar */}
+              <div className="d-flex flex-wrap justify-content-center gap-2 mt-3 showcase-stats-bar">
+                <span className="badge bg-light text-dark border px-3 py-2" style={{ fontSize: '0.8rem', fontWeight: 600 }}>
+                  <i className="fa-solid fa-rocket text-primary me-1"></i> 50+ Apps in 6 Months
+                </span>
+                <span className="badge bg-light text-dark border px-3 py-2" style={{ fontSize: '0.8rem', fontWeight: 600 }}>
+                  <i className="fa-solid fa-circle-check text-success me-1"></i> 100% Closed Testing Pass Rate
+                </span>
+                <span className="badge bg-light text-dark border px-3 py-2" style={{ fontSize: '0.8rem', fontWeight: 600 }}>
+                  <i className="fa-solid fa-clock-rotate-left text-warning me-1"></i> Dozens in Active Testing & Review
+                </span>
+                <span className="badge bg-light text-dark border px-3 py-2" style={{ fontSize: '0.8rem', fontWeight: 600 }}>
+                  <i className="fa-solid fa-earth-americas text-info me-1"></i> Global Coverage (US, TR, AE, IN)
+                </span>
+              </div>
+            </div>
+
+            {/* Mobile NDA Notice: Slim 1-line bar */}
+            <div className="d-block d-md-none py-1 px-2 mb-2 rounded-2 border bg-light" style={{ borderLeft: '3px solid #2563eb' }}>
+              <div className="d-flex align-items-center gap-1">
+                <i className="fa-solid fa-user-shield text-primary flex-shrink-0" style={{ fontSize: '0.75rem' }}></i>
+                <div className="text-secondary" style={{ fontSize: '0.68rem', lineHeight: 1.25 }}>
+                  <strong className="text-dark">Strict NDA:</strong> Client apps are confidential. Select authorized reference apps from 50+ deployments shown below.
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop NDA Notice: Detailed */}
+            <div className="d-none d-md-block p-3 mb-4 rounded-3 border" style={{ background: '#f8fafc', borderLeft: '4px solid #2563eb' }}>
+              <div className="d-flex align-items-start gap-2">
+                <i className="fa-solid fa-user-shield text-primary mt-1" style={{ fontSize: '1.1rem' }}></i>
+                <div className="small text-secondary" style={{ lineHeight: 1.6 }}>
+                  <strong className="text-dark">Strict Client Confidentiality & NDA Policy:</strong> We uphold enterprise-level privacy. Under formal Non-Disclosure Agreements (NDAs), we do not publicly display client apps without written authorization. Beyond the 50+ deployed apps, numerous proprietary applications are actively undergoing Google Play 12-tester closed testing and review. Below are select authorized projects representing our active console management.
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop View: Keep 4-column card grid */}
+            <div className="d-none d-md-block">
+              <div className="row g-4">
+                {/* App 1: künh */}
+                <div className="col-lg-3 col-md-6 col-12">
+                  <div className="bg-white p-3 p-md-4 rounded-4 border border-1 h-100 shadow-sm position-relative d-flex flex-column" style={{ borderTop: '4px solid #2563eb' }}>
+                    <div className="d-flex justify-content-between align-items-start mb-2">
+                      <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#020617', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: '1.1rem' }}>
+                        k̈.
+                      </div>
+                      <span className="badge bg-success text-white px-2 py-1" style={{ fontSize: '0.68rem', fontWeight: 700 }}>
+                        <i className="fa-solid fa-circle-check me-1"></i> Production Access Granted
+                      </span>
+                    </div>
+                    <h4 className="gplay-title mb-1" style={{ fontSize: '1.1rem', fontWeight: 800 }}>künh</h4>
+                    <div className="mb-2">
+                      <code style={{ fontSize: '0.72rem', color: '#64748b', background: '#f1f5f9', padding: '2px 5px', borderRadius: '4px' }}>tech.kunh.app</code>
+                    </div>
+                    <div className="mb-2">
+                      <span style={{ fontSize: '0.72rem', fontWeight: 700, background: '#eff6ff', color: '#1e40af', border: '1px solid #bfdbfe', borderRadius: '6px', padding: '3px 8px', display: 'inline-block' }}>
+                        Client App • Turkey / Global
+                      </span>
+                    </div>
+                    <p className="text-secondary small mb-3" style={{ fontSize: '0.8rem', lineHeight: 1.5, flexGrow: 1 }}>
+                      Completed 12-tester closed testing with continuous 14-day engagement. Granted 100% Google Play Production Access with zero policy rejections. Founders ecstatic!
+                    </p>
+                    <div className="pt-2 border-top text-muted small" style={{ fontSize: '0.72rem' }}>
+                      <i className="fa-solid fa-bolt text-warning me-1"></i> 14-Day Streak Passed • 0 Rejections
+                    </div>
+                  </div>
+                </div>
+
+                {/* App 2: Reward Club */}
+                <div className="col-lg-3 col-md-6 col-12">
+                  <div className="bg-white p-3 p-md-4 rounded-4 border border-1 h-100 shadow-sm position-relative d-flex flex-column" style={{ borderTop: '4px solid #6366f1' }}>
+                    <div className="d-flex justify-content-between align-items-start mb-2">
+                      <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #10b981, #047857)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.1rem' }}>
+                        <i className="fa-solid fa-gift"></i>
+                      </div>
+                      <span className="badge bg-primary text-white px-2 py-1" style={{ fontSize: '0.68rem', fontWeight: 700 }}>
+                        <i className="fa-solid fa-spinner fa-spin me-1"></i> Active Closed Testing
+                      </span>
+                    </div>
+                    <h4 className="gplay-title mb-1" style={{ fontSize: '1.1rem', fontWeight: 800 }}>Reward Club</h4>
+                    <div className="mb-2">
+                      <code style={{ fontSize: '0.72rem', color: '#64748b', background: '#f1f5f9', padding: '2px 5px', borderRadius: '4px' }}>com.rewardclub.app</code>
+                    </div>
+                    <div className="mb-2">
+                      <span style={{ fontSize: '0.72rem', fontWeight: 700, background: '#e0e7ff', color: '#3730a3', border: '1px solid #c7d2fe', borderRadius: '6px', padding: '3px 8px', display: 'inline-block' }}>
+                        In-House App • Built & Managed by ChittorTech
+                      </span>
+                    </div>
+                    <p className="text-secondary small mb-3" style={{ fontSize: '0.8rem', lineHeight: 1.5, flexGrow: 1 }}>
+                      Full-scale rewards and loyalty application built and managed in active closed testing by ChittorTech. 15+ acquired active testers maintaining continuous engagement on real devices.
+                    </p>
+                    <div className="pt-2 border-top text-muted small" style={{ fontSize: '0.72rem' }}>
+                      <i className="fa-solid fa-users text-primary me-1"></i> 15 Testers Engaged • In Testing Track
+                    </div>
+                  </div>
+                </div>
+
+                {/* App 3: Visit Chittorgarh */}
+                <div className="col-lg-3 col-md-6 col-12">
+                  <div className="bg-white p-3 p-md-4 rounded-4 border border-1 h-100 shadow-sm position-relative d-flex flex-column" style={{ borderTop: '4px solid #10b981' }}>
+                    <div className="d-flex justify-content-between align-items-start mb-2">
+                      <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #f59e0b, #d97706)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.1rem' }}>
+                        <i className="fa-solid fa-monument"></i>
+                      </div>
+                      <span className="badge bg-success-subtle text-success border border-success-subtle px-2 py-1" style={{ fontSize: '0.68rem', fontWeight: 700 }}>
+                        <i className="fa-solid fa-circle-check me-1"></i> Live on Play Store
+                      </span>
+                    </div>
+                    <h4 className="gplay-title mb-1" style={{ fontSize: '1.1rem', fontWeight: 800 }}>Visit Chittorgarh</h4>
+                    <div className="mb-2">
+                      <code style={{ fontSize: '0.72rem', color: '#64748b', background: '#f1f5f9', padding: '2px 5px', borderRadius: '4px' }}>com.kushsharma.visitchittorgarh</code>
+                    </div>
+                    <div className="mb-2">
+                      <span style={{ fontSize: '0.72rem', fontWeight: 700, background: '#ecfdf5', color: '#065f46', border: '1px solid #a7f3d0', borderRadius: '6px', padding: '3px 8px', display: 'inline-block' }}>
+                        Client App • Tourism & Travel Guide
+                      </span>
+                    </div>
+                    <p className="text-secondary small mb-3" style={{ fontSize: '0.8rem', lineHeight: 1.5, flexGrow: 1 }}>
+                      Dedicated tourism portal app published, maintained, and optimized on Google Play Store via ChittorTech's verified publishing infrastructure.
+                    </p>
+                    <div className="pt-2 border-top text-muted small" style={{ fontSize: '0.72rem' }}>
+                      <i className="fa-solid fa-shield-halved text-success me-1"></i> Live Production Track • Active
+                    </div>
+                  </div>
+                </div>
+
+                {/* App 4: Mewari Achaar */}
+                <div className="col-lg-3 col-md-6 col-12">
+                  <div className="bg-white p-3 p-md-4 rounded-4 border border-1 h-100 shadow-sm position-relative d-flex flex-column" style={{ borderTop: '4px solid #f97316' }}>
+                    <div className="d-flex justify-content-between align-items-start mb-2">
+                      <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'linear-gradient(135deg, #ef4444, #b91c1c)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.1rem' }}>
+                        <i className="fa-solid fa-jar"></i>
+                      </div>
+                      <span className="badge bg-success-subtle text-success border border-success-subtle px-2 py-1" style={{ fontSize: '0.68rem', fontWeight: 700 }}>
+                        <i className="fa-solid fa-circle-check me-1"></i> Live on Play Store
+                      </span>
+                    </div>
+                    <h4 className="gplay-title mb-1" style={{ fontSize: '1.1rem', fontWeight: 800 }}>Mewari Achaar</h4>
+                    <div className="mb-2">
+                      <code style={{ fontSize: '0.72rem', color: '#64748b', background: '#f1f5f9', padding: '2px 5px', borderRadius: '4px' }}>com.mewari.achaar</code>
+                    </div>
+                    <div className="mb-2">
+                      <span style={{ fontSize: '0.72rem', fontWeight: 700, background: '#fff7ed', color: '#c2410c', border: '1px solid #fed7aa', borderRadius: '6px', padding: '3px 8px', display: 'inline-block' }}>
+                        In-House Brand • Built & Published by ChittorTech
+                      </span>
+                    </div>
+                    <p className="text-secondary small mb-3" style={{ fontSize: '0.8rem', lineHeight: 1.5, flexGrow: 1 }}>
+                      Full-featured e-commerce and retail Android application designed, engineered, and published directly by ChittorTech with real-time tracking.
+                    </p>
+                    <div className="pt-2 border-top text-muted small" style={{ fontSize: '0.72rem' }}>
+                      <i className="fa-solid fa-code text-primary me-1"></i> Full-Stack Built & Published by ChittorTech
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile View: Clean, compact, responsive list cards */}
+            <div className="d-block d-md-none">
+              <div className="d-flex flex-column gap-3">
+                {/* App 1: künh */}
+                <div className="bg-white p-3 rounded-4 border border-1 shadow-sm" style={{ borderLeft: '4px solid #2563eb', overflow: 'hidden' }}>
+                  <div className="d-flex align-items-center justify-content-between gap-2 mb-2 pb-2 border-bottom">
+                    <div className="d-flex align-items-center gap-2" style={{ minWidth: 0 }}>
+                      <div style={{ width: '32px', height: '32px', minWidth: '32px', borderRadius: '8px', background: '#020617', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: '0.9rem' }}>
+                        k̈.
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <h6 className="mb-0 fw-bold text-dark text-truncate" style={{ fontSize: '0.95rem', lineHeight: 1.2 }}>künh</h6>
+                        <div className="text-muted text-truncate" style={{ fontSize: '0.68rem' }}>Turkey • Client App</div>
+                      </div>
+                    </div>
+                    <span className="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 flex-shrink-0" style={{ fontSize: '0.65rem', fontWeight: 700 }}>
+                      <i className="fa-solid fa-circle-check me-1"></i> Approved
+                    </span>
+                  </div>
+
+                  <div className="mb-2" style={{ wordBreak: 'break-all' }}>
+                    <code style={{ fontSize: '0.68rem', color: '#64748b', background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', display: 'inline-block' }}>
+                      tech.kunh.app
+                    </code>
+                  </div>
+
+                  <div className="d-flex flex-wrap gap-1 mb-2">
+                    <span className="badge bg-light text-dark border fw-normal" style={{ fontSize: '0.65rem' }}>
+                      <i className="fa-solid fa-bolt text-warning me-1"></i> 14-Day Streak Passed
+                    </span>
+                    <span className="badge bg-light text-dark border fw-normal" style={{ fontSize: '0.65rem' }}>
+                      0 Rejections
+                    </span>
+                  </div>
+
+                  <p className="text-secondary small mb-0" style={{ fontSize: '0.78rem', lineHeight: 1.45 }}>
+                    Completed 12-tester closed testing with continuous 14-day engagement. Granted 100% Google Play Production Access.
+                  </p>
+                </div>
+
+                {/* App 2: Reward Club */}
+                <div className="bg-white p-3 rounded-4 border border-1 shadow-sm" style={{ borderLeft: '4px solid #6366f1', overflow: 'hidden' }}>
+                  <div className="d-flex align-items-center justify-content-between gap-2 mb-2 pb-2 border-bottom">
+                    <div className="d-flex align-items-center gap-2" style={{ minWidth: 0 }}>
+                      <div style={{ width: '32px', height: '32px', minWidth: '32px', borderRadius: '8px', background: 'linear-gradient(135deg, #10b981, #047857)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.85rem' }}>
+                        <i className="fa-solid fa-gift"></i>
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <h6 className="mb-0 fw-bold text-dark text-truncate" style={{ fontSize: '0.95rem', lineHeight: 1.2 }}>Reward Club</h6>
+                        <div className="text-muted text-truncate" style={{ fontSize: '0.68rem' }}>In-House App</div>
+                      </div>
+                    </div>
+                    <span className="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1 flex-shrink-0" style={{ fontSize: '0.65rem', fontWeight: 700 }}>
+                      <i className="fa-solid fa-spinner fa-spin me-1"></i> Testing Active
+                    </span>
+                  </div>
+
+                  <div className="mb-2" style={{ wordBreak: 'break-all' }}>
+                    <code style={{ fontSize: '0.68rem', color: '#64748b', background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', display: 'inline-block' }}>
+                      com.rewardclub.app
+                    </code>
+                  </div>
+
+                  <div className="d-flex flex-wrap gap-1 mb-2">
+                    <span className="badge bg-light text-dark border fw-normal" style={{ fontSize: '0.65rem' }}>
+                      <i className="fa-solid fa-users text-primary me-1"></i> 15 Active Testers
+                    </span>
+                    <span className="badge bg-light text-dark border fw-normal" style={{ fontSize: '0.65rem' }}>
+                      Real Devices
+                    </span>
+                  </div>
+
+                  <p className="text-secondary small mb-0" style={{ fontSize: '0.78rem', lineHeight: 1.45 }}>
+                    Full-scale loyalty & rewards app active in Google Play closed testing track with continuous daily telemetry.
+                  </p>
+                </div>
+
+                {/* App 3: Visit Chittorgarh */}
+                <div className="bg-white p-3 rounded-4 border border-1 shadow-sm" style={{ borderLeft: '4px solid #10b981', overflow: 'hidden' }}>
+                  <div className="d-flex align-items-center justify-content-between gap-2 mb-2 pb-2 border-bottom">
+                    <div className="d-flex align-items-center gap-2" style={{ minWidth: 0 }}>
+                      <div style={{ width: '32px', height: '32px', minWidth: '32px', borderRadius: '8px', background: 'linear-gradient(135deg, #f59e0b, #d97706)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.85rem' }}>
+                        <i className="fa-solid fa-monument"></i>
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <h6 className="mb-0 fw-bold text-dark text-truncate" style={{ fontSize: '0.95rem', lineHeight: 1.2 }}>Visit Chittorgarh</h6>
+                        <div className="text-muted text-truncate" style={{ fontSize: '0.68rem' }}>Tourism • Client App</div>
+                      </div>
+                    </div>
+                    <span className="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 flex-shrink-0" style={{ fontSize: '0.65rem', fontWeight: 700 }}>
+                      <i className="fa-solid fa-circle-check me-1"></i> Live
+                    </span>
+                  </div>
+
+                  <div className="mb-2" style={{ wordBreak: 'break-all' }}>
+                    <code style={{ fontSize: '0.68rem', color: '#64748b', background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', display: 'inline-block' }}>
+                      com.kushsharma.visitchittorgarh
+                    </code>
+                  </div>
+
+                  <div className="d-flex flex-wrap gap-1 mb-2">
+                    <span className="badge bg-light text-dark border fw-normal" style={{ fontSize: '0.65rem' }}>
+                      <i className="fa-brands fa-google-play text-success me-1"></i> Production Live
+                    </span>
+                    <span className="badge bg-light text-dark border fw-normal" style={{ fontSize: '0.65rem' }}>
+                      1,000+ Downloads
+                    </span>
+                  </div>
+
+                  <p className="text-secondary small mb-0" style={{ fontSize: '0.78rem', lineHeight: 1.45 }}>
+                    Official heritage tourism portal app published, optimized (ASO), and maintained live on Google Play.
+                  </p>
+                </div>
+
+                {/* App 4: Mewari Achaar */}
+                <div className="bg-white p-3 rounded-4 border border-1 shadow-sm" style={{ borderLeft: '4px solid #f97316', overflow: 'hidden' }}>
+                  <div className="d-flex align-items-center justify-content-between gap-2 mb-2 pb-2 border-bottom">
+                    <div className="d-flex align-items-center gap-2" style={{ minWidth: 0 }}>
+                      <div style={{ width: '32px', height: '32px', minWidth: '32px', borderRadius: '8px', background: 'linear-gradient(135deg, #ef4444, #b91c1c)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '0.85rem' }}>
+                        <i className="fa-solid fa-jar"></i>
+                      </div>
+                      <div style={{ minWidth: 0 }}>
+                        <h6 className="mb-0 fw-bold text-dark text-truncate" style={{ fontSize: '0.95rem', lineHeight: 1.2 }}>Mewari Achaar</h6>
+                        <div className="text-muted text-truncate" style={{ fontSize: '0.68rem' }}>E-Commerce Brand</div>
+                      </div>
+                    </div>
+                    <span className="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 flex-shrink-0" style={{ fontSize: '0.65rem', fontWeight: 700 }}>
+                      <i className="fa-solid fa-circle-check me-1"></i> Live
+                    </span>
+                  </div>
+
+                  <div className="mb-2" style={{ wordBreak: 'break-all' }}>
+                    <code style={{ fontSize: '0.68rem', color: '#64748b', background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', display: 'inline-block' }}>
+                      com.mewari.achaar
+                    </code>
+                  </div>
+
+                  <div className="d-flex flex-wrap gap-1 mb-2">
+                    <span className="badge bg-light text-dark border fw-normal" style={{ fontSize: '0.65rem' }}>
+                      <i className="fa-solid fa-shield text-success me-1"></i> Play Verified
+                    </span>
+                    <span className="badge bg-light text-dark border fw-normal" style={{ fontSize: '0.65rem' }}>
+                      In-House Brand
+                    </span>
+                  </div>
+
+                  <p className="text-secondary small mb-0" style={{ fontSize: '0.78rem', lineHeight: 1.45 }}>
+                    Full-featured e-commerce and retail Android application designed, built, and launched directly by ChittorTech.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Ownership Disclaimer & WhatsApp CTA */}
+            <div className="mt-4 p-3 rounded-3 bg-light border d-flex flex-wrap align-items-center justify-content-between gap-3">
+              <div className="d-flex align-items-center gap-2">
+                <i className="fa-solid fa-circle-info text-primary"></i>
+                <span className="small text-secondary">
+                  <strong>Ownership Notice:</strong> Reward Club & Mewari Achaar are engineered and managed in-house by ChittorTech, while künh and Visit Chittorgarh are client applications published and managed through our specialized Play Store infrastructure.
+                </span>
+              </div>
+              <a
+                href="https://api.whatsapp.com/send?phone=917597451057&text=Hi%20ChittorTech,%20I%20saw%20your%20Google%20Play%20published%20apps%20(k%C3%BCnh,%20Reward%20Club,%20Visit%20Chittorgarh,%20Mewari%20Achaar).%20I%20want%20to%20publish%20my%20app%20too."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gplay-primary"
+                style={{ fontSize: '0.85rem', padding: '8px 18px' }}
+              >
+                <i className="fa-brands fa-whatsapp"></i> Publish Your App Today <i className="fa-solid fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Introduction / Problem Statement */}
-        <section className="py-5" style={{ background: '#f8fafc' }}>
+        <section className="py-5 gplay-intro-section" style={{ background: '#f8fafc' }}>
           <div className="container py-4">
             <div className="row g-4 align-items-center">
               <div className="col-md-6">
@@ -485,7 +973,7 @@ export default function GooglePlayPublishingPage() {
                   Publishing on Google Play is <span className="text-danger">harder than ever</span>
                 </div>
                 <p className="mt-3 text-secondary" style={{ lineHeight: 1.8 }}>
-                  Google Play Store has implemented strict verification policies to combat spam and malware. Newly registered individual developer accounts are now locked behind a mandatory 20-tester testing program for 14 continuous days. Business verification has also grown complex, requiring D-U-N-S numbers, official business documents, and verified local representatives.
+                  Google Play Store has implemented strict verification policies to combat spam and malware. Newly registered individual developer accounts are now locked behind a mandatory 12-tester testing program for 14 continuous days (updated by Google from the older 20-tester requirement). Business verification has also grown complex, requiring D-U-N-S numbers, official business documents, and verified local representatives.
                 </p>
                 <p className="text-secondary" style={{ lineHeight: 1.8 }}>
                   At ChittorTech, we eliminate these friction points. Whether you want to publish on your own developer console or leverage our pre-verified corporate publishing accounts, we handle everything from policy check, asset compilation, to submission and review management.
@@ -494,7 +982,7 @@ export default function GooglePlayPublishingPage() {
               <div className="col-md-6">
                 <div className="row g-3">
                   {[
-                    { title: "20-Tester Rule", desc: "No need to find 20 testers. We fulfill Google's mandatory 14-day closed testing opt-in requirement.", icon: "fa-users" },
+                    { title: "12-Tester Rule", desc: "No need to find 12 testers. We fulfill Google's mandatory 14-day closed testing opt-in requirement with real active devices.", icon: "fa-users" },
                     { title: "Compliance Check", desc: "Complete analysis of your APK/AAB package, target SDK version, and privacy policy compliance.", icon: "fa-shield-halved" },
                     { title: "Zero Setup Hassle", desc: "Save registration costs, legal verification, and identity audits using our verified accounts.", icon: "fa-bolt" },
                     { title: "Active Maintenance", desc: "Constant store listing optimization, crash analysis, and update submissions.", icon: "fa-server" }
@@ -527,15 +1015,23 @@ export default function GooglePlayPublishingPage() {
                   <div className={`gplay-card ${pkg.popular ? 'popular' : ''}`}>
                     {pkg.popular && <span className="popular-badge">Most Popular</span>}
                     <h3 className="gplay-title mb-2" style={{ fontSize: '1.5rem', fontWeight: '800' }}>{pkg.title}</h3>
-                    <p className="text-muted small mb-4">{pkg.desc}</p>
-                    <div className="mb-4">
-                      <span className="gplay-title text-primary" style={{ fontSize: '2.5rem', fontWeight: '900' }}>{pkg.priceINR}</span>
-                      <span className="text-muted ms-2">/ {pkg.priceUSD}</span>
+                    <p className="text-muted small mb-3 card-desc">{pkg.desc}</p>
+                    <div className="mb-4 pb-2 border-bottom border-light-subtle card-price-box">
+                      <div className="d-flex align-items-baseline gap-2">
+                        <span className="gplay-title text-primary card-price-inr" style={{ fontSize: '2.3rem', fontWeight: '900' }}>{pkg.priceINR}</span>
+                        <span className="badge bg-primary-subtle text-primary border border-primary-subtle" style={{ fontSize: '0.72rem', fontWeight: 700, padding: '4px 8px', borderRadius: '6px' }}>
+                          🇮🇳 India
+                        </span>
+                      </div>
+                      <div className="mt-1 d-flex align-items-center gap-1" style={{ fontSize: '0.92rem' }}>
+                        <span className="fw-bold text-dark card-price-usd" style={{ fontSize: '1.15rem' }}>{pkg.priceUSD}</span>
+                        <span className="text-muted" style={{ fontSize: '0.82rem' }}>• Outside India / International</span>
+                      </div>
                     </div>
-                    <ul className="list-unstyled mb-5" style={{ flexGrow: 1 }}>
+                    <ul className="list-unstyled mb-3 card-features-list" style={{ flexGrow: 1 }}>
                       {pkg.features.map((f, fIdx) => (
-                        <li className="d-flex align-items-start gap-2 mb-3 text-secondary" key={fIdx} style={{ fontSize: '0.92rem' }}>
-                          <i className="fa-solid fa-circle-check text-success mt-1" style={{ fontSize: '0.85rem' }}></i>
+                        <li className="d-flex align-items-start gap-2 mb-2 text-secondary card-feature-item" key={fIdx} style={{ fontSize: '0.88rem' }}>
+                          <i className="fa-solid fa-circle-check text-success mt-1" style={{ fontSize: '0.82rem' }}></i>
                           <span>{f}</span>
                         </li>
                       ))}
@@ -543,7 +1039,7 @@ export default function GooglePlayPublishingPage() {
                     <a href={`https://api.whatsapp.com/send?phone=917597451057&text=${encodeURIComponent(pkg.whatsappMsg)}`} target="_blank" rel="noopener noreferrer" className="w-100 btn-gplay-whatsapp justify-content-center">
                       <i className="fa-brands fa-whatsapp"></i> Get Started
                     </a>
-                    <div className="mt-3 pt-2 border-top text-center" style={{ width: '100%' }}>
+                    <div className="mt-2 pt-2 border-top text-center card-policy-btn" style={{ width: '100%' }}>
                       <button onClick={() => setActivePolicy(pkg.policyType)} className="btn btn-link text-decoration-none p-0 text-danger fw-bold" style={{ fontSize: '0.8rem', border: 'none', background: 'none', cursor: 'pointer' }}>
                         <i className="fa-solid fa-circle-exclamation me-1"></i> View Publishing Policy
                       </button>
@@ -552,11 +1048,48 @@ export default function GooglePlayPublishingPage() {
                 </div>
               ))}
             </div>
+
+            {/* Free 15-Minute APK/AAB Audit Banner (Lead Magnet) */}
+            <div className="mt-5 p-4 p-md-5 rounded-4 lead-magnet-audit-box" style={{
+              background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #172554 100%)',
+              color: '#ffffff',
+              boxShadow: '0 20px 40px rgba(15, 23, 42, 0.15)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div className="row align-items-center g-4" style={{ position: 'relative', zIndex: 2 }}>
+                <div className="col-lg-8">
+                  <span className="badge bg-warning text-dark px-3 py-1 mb-2 fw-bold text-uppercase" style={{ fontSize: '0.72rem', letterSpacing: '1px' }}>
+                    ⚡ Free 15-Minute Audit
+                  </span>
+                  <h3 className="gplay-title mb-2 text-white" style={{ fontSize: '1.75rem', fontWeight: 800 }}>
+                    Not Ready to Buy? Get a Free APK/AAB Policy & SDK Pre-Check
+                  </h3>
+                  <p className="mb-0" style={{ color: '#cbd5e1', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '650px' }}>
+                    Worried about hidden policy violations, Target SDK 34/35 compliance, or dangerous permission rejections? Send your app bundle to our senior Android deployment engineers for an instant WhatsApp audit.
+                  </p>
+                </div>
+                <div className="col-lg-4 text-lg-end">
+                  <a
+                    href="https://api.whatsapp.com/send?phone=917597451057&text=Hi%20ChittorTech,%20I%20want%20a%20FREE%2015-Minute%20APK/AAB%20Policy%20%26%20SDK%20Audit%20for%20my%20app."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gplay-whatsapp"
+                    style={{ fontSize: '1rem', padding: '14px 28px' }}
+                  >
+                    <i className="fa-brands fa-whatsapp"></i> Send APK for Free Audit
+                  </a>
+                  <div className="text-secondary small mt-2" style={{ color: '#94a3b8 !important', fontSize: '0.78rem' }}>
+                    100% Confidential • Zero Commitment Required
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Publishing Process */}
-        <section className="py-5" style={{ background: '#f8fafc' }}>
+        <section className="py-5 gplay-process-section" style={{ background: '#f8fafc' }}>
           <div className="container py-4">
             <div className="text-center mb-5">
               <h2 className="gplay-title" style={{ fontSize: '2.2rem', fontWeight: 800 }}>How the Process Works</h2>
@@ -566,7 +1099,7 @@ export default function GooglePlayPublishingPage() {
               {[
                 { step: "1", title: "App Submission", desc: "Upload your app bundle (.aab or .apk) along with screenshots, app icon, descriptions, and privacy policy details." },
                 { step: "2", title: "Policy & Security Review", desc: "Our testing team audits the application for compliance violations and crashes to guarantee a 100% review pass rate." },
-                { step: "3", title: "Testing & Validation", desc: "If running on your console, we spin up our 20-tester network to complete the mandatory 14-day continuous opt-in testing." },
+                { step: "3", title: "Testing & Validation", desc: "If running on your console, we spin up our 12-tester network to complete the mandatory 14-day continuous opt-in testing with real devices." },
                 { step: "4", title: "App Launch & Live Status", desc: "We submit the app to Google Play Store and monitor it until it is officially approved and live for public download." }
               ].map((step, idx) => (
                 <div className="col-md-3" key={idx}>
@@ -582,7 +1115,7 @@ export default function GooglePlayPublishingPage() {
         </section>
 
         {/* Security & Policy Clause */}
-        <section className="py-5">
+        <section className="py-5 gplay-guidelines-section">
           <div className="container py-4">
             <div className="text-center mb-5">
               <span className="text-danger text-uppercase fw-bold" style={{ fontSize: '0.8rem', letterSpacing: '1.5px' }}>Strict Compliance</span>
@@ -613,6 +1146,90 @@ export default function GooglePlayPublishingPage() {
                     <li><i className="fa-solid fa-ban text-danger me-2"></i> Copyright Infringing Media Downloaders</li>
                   </ul>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DIY vs ChittorTech Managed Comparison */}
+        <section className="py-5 gplay-comparison-section" style={{ background: '#ffffff' }}>
+          <div className="container py-4">
+            <div className="text-center mb-5">
+              <span className="text-primary text-uppercase fw-bold" style={{ fontSize: '0.8rem', letterSpacing: '1.5px' }}>Comparison</span>
+              <h2 className="gplay-title mt-2 mb-3" style={{ fontSize: '2.2rem', fontWeight: 800 }}>Publishing Yourself vs ChittorTech Managed</h2>
+              <p className="text-secondary mx-auto" style={{ maxWidth: '600px' }}>Why hundreds of independent developers and businesses rely on ChittorTech instead of DIY testing.</p>
+            </div>
+
+            {/* Desktop View: Full Comparison Table (Preserved Exactly) */}
+            <div className="d-none d-md-block">
+              <div className="table-responsive rounded-4 border border-1 shadow-sm">
+                <table className="table table-hover align-middle mb-0" style={{ minWidth: '650px' }}>
+                  <thead style={{ background: '#f8fafc' }}>
+                    <tr>
+                      <th className="py-3 px-4 text-secondary text-uppercase" style={{ fontSize: '0.78rem', width: '35%' }}>Feature / Requirement</th>
+                      <th className="py-3 px-4 text-center text-muted" style={{ width: '32%', fontSize: '0.9rem' }}>Doing It Yourself (DIY)</th>
+                      <th className="py-3 px-4 text-center text-primary fw-bold" style={{ width: '33%', fontSize: '0.95rem', background: 'rgba(37, 99, 235, 0.05)' }}>
+                        <i className="fa-brands fa-google-play me-1"></i> ChittorTech Managed
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {COMPARISON_ITEMS.map((row, rIdx) => (
+                      <tr key={rIdx}>
+                        <td className="py-3 px-4 fw-bold text-dark" style={{ fontSize: '0.92rem' }}>{row.feature}</td>
+                        <td className="py-3 px-4 text-center text-secondary small">
+                          <i className="fa-solid fa-circle-xmark text-danger me-2"></i>
+                          {row.diy}
+                        </td>
+                        <td className="py-3 px-4 text-center fw-semibold text-dark small" style={{ background: 'rgba(37, 99, 235, 0.02)' }}>
+                          <i className="fa-solid fa-circle-check text-success me-2"></i>
+                          {row.ct}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Mobile View: High-Impact Comparison Cards (Zero Table, Zero Overflow) */}
+            <div className="d-block d-md-none">
+              <div className="d-flex flex-column gap-3">
+                {COMPARISON_ITEMS.map((item, idx) => (
+                  <div key={idx} className="bg-white p-3 rounded-4 border border-1 shadow-sm">
+                    {/* Feature Title */}
+                    <div className="d-flex align-items-center gap-2 mb-3 pb-2 border-bottom">
+                      <span className="badge bg-primary text-white rounded-pill px-2 py-1" style={{ fontSize: '0.65rem', fontWeight: 800 }}>
+                        #{idx + 1}
+                      </span>
+                      <h6 className="mb-0 fw-bold text-dark" style={{ fontSize: '0.95rem' }}>
+                        {item.feature}
+                      </h6>
+                    </div>
+
+                    <div className="d-flex flex-column gap-2">
+                      {/* DIY Row */}
+                      <div className="p-2 px-3 rounded-3" style={{ background: '#fff1f2', border: '1px solid #fecdd3' }}>
+                        <div className="d-flex align-items-center gap-1 mb-1 text-danger fw-bold" style={{ fontSize: '0.72rem', letterSpacing: '0.5px' }}>
+                          <i className="fa-solid fa-circle-xmark"></i> DOING IT YOURSELF (DIY)
+                        </div>
+                        <div className="text-secondary small" style={{ fontSize: '0.82rem', lineHeight: 1.4 }}>
+                          {item.diy}
+                        </div>
+                      </div>
+
+                      {/* ChittorTech Managed Row */}
+                      <div className="p-2 px-3 rounded-3" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+                        <div className="d-flex align-items-center gap-1 mb-1 text-success fw-bold" style={{ fontSize: '0.72rem', letterSpacing: '0.5px' }}>
+                          <i className="fa-solid fa-circle-check"></i> CHITTORTECH MANAGED
+                        </div>
+                        <div className="text-dark fw-semibold small" style={{ fontSize: '0.82rem', lineHeight: 1.4 }}>
+                          {item.ct}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -729,12 +1346,32 @@ export default function GooglePlayPublishingPage() {
               </div>
             )}
             
-            <p style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '16px' }}>
-              All uploads undergo policy checks. By proceeding with this service, you agree to these compliance and legal terms.
-            </p>
-            
-            <button className="btn-gplay-primary w-100 justify-content-center" onClick={() => setActivePolicy(null)} style={{ padding: '10px 20px' }}>
-              I Agree & Understand
+            <div style={{
+              background: '#f8fafc',
+              border: '1px solid #e2e8f0',
+              borderRadius: '12px',
+              padding: '12px 14px',
+              marginBottom: '16px',
+              fontSize: '0.82rem',
+              color: '#475569',
+              lineHeight: '1.5'
+            }}>
+              <div className="d-flex align-items-center gap-2 mb-1 fw-bold text-dark">
+                <i className="fa-solid fa-circle-info text-primary"></i>
+                <span>Notice Regarding Policies & Updates</span>
+              </div>
+              <div>
+                For the latest updated terms, customized compliance checks, or full publishing documentation, please contact ChittorTech directly.
+              </div>
+            </div>
+
+            <button 
+              type="button" 
+              className="btn btn-outline-secondary w-100 fw-bold" 
+              onClick={() => setActivePolicy(null)} 
+              style={{ borderRadius: '10px', padding: '10px 20px', fontSize: '0.88rem' }}
+            >
+              Close
             </button>
           </div>
         </div>

@@ -290,7 +290,7 @@ export default function RootLayout({ children }) {
                     "itemOffered": {
                       "@type": "Service",
                       "name": "Google Play Publishing & App Compliance",
-                      "description": "Google Play Console setup, AAB/APK verification, 20-tester testing compliance, store listing, and ASO."
+                      "description": "Google Play Console setup, AAB/APK verification, 12-tester testing compliance, store listing, and ASO."
                     }
                   },
                   {

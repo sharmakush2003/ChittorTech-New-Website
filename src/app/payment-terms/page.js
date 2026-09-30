@@ -58,7 +58,7 @@ export default function PaymentTermsPage() {
           <ul>
             <li><strong>1.1 Fixed-Price Milestone:</strong> Fixed scope governed by an approved Software Requirement Specification (SRS). Billed across sequential milestone deliverables.</li>
             <li><strong>1.2 Dedicated Monthly Engineering Retainer:</strong> Monthly dedicated developer allocation billed in advance per 30-day agile cycle for continuous product development.</li>
-            <li><strong>1.3 Turnkey Packages:</strong> Standardized service packages (e.g., Google Play 14-day 20-tester closed testing, cloud server deployment, SEO audits) billed one-time upfront.</li>
+            <li><strong>1.3 Turnkey Packages:</strong> Standardized service packages (e.g., Google Play 14-day 12-tester closed testing, cloud server deployment, SEO audits) billed one-time upfront.</li>
           </ul>
         </>
       ),
@@ -283,7 +283,7 @@ export default function PaymentTermsPage() {
               </tr>
               <tr>
                 <td><strong>Turnkey Service Packages</strong></td>
-                <td>Google Play Console setup, 14-day closed testing (20 testers), technical SEO audits, and cloud setups.</td>
+                <td>Google Play Console setup, 14-day closed testing (12 testers), technical SEO audits, and cloud setups.</td>
                 <td>Fixed one-time package fee billed prior to service launch.</td>
               </tr>
             </tbody>
@@ -499,7 +499,7 @@ export default function PaymentTermsPage() {
                 </td>
               </tr>
               <tr>
-                <td><strong>Google Play 20-Tester Closed Testing Service</strong></td>
+                <td><strong>Google Play 12-Tester Closed Testing Service</strong></td>
                 <td>Once tester onboarding, testing groups, and Google Play Console invites are initiated.</td>
                 <td>
                   <strong style={{ color: "#dc2626" }}>Non-Refundable</strong><br />
