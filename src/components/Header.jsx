@@ -605,7 +605,7 @@ export default function Header() {
 
         /* ─── Floating Buttons ─── */
         .ct-float-left-brand {
-          position: fixed; bottom: 25px; left: 25px; z-index: 999999;
+          position: fixed; bottom: 25px; left: 25px; z-index: 1000005;
           width: 58px; height: 58px; border-radius: 50%;
           background: #ffffff; border: 2px solid #e2e8f0;
           display: flex; align-items: center; justify-content: center;
@@ -613,6 +613,7 @@ export default function Header() {
           cursor: pointer; padding: 7px;
           transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           animation: ct-brand-pop-pulse 3.5s ease-in-out infinite;
+          text-decoration: none !important;
         }
         .ct-float-left-brand:hover {
           transform: scale(1.12) translateY(-2px);
@@ -621,6 +622,22 @@ export default function Header() {
         }
         .ct-brand-float-img {
           width: 100%; height: 100%; object-fit: contain;
+        }
+        .ct-brand-verified-dot {
+          position: absolute;
+          top: -2px;
+          right: -2px;
+          width: 18px;
+          height: 18px;
+          background: #16a34a;
+          color: #ffffff;
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 8px;
+          box-shadow: 0 2px 6px rgba(22, 163, 74, 0.4);
         }
         @keyframes ct-brand-pop-pulse {
           0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(41, 31, 188, 0.22); }
@@ -631,10 +648,23 @@ export default function Header() {
 
         @media (min-width: 769px) {
           .ct-float-wa { display: none !important; }
-          .ct-float-left-brand { display: flex !important; }
+          .ct-float-left-brand {
+            display: flex !important;
+            bottom: 25px !important;
+            left: 25px !important;
+            right: auto !important;
+          }
         }
         @media (max-width: 768px) {
-          .ct-float-left-brand { display: none !important; }
+          .ct-float-left-brand {
+            display: flex !important;
+            bottom: 20px !important;
+            left: 20px !important;
+            right: auto !important;
+            width: 52px !important;
+            height: 52px !important;
+            padding: 6px !important;
+          }
           .ct-float-wa { display: none !important; }
         }
 
@@ -848,6 +878,7 @@ export default function Header() {
                   </div>
                 </li>
 
+                <li><Link href="/trust-center" className="ct-nav-btn"><i className="fa-solid fa-shield-halved text-success me-1" style={{ fontSize: "0.78rem" }}></i> Trust Center</Link></li>
                 <li><Link href="/about-us" className="ct-nav-btn">About</Link></li>
                 <li><Link href="/blog" className="ct-nav-btn">Blog</Link></li>
 
@@ -953,6 +984,9 @@ export default function Header() {
           </div>
 
           <div className="ct-mobile-divider" />
+          <Link href="/trust-center" className="ct-mobile-link">
+            <span><i className="fa-solid fa-shield-halved" style={{marginRight:"8px",color:"#10b981"}}></i>Trust Center</span>
+          </Link>
           <Link href="/about-us" className="ct-mobile-link">
             <span><i className="fa-solid fa-circle-info" style={{marginRight:"8px",color:"#94a3b8"}}></i>About Us</span>
           </Link>
@@ -972,16 +1006,17 @@ export default function Header() {
       </div>
 
       {/* ── Floating Buttons ── */}
-      <button
-        type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#trialModal"
+      <Link
+        href="/trust-center"
         className="ct-float-left-brand"
-        title="ChittorTech — Request Demo & Free AI Consultation"
-        aria-label="Request AI Consultation & Free Demo"
+        title="ChittorTech Trust Center & Legal Accreditations"
+        aria-label="Explore ChittorTech Trust Center"
       >
         <img src="/assets/images/ct-logo.png" alt="ChittorTech Logo" className="ct-brand-float-img" />
-      </button>
+        <span className="ct-brand-verified-dot" title="Verified Enterprise Partner">
+          <i className="fa-solid fa-shield-halved"></i>
+        </span>
+      </Link>
       <a href="https://wa.me/917597451057" target="_blank" rel="noopener noreferrer" className="ct-float-wa" title="Chat on WhatsApp">
         <i className="fa-brands fa-whatsapp"></i>
       </a>

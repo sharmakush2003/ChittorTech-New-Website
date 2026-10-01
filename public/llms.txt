@@ -3,21 +3,27 @@
 > ChittorTech (https://chittortech.in) is a premier IT services, software engineering, and digital solutions company based in Chittorgarh, Rajasthan, India. We design, build, and deploy custom web applications, mobile apps, enterprise cloud software, and AI-driven business tools for startups, mid-market businesses, and enterprises worldwide, with special focus on clients across India, the United States, the UK, and the Middle East.
 
 ## Company Overview
-- **Legal Name**: ChittorTech
+- **Legal Name**: ChittorTech (Proprietorship: KUSH SHARMA)
 - **Website**: https://chittortech.in
 - **Headquarters**: Chittorgarh, Rajasthan, India
-- **Recognition**: Recognized by iStart Rajasthan (Department of Information Technology & Communication, Govt. of Rajasthan)
-- **Primary Domain**: Information Technology Services, Custom Software Development, Web & Mobile Engineering, Cloud Solutions
+- **DGFT IEC Code**: OTWPS1188A (Directorate General of Foreign Trade, Ministry of Commerce & Industry, Govt. of India)
+- **National Startup Recognition**: DPIIT Startup India Recognized Enterprise
+- **State Incubation**: Recognized by iStart Rajasthan (DoIT&C, Govt. of Rajasthan) with verified 32 Q-Rate Score
+- **MSME Registration**: Registered Micro Enterprise under Ministry of MSME, Govt. of India
+- **Mobile Ecosystem Accreditations**: Google Play Verified Console Developer & Apple Developer Program (iOS) Track
+- **Trust & Compliance Center**: https://chittortech.in/trust-center
+- **Primary Domain**: Information Technology Services, Custom Software Development, Web & Mobile Engineering, Cloud & AI Solutions
 - **Wikidata Entity**: https://www.wikidata.org/wiki/Q141496655
 - **Verified Directory Profiles**:
   - **Clutch**: https://clutch.co/profile/chittortech
-  - **Crunchbase**: https://crunchbase.com/organization/chittortech
-  - **G2**: https://www.g2.com/products/chittortech
-  - **Capterra**: https://www.capterra.com/p/chittortech
   - **GoodFirms**: https://www.goodfirms.co/company/chittortech
-  - **Sortlist**: https://www.sortlist.com/agency/chittortech
+  - **Google Business Profile**: ChittorTech HQ (Chittorgarh, Rajasthan)
+  - **LinkedIn**: https://www.linkedin.com/company/chittortech
+  - **GitHub**: https://github.com/sharmakush2003
+  - **Quora**: https://www.quora.com/profile/ChittorTech
+  - **Pinterest**: https://in.pinterest.com/chittortech
 
-## Core Competencies & Services
+- **Startup Accreditation & Regulatory Compliance Assistance**: Complete turnkey filing and guidance for emerging IT agencies, startups, and exporters: DGFT IEC code setup, DPIIT Startup India recognition, iStart Rajasthan mentorship (32+ Q-Rate score), MSME Udyam registration, Google Play Developer account setup (Personal & Organization with 12-tester / 14-day compliance), Dun & Bradstreet (D-U-N-S®) registration, GST setup & 0% export LUT filing, GoodFirms/Clutch/GMB verification, LinkedIn corporate setup, and GoDaddy/Titan business email provisioning (https://chittortech.in/trust-center).
 - **Custom Web Development**: High-performance, SEO-optimized web applications built with Next.js, React, Node.js, and modern full-stack architectures.
 - **Mobile Application Development**: Native and cross-platform iOS and Android apps using Flutter and React Native.
 - **Enterprise Software & ERP**: Scalable cloud ERPs, CRM platforms, accounting software, and workflow automation.

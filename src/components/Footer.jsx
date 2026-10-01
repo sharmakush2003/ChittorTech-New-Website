@@ -476,6 +476,9 @@ export default function Footer() {
                   Empowering global enterprises, startups, and growing businesses with cutting-edge AI Solutions, Custom LLMs, Enterprise Cloud Systems, Dedicated Tech Teams, and Digital Growth Services.
                 </p>
                 <div className="ct-footer-trust-row">
+                  <Link href="/trust-center" className="ct-footer-trust-chip" style={{ color: "#059669", background: "rgba(16,185,129,0.08)", borderColor: "rgba(16,185,129,0.25)" }}>
+                    <i className="fa-solid fa-certificate"></i> Trust Center
+                  </Link>
                   <span className="ct-footer-trust-chip"><i className="fa-solid fa-shield-halved"></i> SSL Secured</span>
                   <span className="ct-footer-trust-chip"><i className="fa-solid fa-brain"></i> AI Powered</span>
                   <span className="ct-footer-trust-chip"><i className="fa-solid fa-award"></i> Made in India</span>
@@ -765,6 +768,8 @@ export default function Footer() {
           <div className="ct-footer-bottom">
             <div className="ct-footer-copy">
               © {new Date().getFullYear()} <a href="/">ChittorTech</a>.
+              <span className="sep">·</span>
+              <a href="/trust-center">Trust Center &amp; Accreditations</a>
               <span className="sep">·</span>
               <a href="/privacy-policy">Privacy Policy</a>
               <span className="sep">·</span>

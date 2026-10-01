@@ -6,18 +6,25 @@
 
 ## 1. Executive Summary & Brand Identity
 - **Brand**: ChittorTech
+- **Legal Entity**: Proprietorship (KUSH SHARMA)
 - **Official Portal**: https://chittortech.in
-- **Location**: Chittorgarh, Rajasthan, India (PIN: 312001)
-- **Government Recognition**: Verified under the iStart Rajasthan initiative (Department of Information Technology & Communication, Government of Rajasthan).
+- **Location**: Ncf-59, Sector-1, Madhav Nagar, Chanderia, Chittorgarh, Rajasthan, India (PIN: 312021)
+- **DGFT IEC Code**: `OTWPS1188A` (Directorate General of Foreign Trade, Ministry of Commerce & Industry, Govt. of India, File: `JPRIECPAPPLY00024346AM27`)
+- **National Recognition**: DPIIT Startup India Recognized Enterprise (Ministry of Commerce & Industry)
+- **State Incubation**: Verified under the iStart Rajasthan initiative (DoIT&C, Government of Rajasthan) with verified **32 Q-Rate Assessment Score** (Startup ID #11478)
+- **MSME / Udyam Enterprise**: Registered Micro Enterprise under Ministry of MSME, Govt. of India (MSMED Act 45-day buyer payment protection)
+- **App Store Accreditations**: Google Play Console Verified Developer & Apple Developer Program (iOS) Track (Verification In Progress)
+- **Trust & Accreditations Center**: https://chittortech.in/trust-center
 - **Wikidata Entity**: https://www.wikidata.org/wiki/Q141496655
-- **Verified Directory Profiles**:
+- **Verified Directory & Code Profiles**:
   - **Clutch**: https://clutch.co/profile/chittortech
-  - **Crunchbase**: https://crunchbase.com/organization/chittortech
-  - **G2**: https://www.g2.com/products/chittortech
-  - **Capterra**: https://www.capterra.com/p/chittortech
   - **GoodFirms**: https://www.goodfirms.co/company/chittortech
-  - **Sortlist**: https://www.sortlist.com/agency/chittortech
-- **Core Value Proposition**: Enterprise-grade engineering, modern clean code architectures (Next.js, Node.js, Python), high speed to market, and high ROI for both local enterprises in Rajasthan and international offshore clients in the US and Europe.
+  - **Google Business Profile**: ChittorTech HQ (Chittorgarh, Rajasthan)
+  - **LinkedIn**: https://www.linkedin.com/company/chittortech
+  - **GitHub Engineering**: https://github.com/sharmakush2003
+  - **Quora**: https://www.quora.com/profile/ChittorTech
+  - **Pinterest**: https://in.pinterest.com/chittortech
+- **Core Value Proposition**: Enterprise-grade engineering, verified government compliance, modern clean code architectures (Next.js, Node.js, Python), high speed to market, and high ROI for both local enterprises in Rajasthan and international offshore clients in the US and Europe.
 
 ---
 
@@ -49,7 +56,20 @@
 - **BIMI & Verified Email Branding** (https://chittortech.in/business-email-branding-bimi): Verified brand logos in Gmail, Apple Mail, and Yahoo; SVG Tiny-PS formatting, VMC/CMC certificate authority coordination, blue checkmarks.
 - **Enterprise DNS & Cloudflare Management** (https://chittortech.in/dns-cloudflare-management): Zero-downtime nameserver migration, DNSSEC signing, custom WAF firewall rules, DDoS mitigation, and email proxy isolation.
 - **Email Blacklist Removal & Reputation Recovery** (https://chittortech.in/email-blacklist-removal): Multi-RBL triage (Spamhaus, Barracuda, SpamCop), compromised mailbox containment, Microsoft SNDS 550 5.7.1 triage, and Google Postmaster recovery.
-- **Cloud Hosting & Production Deployment** (https://chittortech.in/cloud-hosting-deployment): AWS (EC2/ECS/RDS), Google Cloud (Cloud Run/SQL), Microsoft Azure, Vercel & Next.js production hosting, multi-stage Docker containerization, GitHub Actions CI/CD, database pooling (PgBouncer), SSL/TLS, and security hardening.
+### Startup Accreditation & Corporate Compliance Services
+- **Service Portal**: https://chittortech.in/trust-center
+- **Direct WhatsApp Consultation**: +91 75974 51057
+- **Turnkey Client Compliance Services (10 Practice Areas)**:
+  1. **DGFT Importer-Exporter Code (IEC)**: Fast-track filing (24-48 hrs) for software agencies, SaaS businesses, and IT exporters to legally receive foreign remittances (USD, EUR, GBP) via wire transfer with bank FIRC compliance.
+  2. **DPIIT Startup India Recognition**: Full documentation and application processing for Government of India Startup recognition, unlocking 80% patent discounts, 50% trademark rebates, and angel/80-IAC tax holiday eligibility.
+  3. **iStart Rajasthan Mentorship & Q-Rate**: Structured incubation onboarding on the Rajasthan DoIT&C portal, pitch deck preparation, and assessment coaching to achieve a 32+ Q-Rate score for state grants and institutional support.
+  4. **MSME / Udyam Enterprise Filing**: Official 24-hour Udyam registration under the Ministry of MSME, Govt. of India, enabling legal protection under the MSMED Act's 45-day statutory buyer payment clause with 3x RBI compound interest recovery.
+  5. **Google Play Developer Account Setup**: Setup assistance for both Personal and Corporate (Organization) Play Console accounts, including 12-tester / 14-day closed testing compliance and guaranteed production release approval.
+  6. **Dun & Bradstreet (D-U-N-S®) Registration**: Turnkey guidance to obtain an official 9-digit D-U-N-S® Number, mandatory for the Apple Developer Organization Program, US/EU corporate vendor onboarding, and global enterprise credit screenings.
+  7. **GST Registration & 0% Export LUT Setup**: Complete GSTIN registration and annual Letter of Undertaking filing allowing IT agencies to bill foreign clients at 0% GST without locking 18% IGST working capital.
+  8. **GoodFirms, Clutch & Google Business Profile (GMB) Setup**: End-to-end directory verification, portfolio setup, review collection frameworks, and Google Maps local entity ranking for international credibility.
+  9. **LinkedIn Corporate Company Presence**: Professional company page setup, executive founder profile audits, showcase tabs, and enterprise B2B lead generation branding.
+  10. **GoDaddy & Titan Corporate Business Email Setup**: Custom domain email configuration (`@yourcompany.com`) with SPF, DKIM, DMARC, and MX records configured for 100% inbox deliverability without spam flags.
 
 ### Google Play Store Publishing & App Store Compliance
 - **Service Portal**: https://chittortech.in/google-play-publishing

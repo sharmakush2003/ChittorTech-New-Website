@@ -84,7 +84,8 @@ const coreServices = new Set([
   'ai-solutions', 'ai-manufacturing', 'ai-chatbot-development', 'antigravity', 'render', 'cloudflare', 'vercel', 'groq',
   'enterprise-ai-agents', 'dedicated-tech-teams', '4-week-saas-mvp', 'timezone-overlap', 'b2b-lead-generation-services',
   'email-deliverability-services', 'dmarc-dkim-spf-setup', 'business-email-branding-bimi',
-  'dns-cloudflare-management', 'email-blacklist-removal', 'cloud-hosting-deployment'
+  'dns-cloudflare-management', 'email-blacklist-removal', 'cloud-hosting-deployment',
+  'trust-center'
 ]);
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

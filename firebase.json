@@ -12,6 +12,11 @@
     "cleanUrls": true,
     "redirects": [
       {
+        "source": "/inventory-management-software-in-*",
+        "destination": "/inventory",
+        "type": 301
+      },
+      {
         "source": "/affiliate-marketing-app-mewari-achaar",
         "destination": "/blog",
         "type": 301

@@ -20,6 +20,28 @@ export const CHITTORTECH_KNOWLEDGE_BASE = `
 - Core Strengths: AI Engineering (LLMs, RAG, Autonomous Agents, Predictive Analytics), Software Engineering (Web, SaaS, Portals, Apps, ERP/CRM), Security (Private Cloud, Air-gapped, Encryption, RBAC), 250+ projects delivered, 99.8% satisfaction, 4.8+ rating.
 - Regions Served: India (Chittorgarh, Jaipur, Delhi, Bengaluru, Chennai, Jodhpur, Raipur, Ranchi) & International (USA: Silicon Valley, NY, Miami, Austin; UK: London, Manchester; UAE: Dubai, Abu Dhabi; Saudi Arabia; Canada: Toronto; Australia: Sydney, Melbourne; Germany: Berlin; Netherlands: Amsterdam; Singapore; Turkey/Eurasia).
 
+1.1. TRUST CENTER, GOVERNMENT ACCREDITATIONS & STARTUP COMPLIANCE SERVICES (/trust-center)
+- Official Trust Center URL: https://chittortech.in/trust-center
+- DGFT IEC Code: OTWPS1188A (Directorate General of Foreign Trade, Ministry of Commerce & Industry, Govt. of India). Enables zero-rated software exports and legal foreign currency wire settlements (USD, EUR, GBP, AUD) with bank FIRC compliance.
+- DPIIT Startup India Recognition: Officially recognized startup enterprise under Government of India (DPIIT, Ministry of Commerce & Industry).
+- iStart Rajasthan Incubation: Officially recognized & incubated under Department of Information Technology & Communication (DoIT&C), Govt. of Rajasthan with verified 32 Q-Rate Assessment Score (Profile ID #11478).
+- MSME / Udyam Enterprise: Registered under Ministry of MSME, Govt. of India with statutory 45-day buyer payment protection under the MSMED Act.
+- Google Play Console Developer: Identity-verified developer profile with full compliance for Google's 12-tester 14-day closed testing rules.
+- Apple Developer Program (iOS): Enrollment & developer verification under process for native iOS, iPadOS, macOS App Store & TestFlight distribution.
+- Corporate Identifiers: D-U-N-S (Dun & Bradstreet, in progress), GST Invoicing & LUT Zero-Rated Export Compliance.
+- Turnkey Corporate Services ChittorTech Delivers for Clients (Direct Lead Generation):
+  1. DGFT IEC Registration: Foreign remittance clearance (USD, EUR, GBP) via wire transfer + bank FIRC setup.
+  2. DPIIT Startup India Recognition: Official filing, 80% patent / 50% trademark fee rebates, tax holidays.
+  3. iStart Rajasthan Mentorship: Incubation application, pitch deck guidance, and Q-Rate scorecard assessment (target: 32+ score).
+  4. MSME / Udyam Enterprise Filing: 24-hr official Udyam certificate with 45-day MSME Samadhaan legal recovery shield.
+  5. Google Play Developer Account Setup: Personal & Organization accounts, overcoming Google's mandatory 12-tester 14-day closed testing rule with guaranteed production release.
+  6. Dun & Bradstreet (D-U-N-S®) Registration: Official 9-digit corporate identifier required for Apple Developer Organization Program and US/EU enterprise contracts.
+  7. GST Registration & 0% Export LUT Setup: GSTIN creation and annual Letter of Undertaking filing to bill foreign clients at 0% GST without locking 18% IGST.
+  8. GoodFirms, Clutch & Google Business Profile (GMB) Setup: Full agency verification, portfolio setup, review workflows, and local map rank.
+  9. LinkedIn Corporate Company Presence: Professional company page, executive profile audit, showcase tabs, and B2B lead generation branding.
+  10. GoDaddy & Titan Corporate Business Email Setup: Domain configuration, custom business email (@yourcompany.com), SPF, DKIM, DMARC, and MX records for 100% inbox deliverability.
+- Client Inquiry Routing: Inquiries for any of these 10 services should be directed to WhatsApp (+91 7597451057) or https://chittortech.in/trust-center.
+
 2. CRITICAL PRICING & COST INQUIRY POLICY (MANDATORY SYSTEM RULE)
 - RULE: NEVER PROVIDE STATIC OR FIXED PRICES FOR WEB/SOFTWARE/IT SOLUTIONS.
 - Whenever asked: "How much does a website cost?", "What is the price?", "How much for an app?", "ERP price?", "Software cost?", "SEO charges?", "Give me a quotation.", "Fixed price?"

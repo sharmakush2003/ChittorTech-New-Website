@@ -194,12 +194,14 @@ export default function WhatsAppFloatingWidget() {
         @media (min-width: 769px) {
           .ct-float-left-brand,
           .chatbot-fab-wrap,
+          .chatbot-fab,
           .chatbot-container {
             opacity: 1 !important;
             visibility: visible !important;
             filter: blur(0px) !important;
             transform: translateY(0) scale(1) !important;
             pointer-events: auto !important;
+            z-index: 1000005 !important;
           }
         }
 
@@ -218,6 +220,7 @@ export default function WhatsAppFloatingWidget() {
 
           body.mobile-corners-active .ct-float-left-brand,
           body.mobile-corners-active .chatbot-fab-wrap,
+          body.mobile-corners-active .chatbot-fab,
           body.mobile-corners-active .chatbot-container {
             opacity: 1 !important;
             visibility: visible !important;
@@ -245,10 +248,11 @@ export default function WhatsAppFloatingWidget() {
           display: flex;
           justify-content: center;
           align-items: center;
-          z-index: 999999;
+          z-index: 999990;
           padding: 0 12px;
           box-sizing: border-box;
           transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+          pointer-events: none !important; /* Full width container must not block corner buttons */
         }
 
         .island-visible {
@@ -256,7 +260,7 @@ export default function WhatsAppFloatingWidget() {
           visibility: visible;
           filter: blur(0px);
           transform: translateY(0) scale(1);
-          pointer-events: auto;
+          pointer-events: none !important; /* Retain none so FAB clicks pass through */
         }
 
         .island-hidden {
@@ -264,10 +268,11 @@ export default function WhatsAppFloatingWidget() {
           visibility: hidden;
           filter: blur(12px);
           transform: translateY(20px) scale(0.88);
-          pointer-events: none;
+          pointer-events: none !important;
         }
 
         .dynamic-island-pill {
+          pointer-events: auto !important; /* Only the interactive pill catches pointer events */
           display: inline-flex;
           align-items: center;
           justify-content: space-between;
@@ -457,6 +462,7 @@ export default function WhatsAppFloatingWidget() {
           cursor: pointer;
           transition: all 0.2s ease;
           flex-shrink: 0;
+          pointer-events: auto !important;
         }
 
         .island-close-btn:hover {
@@ -553,8 +559,7 @@ export default function WhatsAppFloatingWidget() {
           }
 
           .bottom-left-wa-container {
-            bottom: 20px;
-            left: 20px;
+            display: none !important;
           }
 
           .mini-wa-btn {
