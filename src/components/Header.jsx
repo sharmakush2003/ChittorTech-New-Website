@@ -62,13 +62,86 @@ const NAV_ITEMS = {
   ],
 };
 
+const ANNOUNCEMENT_SLIDES = [
+  {
+    badge: "⚡ Instant Architecture & Quote",
+    badgeColor: "#fbbf24",
+    badgeBorder: "rgba(251, 191, 36, 0.4)",
+    badgeBg: "rgba(251, 191, 36, 0.12)",
+    textPrefix: "Planning a custom Website, App, or Cloud ERP?",
+    textHighlight: "Get blueprint & cost estimate in 10 mins.",
+    btnText: "💬 Get Free Estimate",
+    btnLink: "https://wa.me/917597451057?text=Hi%20ChittorTech,%20I%20would%20like%20a%20free%20architectural%20plan%20and%20instant%20cost%20estimate%20for%20my%20project.",
+    isExternal: true,
+    btnGradient: "linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)",
+    btnShadow: "0 0 16px rgba(245, 158, 11, 0.45)",
+    textColor: "#ffffff"
+  },
+  {
+    badge: "🚀 Google Play Guaranteed",
+    badgeColor: "#38bdf8",
+    badgeBorder: "rgba(56, 189, 248, 0.4)",
+    badgeBg: "rgba(56, 189, 248, 0.12)",
+    textPrefix: "Stuck on Google Play 14-Day 12-Tester verification?",
+    textHighlight: "100% policy compliance & fast store approval.",
+    btnText: "📲 Publish Your App",
+    btnLink: "/google-play-publishing",
+    isExternal: false,
+    btnGradient: "linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)",
+    btnShadow: "0 0 16px rgba(6, 182, 212, 0.45)",
+    textColor: "#ffffff"
+  },
+  {
+    badge: "🟢 Live Engineering Desk",
+    badgeColor: "#34d399",
+    badgeBorder: "rgba(52, 211, 153, 0.4)",
+    badgeBg: "rgba(52, 211, 153, 0.12)",
+    textPrefix: "Talk directly with Senior Full-Stack Engineers —",
+    textHighlight: "Sub-second turnaround & zero sales pitch.",
+    btnText: "⚡ Chat on WhatsApp",
+    btnLink: "https://wa.me/917597451057?text=Hi%20ChittorTech,%20I%20would%20like%20to%20speak%20directly%20with%20an%20engineer.",
+    isExternal: true,
+    btnGradient: "linear-gradient(135deg, #10b981 0%, #047857 100%)",
+    btnShadow: "0 0 16px rgba(16, 185, 129, 0.45)",
+    textColor: "#ffffff"
+  },
+  {
+    badge: "🛡️ 100% Inbox Deliverability",
+    badgeColor: "#c084fc",
+    badgeBorder: "rgba(192, 132, 252, 0.4)",
+    badgeBg: "rgba(192, 132, 252, 0.12)",
+    textPrefix: "Emails landing in Spam/Junk?",
+    textHighlight: "100% SPF, DKIM, DMARC & BIMI inbox guarantee.",
+    btnText: "✉️ Fix Deliverability",
+    btnLink: "/email-deliverability-services",
+    isExternal: false,
+    btnGradient: "linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%)",
+    btnShadow: "0 0 16px rgba(139, 92, 246, 0.45)",
+    textColor: "#ffffff"
+  }
+];
+
 export default function Header() {
   const [mobileOpen, setMobileOpen]       = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const [scrolled, setScrolled]           = useState(false);
+  const [currentSlide, setCurrentSlide]     = useState(0);
+  const [isSlidePaused, setIsSlidePaused]   = useState(false);
   const headerRef = useRef(null);
   const pathname = usePathname();
+
+  // Auto-rotate announcement slides every 4.5 seconds
+  useEffect(() => {
+    if (isSlidePaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % ANNOUNCEMENT_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isSlidePaused]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % ANNOUNCEMENT_SLIDES.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + ANNOUNCEMENT_SLIDES.length) % ANNOUNCEMENT_SLIDES.length);
 
   // Close mobile drawer on route change
   useEffect(() => {
@@ -113,14 +186,21 @@ export default function Header() {
   return (
     <>
       <style>{`
-        /* ─── Announcement Strip ─── */
+        /* ─── Ultra-Attractive Announcement Strip ─── */
         .ct-strip {
-          background: linear-gradient(90deg, #0f0b2e 0%, #1e1b4b 50%, #0f0b2e 100%);
+          background: linear-gradient(90deg, #07041a 0%, #130a38 25%, #1e1050 50%, #130a38 75%, #07041a 100%);
           background-size: 200% 100%;
-          animation: ct-strip-move 6s linear infinite;
-          padding: 8px 20px;
-          display: flex; align-items: center; justify-content: center;
-          gap: 16px; flex-wrap: wrap; position: relative; overflow: hidden;
+          animation: ct-strip-move 10s linear infinite;
+          padding: 8px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+          min-height: 48px;
+          border-bottom: 1px solid rgba(139, 92, 246, 0.28);
+          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+          z-index: 1001;
         }
         @keyframes ct-strip-move {
           0% { background-position: 0% 0%; }
@@ -128,37 +208,215 @@ export default function Header() {
         }
         .ct-strip::before {
           content: '';
-          position: absolute; inset: 0;
-          background: radial-gradient(ellipse 60% 200% at 50% 50%, rgba(6,182,212,0.08) 0%, transparent 70%);
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 70% 150% at 50% 50%, rgba(99, 102, 241, 0.2) 0%, transparent 80%);
           pointer-events: none;
         }
-        .ct-strip-text {
-          font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.8);
-          display: flex; align-items: center; gap: 8px;
+        .ct-strip::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), rgba(245, 158, 11, 0.7), transparent);
+          pointer-events: none;
         }
-        .ct-strip-text strong { color: #fff; }
-        .ct-strip-dot {
-          width: 6px; height: 6px; border-radius: 50%;
-          background: #06b6d4;
-          animation: ct-strip-pulse 1.5s ease-in-out infinite;
+        .ct-strip-inner {
+          width: 100%;
+          max-width: 1360px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          position: relative;
+          z-index: 2;
+        }
+        .ct-strip-spacer {
+          width: 88px;
           flex-shrink: 0;
         }
-        @keyframes ct-strip-pulse {
+        .ct-strip-slider {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 0;
+        }
+        .ct-strip-slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          animation: ctSlidePop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          text-align: center;
+        }
+        @keyframes ctSlidePop {
+          0% { opacity: 0; transform: translateY(6px) scale(0.99); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .ct-strip-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          font-size: 0.72rem;
+          font-weight: 700;
+          padding: 3px 12px;
+          border-radius: 50px;
+          white-space: nowrap;
+          letter-spacing: 0.3px;
+          flex-shrink: 0;
+          border: 1px solid;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 0 0 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .ct-strip-pulse-dot {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          flex-shrink: 0;
+          animation: ctPulseAnim 1.4s ease-in-out infinite;
+        }
+        @keyframes ctPulseAnim {
           0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(0.7); }
+          50% { opacity: 0.35; transform: scale(0.7); }
+        }
+        .ct-strip-text {
+          font-size: 0.835rem;
+          font-weight: 500;
+          color: rgba(241, 245, 249, 0.95);
+          letter-spacing: -0.01em;
+          white-space: normal;
+          line-height: 1.45;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        .ct-strip-text-highlight {
+          color: #ffffff;
+          font-weight: 700;
+          text-decoration: underline decoration-sky-400/50 underline-offset-4;
+          margin-left: 3px;
         }
         .ct-strip-btn {
-          display: inline-flex; align-items: center; gap: 6px;
-          background: linear-gradient(135deg, #f59e0b, #fbbf24);
-          color: #0f0b2e !important; font-weight: 800; font-size: 0.72rem;
-          padding: 5px 14px; border-radius: 50px; border: none;
-          cursor: pointer; letter-spacing: 0.6px; text-transform: uppercase;
-          font-family: 'Inter', sans-serif; transition: all 0.2s ease;
-          text-decoration: none; flex-shrink: 0;
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          font-weight: 800;
+          font-size: 0.73rem;
+          padding: 6px 16px;
+          border-radius: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          cursor: pointer;
+          letter-spacing: 0.3px;
+          text-transform: uppercase;
+          font-family: 'Inter', sans-serif;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          text-decoration: none;
+          flex-shrink: 0;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        .ct-strip-btn::after {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -80%;
+          width: 50%;
+          height: 200%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+          transform: rotate(25deg);
+          animation: ctBtnShine 3.5s infinite;
+        }
+        @keyframes ctBtnShine {
+          0% { left: -80%; }
+          25% { left: 150%; }
+          100% { left: 150%; }
         }
         .ct-strip-btn:hover {
-          transform: scale(1.07);
-          box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+          transform: translateY(-2px) scale(1.05);
+          filter: brightness(1.12);
+        }
+        .ct-strip-nav {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          padding: 3px 8px;
+          border-radius: 30px;
+          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 2px 8px rgba(0,0,0,0.25);
+          flex-shrink: 0;
+        }
+        .ct-strip-nav-btn {
+          background: transparent;
+          border: none;
+          color: rgba(255, 255, 255, 0.7);
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 0.6rem;
+          transition: all 0.2s ease;
+        }
+        .ct-strip-nav-btn:hover {
+          background: rgba(255, 255, 255, 0.2);
+          color: #fff;
+          transform: scale(1.12);
+        }
+        .ct-strip-dots {
+          display: flex;
+          gap: 5px;
+          align-items: center;
+        }
+        .ct-strip-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.3);
+          cursor: pointer;
+          transition: all 0.25s ease;
+          border: none;
+          padding: 0;
+        }
+        .ct-strip-dot.active {
+          width: 16px;
+          border-radius: 5px;
+          background: #38bdf8;
+          box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
+        }
+        @media (max-width: 1200px) {
+          .ct-strip-inner {
+            justify-content: space-between;
+          }
+        }
+        @media (max-width: 991px) {
+          .ct-strip-spacer {
+            display: none;
+          }
+          .ct-strip {
+            padding: 8px 12px;
+            min-height: auto;
+          }
+          .ct-strip-inner {
+            flex-direction: column;
+            gap: 8px;
+          }
+          .ct-strip-slide {
+            flex-direction: column;
+            gap: 6px;
+          }
+          .ct-strip-text {
+            font-size: 0.76rem;
+            text-align: center;
+          }
         }
 
         /* ─── Main Header ─── */
@@ -742,15 +1000,101 @@ export default function Header() {
         }
       `}</style>
 
-      {/* ── Announcement Strip ── */}
-      <div className="ct-strip">
-        <div className="ct-strip-dot"></div>
-        <span className="ct-strip-text">
-          <strong>🤖 ChittorTech AI Solutions</strong> — Enterprise AI Chatbots, Custom LLMs &amp; Automation for Indian Businesses
-        </span>
-        <button className="ct-strip-btn" data-bs-toggle="modal" data-bs-target="#trialModal">
-          <i className="fa-solid fa-rocket"></i> Free Consultation
-        </button>
+      {/* ── Dynamic Announcement Strip ── */}
+      <div 
+        className="ct-strip" 
+        onMouseEnter={() => setIsSlidePaused(true)}
+        onMouseLeave={() => setIsSlidePaused(false)}
+        role="region"
+        aria-label="Announcements"
+      >
+        <div className="ct-strip-inner">
+          <div className="ct-strip-spacer" aria-hidden="true" />
+          <div className="ct-strip-slider">
+            <div className="ct-strip-slide" key={currentSlide}>
+              <span 
+                className="ct-strip-badge"
+                style={{
+                  color: ANNOUNCEMENT_SLIDES[currentSlide].badgeColor,
+                  borderColor: ANNOUNCEMENT_SLIDES[currentSlide].badgeBorder,
+                  background: ANNOUNCEMENT_SLIDES[currentSlide].badgeBg,
+                }}
+              >
+                <span 
+                  className="ct-strip-pulse-dot" 
+                  style={{ 
+                    background: ANNOUNCEMENT_SLIDES[currentSlide].badgeColor,
+                    boxShadow: `0 0 8px ${ANNOUNCEMENT_SLIDES[currentSlide].badgeColor}`
+                  }}
+                />
+                {ANNOUNCEMENT_SLIDES[currentSlide].badge}
+              </span>
+              <span className="ct-strip-text">
+                {ANNOUNCEMENT_SLIDES[currentSlide].textPrefix}{" "}
+                <strong className="ct-strip-text-highlight">
+                  {ANNOUNCEMENT_SLIDES[currentSlide].textHighlight}
+                </strong>
+              </span>
+              {ANNOUNCEMENT_SLIDES[currentSlide].isExternal ? (
+                <a
+                  href={ANNOUNCEMENT_SLIDES[currentSlide].btnLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ct-strip-btn"
+                  style={{
+                    background: ANNOUNCEMENT_SLIDES[currentSlide].btnGradient,
+                    boxShadow: ANNOUNCEMENT_SLIDES[currentSlide].btnShadow,
+                    color: ANNOUNCEMENT_SLIDES[currentSlide].textColor
+                  }}
+                >
+                  {ANNOUNCEMENT_SLIDES[currentSlide].btnText}
+                </a>
+              ) : (
+                <Link
+                  href={ANNOUNCEMENT_SLIDES[currentSlide].btnLink}
+                  className="ct-strip-btn"
+                  style={{
+                    background: ANNOUNCEMENT_SLIDES[currentSlide].btnGradient,
+                    boxShadow: ANNOUNCEMENT_SLIDES[currentSlide].btnShadow,
+                    color: ANNOUNCEMENT_SLIDES[currentSlide].textColor
+                  }}
+                >
+                  {ANNOUNCEMENT_SLIDES[currentSlide].btnText}
+                </Link>
+              )}
+            </div>
+          </div>
+
+          <div className="ct-strip-nav">
+            <button 
+              className="ct-strip-nav-btn" 
+              onClick={prevSlide}
+              aria-label="Previous announcement"
+              type="button"
+            >
+              <i className="fa-solid fa-chevron-left"></i>
+            </button>
+            <div className="ct-strip-dots">
+              {ANNOUNCEMENT_SLIDES.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  className={`ct-strip-dot ${idx === currentSlide ? "active" : ""}`}
+                  onClick={() => setCurrentSlide(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+            <button 
+              className="ct-strip-nav-btn" 
+              onClick={nextSlide}
+              aria-label="Next announcement"
+              type="button"
+            >
+              <i className="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* ── Main Header ── */}

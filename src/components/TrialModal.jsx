@@ -91,55 +91,8 @@ export default function TrialModal() {
     }
 
     function shouldShowModal() {
-      try {
-        // 1. If form was submitted in session or past 7 days -> NEVER show
-        if (
-          sessionStorage.getItem("trial_modal_submitted") === "true" || 
-          isSubmitted ||
-          pathname?.includes("project-estimator")
-        ) return false;
-
-        const subAt = localStorage.getItem("trial_modal_submitted_at");
-        if (subAt && Date.now() - parseInt(subAt, 10) <= 7 * 24 * 60 * 60 * 1000) {
-          return false;
-        }
-
-        // 2. If max popups reached in session -> NEVER show
-        if (sessionStorage.getItem("trial_modal_max_reached") === "true") {
-          return false;
-        }
-
-        // 3. If popup count is already 3 or more -> NEVER show
-        const count = getAutoPopupCount();
-        if (count >= maxPopups) {
-          return false;
-        }
-
-        // 4. If dismissed recently (checkbox or 3-count max) -> 2 days silence
-        const lastDismissed = localStorage.getItem("trial_modal_dismissed_v2_at");
-        if (lastDismissed) {
-          const twoDaysInMs = 2 * 24 * 60 * 60 * 1000;
-          if (Date.now() - parseInt(lastDismissed, 10) <= twoDaysInMs) {
-            return false;
-          } else {
-            // 2 days have elapsed since dismissal -> reset counter for fresh cycle
-            localStorage.removeItem("trial_modal_dismissed_v2_at");
-            localStorage.setItem("trial_popup_count", "0");
-            sessionStorage.removeItem("trial_popup_count");
-            sessionStorage.removeItem("trial_modal_max_reached");
-          }
-        }
-
-        // 5. Short cool-down so route navigation right after closing doesn't trigger immediate popup
-        const lastClosedAt = sessionStorage.getItem("trial_modal_last_closed_at");
-        if (lastClosedAt && Date.now() - parseInt(lastClosedAt, 10) < 8000) {
-          return false;
-        }
-
-        return true;
-      } catch (e) {
-        return false;
-      }
+      // Disabled auto-popup completely so visitors and developers are not interrupted repeatedly
+      return false;
     }
 
     function showModal(isAuto = false) {

@@ -115,7 +115,7 @@ function getPageAwareDetails(pathname, userName = "") {
 
   // Default Fallback
   return {
-    greeting: `Hello${nameGreeting}! I'm Kaira, ChittorTech's official AI Assistant. How can I assist your business growth or engineering today?`,
+    greeting: `Hello${nameGreeting}! I'm ChittorTech GPT, your official AI Assistant. How can I assist your business growth or engineering today?`,
     suggestions: [
       "What is ChittorTech?",
       "View Core Services",
@@ -132,6 +132,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [inputVal, setInputVal] = useState("");
   const messagesEndRef = useRef(null);
+  const typingRef = useRef(null);
   const pathname = usePathname();
 
   // Pre-chat Registration states
@@ -149,6 +150,24 @@ export default function Chatbot() {
   const [meetingSlot, setMeetingSlot] = useState("11:00 AM - 12:00 PM");
   const [meetingNote, setMeetingNote] = useState("");
   const [isSubmittingMeeting, setIsSubmittingMeeting] = useState(false);
+
+  // Lead Intent & Proactive Engagement states
+  const [showIntentCTA, setShowIntentCTA] = useState(false);
+  const [leadScore, setLeadScore] = useState(0);
+
+  // Message Reactions state: { [msgIndex]: emoji }
+  const [reactions, setReactions] = useState({});
+
+  const handleReaction = (idx, emoji) => {
+    setReactions(prev => {
+      if (prev[idx] === emoji) {
+        const next = { ...prev };
+        delete next[idx];
+        return next;
+      }
+      return { ...prev, [idx]: emoji };
+    });
+  };
 
   // Quick upcoming date chips for easy 1-click scheduling
   const upcomingDateOptions = useMemo(() => {
@@ -174,6 +193,25 @@ export default function Chatbot() {
 
   const activeContext = getPageAwareDetails(pathname, userName);
   const suggestions = activeContext.suggestions;
+
+
+  // ── Intent CTA: scan user messages for buying signals ──
+  useEffect(() => {
+    const INTENT_KEYWORDS = [
+      "price", "cost", "quote", "budget", "how much", "rate", "charges",
+      "build", "develop", "create", "start", "begin", "hire", "need",
+      "estimate", "proposal", "package", "plan", "timeline", "when can",
+      "demo", "trial", "interested", "let's go", "proceed"
+    ];
+    const lastUserMsg = messages.filter(m => m.role === "user").slice(-1)[0];
+    if (!lastUserMsg) return;
+    const txt = lastUserMsg.content.toLowerCase();
+    const hasIntent = INTENT_KEYWORDS.some(kw => txt.includes(kw));
+    if (hasIntent) {
+      setLeadScore(prev => prev + 5);
+      setShowIntentCTA(true);
+    }
+  }, [messages]);
 
   // Initialize chatbot messages and user registration from localStorage
   useEffect(() => {
@@ -232,20 +270,29 @@ export default function Chatbot() {
     }
   }, [pathname]);
 
-  // Save messages to localstorage whenever they change
+  // Save messages to localstorage whenever they change (always preserve fullText so nothing is lost if closed mid-typing)
   useEffect(() => {
     if (messages.length > 0) {
-      localStorage.setItem("chittortech_chat_history", JSON.stringify(messages));
+      const cleanToSave = messages.map((m) => {
+        if (m.fullText) {
+          return { role: m.role, content: m.fullText, timestamp: m.timestamp };
+        }
+        return { role: m.role, content: m.content, timestamp: m.timestamp };
+      });
+      localStorage.setItem("chittortech_chat_history", JSON.stringify(cleanToSave));
     }
   }, [messages]);
 
-  // Scroll to bottom on updates
+  // Scroll chat cleanly to bottom without shaking or jittering the window
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById("chatbot-messages");
+    if (el) {
+      el.scrollTop = el.scrollHeight;
+    }
   }, [messages, isLoading, showMeetingScheduler]);
 
   const toggleChat = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   const resetChat = () => {
@@ -262,7 +309,7 @@ export default function Chatbot() {
     const name = userName ? userName : "Visitor";
     const phone = phoneNumber ? `${countryCode} ${phoneNumber}` : "";
     
-    const summaryText = `*Namaste Lav Sir!*\n\nI am chatting with *Kaira* on chittortech.in (${pathname}).\n\n• *My Inquiry:* "${lastUserQuery.slice(0, 160)}"\n• *Name:* ${name}\n• *Phone:* ${phone}\n\nCan we discuss this further?`;
+    const summaryText = `*Namaste Lav Sir!*\n\nI am chatting with *ChittorTech GPT* on chittortech.in (${pathname}).\n\n• *My Inquiry:* "${lastUserQuery.slice(0, 160)}"\n• *Name:* ${name}\n• *Phone:* ${phone}\n\nCan we discuss this further?`;
     
     window.open(`https://api.whatsapp.com/send?phone=917597451057&text=${encodeURIComponent(summaryText)}`, "_blank");
   };
@@ -341,7 +388,30 @@ export default function Chatbot() {
     // 3. Bold: **text**
     content = content.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 
-    // 4. Markdown links: [label](url)
+    // 4. Markdown tables: ensure in-progress table rows stay inside <table> during streaming
+    if (content.includes("|")) {
+      const linesArr = content.split("\n");
+      const lastLine = linesArr[linesArr.length - 1]?.trim();
+      if (lastLine && lastLine.startsWith("|")) {
+        if (!lastLine.endsWith("|")) {
+          content = content + " |\n";
+        } else if (!content.endsWith("\n")) {
+          content = content + "\n";
+        }
+      }
+    }
+
+    content = content.replace(/(?:^|\n)(\|[^\n]+\|\r?\n)(?:\|:?[-]+:?)+\|(\r?\n(?:\|[^\n]+\|\r?\n?)+)/g, (match, header, rows) => {
+      const parseCells = (rowStr, tag) => {
+        const parts = rowStr.split('|').map(s => s.trim()).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+        return parts.map(p => `<${tag}>${p}</${tag}>`).join('');
+      };
+      const ths = parseCells(header, 'th');
+      const trs = rows.trim().split('\n').filter(r => r.includes('|')).map(r => `<tr>${parseCells(r, 'td')}</tr>`).join('');
+      return `<div class="chat-table-wrap"><table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+    });
+
+    // 5. Markdown links: [label](url)
     content = content.replace(
       /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
       '<a href="$2" target="_blank" rel="noopener noreferrer" class="chat-markdown-link">$1 <i class="fas fa-external-link-alt" style="font-size: 0.72em; margin-left: 2px;"></i></a>'
@@ -399,8 +469,14 @@ export default function Chatbot() {
       const rawLine = lines[i];
       const trimmed = rawLine.trim();
 
-      // Check if line is an action button or pre tag already wrapped
-      if (trimmed.includes('class="chat-action-wrapper"') || trimmed.startsWith("<pre")) {
+      // Check if line is an action button, table, or pre tag already wrapped
+      if (
+        trimmed.includes('class="chat-action-wrapper"') ||
+        trimmed.includes('class="chat-table-wrap"') ||
+        trimmed.startsWith("<table") ||
+        trimmed.startsWith("<div class=\"chat-table-wrap\"") ||
+        trimmed.startsWith("<pre")
+      ) {
         if (inList) {
           output.push("</ul>");
           inList = false;
@@ -440,42 +516,61 @@ export default function Chatbot() {
 
   const typeMessage = (text) => {
     setIsLoading(false);
+
     const newMsg = {
       role: "ai",
       content: "",
+      fullText: text, // Preserve complete response so it is never truncated
       timestamp: new Date().toISOString(),
       isTyping: true,
     };
 
     setMessages((prev) => [...prev, newMsg]);
 
-    let currentText = "";
-    let index = 0;
+    let currentIndex = 0;
+    let intervalId = null;
 
-    const interval = setInterval(() => {
-      if (index < text.length) {
-        currentText += text[index];
-        index++;
+    const finish = () => {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = null;
+      setMessages((prev) => {
+        const updated = [...prev];
+        if (updated.length > 0 && updated[updated.length - 1].role === "ai") {
+          const last = { ...updated[updated.length - 1] };
+          last.content = text;
+          delete last.isTyping;
+          updated[updated.length - 1] = last;
+        }
+        return updated;
+      });
+      typingRef.current = null;
+      const el = document.getElementById("chatbot-messages");
+      if (el) el.scrollTop = el.scrollHeight;
+    };
+
+    typingRef.current = { finishImmediately: finish };
+
+    // Calm, readable human-like typing cadence (50ms interval):
+    // 1 char every 50ms (~20 chars/sec) for short texts, 2 chars every 50ms for longer texts
+    const step = text.length > 600 ? 2 : 1;
+
+    intervalId = setInterval(() => {
+      currentIndex += step;
+      if (currentIndex < text.length) {
+        const partial = text.slice(0, currentIndex);
         setMessages((prev) => {
           const updated = [...prev];
           if (updated.length > 0 && updated[updated.length - 1].role === "ai") {
-            updated[updated.length - 1].content = currentText;
+            updated[updated.length - 1].content = partial;
           }
           return updated;
         });
+        const el = document.getElementById("chatbot-messages");
+        if (el) el.scrollTop = el.scrollHeight;
       } else {
-        clearInterval(interval);
-        setMessages((prev) => {
-          const updated = [...prev];
-          if (updated.length > 0 && updated[updated.length - 1].role === "ai") {
-            const last = { ...updated[updated.length - 1] };
-            delete last.isTyping;
-            updated[updated.length - 1] = last;
-          }
-          return updated;
-        });
+        finish();
       }
-    }, 15);
+    }, 50);
   };
 
   const handleRegister = (e) => {
@@ -545,12 +640,26 @@ export default function Chatbot() {
     setIsLoading(true);
 
     try {
-      // Build previous messages payload for AI context (omit system messages and user registration card)
+      // Build previous messages payload for AI context
+      // - Omit system/registration messages
+      // - Only keep last 8 exchanges to control token count
+      // - Truncate long AI replies (they may contain injected HTML service cards)
+      const sanitizeContent = (content, role) => {
+        if (role !== "ai") return content;
+        // Strip any injected HTML (service cards, action buttons) before sending to API
+        return content
+          .replace(/<[^>]*>/g, " ")
+          .replace(/\s{2,}/g, " ")
+          .trim()
+          .slice(0, 1200); // hard cap to keep tokens under control
+      };
+
       const chatHistory = [...messages, userMsg]
         .filter((m) => !m.isSystem && !(m.content.startsWith("Name :") && m.content.includes("Phone :")))
+        .slice(-16) // last 16 entries = ~8 back-and-forth exchanges
         .map((m) => ({
           role: m.role === "ai" ? "assistant" : "user",
-          content: m.content,
+          content: sanitizeContent(m.content, m.role),
         }));
 
       const p1 = "gsk_IDpObGXNtTE7zv7";
@@ -559,24 +668,25 @@ export default function Chatbot() {
       const pageInfo = getPageAwareDetails(pathname, userName);
       const systemPrompt = {
         role: "system",
-        content: `You are Kaira, the official AI assistant and Customer Support Executive for ChittorTech.
+        content: `You are ChittorTech GPT, the official AI assistant and Customer Support Executive for ChittorTech.
 
 CURRENT ACTIVE VISITOR CONTEXT:
 - Active Page: ${pathname}
 - Page Focus: ${pageInfo.contextPrompt}
 - Dynamically tailor your answers to highlight what the visitor is exploring right now.
 
-CRITICAL MANDATORY SCHEDULING RULE:
-- YOU CANNOT DIRECTLY SCHEDULE OR CONFIRM MEETINGS, CALLS, OR DEMOS IN CHAT MESSAGES.
-- NEVER fake, simulate, or output scheduled dates/times (e.g., NEVER say "I've scheduled the call for 04:00 PM tomorrow").
-- When a user asks to book a call, schedule a demo, or request a meeting, kindly ask them to click the "Book Call" button or request form, and ALWAYS append '[ACTION:SCHEDULE]' or '[ACTION:DEMO]'.
-
-ACTION TRIGGERS (ALWAYS APPEND WHEN RELEVANT):
-- If user asks for project cost, pricing, budget, or estimates, guide them to our Interactive Project Estimator (https://chittortech.in/project-estimator) and append '[ACTION:ESTIMATOR]'.
-- If user asks for contact info or general inquiry, append '[ACTION:CONTACT]'.
-- If user asks for a demo or trial, append '[ACTION:DEMO]'.
-- If user wants to schedule a meeting, call, or discussion, append '[ACTION:SCHEDULE]'.
-- If user wants to talk on WhatsApp with Founder Kush Sharma or Co-Founder Lav Sharma (+91 7597451057), append '[ACTION:WHATSAPP]'.
+CRITICAL RESPONSE FORMAT RULES:
+1. TABLES (IF APPLICABLE):
+   - Keep tables compact with STRICTLY 2 COLUMNS (e.g. | Feature / Module | Highlights |).
+   - Maximum 4 rows only! Never produce giant or multi-column wide tables.
+2. WHY CHOOSE CHITTORTECH:
+   - Keep to exactly 3 punchy bullet points (max 1 sentence each).
+3. NEXT STEPS / ACTION (NO LONG QUESTIONNAIRES):
+   - NEVER ask the visitor a long 6-step questionnaire or barrage of questions.
+   - Simply guide them directly with a short friendly note and direct link: "Ready to discuss your project? Get in touch with our team via our Contact page or WhatsApp!"
+   - Always append '[ACTION:CONTACT]' or '[ACTION:WHATSAPP]'.
+4. BREVITY & CONVERSION:
+   - Keep answers focused, crisp, and high-impact so visitors can read quickly without scrolling fatigue.
 
 OFFICIAL COMPREHENSIVE CHITTORTECH KNOWLEDGE BASE (SOURCE OF TRUTH):
 ${CHITTORTECH_KNOWLEDGE_BASE}`
@@ -615,7 +725,7 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
         });
       }
 
-      if (!response.ok) throw new Error("API Error");
+      if (!response.ok) throw new Error(`API Error ${response.status}`);
 
       const data = await response.json();
       const reply = data.choices && data.choices[0] && data.choices[0].message 
@@ -624,8 +734,16 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
 
       typeMessage(reply);
     } catch (e) {
-      console.error(e);
-      typeMessage("Thank you for reaching out to ChittorTech! Please contact our team directly via Phone/WhatsApp at +91 7597451057 or email business@chittortech.in for instant assistance.");
+      console.error("ChittorTech GPT API Error:", e);
+      // Show a helpful response instead of raw error
+      const errMsg = e?.message || "";
+      if (errMsg.includes("413")) {
+        typeMessage("Your query contains too much context. Please start a fresh conversation by clicking the 🗑️ button above.");
+      } else if (errMsg.includes("429")) {
+        typeMessage("We're experiencing high traffic right now. Please try again in a few seconds, or reach us directly on WhatsApp: **+91 7597451057** [ACTION:WHATSAPP]");
+      } else {
+        typeMessage("I'm having trouble connecting right now. Please try again, or contact us directly:\n\n📞 **+91 7597451057** (WhatsApp / Call)\n📧 **business@chittortech.in** [ACTION:WHATSAPP]");
+      }
     }
   };
 
@@ -652,17 +770,18 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
 
   return (
     <>
-      {/* Background Blur Overlay (only present when chat is open) */}
-      {isOpen && (
-        <div 
-          id="chatbot-overlay" 
-          className="chatbot-overlay open"
-          onClick={toggleChat}
-        />
-      )}
-
       {/* FAB Floating Button */}
       <div className="chatbot-fab-wrap">
+        {!isOpen && (isLoading || messages.some((m) => m.isTyping)) && (
+          <div className="chatbot-fab-typing-badge" onClick={toggleChat} title="Click to view AI response">
+            <span className="fab-typing-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span>ChittorTech GPT is typing...</span>
+          </div>
+        )}
         <button 
           id="chatbot-fab" 
           className={`chatbot-fab ${isOpen ? "active" : ""}`} 
@@ -684,10 +803,10 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
         <div className="chatbot-header">
           <div className="chatbot-header-info">
             <div className="chatbot-avatar">
-              <img src="/assets/images/chatbot-kaira.webp" alt="Kaira" />
+              <img src="/assets/images/chatbot-kaira.webp" alt="ChittorTech GPT" />
             </div>
             <div className="chatbot-header-text">
-              <h4>Kaira</h4>
+              <h4>ChittorTech GPT</h4>
               <span>Online • AI Assistant</span>
             </div>
           </div>
@@ -709,7 +828,7 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
                 <div className="ai-3d-orb-wrap">
                   <div className="ai-3d-orb-glow"></div>
                   <div className="ai-3d-avatar-container">
-                    <img src="/assets/images/chatbot-kaira.webp" alt="Kaira AI" className="ai-3d-avatar-img" />
+                    <img src="/assets/images/chatbot-kaira.webp" alt="ChittorTech GPT" className="ai-3d-avatar-img" />
                     <span className="ai-live-pulse-badge">
                       <span className="live-dot"></span> Neural AI
                     </span>
@@ -717,7 +836,7 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
                 </div>
                 <div className="chatbot-reg-welcome-text">
                   <h3>ChittorTech AI Studio</h3>
-                  <p>Chat with <strong>Kaira</strong> for instant solution architecture, lead generator demos & custom pricing.</p>
+                  <p>Chat with <strong>ChittorTech GPT</strong> for instant solution architecture, lead generator demos & custom pricing.</p>
                 </div>
                 <div className="ai-capabilities-pill-strip">
                   <span><i className="fas fa-bolt"></i> Instant Answers</span>
@@ -993,7 +1112,7 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
                     )}
                     <div className="message-content-wrap">
                       {msg.role === "ai" && (
-                        <span className="message-sender-name">Kaira</span>
+                        <span className="message-sender-name">ChittorTech GPT</span>
                       )}
                       <div className={`message ${msg.role}`}>
                         {msg.role === "ai" ? (
@@ -1014,6 +1133,22 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
                           </div>
                         )}
                       </div>
+
+                      {/* Message Reactions Bar */}
+                      {msg.role === "ai" && !msg.isSystem && !msg.isTyping && (
+                        <div className="msg-reactions-bar">
+                          {["👍", "❤️", "😮"].map((emoji) => (
+                            <button
+                              key={emoji}
+                              className={`msg-reaction-btn${reactions[idx] === emoji ? " active" : ""}`}
+                              onClick={() => handleReaction(idx, emoji)}
+                              title={emoji === "👍" ? "Helpful" : emoji === "❤️" ? "Love it" : "Wow"}
+                            >
+                              {emoji}
+                            </button>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -1024,7 +1159,7 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
                       <img src="/assets/images/chatbot-kaira.webp" alt="AI" onError={(e) => { e.target.src = '/assets/images/ct-logo.png'; }} />
                     </div>
                     <div className="message-content-wrap">
-                      <span className="message-sender-name">Kaira</span>
+                      <span className="message-sender-name">ChittorTech GPT</span>
                       <div className="message ai typing">
                         <div className="typing-dots">
                           <span></span>
@@ -1038,30 +1173,36 @@ ${CHITTORTECH_KNOWLEDGE_BASE}`
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Render Sleek Horizontal Suggestion Chips */}
-              {messages.length <= 2 && suggestions && suggestions.length > 0 && (
-                <div 
-                  id="chatbot-suggestions" 
-                  className="chatbot-suggestions-chips"
-                  onWheel={(e) => {
-                    if (e.deltaY !== 0) {
-                      e.currentTarget.scrollLeft += e.deltaY;
-                    }
-                  }}
-                >
-                  {suggestions.map((s, i) => (
-                    <button 
-                      key={i} 
-                      type="button"
-                      className="suggestion-chip"
-                      onClick={() => handleSend(s)}
+              {/* Intent-Based Lead CTA Banner */}
+              {showIntentCTA && isRegistered && (
+                <div className="chatbot-intent-cta">
+                  <div className="intent-cta-content">
+                    <span className="intent-cta-icon">🎯</span>
+                    <div className="intent-cta-text">
+                      <strong>Ready to get started?</strong>
+                      <span>Get a free custom quote in 10 mins</span>
+                    </div>
+                  </div>
+                  <div className="intent-cta-actions">
+                    <a
+                      href={`https://api.whatsapp.com/send?phone=917597451057&text=${encodeURIComponent(`Hi! I'm ${userName || 'a visitor'} from ChittorTech website. I'm interested in getting a quote for my project.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="intent-cta-btn primary"
                     >
-                      <span>{s}</span>
-                      <i className="fas fa-arrow-right"></i>
+                      <i className="fab fa-whatsapp"></i> Get Quote
+                    </a>
+                    <button
+                      className="intent-cta-dismiss"
+                      onClick={() => setShowIntentCTA(false)}
+                      aria-label="Dismiss"
+                    >
+                      <i className="fas fa-times"></i>
                     </button>
-                  ))}
+                  </div>
                 </div>
               )}
+
 
               <div className="chatbot-input-area">
                 <input 
