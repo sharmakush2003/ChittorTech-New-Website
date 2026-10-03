@@ -1687,126 +1687,91 @@ export default function AdminLeadsPage() {
 
       {/* Main Container */}
       <main style={{ maxWidth: "1440px", margin: "0 auto", padding: "28px 24px" }}>
-        {/* TOP LEVEL DUAL-PIPELINE SELECTOR */}
+        {/* TOP LEVEL 3-PIPELINE SELECTOR */}
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "12px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: "10px",
             background: "#ffffff",
-            padding: "8px 12px",
-            borderRadius: "14px",
+            padding: "8px",
+            borderRadius: "16px",
             border: "1.5px solid #e2e8f0",
             marginBottom: "24px",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
+            boxShadow: "0 4px 18px -2px rgba(15, 23, 42, 0.05)",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
-            <button
-              onClick={() => setAdminPipelineTab("b2b_outbound")}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "10px 20px",
-                borderRadius: "10px",
-                fontSize: "0.88rem",
-                fontWeight: 800,
-                cursor: "pointer",
-                border: "none",
-                transition: "all 0.15s ease",
-                background: adminPipelineTab === "b2b_outbound" ? "linear-gradient(135deg, #6366f1, #4f46e5)" : "transparent",
-                color: adminPipelineTab === "b2b_outbound" ? "#ffffff" : "#64748b",
-                boxShadow: adminPipelineTab === "b2b_outbound" ? "0 4px 12px rgba(99, 102, 241, 0.25)" : "none",
-              }}
-            >
-              <i className="fas fa-satellite-dish" style={{ color: adminPipelineTab === "b2b_outbound" ? "#c7d2fe" : "#94a3b8" }}></i>
-              <span>Generate Leads</span>
-              <span
-                style={{
-                  background: adminPipelineTab === "b2b_outbound" ? "rgba(199, 210, 254, 0.25)" : "#f1f5f9",
-                  color: adminPipelineTab === "b2b_outbound" ? "#c7d2fe" : "#64748b",
-                  padding: "2px 8px",
-                  borderRadius: "20px",
-                  fontSize: "0.72rem",
-                  fontWeight: 800,
-                }}
-              >
-                {b2bLeads.length} Leads
-              </span>
-            </button>
+          {/* Tab 1: Generate Leads */}
+          <button
+            onClick={() => setAdminPipelineTab("b2b_outbound")}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
+              padding: "12px 18px",
+              borderRadius: "12px",
+              fontSize: "0.92rem",
+              fontWeight: 800,
+              cursor: "pointer",
+              border: adminPipelineTab === "b2b_outbound" ? "1px solid rgba(2, 132, 199, 0.3)" : "1px solid #f1f5f9",
+              transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+              background: adminPipelineTab === "b2b_outbound" ? "linear-gradient(135deg, #0284c7, #0369a1)" : "#f8fafc",
+              color: adminPipelineTab === "b2b_outbound" ? "#ffffff" : "#475569",
+              boxShadow: adminPipelineTab === "b2b_outbound" ? "0 4px 14px rgba(2, 132, 199, 0.28)" : "none",
+            }}
+          >
+            <i className="fas fa-satellite-dish" style={{ fontSize: "1rem", color: adminPipelineTab === "b2b_outbound" ? "#bae6fd" : "#0284c7" }}></i>
+            <span>Generate Leads</span>
+          </button>
 
-            <button
-              onClick={() => setAdminPipelineTab("inbound")}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "10px 20px",
-                borderRadius: "10px",
-                fontSize: "0.88rem",
-                fontWeight: 800,
-                cursor: "pointer",
-                border: "none",
-                transition: "all 0.15s ease",
-                background: adminPipelineTab === "inbound" ? "linear-gradient(135deg, #2563eb, #1d4ed8)" : "transparent",
-                color: adminPipelineTab === "inbound" ? "#ffffff" : "#64748b",
-                boxShadow: adminPipelineTab === "inbound" ? "0 4px 12px rgba(37, 99, 235, 0.25)" : "none",
-              }}
-            >
-              <i className="fas fa-inbox" style={{ color: adminPipelineTab === "inbound" ? "#ffffff" : "#94a3b8" }}></i>
-              <span>Incoming Leads</span>
-              <span
-                style={{
-                  background: adminPipelineTab === "inbound" ? "rgba(255, 255, 255, 0.25)" : "#f1f5f9",
-                  color: adminPipelineTab === "inbound" ? "#ffffff" : "#64748b",
-                  padding: "2px 8px",
-                  borderRadius: "20px",
-                  fontSize: "0.72rem",
-                  fontWeight: 800,
-                }}
-              >
-                {stats.total} Live
-              </span>
-            </button>
+          {/* Tab 2: Incoming Leads */}
+          <button
+            onClick={() => setAdminPipelineTab("inbound")}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
+              padding: "12px 18px",
+              borderRadius: "12px",
+              fontSize: "0.92rem",
+              fontWeight: 800,
+              cursor: "pointer",
+              border: adminPipelineTab === "inbound" ? "1px solid rgba(2, 132, 199, 0.3)" : "1px solid #f1f5f9",
+              transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+              background: adminPipelineTab === "inbound" ? "linear-gradient(135deg, #0284c7, #0369a1)" : "#f8fafc",
+              color: adminPipelineTab === "inbound" ? "#ffffff" : "#475569",
+              boxShadow: adminPipelineTab === "inbound" ? "0 4px 14px rgba(2, 132, 199, 0.28)" : "none",
+            }}
+          >
+            <i className="fas fa-inbox" style={{ fontSize: "1rem", color: adminPipelineTab === "inbound" ? "#bae6fd" : "#0284c7" }}></i>
+            <span>Incoming Leads</span>
+          </button>
 
-            {/* Tab 3: Sessions & Access Logs */}
-            <button
-              onClick={() => setAdminPipelineTab("sessions")}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "10px 20px",
-                borderRadius: "10px",
-                fontSize: "0.88rem",
-                fontWeight: 800,
-                cursor: "pointer",
-                border: "none",
-                transition: "all 0.15s ease",
-                background: adminPipelineTab === "sessions" ? "linear-gradient(135deg, #0f172a, #1e293b)" : "transparent",
-                color: adminPipelineTab === "sessions" ? "#ffffff" : "#64748b",
-                boxShadow: adminPipelineTab === "sessions" ? "0 4px 12px rgba(15, 23, 42, 0.25)" : "none",
-              }}
-            >
-              <i className="fas fa-shield-alt" style={{ color: adminPipelineTab === "sessions" ? "#38bdf8" : "#94a3b8" }}></i>
-              <span>Sessions &amp; Security</span>
-              <span
-                style={{
-                  background: adminPipelineTab === "sessions" ? "rgba(56, 189, 248, 0.2)" : "#f1f5f9",
-                  color: adminPipelineTab === "sessions" ? "#38bdf8" : "#64748b",
-                  padding: "2px 8px",
-                  borderRadius: "20px",
-                  fontSize: "0.72rem",
-                  fontWeight: 800,
-                }}
-              >
-                Live Sessions
-              </span>
-            </button>
-          </div>
+          {/* Tab 3: Sessions & Access Logs */}
+          <button
+            onClick={() => setAdminPipelineTab("sessions")}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
+              padding: "12px 18px",
+              borderRadius: "12px",
+              fontSize: "0.92rem",
+              fontWeight: 800,
+              cursor: "pointer",
+              border: adminPipelineTab === "sessions" ? "1px solid rgba(2, 132, 199, 0.3)" : "1px solid #f1f5f9",
+              transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+              background: adminPipelineTab === "sessions" ? "linear-gradient(135deg, #0284c7, #0369a1)" : "#f8fafc",
+              color: adminPipelineTab === "sessions" ? "#ffffff" : "#475569",
+              boxShadow: adminPipelineTab === "sessions" ? "0 4px 14px rgba(2, 132, 199, 0.28)" : "none",
+            }}
+          >
+            <i className="fas fa-shield-alt" style={{ fontSize: "1rem", color: adminPipelineTab === "sessions" ? "#bae6fd" : "#0284c7" }}></i>
+            <span>Sessions &amp; Security</span>
+          </button>
         </div>
 
         {adminPipelineTab === "b2b_outbound" ? (
